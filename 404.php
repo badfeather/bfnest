@@ -1,0 +1,21 @@
+<?php get_header(); ?>
+
+		<section class="content">
+
+			<main class="main" role="main">
+
+				<header class="doc-header">
+					<h1 class="doc-title"><?php _e( 'Not Found', 'bfn' ); ?></h1>
+				</header><!-- /.doc-header -->
+
+				<div class="doc-main">
+					<p><?php _e( 'Sorry, but the page you were trying to view does not exist.', 'bfn' ); ?></p>
+				</div><!-- /.doc-main -->
+
+			</main>
+
+			<?php get_template_part( 'part/sidebar', get_post_type() ); ?>
+
+		</section><!-- /.content -->
+
+<?php get_footer(); ?>

@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * Initial setup includes
+ */
+
+// initial setup
+require get_template_directory() . ( '/inc/init.php' );
+
+// scripts and stylesheets
+require get_template_directory() . ( '/inc/scripts.php' );
+
+// widgets
+require get_template_directory() . ( '/inc/widgets.php' );
+
+// images
+require get_template_directory() . ( '/inc/images.php' );
+
+// comments
+require get_template_directory() . ( '/inc/comments.php' );
+
+// template tags
+require get_template_directory() . ( '/inc/template-tags.php' );
+
+/**
+ * plugin-specific configs
+ */
+
+// woocommerce - uncomment
+// require get_template_directory() . ( '/inc/woocommerce.php' );

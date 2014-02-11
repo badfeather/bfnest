@@ -1,0 +1,304 @@
+	// COLORS
+// --------------------------------------------------
+// Grayscale
+@black:	#000;
+@gray-darkest: darken(@white, 87.5%);
+@gray-darker: darken(@white, 75%);
+@gray-dark: darken(@white, 62.5%);
+@gray: darken(@white, 50%);
+@gray-light: darken(@white, 37.5%);
+@gray-lighter: darken(@white, 25%);
+@gray-lightest: darken(@white, 12.5%);
+@white: #fff;
+
+// Standard Colors
+@red: #f00;
+@orange: #f90;
+@yellow: #ff0;
+@green: #0f0;
+@blue: #00f;
+@magenta: #f0f;
+@aqua: #0ff;
+@purple: #800080;
+@cyan: #00ADF2;
+@navy: #000080;
+@silver: #C0C0C0;
+
+// Identity Colors
+
+
+// Background-color
+@bg-color: @gray-darkest;
+
+// Base color and complementary color
+@text-color: @gray-lightest;
+@text-color-alt: @gray-lighter;
+@comp-color: spin(@text-color, 180);
+@border-color: @gray;
+
+@accent-color: @cyan;
+@accent-color-alt: @magenta;
+
+// Links
+@link-color: @accent-color;
+@link-hover-color: @accent-color-alt;
+@link-active-color: @accent-color-alt;
+@link-text-decoration: none;
+@link-hover-text-decoration: none;
+
+// TYPE SIZES
+// --------------------------------------------------
+@thin: 100;
+@light: 300;
+@regular: 400;
+@semibold: 600;
+@bold: 700;
+@extrabold: 800;
+@black: 900;
+
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif: Cambria, Georgia, serif;
+@font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base: @font-family-sans-serif;
+@font-weight-normal: @regular;
+@font-weight-bold: @bold;
+
+// Base
+@font-size-base: 16;
+@font-weight-base: @font-weight-normal;
+@margin-base: 26;
+@margin-base-half: @margin-base / 2;
+@margin-base-quarter: @margin-base / 4;
+@margin-base-calc: @margin-base / @font-size-base * 1em;
+@margin-base-half-calc: @margin-base-half / @font-size-base * 1em;
+@margin-base-quarter-calc: @margin-base-quarter / @font-size-base * 1em;
+@line-height-base: @margin-base / @font-size-base;
+@line-height-base-md: ( @font-size-base + ( ( @margin-base - @font-size-base ) / 2 ) ) / @font-size-base;
+@line-height-base-sm: ( @font-size-base + ( ( @margin-base - @font-size-base ) / 4 ) ) / @font-size-base;
+@line-height-base-xs: 1;
+@line-height-base-half: ( @margin-base * .75 ) / @font-size-base;
+@font-size-small: 14;
+
+
+// Headings
+@h1-font-size: 32;
+@h1-line-height: @line-height-base-sm;
+@h1-margin-bottom: @margin-base;
+@h1-margin-top: 0;
+
+@h2-font-size: 28;
+@h2-line-height: @line-height-base-md;
+@h2-margin-bottom: @margin-base-half;
+@h2-margin-top: 0;
+
+@h3-font-size: 24;
+@h3-line-height: @line-height-base-md;
+@h3-margin-bottom: @margin-base-half;
+@h3-margin-top: 0;
+
+@h4-font-size: 20;
+@h4-line-height: @line-height-base-md;
+@h4-margin-bottom: @margin-base-half;
+@h4-margin-top: 0;
+
+@h5-font-size: 16;
+@h5-line-height: @line-height-base;
+@h5-margin-bottom: @margin-base-half;
+@h5-margin-top: 0;
+
+@h6-font-size: 14;
+@h6-line-height: @line-height-base;
+@h6-margin-bottom: @margin-base-half;
+@h6-margin-top: 0;
+
+@headings-font-family: @font-family-sans-serif;
+@headings-font-weight: @regular;
+@headings-color: @text-color;
+@headings-small-color: inherit;
+@headings-link-color: @link-color;
+@headings-link-hover-color: @link-hover-color;
+
+@page-title-font-size: 30;
+
+
+// Meta
+@meta-font-family: @font-family-sans-serif;
+@meta-font-weight: @font-weight-base;
+@meta-color: @gray-light;
+@meta-font-size: @font-size-small;
+@meta-line-height: @line-height-base-md;
+@meta-margin-bottom: @margin-base-quarter;
+
+// Navs
+@nav-font-family: @font-family-sans-serif;
+@nav-font-weight: @regular;
+@nav-link-color: @link-color;
+@nav-link-hover-color: @link-hover-color;
+@nav-link-active-color: @link-active-color;
+
+// Post Navs
+@postnav-link-color: @link-color;
+@postnav-link-hover-color: @link-hover-color;
+@postnav-font-family: @font-family-sans-serif;
+@postnav-font-size: 13;
+
+// Blockquotes
+@blockquote-font-size: 20;
+@blockquote-font-family: @font-family-serif;
+@blockquote-line-height: @line-height-base;
+@blockquote-font-weight: @font-weight-base;
+@blockquote-font-style: italic;
+@blockquote-margin-left: @margin-base;
+@blockquote-margin-right: 0;
+@blockquote-margin-top: @margin-base;
+@blockquote-margin-bottom: @margin-base;
+
+// Tables
+@table-bg-color: @gray-darkest;
+@table-border-color: @border-color;
+@td-border-top-width: 1px;
+@td-border-right-width: 1px;
+@td-border-bottom-width: 1px;
+@td-border-left-width: 1px;
+@td-padding-vertical: 6;
+@td-padding-horizontal: 6;
+@td-padding-calc: unit( ( @td-padding-vertical / @font-size-base ), em ) unit( ( @td-padding-horizontal / @font-size-base ), em );
+
+// Ledes
+@lede-font-size: 24;
+@lede-font-family: @font-family-serif;
+@lede-line-height: @line-height-base;
+@lede-font-weight: @font-weight-base;
+@lede-font-style: normal;
+
+// Document Main
+@doc-margin-bottom: @margin-base;
+
+// Entries
+@hentry-margin-bottom: @margin-base * 1.5;
+
+// Widgets
+@widget-margin-bottom: @margin-base;
+
+// Sticky Posts
+@sticky-bg-color: @gray-darkest;
+@sticky-padding: 1em;
+
+
+// Button and form field padding
+@padding-vertical-base: 7;
+@padding-horizontal-base: 9;
+
+@padding-vertical-lg: 9;
+@padding-horizontal-lg: 16;
+
+@padding-vertical-sm: 3;
+@padding-horizontal-sm: 6;
+
+@padding-vertical-xs: 2;
+@padding-horizontal-xs: 4;
+
+@border-radius-base: 4;
+//@border-radius-lg: 7;
+//@border-radius-sm: 4;
+//@border-radius-xs: 3;
+
+// Buttons
+@btn-font-size: 14;
+@btn-font-family: @font-family-sans-serif;
+@btn-color: @white;
+@btn-bg-color: @link-color;
+@btn-border-color: @btn-bg-color;
+@btn-hover-color: @white;
+@btn-hover-bg-color: @link-hover-color;
+@btn-hover-border-color: @btn-hover-bg-color;
+@btn-font-weight: normal;
+@btn-link-disabled-color: @border-color;
+@btn-text-transform: uppercase;
+
+// alternate sizes
+@btn-font-size-lg: 18;
+@btn-font-size-sm: 13;
+@btn-font-size-xs: 11;
+
+// Alternate buttons
+@btn-default-color: @btn-color;
+@btn-default-bg-color: @btn-bg-color;
+@btn-default-border-color: @btn-border-color;
+
+@btn-primary-color: @btn-color;
+@btn-primary-bg-color: @btn-bg-color;
+@btn-primary-border-color: @btn-border-color;
+
+@btn-success-color: @btn-color;
+@btn-success-bg-color: @green;
+@btn-success-border-color: @green;
+
+@btn-info-color: @btn-color;
+@btn-info-bg-color: @btn-bg-color;
+@btn-info-border-color: @btn-border-color;
+
+@btn-warning-color: @btn-color;
+@btn-warning-bg-color: @red;
+@btn-warning-border-color: @red;
+
+@btn-danger-color: @btn-color;
+@btn-danger-bg-color: @red;
+@btn-danger-border-color: @red;
+
+
+// Inputs
+@input-font-size: 14;
+@input-font-size-lg: 18;
+@input-font-size-sm: 13;
+@input-font-size-xs: 11;
+@input-width: 210;
+@input-font-family: @font-family-sans-serif;
+@input-color: @text-color;
+@input-placeholder-color: @meta-color;
+@input-border-color: @accent-color;
+@input-placeholder-border-color: @border-color;
+@input-bg-color: @bg-color;
+@input-disabled-bg-color: @gray-lighter;
+@input-border-radius: @border-radius-base;
+
+// GRID SYSTEM
+// Semantic.gs - http://semantic.gs/
+// --------------------------------------------------
+@column-width: 60;
+@gutter-width: 30;
+@columns: 12;
+
+@gutter-width-calc: unit( (@gutter-width / @font-size-base ), em );
+
+// Utility variable — you should never need to modify this
+@gridsystem-width: ( @column-width * @columns ) + ( @gutter-width * @columns );
+@gridsystem-width-calc: unit( (@gridsystem-width / @font-size-base ), em );
+
+// Set @total-width to 100% for a fluid layout or @gridsystem-width for fixed layout
+@total-width: 100%;
+
+// SPRITES AND LOGOS
+// --------------------------------------------------
+@sprite-img: 'images/sprite_yoga_ed.png';
+@sprite-img-2x: 'images/sprite_yoga_ed@2x.png';
+@sprite-img-width: 500px;
+@sprite-img-height: 255px;
+
+// RESPONSIVE
+// Media queries breakpoints
+// --------------------------------------------------
+
+// Extra small screen / phone
+@mobile: (480 / @font-size-base * 1em);
+
+// Small screen / tablet
+@tablet: (768 / @font-size-base * 1em);
+
+// Medium screen / desktop
+@desktop: (992 / @font-size-base * 1em);
+
+// Large screen / wide desktop
+@desktop-lg: (1200 / @font-size-base * 1em);
+
+@grid-float-breakpoint: @tablet;

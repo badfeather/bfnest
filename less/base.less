@@ -1,0 +1,583 @@
+body {
+	font-size: percentage(@font-size-base/16);
+	font-family: @font-family-base;
+	font-weight: @font-weight-base;
+	line-height: @line-height-base;
+	color: @text-color;
+	background-color: @bg-color;
+	width: 100%;
+	.clearfix;
+}
+// typekit
+.wf-loading {
+	body {
+		visibility: hidden;
+	}
+}
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+// Links
+a {
+	color: @link-color;
+	text-decoration: @link-text-decoration;
+	outline: 0;
+	&:hover,
+	&:focus {
+		color: @link-hover-color;
+		text-decoration: @link-hover-text-decoration;
+	}
+
+	&:focus {
+		.tab-focus();
+		outline: 0;
+	}
+}
+
+// Images
+img {
+	vertical-align: middle;
+	max-width: 100%;
+	height: auto;
+}
+
+
+// Rounded corners
+//.img-rounded {
+//	border-radius: @border-radius-large;
+//}
+
+
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+.sr-only,
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	border: 0;
+}
+
+.clearfix {
+	.clearfix();
+}
+
+// GENERAL TYPE STYLES
+// -------------------------
+p,
+ul,
+ol,
+dl,
+blockquote,
+table,
+form,
+pre,
+address,
+hr {
+	.margin-calc;
+}
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+abbr,
+acronym {
+	border-bottom: 1px dotted @border-color;
+	cursor: help;
+}
+mark,
+ins {
+	background: @yellow;
+	text-decoration: none;
+	color: #000;
+}
+// lists
+ul {
+	list-style: disc outside;
+	ul {
+		list-style-type: circle;
+		ul {
+			list-style-type: square;
+		}
+	}
+}
+ol {
+	list-style: decimal outside;
+}
+ul,
+ol {
+	padding: 0 0 0 @margin-base-calc;
+	ul,
+	ol {
+		padding-top: @margin-base-quarter-calc;
+		margin-bottom: 0;
+		font-size: 1em;
+	}
+}
+li {
+	margin-bottom: @margin-base-quarter-calc;
+}
+
+// List options
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+.list-unstyled {
+	padding-left: 0;
+	list-style: none;
+}
+// Inline turns list items into inline-block
+.list-inline {
+	.list-unstyled();
+	> li {
+		display: inline-block;
+		padding-left: .5em;
+		padding-right: .5em;
+	}
+}
+b,
+strong {
+	font-weight: @font-weight-bold;
+}
+// Description Lists
+dt,
+dd {
+	line-height: @line-height-base;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-left: 0; // Undo browser default
+}
+hr {
+	border: 0;
+	border-top: 1px solid @border-color;
+}
+// Abbreviations and acronyms
+abbr[title],
+// Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
+	cursor: help;
+	border-bottom: 1px dotted @border-color;
+}
+abbr.initialism {
+	font-size: 90%;
+	text-transform: uppercase;
+}
+
+// Blockquotes
+blockquote {
+	.font-size-calc(@blockquote-font-size);
+	line-height: @blockquote-line-height;
+	font-style: @blockquote-font-style;
+	font-weight: @blockquote-font-weight;
+	.margin-top-calc(@blockquote-margin-top, @blockquote-font-size);
+	.margin-right-calc(@blockquote-margin-right, @blockquote-font-size);
+	.margin-bottom-calc(@blockquote-margin-bottom, @blockquote-font-size);
+	.margin-left-calc(@blockquote-margin-left, @blockquote-font-size);
+	em,
+	cite {
+		font-style: normal;
+	}
+}
+
+// Blockquotes
+.lede {
+	p {
+		.font-size-calc(@lede-font-size);
+		.line-height-calc(@lede-line-height, @lede-font-size);
+		.margin-calc(@size: @lede-font-size);
+		font-style: @lede-font-style;
+		font-weight: @lede-font-weight;
+	}
+}
+
+// Quotes
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+	content: "";
+}
+
+// Addresses
+address {
+	display: block;
+	font-style: normal;
+	line-height: @line-height-base;
+}
+
+// Emphasis & misc
+
+.small {
+	.font-size-calc(@font-size-small);
+	.margin-calc(@margin-bottom: @margin-base-half, @size: @font-size-small);
+}
+
+// Undo browser default styling
+cite { font-style: normal; }
+
+// Text alignment
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+table {
+	width: 100%;
+	max-width: 100%;
+	background-color: @table-bg-color;
+}
+th,
+td {
+	padding: @td-padding-calc;
+	line-height: @line-height-base;
+	vertical-align: top;
+	.border-top(@td-border-top-width);
+	.border-right(@td-border-right-width);
+	.border-bottom(@td-border-bottom-width);
+	.border-left(@td-border-left-width);
+	text-align: left;
+}
+th {
+	font-weight: bold;
+}
+
+// HEADINGS
+// -------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	.heading;
+}
+h1 {
+	.h1;
+}
+h2 {
+	.h2;
+}
+h3 {
+	.h3;
+}
+h4 {
+	.h4;
+}
+h5 {
+	.h5;
+}
+h6 {
+	.h6;
+}
+
+// META
+// -------------------------
+.entry-meta {
+	clear: both;
+	.font-size-calc(@meta-font-size);
+	line-height: @meta-line-height;
+	font-family: @meta-font-family;
+	font-weight: @meta-font-weight;
+	color: @meta-color;
+	.margin-bottom-calc(@meta-margin-bottom, @meta-font-size);
+}
+
+// GENERAL MEDIA STYLES
+// -------------------------
+figure {
+	.margin-calc(@margin-bottom: @margin-base-half, @size: @font-size-base);
+}
+// wordpress-specific
+.sticky {
+	background-color: @sticky-bg-color;
+	padding: @sticky-padding;
+}
+.wp-caption {
+	max-width: 100%;
+}
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+img,
+.wp-caption {
+	&.alignleft,
+	&.alignright {
+		display: inline;
+	}
+	&.alignleft {
+		margin-right: @margin-base-calc;
+		clear: left;
+	}
+	&.alignright {
+		margin-left: @margin-base-calc;
+		clear: right;
+	}
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin-bottom: @margin-base-half-calc;
+	}
+}
+.wp-caption-text,
+.gallery-caption {
+	.entry-meta;
+	.margin-top-calc(@margin-base-quarter, @meta-font-size);
+}
+.gallery {
+	.row;
+	margin-bottom: @margin-base-calc;
+	padding-top: @margin-base-half-calc;
+}
+.gallery-item {
+	.column;
+	margin-bottom: @margin-base-calc;
+	img {
+		display: block;
+	}
+}
+.generate-gallery-columns(9);
+
+// GENERAL NAV STYLES
+// -------------------------
+.menu {
+	.list-unstyled;
+	font-family: @nav-font-family;
+	font-weight: @nav-font-weight;
+	ul {
+		.list-unstyled;
+	}
+	a {
+		color: @nav-link-color;
+		text-decoration: none;
+		&:hover,
+		&:active {
+			color: @nav-link-hover-color;
+		}
+		&:focus {
+			outline: 0;
+		}
+	}
+	.current-menu-item,
+	.current_page_item,
+	.current-cat,
+	.current-page-ancestor,
+	.current-menu-ancestor,
+	.current-cat-parent,
+	.current-category-ancestor,
+	.current-post-ancestor {
+		& > a {
+			color: @nav-link-active-color;
+		}
+	}
+}
+
+// POST NAVIGATION STYLES
+// ---------------------------
+.pager-nav {
+	.list-unstyled;
+	clear: both;
+	.clearfix;
+	font-family: @postnav-font-family;
+	.nav-previous,
+	.nav-next {
+		width: 50%;
+	}
+	.nav-next {
+		float: left;
+		padding-right: 1em;
+	}
+	.nav-prev {
+		float: right;
+		text-align: right;
+		padding-left: 1em;
+	}
+	margin-bottom: @margin-base;
+}
+
+// GENERAL FORM STYLES
+// ---------------------------
+// Buttons
+.btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-family: @btn-font-family;
+	font-weight: @btn-font-weight;
+	.font-size-calc(@btn-font-size);
+	line-height: @line-height-base;
+	.padding-calc(@size: @btn-font-size);
+	color: @btn-color;
+	text-align: center;
+	vertical-align: middle;
+	background: @btn-bg-color;
+	border: 1px solid @btn-border-color;
+	border-radius: unit( ( @border-radius-base / @btn-font-size ), em );
+	white-space: nowrap;
+	cursor: pointer;
+	text-transform: @btn-text-transform;
+	&:hover,
+	&:focus {
+		color: @btn-hover-color;
+		background: @btn-hover-bg-color;
+		text-decoration: none;
+		border-color: @btn-hover-border-color;
+	}
+	&:focus {
+		.tab-focus();
+	}
+	&:active {
+		outline: 0;
+		background-image: none;
+	}
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		cursor: not-allowed;
+		pointer-events: none; // Future-proof disabling of clicks
+		.opacity(.65);
+		.box-shadow(none);
+	}
+}
+
+button,
+input[type='submit'] {
+	&:extend(.btn all);
+}
+.btn-lg {
+	.font-size-calc(@btn-font-size-lg);
+	//border-radius: @border-radius-lg;
+	//border-radius: unit( ( @border-radius-lg / @btn-font-size-lg ), em );
+	.padding-calc(@padding-vertical-lg, @padding-horizontal-lg, @btn-font-size-lg);
+}
+.btn-sm {
+	.font-size-calc(@btn-font-size-sm);
+	//border-radius: @border-radius-sm;
+	//border-radius: unit( ( @border-radius-sm / @btn-font-size-sm ), em );
+	.padding-calc(@padding-vertical-sm, @padding-horizontal-sm, @btn-font-size-sm);
+}
+.btn-xs {
+	.font-size-calc(@btn-font-size-xs);
+	//border-radius: @border-radius-xs;
+	//border-radius: unit( ( @border-radius-xs / @btn-font-size-xs ), em );
+	.padding-calc(@padding-vertical-xs, @padding-horizontal-xs, @btn-font-size-xs);
+}
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default {
+  .button-variant(@btn-default-color; @btn-default-bg-color; @btn-default-border-color);
+}
+.btn-primary {
+  .button-variant(@btn-primary-color; @btn-primary-bg-color; @btn-primary-border-color);
+}
+// Success appears as green
+.btn-success {
+  .button-variant(@btn-success-color; @btn-success-bg-color; @btn-success-border-color);
+}
+// Info appears as blue-green
+.btn-info {
+  .button-variant(@btn-info-color; @btn-info-bg-color; @btn-info-border-color);
+}
+// Warning appears as orange
+.btn-warning {
+  .button-variant(@btn-warning-color; @btn-warning-bg-color; @btn-warning-border-color);
+}
+// Danger and error appear as red
+.btn-danger {
+  .button-variant(@btn-danger-color; @btn-danger-bg-color; @btn-danger-border-color);
+}
+
+// Other form elements
+.form-control {
+	border: 1px solid @input-placeholder-border-color;
+	line-height: @line-height-base;
+	.font-size-calc(@input-font-size);
+	border-radius: unit( ( @input-border-radius / @input-font-size ), em );
+	.padding-calc( @size: @input-font-size );
+	width: unit( ( @input-width / @input-font-size ) , em );
+	outline: none;
+	font-family: @input-font-family;
+	color: @input-placeholder-color;
+	vertical-align: middle;
+	margin: 0;
+	max-width: 100%;
+	display: inline-block;
+	background: @input-bg-color;
+	&:focus {
+		border-color: @input-border-color;
+		color: @input-color;
+	}
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+	&:extend(.form-control all);
+}
+textarea {
+	.box-sizing(border-box);
+	width: 100%;
+}
+select {
+	padding: .25em 0;
+	line-height: 2;
+}
+legend {
+	.small;
+	font-weight: @semibold;
+}
+input[type="checkbox"] {
+	display: inline-block;
+	margin-right: .5em;
+}
+.required {
+	color: red;
+	font-weight: bold;
+}
+
+// BASE LAYOUT
+.doc-main {
+	.margin-bottom-calc( @doc-margin-bottom );
+}
+.hentry {
+	.margin-bottom-calc( @hentry-margin-bottom );
+}
+.widget {
+	.margin-bottom-calc( @widget-margin-bottom );
+}
