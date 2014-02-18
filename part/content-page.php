@@ -4,7 +4,7 @@
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
 	</header><!-- /.doc-header -->
 
-	<div class="doc-main">
+	<div class="doc-main doc-main-page">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -18,6 +18,6 @@
 
 		<?php edit_post_link( __( 'Edit', 'bfn' ), '<footer class="entry-meta entry-footer"><span class="meta meta-edit">', '</span></footer>' ); ?>
 
-	</div><!-- /.doc-main -->
+	</div><!-- /.doc-main.doc-main-page -->
 
 </article><!-- #post-## -->

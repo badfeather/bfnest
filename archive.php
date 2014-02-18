@@ -60,7 +60,7 @@
 						?>
 					</header>
 
-					<div class="doc-main">
+					<div class="doc-main doc-main-archive">
 
 						<?php
 							while ( have_posts() ) {
@@ -71,7 +71,7 @@
 							bfn_archive_pager();
 						?>
 
-					</div><!-- /.doc-main -->
+					</div><!-- /.doc-main.doc-main-page -->
 
 				<?php
 					} else {

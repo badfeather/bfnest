@@ -12,7 +12,7 @@
 						<h1 class="doc-title"><?php printf( __( 'Search Results for: %s', 'bfn' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 					</header><!-- /.doc-header -->
 
-					<div class="doc-main">
+					<div class="doc-main doc-main-archive">
 						<?php
 							if ( have_posts() ) {
 
@@ -27,7 +27,7 @@
 								get_template_part( 'part/content', 'no-results' );
 							} // endif
 						?>
-					</div><!-- /.doc-main -->
+					</div><!-- /.doc-main.doc-main-archive -->
 
 				<?php
 					} else {

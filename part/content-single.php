@@ -5,7 +5,7 @@
 		<?php get_template_part( '/part/meta-above' ); ?>
 	</header><!-- /.doc-header -->
 
-	<div class="doc-main">
+	<div class="doc-main doc-main-single">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -21,6 +21,6 @@
 
 		<?php comments_template( '/part/comments.php' ); ?>
 
-	</div><!-- /.doc-main -->
+	</div><!-- /.doc-main.doc-main-single -->
 
 </article><!-- #post-## -->
