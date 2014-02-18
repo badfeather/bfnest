@@ -119,17 +119,20 @@ function bfn_comment( $comment, $args, $depth ) {
 
 /**
  * Get the first image from a post
+ * Must be used within the loop
  * Use bfn_get_first_image( $atts ) in template, much like get_the_post_thumbnail()
  * Atts defaults:
- * 'output' => 'img', // can be either 'img' or 'url'
+ * 'size' => 'thumbnail'
+ * 'output' => 'img' // can be either 'img' or 'url'
  * 'link' => false // if true, will link to full version of itself
  */
-function bfn_get_first_image( $post_id = null, $size = 'thumbnail', $atts = array() ) {
-	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+function bfn_get_first_image( $size = 'thumbnail', $atts = array() ) {
+
 	$defaults = array(
-		'output' => 'img', // can be either 'img' or 'url'
-		'link' => false
+		'output' => 'img', // accepts either 'img' or 'url'
+		'link' => false // ignored if output is set to url
 	);
+
 	$atts = wp_parse_args( $atts, $defaults );
 	extract( $atts, EXTR_SKIP );
 
@@ -152,21 +155,18 @@ function bfn_get_first_image( $post_id = null, $size = 'thumbnail', $atts = arra
 			$img_title = $image->post_title;
 			$img_caption = $image->post_excerpt;
 			$img_desc = $image->post_content;
-			if ( 'img' == $output ) {
 
+			if ( 'img' == $output ) {
 				if ( $link ) {
 					return '<a href="' . $img_full_url . '>">' . $img . '</a>';
-
 				} else {
 					return $img;
-
 				} // endif $link
 
 			} elseif ( $output == 'url' ) {
-
 					return $img_url;
-
 			} // endif $output - 'img'
+
 		} // endforeach
 	} // endif ( $images )
 }
@@ -175,8 +175,16 @@ function bfn_get_first_image( $post_id = null, $size = 'thumbnail', $atts = arra
  * Echoes the first image from a post using arguments from bfn_get_first_image() function
  * Much like the_post_thumbnail
  */
-function bfn_first_image( $size = 'thumbnail', $atts = '' ) {
-	echo bfn_get_first_image( null, $size, $atts );
+function bfn_first_image( $size = 'thumbnail', $atts ) {
+	echo bfn_get_first_image( $size, $atts );
+}
+
+/**
+ * Echoes the first image from a post using arguments from bfn_get_first_image() function
+ * Much like the_post_thumbnail
+ */
+function bfn_get_first_image_url( $size = 'thumbnail' ) {
+	return bfn_get_first_image( $size, $atts = array( 'output' => 'url' ) );
 }
 
 /**
@@ -378,94 +386,157 @@ function bfn_taxonomy_subnav( $tax = '', $title = '' ) {
 	}
 }
 
-// scriptless social sharing links
-// turn the defaults on or off as needed
+/**
+ * Scriptless social sharing links
+ * Turn the defaults for various profiles on or off as needed using booleans
+ * If 'new window' is set to true, link targets will be set to "_blank"
+ * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
+ */
 function bfn_scriptless_social_share( $args = array() ) {
+
 	$defaults = array(
-		'twitter' => true,
-		'twitter_handle' => 'fraenkelGallery',
-		'facebook' => true,
-		'google_plus' => true,
-		'pinterest' => true,
-		'instapaper' => false,
-		'linked_in' => false,
-		'tumblr' => false,
-		'myspace' => false,
-		'reddit' => false,
-		'digg' => false,
-		'delicious' => false,
-		'stumbleupon' => false,
-		'email' => true,
-		'new_window' => true
+		'twitter' => 1,
+		'twitter_handle' => '',
+		'facebook' => 1,
+		'google_plus' => 1,
+		'pinterest' => 0,
+		'instapaper' => 0,
+		'linked_in' => 0,
+		'tumblr' =>0,
+		'myspace' => 0,
+		'reddit' => 0,
+		'digg' => 0,
+		'delicious' => 0,
+		'stumbleupon' => 0,
+		'email' => 1,
+		'new_window' => true,
+		'share_title' => __( 'Share', 'bfn' )
 	);
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
 
-	if ( $new_window )
+	if ( $new_window ) {
 		$target = ' target="_blank"';
-	else
+	} else {
 		$target = '';
+	}
 
 	$post_url = get_permalink();
-	$encoded_post_url = esc_url( $post_url );
+
 	$post_title = the_title_attribute( 'echo=0' );
+
 	$encoded_title = rawurlencode( $post_title );
-	if( has_post_thumbnail() ) {
-		$featured_image_id = get_post_thumbnail_id();
-		$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
-		$image_path = $featured_image[0];
-	} else {
-		$image_path = bfn_first_image_url();
-	}
-	$encoded_image_path = urlencode( $image_path );
+
 	if ( $twitter || $facebook || $google_plus || $pinterest || $instapaper || $linked_in || $tumblr ) {
-		echo '<div class="entry-meta entry-meta-share"><span class="meta-title">Share</span>: ';
 
-			if ( $twitter && $twitter_handle )
-				echo '<span class="meta meta-share"><a class="share-link share-link-twitter" href="http://twitter.com/share?url='. $encoded_post_url .'&amp;text='. $encoded_title .'&amp;via='. $twitter_handle .'" title="Tweet"'. $target .'>Twitter</a></span>';
-			elseif ( $twitter )
-				echo '<span class="meta meta-share"><a class="share-link share-link-twitter" href="http://twitter.com/share?url='. $encoded_post_url .'&amp;text='. $encoded_title .'" title="Tweet"'. $target .'>Tweet</a><span>';
+		echo '<div class="entry-meta entry-meta-share">' . "\n";
 
-			if ( $facebook )
-				echo '<span class="meta meta-share"><a  class="share-link share-link-facebook" href="http://www.facebook.com/share.php?u='. $encoded_post_url .'&amp;t='. $encoded_title .'" title="Facebook"'. $target .'>Facebook</a></span>';
+		if ( $share_title ) {
+			echo '<span class="meta-title">' . $share_title . '</span>: ';
+		}
 
-			if ( $google_plus )
-				echo '<span class="meta meta-share"><a class="share-link share-link-google-plus" href="https://plus.google.com/share?url='. $encoded_post_url .'" title="Google+"'. $target .'>Google+</a></span>';
+		if ( $twitter ) {
+			$twitter_share = 'http://twitter.com/share?url=' . $post_url . '&text=' . $encoded_title;
 
-			if ( $pinterest )
-				echo '<span class="meta meta-share"><a class="share-link share-link-pinterest" href="//pinterest.com/pin/create/button/?url='. $encoded_post_url .'&amp;media='. $encoded_image_path .'&amp;description='. $encoded_title .'" title="Pinterest"'. $target .'>Pinterest</a></span>';
+			if ( $twitter_handle ) {
+				$twitter_share .= '&via=' . $twitter_handle;
+			}
 
-			if( $instapaper )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-instapaper" href="http://www.instapaper.com/hello2?url='. $encoded_post_url .'&amp;title='. $encoded_title .'" title="Instapaper"'. $target .'>Instapaper</a></span>';
+			echo '<span class="meta meta-share"><a class="share-link share-link-twitter" href="' . esc_url( $twitter_share ) . '" title="Tweet"' . $target . '>Twitter</a></span> ';
+		}
 
-			if ( $linked_in )
-				echo '<span class="meta meta-share"><a class="share-link share-link-linked-in" href="https://www.linkedin.com/cws/share?url='. $encoded_post_url .'" title="LinkedIn"'. $target .'>LinkedIn</a></span>';
+		if ( $facebook ) {
+			$facebook_share = 'http://www.facebook.com/share.php?u=' . $post_url . '&t=' . $encoded_title;
 
-			if ( $tumblr )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-tumblr" href="http://www.tumblr.com/share/link?url='. $encoded_post_url .'&amp;name='. $encoded_title .'" title="Share on Tumblr" title="Tumblr"'. $target .'>Tumblr</a></span>';
+			echo '<span class="meta meta-share"><a class="share-link share-link-facebook" href="' . esc_url( $facebook_share ) . '" title="Facebook"' . $target . '>Facebook</a></span> ';
+		}
 
-			if ( $myspace )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-myspace" href="http://www.myspace.com/index.cfm?fuseaction=postto&amp;u='. $encoded_post_url .'&amp;t='. $encoded_title .'&amp;c='. $encoded_title .'" title="Myspace"'. $target .'>Myspace</a></span>';
+		if ( $google_plus ) {
+			$google_plus_share = 'https://plus.google.com/share?url=' . $post_url;
 
-			if ( $reddit )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-reddit" href="http://www.reddit.com/submit?url='. $encoded_post_url .'&amp;title='. $encoded_title .'" title="Reddit"'. $target .'>Reddit</a></span>';
+			echo '<span class="meta meta-share"><a class="share-link share-link-google-plus" href="' . esc_url( $google_plus_share ) . '" title="Google+"' . $target . '>Google+</a></span> ';
 
-			if ( $digg )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-digg" href="http://digg.com/submit?url='. $encoded_post_url .'&amp;title='. $encoded_title .'" title="Digg"'. $target .'>Digg</a></span>';
+		}
 
-			if( $delicious )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-delicious" href="http://delicious.com/save?url='. $encoded_post_url .'&amp;title='. $encoded_title .'" title="Delicious"'. $target .'>Delicious</a></span>';
+		if ( $pinterest ) {
 
-			if( $stumbleupon )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-stumbleupon" href="http://www.stumbleupon.com/submit?url=' . $encoded_post_url . '" title="Stumbleupon"'. $target .'>Stumbleupon</a></span>';
+			if ( has_post_thumbnail() ) {
+				$featured_image_id = get_post_thumbnail_id();
+				$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
+				$image_path = $featured_image[0];
 
-			if ( $email )
-				echo '<span class="meta meta-share"><a class="share-link share-link share-link-email" href="mailto:?subject='. $encoded_title .'&amp;body='. $encoded_post_url .'" title="Email"'. $target .'>Email</a></span>';
+			} else {
+				$image_path = bfn_get_first_image_url( $size = 'large' );
+			}
 
-		echo '</div><!-- /.share -->';
-	}
+			$pinterest_share = 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link-pinterest" href="' . esc_url( $pinterest_share ) . '" title="Pinterest"' . $target . '>Pinterest</a></span> ';
+		}
+
+		if ( $instapaper ) {
+			 $instapaper_share = 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $encoded_title;
+
+			 echo '<span class="meta meta-share"><a class="share-link share-link share-link-instapaper" href="' . esc_url( $instapaper_share ) . '" title="Instapaper"' . $target . '>Instapaper</a></span> ';
+		}
+
+		if ( $linked_in ) {
+			$linked_in_share = 'https://www.linkedin.com/cws/share?url=' . $post_url;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link-linked-in" href="' . esc_url( $linked_in_share ) . '" title="LinkedIn"' . $target . '>LinkedIn</a></span> ';
+		}
+
+		if ( $tumblr ) {
+			$tumblr_share = 'http://www.tumblr.com/share/link?url=' . $post_url . '&name=' . $encoded_title;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link share-link-tumblr" href="' . esc_url( $tumblr_share ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a></span> ';
+		}
+
+		if ( $myspace ) {
+			$myspace_share = 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $encoded_title . '&c=' . $encoded_title;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link share-link-myspace" href="' . esc_url( $myspace_share ) . '" title="Myspace"' . $target . '>Myspace</a></span> ';
+
+		}
+
+		if ( $reddit ) {
+			$reddit_share = 'http://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link share-link-reddit" href="' . esc_url( $reddit_share ) . '" title="Reddit"' . $target . '>Reddit</a></span> ';
+		}
+
+		if ( $digg ) {
+			$digg_share = 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link share-link-digg" href="' . esc_url( $digg_share ) . '" title="Digg"' . $target . '>Digg</a></span> ';
+		}
+
+		if ( $delicious ) {
+			$delicious_share = 'http://delicious.com/save?url=' . $post_url . '&title=' . $encoded_title;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link share-link-delicious" href="' . esc_url( $delicious_share ) . '" title="Delicious"' . $target . '>Delicious</a></span> ';
+		}
+
+		if ( $stumbleupon ) {
+			$stumbleupon_share = 'http://www.stumbleupon.com/submit?url=' . $post_url;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link share-link-stumbleupon" href="' . esc_url( $stumbleupon_share ) . '" title="Stumbleupon"' . $target . '>Stumbleupon</a></span> ';
+		}
+
+		if ( $email ) {
+			$email_share = 'mailto:?subject=' . $encoded_title . '&body=' . $post_url;
+
+			echo '<span class="meta meta-share"><a class="share-link share-link share-link-email" href="' . esc_url( $email_share ) . '" title="Email"' . $target . '>Email</a></span> ';
+		}
+
+		echo "\n" . '</div><!-- /.share -->';
+
+	} // endif any sharing urls aren't empty
 }
 
+/**
+ * Follow navigation widget
+ */
 function bfn_follow_links( $args = array() ) {
 	$defaults = array(
 		'twitter' => '',
@@ -497,40 +568,51 @@ function bfn_follow_links( $args = array() ) {
 		<ul class="follow">
 			<?php
 			if ( $facebook ) {
-				echo '<li><a href="'. $facebook .'" class="follow-link follow-link-facebook"'. $target .'>Facebook</a></li>';
+				echo '<li><a href="'. esc_url( $facebook ) .'" class="follow-link follow-link-facebook"'. $target .'>Facebook</a></li>';
 			}
+
 			if ( $twitter ) {
-				echo '<li><a href="'. $twitter .'" class="follow-link follow-link-twitter"'. $target .'>Twitter</a></li>';
+				echo '<li><a href="'. esc_url( $twitter ) .'" class="follow-link follow-link-twitter"'. $target .'>Twitter</a></li>';
 			}
+
 			if ( $googleplus ) {
-				echo '<li><a href="'. $googleplus .'" class="follow-link follow-link-googleplus"'. $target .'>Google+</a></li>';
+				echo '<li><a href="'. esc_url( $googleplus ) .'" class="follow-link follow-link-googleplus"'. $target .'>Google+</a></li>';
 			}
+
 			if ( $pinterest ) {
-				echo '<li><a href="'. $pinterest .'" class="follow-link follow-link-pinterest"'. $target .'>Pinterest</a></li>';
+				echo '<li><a href="'. esc_url( $pinterest ) .'" class="follow-link follow-link-pinterest"'. $target .'>Pinterest</a></li>';
 			}
+
 			if ( $linkedin ) {
-				echo '<li><a href="'. $linkedin .'" class="follow-link follow-link-linkedin"'. $target .'>LinkedIn</a></li>';
+				echo '<li><a href="'. esc_url( $linkedin ) .'" class="follow-link follow-link-linkedin"'. $target .'>LinkedIn</a></li>';
 			}
+
 			if ( $tumblr ) {
-				echo '<li><a href="'. $tumblr .'" class="follow-link follow-link-tumblr"'. $target .'>Tumblr</a></li>';
+				echo '<li><a href="'. esc_url( $tumblr ) .'" class="follow-link follow-link-tumblr"'. $target .'>Tumblr</a></li>';
 			}
+
 			if ( $myspace ) {
-				echo '<li><a href="'. $myspace .'" class="follow-link follow-link-myspace"'. $target .'>MySpace</a></li>';
+				echo '<li><a href="'. esc_url( $myspace ) .'" class="follow-link follow-link-myspace"'. $target .'>MySpace</a></li>';
 			}
+
 			if ( $soundcloud ) {
-				echo '<li><a href="'. $soundcloud .'" class="follow-link follow-link-soundcloud"'. $target .'>Soundcloud</a></li>';
+				echo '<li><a href="'. esc_url( $soundcloud ) .'" class="follow-link follow-link-soundcloud"'. $target .'>Soundcloud</a></li>';
 			}
+
 			if ( $youtube ) {
-				echo '<li><a href="'. $youtube .'" class="follow-link follow-link-youtube"'. $target .'>YouTube</a></li>';
+				echo '<li><a href="'. esc_url( $youtube ) .'" class="follow-link follow-link-youtube"'. $target .'>YouTube</a></li>';
 			}
+
 			if ( $vimeo ) {
-				echo '<li><a href="'. $vimeo .'" class="follow-link follow-link-vimeo"'. $target .'>Vimeo</a></li>';
+				echo '<li><a href="'. esc_url( $vimeo ) .'" class="follow-link follow-link-vimeo"'. $target .'>Vimeo</a></li>';
 			}
+
 			if ( $flickr ) {
-				echo '<li><a href="'. $flickr .'" class="follow-link follow-link-flickr"'. $target .'>Flickr</a></li>';
+				echo '<li><a href="'. esc_url( $flickr ) .'" class="follow-link follow-link-flickr"'. $target .'>Flickr</a></li>';
 			}
+
 			if ( $rss ) {
-				echo '<li><a href="'. $rss .'" class="follow-link follow-link-rss"'. $target .'>RSS</a></li>';
+				echo '<li><a href="'. esc_url( $rss ) .'" class="follow-link follow-link-rss"'. $target .'>RSS</a></li>';
 			}
 			?>
 		</ul>
