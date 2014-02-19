@@ -19,12 +19,6 @@
 .column {
 	.make-column();
 }
-// generated classes
-.generate-cols( @columns );
-.generate-pushes( @columns );
-.generate-pulls( @columns );
-.generate-block-grids( @columns );
-
 .column-centered {
 	float: none;
 	margin-left: auto;
@@ -46,3 +40,12 @@
 .guttered {
 	.make-guttered();
 }
+
+// GENERATED GRID CLASSES
+// leave commented out if you add grid styles via mixins
+// uncomment if you add grid styles via classes in your markup
+// ---------------------------
+//.generate-cols( @columns );
+//.generate-pushes( @columns );
+//.generate-pulls( @columns );
+//.generate-block-grids( @columns );
