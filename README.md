@@ -3,9 +3,12 @@
 A starter theme for Bad Feather projects. It's semi-useful for us, so hell, it might be semi-helpful to you. A constant work in progress. Use at your own peril.
 
 ### Getting Started
+* After downloading theme, change the name of the folder to whatever your theme is called, do a find and replace in all the theme files for `bfn` to whatever text domain you want to use for your current theme, and change the theme name and credit info in the `style.less` file if you're using LESS
+* I currently use [Codekit](https://incident57.com/codekit/) for my LESS and Javascript compiling, however at any moment I might change my workflow to use Grunt or Gulp or whatever other fancy thing that comes along that I have to figure out how to use. In other words, how you compile is up to you.
 * Most style changes can be made in `less/variables.less` and `less/theme.less`
 * Most of the LESS variables that have anything to do with sizes are based on pixel amounts but set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `@h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'part/content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
+* Most of the script includes happen in the `inc/scripts.php` file. If you want to add to or remove some, that's where you should look.
 
 ### Theme Goals
 #### LESS/CSS
@@ -15,6 +18,10 @@ A starter theme for Bad Feather projects. It's semi-useful for us, so hell, it m
 * Keep outputted CSS as lean as possible, utilizing LESS extends wherever possible
 * Rethinking each mixin or style rule poached from a framework - still work to do on this
 * Compartmentalize the LESS files enough to make it easy to find what I'm looking for, but not get obnoxious about it
+
+#### Javascript
+* Provide enough vendor scripts, ie. Modernizr, Respond.js, etc. to make responsive sites, but not get obnoxious about it. Probably need to slim this down a bit.
+* Keep the scripts lean by concatenating and minifying whenever possible and minimizing the amount of calls to external scripts
 
 #### HTML markup
 * Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it
@@ -26,7 +33,7 @@ A starter theme for Bad Feather projects. It's semi-useful for us, so hell, it m
 * Provide enough structure for a baseline and establish patterns that can be expanded when building more complex sites that utilize custom post types and taxonomies
 * Compartmentalize functions enough to make it easy to find what I'm looking for, but not get obnoxious about it
 * Use theme development best-practices, making it as flexible as possible
-
+* Provide functions for things I find myself needing on most sites, ie. for social sharing, subnavs, getting the first images from posts, etc. Most of these are in the `inc/template_tags.php` directory
 
 ### Many theme concepts cobbled together and/or mercilessly stolen from, and not limited to:
 * [Underscores](http://underscores.me/)
