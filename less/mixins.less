@@ -352,9 +352,6 @@
 
 
 // Retina images
-//
-// Short retina mixin for setting background-image and -size
-
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
 	background-image: url("@{file-1x}");
 
@@ -369,11 +366,6 @@
 		background-size: @width-1x @height-1x;
 	}
 }
-.sprite() {
-	.img-retina(@sprite-img; @sprite-img-2x; @sprite-img-width; @sprite-img-height);
-	background-repeat: no-repeat;
-}
-
 
 // Image mixins
 .img-circle() {

@@ -1590,6 +1590,9 @@ input[type="checkbox"] {
   line-height: 1.625;
   text-transform: uppercase;
 }
+.menu-toggle {
+  font-size: 1em;
+}
 .comment-form input[type="submit"] {
   display: inline-block;
   margin-bottom: 0;
