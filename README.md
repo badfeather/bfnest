@@ -3,12 +3,14 @@
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's semi-useful for us, so hell, it might be semi-helpful to you. A constant work in progress. Use at your own peril.
 
 ### Getting Started
-* After downloading theme, change the name of the folder to whatever your theme is called, do a find and replace in all the theme files for `bfn` to whatever text domain you want to use for your current theme, and change the theme name and credit info in the `style.less` or `style.css` file, depending on whether you're using LESS
+* After downloading theme, change the name of the folder to whatever your theme is called, do a find and replace in all the theme files for `bfn` to whatever text domain you want to use for your current theme, and change the theme name and credit info in the `style.less` or `style.css` file, depending on whether you're using LESS.
 * I currently use [Codekit](https://incident57.com/codekit/) for my LESS and Javascript compiling, however at any moment I might change my workflow to use Grunt or Gulp or whatever other fancy thing that comes along that I have to figure out how to use. In other words, how you compile is up to you.
 * Most style changes can be made in `less/variables.less` and `less/theme.less`
 * Most of the LESS variables that have anything to do with sizes are based on pixel amounts but set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `@h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'part/content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 * Most of the script includes happen in the `inc/scripts.php` file. If you want to add to or remove some, that's where you should look.
+* As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.
+* Edit, add to or remove what ye may. If it's something that would be a worthy change to the Nest, esp. relating to the below goals. lemme know!
 
 ### Theme Goals
 #### LESS/CSS
