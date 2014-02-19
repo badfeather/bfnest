@@ -3,7 +3,7 @@
 A starter theme for Bad Feather projects. It's semi-useful for us, so hell, it might be semi-helpful to you. A constant work in progress. Use at your own peril.
 
 ### Getting Started
-* After downloading theme, change the name of the folder to whatever your theme is called, do a find and replace in all the theme files for `bfn` to whatever text domain you want to use for your current theme, and change the theme name and credit info in the `style.less` file if you're using LESS
+* After downloading theme, change the name of the folder to whatever your theme is called, do a find and replace in all the theme files for `bfn` to whatever text domain you want to use for your current theme, and change the theme name and credit info in the `style.less` or `style.css` file, depending on whether you're using LESS
 * I currently use [Codekit](https://incident57.com/codekit/) for my LESS and Javascript compiling, however at any moment I might change my workflow to use Grunt or Gulp or whatever other fancy thing that comes along that I have to figure out how to use. In other words, how you compile is up to you.
 * Most style changes can be made in `less/variables.less` and `less/theme.less`
 * Most of the LESS variables that have anything to do with sizes are based on pixel amounts but set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `@h2-font-size: 20`.
