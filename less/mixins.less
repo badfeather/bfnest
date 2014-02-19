@@ -86,52 +86,52 @@
 
 
 // Font size. line-height and margin calculations, to be used in base.less
-.font-size-calc( @size: @font-size-base ) {
-	font-size: unit( ( @size / @font-size-base ), em );
+.font-size-calc( @size: @base-font-size ) {
+	font-size: unit( ( @size / @base-font-size ), em );
 }
-.margin-calc( @margin-top: 0, @margin-right: 0, @margin-bottom: @margin-base, @margin-left: 0, @size: @font-size-base) {
+.margin-calc( @margin-top: 0, @margin-right: 0, @margin-bottom: @base-margin, @margin-left: 0, @size: @base-font-size) {
 	@margin-top-calc: unit( (@margin-top / @size ), em );
 	@margin-right-calc: unit( (@margin-right / @size ), em );
 	@margin-bottom-calc: unit( (@margin-bottom / @size ), em );
 	@margin-left-calc: unit( (@margin-left / @size ), em );
 	margin: @margin-top-calc @margin-right-calc @margin-bottom-calc @margin-left-calc;
 }
-.margin-bottom-calc(@margin-bottom: @margin-base, @size: @font-size-base) when (isnumber(@margin-bottom)) and (@margin-bottom > 0) {
+.margin-bottom-calc(@margin-bottom: @base-margin, @size: @base-font-size) when (isnumber(@margin-bottom)) and (@margin-bottom > 0) {
 	margin-bottom: unit( (@margin-bottom / @size ), em );
 }
-.margin-top-calc(@margin-top: @margin-base, @size: @font-size-base) when (isnumber(@margin-top)) and (@margin-top > 0) {
+.margin-top-calc(@margin-top: @base-margin, @size: @base-font-size) when (isnumber(@margin-top)) and (@margin-top > 0) {
 	margin-top: unit( (@margin-top / @size ), em );
 }
-.margin-right-calc(@margin-right: @margin-base, @size: @font-size-base) when (isnumber(@margin-right)) and (@margin-right > 0) {
+.margin-right-calc(@margin-right: @base-margin, @size: @base-font-size) when (isnumber(@margin-right)) and (@margin-right > 0) {
 	margin-right: unit( (@margin-right / @size ), em );
 }
-.margin-left-calc(@margin-left: @margin-base, @size: @font-size-base) when (isnumber(@margin-left)) and (@margin-left > 0) {
+.margin-left-calc(@margin-left: @base-margin, @size: @base-font-size) when (isnumber(@margin-left)) and (@margin-left > 0) {
 	margin-left: unit( (@margin-left / @size ), em );
 }
-.line-height-calc( @line-height: @line-height-base, @size: @font-size-base ) {
+.line-height-calc( @line-height: @base-line-height, @size: @base-font-size ) {
 	line-height: ( @line-height / @size );
 }
-.height-calc( @line-height: @line-height-base, @size: @font-size-base ) {
+.height-calc( @line-height: @base-line-height, @size: @base-font-size ) {
 	height: unit( ( @line-height / @size ), em );
 }
-.padding-calc( @padding-vertical: @padding-vertical-base, @padding-horizontal: @padding-horizontal-base, @size: @font-size-base ) {
+.padding-calc( @padding-vertical: @form-padding-vertical, @padding-horizontal: @form-padding-horizontal, @size: @base-font-size ) {
 	padding: unit( ( @padding-vertical / @size ), em ) unit( ( @padding-horizontal / @size ), em);
 }
-.border-calc( @border-top-width: 1px,  @border-right-width: 1px, @border-bottom-width: 1px, @border-left-width: 1px, @border-color: @border-color, @border-style: solid ) {
+.border-calc( @border-top-width: 1px,  @border-right-width: 1px, @border-bottom-width: 1px, @border-left-width: 1px, @border-color: @base-border-color, @border-style: solid ) {
 	border-width: @border-top-width @border-right-width, @border-bottom-width, @border-left-width;
 	border-style: @border-style;
 	border-color: @border-color;
 }
-.border-top(@border-top-width, @border-top-style: solid, @border-color: @border-color) when (@border-top-width > 0) {
+.border-top(@border-top-width, @border-top-style: solid, @border-color: @base-border-color) when (@border-top-width > 0) {
 	border-top: @border-top-width @border-top-style @border-color;
 }
-.border-right(@border-right-width, @border-right-style: solid, @border-color: @border-color) when (@border-right-width > 0) {
+.border-right(@border-right-width, @border-right-style: solid, @border-color: @base-border-color) when (@border-right-width > 0) {
 	border-right: @border-right-width @border-right-style @border-color;
 }
-.border-bottom(@border-bottom-width, @border-bottom-style: solid, @border-color: @border-color) when (@border-bottom-width > 0) {
+.border-bottom(@border-bottom-width, @border-bottom-style: solid, @border-color: @base-border-color) when (@border-bottom-width > 0) {
 	border-bottom: @border-bottom-width @border-bottom-style @border-color;
 }
-.border-left(@border-left-width, @border-left-style: solid, @border-color: @border-color) when (@border-left-width > 0) {
+.border-left(@border-left-width, @border-left-style: solid, @border-color: @base-border-color) when (@border-left-width > 0) {
 	border-left: @border-left-width @border-left-style @border-color;
 }
 

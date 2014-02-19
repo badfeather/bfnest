@@ -2,16 +2,16 @@
 // -------------------------
 .entry-header,
 .doc-header {
-	margin-bottom: @margin-base-calc;
+	margin-bottom: @base-margin-calc;
 }
 .entry-title {
 	.h3;
-	.margin-bottom-calc( @margin-base-quarter, @h3-font-size );
+	.margin-bottom-calc( @base-margin-quarter, @h3-font-size );
 }
 .doc-title,
 .site-title {
 	.h1;
-	.margin-bottom-calc( @margin-base-quarter, @h1-font-size );
+	.margin-bottom-calc( @base-margin-quarter, @h1-font-size );
 }
 .site-description {
 	.margin-bottom-calc;
@@ -69,11 +69,11 @@
 	}
 	li {
 		margin-bottom: 1em;
-		border-bottom: 1px solid @border-color;
+		border-bottom: 1px solid @base-border-color;
 	}
 	li li {
 		padding-top: 1em;
-		border-top: 1px solid @border-color;
+		border-top: 1px solid @base-border-color;
 		border-bottom: 0;
 	}
 }
@@ -130,10 +130,10 @@
 	background-color: @gray-darker;
 }
 .site-header {
-	padding-top: @margin-base-calc;
+	padding-top: @base-margin-calc;
 }
 .site-footer {
-	padding-bottom: @margin-base-calc;
+	padding-bottom: @base-margin-calc;
 }
 
 @media (min-width: @mobile) {

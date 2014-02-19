@@ -1,10 +1,10 @@
 body {
-	font-size: percentage(@font-size-base/16);
-	font-family: @font-family-base;
-	font-weight: @font-weight-base;
-	line-height: @line-height-base;
-	color: @text-color;
-	background-color: @bg-color;
+	font-size: percentage(@base-font-size/16);
+	font-family: @base-font-family;
+	font-weight: @base-font-weight;
+	line-height: @base-line-height;
+	color: @base-color;
+	background-color: @base-background-color;
 	width: 100%;
 	.clearfix;
 }
@@ -98,7 +98,7 @@ i {
 }
 abbr,
 acronym {
-	border-bottom: 1px dotted @border-color;
+	border-bottom: 1px dotted @base-border-color;
 	cursor: help;
 }
 mark,
@@ -122,16 +122,16 @@ ol {
 }
 ul,
 ol {
-	padding: 0 0 0 @margin-base-calc;
+	padding: 0 0 0 @base-margin-calc;
 	ul,
 	ol {
-		padding-top: @margin-base-quarter-calc;
+		padding-top: @base-margin-quarter-calc;
 		margin-bottom: 0;
 		font-size: 1em;
 	}
 }
 li {
-	margin-bottom: @margin-base-quarter-calc;
+	margin-bottom: @base-margin-quarter-calc;
 }
 
 // List options
@@ -157,7 +157,7 @@ strong {
 // Description Lists
 dt,
 dd {
-	line-height: @line-height-base;
+	line-height: @base-line-height;
 }
 dt {
 	font-weight: bold;
@@ -167,14 +167,14 @@ dd {
 }
 hr {
 	border: 0;
-	border-top: 1px solid @border-color;
+	border-top: 1px solid @base-border-color;
 }
 // Abbreviations and acronyms
 abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
 	cursor: help;
-	border-bottom: 1px dotted @border-color;
+	border-bottom: 1px dotted @base-border-color;
 }
 abbr.initialism {
 	font-size: 90%;
@@ -220,14 +220,14 @@ blockquote:after {
 address {
 	display: block;
 	font-style: normal;
-	line-height: @line-height-base;
+	line-height: @base-line-height;
 }
 
 // Emphasis & misc
 
 .small {
-	.font-size-calc(@font-size-small);
-	.margin-calc(@margin-bottom: @margin-base-half, @size: @font-size-small);
+	.font-size-calc(@base-font-size-small);
+	.margin-calc(@margin-bottom: @base-margin-half, @size: @base-font-size-small);
 }
 
 // Undo browser default styling
@@ -246,7 +246,7 @@ table {
 th,
 td {
 	padding: @td-padding-calc;
-	line-height: @line-height-base;
+	line-height: @base-line-height;
 	vertical-align: top;
 	.border-top(@td-border-top-width);
 	.border-right(@td-border-right-width);
@@ -302,7 +302,7 @@ h6 {
 // GENERAL MEDIA STYLES
 // -------------------------
 figure {
-	.margin-calc(@margin-bottom: @margin-base-half, @size: @font-size-base);
+	.margin-calc(@margin-bottom: @base-margin-half, @size: @base-font-size);
 }
 // wordpress-specific
 .sticky {
@@ -331,32 +331,32 @@ img,
 		display: inline;
 	}
 	&.alignleft {
-		margin-right: @margin-base-calc;
+		margin-right: @base-margin-calc;
 		clear: left;
 	}
 	&.alignright {
-		margin-left: @margin-base-calc;
+		margin-left: @base-margin-calc;
 		clear: right;
 	}
 	&.alignleft,
 	&.alignright,
 	&.aligncenter {
-		margin-bottom: @margin-base-half-calc;
+		margin-bottom: @base-margin-half-calc;
 	}
 }
 .wp-caption-text,
 .gallery-caption {
 	.entry-meta;
-	.margin-top-calc(@margin-base-quarter, @meta-font-size);
+	.margin-top-calc(@base-margin-quarter, @meta-font-size);
 }
 .gallery {
 	.row;
-	margin-bottom: @margin-base-calc;
-	padding-top: @margin-base-half-calc;
+	margin-bottom: @base-margin-calc;
+	padding-top: @base-margin-half-calc;
 }
 .gallery-item {
 	.column;
-	margin-bottom: @margin-base-calc;
+	margin-bottom: @base-margin-calc;
 	img {
 		display: block;
 	}
@@ -417,7 +417,7 @@ img,
 		text-align: right;
 		padding-left: 1em;
 	}
-	margin-bottom: @margin-base;
+	margin-bottom: @base-margin;
 }
 
 // GENERAL FORM STYLES
@@ -429,14 +429,14 @@ img,
 	font-family: @btn-font-family;
 	font-weight: @btn-font-weight;
 	.font-size-calc(@btn-font-size);
-	line-height: @line-height-base;
+	line-height: @base-line-height;
 	.padding-calc(@size: @btn-font-size);
 	color: @btn-color;
 	text-align: center;
 	vertical-align: middle;
 	background: @btn-bg-color;
 	border: 1px solid @btn-border-color;
-	border-radius: unit( ( @border-radius-base / @btn-font-size ), em );
+	border-radius: unit( ( @form-border-radius / @btn-font-size ), em );
 	white-space: nowrap;
 	cursor: pointer;
 	text-transform: @btn-text-transform;
@@ -472,19 +472,19 @@ input[type='submit'] {
 	.font-size-calc(@btn-font-size-lg);
 	//border-radius: @border-radius-lg;
 	//border-radius: unit( ( @border-radius-lg / @btn-font-size-lg ), em );
-	.padding-calc(@padding-vertical-lg, @padding-horizontal-lg, @btn-font-size-lg);
+	.padding-calc(@form-padding-vertical-lg, @form-padding-horizontal-lg, @btn-font-size-lg);
 }
 .btn-sm {
 	.font-size-calc(@btn-font-size-sm);
 	//border-radius: @border-radius-sm;
 	//border-radius: unit( ( @border-radius-sm / @btn-font-size-sm ), em );
-	.padding-calc(@padding-vertical-sm, @padding-horizontal-sm, @btn-font-size-sm);
+	.padding-calc(@form-padding-vertical-sm, @form-padding-horizontal-sm, @btn-font-size-sm);
 }
 .btn-xs {
 	.font-size-calc(@btn-font-size-xs);
 	//border-radius: @border-radius-xs;
 	//border-radius: unit( ( @border-radius-xs / @btn-font-size-xs ), em );
-	.padding-calc(@padding-vertical-xs, @padding-horizontal-xs, @btn-font-size-xs);
+	.padding-calc(@form-padding-vertical-xs, @form-padding-horizontal-xs, @btn-font-size-xs);
 }
 // Alternate buttons
 // --------------------------------------------------
@@ -515,7 +515,7 @@ input[type='submit'] {
 // Other form elements
 .form-control {
 	border: 1px solid @input-placeholder-border-color;
-	line-height: @line-height-base;
+	line-height: @base-line-height;
 	.font-size-calc(@input-font-size);
 	border-radius: unit( ( @input-border-radius / @input-font-size ), em );
 	.padding-calc( @size: @input-font-size );
