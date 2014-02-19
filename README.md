@@ -10,7 +10,7 @@ A starter theme (not to be confused with a parent theme or framework) for Bad Fe
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'part/content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 * Most of the script includes happen in the `inc/scripts.php` file. If you want to add to or remove some, that's where you should look.
 * As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.
-* Edit, add to or remove what ye may. If it's something that would be a worthy change to the Nest, esp. relating to the below goals. lemme know!
+* Edit, add to or remove what ye may. If it's something that would be a worthy change to the Nest, esp. relating to the below goals, lemme know!
 
 ### Theme Goals
 #### LESS/CSS
