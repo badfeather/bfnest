@@ -49,20 +49,12 @@
 
 // TYPE
 // --------------------------------------------------
-@thin: 100;
-@light: 300;
-@regular: 400;
-@semibold: 600;
-@bold: 700;
-@extrabold: 800;
-@black: 900;
-
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif: Cambria, Georgia, serif;
 @font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
 
-@font-weight-normal: @regular;
-@font-weight-bold: @bold;
+@font-weight-normal: normal;
+@font-weight-bold: bold;
 
 // Base
 @base-font-family: @font-family-sans-serif;
@@ -113,7 +105,7 @@
 @h6-margin-top: 0;
 
 @headings-font-family: @font-family-sans-serif;
-@headings-font-weight: @regular;
+@headings-font-weight: @font-weight-normal;
 @headings-color: @base-color;
 @headings-small-color: inherit;
 @headings-link-color: @link-color;
@@ -132,7 +124,7 @@
 
 // Navs
 @nav-font-family: @font-family-sans-serif;
-@nav-font-weight: @regular;
+@nav-font-weight: @font-weight-bold;
 @nav-link-color: @link-color;
 @nav-link-hover-color: @link-hover-color;
 @nav-link-active-color: @link-active-color;

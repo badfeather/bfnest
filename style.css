@@ -418,7 +418,7 @@ html {
 body {
   font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   line-height: 1.625;
   color: #dfdfdf;
   background-color: #202020;
@@ -574,7 +574,7 @@ li {
 }
 b,
 strong {
-  font-weight: 700;
+  font-weight: bold;
 }
 dt,
 dd {
@@ -603,7 +603,7 @@ blockquote {
   font-size: 1.25em;
   line-height: 1.625;
   font-style: italic;
-  font-weight: 400;
+  font-weight: normal;
   margin-top: 1.3em;
   margin-bottom: 1.3em;
   margin-left: 1.3em;
@@ -617,7 +617,7 @@ blockquote cite {
   line-height: 0.06770833333333333;
   margin: 0em 0em 1.0833333333333333em 0em;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
 }
 q:before,
 q:after,
@@ -672,7 +672,7 @@ h4,
 h5,
 h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   color: #dfdfdf;
 }
 h1 a,
@@ -734,7 +734,7 @@ h6 {
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   color: #9f9f9f;
   margin-bottom: 0.4642857142857143em;
 }
@@ -790,7 +790,7 @@ img.aligncenter,
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   color: #9f9f9f;
   margin-bottom: 0.4642857142857143em;
   margin-top: 0.4642857142857143em;
@@ -897,7 +897,7 @@ img.aligncenter,
   padding-left: 0;
   list-style: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: bold;
 }
 .menu ul {
   padding-left: 0;
@@ -1317,7 +1317,7 @@ select {
 legend {
   font-size: 0.875em;
   margin: 0em 0em 0.9285714285714286em 0em;
-  font-weight: 600;
+  font-weight: bold;
 }
 input[type="checkbox"] {
   display: inline-block;
@@ -1448,7 +1448,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   color: #9f9f9f;
   margin-bottom: 0.4642857142857143em;
 }
@@ -1487,7 +1487,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   color: #9f9f9f;
   margin-bottom: 0.4642857142857143em;
 }
