@@ -16,26 +16,29 @@ A starter theme (not to be confused with a parent theme or framework) for Bad Fe
 #### LESS/CSS
 * Handle all customizations through `less/variables.less` and `less/theme.less`.
 * Provide variables for everything I might need, either in mixins or base styles.
-* Use consistent patterns for variable names
-* Keep outputted CSS as lean as possible, utilizing LESS extends wherever possible
-* Rethinking each mixin or style rule poached from a framework - still work to do on this
-* Compartmentalize the LESS files enough to make it easy to find what I'm looking for, but not get obnoxious about it
+* Use consistent patterns for variable names.
+* On the scaling front, I've decided to go with percentages and `em`s, 'cause, well, I like 'em. This means there's a lot of math going on via mixins, which I'll admit, creates some ugly numbers. Yes, I know about `rem`s, and I'm well aware that most modern browsers handle `px` scaling pretty darned well. Anyway, to make `em`s work, one must be careful about inheritence, which can cause some unwanted multiplication. For that reason, set as many font sizes as possible globally, avoid setting font sizes on containers, pay special attention to nested elements, and utilize classes and descentent selectors (within reason - don't over-specify!) to target unique cases.
+* Keep outputted CSS lean by minimizing specificity and utilizing LESS extends wherever possible to group rules.
+* Rethinking each mixin or style rule poached from a framework - still work to do on this.
+* Compartmentalize the LESS files enough to make it easy to find what I'm looking for, but not get obnoxious about it.
 
 #### Javascript
-* Provide enough vendor scripts, ie. Modernizr, Respond.js, etc. to make responsive sites, but not get obnoxious about it. Probably need to slim this down a bit.
-* Keep the scripts lean by concatenating and minifying whenever possible and minimizing the amount of calls to external scripts
+* Provide enough vendor scripts, ie. Modernizr, Respond.js, etc. to make responsive sites, but not get obnoxious about it. I probably need to revisit this.
+* Keep the scripts lean by concatenating and minifying whenever possible and minimizing the amount of calls to external scripts.
 
 #### HTML markup
-* Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it
-* Make it valid
-* Establish a clear document outline via the HTML5 structure
+* Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it.
+* Keep class names reasonably semantic, opting for describing their function more than their presentation.
+* If not use SMACSS and BEM methodoligies outright, at least get what they're going for and strive for something similar.
+* Validate! Keep it accessible.
+* Establish a clear document outline via the HTML5 structure.
 
 #### Theme
-* Keep it reasonably DRY, ie. by utilizing `get_template_part())` wherever possible for re-used blocks
-* Provide enough structure for a baseline and establish patterns that can be expanded when building more complex sites that utilize custom post types and taxonomies
-* Compartmentalize functions enough to make it easy to find what I'm looking for, but not get obnoxious about it
-* Use theme development best-practices, making it as flexible as possible
-* Provide functions for things I find myself needing on most sites, ie. for social sharing, subnavs, getting the first images from posts, etc. Most of these are in the `inc/template_tags.php` directory
+* Keep it reasonably DRY, ie. by utilizing `get_template_part())` wherever possible for re-used blocks.
+* Provide enough structure for a baseline and establish patterns that can be expanded when building more complex sites that utilize custom post types and taxonomies.
+* Compartmentalize functions enough to make it easy to find what I'm looking for, but not get obnoxious about it.
+* Use theme development best-practices, making it as flexible as possible.
+* Provide functions for things I find myself needing on most sites, ie. for social sharing, subnavs, getting the first images from posts, etc. Most of these are in the `inc/template_tags.php` directory.
 
 ### Many theme concepts cobbled together and/or mercilessly stolen from, and not limited to:
 * [Underscores](http://underscores.me/)
