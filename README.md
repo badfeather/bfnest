@@ -22,7 +22,7 @@ A starter theme (not to be confused with a parent theme or framework) for Bad Fe
 * Rethinking each mixin or style rule poached from a framework - still work to do on this.
 * Compartmentalize the LESS files enough to make it easy to find what I'm looking for, but not get obnoxious about it.
 
-#### HTML markup
+#### HTML
 * Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it.
 * Keep class names reasonably semantic, opting for describing their function more than their presentation.
 * If not use SMACSS and BEM methodoligies outright, at least get what they're going for and strive for something similar.
