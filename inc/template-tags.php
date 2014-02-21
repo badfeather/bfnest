@@ -28,7 +28,7 @@ function bfn_single_pager() {
 	<ul class="pager-nav">
 		<li class="nav-next"><?php next_post_link( '&larr; %link' ); ?></li>
 		<li class="nav-prev"><?php previous_post_link( '%link &rarr;' ); ?></li>
-	</nav>
+	</ul>
 <?php
 	}
 }
