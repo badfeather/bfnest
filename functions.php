@@ -22,6 +22,9 @@ require get_template_directory() . ( '/inc/comments.php' );
 // template tags
 require get_template_directory() . ( '/inc/template-tags.php' );
 
+// theme custom functions
+require get_template_directory() . ( '/inc/custom.php' );
+
 /**
  * plugin-specific configs
  */
