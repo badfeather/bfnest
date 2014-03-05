@@ -74,8 +74,43 @@ function bfn_wp_title( $title, $sep ) {
 add_filter( 'wp_title', 'bfn_wp_title', 10, 2 );
 
 /**
- * Clean up wp_caption and make it html5
+ * Swap <p> tags for <figure> tags when inserting images.
+ * If it has a caption, this will be wrapped in <figcaption> tags
  */
+function bfn_html5_image_send_to_editor( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
+
+	$wp_caption_class = '';
+	if ( $caption ) {
+		$wp_caption_class = ' wp-caption';
+	}
+
+	if ( $alt ) {
+		$alt_text = $alt;
+	} else {
+		$alt_text = $title;
+	}
+
+	$img_tag = get_image_tag( $id, $alt_text, '', '', $size );
+
+	if ( $url ) {
+		$img_tag = '<a href="' . esc_attr( $url ) . '">' . $img_tag . '</a>';
+	}
+
+	$html5 = '<figure id="post-' . $id . ' media-' . $id . '" class="align' . $align . $wpcaption . ' size-' . $size . '">';
+    $html5 .= $img_tag;
+    if ( $caption ) {
+    	$html5 .= '<figcaption class="caption wp-caption-text">' . $caption . '</figcaption>';
+    }
+    $html5 .= '</figure>';
+    return $html5;
+}
+add_filter( 'image_send_to_editor', 'bfn_html5_image_send_to_editor', 10, 9 );
+
+/**
+ * Clean up wp_caption and make it html5
+ * Replaced with above function
+ */
+/*
 function bfn_caption( $output, $attr, $content ) {
   if ( is_feed() ) {
     return $output;
@@ -108,4 +143,5 @@ function bfn_caption( $output, $attr, $content ) {
   return $output;
 }
 add_filter( 'bfn_caption_shortcode', 'roots_caption', 10, 3 );
+*/
 
