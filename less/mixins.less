@@ -86,38 +86,41 @@
 
 
 // Font size. line-height and margin calculations, to be used in base.less
-.font-size-calc( @size: @base-font-size ) {
-	font-size: unit( ( @size / @base-font-size ), em );
+.font-size-emcalc(@size: @base-font-size) {
+	font-size: unit((@size / @base-font-size), em);
 }
-.margin-calc( @margin-top: 0, @margin-right: 0, @margin-bottom: @base-margin, @margin-left: 0, @size: @base-font-size) {
-	@margin-top-calc: unit( (@margin-top / @size ), em );
-	@margin-right-calc: unit( (@margin-right / @size ), em );
-	@margin-bottom-calc: unit( (@margin-bottom / @size ), em );
-	@margin-left-calc: unit( (@margin-left / @size ), em );
-	margin: @margin-top-calc @margin-right-calc @margin-bottom-calc @margin-left-calc;
+.font-family(@font-family; @default-font-family) when not (@font-family = @default-font-family) {
+  font-family: @font-family;
 }
-.margin-bottom-calc(@margin-bottom: @base-margin, @size: @base-font-size) when (isnumber(@margin-bottom)) and (@margin-bottom > 0) {
-	margin-bottom: unit( (@margin-bottom / @size ), em );
+.margin-emcalc(@margin-top: 0, @margin-right: 0, @margin-bottom: @base-margin, @margin-left: 0, @size: @base-font-size) {
+	@margin-top-emcalc: unit((@margin-top / @size), em);
+	@margin-right-calc: unit((@margin-right / @size), em);
+	@margin-bottom-emcalc: unit((@margin-bottom / @size), em);
+	@margin-left-calc: unit((@margin-left / @size), em);
+	margin: @margin-top-emcalc @margin-right-calc @margin-bottom-emcalc @margin-left-calc;
 }
-.margin-top-calc(@margin-top: @base-margin, @size: @base-font-size) when (isnumber(@margin-top)) and (@margin-top > 0) {
-	margin-top: unit( (@margin-top / @size ), em );
+.margin-bottom-emcalc(@margin-bottom: @base-margin, @size: @base-font-size) when (@margin-bottom > 0) {
+	margin-bottom: unit((@margin-bottom / @size), em);
 }
-.margin-right-calc(@margin-right: @base-margin, @size: @base-font-size) when (isnumber(@margin-right)) and (@margin-right > 0) {
-	margin-right: unit( (@margin-right / @size ), em );
+.margin-top-emcalc(@margin-top: @base-margin, @size: @base-font-size) when (@margin-top > 0) {
+	margin-top: unit((@margin-top / @size), em);
 }
-.margin-left-calc(@margin-left: @base-margin, @size: @base-font-size) when (isnumber(@margin-left)) and (@margin-left > 0) {
-	margin-left: unit( (@margin-left / @size ), em );
+.margin-right-emcalc(@margin-right: @base-margin, @size: @base-font-size) when (@margin-right > 0) {
+	margin-right: unit((@margin-right / @size), em);
 }
-.line-height-calc( @line-height: @base-line-height, @size: @base-font-size ) {
-	line-height: ( @line-height / @size );
+.margin-left-emcalc(@margin-left: @base-margin, @size: @base-font-size) when (@margin-left > 0) {
+	margin-left: unit((@margin-left / @size), em);
 }
-.height-calc( @line-height: @base-line-height, @size: @base-font-size ) {
-	height: unit( ( @line-height / @size ), em );
+.line-height-calc(@line-height: @base-line-height, @size: @base-font-size) {
+	line-height: (@line-height / @size);
 }
-.padding-calc( @padding-vertical: @form-padding-vertical, @padding-horizontal: @form-padding-horizontal, @size: @base-font-size ) {
-	padding: unit( ( @padding-vertical / @size ), em ) unit( ( @padding-horizontal / @size ), em);
+.height-emcalc(@line-height: @base-line-height, @size: @base-font-size) {
+	height: unit((@line-height / @size), em);
 }
-.border-calc( @border-top-width: 1px,  @border-right-width: 1px, @border-bottom-width: 1px, @border-left-width: 1px, @border-color: @base-border-color, @border-style: solid ) {
+.padding-emcalc(@padding-vertical: @form-padding-vertical, @padding-horizontal: @form-padding-horizontal, @size: @base-font-size) {
+	padding: unit((@padding-vertical / @size), em) unit((@padding-horizontal / @size), em);
+}
+.border(@border-top-width: 1px,  @border-right-width: 1px, @border-bottom-width: 1px, @border-left-width: 1px, @border-color: @base-border-color, @border-style: solid) {
 	border-width: @border-top-width @border-right-width, @border-bottom-width, @border-left-width;
 	border-style: @border-style;
 	border-color: @border-color;
@@ -135,13 +138,65 @@
 	border-left: @border-left-width @border-left-style @border-color;
 }
 
+// Headings
+// -------------------------
+.heading() {
+	font-family: @headings-font-family;
+	line-height: @headings-line-height;
+	font-weight: @headings-font-weight;
+	color: @headings-color;
+	a {
+		color: @headings-link-color;
+		&:hover,
+		&:focus {
+			color: @headings-link-hover-color;
+			text-decoration: none;
+		}
+	}
+}
+.h1() {
+	.font-size-emcalc(@h1-font-size);
+	.margin-bottom-emcalc(@h1-margin-bottom, @h1-font-size);
+	.margin-top-emcalc(@h1-margin-top, @h1-font-size);
+}
+.h2() {
+	.font-size-emcalc(@h2-font-size);
+	.margin-bottom-emcalc(@h2-margin-bottom, @h2-font-size);
+	.margin-top-emcalc(@h2-margin-top, @h2-font-size);
+	line-height: @h2-line-height;
+}
+.h3() {
+	.font-size-emcalc(@h3-font-size);
+	.margin-bottom-emcalc(@h3-margin-bottom, @h3-font-size);
+	.margin-top-emcalc(@h3-margin-top, @h3-font-size);
+	line-height: @h3-line-height;
+}
+.h4() {
+	.font-size-emcalc(@h4-font-size);
+	.margin-bottom-emcalc(@h4-margin-bottom, @h4-font-size);
+	.margin-top-emcalc(@h4-margin-top, @h4-font-size);
+	line-height: @h4-line-height;
+}
+.h5() {
+	.font-size-emcalc(@h5-font-size);
+	.margin-bottom-emcalc(@h5-margin-bottom, @h5-font-size);
+	.margin-top-emcalc(@h5-margin-top, @h5-font-size);
+	line-height: @h5-line-height;
+}
+.h6() {
+	.font-size-emcalc(@h6-font-size);
+	.margin-bottom-emcalc(@h6-margin-bottom, @h5-font-size);
+	.margin-top-emcalc(@h6-margin-top, @h6-font-size);
+	line-height: @h6-line-height;
+}
+
 // CSS3 PROPERTIES
 // --------------------------------------------------
 
 // Single side border-radius
 .border-top-radius(@radius) {
 	border-top-right-radius: @radius;
-	 border-top-left-radius: @radius;
+	border-top-left-radius: @radius;
 }
 .border-right-radius(@radius) {
 	border-bottom-right-radius: @radius;
@@ -375,58 +430,6 @@
 	border-radius: @border-radius-large;
 }
 
-// Headings
-// -------------------------
-.heading() {
-	font-family: @headings-font-family;
-	font-weight: @headings-font-weight;
-	color: @headings-color;
-	a {
-		color: @headings-link-color;
-		&:hover,
-		&:focus {
-			color: @headings-link-hover-color;
-			text-decoration: none;
-		}
-	}
-}
-.h1() {
-	.font-size-calc(@h1-font-size);
-	.margin-bottom-calc(@h1-margin-bottom, @h1-font-size);
-	.margin-top-calc(@h1-margin-top, @h1-font-size);
-	line-height: @h1-line-height;
-}
-.h2() {
-	.font-size-calc(@h2-font-size);
-	.margin-bottom-calc(@h2-margin-bottom, @h2-font-size);
-	.margin-top-calc(@h2-margin-top, @h2-font-size);
-	line-height: @h2-line-height;
-}
-.h3() {
-	.font-size-calc(@h3-font-size);
-	.margin-bottom-calc(@h3-margin-bottom, @h3-font-size);
-	.margin-top-calc(@h3-margin-top, @h3-font-size);
-	line-height: @h3-line-height;
-}
-.h4() {
-	.font-size-calc(@h4-font-size);
-	.margin-bottom-calc(@h4-margin-bottom, @h4-font-size);
-	.margin-top-calc(@h4-margin-top, @h4-font-size);
-	line-height: @h4-line-height;
-}
-.h5() {
-	.font-size-calc(@h5-font-size);
-	.margin-bottom-calc(@h5-margin-bottom, @h5-font-size);
-	.margin-top-calc(@h5-margin-top, @h5-font-size);
-	line-height: @h5-line-height;
-}
-.h6() {
-	.font-size-calc(@h6-font-size);
-	.margin-bottom-calc(@h6-margin-bottom, @h5-font-size);
-	.margin-top-calc(@h6-margin-top, @h6-font-size);
-	line-height: @h6-line-height;
-}
-
 // Button variants
 // -------------------------
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -568,46 +571,46 @@
 // Hybrid of Bootstrap and semantic.gs
 // --------------------------------------------------
 // Centered container element
-.make-container( @gutter: @gutter-width-calc, @width: @gridsystem-width-calc ) {
+.make-container(@gutter: @gutter-width-calc, @width: @gridsystem-width-calc) {
 	padding-left: @gutter / 2;
 	padding-right: @gutter / 2;
-	max-width: ( @width + @gutter );
+	max-width: (@width + @gutter);
 	&:extend(.clearfix all);
 }
-.make-row( @gutter: @gutter-width-calc ) {
+.make-row(@gutter: @gutter-width-calc) {
 	margin-left: @gutter / -2;
 	margin-right: @gutter / -2;
 	&:extend(.clearfix all);
 }
-.make-column( @gutter: @gutter-width-calc ) {
+.make-column(@gutter: @gutter-width-calc) {
 	position: relative;
 	float: left;
 	min-height: 1px;
 	padding-left: @gutter / 2;
 	padding-right: @gutter / 2;
 }
-.generate-cols( @n, @i: 1 ) when ( @i <= @n ) {
+.generate-cols(@n, @i: 1) when (@i <= @n) {
 	.cols-@{i} {
 		width: (@i * 100% / @n);
 	}
 	.generate-cols(@n, (@i + 1));
 }
-.generate-pushes( @n, @i: 1 ) when ( @i <= @n ) {
+.generate-pushes(@n, @i: 1) when (@i <= @n) {
 	.push-@{i} {
 		margin-left: (@i * 100% / @n);
 	}
 	.generate-pushes(@n, (@i + 1));
 }
-.generate-pulls( @n, @i: 1 ) when ( @i <= @n ) {
+.generate-pulls(@n, @i: 1) when (@i <= @n) {
 	.pull-@{i} {
 		margin-right: (@i * 100% / @n);
 	}
 	.generate-pulls(@n, (@i + 1));
 }
-.generate-block-grids( @n, @i: 1 ) when ( @i <= @n ) {
+.generate-block-grids(@n, @i: 1) when (@i <= @n) {
 	.block-grid-@{i} {
 		& > .column {
-			width: percentage( 1 / @i );
+			width: percentage(1 / @i);
 			&:nth-of-type(n) {
 				clear: none;
 			}
@@ -618,10 +621,10 @@
 	}
 	.generate-block-grids(@n, (@i + 1));
 }
-.generate-gallery-columns( @n, @i: 1 ) when ( @i <= @n ) {
+.generate-gallery-columns(@n, @i: 1) when (@i <= @n) {
 	.gallery-columns-@{i} {
 		& > .gallery-item {
-			width: percentage( 1 / @i );
+			width: percentage(1 / @i);
 			&:nth-of-type(n) {
 				clear: none;
 			}
@@ -632,18 +635,18 @@
 	}
 	.generate-gallery-columns(@n, (@i + 1));
 }
-.cols-( @x, @columns: @columns ) {
-	width: percentage( @x / @columns );
+.cols-(@x, @columns: @columns) {
+	width: percentage(@x / @columns);
 }
-.push-( @offset: 1, @columns: @columns ) {
-	margin-left: percentage( @offset / @columns );
+.push-(@offset: 1, @columns: @columns) {
+	margin-left: percentage(@offset / @columns);
 }
-.pull-( @offset: 1, @columns: @columns ) {
-	margin-right: percentage( @offset / @columns );
+.pull-(@offset: 1, @columns: @columns) {
+	margin-right: percentage(@offset / @columns);
 }
-.block-grid-( @x ) {
+.block-grid-(@x) {
 	& > .column {
-		width: percentage( 1 / @x );
+		width: percentage(1 / @x);
 		&:nth-of-type(n) {
 			clear: none;
 		}
@@ -652,9 +655,9 @@
 		}
 	}
 }
-.make-guttered( @gutter: @gutter-width-calc ) {
-	padding-left: ( @gutter / 2 );
-	padding-right: ( @gutter / 2 );
+.make-guttered(@gutter: @gutter-width-calc) {
+	padding-left: (@gutter / 2);
+	padding-right: (@gutter / 2);
 }
 
 

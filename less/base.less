@@ -88,7 +88,7 @@ form,
 pre,
 address,
 hr {
-	.margin-calc;
+	.margin-emcalc;
 }
 dfn,
 cite,
@@ -122,16 +122,16 @@ ol {
 }
 ul,
 ol {
-	padding: 0 0 0 @base-margin-calc;
+	padding: 0 0 0 @base-margin-emcalc;
 	ul,
 	ol {
-		padding-top: @base-margin-quarter-calc;
+		padding-top: @base-margin-quarter-emcalc;
 		margin-bottom: 0;
 		font-size: 1em;
 	}
 }
 li {
-	margin-bottom: @base-margin-quarter-calc;
+	margin-bottom: @base-margin-quarter-emcalc;
 }
 
 // List options
@@ -183,14 +183,14 @@ abbr.initialism {
 
 // Blockquotes
 blockquote {
-	.font-size-calc(@blockquote-font-size);
+	.font-size-emcalc(@blockquote-font-size);
 	line-height: @blockquote-line-height;
 	font-style: @blockquote-font-style;
 	font-weight: @blockquote-font-weight;
-	.margin-top-calc(@blockquote-margin-top, @blockquote-font-size);
-	.margin-right-calc(@blockquote-margin-right, @blockquote-font-size);
-	.margin-bottom-calc(@blockquote-margin-bottom, @blockquote-font-size);
-	.margin-left-calc(@blockquote-margin-left, @blockquote-font-size);
+	.margin-top-emcalc(@blockquote-margin-top, @blockquote-font-size);
+	.margin-right-emcalc(@blockquote-margin-right, @blockquote-font-size);
+	.margin-bottom-emcalc(@blockquote-margin-bottom, @blockquote-font-size);
+	.margin-left-emcalc(@blockquote-margin-left, @blockquote-font-size);
 	em,
 	cite {
 		font-style: normal;
@@ -200,9 +200,9 @@ blockquote {
 // Blockquotes
 .lede {
 	p {
-		.font-size-calc(@lede-font-size);
+		.font-size-emcalc(@lede-font-size);
 		.line-height-calc(@lede-line-height, @lede-font-size);
-		.margin-calc(@size: @lede-font-size);
+		.margin-emcalc(@size: @lede-font-size);
 		font-style: @lede-font-style;
 		font-weight: @lede-font-weight;
 	}
@@ -226,8 +226,8 @@ address {
 // Emphasis & misc
 
 .small {
-	.font-size-calc(@base-font-size-small);
-	.margin-calc(@margin-bottom: @base-margin-half, @size: @base-font-size-small);
+	.font-size-emcalc(@base-font-size-small);
+	.margin-emcalc(@margin-bottom: @base-margin-half, @size: @base-font-size-small);
 }
 
 // Undo browser default styling
@@ -245,7 +245,7 @@ table {
 }
 th,
 td {
-	padding: @td-padding-calc;
+	padding: @td-padding-emcalc;
 	line-height: @base-line-height;
 	vertical-align: top;
 	.border-top(@td-border-top-width);
@@ -291,18 +291,18 @@ h6 {
 // -------------------------
 .entry-meta {
 	clear: both;
-	.font-size-calc(@meta-font-size);
+	.font-size-emcalc(@meta-font-size);
 	line-height: @meta-line-height;
 	font-family: @meta-font-family;
 	font-weight: @meta-font-weight;
 	color: @meta-color;
-	.margin-bottom-calc(@meta-margin-bottom, @meta-font-size);
+	.margin-bottom-emcalc(@meta-margin-bottom, @meta-font-size);
 }
 
 // GENERAL MEDIA STYLES
 // -------------------------
 figure {
-	.margin-calc(@margin-bottom: @base-margin-half, @size: @base-font-size);
+	.margin-bottom-emcalc(@figure-margin-bottom);
 }
 // wordpress-specific
 .sticky {
@@ -331,37 +331,37 @@ img,
 		display: inline;
 	}
 	&.alignleft {
-		margin-right: @base-margin-calc;
+		margin-right: @base-margin-emcalc;
 		clear: left;
 	}
 	&.alignright {
-		margin-left: @base-margin-calc;
+		margin-left: @base-margin-emcalc;
 		clear: right;
 	}
 	&.alignleft,
 	&.alignright,
 	&.aligncenter {
-		margin-bottom: @base-margin-half-calc;
+		margin-bottom: @base-margin-half-emcalc;
 	}
 }
 .wp-caption-text,
 .gallery-caption {
 	.entry-meta;
-	.margin-top-calc(@base-margin-quarter, @meta-font-size);
+	.margin-top-emcalc(@base-margin-quarter, @meta-font-size);
 }
 .gallery {
 	.row;
-	margin-bottom: @base-margin-calc;
-	padding-top: @base-margin-half-calc;
+	margin-bottom: @base-margin-emcalc;
+	padding-top: @base-margin-half-emcalc;
 }
 .gallery-item {
 	.column;
-	margin-bottom: @base-margin-calc;
+	margin-bottom: @base-margin-emcalc;
 	img {
 		display: block;
 	}
 }
-.generate-gallery-columns(9);
+//.generate-gallery-columns(9);
 
 // GENERAL NAV STYLES
 // -------------------------
@@ -428,15 +428,15 @@ img,
 	margin-bottom: 0;
 	font-family: @btn-font-family;
 	font-weight: @btn-font-weight;
-	.font-size-calc(@btn-font-size);
+	.font-size-emcalc(@btn-font-size);
 	line-height: @base-line-height;
-	.padding-calc(@size: @btn-font-size);
+	.padding-emcalc(@size: @btn-font-size);
 	color: @btn-color;
 	text-align: center;
 	vertical-align: middle;
 	background: @btn-bg-color;
 	border: 1px solid @btn-border-color;
-	border-radius: unit( ( @form-border-radius / @btn-font-size ), em );
+	border-radius: unit((@form-border-radius / @btn-font-size), em);
 	white-space: nowrap;
 	cursor: pointer;
 	text-transform: @btn-text-transform;
@@ -469,22 +469,22 @@ input[type='submit'] {
 	&:extend(.btn all);
 }
 .btn-lg {
-	.font-size-calc(@btn-font-size-lg);
+	.font-size-emcalc(@btn-font-size-lg);
 	//border-radius: @border-radius-lg;
-	//border-radius: unit( ( @border-radius-lg / @btn-font-size-lg ), em );
-	.padding-calc(@form-padding-vertical-lg, @form-padding-horizontal-lg, @btn-font-size-lg);
+	//border-radius: unit((@border-radius-lg / @btn-font-size-lg), em);
+	.padding-emcalc(@form-padding-vertical-lg, @form-padding-horizontal-lg, @btn-font-size-lg);
 }
 .btn-sm {
-	.font-size-calc(@btn-font-size-sm);
+	.font-size-emcalc(@btn-font-size-sm);
 	//border-radius: @border-radius-sm;
-	//border-radius: unit( ( @border-radius-sm / @btn-font-size-sm ), em );
-	.padding-calc(@form-padding-vertical-sm, @form-padding-horizontal-sm, @btn-font-size-sm);
+	//border-radius: unit((@border-radius-sm / @btn-font-size-sm), em);
+	.padding-emcalc(@form-padding-vertical-sm, @form-padding-horizontal-sm, @btn-font-size-sm);
 }
 .btn-xs {
-	.font-size-calc(@btn-font-size-xs);
+	.font-size-emcalc(@btn-font-size-xs);
 	//border-radius: @border-radius-xs;
-	//border-radius: unit( ( @border-radius-xs / @btn-font-size-xs ), em );
-	.padding-calc(@form-padding-vertical-xs, @form-padding-horizontal-xs, @btn-font-size-xs);
+	//border-radius: unit((@border-radius-xs / @btn-font-size-xs), em);
+	.padding-emcalc(@form-padding-vertical-xs, @form-padding-horizontal-xs, @btn-font-size-xs);
 }
 // Alternate buttons
 // --------------------------------------------------
@@ -516,10 +516,10 @@ input[type='submit'] {
 .form-control {
 	border: 1px solid @input-placeholder-border-color;
 	line-height: @base-line-height;
-	.font-size-calc(@input-font-size);
-	border-radius: unit( ( @input-border-radius / @input-font-size ), em );
-	.padding-calc( @size: @input-font-size );
-	width: unit( ( @input-width / @input-font-size ) , em );
+	.font-size-emcalc(@input-font-size);
+	border-radius: unit((@input-border-radius / @input-font-size), em);
+	.padding-emcalc(@size: @input-font-size);
+	width: unit((@input-width / @input-font-size) , em);
 	outline: none;
 	font-family: @input-font-family;
 	color: @input-placeholder-color;
@@ -573,11 +573,11 @@ input[type="checkbox"] {
 
 // BASE LAYOUT
 .doc-main {
-	.margin-bottom-calc( @doc-margin-bottom );
+	.margin-bottom-emcalc(@doc-margin-bottom);
 }
 .hentry {
-	.margin-bottom-calc( @hentry-margin-bottom );
+	.margin-bottom-emcalc(@hentry-margin-bottom);
 }
 .widget {
-	.margin-bottom-calc( @widget-margin-bottom );
+	.margin-bottom-emcalc(@widget-margin-bottom);
 }

@@ -2,19 +2,19 @@
 // -------------------------
 .entry-header,
 .doc-header {
-	margin-bottom: @base-margin-calc;
+	margin-bottom: @base-margin-emcalc;
 }
 .entry-title {
 	.h3;
-	.margin-bottom-calc( @base-margin-quarter, @h3-font-size );
+	.margin-bottom-emcalc(@base-margin-quarter, @h3-font-size);
 }
 .doc-title,
 .site-title {
 	.h1;
-	.margin-bottom-calc( @base-margin-quarter, @h1-font-size );
+	.margin-bottom-emcalc(@base-margin-quarter, @h1-font-size);
 }
 .site-description {
-	.margin-bottom-calc;
+	.margin-bottom-emcalc;
 	font-style: italic;
 }
 .widget-title {
@@ -22,7 +22,7 @@
 	text-transform: uppercase;
 }
 .widget-content {
-	.font-size-calc( @meta-font-size );
+	.font-size-emcalc(@meta-font-size);
 }
 .section-title,
 .comments-title,
@@ -125,15 +125,15 @@
 // LAYOUT
 // -------------------------
 .site {
-	&:extend( .container all );
-	&:extend( .container-centered all );
+	&:extend(.container all);
+	&:extend(.container-centered all);
 	background-color: @gray-darker;
 }
 .site-header {
-	padding-top: @base-margin-calc;
+	padding-top: @base-margin-emcalc;
 }
 .site-footer {
-	padding-bottom: @base-margin-calc;
+	padding-bottom: @base-margin-emcalc;
 }
 
 @media (min-width: @mobile) {

@@ -2,7 +2,7 @@
 Theme Name: Bad Feather Nest
 Theme URI: http://nest.badfeather.com/
 Description: A WordPress starter theme we use at Bad Feather to start new projects. Constantly under construction. Use at your own peril!
-Version: 0.4
+Version: 0.5
 Author: Brad Thomason, Bad Feather Inc.
 Author URI: http://badfeather.com/
 License: MIT License
@@ -415,6 +415,222 @@ html {
   padding-left: 0.9375em;
   padding-right: 0.9375em;
 }
+.cols-1 {
+  width: 8.33333333%;
+}
+.cols-2 {
+  width: 16.66666667%;
+}
+.cols-3 {
+  width: 25%;
+}
+.cols-4 {
+  width: 33.33333333%;
+}
+.cols-5 {
+  width: 41.66666667%;
+}
+.cols-6 {
+  width: 50%;
+}
+.cols-7 {
+  width: 58.33333333%;
+}
+.cols-8 {
+  width: 66.66666667%;
+}
+.cols-9 {
+  width: 75%;
+}
+.cols-10 {
+  width: 83.33333333%;
+}
+.cols-11 {
+  width: 91.66666667%;
+}
+.cols-12 {
+  width: 100%;
+}
+.push-1 {
+  margin-left: 8.33333333%;
+}
+.push-2 {
+  margin-left: 16.66666667%;
+}
+.push-3 {
+  margin-left: 25%;
+}
+.push-4 {
+  margin-left: 33.33333333%;
+}
+.push-5 {
+  margin-left: 41.66666667%;
+}
+.push-6 {
+  margin-left: 50%;
+}
+.push-7 {
+  margin-left: 58.33333333%;
+}
+.push-8 {
+  margin-left: 66.66666667%;
+}
+.push-9 {
+  margin-left: 75%;
+}
+.push-10 {
+  margin-left: 83.33333333%;
+}
+.push-11 {
+  margin-left: 91.66666667%;
+}
+.push-12 {
+  margin-left: 100%;
+}
+.pull-1 {
+  margin-right: 8.33333333%;
+}
+.pull-2 {
+  margin-right: 16.66666667%;
+}
+.pull-3 {
+  margin-right: 25%;
+}
+.pull-4 {
+  margin-right: 33.33333333%;
+}
+.pull-5 {
+  margin-right: 41.66666667%;
+}
+.pull-6 {
+  margin-right: 50%;
+}
+.pull-7 {
+  margin-right: 58.33333333%;
+}
+.pull-8 {
+  margin-right: 66.66666667%;
+}
+.pull-9 {
+  margin-right: 75%;
+}
+.pull-10 {
+  margin-right: 83.33333333%;
+}
+.pull-11 {
+  margin-right: 91.66666667%;
+}
+.pull-12 {
+  margin-right: 100%;
+}
+.block-grid-1 > .column {
+  width: 100%;
+}
+.block-grid-1 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-1 > .column:nth-of-type(1n + 1) {
+  clear: both;
+}
+.block-grid-2 > .column {
+  width: 50%;
+}
+.block-grid-2 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-2 > .column:nth-of-type(2n + 1) {
+  clear: both;
+}
+.block-grid-3 > .column {
+  width: 33.33333333%;
+}
+.block-grid-3 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-3 > .column:nth-of-type(3n + 1) {
+  clear: both;
+}
+.block-grid-4 > .column {
+  width: 25%;
+}
+.block-grid-4 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-4 > .column:nth-of-type(4n + 1) {
+  clear: both;
+}
+.block-grid-5 > .column {
+  width: 20%;
+}
+.block-grid-5 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-5 > .column:nth-of-type(5n + 1) {
+  clear: both;
+}
+.block-grid-6 > .column {
+  width: 16.66666667%;
+}
+.block-grid-6 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-6 > .column:nth-of-type(6n + 1) {
+  clear: both;
+}
+.block-grid-7 > .column {
+  width: 14.28571429%;
+}
+.block-grid-7 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-7 > .column:nth-of-type(7n + 1) {
+  clear: both;
+}
+.block-grid-8 > .column {
+  width: 12.5%;
+}
+.block-grid-8 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-8 > .column:nth-of-type(8n + 1) {
+  clear: both;
+}
+.block-grid-9 > .column {
+  width: 11.11111111%;
+}
+.block-grid-9 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-9 > .column:nth-of-type(9n + 1) {
+  clear: both;
+}
+.block-grid-10 > .column {
+  width: 10%;
+}
+.block-grid-10 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-10 > .column:nth-of-type(10n + 1) {
+  clear: both;
+}
+.block-grid-11 > .column {
+  width: 9.09090909%;
+}
+.block-grid-11 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-11 > .column:nth-of-type(11n + 1) {
+  clear: both;
+}
+.block-grid-12 > .column {
+  width: 8.33333333%;
+}
+.block-grid-12 > .column:nth-of-type(n) {
+  clear: none;
+}
+.block-grid-12 > .column:nth-of-type(12n + 1) {
+  clear: both;
+}
 body {
   font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -614,8 +830,8 @@ blockquote cite {
 }
 .lede p {
   font-size: 1.5em;
-  line-height: 0.06770833333333333;
-  margin: 0em 0em 1.0833333333333333em 0em;
+  line-height: 0.06770833;
+  margin: 0em 0em 1.08333333em 0em;
   font-style: normal;
   font-weight: normal;
 }
@@ -632,7 +848,7 @@ address {
 }
 .small {
   font-size: 0.875em;
-  margin: 0em 0em 0.9285714285714286em 0em;
+  margin: 0em 0em 0.92857143em 0em;
 }
 cite {
   font-style: normal;
@@ -672,6 +888,7 @@ h4,
 h5,
 h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.3125;
   font-weight: normal;
   color: #dfdfdf;
 }
@@ -701,16 +918,15 @@ h6 a:focus {
 h1 {
   font-size: 2em;
   margin-bottom: 0.8125em;
-  line-height: 1.15625;
 }
 h2 {
   font-size: 1.75em;
-  margin-bottom: 0.4642857142857143em;
+  margin-bottom: 0.46428571em;
   line-height: 1.3125;
 }
 h3 {
   font-size: 1.5em;
-  margin-bottom: 0.5416666666666666em;
+  margin-bottom: 0.54166667em;
   line-height: 1.3125;
 }
 h4 {
@@ -736,10 +952,10 @@ h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.4642857142857143em;
+  margin-bottom: 0.46428571em;
 }
 figure {
-  margin: 0em 0em 0.8125em 0em;
+  margin-bottom: 0.8125em;
 }
 .sticky {
   background-color: #202020;
@@ -792,8 +1008,8 @@ img.aligncenter,
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.4642857142857143em;
-  margin-top: 0.4642857142857143em;
+  margin-bottom: 0.46428571em;
+  margin-top: 0.46428571em;
 }
 .gallery {
   margin-left: -0.9375em;
@@ -811,87 +1027,6 @@ img.aligncenter,
 }
 .gallery-item img {
   display: block;
-}
-.gallery-columns-1 > .gallery-item {
-  width: 100%;
-}
-.gallery-columns-1 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-1 > .gallery-item:nth-of-type(1n + 1) {
-  clear: both;
-}
-.gallery-columns-2 > .gallery-item {
-  width: 50%;
-}
-.gallery-columns-2 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-2 > .gallery-item:nth-of-type(2n + 1) {
-  clear: both;
-}
-.gallery-columns-3 > .gallery-item {
-  width: 33.33333333333333%;
-}
-.gallery-columns-3 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-3 > .gallery-item:nth-of-type(3n + 1) {
-  clear: both;
-}
-.gallery-columns-4 > .gallery-item {
-  width: 25%;
-}
-.gallery-columns-4 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-4 > .gallery-item:nth-of-type(4n + 1) {
-  clear: both;
-}
-.gallery-columns-5 > .gallery-item {
-  width: 20%;
-}
-.gallery-columns-5 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-5 > .gallery-item:nth-of-type(5n + 1) {
-  clear: both;
-}
-.gallery-columns-6 > .gallery-item {
-  width: 16.666666666666664%;
-}
-.gallery-columns-6 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-6 > .gallery-item:nth-of-type(6n + 1) {
-  clear: both;
-}
-.gallery-columns-7 > .gallery-item {
-  width: 14.285714285714285%;
-}
-.gallery-columns-7 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-7 > .gallery-item:nth-of-type(7n + 1) {
-  clear: both;
-}
-.gallery-columns-8 > .gallery-item {
-  width: 12.5%;
-}
-.gallery-columns-8 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-8 > .gallery-item:nth-of-type(8n + 1) {
-  clear: both;
-}
-.gallery-columns-9 > .gallery-item {
-  width: 11.11111111111111%;
-}
-.gallery-columns-9 > .gallery-item:nth-of-type(n) {
-  clear: none;
-}
-.gallery-columns-9 > .gallery-item:nth-of-type(9n + 1) {
-  clear: both;
 }
 .menu {
   padding-left: 0;
@@ -969,13 +1104,13 @@ input[type='submit'] {
   font-weight: normal;
   font-size: 0.875em;
   line-height: 1.625;
-  padding: 0.5em 0.6428571428571429em;
+  padding: 0.5em 0.64285714em;
   color: #ffffff;
   text-align: center;
   vertical-align: middle;
   background: #00adf2;
   border: 1px solid #00adf2;
-  border-radius: 0.2857142857142857em;
+  border-radius: 0.28571429em;
   white-space: nowrap;
   cursor: pointer;
   text-transform: uppercase;
@@ -1022,15 +1157,15 @@ fieldset[disabled] input[type='submit'] {
 }
 .btn-lg {
   font-size: 1.125em;
-  padding: 0.5em 0.8888888888888888em;
+  padding: 0.5em 0.88888889em;
 }
 .btn-sm {
   font-size: 0.8125em;
-  padding: 0.23076923076923078em 0.46153846153846156em;
+  padding: 0.23076923em 0.46153846em;
 }
 .btn-xs {
   font-size: 0.6875em;
-  padding: 0.18181818181818182em 0.36363636363636365em;
+  padding: 0.18181818em 0.36363636em;
 }
 .btn-default {
   color: #ffffff;
@@ -1273,8 +1408,8 @@ input[type="color"] {
   border: 1px solid #808080;
   line-height: 1.625;
   font-size: 0.875em;
-  border-radius: 0.2857142857142857em;
-  padding: 0.5em 0.6428571428571429em;
+  border-radius: 0.28571429em;
+  padding: 0.5em 0.64285714em;
   width: 15em;
   outline: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1316,7 +1451,7 @@ select {
 }
 legend {
   font-size: 0.875em;
-  margin: 0em 0em 0.9285714285714286em 0em;
+  margin: 0em 0em 0.92857143em 0em;
   font-weight: bold;
 }
 input[type="checkbox"] {
@@ -1342,15 +1477,14 @@ input[type="checkbox"] {
 }
 .entry-title {
   font-size: 1.5em;
-  margin-bottom: 0.5416666666666666em;
+  margin-bottom: 0.54166667em;
   line-height: 1.3125;
-  margin-bottom: 0.2708333333333333em;
+  margin-bottom: 0.27083333em;
 }
 .doc-title,
 .site-title {
   font-size: 2em;
   margin-bottom: 0.8125em;
-  line-height: 1.15625;
   margin-bottom: 0.203125em;
 }
 .site-description {
@@ -1384,13 +1518,13 @@ input[type="checkbox"] {
   font-weight: normal;
   font-size: 0.875em;
   line-height: 1.625;
-  padding: 0.5em 0.6428571428571429em;
+  padding: 0.5em 0.64285714em;
   color: #ffffff;
   text-align: center;
   vertical-align: middle;
   background: #00adf2;
   border: 1px solid #00adf2;
-  border-radius: 0.2857142857142857em;
+  border-radius: 0.28571429em;
   white-space: nowrap;
   cursor: pointer;
   text-transform: uppercase;
@@ -1450,7 +1584,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.4642857142857143em;
+  margin-bottom: 0.46428571em;
 }
 .comment-main {
   display: inline-block;
@@ -1489,7 +1623,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.4642857142857143em;
+  margin-bottom: 0.46428571em;
 }
 .site {
   background-color: #404040;
@@ -1518,10 +1652,10 @@ fieldset[disabled] .comment-form input[type="submit"] {
     width: 100%;
   }
   .doc-main {
-    width: 66.66666666666666%;
+    width: 66.66666667%;
   }
   .doc-side {
-    width: 33.33333333333333%;
+    width: 33.33333333%;
   }
 }
 @media (min-width: 62em) {

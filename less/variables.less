@@ -64,18 +64,28 @@
 @base-margin: 26;
 @base-margin-half: @base-margin / 2;
 @base-margin-quarter: @base-margin / 4;
-@base-margin-calc: @base-margin / @base-font-size * 1em;
-@base-margin-half-calc: @base-margin-half / @base-font-size * 1em;
-@base-margin-quarter-calc: @base-margin-quarter / @base-font-size * 1em;
+@base-margin-emcalc: @base-margin / @base-font-size * 1em;
+@base-margin-half-emcalc: @base-margin-half / @base-font-size * 1em;
+@base-margin-quarter-emcalc: @base-margin-quarter / @base-font-size * 1em;
 @base-line-height: @base-margin / @base-font-size;
-@base-line-height-md: ( @base-font-size + ( ( @base-margin - @base-font-size ) / 2 ) ) / @base-font-size;
-@base-line-height-sm: ( @base-font-size + ( ( @base-margin - @base-font-size ) / 4 ) ) / @base-font-size;
+@base-line-height-md: (@base-font-size + ((@base-margin - @base-font-size) / 2)) / @base-font-size;
+@base-line-height-sm: (@base-font-size + ((@base-margin - @base-font-size) / 4)) / @base-font-size;
 @base-line-height-xs: 1;
-@base-line-height-half: ( @base-margin * .75 ) / @base-font-size;
+@base-line-height-half: (@base-margin * .75) / @base-font-size;
 
 // Headings
+@headings-line-height: @base-line-height-md;
+@headings-font-family: @font-family-sans-serif;
+@headings-font-weight: @font-weight-normal;
+@headings-color: @base-color;
+@headings-small-color: inherit;
+@headings-link-color: @link-color;
+@headings-link-hover-color: @link-hover-color;
+
 @h1-font-size: 32;
 @h1-line-height: @base-line-height-sm;
+@h1-font-family: @headings-font-family;
+@h1-font-style: italic;
 @h1-margin-bottom: @base-margin;
 @h1-margin-top: 0;
 
@@ -103,13 +113,6 @@
 @h6-line-height: @base-line-height;
 @h6-margin-bottom: @base-margin-half;
 @h6-margin-top: 0;
-
-@headings-font-family: @font-family-sans-serif;
-@headings-font-weight: @font-weight-normal;
-@headings-color: @base-color;
-@headings-small-color: inherit;
-@headings-link-color: @link-color;
-@headings-link-hover-color: @link-hover-color;
 
 @page-title-font-size: 30;
 
@@ -155,7 +158,7 @@
 @td-border-left-width: 1px;
 @td-padding-vertical: 6;
 @td-padding-horizontal: 6;
-@td-padding-calc: unit( ( @td-padding-vertical / @base-font-size ), em ) unit( ( @td-padding-horizontal / @base-font-size ), em );
+@td-padding-emcalc: unit((@td-padding-vertical / @base-font-size), em) unit((@td-padding-horizontal / @base-font-size), em);
 
 // Ledes
 @lede-font-size: 24;
@@ -163,6 +166,9 @@
 @lede-line-height: @base-line-height;
 @lede-font-weight: @base-font-weight;
 @lede-font-style: normal;
+
+// Figures
+@figure-margin-bottom: @base-margin-half;
 
 // Document Main
 @doc-margin-bottom: @base-margin;
@@ -262,11 +268,11 @@
 @gutter-width: 30;
 @columns: 12;
 
-@gutter-width-calc: unit( (@gutter-width / @base-font-size ), em );
+@gutter-width-calc: unit((@gutter-width / @base-font-size), em);
 
 // Utility variable — you should never need to modify this
-@gridsystem-width: ( @column-width * @columns ) + ( @gutter-width * @columns );
-@gridsystem-width-calc: unit( (@gridsystem-width / @base-font-size ), em );
+@gridsystem-width: (@column-width * @columns) + (@gutter-width * @columns);
+@gridsystem-width-calc: unit((@gridsystem-width / @base-font-size), em);
 
 // Set @total-width to 100% for a fluid layout or @gridsystem-width for fixed layout
 @total-width: 100%;

@@ -24,11 +24,11 @@ function bfn_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	wp_enqueue_script( 'bfn-modernizr', get_template_directory_uri() . '/js/modernizr-2.6.2.min.js', array(), null, false );
+	// including modernizr and whatever else you might need via codekit prepend, calling from bower_components
+	wp_enqueue_script( 'bfn-vendor', get_template_directory_uri() . '/js/min/vendor-ck.js', array(), null, false );
 
-	wp_enqueue_script( 'bfn-plugins', get_template_directory_uri() . '/js/plugins.js', array( 'jquery' ), null, true );
-
-	wp_enqueue_script( 'bfn-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'bfn-plugins' ), null, true );
+	// use codekit to prepend any required plugins, which hopefully are available via bower
+	wp_enqueue_script( 'bfn-scripts', get_template_directory_uri() . '/js/min/scripts-ck.js', array( 'jquery' ), null, true );
 
 }
 add_action( 'wp_enqueue_scripts', 'bfn_scripts' );
@@ -38,11 +38,11 @@ add_action( 'wp_enqueue_scripts', 'bfn_scripts' );
  */
 add_action( 'wp_head', 'bfn_header_scripts' );
 
-// paste any <script> tags, ie. typekit, google analytics, etc that you'd like to go in the header within the function area
+// paste any <script> tags, ie. polyfills typekit, google analytics, etc that you'd like to go in the header within the function area
+// ie conditional script include is calling compiled combo of selectivizr.js and respond.js from bower_components
 function bf_header_scripts() { ?>
 
-<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/respond-1.4.1.min.js"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/selectivizr-1.0.2.	min.js"></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/min/ie-polyfills-ck.js"></script>
 <![endif]-->
 <?php } // function bf_header_scripts
