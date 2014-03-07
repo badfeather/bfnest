@@ -86,17 +86,21 @@ function bfn_html5_image_send_to_editor( $html, $id, $caption, $title, $align, $
 
 	if ( $alt ) {
 		$alt_text = $alt;
+
 	} else {
 		$alt_text = $title;
+
 	}
 
-	$img_tag = get_image_tag( $id, $alt_text, '', '', $size );
+	$img = get_image_tag( $id, $alt_text, '', '', $size );
 
 	if ( $url ) {
-		$img_tag = '<a href="' . esc_attr( $url ) . '">' . $img_tag . '</a>';
+		$img_tag = '<a href="' . esc_attr( $url ) . '">' . $img . '</a>';
+	} else {
+		$img_tag = $img;
 	}
 
-	$html5 = '<figure id="post-' . $id . ' media-' . $id . '" class="align' . $align . $wpcaption . ' size-' . $size . '">';
+	$html5 = '<figure id="post-' . $id . ' media-' . $id . '" class="align' . $align . $wp_caption_class . ' size-' . $size . '">';
     $html5 .= $img_tag;
     if ( $caption ) {
     	$html5 .= '<figcaption class="caption wp-caption-text">' . $caption . '</figcaption>';

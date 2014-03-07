@@ -40,7 +40,7 @@ add_action( 'wp_head', 'bfn_header_scripts' );
 
 // paste any <script> tags, ie. polyfills typekit, google analytics, etc that you'd like to go in the header within the function area
 // ie conditional script include is calling compiled combo of selectivizr.js and respond.js from bower_components
-function bf_header_scripts() { ?>
+function bfn_header_scripts() { ?>
 
 <!--[if (gte IE 6)&(lte IE 8)]>
   <script src="<?php echo get_template_directory_uri(); ?>/js/min/ie-polyfills-ck.js"></script>
