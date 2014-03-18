@@ -8,8 +8,6 @@
 						the_post();
 						get_template_part( 'part/content-single', get_post_type() );
 					}
-
-					bfn_single_pager();
 				?>
 			</main>
 

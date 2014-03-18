@@ -19,7 +19,13 @@
 
 		<?php get_template_part( '/part/meta-below' ); ?>
 
-		<?php comments_template( '/part/comments.php' ); ?>
+    <?php
+      if ( comments_open() || '0' != get_comments_number() ) {
+      	comments_template();
+      } // endif
+
+      bfn_single_pager();
+    ?>
 
 	</div><!-- /.doc-main.doc-main-single -->
 

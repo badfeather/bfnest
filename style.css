@@ -1589,6 +1589,9 @@ input[type="checkbox"] {
   line-height: 1.625;
   text-transform: uppercase;
 }
+.entry-footer {
+  margin-bottom: 1.625em;
+}
 .menu-toggle {
   font-size: 1em;
 }

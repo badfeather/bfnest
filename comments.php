@@ -25,7 +25,7 @@ if ( post_password_required() ) {
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { ?>
   		<nav id="comment-nav-below" class="comment-navigation" role="navigation">
-  			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', '_s' ); ?></h1>
+  			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'bfn' ); ?></h1>
   			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'bfn' ) ); ?></div>
   			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'bfn' ) ); ?></div>
   		</nav><!-- #comment-nav-below -->
@@ -39,4 +39,4 @@ if ( post_password_required() ) {
 
 	<?php comment_form(); ?>
 
-</div><!-- /#comments.entry-comments.comments-area -->
+</section><!-- /#comments.entry-comments.comments-area -->
