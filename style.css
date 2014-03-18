@@ -801,6 +801,7 @@ dt {
 }
 dd {
   margin-left: 0;
+  margin-bottom: 0.8125em;
 }
 hr {
   border: 0;
@@ -952,7 +953,7 @@ h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.46428571em;
+  margin-bottom: 0.92857143em;
 }
 figure {
   margin-bottom: 0.8125em;
@@ -1008,7 +1009,7 @@ img.aligncenter,
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.46428571em;
+  margin-bottom: 0.92857143em;
   margin-top: 0.46428571em;
 }
 .gallery {
@@ -1556,6 +1557,10 @@ input[type="checkbox"] {
 .doc-header {
   margin-bottom: 1.625em;
 }
+.entry-header .entry-meta,
+.doc-header .entry-meta {
+  margin-bottom: 0;
+}
 .entry-title {
   font-size: 1.5em;
   margin-bottom: 0.54166667em;
@@ -1647,19 +1652,22 @@ fieldset[disabled] .comment-form input[type="submit"] {
   padding-left: 0;
   list-style: none;
 }
-.comment-list ul,
-.comment-list ol {
+.comment-list .children {
+  padding-left: 0;
   list-style: none;
-  padding-left: 2em;
+  margin-left: 1.625em;
 }
-.comment-list li {
+.comment-list .comment {
   margin-bottom: 1em;
   border-bottom: 1px solid #808080;
 }
-.comment-list li li {
+.comment-list .comment .comment {
   padding-top: 1em;
   border-top: 1px solid #808080;
   border-bottom: 0;
+}
+.comment-list p {
+  margin-bottom: 0.8125em;
 }
 .comment-meta {
   clear: both;
@@ -1668,7 +1676,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.46428571em;
+  margin-bottom: 0.92857143em;
 }
 .comment-main {
   display: inline-block;
@@ -1707,7 +1715,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #9f9f9f;
-  margin-bottom: 0.46428571em;
+  margin-bottom: 0.92857143em;
 }
 .site {
   background-color: #404040;

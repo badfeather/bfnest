@@ -3,6 +3,9 @@
 .entry-header,
 .doc-header {
 	margin-bottom: @base-margin-emcalc;
+	.entry-meta {
+  	margin-bottom: 0;
+	}
 }
 .entry-title {
 	.h3;
@@ -65,19 +68,23 @@
 // comment list
 .comment-list {
 	.list-unstyled;
-	ul,
-	ol {
-		list-style: none;
-		padding-left: 2em;
+	.children {
+		.list-unstyled;
+		margin-left: @base-margin-emcalc;
 	}
-	li {
+	.comment {
 		margin-bottom: 1em;
 		border-bottom: 1px solid @base-border-color;
 	}
-	li li {
+	.comment .comment {
 		padding-top: 1em;
 		border-top: 1px solid @base-border-color;
 		border-bottom: 0;
+		//border-bottom: 1px solid @base-border-color;
+	}
+
+	p {
+  	margin-bottom: @base-margin-half-emcalc;
 	}
 }
 

@@ -34,36 +34,9 @@ function bfn_single_pager() {
 }
 
 /**
- * Posted on
- */
-function bfn_posted_on( $published_before = '', $sep = ' ', $author_before = 'by ' ) {
-	echo '<span class="meta meta-published">' . $published_before . '<time class="published" datetime="' . get_the_time( 'c' ) . '">' . get_the_date() . '</time></span>';
-
-	echo $sep . '<span class="meta meta-author byline author vcard">' . $author_before . '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></span>';
-}
-
-/**
- * Post meta
- */
-function bfn_post_meta( $meta_sep = ' | ', $item_sep = ', ', $categories_before = 'Posted in: ', $tags_before = 'Tagged: ' ) {
-	$id = get_the_id();
-	echo get_the_term_list( $id, 'category', '<span class="meta meta-cats">' . $categories_before, $item_sep, '</span>' );
-
-	echo get_the_term_list( $id, 'post_tag', $meta_sep . '<span class="meta meta-tags">' . $tags_before, $item_sep, '</span>' );
-
-	if ( comments_open() ) {
-		echo $meta_sep . '<span class="meta meta-comment-link">';
-		comments_popup_link( __( 'Leave a comment', 'bfn' ), __( '1 Comment', 'bfn' ), __( '% Comments', 'bfn' ) );
-		echo '</span>';
-	} // endif
-
-	edit_post_link( 'Edit', $meta_sep . '<span class="meta meta-edit-link">', '</span>' );
-}
-
-/**
  * Comment listing
  */
-function bfn_comment( $comment, $args, $depth ) {
+function bfn_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 	$GLOBALS['comment'] = $comment;
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) {
@@ -81,20 +54,20 @@ function bfn_comment( $comment, $args, $depth ) {
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 			<footer class="comment-meta">
-				<div class="comment-author vcard">
+				<span class="comment-author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-					<?php printf( __( '%s <span class="says">says:</span>', 'bfn' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-				</div><!-- /.comment-author -->
+					<?php printf( __( '%s', 'bfn' ), sprintf( '<cite class="fn meta meta-author">%s</cite>', get_comment_author_link() ) ); ?>
+				</span><!-- /.comment-author -->
 
-				<a class="meta meta-comment-time" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+				<?php echo $meta_sep; ?><a class="meta meta-comment-time" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<time datetime="<?php comment_time( 'c' ); ?>">
-						<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'bfn' ), get_comment_date(), get_comment_time() ); ?>
+						 <?php echo human_time_diff( get_comment_time('U'), current_time('timestamp') ) . ' ago'; ?>
 					</time>
 				</a>
-				<?php edit_comment_link( __( 'Edit', 'bfn' ), '<span class="meta meta-edit">', '</span>' ); ?>
+				<?php edit_comment_link( __( 'Edit', 'bfn' ), $meta_sep . '<span class="meta meta-edit">', '</span>' ); ?>
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'bfn' ); ?></p>
+				<div class="comment-awaiting-moderation"><?php echo $meta_sep; ?><?php _e( 'Your comment is awaiting moderation.', 'bfn' ); ?></div>
 				<?php endif; ?>
 			</footer><!-- /.comment-meta -->
 
@@ -107,7 +80,7 @@ function bfn_comment( $comment, $args, $depth ) {
 						'add_below' => 'div-comment',
 						'depth'     => $depth,
 						'max_depth' => $args['max_depth'],
-						'before'    => '<div class="reply">',
+						'before'    => '<div class="comment-meta meta-reply">',
 						'after'     => '</div>',
 					) ) );
 				?>
@@ -116,6 +89,7 @@ function bfn_comment( $comment, $args, $depth ) {
 <?php
 	} // endif
 } // bfn_comment
+
 
 /**
  * Get the first image from a post
