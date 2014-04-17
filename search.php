@@ -2,11 +2,10 @@
 
 		<section class="content">
 
-			<main class="main" role="main">
-
-				<?php
-					if ( have_posts() ) {
-				?>
+			<?php
+				if ( have_posts() ) {
+			?>
+				<main class="main" role="main">
 
 					<header class="doc-header">
 						<h1 class="doc-title"><?php printf( __( 'Search Results for: %s', 'bfn' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
@@ -14,8 +13,6 @@
 
 					<div class="doc-main doc-main-archive">
 						<?php
-							if ( have_posts() ) {
-
 								while ( have_posts() ) {
 									the_post();
 									get_template_part( 'part/content-excerpt', get_post_type() );
@@ -23,21 +20,18 @@
 
 								bfn_archive_pager();
 
-							} else {
-								get_template_part( 'part/content', 'no-results' );
-							} // endif
 						?>
 					</div><!-- /.doc-main.doc-main-archive -->
 
-				<?php
-					} else {
-						get_template_part( 'part/content', 'no-results' );
-					} // endif
-				?>
+				</main>
 
-			</main>
+				<?php get_template_part( 'part/sidebar' ); ?>
 
-			<?php get_template_part( 'part/widget-area' ); ?>
+			<?php
+				} else {
+					get_template_part( 'part/content', 'no-results' );
+				} // endif
+			?>
 
 		</section><!-- /.content -->
 

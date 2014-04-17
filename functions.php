@@ -13,9 +13,6 @@ require get_template_directory() . ( '/inc/scripts.php' );
 // widgets
 require get_template_directory() . ( '/inc/widgets.php' );
 
-// images
-require get_template_directory() . ( '/inc/images.php' );
-
 // comments
 require get_template_directory() . ( '/inc/comments.php' );
 

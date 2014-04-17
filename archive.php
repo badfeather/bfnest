@@ -19,13 +19,7 @@
 
 							} elseif ( is_archive() ) {
 
-								if ( is_category() ) {
-									single_cat_title();
-
-								} elseif ( is_tag() ) {
-									single_tag_title();
-
-								} elseif ( is_tax() ) {
+								if ( is_category() || is_tag() || is_tax() ) {
 									single_term_title();
 
 								} elseif ( is_post_type_archive() ) {
@@ -73,14 +67,14 @@
 
 					</div><!-- /.doc-main.doc-main-page -->
 
+					<?php get_template_part( 'part/sidebar' ); ?>
+
 				<?php
 					} else {
 						get_template_part( 'part/content', 'no-results' );
 					} // endif
 				?>
 			</main>
-
-			<?php get_template_part( 'part/sidebar', get_post_type() ); ?>
 
 		</section><!-- /.content -->
 

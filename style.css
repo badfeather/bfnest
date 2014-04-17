@@ -1577,15 +1577,10 @@ input[type="checkbox"] {
   margin-bottom: 1.625em;
   font-style: italic;
 }
-.widget-title {
-  font-size: 1.25em;
-  margin-bottom: 0.65em;
-  line-height: 1.3125;
-  text-transform: uppercase;
-}
 .widget-content {
   font-size: 0.875em;
 }
+.widget-title,
 .section-title,
 .comments-title,
 .comment-reply-title {
