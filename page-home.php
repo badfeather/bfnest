@@ -5,7 +5,7 @@ Template Name: Home
 ?>
 <?php get_header(); ?>
 
-		<section class="content">
+		<div class="content">
 
 			<?php
 				while ( have_posts() ) {
@@ -14,6 +14,6 @@ Template Name: Home
 				}
 			?>
 
-		</section><!-- /.content -->
+		</div><!-- /.content -->
 
 <?php get_footer(); ?>
