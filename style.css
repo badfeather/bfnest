@@ -1,8 +1,8 @@
 /*!
 Theme Name: Bad Feather Nest
-Theme URI: http://nest.badfeather.com/
+Theme URI: https://github.com/badfeather/bad-feather-nest
 Description: A WordPress starter theme we use at Bad Feather to start new projects. Constantly under construction. Use at your own peril!
-Version: 0.5
+Version: 0.6
 Author: Brad Thomason, Bad Feather Inc.
 Author URI: http://badfeather.com/
 License: MIT License
@@ -415,222 +415,6 @@ html {
   padding-left: 0.9375em;
   padding-right: 0.9375em;
 }
-.cols-1 {
-  width: 8.33333333%;
-}
-.cols-2 {
-  width: 16.66666667%;
-}
-.cols-3 {
-  width: 25%;
-}
-.cols-4 {
-  width: 33.33333333%;
-}
-.cols-5 {
-  width: 41.66666667%;
-}
-.cols-6 {
-  width: 50%;
-}
-.cols-7 {
-  width: 58.33333333%;
-}
-.cols-8 {
-  width: 66.66666667%;
-}
-.cols-9 {
-  width: 75%;
-}
-.cols-10 {
-  width: 83.33333333%;
-}
-.cols-11 {
-  width: 91.66666667%;
-}
-.cols-12 {
-  width: 100%;
-}
-.push-1 {
-  margin-left: 8.33333333%;
-}
-.push-2 {
-  margin-left: 16.66666667%;
-}
-.push-3 {
-  margin-left: 25%;
-}
-.push-4 {
-  margin-left: 33.33333333%;
-}
-.push-5 {
-  margin-left: 41.66666667%;
-}
-.push-6 {
-  margin-left: 50%;
-}
-.push-7 {
-  margin-left: 58.33333333%;
-}
-.push-8 {
-  margin-left: 66.66666667%;
-}
-.push-9 {
-  margin-left: 75%;
-}
-.push-10 {
-  margin-left: 83.33333333%;
-}
-.push-11 {
-  margin-left: 91.66666667%;
-}
-.push-12 {
-  margin-left: 100%;
-}
-.pull-1 {
-  margin-right: 8.33333333%;
-}
-.pull-2 {
-  margin-right: 16.66666667%;
-}
-.pull-3 {
-  margin-right: 25%;
-}
-.pull-4 {
-  margin-right: 33.33333333%;
-}
-.pull-5 {
-  margin-right: 41.66666667%;
-}
-.pull-6 {
-  margin-right: 50%;
-}
-.pull-7 {
-  margin-right: 58.33333333%;
-}
-.pull-8 {
-  margin-right: 66.66666667%;
-}
-.pull-9 {
-  margin-right: 75%;
-}
-.pull-10 {
-  margin-right: 83.33333333%;
-}
-.pull-11 {
-  margin-right: 91.66666667%;
-}
-.pull-12 {
-  margin-right: 100%;
-}
-.block-grid-1 > .column {
-  width: 100%;
-}
-.block-grid-1 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-1 > .column:nth-of-type(1n + 1) {
-  clear: both;
-}
-.block-grid-2 > .column {
-  width: 50%;
-}
-.block-grid-2 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-2 > .column:nth-of-type(2n + 1) {
-  clear: both;
-}
-.block-grid-3 > .column {
-  width: 33.33333333%;
-}
-.block-grid-3 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-3 > .column:nth-of-type(3n + 1) {
-  clear: both;
-}
-.block-grid-4 > .column {
-  width: 25%;
-}
-.block-grid-4 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-4 > .column:nth-of-type(4n + 1) {
-  clear: both;
-}
-.block-grid-5 > .column {
-  width: 20%;
-}
-.block-grid-5 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-5 > .column:nth-of-type(5n + 1) {
-  clear: both;
-}
-.block-grid-6 > .column {
-  width: 16.66666667%;
-}
-.block-grid-6 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-6 > .column:nth-of-type(6n + 1) {
-  clear: both;
-}
-.block-grid-7 > .column {
-  width: 14.28571429%;
-}
-.block-grid-7 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-7 > .column:nth-of-type(7n + 1) {
-  clear: both;
-}
-.block-grid-8 > .column {
-  width: 12.5%;
-}
-.block-grid-8 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-8 > .column:nth-of-type(8n + 1) {
-  clear: both;
-}
-.block-grid-9 > .column {
-  width: 11.11111111%;
-}
-.block-grid-9 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-9 > .column:nth-of-type(9n + 1) {
-  clear: both;
-}
-.block-grid-10 > .column {
-  width: 10%;
-}
-.block-grid-10 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-10 > .column:nth-of-type(10n + 1) {
-  clear: both;
-}
-.block-grid-11 > .column {
-  width: 9.09090909%;
-}
-.block-grid-11 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-11 > .column:nth-of-type(11n + 1) {
-  clear: both;
-}
-.block-grid-12 > .column {
-  width: 8.33333333%;
-}
-.block-grid-12 > .column:nth-of-type(n) {
-  clear: none;
-}
-.block-grid-12 > .column:nth-of-type(12n + 1) {
-  clear: both;
-}
 body {
   font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -817,6 +601,7 @@ abbr.initialism {
   text-transform: uppercase;
 }
 blockquote {
+  font-family: Cambria, Georgia, serif;
   font-size: 1.25em;
   line-height: 1.625;
   font-style: italic;
@@ -829,12 +614,15 @@ blockquote em,
 blockquote cite {
   font-style: normal;
 }
-.lede p {
+.lede {
+  font-family: Cambria, Georgia, serif;
   font-size: 1.5em;
-  line-height: 0.06770833;
-  margin: 0em 0em 1.08333333em 0em;
+  line-height: 1.625;
   font-style: normal;
   font-weight: normal;
+  margin-top: 1.08333333em;
+  margin-bottom: 1.08333333em;
+  margin-left: 1.08333333em;
 }
 q:before,
 q:after,
@@ -1190,7 +978,7 @@ input[type='submit'] {
   color: #ffffff;
   text-align: center;
   vertical-align: middle;
-  background: #00adf2;
+  background-color: #00adf2;
   border: 1px solid #00adf2;
   border-radius: 0.28571429em;
   white-space: nowrap;
@@ -1204,7 +992,7 @@ button:focus,
 input[type='submit']:hover,
 input[type='submit']:focus {
   color: #ffffff;
-  background: #ff00ff;
+  background-color: #ff00ff;
   text-decoration: none;
   border-color: #ff00ff;
 }
@@ -1500,7 +1288,7 @@ input[type="color"] {
   margin: 0;
   max-width: 100%;
   display: inline-block;
-  background: #202020;
+  background-color: #202020;
 }
 .form-control:focus,
 textarea:focus,
@@ -1606,7 +1394,7 @@ input[type="checkbox"] {
   color: #ffffff;
   text-align: center;
   vertical-align: middle;
-  background: #00adf2;
+  background-color: #00adf2;
   border: 1px solid #00adf2;
   border-radius: 0.28571429em;
   white-space: nowrap;
@@ -1616,7 +1404,7 @@ input[type="checkbox"] {
 .comment-form input[type="submit"]:hover,
 .comment-form input[type="submit"]:focus {
   color: #ffffff;
-  background: #ff00ff;
+  background-color: #ff00ff;
   text-decoration: none;
   border-color: #ff00ff;
 }

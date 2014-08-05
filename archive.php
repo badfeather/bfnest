@@ -10,14 +10,7 @@
 
 					<header class="doc-header">
 						<h1 class="doc-title"><?php
-							if ( is_home() ) {
-							    if ( get_option( 'page_for_posts', true ) ) {
-							      echo get_the_title( get_option( 'page_for_posts', true ) );
-							    } else {
-							      _e( 'Latest Posts', 'bfn' );
-							    }
-
-							} elseif ( is_archive() ) {
+							if ( is_archive() ) {
 
 								if ( is_category() || is_tag() || is_tax() ) {
 									single_term_title();
@@ -44,8 +37,8 @@
 							} elseif ( is_search() ) {
 								printf( __( 'Search Results for %s', 'bfn' ), get_search_query() );
 							}
-
 						?></h1>
+
 						<?php
 							// Show an optional term description.
 							$term_description = term_description();
@@ -59,7 +52,7 @@
 						<?php
 							while ( have_posts() ) {
 								the_post();
-								get_template_part( 'part/content', get_post_type() );
+								get_template_part( 'content', get_post_type() );
 							} // endwhile
 
 							bfn_archive_pager();
@@ -67,14 +60,14 @@
 
 					</div><!-- /.doc-main.doc-main-page -->
 
-					<?php get_template_part( 'part/sidebar' ); ?>
-
 				<?php
 					} else {
-						get_template_part( 'part/content', 'no-results' );
+						get_template_part( 'content', 'no-results' );
 					} // endif
 				?>
 			</main>
+
+			<?php get_sidebar(); ?>
 
 		</section><!-- /.content -->
 

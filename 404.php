@@ -14,7 +14,7 @@
 
 			</main>
 
-			<?php get_template_part( 'part/sidebar', get_post_type() ); ?>
+			<?php get_sidebar(); ?>
 
 		</section><!-- /.content -->
 

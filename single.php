@@ -5,10 +5,12 @@
 			<?php
 				while ( have_posts() ) {
 					the_post();
-					get_template_part( 'part/content-single', get_post_type() );
+					get_template_part( 'content-single', get_post_type() );
 				}
 			?>
 
+			<?php get_sidebar( get_post_type() ); ?>
+			
 		</div><!-- /.content -->
 
 <?php get_footer(); ?>

@@ -25,5 +25,3 @@
 
 	</div><!-- /.doc-main -->
 </main>
-
-<?php get_template_part( '/part/sidebar' ); ?>

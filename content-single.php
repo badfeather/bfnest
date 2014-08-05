@@ -3,9 +3,10 @@
 
 		<header class="doc-header">
 			<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
+			<?php get_template_part( 'meta-above' ); ?>
 		</header><!-- /.doc-header -->
 
-		<div class="doc-main doc-main-page">
+		<div class="doc-main doc-main-single">
 
 			<div class="entry-content">
 				<?php the_content(); ?>
@@ -17,11 +18,17 @@
 				?>
 			</div><!-- /.entry-content -->
 
-			<?php edit_post_link( __( 'Edit', 'bfn' ), '<footer class="entry-meta entry-footer"><span class="meta meta-edit">', '</span></footer>' ); ?>
+			<?php get_template_part( 'meta-below' ); ?>
 
-		</div><!-- /.doc-main.doc-main-page -->
+	    <?php
+	      if ( comments_open() || '0' != get_comments_number() ) {
+	      	comments_template();
+	      } // endif
+
+	      bfn_single_pager();
+	    ?>
+
+		</div><!-- /.doc-main.doc-main-single -->
 
 	</article><!-- #post-## -->
 </main>
-
-<?php get_template_part( '/part/sidebar', 'page' ); ?>

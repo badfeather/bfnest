@@ -184,6 +184,7 @@ abbr.initialism {
 
 // Blockquotes
 blockquote {
+  font-family: @blockquote-font-family;
 	.font-size-emcalc(@blockquote-font-size);
 	line-height: @blockquote-line-height;
 	font-style: @blockquote-font-style;
@@ -198,15 +199,17 @@ blockquote {
 	}
 }
 
-// Blockquotes
+// Ledes
 .lede {
-	p {
+    font-family: @lede-font-family;
 		.font-size-emcalc(@lede-font-size);
-		.line-height-calc(@lede-line-height, @lede-font-size);
-		.margin-emcalc(@size: @lede-font-size);
+		line-height: @lede-line-height;
 		font-style: @lede-font-style;
 		font-weight: @lede-font-weight;
-	}
+		.margin-top-emcalc(@lede-margin-top, @lede-font-size);
+		.margin-right-emcalc(@lede-margin-right, @lede-font-size);
+		.margin-bottom-emcalc(@lede-margin-bottom, @lede-font-size);
+		.margin-left-emcalc(@lede-margin-left, @lede-font-size);
 }
 
 // Quotes
@@ -435,7 +438,7 @@ img,
 	color: @btn-color;
 	text-align: center;
 	vertical-align: middle;
-	background: @btn-bg-color;
+	background-color: @btn-bg-color;
 	border: 1px solid @btn-border-color;
 	border-radius: unit((@form-border-radius / @btn-font-size), em);
 	white-space: nowrap;
@@ -444,7 +447,7 @@ img,
 	&:hover,
 	&:focus {
 		color: @btn-hover-color;
-		background: @btn-hover-bg-color;
+		background-color: @btn-hover-bg-color;
 		text-decoration: none;
 		border-color: @btn-hover-border-color;
 	}
@@ -528,7 +531,7 @@ input[type='submit'] {
 	margin: 0;
 	max-width: 100%;
 	display: inline-block;
-	background: @input-bg-color;
+	background-color: @input-bg-color;
 	&:focus {
 		border-color: @input-border-color;
 		color: @input-color;

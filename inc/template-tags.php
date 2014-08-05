@@ -260,35 +260,37 @@ function bfn_is_descendant_page( $page_id ) {
 };
 
 // page subnav function
-function bfn_page_subnav( $title = '' ) {
+function bfn_page_subnav( $page_id = '', $title = '' ) {
 	global $post;
-	if ( is_page() ) {
-		$top_parent = bfn_get_top_parent_page_id( $post->ID );
-		$parent = $post->post_parent;
-		$children = wp_list_pages( array(
-			'sort_column' => 'menu_order',
-			'title_li' => '',
-			'child_of' => $top_parent,
-			'echo' => 0
-		) );
-		$top_parent_name = get_the_title( $top_parent );
-		if ( $children != '' ) {
+	if ( $page_id ) {
+		$top_parent = $page_id;
+	} else {
+		$top_parent = hbstudio_get_top_parent_page_id( $post->ID );
+	}
+	$children = wp_list_pages( array(
+		'sort_column' => 'menu_order',
+		'title_li' => '',
+		'child_of' => $top_parent,
+		'echo' => 0
+	) );
+	$top_parent_name = get_the_title( $top_parent );
+	if ( $children != '' ) {
 ?>
 <nav class="widget widget-subnav">
-	<h1 class="widget-title nav-title"><?php
-		if ( $title )
-			echo $title;
-		else
-			echo $top_parent_name;
-		?></h1>
-	<div class="widget-content">
-		<ul class="menu menu-secondary">
-			<?php echo $children; ?>
-		</ul>
-	</div><!-- .widget-content -->
+<h1 class="widget-title nav-title"><?php
+	if ( $title ) {
+		echo $title;
+	} else {
+		echo $top_parent_name;
+  }
+?></h1>
+<div class="widget-content">
+	<ul class="menu menu-secondary">
+		<?php echo $children; ?>
+	</ul>
+</div><!-- .widget-content -->
 </nav><!-- .widget.widget-subnav -->
 <?php
-		} // endif
 	} // endif
 }
 
@@ -358,6 +360,100 @@ function bfn_taxonomy_subnav( $tax = '', $title = '' ) {
 <?php
 		}
 	}
+}
+
+/**
+ * Latest posts
+ * Requires term ID. Defaults to 3 posts ordered by date
+ */
+function bfn_latest_posts( $args ) {
+	$defaults = array(
+		'posts_per_page' => 3,
+		'orderby' => 'date',
+		'post_type' => 'post',
+		'content_part' => '',
+		'widget_title' => 'Latest Posts',
+		'exclude' => ''
+	);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args, EXTR_SKIP );
+	$query_args = array(
+		'post_type' => $post_type,
+		'posts_per_page' => $posts_per_page,
+		'orderby' => $orderby
+	);
+	$latest = new WP_Query( $query_args );
+	if ( $latest->have_posts() ) {
+?>
+<aside class="widget widget-latest">
+	<?php if( $widget_title ) {
+		echo '<h1 class="widget-title">'. $widget_title .'</h1>';
+	} ?>
+	<div class="widget-content">
+		<?php
+  		while ( $latest->have_posts() ) {
+  		  $latest->the_post();
+  			get_template_part( 'content', $content_part );
+  		} // endwhile
+  		wp_reset_postdata();
+		?>
+	</div><!-- /.widget-content -->
+</aside><!-- /.widget.widget-latest -->
+<?php
+	} // endif
+}
+
+/**
+ * Latest posts in specific taxonomy id
+ * Requires term ID. Defaults to 3 posts and category as taxonomy
+ */
+function bfn_latest_taxonomy_posts( $args ) {
+	$defaults = array(
+		'term_id' => '',
+		'taxonomy' => '',
+		'posts_per_page' => 3,
+		'orderby' => 'date',
+		'post_type' => 'post',
+		'content_part' => '',
+		'widget_title' => 'Latest Posts in ' . $term_name,
+		'exclude' => ''
+	);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args, EXTR_SKIP );
+	$term = get_term_by( 'id', $term_id, $taxonomy );
+	$term_name = $term->name;
+	$term_slug = $term->slug;
+	$query_args = array(
+		'post_type' => $post_type,
+		'tax_query' => array(
+			array(
+				'taxonomy' => $taxonomy,
+				'field' => 'ID',
+				'terms' => $term_id
+			)
+		),
+		'posts_per_page' => $posts_per_page,
+		'orderby' => $orderby
+	);
+	$latest = new WP_Query( $query_args );
+	if ( $latest->have_posts() ) {
+?>
+<aside class="widget widget-latest-<?php echo $term_slug; ?>">
+  <?php if ( $widget_title ) {
+    echo '<h1 class="widget-title">' . $widget_title . '</h1>';
+  } ?>
+	<div class="widget-content">
+		<?php
+  		while ( $latest->have_posts() ) {
+    		  $latest->the_post();
+    			get_template_part( 'content', $content_part );
+  		} // endwhile
+  		wp_reset_postdata();
+		?>
+	</div><!-- /.widget-content -->
+</aside><!-- /.widget.widget-latest -->
+<?php
+	} //endif
 }
 
 /**

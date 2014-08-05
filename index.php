@@ -15,7 +15,7 @@
 						<?php
 							while ( have_posts() ) {
 								the_post();
-								get_template_part( 'part/content', get_post_type() );
+								get_template_part( 'content', get_post_type() );
 							}
 
 							bfn_archive_pager();
@@ -23,13 +23,13 @@
 					</div><!-- /.doc-main -->
 				</main>
 
-				<?php get_template_part( 'part/sidebar' ); ?>
-
 			<?php
 				} else {
-					get_template_part( 'part/content', 'no-results' );
+					get_template_part( 'content', 'no-results' );
 				} // endif
 			?>
+
+			<?php get_sidebar(); ?>
 
 		</section><!-- /.content -->
 

@@ -10,9 +10,11 @@ Template Name: Home
 			<?php
 				while ( have_posts() ) {
 					the_post();
-					get_template_part( 'part/content-page', 'home' );
+					get_template_part( 'content-page', 'home' );
 				}
 			?>
+
+			<?php get_sidebar( 'page' ); ?>
 
 		</div><!-- /.content -->
 
