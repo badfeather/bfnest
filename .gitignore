@@ -1,2 +1,5 @@
 #codekit config file
 *.codekit
+.DS_Store
+.codekit-cache/
+bower_components/
