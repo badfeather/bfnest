@@ -58,7 +58,7 @@
 							bfn_archive_pager();
 						?>
 
-					</div><!-- /.doc-main.doc-main-page -->
+					</div><!-- /.doc-main.doc-main-archive -->
 
 				<?php
 					} else {

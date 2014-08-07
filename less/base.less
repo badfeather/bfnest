@@ -6,7 +6,7 @@ body {
 	color: @base-color;
 	background-color: @base-background-color;
 	width: 100%;
-	.clearfix;
+	&:extend(.clearfix all);
 }
 // typekit
 .wf-loading {
@@ -406,7 +406,7 @@ img,
 .pager-nav {
 	.list-unstyled;
 	clear: both;
-	.clearfix;
+	&:extend(.clearfix all);
 	font-family: @postnav-font-family;
 	.nav-previous,
 	.nav-next {
@@ -463,8 +463,8 @@ img,
 	fieldset[disabled] & {
 		cursor: not-allowed;
 		pointer-events: none; // Future-proof disabling of clicks
-		.opacity(.65);
-		.box-shadow(none);
+		opacity: .65;
+		box-shadow: none;
 	}
 }
 
@@ -555,7 +555,7 @@ input[type="color"] {
 	&:extend(.form-control all);
 }
 textarea {
-	.box-sizing(border-box);
+	//box-sizing: border-box;
 	width: 100%;
 }
 select {
