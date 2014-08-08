@@ -1,4 +1,4 @@
-<main class="main" role="main">
+<main class="doc-main" role="main">
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 		<header class="doc-header">
@@ -6,7 +6,7 @@
 			<?php get_template_part( 'meta-above' ); ?>
 		</header><!-- /.doc-header -->
 
-		<div class="doc-main doc-main-single">
+		<div class="doc-content doc-content-single">
 
 			<div class="entry-content">
 				<?php the_content(); ?>
@@ -28,7 +28,7 @@
 	      bfn_single_pager();
 	    ?>
 
-		</div><!-- /.doc-main.doc-main-single -->
+		</div><!-- /.doc-content.doc-content-single -->
 
 	</article><!-- #post-## -->
-</main>
+</main><!-- /.doc-main -->

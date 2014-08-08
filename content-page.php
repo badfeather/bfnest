@@ -1,11 +1,11 @@
-<main class="main" role="main">
+<main class="doc-main" role="main">
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 		<header class="doc-header">
 			<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
 		</header><!-- /.doc-header -->
 
-		<div class="doc-main doc-main-page">
+		<div class="doc-content doc-content-page">
 
 			<div class="entry-content">
 				<?php the_content(); ?>
@@ -19,7 +19,7 @@
 
 			<?php edit_post_link( __( 'Edit', 'bfn' ), '<footer class="entry-meta entry-footer"><span class="meta meta-edit">', '</span></footer>' ); ?>
 
-		</div><!-- /.doc-main.doc-main-page -->
+		</div><!-- /.doc-content.doc-content-page -->
 
 	</article><!-- #post-## -->
-</main>
+</main><!-- /.doc-main -->

@@ -2,7 +2,7 @@
 
 		<section class="content">
 
-			<main class="main" role="main">
+			<main class="doc-main" role="main">
 
 				<?php
 					if ( have_posts() ) {
@@ -47,7 +47,7 @@
 						?>
 					</header>
 
-					<div class="doc-main doc-main-archive">
+					<div class="doc-content doc-content-archive">
 
 						<?php
 							while ( have_posts() ) {
@@ -58,14 +58,14 @@
 							bfn_archive_pager();
 						?>
 
-					</div><!-- /.doc-main.doc-main-archive -->
+					</div><!-- /.doc-content.doc-content-archive -->
 
 				<?php
 					} else {
 						get_template_part( 'content', 'no-results' );
 					} // endif
 				?>
-			</main>
+			</main><!-- /.doc-main -->
 
 			<?php get_sidebar(); ?>
 

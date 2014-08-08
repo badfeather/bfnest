@@ -10,7 +10,7 @@
 			?>
 
 			<?php get_sidebar( get_post_type() ); ?>
-			
+
 		</div><!-- /.content -->
 
 <?php get_footer(); ?>
