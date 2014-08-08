@@ -1487,7 +1487,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
     margin-left: -0.9375em;
     margin-right: -0.9375em;
   }
-  .doc-main,
+  .doc-content,
   .doc-header,
   .doc-side {
     position: relative;
@@ -1499,7 +1499,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   .doc-header {
     width: 100%;
   }
-  .doc-main {
+  .doc-content {
     width: 66.66666667%;
   }
   .doc-side {
@@ -1507,7 +1507,7 @@ fieldset[disabled] .comment-form input[type="submit"] {
   }
 }
 @media (min-width: 62em) {
-  .doc-main {
+  .doc-content {
     width: 75%;
   }
   .doc-side {
