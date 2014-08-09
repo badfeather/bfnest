@@ -8,8 +8,8 @@ function bfn_archive_pager() {
 	if ( $wp_query->max_num_pages > 1 ) {
 ?>
 	<ul class="pager-nav">
-		<li class="nav-next"><?php next_posts_link( __( '&larr; Older', 'bfn' ) ); ?></li>
-		<li class="nav-prev"><?php previous_posts_link( __( 'Newer &rarr;', 'bfn' ) ); ?></li>
+		<li class="nav-next"><?php previous_posts_link( __( '&larr; Prev', 'bfn' ) ); ?></li>
+		<li class="nav-prev"><?php next_posts_link( __( 'Next &rarr;', 'bfn' ) ); ?></li>
 	</ul>
 <?php
 	} // endif
