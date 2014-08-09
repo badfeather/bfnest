@@ -265,7 +265,7 @@ function bfn_page_subnav( $page_id = '', $title = '' ) {
 	if ( $page_id ) {
 		$top_parent = $page_id;
 	} else {
-		$top_parent = hbstudio_get_top_parent_page_id( $post->ID );
+		$top_parent = bfn_get_top_parent_page_id( $post->ID );
 	}
 	$children = wp_list_pages( array(
 		'sort_column' => 'menu_order',
@@ -609,18 +609,32 @@ function bfn_scriptless_social_share( $args = array() ) {
  */
 function bfn_follow_links( $args = array() ) {
 	$defaults = array(
-		'twitter' => '',
-		'facebook' => '',
-		'googleplus' => '',
-		'pinterest' => '',
-		'linkedin' => '',
-		'tumblr' => '',
-		'myspace' => '',
-		'soundcloud' => '',
-		'youtube' => '',
-		'vimeo' => '',
-		'flickr' => '',
-		'rss' => get_bloginfo( 'rss2_url' ),
+		'twitter_url' => '',
+		'twitter_message' => __( 'On Twitter', 'bfn' ),
+		'facebook_url' => '',
+		'facebook_message' => __( 'On Facebook', 'bfn' ),
+		'googleplus_url' => '',
+		'googleplus_message' => __( 'On Google+', 'bfn' ),
+		'pinterest_url' => '',
+		'pinterest_message' => __( 'On Pinterest', 'bfn' ),
+		'linkedin_url' => '',
+		'linkedin_message' => __( 'On LinkedIn', 'bfn' ),
+		'tumblr_url' => '',
+		'tumblr_message' => __( 'On Tumblr', 'bfn' ),
+		'myspace_url' => '',
+		'myspace_message' => __( 'On MySpace', 'bfn' ),
+		'soundcloud_url' => '',
+		'soundcloud_message' => __( 'On Soundcloud', 'bfn' ),
+		'youtube_url' => '',
+		'youutube_message' => __( 'On YouTube', 'bfn' ),
+		'vimeo_url' => '',
+		'vimeo_message' => __( 'On Vimeo', 'bfn' ),
+		'flickr_url' => '',
+		'flickr_message' => __( 'On Flickr', 'bfn' ),
+		'mailing_list_url' => '',
+		'mailing_list_message' => __( 'Join Our Mailing List', 'bfn' ),
+		'rss_url' => get_bloginfo( 'rss2_url' ),
+		'rss_message' => __( 'Subscribe via RSS', 'bfn' ),
 		'follow_text' => 'Follow '. get_bloginfo( 'name' ),
 		'new_window' => true
 	);
@@ -637,52 +651,55 @@ function bfn_follow_links( $args = array() ) {
 	<div class="widget-content">
 		<ul class="follow">
 			<?php
-			if ( $facebook ) {
-				echo '<li><a href="'. esc_url( $facebook ) .'" class="follow-link follow-link-facebook"'. $target .'>Facebook</a></li>';
+			if ( $facebook_url ) {
+				echo '<li><a href="'. esc_url( $facebook_url ) .'" class="follow-link follow-link-facebook"'. $target .'>' . $facebook_message . '</a></li>';
 			}
 
-			if ( $twitter ) {
-				echo '<li><a href="'. esc_url( $twitter ) .'" class="follow-link follow-link-twitter"'. $target .'>Twitter</a></li>';
+			if ( $twitter_url ) {
+				echo '<li><a href="'. esc_url( $twitter_url ) .'" class="follow-link follow-link-twitter"'. $target .'>' . $twitter_message . '</a></li>';
 			}
 
-			if ( $googleplus ) {
-				echo '<li><a href="'. esc_url( $googleplus ) .'" class="follow-link follow-link-googleplus"'. $target .'>Google+</a></li>';
+			if ( $googleplus_url ) {
+				echo '<li><a href="'. esc_url( $googleplus_url ) .'" class="follow-link follow-link-googleplus"'. $target .'>' . $googleplus_message . '</a></li>';
 			}
 
-			if ( $pinterest ) {
-				echo '<li><a href="'. esc_url( $pinterest ) .'" class="follow-link follow-link-pinterest"'. $target .'>Pinterest</a></li>';
+			if ( $pinterest_url ) {
+				echo '<li><a href="'. esc_url( $pinterest_url ) .'" class="follow-link follow-link-pinterest"'. $target .'>' . $pinterest_message . '</a></li>';
 			}
 
-			if ( $linkedin ) {
-				echo '<li><a href="'. esc_url( $linkedin ) .'" class="follow-link follow-link-linkedin"'. $target .'>LinkedIn</a></li>';
+			if ( $linkedin_url ) {
+				echo '<li><a href="'. esc_url( $linkedin_url ) .'" class="follow-link follow-link-linkedin"'. $target .'>' . $linkedin_message . '</a></li>';
 			}
 
-			if ( $tumblr ) {
-				echo '<li><a href="'. esc_url( $tumblr ) .'" class="follow-link follow-link-tumblr"'. $target .'>Tumblr</a></li>';
+			if ( $tumblr_url ) {
+				echo '<li><a href="'. esc_url( $tumblr_url ) .'" class="follow-link follow-link-tumblr"'. $target .'>' . $tumblr_message . '</a></li>';
 			}
 
-			if ( $myspace ) {
-				echo '<li><a href="'. esc_url( $myspace ) .'" class="follow-link follow-link-myspace"'. $target .'>MySpace</a></li>';
+			if ( $myspace_url ) {
+				echo '<li><a href="'. esc_url( $myspace_url ) .'" class="follow-link follow-link-myspace"'. $target .'>' . $myspace_message . '</a></li>';
 			}
 
-			if ( $soundcloud ) {
-				echo '<li><a href="'. esc_url( $soundcloud ) .'" class="follow-link follow-link-soundcloud"'. $target .'>Soundcloud</a></li>';
+			if ( $soundcloud_url ) {
+				echo '<li><a href="'. esc_url( $soundcloud_url ) .'" class="follow-link follow-link-soundcloud"'. $target .'>' . $soundcloud_message . '</a></li>';
 			}
 
-			if ( $youtube ) {
-				echo '<li><a href="'. esc_url( $youtube ) .'" class="follow-link follow-link-youtube"'. $target .'>YouTube</a></li>';
+			if ( $youtube_url ) {
+				echo '<li><a href="'. esc_url( $youtube_url ) .'" class="follow-link follow-link-youtube"'. $target .'>' . $youtube_message . '</a></li>';
 			}
 
-			if ( $vimeo ) {
-				echo '<li><a href="'. esc_url( $vimeo ) .'" class="follow-link follow-link-vimeo"'. $target .'>Vimeo</a></li>';
+			if ( $vimeo_url ) {
+				echo '<li><a href="'. esc_url( $vimeo_url ) .'" class="follow-link follow-link-vimeo"'. $target .'>' . $vimeo_message . '</a></li>';
 			}
 
-			if ( $flickr ) {
-				echo '<li><a href="'. esc_url( $flickr ) .'" class="follow-link follow-link-flickr"'. $target .'>Flickr</a></li>';
+			if ( $flickr_url ) {
+				echo '<li><a href="'. esc_url( $flickr_url ) .'" class="follow-link follow-link-flickr"'. $target .'>' . $flickr_message . '</a></li>';
 			}
 
-			if ( $rss ) {
-				echo '<li><a href="'. esc_url( $rss ) .'" class="follow-link follow-link-rss"'. $target .'>RSS</a></li>';
+      if ( $mailing_list_url ) {
+        echo '<li><a href="'. esc_url( $mailing_list_url ) .'" class="follow-link follow-link-mailing-list"'. $target .'>' . $mailing_list_message . '</a></li>';
+      }
+			if ( $rss_url ) {
+				echo '<li><a href="'. esc_url( $rss_url ) .'" class="follow-link follow-link-rss"'. $target .'>' . $rss_message . '</a></li>';
 			}
 			?>
 		</ul>

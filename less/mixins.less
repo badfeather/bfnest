@@ -410,12 +410,12 @@
 	padding-left: @gutter / 2;
 	padding-right: @gutter / 2;
 	max-width: (@width + @gutter);
-	&:extend(.clearfix all);
+	.clearfix;
 }
 .make-row(@gutter: @gutter-width-calc) {
 	margin-left: @gutter / -2;
 	margin-right: @gutter / -2;
-	&:extend(.clearfix all);
+	.clearfix;
 }
 .make-column(@gutter: @gutter-width-calc) {
 	position: relative;
