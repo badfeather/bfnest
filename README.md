@@ -4,9 +4,9 @@ A starter theme (not to be confused with a parent theme or framework) for Bad Fe
 
 ### Getting Started
 * After downloading theme, change the name of the folder to whatever your theme is called, then:
-** Find in files `'nest'` and replace with `'yourtextdomain'`
-** Find in files `nest_` and replace with `yourtextdomain`
-** Change the theme name and credit info in the `style.less` or `style.css` file, depending on whether you're using LESS.
+  * Find in files `'nest'` and replace with `'yourtextdomain'`
+  * Find in files `nest_` and replace with `yourtextdomain`
+  * Change the theme name and credit info in the `style.less` or `style.css` file, depending on whether you're using LESS.
 * Install any javascript dependencies via bower - these files will be placed in js/vendor/
 * Most style changes can be made in `less/variables.less` and `less/theme.less`
 * Most of the LESS variables that have anything to do with sizes are based on pixel amounts but set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `@h2-font-size: 20`.
