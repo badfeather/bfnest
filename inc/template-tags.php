@@ -3,13 +3,13 @@
 /**
  * Pagination for archives
  */
-function bfn_archive_pager() {
+function nest_archive_pager() {
 	global $wp_query, $post;
 	if ( $wp_query->max_num_pages > 1 ) {
 ?>
 	<ul class="pager-nav">
-		<li class="nav-next"><?php previous_posts_link( __( '&larr; Prev', 'bfn' ) ); ?></li>
-		<li class="nav-prev"><?php next_posts_link( __( 'Next &rarr;', 'bfn' ) ); ?></li>
+		<li class="nav-next"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></li>
+		<li class="nav-prev"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></li>
 	</ul>
 <?php
 	} // endif
@@ -18,7 +18,7 @@ function bfn_archive_pager() {
 /**
  * Pagination for single posts
  */
-function bfn_single_pager() {
+function nest_single_pager() {
 	global $wp_query, $post;
 	$previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
 	$next = get_adjacent_post( false, '', false );
@@ -36,7 +36,7 @@ function bfn_single_pager() {
 /**
  * Comment listing
  */
-function bfn_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
+function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 	$GLOBALS['comment'] = $comment;
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) {
@@ -44,7 +44,7 @@ function bfn_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
-			<?php _e( 'Pingback:', 'bfn' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'bfn' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php _e( 'Pingback:', 'nest' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'nest' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
 
 <?php
@@ -56,7 +56,7 @@ function bfn_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 			<footer class="comment-meta">
 				<span class="comment-author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-					<?php printf( __( '%s', 'bfn' ), sprintf( '<cite class="fn meta meta-author">%s</cite>', get_comment_author_link() ) ); ?>
+					<?php printf( __( '%s', 'nest' ), sprintf( '<cite class="fn meta meta-author">%s</cite>', get_comment_author_link() ) ); ?>
 				</span><!-- /.comment-author -->
 
 				<?php echo $meta_sep; ?><a class="meta meta-comment-time" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
@@ -64,10 +64,10 @@ function bfn_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 						 <?php echo human_time_diff( get_comment_time('U'), current_time('timestamp') ) . ' ago'; ?>
 					</time>
 				</a>
-				<?php edit_comment_link( __( 'Edit', 'bfn' ), $meta_sep . '<span class="meta meta-edit">', '</span>' ); ?>
+				<?php edit_comment_link( __( 'Edit', 'nest' ), $meta_sep . '<span class="meta meta-edit">', '</span>' ); ?>
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<div class="comment-awaiting-moderation"><?php echo $meta_sep; ?><?php _e( 'Your comment is awaiting moderation.', 'bfn' ); ?></div>
+				<div class="comment-awaiting-moderation"><?php echo $meta_sep; ?><?php _e( 'Your comment is awaiting moderation.', 'nest' ); ?></div>
 				<?php endif; ?>
 			</footer><!-- /.comment-meta -->
 
@@ -88,19 +88,19 @@ function bfn_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 		</article><!-- /.comment-body -->
 <?php
 	} // endif
-} // bfn_comment
+} // nest_comment
 
 
 /**
  * Get the first image from a post
  * Must be used within the loop
- * Use bfn_get_first_image( $atts ) in template, much like get_the_post_thumbnail()
+ * Use nest_get_first_image( $atts ) in template, much like get_the_post_thumbnail()
  * Atts defaults:
  * 'size' => 'thumbnail'
  * 'output' => 'img' // can be either 'img' or 'url'
  * 'link' => false // if true, will link to full version of itself
  */
-function bfn_get_first_image( $size = 'thumbnail', $atts = array() ) {
+function nest_get_first_image( $size = 'thumbnail', $atts = array() ) {
 
 	$defaults = array(
 		'output' => 'img', // accepts either 'img' or 'url'
@@ -146,31 +146,31 @@ function bfn_get_first_image( $size = 'thumbnail', $atts = array() ) {
 }
 
 /**
- * Echoes the first image from a post using arguments from bfn_get_first_image() function
+ * Echoes the first image from a post using arguments from nest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function bfn_first_image( $size = 'thumbnail', $atts ) {
-	echo bfn_get_first_image( $size, $atts );
+function nest_first_image( $size = 'thumbnail', $atts ) {
+	echo nest_get_first_image( $size, $atts );
 }
 
 /**
- * Echoes the first image from a post using arguments from bfn_get_first_image() function
+ * Echoes the first image from a post using arguments from nest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function bfn_get_first_image_url( $size = 'thumbnail' ) {
-	return bfn_get_first_image( $size, $atts = array( 'output' => 'url' ) );
+function nest_get_first_image_url( $size = 'thumbnail' ) {
+	return nest_get_first_image( $size, $atts = array( 'output' => 'url' ) );
 }
 
 /**
  * Featured or first image
  * must be used within the loop
  */
-function bfn_featured_or_first_image( $size = 'thumbnail' ) {
+function nest_featured_or_first_image( $size = 'thumbnail' ) {
 	if ( has_post_thumbnail() ) {
 		the_post_thumbnail( $size );
 
 	} else {
-		bfn_first_image( $size );
+		nest_first_image( $size );
 
 	}
 }
@@ -179,24 +179,24 @@ function bfn_featured_or_first_image( $size = 'thumbnail' ) {
  * Email encode shortcode - use on pages and posts as follows [email]you@you.com[/email]
  * via http://bavotasan.com/2012/shortcode-to-encode-email-in-wordpress-posts/
  */
-function bfn_mailto_encode( $atts, $content ) {
+function nest_mailto_encode( $atts, $content ) {
 	return '<a href="'. antispambot( 'mailto:'. $content ) .'">'. antispambot( $content ) .'</a>';
 }
-add_shortcode( 'email', 'bfn_mailto_encode' );
+add_shortcode( 'email', 'nest_mailto_encode' );
 
 /**
  * Returns only encoded mailto address, for use with links having custom text (not the email address) as the linked text
  */
-function bfn_email_address_encode( $atts, $content ) {
+function nest_email_address_encode( $atts, $content ) {
 	return antispambot( 'mailto:'. $content );
 }
-add_shortcode( 'mailto', 'bfn_email_address_encode' );
+add_shortcode( 'mailto', 'nest_email_address_encode' );
 
 /**
  * Post is in descendant category
  * See http://codex.wordpress.org/Function_Reference/in_category
  */
-function bfn_post_is_in_descendant_category( $cats, $_post = null ) {
+function nest_post_is_in_descendant_category( $cats, $_post = null ) {
 	foreach ( (array) $cats as $cat ) {
 		// get_term_children() accepts integer ID only
 		$descendants = get_term_children( (int) $cat, 'category' );
@@ -210,7 +210,7 @@ function bfn_post_is_in_descendant_category( $cats, $_post = null ) {
  * Inherit category template by category id
  * Checks if current category is child of category id that has a template
  */
-function bfn_inherit_category_template() {
+function nest_inherit_category_template() {
 	if ( is_category() ) {
 		$catid = get_query_var( 'cat' );
 		$cat = get_category( $catid );
@@ -225,13 +225,13 @@ function bfn_inherit_category_template() {
 	} // endif
 }
 // uncomment below statement to make it work
-// add_action( 'template_redirect', 'bfn_inherit_category_template' );
+// add_action( 'template_redirect', 'nest_inherit_category_template' );
 
 
 /**
  * Get top parent page id - used in page subnav function
  */
-function bfn_get_top_parent_page_id() {
+function nest_get_top_parent_page_id() {
     global $post;
     $ancestors = $post->ancestors;
     if ( $ancestors ) {
@@ -245,7 +245,7 @@ function bfn_get_top_parent_page_id() {
  * test if is a descendant page of a particular page id
  * modified/cleaned up version of is_tree function found here: http://codex.wordpress.org/Conditional_Tags
  */
-function bfn_is_descendant_page( $page_id ) {
+function nest_is_descendant_page( $page_id ) {
 	global $post;
 	$ancestors = get_post_ancestors( $post->ID );
 	foreach ( $ancestor as $ancestor ) {
@@ -260,12 +260,12 @@ function bfn_is_descendant_page( $page_id ) {
 };
 
 // page subnav function
-function bfn_page_subnav( $page_id = '', $title = '' ) {
+function nest_page_subnav( $page_id = '', $title = '' ) {
 	global $post;
 	if ( $page_id ) {
 		$top_parent = $page_id;
 	} else {
-		$top_parent = bfn_get_top_parent_page_id( $post->ID );
+		$top_parent = nest_get_top_parent_page_id( $post->ID );
 	}
 	$children = wp_list_pages( array(
 		'sort_column' => 'menu_order',
@@ -298,7 +298,7 @@ function bfn_page_subnav( $page_id = '', $title = '' ) {
  * Subnav of current category's topmost parent's children, outputted as widget
  * todo - make it an actual widget
  */
-function bfn_category_subnav() {
+function nest_category_subnav() {
 	global $post;
 	if ( is_category() || is_single() ) {
 		$categories = get_the_category();
@@ -329,7 +329,7 @@ function bfn_category_subnav() {
  * Subnav of current post or taxonomy's topmost parent's children, outputted as widget
  * todo - make it an actual widget that allows you to select the taxonomy
  */
-function bfn_taxonomy_subnav( $tax = '', $title = '' ) {
+function nest_taxonomy_subnav( $tax = '', $title = '' ) {
 	global $post;
 	if ( is_tax( $tax ) || is_single() ) {
 		$terms = get_the_terms( $post->ID, $tax );
@@ -366,7 +366,7 @@ function bfn_taxonomy_subnav( $tax = '', $title = '' ) {
  * Latest posts
  * Requires term ID. Defaults to 3 posts ordered by date
  */
-function bfn_latest_posts( $args ) {
+function nest_latest_posts( $args ) {
 	$defaults = array(
 		'posts_per_page' => 3,
 		'orderby' => 'date',
@@ -407,7 +407,7 @@ function bfn_latest_posts( $args ) {
  * Latest posts in specific taxonomy id
  * Requires term ID. Defaults to 3 posts and category as taxonomy
  */
-function bfn_latest_taxonomy_posts( $args ) {
+function nest_latest_taxonomy_posts( $args ) {
 	$defaults = array(
 		'term_id' => '',
 		'taxonomy' => '',
@@ -462,7 +462,7 @@ function bfn_latest_taxonomy_posts( $args ) {
  * If 'new window' is set to true, link targets will be set to "_blank"
  * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
  */
-function bfn_scriptless_social_share( $args = array() ) {
+function nest_scriptless_social_share( $args = array() ) {
 
 	$defaults = array(
 		'twitter' => 1,
@@ -480,7 +480,7 @@ function bfn_scriptless_social_share( $args = array() ) {
 		'stumbleupon' => 0,
 		'email' => 1,
 		'new_window' => true,
-		'share_title' => __( 'Share', 'bfn' )
+		'share_title' => __( 'Share', 'nest' )
 	);
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
@@ -536,7 +536,7 @@ function bfn_scriptless_social_share( $args = array() ) {
 				$image_path = $featured_image[0];
 
 			} else {
-				$image_path = bfn_get_first_image_url( $size = 'large' );
+				$image_path = nest_get_first_image_url( $size = 'large' );
 			}
 
 			$pinterest_share = 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title;
@@ -607,34 +607,34 @@ function bfn_scriptless_social_share( $args = array() ) {
 /**
  * Follow navigation widget
  */
-function bfn_follow_links( $args = array() ) {
+function nest_follow_links( $args = array() ) {
 	$defaults = array(
 		'twitter_url' => '',
-		'twitter_message' => __( 'On Twitter', 'bfn' ),
+		'twitter_message' => __( 'On Twitter', 'nest' ),
 		'facebook_url' => '',
-		'facebook_message' => __( 'On Facebook', 'bfn' ),
+		'facebook_message' => __( 'On Facebook', 'nest' ),
 		'googleplus_url' => '',
-		'googleplus_message' => __( 'On Google+', 'bfn' ),
+		'googleplus_message' => __( 'On Google+', 'nest' ),
 		'pinterest_url' => '',
-		'pinterest_message' => __( 'On Pinterest', 'bfn' ),
+		'pinterest_message' => __( 'On Pinterest', 'nest' ),
 		'linkedin_url' => '',
-		'linkedin_message' => __( 'On LinkedIn', 'bfn' ),
+		'linkedin_message' => __( 'On LinkedIn', 'nest' ),
 		'tumblr_url' => '',
-		'tumblr_message' => __( 'On Tumblr', 'bfn' ),
+		'tumblr_message' => __( 'On Tumblr', 'nest' ),
 		'myspace_url' => '',
-		'myspace_message' => __( 'On MySpace', 'bfn' ),
+		'myspace_message' => __( 'On MySpace', 'nest' ),
 		'soundcloud_url' => '',
-		'soundcloud_message' => __( 'On Soundcloud', 'bfn' ),
+		'soundcloud_message' => __( 'On Soundcloud', 'nest' ),
 		'youtube_url' => '',
-		'youutube_message' => __( 'On YouTube', 'bfn' ),
+		'youutube_message' => __( 'On YouTube', 'nest' ),
 		'vimeo_url' => '',
-		'vimeo_message' => __( 'On Vimeo', 'bfn' ),
+		'vimeo_message' => __( 'On Vimeo', 'nest' ),
 		'flickr_url' => '',
-		'flickr_message' => __( 'On Flickr', 'bfn' ),
+		'flickr_message' => __( 'On Flickr', 'nest' ),
 		'mailing_list_url' => '',
-		'mailing_list_message' => __( 'Join Our Mailing List', 'bfn' ),
+		'mailing_list_message' => __( 'Join Our Mailing List', 'nest' ),
 		'rss_url' => get_bloginfo( 'rss2_url' ),
-		'rss_message' => __( 'Subscribe via RSS', 'bfn' ),
+		'rss_message' => __( 'Subscribe via RSS', 'nest' ),
 		'follow_text' => 'Follow '. get_bloginfo( 'name' ),
 		'new_window' => true
 	);
@@ -711,7 +711,7 @@ function bfn_follow_links( $args = array() ) {
 /**
  * All taxonomies terms links, by taxonomy term, outputted as meta data
  */
-function bfn_taxonomy_terms_links( $term_sep = ', ' ) {
+function nest_taxonomy_terms_links( $term_sep = ', ' ) {
 	global $post;
 	// get post by post id
 	$post = get_post( $post->ID );

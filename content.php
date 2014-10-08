@@ -9,7 +9,7 @@
 
 	<div class="entry-content">
 
-		<?php the_content( __( 'Continue reading &rarr;', 'bfn' ) ); ?>
+		<?php the_content( __( 'Continue reading &rarr;', 'nest' ) ); ?>
 
 	</div><!-- /.entry-content -->
 

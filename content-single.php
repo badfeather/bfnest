@@ -12,7 +12,7 @@
 				<?php the_content(); ?>
 				<?php
 					wp_link_pages( array(
-						'before' => '<div class="page-links">' . __( 'Pages:', 'bfn' ),
+						'before' => '<div class="page-links">' . __( 'Pages:', 'nest' ),
 						'after'  => '</div>',
 					) );
 				?>
@@ -25,7 +25,7 @@
 	      	comments_template();
 	      } // endif
 
-	      bfn_single_pager();
+	      nest_single_pager();
 	    ?>
 
 		</div><!-- /.doc-content.doc-content-single -->

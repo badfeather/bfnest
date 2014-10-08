@@ -11,13 +11,13 @@
 				<?php the_content(); ?>
 				<?php
 					wp_link_pages( array(
-						'before' => '<div class="page-links">' . __( 'Pages:', 'bfn' ),
+						'before' => '<div class="page-links">' . __( 'Pages:', 'nest' ),
 						'after'  => '</div>',
 					) );
 				?>
 			</div><!-- /.entry-content -->
 
-			<?php edit_post_link( __( 'Edit', 'bfn' ), '<footer class="entry-meta entry-footer"><span class="meta meta-edit">', '</span></footer>' ); ?>
+			<?php edit_post_link( __( 'Edit', 'nest' ), '<footer class="entry-meta entry-footer"><span class="meta meta-edit">', '</span></footer>' ); ?>
 
 		</div><!-- /.doc-content.doc-content-page -->
 

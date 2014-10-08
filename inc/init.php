@@ -2,18 +2,20 @@
 /**
  * Initial setup and constants
  */
-function bfn_setup() {
+function nest_setup() {
 
 	// Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
 	register_nav_menus( array(
-		'primary' => __( 'Primary Navigation', 'bfn' ),
-		'secondary' => __( 'Secondary Navigation', 'bfn' ),
-		'social' => __( 'Social Navigation', 'bfn' )
+		'primary' => __( 'Primary Navigation', 'nest' ),
+		'secondary' => __( 'Secondary Navigation', 'nest' ),
+		'social' => __( 'Social Navigation', 'nest' )
 	) );
 
 	if ( ! isset( $content_width ) ) {
 		$content_width = 1050;
 	}
+
+  load_theme_textdomain('nest', get_template_directory() . '/languages');
 
 	add_theme_support('post-thumbnails');
 	// set_post_thumbnail_size( 150, 150, false );
@@ -37,14 +39,14 @@ function bfn_setup() {
 	) );
 }
 
-add_action( 'after_setup_theme', 'bfn_setup' );
+add_action( 'after_setup_theme', 'nest_setup' );
 
 /**
  * Remove recent comments CSS from head
  */
-add_action( 'widgets_init', 'bfn_remove_recent_comments_style' );
+add_action( 'widgets_init', 'nest_remove_recent_comments_style' );
 
-function bfn_remove_recent_comments_style() {
+function nest_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 }
@@ -52,7 +54,7 @@ function bfn_remove_recent_comments_style() {
 /**
  * Clean up wp_title
  */
-function bfn_wp_title( $title, $sep ) {
+function nest_wp_title( $title, $sep ) {
 	if ( is_feed() ) {
 		return $title;
 	}
@@ -70,9 +72,9 @@ function bfn_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', 'bfn' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page %s', 'nest' ), max( $paged, $page ) );
 	}
 
 	return $title;
 }
-add_filter( 'wp_title', 'bfn_wp_title', 10, 2 );
+add_filter( 'wp_title', 'nest_wp_title', 10, 2 );

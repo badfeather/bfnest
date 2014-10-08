@@ -20,22 +20,22 @@
 
 								} elseif ( is_author() ) {
 									$author = get_queried_object();
-									printf( __( 'Author: %s', 'bfn' ), '<span>' . $author->display_name . '</span>' );
+									printf( __( 'Author: %s', 'nest' ), '<span>' . $author->display_name . '</span>' );
 
 								} elseif ( is_day() ) {
-									printf( __( 'Day: %s', 'bfn' ), '<span>' . get_the_date() . '</span>' );
+									printf( __( 'Day: %s', 'nest' ), '<span>' . get_the_date() . '</span>' );
 
 								} elseif ( is_month() ) {
-									printf( __( 'Month: %s', 'bfn' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+									printf( __( 'Month: %s', 'nest' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
 
 								} elseif ( is_year() ) {
-									printf( __( 'Year: %s', 'bfn' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
+									printf( __( 'Year: %s', 'nest' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 								} else {
-									_e( 'Archives', 'bfn' );
+									_e( 'Archives', 'nest' );
 								}
 
 							} elseif ( is_search() ) {
-								printf( __( 'Search Results for %s', 'bfn' ), get_search_query() );
+								printf( __( 'Search Results for %s', 'nest' ), get_search_query() );
 							}
 						?></h1>
 
@@ -43,7 +43,7 @@
 							// Show an optional term description.
 							$term_description = term_description();
 							if ( ! empty( $term_description ) )
-								printf( __( '<div class="description">%s</div>', 'bfn' ), $term_description );
+								printf( __( '<div class="description">%s</div>', 'nest' ), $term_description );
 						?>
 					</header>
 
@@ -55,7 +55,7 @@
 								get_template_part( 'content', get_post_type() );
 							} // endwhile
 
-							bfn_archive_pager();
+							nest_archive_pager();
 						?>
 
 					</div><!-- /.doc-content.doc-content-archive -->
