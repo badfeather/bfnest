@@ -73,6 +73,22 @@ module.exports = function(grunt) {
         parseFiles: true
       }
     },
+    makepot: {
+      target: {
+        options: {
+          domainPath: '/languages/',    // Where to save the POT file.
+          potFilename: 'bad-feather-nest.pot',   // Name of the POT file.
+          type: 'wp-theme',  // Type of project (wp-plugin or wp-theme).
+          updateTimestamp: true,
+          exclude: [
+            'js/.*',
+            'less/.*',
+            'img/.*',
+            'node_modules/.*',
+          ]
+        }
+      }
+    },
     watch: {
       less: {
         files: [
@@ -116,6 +132,7 @@ module.exports = function(grunt) {
     'concat',
     'uglify',
     'autoprefixer',
+    'makepot',
     'modernizr'
   ]);
 

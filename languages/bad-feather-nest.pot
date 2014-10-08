@@ -1,0 +1,280 @@
+# Copyright (C) 2014 Brad Thomason, Bad Feather Inc.
+# This file is distributed under the MIT License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Bad Feather Nest 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2014-10-08 18:49:35+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.4.8\n"
+
+#: 404.php:8
+msgid "Not Found"
+msgstr ""
+
+#: 404.php:12
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr ""
+
+#: archive.php:23
+msgid "Author: %s"
+msgstr ""
+
+#: archive.php:26
+msgid "Day: %s"
+msgstr ""
+
+#: archive.php:29
+msgid "Month: %s"
+msgstr ""
+
+#: archive.php:32
+msgid "Year: %s"
+msgstr ""
+
+#: archive.php:34
+msgid "Archives"
+msgstr ""
+
+#: archive.php:38
+msgid "Search Results for %s"
+msgstr ""
+
+#: archive.php:46
+msgid "<div class=\"description\">%s</div>"
+msgstr ""
+
+#: comments.php:29
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:30
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:31
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:38
+msgid "Comments are closed."
+msgstr ""
+
+#: content-no-results.php:2
+msgid "Nothing Found"
+msgstr ""
+
+#: content-no-results.php:10
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: content-no-results.php:14
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: content-no-results.php:19
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: content-page.php:13 content-single.php:14
+msgid "Pages:"
+msgstr ""
+
+#: content-page.php:19 inc/template-tags.php:47 inc/template-tags.php:67
+#: meta-below.php:19
+msgid "Edit"
+msgstr ""
+
+#: content.php:9
+msgid "Continue reading &rarr;"
+msgstr ""
+
+#: header.php:24
+msgid "Menu"
+msgstr ""
+
+#: inc/init.php:9
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/init.php:10
+msgid "Secondary Navigation"
+msgstr ""
+
+#: inc/init.php:11
+msgid "Social Navigation"
+msgstr ""
+
+#: inc/init.php:75
+msgid "Page %s"
+msgstr ""
+
+#: inc/template-tags.php:11
+msgid "&larr; Prev"
+msgstr ""
+
+#: inc/template-tags.php:12
+msgid "Next &rarr;"
+msgstr ""
+
+#: inc/template-tags.php:47
+msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:59
+msgid "%s"
+msgstr ""
+
+#: inc/template-tags.php:70
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:483
+msgid "Share"
+msgstr ""
+
+#: inc/template-tags.php:613
+msgid "On Twitter"
+msgstr ""
+
+#: inc/template-tags.php:615
+msgid "On Facebook"
+msgstr ""
+
+#: inc/template-tags.php:617
+msgid "On Google+"
+msgstr ""
+
+#: inc/template-tags.php:619
+msgid "On Pinterest"
+msgstr ""
+
+#: inc/template-tags.php:621
+msgid "On LinkedIn"
+msgstr ""
+
+#: inc/template-tags.php:623
+msgid "On Tumblr"
+msgstr ""
+
+#: inc/template-tags.php:625
+msgid "On MySpace"
+msgstr ""
+
+#: inc/template-tags.php:627
+msgid "On Soundcloud"
+msgstr ""
+
+#: inc/template-tags.php:629
+msgid "On YouTube"
+msgstr ""
+
+#: inc/template-tags.php:631
+msgid "On Vimeo"
+msgstr ""
+
+#: inc/template-tags.php:633
+msgid "On Flickr"
+msgstr ""
+
+#: inc/template-tags.php:635
+msgid "Join Our Mailing List"
+msgstr ""
+
+#: inc/template-tags.php:637
+msgid "Subscribe via RSS"
+msgstr ""
+
+#: inc/widgets.php:9
+msgid "Global"
+msgstr ""
+
+#: inc/widgets.php:18
+msgid "Page"
+msgstr ""
+
+#: inc/widgets.php:27
+msgid "Archive"
+msgstr ""
+
+#: inc/widgets.php:36
+msgid "Footer"
+msgstr ""
+
+#: inc/widgets.php:45
+msgid "Header"
+msgstr ""
+
+#: index.php:9
+msgid "Latest Posts"
+msgstr ""
+
+#: meta-above.php:3
+msgid " by "
+msgstr ""
+
+#: meta-below.php:9
+msgid "Posted in: "
+msgstr ""
+
+#: meta-below.php:11
+msgid "Tagged: "
+msgstr ""
+
+#: meta-below.php:15
+msgid "Leave a comment"
+msgstr ""
+
+#: meta-below.php:15
+msgid "1 Comment"
+msgstr ""
+
+#: meta-below.php:15
+msgid "% Comments"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Bad Feather Nest"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://github.com/badfeather/bad-feather-nest"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A WordPress starter theme we use at Bad Feather to start new projects. "
+"Constantly under construction. Use at your own peril!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Brad Thomason, Bad Feather Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://badfeather.com/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Home"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Redirect To First Child"
+msgstr ""
+
+#: comments.php:12
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""

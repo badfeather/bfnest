@@ -1,16 +1,20 @@
 <?php get_header(); ?>
 
-		<div class="content">
+	  <div class="doc site-main" role="document">
 
-			<?php
-				while ( have_posts() ) {
-					the_post();
-					get_template_part( 'content-single', get_post_type() );
-				}
-			?>
+      <main class="doc-main" role="main">
+
+  			<?php
+  				while ( have_posts() ) {
+  					the_post();
+  					get_template_part( 'content-single', get_post_type() );
+  				}
+  			?>
+
+      </main><!-- /.doc-main -->
 
 			<?php get_sidebar( get_post_type() ); ?>
 
-		</div><!-- /.content -->
+		</div><!-- /.doc.site-main -->
 
 <?php get_footer(); ?>

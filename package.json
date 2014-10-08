@@ -1,14 +1,14 @@
 {
-  "name": "nest",
+  "name": "bad-feather-nest",
   "version": "1.0.0",
-  "homepage": "https://github.com/badfeather/nest",
+  "homepage": "https://github.com/badfeather/bad-feather-nest",
   "author": "Brad Thomason <brad@badfeather.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/badfeather/nest.git"
   },
   "bugs": {
-    "url": "https://github.com/badfeather/nest/issues"
+    "url": "https://github.com/badfeather/bad-feather-nest/issues"
   },
   "licenses": [
     {
@@ -34,6 +34,7 @@
     "grunt-modernizr": "~0.5.2",
     "grunt-wp-assets": "~0.2.6",
     "load-grunt-tasks": "~0.6.0",
-    "time-grunt": "~0.4.0"
+    "time-grunt": "~0.4.0",
+    "grunt-wp-i18n": "~0.4.7"
   }
 }

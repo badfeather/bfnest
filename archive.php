@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-		<section class="content">
+	  <section class="doc site-main" role="document">
 
 			<main class="doc-main" role="main">
 
@@ -69,6 +69,6 @@
 
 			<?php get_sidebar(); ?>
 
-		</section><!-- /.content -->
+		</section><!-- /.doc.site-main -->
 
 <?php get_footer(); ?>

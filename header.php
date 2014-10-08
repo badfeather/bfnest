@@ -20,17 +20,15 @@
 
 		<div class="site-description"><?php bloginfo( 'description' ); ?></div>
 
-		<nav class="nav-primary" role="navigation">
-			<h1 class="nav-title menu-toggle"><?php _e( 'Menu', 'nest' ); ?></h1>
-
+		<nav class="site-nav" role="navigation">
+			<h1 class="nav-title site-nav-title menu-toggle"><?php _e( 'Menu', 'nest' ); ?></h1>
 			<?php wp_nav_menu( array(
 				'theme_location' => 'primary',
-				'container' => false
+				'container' => false,
+				'menu_class' => 'menu-primary'
 			) ); ?>
-		</nav><!-- /.nav-primary -->
+		</nav><!-- /.site-nav -->
 
 		<?php dynamic_sidebar( 'header' ); ?>
 
 	</header><!-- /.site-header -->
-
-	<div class="doc site-main" role="document">

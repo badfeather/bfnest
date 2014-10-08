@@ -1,5 +1,3 @@
-	</div><!-- /.doc.site-main -->
-
 	<footer class="site-footer content-info" role="contentinfo">
 
 		<?php dynamic_sidebar( 'footer' ); ?>

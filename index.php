@@ -1,12 +1,10 @@
 <?php get_header(); ?>
 
-		<section class="content">
-
-			<?php
-				if ( have_posts() ) {
-			?>
-
-				<main class="doc-main" role="main">
+		<section class="doc site-main content" role="document">
+		  <main class="doc-main" role="main">
+  			<?php
+  				if ( have_posts() ) {
+  			?>
 					<header class="doc-header">
 						<h1 class="doc-title"><?php _e( 'Latest Posts', 'nest' ); ?></h1>
 					</header><!-- /.doc-header -->
@@ -21,16 +19,15 @@
 							nest_archive_pager();
 						?>
 					</div><!-- /.doc-content -->
-				</main><!-- /.doc-main -->
-
-			<?php
-				} else {
-					get_template_part( 'content', 'no-results' );
-				} // endif
-			?>
+  			<?php
+  				} else {
+  					get_template_part( 'content', 'no-results' );
+  				} // endif
+  			?>
+      </main><!-- /.doc-main -->
 
 			<?php get_sidebar(); ?>
 
-		</section><!-- /.content -->
+		</section><!-- /.doc.site-main-content -->
 
 <?php get_footer(); ?>
