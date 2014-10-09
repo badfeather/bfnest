@@ -7,7 +7,7 @@ function nest_archive_pager() {
 	global $wp_query, $post;
 	if ( $wp_query->max_num_pages > 1 ) {
 ?>
-	<ul class="pager-nav">
+	<ul class="doc-nav doc-nav-archive">
 		<li class="nav-next"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></li>
 		<li class="nav-prev"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></li>
 	</ul>
@@ -25,7 +25,7 @@ function nest_single_pager() {
 
 	if ( $next || $previous ) {
 ?>
-	<ul class="pager-nav">
+	<ul class="doc-nav doc-nav-single">
 		<li class="nav-next"><?php next_post_link( '&larr; %link' ); ?></li>
 		<li class="nav-prev"><?php previous_post_link( '%link &rarr;' ); ?></li>
 	</ul>
@@ -570,7 +570,6 @@ function nest_scriptless_social_share( $args = array() ) {
 
 	if ( $google_plus ) {
 		$google_plus_share = '<span class="meta meta-share"><a class="share-link share-link-google-plus" href="' . esc_url( 'https://plus.google.com/share?url=' . $post_url ) . '" title="Google+"' . $target . '>Google+</a></span> ';
-
 	}
 
 	if ( $pinterest ) {
@@ -579,7 +578,6 @@ function nest_scriptless_social_share( $args = array() ) {
 			$featured_image_id = get_post_thumbnail_id();
 			$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
 			$image_path = $featured_image[0];
-
 		} else {
 			$image_path = nest_get_first_image_url( $size = 'large' );
 		}
@@ -601,7 +599,6 @@ function nest_scriptless_social_share( $args = array() ) {
 
 	if ( $myspace ) {
 		$myspace_share = '<span class="meta meta-share"><a class="share-link share-link share-link-myspace" href="' . esc_url( 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $post_title . '&c=' . $post_title ) . '" title="Myspace"' . $target . '>Myspace</a></span> ';
-
 	}
 
 	if ( $reddit ) {
