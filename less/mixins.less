@@ -90,7 +90,7 @@
 .font-family(@font-family; @default-font-family) when not (@font-family = @default-font-family) {
   font-family: @font-family;
 }
-.margin-emcalc(@margin-top: 0, @margin-right: 0, @margin-bottom: @base-margin, @margin-left: 0, @size: @base-font-size) {
+.margin-emcalc(@margin-top: 0, @margin-right: 0, @margin-bottom: @base-margin, @margin-left: @margin-right, @size: @base-font-size) {
 	@margin-top-emcalc: unit((@margin-top / @size), em);
 	@margin-right-emcalc: unit((@margin-right / @size), em);
 	@margin-bottom-emcalc: unit((@margin-bottom / @size), em);
@@ -127,7 +127,7 @@
 .height-emcalc(@line-height: @base-line-height, @size: @base-font-size) {
 	height: unit((@line-height / @size), em);
 }
-.padding-emcalc(@padding-top: 0, @padding-right: 0, @padding-bottom: @base-margin, @padding-left: 0, @size: @base-font-size) {
+.padding-emcalc(@padding-top: 0, @padding-right: 0, @padding-bottom: @padding-top, @padding-left: @padding-right, @size: @base-font-size) {
 	@padding-top-emcalc: unit((@padding-top / @size), em);
 	@padding-right-calc: unit((@padding-right / @size), em);
 	@padding-bottom-emcalc: unit((@padding-bottom / @size), em);

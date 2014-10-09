@@ -335,10 +335,23 @@ table {
   padding-left: 0.9375em;
   padding-right: 0.9375em;
 }
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+html {
+  font-size: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 body {
   font-size: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.625;
   color: #606060;
   background-color: #ffffff;
@@ -472,7 +485,7 @@ li {
 }
 b,
 strong {
-  font-weight: bold;
+  font-weight: 700;
 }
 dt,
 dd {
@@ -499,12 +512,12 @@ abbr.initialism {
   text-transform: uppercase;
 }
 blockquote {
-  font-family: Cambria, Georgia, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
   line-height: 1.625;
   font-style: italic;
-  font-weight: normal;
-  margin-top: 1.3em;
+  font-weight: 400;
+  margin-top: 0;
   margin-right: 0;
   margin-bottom: 1.3em;
   margin-left: 1.3em;
@@ -514,15 +527,15 @@ blockquote cite {
   font-style: normal;
 }
 .lede {
-  font-family: Cambria, Georgia, serif;
-  font-size: 1.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.25em;
   line-height: 1.625;
   font-style: normal;
-  font-weight: normal;
-  margin-top: 1.08333333em;
+  font-weight: 200;
+  margin-top: 0;
   margin-right: 0;
-  margin-bottom: 1.08333333em;
-  margin-left: 1.08333333em;
+  margin-bottom: 1.3em;
+  margin-left: 0;
 }
 q:before,
 q:after,
@@ -578,7 +591,7 @@ h5,
 h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.3125;
-  font-weight: normal;
+  font-weight: 400;
   color: #606060;
 }
 h1 a,
@@ -629,13 +642,13 @@ h4 {
 }
 h5 {
   font-size: 1em;
-  margin-bottom: 0.8125em;
+  margin-bottom: 0.40625em;
   margin-top: 0;
   line-height: 1.625;
 }
 h6 {
   font-size: 0.875em;
-  margin-bottom: 0.8125em;
+  margin-bottom: 0.40625em;
   margin-top: 0;
   line-height: 1.625;
 }
@@ -644,9 +657,9 @@ h6 {
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   color: #9f9f9f;
-  margin-bottom: 0.92857143em;
+  margin-bottom: 0.46428571em;
 }
 figure {
   margin-bottom: 0.8125em;
@@ -700,9 +713,9 @@ img.aligncenter,
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   color: #9f9f9f;
-  margin-bottom: 0.92857143em;
+  margin-bottom: 0.46428571em;
   margin-top: 0.46428571em;
 }
 .gallery {
@@ -823,7 +836,7 @@ img.aligncenter,
   padding-left: 0;
   list-style: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-weight: 700;
 }
 .menu ul {
   padding-left: 0;
@@ -879,7 +892,7 @@ input[type='submit'] {
   font-weight: normal;
   font-size: 0.875em;
   line-height: 1.625;
-  padding: 0em 0em 1.85714286em 0em;
+  padding: 0.5em 0.64285714em 0.5em 0.64285714em;
   color: #ffffff;
   text-align: center;
   vertical-align: middle;
@@ -931,15 +944,15 @@ fieldset[disabled] input[type='submit'] {
 }
 .btn-lg {
   font-size: 1.125em;
-  padding: 0.5625em 1em 1.125em 0em;
+  padding: 0.5em 0.88888889em 0.5em 0.88888889em;
 }
 .btn-sm {
   font-size: 0.8125em;
-  padding: 0.1875em 0.375em 0.8125em 0em;
+  padding: 0.23076923em 0.46153846em 0.23076923em 0.46153846em;
 }
 .btn-xs {
   font-size: 0.6875em;
-  padding: 0.125em 0.25em 0.6875em 0em;
+  padding: 0.18181818em 0.36363636em 0.18181818em 0.36363636em;
 }
 .btn-default {
   color: #ffffff;
@@ -1183,7 +1196,7 @@ input[type="color"] {
   line-height: 1.625;
   font-size: 0.875em;
   border-radius: 0.28571429em;
-  padding: 0em 0em 1.85714286em 0em;
+  padding: 0.5em 0.64285714em 0.5em 0.64285714em;
   width: 15em;
   outline: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1223,7 +1236,7 @@ select {
 legend {
   font-size: 0.875em;
   margin: 0em 0em 0.92857143em 0em;
-  font-weight: bold;
+  font-weight: 700;
 }
 input[type="checkbox"] {
   display: inline-block;
@@ -1265,6 +1278,9 @@ input[type="checkbox"] {
 .site:after {
   clear: both;
 }
+.entry-footer {
+  margin-bottom: 1.625em;
+}
 .menu-toggle {
   font-size: 1em;
 }
@@ -1298,9 +1314,9 @@ input[type="checkbox"] {
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   color: #9f9f9f;
-  margin-bottom: 0.92857143em;
+  margin-bottom: 0.46428571em;
 }
 .comment-main {
   display: inline-block;
@@ -1329,7 +1345,7 @@ input[type="checkbox"] {
   font-size: 0.875em;
   line-height: 1.3125;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   color: #9f9f9f;
-  margin-bottom: 0.92857143em;
+  margin-bottom: 0.46428571em;
 }

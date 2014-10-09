@@ -53,8 +53,9 @@
 @font-family-serif: Cambria, Georgia, serif;
 @font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
 
-@font-weight-normal: normal;
-@font-weight-bold: bold;
+@font-weight-light: 200;
+@font-weight-normal: 400;
+@font-weight-bold: 700;
 
 // Base
 @base-font-family: @font-family-sans-serif;
@@ -106,16 +107,15 @@
 
 @h5-font-size: 16;
 @h5-line-height: @base-line-height;
-@h5-margin-bottom: @base-margin-half;
+@h5-margin-bottom: @base-margin-quarter;
 @h5-margin-top: 0;
 
 @h6-font-size: 14;
 @h6-line-height: @base-line-height;
-@h6-margin-bottom: @base-margin-half;
+@h6-margin-bottom: @base-margin-quarter;
 @h6-margin-top: 0;
 
 @page-title-font-size: 30;
-
 
 // Meta
 @meta-font-family: @font-family-sans-serif;
@@ -123,7 +123,7 @@
 @meta-color: @gray-light;
 @meta-font-size: @base-font-size-small;
 @meta-line-height: @base-line-height-md;
-@meta-margin-bottom: @base-margin-half;
+@meta-margin-bottom: @base-margin-quarter;
 
 // Navs
 @nav-font-family: @font-family-sans-serif;
@@ -145,17 +145,6 @@
 @postnav-font-family: @font-family-sans-serif;
 @postnav-font-size: 13;
 
-// Blockquotes
-@blockquote-font-size: 20;
-@blockquote-font-family: @font-family-serif;
-@blockquote-line-height: @base-line-height;
-@blockquote-font-weight: @base-font-weight;
-@blockquote-font-style: italic;
-@blockquote-margin-left: @base-margin;
-@blockquote-margin-right: 0;
-@blockquote-margin-top: @base-margin;
-@blockquote-margin-bottom: @base-margin;
-
 // Tables
 @table-bg-color: @base-background-color;
 @table-border-color: @base-border-color;
@@ -167,15 +156,26 @@
 @td-padding-horizontal: 6;
 @td-padding-emcalc: unit((@td-padding-vertical / @base-font-size), em) unit((@td-padding-horizontal / @base-font-size), em);
 
+// Blockquotes
+@blockquote-font-size: 20;
+@blockquote-font-family: @base-font-family;
+@blockquote-line-height: @base-line-height;
+@blockquote-font-weight: @base-font-weight;
+@blockquote-font-style: italic;
+@blockquote-margin-left: @base-margin;
+@blockquote-margin-right: 0;
+@blockquote-margin-top: 0;
+@blockquote-margin-bottom: @base-margin;
+
 // Ledes
-@lede-font-size: 24;
-@lede-font-family: @font-family-serif;
+@lede-font-size: 20;
+@lede-font-family: @base-font-family;
 @lede-line-height: @base-line-height;
-@lede-font-weight: @base-font-weight;
+@lede-font-weight: @font-weight-light;
 @lede-font-style: normal;
-@lede-margin-left: @base-margin;
+@lede-margin-left: 0;
 @lede-margin-right: 0;
-@lede-margin-top: @base-margin;
+@lede-margin-top: 0;
 @lede-margin-bottom: @base-margin;
 
 // Figures

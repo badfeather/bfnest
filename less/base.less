@@ -1,3 +1,14 @@
+* {
+	box-sizing: border-box;
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+html {
+	font-size: 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 body {
 	font-size: percentage(@base-font-size/16);
 	font-family: @base-font-family;
@@ -434,7 +445,7 @@ img,
 	font-weight: @btn-font-weight;
 	.font-size-emcalc(@btn-font-size);
 	line-height: @base-line-height;
-	.padding-emcalc(@size: @btn-font-size);
+	.padding-emcalc( @padding-top: @form-padding-vertical, @padding-right: @form-padding-horizontal, @size: @btn-font-size);
 	color: @btn-color;
 	text-align: center;
 	vertical-align: middle;
@@ -476,19 +487,19 @@ input[type='submit'] {
 	.font-size-emcalc(@btn-font-size-lg);
 	//border-radius: @border-radius-lg;
 	//border-radius: unit((@border-radius-lg / @btn-font-size-lg), em);
-	.padding-emcalc(@form-padding-vertical-lg, @form-padding-horizontal-lg, @btn-font-size-lg);
+	.padding-emcalc( @padding-top: @form-padding-vertical-lg, @padding-right: @form-padding-horizontal-lg, @size: @btn-font-size-lg);
 }
 .btn-sm {
 	.font-size-emcalc(@btn-font-size-sm);
 	//border-radius: @border-radius-sm;
 	//border-radius: unit((@border-radius-sm / @btn-font-size-sm), em);
-	.padding-emcalc(@form-padding-vertical-sm, @form-padding-horizontal-sm, @btn-font-size-sm);
+	.padding-emcalc( @padding-top: @form-padding-vertical-sm, @padding-right: @form-padding-horizontal-sm, @size: @btn-font-size-sm);
 }
 .btn-xs {
 	.font-size-emcalc(@btn-font-size-xs);
 	//border-radius: @border-radius-xs;
 	//border-radius: unit((@border-radius-xs / @btn-font-size-xs), em);
-	.padding-emcalc(@form-padding-vertical-xs, @form-padding-horizontal-xs, @btn-font-size-xs);
+	.padding-emcalc( @padding-top: @form-padding-vertical-xs, @padding-right: @form-padding-horizontal-xs, @size: @btn-font-size-xs);
 }
 // Alternate buttons
 // --------------------------------------------------
@@ -522,7 +533,7 @@ input[type='submit'] {
 	line-height: @base-line-height;
 	.font-size-emcalc(@input-font-size);
 	border-radius: unit((@input-border-radius / @input-font-size), em);
-	.padding-emcalc(@size: @input-font-size);
+	.padding-emcalc( @padding-top: @form-padding-vertical, @padding-right: @form-padding-horizontal, @size: @input-font-size);
 	width: unit((@input-width / @input-font-size) , em);
 	outline: none;
 	font-family: @input-font-family;

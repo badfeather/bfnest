@@ -5,7 +5,7 @@
  */
 
 // initial setup
-require get_template_directory() . ( '/inc/init.php' );
+require get_template_directory() . ( '/inc/setup.php' );
 
 // scripts and stylesheets
 require get_template_directory() . ( '/inc/scripts.php' );
