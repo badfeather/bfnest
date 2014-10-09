@@ -39,11 +39,9 @@ function nest_single_pager() {
 function nest_meta_above() {
   echo '<div class="entry-meta">';
   printf(
-    __( '<span class="meta meta-published"><time class="published" datetime = "%1$s">%2$s</time></span> by <span class="meta meta-author byline author vcard"><a href="%3$s" rel="author" class="fn">%4$s</a></span>', 'nest' ),
-    get_the_time( 'c' ),
-    get_the_date(),
-    get_author_posts_url( get_the_author_meta( 'ID' ) ),
-    get_the_author()
+    __( '%1$s by %2$s', 'nest' ),
+    '<span class="meta meta-published"><time class="published" datetime = "' . get_the_time( 'c' ) . '">' . get_the_date() . '</time></span>',
+    '<span class="meta meta-author byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></span>'
   );
   echo '</div><!-- /.entry-meta -->' . "\n";
 }

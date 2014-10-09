@@ -6,8 +6,8 @@
 
 	<div class="entry-content">
 
-			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'nest' ); ?></p>
-			<?php get_search_form(); ?>
+		<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'nest' ); ?></p>
+		<?php get_search_form(); ?>
 
 	</div><!-- /.entry-content -->
 

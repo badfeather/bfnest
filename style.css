@@ -66,8 +66,8 @@ dfn {
   font-style: italic;
 }
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
   height: 0;
 }
 mark {
@@ -150,12 +150,12 @@ html input[disabled] {
 }
 input[type="checkbox"],
 input[type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
 }
 input[type="search"] {
   -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
@@ -181,8 +181,7 @@ table {
     text-shadow: none !important;
     color: #000 !important;
     background: transparent !important;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+    box-shadow: none !important;
   }
   a,
   a:visited {
@@ -505,6 +504,7 @@ blockquote {
   font-style: italic;
   font-weight: normal;
   margin-top: 1.3em;
+  margin-right: 0;
   margin-bottom: 1.3em;
   margin-left: 1.3em;
 }
@@ -519,6 +519,7 @@ blockquote cite {
   font-style: normal;
   font-weight: normal;
   margin-top: 1.08333333em;
+  margin-right: 0;
   margin-bottom: 1.08333333em;
   margin-left: 1.08333333em;
 }
@@ -605,30 +606,36 @@ h6 a:focus {
 h1 {
   font-size: 2em;
   margin-bottom: 0.8125em;
+  margin-top: 0;
 }
 h2 {
   font-size: 1.75em;
   margin-bottom: 0.46428571em;
+  margin-top: 0;
   line-height: 1.3125;
 }
 h3 {
   font-size: 1.5em;
   margin-bottom: 0.54166667em;
+  margin-top: 0;
   line-height: 1.3125;
 }
 h4 {
   font-size: 1.25em;
   margin-bottom: 0.65em;
+  margin-top: 0;
   line-height: 1.3125;
 }
 h5 {
   font-size: 1em;
   margin-bottom: 0.8125em;
+  margin-top: 0;
   line-height: 1.625;
 }
 h6 {
   font-size: 0.875em;
   margin-bottom: 0.8125em;
+  margin-top: 0;
   line-height: 1.625;
 }
 .entry-meta {
@@ -871,7 +878,7 @@ input[type='submit'] {
   font-weight: normal;
   font-size: 0.875em;
   line-height: 1.625;
-  padding: 0.5em 0.64285714em;
+  padding: 0em 0em 1.85714286em 0em;
   color: #ffffff;
   text-align: center;
   vertical-align: middle;
@@ -918,20 +925,19 @@ fieldset[disabled] input[type='submit'] {
   cursor: not-allowed;
   pointer-events: none;
   opacity: .65;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .btn-lg {
   font-size: 1.125em;
-  padding: 0.5em 0.88888889em;
+  padding: 0.5625em 1em 1.125em 0em;
 }
 .btn-sm {
   font-size: 0.8125em;
-  padding: 0.23076923em 0.46153846em;
+  padding: 0.1875em 0.375em 0.8125em 0em;
 }
 .btn-xs {
   font-size: 0.6875em;
-  padding: 0.18181818em 0.36363636em;
+  padding: 0.125em 0.25em 0.6875em 0em;
 }
 .btn-default {
   color: #ffffff;
@@ -1175,7 +1181,7 @@ input[type="color"] {
   line-height: 1.625;
   font-size: 0.875em;
   border-radius: 0.28571429em;
-  padding: 0.5em 0.64285714em;
+  padding: 0em 0em 1.85714286em 0em;
   width: 15em;
   outline: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
