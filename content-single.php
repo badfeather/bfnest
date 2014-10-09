@@ -1,8 +1,8 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="doc-header">
+	  <?php nest_meta_above(); ?>
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
-		<?php get_template_part( 'meta-above' ); ?>
 	</header><!-- /.doc-header -->
 
 	<div class="doc-content doc-content-single">
@@ -17,7 +17,7 @@
 			?>
 		</div><!-- /.entry-content -->
 
-		<?php get_template_part( 'meta-below' ); ?>
+		<?php nest_meta_below(); ?>
 
     <?php
       if ( comments_open() || '0' != get_comments_number() ) {

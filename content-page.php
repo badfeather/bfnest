@@ -16,7 +16,7 @@
 			?>
 		</div><!-- /.entry-content -->
 
-		<?php edit_post_link( __( 'Edit', 'nest' ), '<footer class="entry-meta entry-footer"><span class="meta meta-edit">', '</span></footer>' ); ?>
+		<?php nest_meta_below(); ?>
 
 	</div><!-- /.doc-content.doc-content-page -->
 

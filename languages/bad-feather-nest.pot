@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2014-10-08 18:49:35+00:00\n"
+"POT-Creation-Date: 2014-10-08 23:33:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -69,17 +69,7 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: content-no-results.php:10
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-
-#: content-no-results.php:14
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
-msgstr ""
-
-#: content-no-results.php:19
+#: content-no-results.php:9
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
@@ -89,13 +79,12 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: content-page.php:19 inc/template-tags.php:47 inc/template-tags.php:67
-#: meta-below.php:19
-msgid "Edit"
-msgstr ""
-
 #: content.php:9
 msgid "Continue reading &rarr;"
+msgstr ""
+
+#: footer.php:11
+msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
 #: header.php:24
@@ -126,71 +115,106 @@ msgstr ""
 msgid "Next &rarr;"
 msgstr ""
 
-#: inc/template-tags.php:47
-msgid "Pingback:"
+#: inc/template-tags.php:42
+msgid ""
+"<span class=\"meta meta-published\"><time class=\"published\" datetime = "
+"\"%1$s\">%2$s</time></span> by <span class=\"meta meta-author byline author "
+"vcard\"><a href=\"%3$s\" rel=\"author\" class=\"fn\">%4$s</a></span>"
 msgstr ""
 
-#: inc/template-tags.php:59
-msgid "%s"
+#: inc/template-tags.php:62
+msgid "Posted in: "
+msgstr ""
+
+#: inc/template-tags.php:65
+msgid "Tagged: "
 msgstr ""
 
 #: inc/template-tags.php:70
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/template-tags.php:70
+msgid "1 Comment"
+msgstr ""
+
+#: inc/template-tags.php:70
+msgid "% Comments"
+msgstr ""
+
+#: inc/template-tags.php:73 inc/template-tags.php:92 inc/template-tags.php:112
+msgid "Edit"
+msgstr ""
+
+#: inc/template-tags.php:92
+msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:104
+msgid "%s"
+msgstr ""
+
+#: inc/template-tags.php:115
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:483
-msgid "Share"
+#: inc/template-tags.php:530
+msgid "Share: "
 msgstr ""
 
-#: inc/template-tags.php:613
-msgid "On Twitter"
-msgstr ""
-
-#: inc/template-tags.php:615
+#: inc/template-tags.php:657
 msgid "On Facebook"
 msgstr ""
 
-#: inc/template-tags.php:617
-msgid "On Google+"
-msgstr ""
-
-#: inc/template-tags.php:619
-msgid "On Pinterest"
-msgstr ""
-
-#: inc/template-tags.php:621
-msgid "On LinkedIn"
-msgstr ""
-
-#: inc/template-tags.php:623
-msgid "On Tumblr"
-msgstr ""
-
-#: inc/template-tags.php:625
-msgid "On MySpace"
-msgstr ""
-
-#: inc/template-tags.php:627
-msgid "On Soundcloud"
-msgstr ""
-
-#: inc/template-tags.php:629
-msgid "On YouTube"
-msgstr ""
-
-#: inc/template-tags.php:631
-msgid "On Vimeo"
-msgstr ""
-
-#: inc/template-tags.php:633
+#: inc/template-tags.php:660
 msgid "On Flickr"
 msgstr ""
 
-#: inc/template-tags.php:635
+#: inc/template-tags.php:663
+msgid "On Google+"
+msgstr ""
+
+#: inc/template-tags.php:666
+msgid "On Instagram"
+msgstr ""
+
+#: inc/template-tags.php:669
+msgid "On LinkedIn"
+msgstr ""
+
+#: inc/template-tags.php:672
+msgid "On MySpace"
+msgstr ""
+
+#: inc/template-tags.php:675
+msgid "On Pinterest"
+msgstr ""
+
+#: inc/template-tags.php:678
+msgid "On Soundcloud"
+msgstr ""
+
+#: inc/template-tags.php:681
+msgid "On Tumblr"
+msgstr ""
+
+#: inc/template-tags.php:684
+msgid "On Twitter"
+msgstr ""
+
+#: inc/template-tags.php:687
+msgid "On Vimeo"
+msgstr ""
+
+#: inc/template-tags.php:690
+msgid "On YouTube"
+msgstr ""
+
+#: inc/template-tags.php:693
 msgid "Join Our Mailing List"
 msgstr ""
 
-#: inc/template-tags.php:637
+#: inc/template-tags.php:696
 msgid "Subscribe via RSS"
 msgstr ""
 
@@ -216,30 +240,6 @@ msgstr ""
 
 #: index.php:9
 msgid "Latest Posts"
-msgstr ""
-
-#: meta-above.php:3
-msgid " by "
-msgstr ""
-
-#: meta-below.php:9
-msgid "Posted in: "
-msgstr ""
-
-#: meta-below.php:11
-msgid "Tagged: "
-msgstr ""
-
-#: meta-below.php:15
-msgid "Leave a comment"
-msgstr ""
-
-#: meta-below.php:15
-msgid "1 Comment"
-msgstr ""
-
-#: meta-below.php:15
-msgid "% Comments"
 msgstr ""
 
 #. Theme Name of the plugin/theme
