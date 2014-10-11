@@ -81,9 +81,9 @@ function nest_meta( $meta_sep = ' | ', $item_sep = ', ' ) {
  * Edit footer
  * adds footer to logged in users with just the edit link
  */
-function nest_edit_footer() { ?>
+function nest_edit_footer() {
 	edit_post_link( __( 'Edit', '_er' ), '<footer class="entry-footer"><div class="entry-meta"><span class="meta meta-edit-link">', '</span></div></footer>' );
-<?php }
+}
 
 /**
  * Comment listing
