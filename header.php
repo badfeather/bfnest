@@ -18,7 +18,12 @@
 
 		<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 
-		<div class="site-description"><?php bloginfo( 'description' ); ?></div>
+	    <?php
+	      $site_description = get_bloginfo( 'description' );
+	      if ( !empty( $site_description ) ) {
+	        echo '<div class="site-description">' . $site_description . '</div>' . "\n";
+	      }
+	    ?>
 
 		<nav class="site-nav" role="navigation">
 			<h1 class="nav-title site-nav-title menu-toggle"><?php _e( 'Menu', 'nest' ); ?></h1>

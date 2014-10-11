@@ -36,7 +36,7 @@ function nest_single_pager() {
 /**
  * Post top meta
  */
-function nest_meta_above() {
+function nest_posted_on() {
   echo '<div class="entry-meta">';
   printf(
     __( '%1$s by %2$s', 'nest' ),
@@ -52,7 +52,6 @@ function nest_meta_above() {
 function nest_meta_below( $meta_sep = ' | ', $item_sep = ', ' ) {
   global $post;
   $id = $post->ID;
-  echo '<footer class="entry-footer">' . "\n";
 
   $meta_array = array();
   if ( 'post' == get_post_type() ) {
@@ -76,11 +75,15 @@ function nest_meta_below( $meta_sep = ' | ', $item_sep = ', ' ) {
     echo "\t" . '<div class="entry-meta">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div><!-- /.entry-meta -->' . "\n";
   }
 
-
-  nest_scriptless_social_share();
-
-  echo '</footer>' . "\n";
 }
+
+/**
+ * Edit footer
+ * adds footer to logged in users with just the edit link
+ */
+nest_edit_footer() { ?>
+	edit_post_link( __( 'Edit', '_er' ), '<footer class="entry-footer"><div class="entry-meta"><span class="meta meta-edit-link">', '</span></div></footer>' );
+<?php }
 
 /**
  * Comment listing

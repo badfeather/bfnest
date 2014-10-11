@@ -16,7 +16,7 @@
 			?>
 		</div><!-- /.entry-content -->
 
-		<?php nest_meta_below(); ?>
+		<?php nest_edit_footer(); ?>
 
 	</div><!-- /.doc-content.doc-content-page -->
 

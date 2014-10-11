@@ -9,4 +9,6 @@
 		<?php the_excerpt(); ?>
 	</div><!-- /.entry-summary -->
 
+	<?php nest_edit_footer(); ?>
+
 </article><!-- #post-## -->
