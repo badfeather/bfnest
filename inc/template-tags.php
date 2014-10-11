@@ -49,7 +49,7 @@ function nest_posted_on() {
 /**
  * Post bottom meta
  */
-function nest_meta_below( $meta_sep = ' | ', $item_sep = ', ' ) {
+function nest_meta( $meta_sep = ' | ', $item_sep = ', ' ) {
   global $post;
   $id = $post->ID;
 
