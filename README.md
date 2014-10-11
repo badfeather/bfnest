@@ -3,9 +3,11 @@
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's semi-useful for us, so hell, it might be semi-helpful to you. A constant work in progress. Use at your own peril.
 
 ### Getting Started
-* After downloading theme, change the name of the folder to whatever your theme is called, then:
+* Download or clone the theme
+* Change the nama of the folder to whatever your theme should be called, then:
   * Find in files `'nest'` and replace with `'yourtextdomain'`
   * Find in files `nest_` and replace with `yourtextdomain`
+  * Find in files 'bad-feather-nest' and replace with 'your-theme-name'
   * Change the theme name and credit info in the `style.less` or `style.css` file, depending on whether you're using LESS.
 * Install any javascript dependencies via bower - these files will be placed in js/vendor/
 * Most style changes can be made in `less/variables.less` and `less/theme.less`
