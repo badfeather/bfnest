@@ -593,6 +593,7 @@ h6 {
   line-height: 1.3125;
   font-weight: 400;
   color: #606060;
+  margin-top: 0;
 }
 h1 a,
 h2 a,
@@ -620,36 +621,28 @@ h6 a:focus {
 h1 {
   font-size: 2em;
   margin-bottom: 0.8125em;
-  margin-top: 0;
+  line-height: 1.15625;
 }
 h2 {
   font-size: 1.75em;
   margin-bottom: 0.46428571em;
-  margin-top: 0;
-  line-height: 1.3125;
 }
 h3 {
   font-size: 1.5em;
   margin-bottom: 0.54166667em;
-  margin-top: 0;
-  line-height: 1.3125;
 }
 h4 {
   font-size: 1.25em;
   margin-bottom: 0.65em;
-  margin-top: 0;
-  line-height: 1.3125;
 }
 h5 {
   font-size: 1em;
   margin-bottom: 0.40625em;
-  margin-top: 0;
   line-height: 1.625;
 }
 h6 {
   font-size: 0.875em;
-  margin-bottom: 0.40625em;
-  margin-top: 0;
+  margin-bottom: 0.46428571em;
   line-height: 1.625;
 }
 .entry-meta {

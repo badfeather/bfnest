@@ -26,11 +26,11 @@
 	    ?>
 
 		<nav class="site-nav" role="navigation">
-			<h1 class="nav-title site-nav-title menu-toggle"><?php _e( 'Menu', 'nest' ); ?></h1>
+			<h1 class="nav-title site-nav-title" id="site-nav-toggle"><a class="menu-toggle" href="javascript:void(0)"><?php _e( 'Menu', 'nest' ); ?></a></h1>
 			<?php wp_nav_menu( array(
 				'theme_location' => 'primary',
 				'container' => false,
-				'menu_class' => 'menu-primary'
+				'menu_class' => 'menu site-nav-menu'
 			) ); ?>
 		</nav><!-- /.site-nav -->
 
