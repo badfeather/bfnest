@@ -84,8 +84,8 @@
 }
 
 // Font size. line-height and margin calculations, to be used in base.less
-.font-size-emcalc(@size: @base-font-size) {
-	font-size: unit((@size / @base-font-size), em);
+.font-size-emcalc(@size: @base-font-size, @default: @base-font-size) {
+	font-size: unit((@size / @default), em);
 }
 .font-family(@font-family; @default-font-family) when not (@font-family = @default-font-family) {
   font-family: @font-family;

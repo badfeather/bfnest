@@ -8,8 +8,8 @@ function nest_archive_pager() {
 	if ( $wp_query->max_num_pages > 1 ) {
 ?>
 	<ul class="doc-nav doc-nav-archive">
-		<li class="nav-next"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></li>
-		<li class="nav-prev"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></li>
+		<li class="nav-prev"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></li>
+		<li class="nav-next"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></li>
 	</ul>
 <?php
 	} // endif
@@ -26,8 +26,8 @@ function nest_single_pager() {
 	if ( $next || $previous ) {
 ?>
 	<ul class="doc-nav doc-nav-single">
-		<li class="nav-next"><?php next_post_link( '&larr; %link' ); ?></li>
-		<li class="nav-prev"><?php previous_post_link( '%link &rarr;' ); ?></li>
+		<li class="nav-prev"><?php next_post_link( '&larr; %link' ); ?></li>
+		<li class="nav-next"><?php previous_post_link( '%link &rarr;' ); ?></li>
 	</ul>
 <?php
 	}
@@ -64,7 +64,12 @@ function nest_meta( $meta_sep = ' | ', $item_sep = ', ' ) {
 
     // comments
     if ( comments_open() ) {
-      $meta_array[] = '<span class="meta meta-comment-link"><a href="' . get_comments_link() . '">' .  _n( 'Comment', '%d Comments', get_comments_number(), 'nest' ) . '</a></span>';
+      $comments_count = get_comments_number();
+      if ( $comments_count == 0 ) {
+        $meta_array[] = '<span class="meta meta-comment-link"><a href="' . get_comments_link() . '">' . __( 'Comment', 'nest' ) . '</a></span>';
+      } else {
+        $meta_array[] = sprintf( '<span class="meta meta-comment-link"><a href="' . get_comments_link() . '">' . _n( '1 Comment', '%s Comments', $comments_count, 'nest' ), $comments_count . '</a></span>' );
+      }
     }
   }
   if ( get_edit_post_link() ) {
@@ -82,7 +87,7 @@ function nest_meta( $meta_sep = ' | ', $item_sep = ', ' ) {
  * adds footer to logged in users with just the edit link
  */
 function nest_edit_footer() {
-	edit_post_link( __( 'Edit', '_er' ), '<footer class="entry-footer"><div class="entry-meta"><span class="meta meta-edit-link">', '</span></div></footer>' );
+	edit_post_link( __( 'Edit', 'nest' ), '<footer class="entry-footer"><div class="entry-meta"><span class="meta meta-edit-link">', '</span></div></footer>' );
 }
 
 /**
@@ -638,7 +643,7 @@ function nest_follow_links( $args = array() ) {
 		'googleplus_message' => __( 'On Google+', 'nest' ),
 
 		'instagram_url' => '',
-		'insagram_message' => __( 'On Instagram', 'nest' ),
+		'instagram_message' => __( 'On Instagram', 'nest' ),
 
 		'linkedin_url' => '',
 		'linkedin_message' => __( 'On LinkedIn', 'nest' ),
