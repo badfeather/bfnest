@@ -1,0 +1,92 @@
+// GRID SYSTEM
+// Hybrid of Bootstrap and semantic.gs
+// --------------------------------------------------
+// Centered container element
+.make-container(@gutter: @gutter-width-calc, @width: @gridsystem-width-calc) {
+	padding-left: @gutter / 2;
+	padding-right: @gutter / 2;
+	max-width: (@width + @gutter);
+	.clearfix;
+}
+.make-row(@gutter: @gutter-width-calc) {
+	margin-left: @gutter / -2;
+	margin-right: @gutter / -2;
+	.clearfix;
+}
+.make-column(@gutter: @gutter-width-calc) {
+	position: relative;
+	float: left;
+	min-height: 1px;
+	padding-left: @gutter / 2;
+	padding-right: @gutter / 2;
+}
+.generate-columns(@n, @i: 1) when (@i <= @n) {
+	.cols-@{i} {
+		width: (@i * 100% / @n);
+	}
+	.generate-columns(@n, (@i + 1));
+}
+.generate-pushes(@n, @i: 1) when (@i <= @n) {
+	.push-@{i} {
+		margin-left: (@i * 100% / @n);
+	}
+	.generate-pushes(@n, (@i + 1));
+}
+.generate-pulls(@n, @i: 1) when (@i <= @n) {
+	.pull-@{i} {
+		margin-right: (@i * 100% / @n);
+	}
+	.generate-pulls(@n, (@i + 1));
+}
+.generate-block-grids(@n, @i: 1) when (@i <= @n) {
+	.block-grid-@{i} {
+		& > .column {
+			width: percentage(1 / @i);
+			&:nth-of-type(n) {
+				clear: none;
+			}
+			&:nth-of-type(@{i}n+1) {
+				clear: both;
+			}
+		}
+	}
+	.generate-block-grids(@n, (@i + 1));
+}
+.generate-gallery-columns(@n, @i: 1) when (@i <= @n) {
+	.gallery-columns-@{i} {
+		& > .gallery-item {
+			width: percentage(1 / @i);
+			&:nth-of-type(n) {
+				clear: none;
+			}
+			&:nth-of-type(@{i}n+1) {
+				clear: both;
+			}
+		}
+	}
+	.generate-gallery-columns(@n, (@i + 1));
+}
+.columns(@x, @columns: @columns) {
+	width: percentage(@x / @columns);
+}
+.push(@offset: 1, @columns: @columns) {
+	margin-left: percentage(@offset / @columns);
+}
+.pull(@offset: 1, @columns: @columns) {
+	margin-right: percentage(@offset / @columns);
+}
+.block-grid-(@x) {
+	& > .column {
+		width: percentage(1 / @x);
+		&:nth-of-type(n) {
+			clear: none;
+		}
+		&:nth-of-type(@{x}n+1) {
+			clear: both;
+		}
+	}
+}
+.make-guttered(@gutter: @gutter-width-calc) {
+	padding-left: (@gutter / 2);
+	padding-right: (@gutter / 2);
+}

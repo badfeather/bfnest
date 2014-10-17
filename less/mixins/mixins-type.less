@@ -1,0 +1,116 @@
+// Text overflow
+// Requires inline-block or block for proper styling
+.text-overflow() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Hide from everything but screen readers
+.text-sr-only() {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+	&:hover,
+	&:active,
+	&:focus {
+		clip: auto;
+		position: inherit;
+	}
+}
+
+// Font size. line-height and margin calculations, to be used in base.less
+.font-size-emcalc(@size: @base-font-size, @default: @base-font-size) {
+	font-size: unit((@size / @default), em);
+}
+.font-family(@font-family; @default-font-family) when not (@font-family = @default-font-family) {
+  font-family: @font-family;
+}
+
+// Optional hyphenation
+.hyphens(@mode: auto) {
+	word-wrap: break-word;
+	hyphens: @mode;
+}
+
+// Remove bullets/numbers and padding
+.list-unstyled() {
+	padding-left: 0;
+	list-style: none;
+}
+// Inline turns list items into inline-block
+.list-inline() {
+	.list-unstyled();
+	> li {
+		display: inline-block;
+		padding-left: .5em;
+		padding-right: .5em;
+	}
+}
+
+// Headings
+// -------------------------
+.heading() {
+	font-family: @headings-font-family;
+	line-height: @headings-line-height;
+	font-weight: @headings-font-weight;
+	color: @headings-color;
+	margin-top: 0;
+	a {
+		color: @headings-link-color;
+		&:hover,
+		&:focus {
+			color: @headings-link-hover-color;
+			text-decoration: none;
+		}
+	}
+}
+.heading-size(@font-size: @base-font-size; @margin-bottom: @base-margin; @font-size-large: @base-font-size;) {
+  .font-size-emcalc(@font-size);
+  .margin-bottom-emcalc(@margin-bottom, @font-size);
+  .font-size-large(@font-size, @font-size-large) when not (@font-size = @font-size-large) {
+    @media(min-width: @tablet) {
+      .font-size-emcalc(@font-size-large);
+      .margin-top-emcalc(@margin-top, @font-size-large);
+      .margin-bottom-emcalc(@margin-bottom, @font-size-large);
+    }
+  }
+}
+.heading-line-height(@line-height: @headings-line-height, @default: @headings-line-height) when not (@line-height = @default) {
+	line-height: @line-height;
+}
+.heading-size-large(@font-size-large: @base-font-size; @margin-bottom: @base-margin; @font-size: @base-font-size) when not (@font-size-large = @font-size) {
+    @media(min-width: @tablet) {
+      .font-size-emcalc(@font-size-large);
+      .margin-bottom-emcalc(@margin-bottom, @font-size-large);
+    }
+}
+.h1() {
+  .heading-size(@h1-font-size, @h1-margin-bottom);
+  .heading-size-large(@h1-font-size-large, @h1-margin-bottom, @h1-font-size);
+  .heading-line-height(@h1-line-height);
+}
+.h2() {
+  .heading-size(@h2-font-size, @h2-margin-bottom);
+  .heading-size-large(@h2-font-size-large, @h2-margin-bottom, @h2-font-size);
+  .heading-line-height(@h2-line-height);
+}
+.h3() {
+  .heading-size(@h3-font-size, @h3-margin-bottom);
+  .heading-size-large(@h3-font-size-large, @h3-margin-bottom, @h3-font-size);
+  .heading-line-height(@h3-line-height);
+}
+.h4() {
+  .heading-size(@h4-font-size, @h4-margin-bottom);
+  .heading-size-large(@h4-font-size-large, @h4-margin-bottom, @h4-font-size);
+  .heading-line-height(@h4-line-height);
+}
+.h5() {
+  .heading-size(@h5-font-size, @h5-margin-bottom);
+  .heading-size-large(@h5-font-size-large, @h5-margin-bottom, @h5-font-size);
+  .heading-line-height(@h5-line-height);
+}
+.h6() {
+  .heading-size(@h6-font-size, @h6-margin-bottom);
+  .heading-size-large(@h6-font-size-large, @h6-margin-bottom, @h6-font-size);
+  .heading-line-height(@h6-line-height);
+}

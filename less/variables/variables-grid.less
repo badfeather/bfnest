@@ -1,0 +1,15 @@
+// GRID SYSTEM
+// Semantic.gs - http://semantic.gs/
+// --------------------------------------------------
+@column-width: 60;
+@gutter-width: 30;
+@columns: 12;
+
+@gutter-width-calc: unit((@gutter-width / @base-font-size), em);
+
+// Utility variable — you should never need to modify this
+@gridsystem-width: (@column-width * @columns) + (@gutter-width * @columns);
+@gridsystem-width-calc: unit((@gridsystem-width / @base-font-size), em);
+
+// Set @total-width to 100% for a fluid layout or @gridsystem-width for fixed layout
+@total-width: 100%;

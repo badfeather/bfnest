@@ -1,0 +1,48 @@
+// COLORS
+// --------------------------------------------------
+// Grayscale
+@black:	#000;
+@gray-darkest: darken(@white, 87.5%);
+@gray-darker: darken(@white, 75%);
+@gray-dark: darken(@white, 62.5%);
+@gray: darken(@white, 50%);
+@gray-light: darken(@white, 37.5%);
+@gray-lighter: darken(@white, 25%);
+@gray-lightest: darken(@white, 12.5%);
+@white: #fff;
+
+// Standard Colors
+@red: #f00;
+@orange: #f90;
+@yellow: #ff0;
+@green: #0f0;
+@blue: #00f;
+@magenta: #f0f;
+@aqua: #0ff;
+@purple: #800080;
+@cyan: #00ADF2;
+@navy: #000080;
+@silver: #C0C0C0;
+
+// Identity Colors
+
+// Background-color
+@base-background-color: @white;
+@base-background-color-dark: @gray-light;
+@base-background-color-light: @gray-lightest;
+
+// Base color and complementary color
+@base-color: @gray-dark;
+@base-color-alt: @gray-light;
+@base-color-comp: spin(@base-color, 180);
+@base-border-color: @gray-lightest;
+
+@accent-color: @cyan;
+@accent-color-alt: @magenta;
+
+// Links
+@link-color: @accent-color;
+@link-hover-color: @accent-color-alt;
+@link-active-color: @accent-color-alt;
+@link-text-decoration: none;
+@link-hover-text-decoration: none;
