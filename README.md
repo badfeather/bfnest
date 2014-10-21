@@ -60,11 +60,11 @@ This theme uses Grunt both to process and lint SASS, LESS (for the time being), 
 * Validate! Keep it accessible.
 * Establish a clear document outline via the HTML5 structure.
 
-#### JS
+### JS
 * Provide vendor scripts, ie. Modernizr, Respond.js, etc. to make responsive sites.
 * Keep the scripts lean by concatenating and minifying whenever possible and minimizing the amount of calls to external scripts.
 
-#### Theme
+### Theme
 * Keep it reasonably DRY, ie. by utilizing `get_template_part())` wherever possible for re-used blocks.
 * Provide enough structure for a baseline and establish patterns that can be expanded when building more complex sites that utilize custom post types and taxonomies.
 * Compartmentalize functions enough to make it easy to find what I'm looking for, but not get obnoxious about it.
