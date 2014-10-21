@@ -37,6 +37,9 @@ This theme uses Grunt both to process and lint SASS, LESS (for the time being), 
 * To uninstall packages, run `npm uninstall [package-name] --save-dev` and `bower uninstall [package-name]`.
 * To update packages to their latest versions, run `npm update --save-dev` and `bower udate`.
 
+#### Style Tester
+* Included is a very low-level style-guide of sorts. To use, open `/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. Hooray!
+
 #### Good luck
 * As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.
 * Edit, add to or remove what ye may. If it's something that would be a worthy change to the Nest, esp. relating to the below goals, lemme know!

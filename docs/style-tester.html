@@ -75,30 +75,54 @@ width: 100%;
 
 <form>
 	<label for="text">Text</label>
-	<input id="text" name="text" type="search" placeholder="text" />
+	<input id="text" name="text" type="text" class="form-control" placeholder="text" />
 
 	<label for="search">Search: </label>
-	<input name="search" type="search" placeholder="search" />
+	<input name="search" type="search" class="form-control" placeholder="search" />
 
 	<label for="textarea">Textarea: </label>
-	<textarea name="textarea" id="textarea" placeholder="Textarea"></textarea>
+	<textarea name="textarea" id="textarea" class="form-control" placeholder="Textarea"></textarea>
 
-	<input name="submit" type="submit" value="Submit" />
+	<label for="text-disabled">Form Control Disabled</label>
+	<input id="text-disabled" name="text-disabled" type="text" class="form-control form-control-disabled" placeholder="disabled" />
+
+	<label for="text-success">Form Control Success</label>
+	<input id="text-success" name="text-success" type="text" class="form-control form-control-success" placeholder="disabled" />
+
+	<label for="text-warning">Form Control Warning</label>
+	<input id="text-warning" name="text-warning" type="text" class="form-control form-control-warning" placeholder="disabled" />
+
+	<label for="text-danger">Form Control Danger</label>
+	<input id="text-danger" name="text-danger" type="text" class="form-control form-control-danger" placeholder="disabled" />
+
+	<input name="submit" type="submit" value="Submit" class="button" />
 </form>
 
 <hr />
 
 <h4>Button Classes:</h4>
 
-<a class="btn">btn</a>
+<a class="button">button</a>
 
-<a class="btn btn-lg">btn-lg</a>
+<a class="button button-lg">button-lg</a>
 
-<a class="btn btn-sm">btn-sm</a>
+<a class="button button-sm">button-sm</a>
 
-<a class="btn btn-xs">btn-xs</a>
+<a class="button button-xs">button-xs</a>
 
-<a class="btn">Link button</a> next to a <button type="button">&lt;button&gt;</button> next to a <input name="submit" type="submit" value="&lt;Submit&gt;">
+<a class="button button-disabled">button-disabled</a>
+
+<a class="button button-primary">button-primary</a>
+
+<a class="button button-success">button-success</a>
+
+<a class="button button-info">button-info</a>
+
+<a class="button button-warning">button-warning</a>
+
+<a class="button button-danger">button-danger</a>
+
+<a class="button">Link button</a> next to a <button type="button">&lt;button&gt;</button> next to a <input name="submit" type="submit" value="&lt;Submit&gt;">
 
 <hr />
 
