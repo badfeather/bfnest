@@ -1,43 +1,68 @@
-# Nest
+# Bad Feather Nest
 
-A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's semi-useful for us, so hell, it might be semi-helpful to you. A constant work in progress. Use at your own peril.
+A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-### Getting Started
+This theme uses Grunt both to process and lint SASS, LESS (for the time being), and Javascript files, as well as to install NPM and Bower dependencies. 
+
+## Getting Started
+### Installing
 * Download or clone the theme
-* Change the nama of the folder to whatever your theme should be called, then:
+* Change the name of the folder to whatever your theme should be called, then:
   * Find in files `'nest'` and replace with `'yourtextdomain'`
   * Find in files `nest_` and replace with `yourtextdomain`
   * Find in files `bad-feather-nest` and replace with `your-theme-name`
-  * Change the theme name and credit info in the `style.less` or `style.css` file, depending on whether you're using LESS.
-* Install any javascript dependencies via bower - these files will be placed in js/vendor/
-* Most style changes can be made in `less/variables.less` and `less/theme.less`
-* Most of the LESS variables that have anything to do with sizes are based on pixel amounts but set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `@h2-font-size: 20`.
+  * Change the theme name and credit info in the `style.scss`, `style.less`, or `style.css` file, depending on whether you're using SASS or LESS.
+* Run `npm install` to install all the default grunt and bower dependencies
+
+### Customizing
+#### JS
+* Install any javascript dependencies via bower by running `bower install [package-name]` - these files will be placed in `js/vendor/`
+* These files can be concatenated to the `script.js` file by adding it to the `jsFileList` variable in the `Gruntfile.js`
+* If you want to simply include them in your project, add a `wp_enqueue_script` call to the `inc/scripts.php` file
+
+#### SASS
+* Most style changes can/should be made in `scss/variables/*.scss` and `scss/theme/*.scss` files
+* Most of the SCSS variables that have anything to do with sizes should be set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `$h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
-* Most of the script includes happen in the `inc/scripts.php` file. If you want to add to or remove some, that's where you should look.
+
+#### LESS
+* **Warning** I recently ported the main styles over to SASS, primarily because the way it handles conditional statements make way more sense to me. If you still want to use LESS, the files are included here for the time being, but will ultimately get phased out. They're still being grunted and output to `style-less.css`.
+* Same ideas regarding style changes for the SCSS files apply to the LESS files.
+
+#### Grunt/Bower
+* To watch your files while editing, run `grunt watch` in terminal
+* To build your project for deployment, run `grunt build`
+* To install new grunt packages, run `npm install [package-name] --save-dev`. This will add it to the `package.json` file and add the files to `/node_modules`.
+* To install new bower packages, run `bower install [package-name]`. This will both add it to the `bower.json` file, and add the files to `/js/vendor/`.
+* To uninstall packages, run `npm uninstall [package-name] --save-dev` and `bower uninstall [package-name]`.
+* To update packages to their latest versions, run `npm update --save-dev` and `bower udate`.
+
+#### Good luck
 * As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.
 * Edit, add to or remove what ye may. If it's something that would be a worthy change to the Nest, esp. relating to the below goals, lemme know!
 
-### Theme Goals
-#### LESS/CSS
-* Handle all customizations through `less/variables.less` and `less/theme.less`.
-* Provide variables for everything I might need, either in mixins or base styles.
+## Theme Goals
+
+### SASS/CSS
+* Handle all customizations through `scss/variables/*.scss`files and `scss/theme/*.scss` files.
+* Provide variables and mixins for everything I might need.
+* Many mixins apply styles only if they're different than the default. This comes in handy in terms of keeping the CSS lean.
 * Use consistent patterns for variable names.
-* On the scaling front, I've decided to go with percentages and `em`s, 'cause, well, I like 'em. This means there's a lot of math going on via mixins, which I'll admit, creates some ugly numbers. Yes, I know about `rem`s, and I'm well aware that most modern browsers handle `px` scaling pretty darned well. Anyway, to make `em`s work, one must be careful about inheritence, which can cause some unwanted multiplication. For that reason, set as many font sizes as possible globally, avoid setting font sizes on containers, pay special attention to nested elements, and utilize classes and descentent selectors (within reason - don't over-specify!) to target unique cases.
-* Keep outputted CSS lean by minimizing specificity and utilizing LESS extends wherever possible to group rules.
+* On the scaling front, I've decided to go with percentages and `em`s, 'cause, well, I like 'em. This means there's a lot of math going on via mixins, which I'll admit, creates some ugly numbers. Yes, I know about `rem`s, and I'm well aware that most modern browsers handle `px` scaling pretty darned well. Anyway, to make `em`s work, one must be careful about inheritance, which can cause some unwanted multiplication. For that reason, set as many font sizes as possible globally, avoid setting font sizes on containers, pay special attention to nested elements, and utilize classes and descendant selectors (within reason - don't over-specify!) for specific styles.
+* Keep outputted CSS lean by minimizing specificity and utilizing SCSS extends wherever possible to group rules.
 * Rethinking each mixin or style rule poached from a framework - still work to do on this.
 * Compartmentalize the LESS files enough to make it easy to find what I'm looking for, but not get obnoxious about it.
 
-#### HTML
+### HTML
 * Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it.
 * Keep class names reasonably semantic, opting for describing their function more than their presentation.
 * If not use SMACSS and BEM methodoligies outright, at least get what they're going for and strive for something similar.
 * Validate! Keep it accessible.
 * Establish a clear document outline via the HTML5 structure.
 
-#### Javascript
-* Provide enough vendor scripts, ie. Modernizr, Respond.js, etc. to make responsive sites, but not get obnoxious about it. I probably need to revisit this.
+#### JS
+* Provide vendor scripts, ie. Modernizr, Respond.js, etc. to make responsive sites.
 * Keep the scripts lean by concatenating and minifying whenever possible and minimizing the amount of calls to external scripts.
-
 
 #### Theme
 * Keep it reasonably DRY, ie. by utilizing `get_template_part())` wherever possible for re-used blocks.

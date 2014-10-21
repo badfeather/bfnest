@@ -1,5 +1,6 @@
-.menu-toggle {
-	font-size: 1em;
+.site-nav-title {
+	@include font-size-emcalc($base-font-size);
+	@include margin-bottom-emcalc($base-margin);
 }
 .site-description {
   @include h3;
