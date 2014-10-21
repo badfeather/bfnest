@@ -1,0 +1,135 @@
+// COMMON FORM ELEMENTS
+// ---------------------------
+$form-font-size: $base-font-size;
+$form-line-height: $base-line-height;
+
+$form-font-size-lg: $base-font-size-lg;
+$form-font-size-sm: $base-font-size-sm;
+$form-font-size-xs: $base-font-size-xs;
+
+$form-padding-vertical: $form-font-size / 2;
+$form-padding-horizontal: $form-font-size / 1.5;
+
+$form-border-width: 1;
+$form-border-radius: $form-font-size / 4;
+
+// BUTTONS
+// ---------------------------
+$button-font-size: $form-font-size;
+$button-font-family: $base-font-family;
+$button-line-height: $form-line-height;
+$button-font-weight: normal;
+$button-text-transform: uppercase;
+$button-color: $white;
+$button-background-color: $link-color;
+$button-border-color: $button-background-color;
+$button-hover-color: $white;
+$button-hover-background-color: $link-hover-color;
+$button-hover-border-color: $button-hover-background-color;
+
+// alternate sizes
+$button-font-size-lg: $form-font-size-lg;
+$button-font-size-sm: $form-font-size-sm;
+$button-font-size-xs: $form-font-size-xs;
+
+// Alternate buttons
+$button-disabled-color: $button-color;
+$button-disabled-background-color: $button-background-color;
+$button-disabled-border-color: $button-border-color;
+$button-disabled-hover-color: $button-disabled-color;
+$button-disabled-hover-background-color: $button-disabled-background-color;
+$button-disabled-hover-border-color: $button-disabled-border-color;
+
+$button-primary-color: $button-color;
+$button-primary-background-color: $button-background-color;
+$button-primary-border-color: $button-border-color;
+$button-primary-hover-color: $button-hover-color;
+$button-primary-hover-background-color: $button-hover-background-color;
+$button-primary-hover-border-color: $button-hover-border-color;
+
+$button-success-color: $button-color;
+$button-success-background-color: $green;
+$button-success-border-color: $green;
+$button-success-hover-color: $button-hover-color;
+$button-success-hover-background-color: $button-hover-background-color;
+$button-success-hover-border-color: $button-hover-border-color;
+
+$button-info-color: $button-color;
+$button-info-background-color: $button-background-color;
+$button-info-border-color: $button-border-color;
+$button-info-hover-color: $button-hover-color;
+$button-info-hover-background-color: $button-hover-background-color;
+$button-info-hover-border-color: $button-hover-border-color;
+
+$button-warning-color: $button-color;
+$button-warning-background-color: $red;
+$button-warning-border-color: $red;
+$button-warning-hover-color: $button-hover-color;
+$button-warning-hover-background-color: $button-hover-background-color;
+$button-warning-hover-border-color: $button-hover-border-color;
+
+$button-danger-color: $button-color;
+$button-danger-background-color: $red;
+$button-danger-border-color: $red;
+$button-danger-hover-color: $button-hover-color;
+$button-danger-hover-background-color: $button-hover-background-color;
+$button-danger-hover-border-color: $button-hover-border-color;
+
+// INPUTS
+// ---------------------------
+$input-font-size: $form-font-size;
+$input-line-height: $form-line-height;
+$input-font-family: $base-font-family;
+$input-color: $base-color;
+$input-border-color: $base-border-color;
+$input-background-color: transparent;
+$input-box-shadow: none;
+
+$input-focus-color: $input-color;
+$input-focus-border-color: $accent-color;
+$input-focus-background-color: $input-background-color;
+$input-focus-box-shadow: none;
+
+$input-width: 210;
+
+$input-border-radius: $form-border-radius;
+
+$input-placeholder-color: $meta-color;
+
+$input-font-size-lg: $form-font-size-lg;
+$input-font-size-sm: $form-font-size-sm;
+$input-font-size-xs: $form-font-size-xs;
+
+
+
+$input-required-color: $input-color;
+$input-required-font-weight: $font-weight-bold;
+
+$input-disabled-color: $input-color;
+$input-disabled-background-color: $base-color-light;
+$input-disabled-border-color: $base-border-color;
+$input-disabled-focus-color: $input-disabled-color;
+$input-disabled-focus-background-color: $input-disabled-background-color;
+$input-disabled-focus-border-color: $input-disabled-border-color;
+
+$input-success-color: $input-color;
+$input-success-background-color: $base-color-light;
+$input-success-border-color: $base-border-color;
+$input-success-focus-color: $input-focus-color;
+$input-success-focus-background-color: $input-focus-background-color;
+$input-success-focus-border-color: $input-focus-border-color;
+
+$input-warning-color: $input-color;
+$input-warning-background-color: $base-color-light;
+$input-warning-border-color: $base-border-color;
+$input-warning-focus-color: $input-focus-color;
+$input-warning-focus-background-color: $input-focus-background-color;
+$input-warning-focus-border-color: $input-focus-border-color;
+
+$input-danger-color: $input-color;
+$input-danger-background-color: $base-color-light;
+$input-danger-border-color: $base-border-color;
+$input-danger-focus-color: $input-focus-color;
+$input-danger-focus-background-color: $input-focus-background-color;
+$input-danger-focus-border-color: $input-focus-border-color;
+

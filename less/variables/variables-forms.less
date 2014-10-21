@@ -1,78 +1,101 @@
-// Button and form field padding
-@form-padding-vertical: 7;
-@form-padding-horizontal: 9;
+// COMMON FORM ELEMENTS
+// ---------------------------
+@form-font-size: @base-font-size;
+@form-line-height: @base-line-height;
 
-@form-padding-vertical-lg: 9;
-@form-padding-horizontal-lg: 16;
+@form-font-size-lg: @base-font-size-lg;
+@form-font-size-sm: @base-font-size-sm;
+@form-font-size-xs: @base-font-size-xs;
 
-@form-padding-vertical-sm: 3;
-@form-padding-horizontal-sm: 6;
+@form-padding-vertical: @form-font-size / 2;
+@form-padding-horizontal: @form-font-size / 1.5;
 
-@form-padding-vertical-xs: 2;
-@form-padding-horizontal-xs: 4;
+@form-border-radius: @form-font-size / 4;
 
-
-@form-border-radius: 4;
-//@form-border-radius-lg: 7;
-//@form-border-radius-sm: 4;
-//@form-border-radius-xs: 3;
-
-// Buttons
-@btn-font-size: 14;
+// BUTTONS
+// ---------------------------
+@btn-font-size: @form-font-size;
 @btn-font-family: @base-font-family;
-@btn-color: @white;
-@btn-bg-color: @link-color;
-@btn-border-color: @btn-bg-color;
-@btn-hover-color: @white;
-@btn-hover-bg-color: @link-hover-color;
-@btn-hover-border-color: @btn-hover-bg-color;
+@btn-line-height: @form-line-height;
 @btn-font-weight: normal;
-@btn-link-disabled-color: @base-border-color;
 @btn-text-transform: uppercase;
-@btn-line-height: @base-line-height;
+@btn-color: @white;
+@btn-background-color: @link-color;
+@btn-border-color: @btn-background-color;
+@btn-hover-color: @white;
+@btn-hover-background-color: @link-hover-color;
+@btn-hover-border-color: @btn-hover-background-color;
 
 // alternate sizes
-@btn-font-size-lg: 18;
-@btn-font-size-sm: 13;
-@btn-font-size-xs: 11;
+@btn-font-size-lg: @form-font-size-lg;
+@btn-font-size-sm: @form-font-size-sm;
+@btn-font-size-xs: @form-font-size-xs;
 
 // Alternate buttons
-@btn-default-color: @btn-color;
-@btn-default-bg-color: @btn-bg-color;
-@btn-default-border-color: @btn-border-color;
+@btn-disabled-color: @btn-color;
+@btn-disabled-background-color: @btn-background-color;
+@btn-disabled-border-color: @btn-border-color;
 
 @btn-primary-color: @btn-color;
-@btn-primary-bg-color: @btn-bg-color;
+@btn-primary-background-color: @btn-background-color;
 @btn-primary-border-color: @btn-border-color;
 
 @btn-success-color: @btn-color;
-@btn-success-bg-color: @green;
+@btn-success-background-color: @green;
 @btn-success-border-color: @green;
 
 @btn-info-color: @btn-color;
-@btn-info-bg-color: @btn-bg-color;
+@btn-info-background-color: @btn-background-color;
 @btn-info-border-color: @btn-border-color;
 
 @btn-warning-color: @btn-color;
-@btn-warning-bg-color: @red;
+@btn-warning-background-color: @red;
 @btn-warning-border-color: @red;
 
 @btn-danger-color: @btn-color;
-@btn-danger-bg-color: @red;
+@btn-danger-background-color: @red;
 @btn-danger-border-color: @red;
 
-// Inputs
-@input-font-size: 14;
-@input-font-size-lg: 18;
-@input-font-size-sm: 13;
-@input-font-size-xs: 11;
-@input-width: 210;
+// INPUTS
+// ---------------------------
+@input-font-size: @form-font-size;
+@input-line-height: @form-line-height;
 @input-font-family: @base-font-family;
 @input-color: @base-color;
-@input-placeholder-color: @meta-color;
 @input-border-color: @accent-color;
-@input-placeholder-border-color: @base-border-color;
-@input-bg-color: @base-background-color;
-@input-disabled-bg-color: @gray-lighter;
+@input-background-color: transparent;
+
+@input-width: 210;
+
 @input-border-radius: @form-border-radius;
+
+@input-placeholder-color: @meta-color;
+
+@input-font-size-lg: @form-font-size-lg;
+@input-font-size-sm: @form-font-size-sm;
+@input-font-size-xs: @form-font-size-xs;
+
+@input-focus-color: @input-color;
+@input-focus-border-color: @base-color;
+@input-focus-background-color: @input-background-color;
+@input-focus-box-shadow: none;
+
+@input-required-color: @input-color;
+@input-required-font-weight: @font-weight-bold;
+
+@input-disabled-color: @input-color;
+@input-disabled-background-color: @base-color-light;
+@input-disabled-border-color: @base-border-color;
+
+@input-success-color: @input-color;
+@input-success-background-color: @base-color-light;
+@input-success-border-color: @base-border-color;
+
+@input-warning-color: @input-color;
+@input-warning-background-color: @base-color-light;
+@input-warning-border-color: @base-border-color;
+
+@input-danger-color: @input-color;
+@input-danger-background-color: @base-color-light;
+@input-danger-border-color: @base-border-color;
 

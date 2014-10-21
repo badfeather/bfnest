@@ -1,0 +1,103 @@
+// BUTTONS
+// -------------------------
+@mixin button {
+	font-family: $button-font-family;
+	font-weight: $button-font-weight;
+	@include font-size-emcalc($button-font-size);
+	line-height: $button-line-height;
+	@include padding-emcalc($padding-top: $form-padding-vertical, $padding-right: $form-padding-horizontal, $font-size: $button-font-size);
+	color: $button-color;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	margin-bottom: 0;
+	background-color: $button-background-color;
+	border: 1px solid $button-border-color;
+	border-radius: ($form-border-radius / $button-font-size * 1em);
+	white-space: nowrap;
+	cursor: pointer;
+	@include text-transform($button-text-transform);
+	&:hover,
+	&:focus {
+		color: $button-hover-color;
+		background-color: $button-hover-background-color;
+		text-decoration: none;
+		border-color: $button-hover-border-color;
+	}
+	&:focus {
+		@include tab-focus;
+	}
+	&:active {
+		outline: 0;
+		background-image: none;
+	}
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		cursor: not-allowed;
+		pointer-events: none; // Future-proof disabling of clicks
+		opacity: .65;
+		box-shadow: none;
+	}
+}
+
+@mixin button-variant($color: $button-color, $background-color: $button-background-color, $border-color: $button-border-color, $hover-color: $button-hover-color, $hover-background-color: $button-hover-background-color, $hover-border-color: $button-hover-background-color) {
+  @include color($color, $button-color);
+  @include background-color($background-color, $button-background-color);
+  @include border-color($border-color, $button-border-color);
+  @if ($hover-color != $button-hover-color) or ($hover-background-color != $button-hover-background-color) or ($hover-border-color != $button-hover-border-color) {
+    &:hover,
+    &:focus {
+      @include color($hover-color, $button-hover-color);
+      @include background-color($hover-background-color, $button-hover-background-color);
+      @include border-color($hover-border-color, $button-hover-border-color);
+    }
+  }
+}
+
+// Form controls
+@mixin form-control {
+	font-family: $input-font-family;
+	@include font-size-emcalc($input-font-size);
+	line-height: $form-line-height;
+	color: $input-placeholder-color;
+	@include border($form-border-width, solid, $input-border-color);
+	@include border(1, solid, $input-border-color);
+	border-radius: ($input-border-radius / $input-font-size * 1em);
+	outline: none;
+	@include padding-emcalc($padding-top: $form-padding-vertical, $padding-right: $form-padding-horizontal, $font-size: $input-font-size);
+	display: inline-block;
+	width: ($input-width / $input-font-size * 1em);
+	vertical-align: middle;
+	margin-bottom: 0;
+	max-width: 100%;
+	background-color: $input-background-color;
+	@include box-shadow($input-box-shadow);
+	&:focus {
+		color: $input-focus-color;
+    background-color: $input-focus-background-color;
+		border-color: $input-focus-border-color;
+		box-shadow: $input-focus-box-shadow;
+	}
+}
+
+@mixin form-control-variant($color: $input-color, $background-color: $input-background-color, $border-color: $input-border-color, $focus-color: $input-focus-color, $focus-background-color: $input-focus-background-color, $focus-border-color: $input-focus-border-color, $focus-box-shadow: $input-focus-box-shadow) {
+  @include color($color, $input-color);
+  @include background-color($background-color, $input-background-color);
+  @include border-color($border-color, $input-border-color);
+  @if ($focus-color != $input-focus-color) or ($focus-background-color != $input-focus-background-color) or ($focus-border-color != $input-focus-border-color) or ($focus-box-shadow != $input-focus-box-shadow) {
+  	&:focus {
+    	@include color($focus-color, $input-focus-color);
+    	@include background-color($focus-background-color, $input-focus-background-color);
+    	@include border-color($focus-border-color, $input-focus-border-color);
+    	@include box-shadow($focus-box-shadow, $input-focus-box-shadow);
+  	}
+	}
+}
+
+@mixin placeholder($color: $input-color-placeholder) {
+	&:-moz-placeholder						{ color: $color; } // Firefox 4-18
+	&::-moz-placeholder					 { color: $color; } // Firefox 19+
+	&:-ms-input-placeholder			 { color: $color; } // Internet Explorer 10+
+	&::-webkit-input-placeholder	{ color: $color; } // Safari and Chrome
+}

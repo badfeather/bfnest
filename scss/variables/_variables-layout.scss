@@ -1,0 +1,33 @@
+// Figures
+$figure-margin-bottom: $base-margin-half;
+
+// Document Main
+$doc-margin-bottom: $base-margin;
+
+// Entries
+$hentry-margin-bottom: $base-margin;
+
+// Widgets
+$widget-margin-bottom: $base-margin;
+
+// Sticky Posts
+$sticky-bg-color: $gray-darkest;
+$sticky-padding: 1em;
+
+// MEDIA QUERY BREAKPOINTS
+// ---------------------------
+
+// Extra small screen / phone
+$mobile: (480 / $base-font-size * 1em);
+
+// Tablet small
+$tablet-sm: (600 / $base-font-size * 1em);
+
+// Small screen / tablet
+$tablet: (768 / $base-font-size * 1em);
+
+// Medium screen / desktop
+$desktop: (992 / $base-font-size * 1em);
+
+// Large screen / wide desktop
+$desktop-lg: (1200 / $base-font-size * 1em);

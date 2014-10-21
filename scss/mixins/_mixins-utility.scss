@@ -1,0 +1,98 @@
+// Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Hide text completely
+@mixin text-hide() {
+	font: "0/0" a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+@mixin sr-only() {
+  position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	border: 0;
+}
+
+// or, if we have problems with that
+@mixin ir() {
+	text-indent: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+// Webkit-style focus
+@mixin tab-focus() {
+	// Default
+	outline: thin dotted #333;
+	// Webkit
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+@mixin square($size) {
+	@include size($size, $size);
+}
+@mixin circle() {
+	border-radius: 50%;
+}
+
+// Single side border-radius
+@mixin border-top-radius($radius) {
+	border-top-right-radius: $radius;
+	border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+	border-bottom-right-radius: $radius;
+	border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+	border-bottom-right-radius: $radius;
+	 border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+	border-bottom-left-radius: $radius;
+	border-top-left-radius: $radius;
+}
+
+// CSS3 Content Columns
+@mixin content-columns($column-count, $column-gap: $grid-gutter-width) {
+	column-count: $column-count;
+	column-gap: $column-gap;
+}
+
+// Responsive utilities
+@mixin responsive-visibility() {
+	display: block !important;
+	tr& { display: table-row !important; }
+	th&,
+	td& { display: table-cell !important; }
+}
+
+@mixin responsive-invisibility() {
+	display: none !important;
+	tr& { display: none !important; }
+	th&,
+	td& { display: none !important; }
+}

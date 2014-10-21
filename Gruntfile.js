@@ -31,7 +31,17 @@ module.exports = function(grunt) {
         },
         files: {
           // target.css file: source.less file
-          "style.css": "less/style.less"
+          'style-less.css': 'less/style.less'
+        }
+      }
+    },
+    sass: {
+      dist: {
+        options: {
+          style: 'expanded'
+        },
+        files: {
+          'style.css': 'scss/style.scss'
         }
       }
     },
@@ -96,6 +106,12 @@ module.exports = function(grunt) {
         ],
         tasks: ['less']
       },
+      sass: {
+        files: [
+          'scss/*.scss',
+        ],
+        tasks: ['sass']
+      },
       js: {
         files: [
           jsFileList,
@@ -111,6 +127,7 @@ module.exports = function(grunt) {
         },
         files: [
           'style.css',
+          'style-less.css',
           'js/scripts.js',
           'js/scripts.min.js',
           '*.php'
@@ -121,6 +138,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask( 'default', [
     'less',
+    'sass',
     'jshint',
     'concat',
     'autoprefixer'
@@ -128,6 +146,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask( 'build', [
     'less',
+    'sass',
     'jshint',
     'concat',
     'uglify',

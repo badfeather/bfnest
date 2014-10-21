@@ -1,0 +1,192 @@
+// BASE TYPE STYLES
+// ---------------------------
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: Cambria, Georgia, serif;
+$font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// Base
+$base-font-family: $font-family-sans-serif;
+$base-font-size: 16;
+$base-font-size-lg: 20;
+$base-font-size-sm: 14;
+$base-font-size-xs: 12;
+$base-font-weight: $font-weight-normal;
+$base-margin: 24;
+$base-margin-half: $base-margin / 2;
+$base-margin-quarter: $base-margin / 4;
+$base-margin-emcalc: $base-margin / $base-font-size * 1em;
+$base-margin-half-emcalc: $base-margin-half / $base-font-size * 1em;
+$base-margin-quarter-emcalc: $base-margin-quarter / $base-font-size * 1em;
+$base-line-height: $base-margin / $base-font-size;
+$base-line-height-half: ($base-font-size + (($base-margin - $base-font-size) / 2)) / $base-font-size;
+$base-line-height-quarter: ($base-font-size + (($base-margin - $base-font-size) / 4)) / $base-font-size;
+$base-text-align: left;
+
+// HEADINGS
+// ---------------------------
+$headings-line-height: $base-line-height-half;
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: $font-weight-normal;
+$headings-font-style: normal;
+$headings-color: $base-color;
+$headings-small-color: inherit;
+$headings-link-color: $link-color;
+$headings-link-hover-color: $link-hover-color;
+
+$h1-font-size: 32;
+$h1-line-height: $base-line-height-quarter;
+$h1-font-family: $headings-font-family;
+$h1-color: $headings-color;
+$h1-font-style: $headings-font-style;
+$h1-margin-top: 0;
+$h1-margin-bottom: $base-margin;
+$h1-font-size-lg: $h1-font-size;
+
+$h2-font-size: 28;
+$h2-line-height: $base-line-height-quarter;
+$h2-font-family: $headings-font-family;
+$h2-color: $headings-color;
+$h2-font-style: $headings-font-style;
+$h2-margin-top: 0;
+$h2-margin-bottom: $base-margin;
+$h2-font-size-lg: $h2-font-size;
+
+$h3-font-size: 20;
+$h3-line-height: $base-line-height-quarter;
+$h3-font-family: $headings-font-family;
+$h3-color: $headings-color;
+$h3-font-style: $headings-font-style;
+$h3-margin-top: 0;
+$h3-margin-bottom: $base-margin;
+$h3-font-size-lg: $h3-font-size;
+
+$h4-font-size: 16;
+$h4-line-height: $base-line-height-quarter;
+$h4-font-family: $headings-font-family;
+$h4-color: $headings-color;
+$h4-font-style: $headings-font-style;
+$h4-margin-top: 0;
+$h4-margin-bottom: $base-margin;
+$h4-font-size-lg: $h4-font-size;
+
+$h5-font-size: 14;
+$h5-line-height: $base-line-height-quarter;
+$h5-font-family: $headings-font-family;
+$h5-color: $headings-color;
+$h5-font-style: $headings-font-style;
+$h5-margin-top: 0;
+$h5-margin-bottom: $base-margin;
+$h5-font-size-lg: $h5-font-size;
+
+$h6-font-size: 12;
+$h6-line-height: $base-line-height-quarter;
+$h6-font-family: $headings-font-family;
+$h6-color: $headings-color;
+$h6-font-style: $headings-font-style;
+$h6-margin-top: 0;
+$h6-margin-bottom: $base-margin;
+$h6-font-size-lg: $h6-font-size;
+
+// META
+// ---------------------------
+$meta-font-size: $base-font-size-sm;
+$meta-line-height: $base-line-height-half;
+$meta-font-family: $font-family-sans-serif;
+$meta-font-style: normal;
+$meta-font-weight: $base-font-weight;
+$meta-color: $gray-light;
+$meta-margin-top: 0;
+$meta-margin-bottom: $base-margin-quarter;
+
+// NAVS
+// ---------------------------
+$nav-font-size: $base-font-size;
+$nav-line-height: $base-line-height;
+$nav-font-family: $font-family-sans-serif;
+$nav-font-weight: $base-font-weight;
+$nav-link-color: $link-color;
+$nav-link-hover-color: $link-hover-color;
+$nav-link-active-color: $link-active-color;
+$nav-text-transform: none;
+
+// Subnavs
+$subnav-font-family: $font-family-sans-serif;
+$subnav-font-weight: $base-font-weight;
+$subnav-link-color: $link-color;
+$subnav-link-hover-color: $link-hover-color;
+$subnav-link-active-color: $link-active-color;
+
+// Post Navs
+$postnav-font-size: $base-font-size;
+$postnav-font-family: $base-font-family;
+$postnav-line-height: $base-line-height;
+$postnav-font-weight: $base-font-weight;
+$postnav-text-transform: none;
+$postnav-link-color: $link-color;
+$postnav-link-hover-color: $link-hover-color;
+$postnav-margin-bottom: $base-margin;
+
+// TABLES
+// ---------------------------
+$table-font-size: $base-font-size;
+$table-font-family: $base-font-family;
+$table-line-height: $base-line-height;
+$table-font-weight: $base-font-weight;
+$table-color: $base-color;
+$table-text-align: left;
+$table-background-color: $base-background-color;
+$table-border-color: $base-border-color;
+$table-border-style: solid;
+$table-margin-top: 0;
+$table-margin-bottom: $base-margin;
+
+$th-font-weight: $font-weight-bold;
+$th-text-align: $table-text-align;
+
+$td-text-align: $table-text-align;
+$td-border-top-width: 1;
+$td-border-right-width: 1;
+$td-border-bottom-width: 1;
+$td-border-left-width: 1;
+$td-padding-vertical: $base-font-size / 2;
+$td-padding-horizontal: $base-font-size / 2;
+
+// BLOCKQUOTES
+// ---------------------------
+$blockquote-font-size: $base-font-size-lg;
+$blockquote-font-family: $base-font-family;
+$blockquote-line-height: $base-line-height;
+$blockquote-font-weight: $base-font-weight;
+$blockquote-font-style: italic;
+$blockquote-color: $base-color;
+$blockquote-margin-top: 0;
+$blockquote-margin-right: 0;
+$blockquote-margin-bottom: $base-margin;
+$blockquote-margin-left: $base-margin;
+
+$cite-font-size: $base-font-size;
+$cite-font-family: $base-font-family;
+$cite-line-height: $base-line-height;
+$cite-font-weight: $base-font-weight;
+$cite-font-style: normal;
+$cite-color: $base-color;
+$cite-margin-bottom: $base-margin;
+$cite-margin-left: $base-margin;
+
+// LEDES
+// ---------------------------
+$lede-font-size: $base-font-size-lg;
+$lede-font-family: $base-font-family;
+$lede-line-height: $base-line-height;
+$lede-font-weight: $base-font-weight;
+$lede-font-style: normal;
+$lede-color: $base-color;
+$lede-text-align: center;
+$lede-margin-top: 0;
+$lede-margin-right: 0;
+$lede-margin-bottom: $base-margin;
+$lede-margin-left: $base-margin;

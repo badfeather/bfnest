@@ -1,0 +1,232 @@
+// Text overflow
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Hide from everything but screen readers
+@mixin text-sr-only() {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+	&:hover,
+	&:active,
+	&:focus {
+		clip: auto;
+		position: inherit;
+	}
+}
+
+@mixin font-style-change($property, $value, $default-value) {
+  @if $value != $default-value {
+    #{$property}: $value;
+  }
+}
+
+// Font size. line-height and margin calculations, to be used in base.less
+@mixin font-size-emcalc($font-size: $base-font-size, $default-font-size: $base-font-size) {
+  @if $font-size != $default-font-size {
+    font-size: emcalc($font-size, $default-font-size);
+  }
+}
+@mixin font-family($font-family: $base-font-family, $default-font-family: $base-font-family) {
+  @include font-style-change(font-family, $font-family, $default-font-family);
+}
+@mixin line-height($line-height: $base-line-height, $default-line-height: $base-line-height) {
+  @include font-style-change(line-height, $line-height, $default-line-height);
+}
+@mixin font-weight($font-weight: $base-font-weight, $default-font-weight: $base-font-weight) {
+  @include font-style-change(font-weight, $font-weight, $default-font-weight);
+}
+@mixin text-transform($text-transform: none, $default-text-transform: none) {
+  @include font-style-change(text-transform, $text-transform, $default-text-transform);
+}
+@mixin text-decoration($text-decoration: none, $default-text-decoration: none) {
+  @include font-style-change(text-decoration, $text-decoration, $default-text-decoration);
+}
+@mixin color($color: $base-color, $default-color: $base-color) {
+  @include font-style-change(color, $color, $default-color);
+}
+@mixin text-align($text-align: $base-text-align, $default-text-align: $base-text-align) {
+  @include font-style-change(text-align, $text-align, $default-text-align);
+}
+@mixin font-style($font-style: normal, $default-font-style: normal) {
+  @include font-style-change(font-style, $font-style, $default-font-style);
+}
+
+// Optional hyphenation
+@mixin hyphens($mode: auto) {
+	word-wrap: break-word;
+	hyphens: $mode;
+}
+
+// Remove bullets/numbers and padding
+@mixin list-unstyled() {
+	padding-left: 0;
+	list-style: none;
+}
+// Inline turns list items into inline-block
+@mixin list-inline() {
+	@include list-unstyled;
+	> li {
+		display: inline-block;
+		padding-left: .5em;
+		padding-right: .5em;
+	}
+}
+
+@mixin cite {
+  @include font-family($cite-font-family);
+	@include font-size-emcalc($cite-font-size);
+	@include line-height($cite-line-height);
+	@include font-style($cite-font-style);
+	@include font-weight($cite-font-weight);
+	@include color($cite-color);
+}
+
+// Blockquotes
+@mixin blockquote {
+  @include font-family($blockquote-font-family);
+	@include font-size-emcalc($blockquote-font-size);
+	@include line-height($blockquote-line-height);
+	@include font-style($blockquote-font-style);
+	@include font-weight($blockquote-font-weight);
+	@include color($blockquote-color);
+	@include margin-emcalc($blockquote-margin-top, $blockquote-margin-right, $blockquote-margin-bottom, $blockquote-margin-left, $blockquote-font-size);
+	em {
+  	@if $blockquote-font-style == normal {
+    	font-style: italic;
+  	} @else if $blockquote-font-style == italic {
+    	font-style: normal;
+  	}
+	}
+	cite {
+    @include font-family($cite-font-family, $blockquote-font-family);
+    @include font-size-emcalc($cite-font-size, $blockquote-font-size);
+    @include line-height($cite-line-height, $blockquote-line-height);
+    @include font-style($cite-font-style, $blockquote-font-style);
+    @include font-weight($cite-font-weight, $blockquote-font-weight);
+    @include color($cite-color, $blockquote-color);
+	}
+}
+
+// Ledes
+@mixin lede {
+  @include font-family($lede-font-family);
+	@include font-size-emcalc($lede-font-size);
+	@include line-height($lede-line-height);
+	@include font-style($lede-font-style);
+	@include font-weight($lede-font-weight);
+	@include color($lede-color);
+	@include text-align($lede-text-align);
+	@include margin-emcalc($lede-margin-top, $lede-margin-right, $lede-margin-bottom, $lede-margin-left, $lede-font-size);
+	em {
+  	@if $lede-font-style == normal {
+    	font-style: italic;
+  	} @else if $lede-font-style == italic {
+    	font-style: normal;
+  	}
+	}
+}
+
+// meta
+@mixin meta {
+  @include font-family($meta-font-family);
+	@include font-size-emcalc($meta-font-size);
+	@include line-height($meta-line-height);
+	@include font-style($meta-font-style);
+	@include font-weight($meta-font-weight);
+	@include color($meta-color);
+	@include margin-top-emcalc($meta-margin-top, $meta-font-size);
+	@include margin-bottom-emcalc($meta-margin-bottom, $meta-font-size);
+}
+
+// small
+@mixin small() {
+	@include font-size-emcalc($base-font-size-sm);
+}
+
+// HEADINGS
+// -------------------------
+@mixin heading() {
+  font-family: $headings-font-family;
+  line-height: $headings-line-height;
+  font-weight: $headings-font-weight;
+  color: $headings-color;
+	margin-top: 0;
+	a {
+		color: $headings-link-color;
+		&:hover,
+		&:focus {
+			color: $headings-link-hover-color;
+			text-decoration: none;
+		}
+	}
+}
+@mixin heading-transform($font-size: $base-font-size, $font-size-lg: $base-font-size, $line-height: $headings-line-height, $margin-top: 0, $margin-bottom: $base-margin, $breakpoint-lg: $tablet) {
+  @include font-size-emcalc($font-size);
+  @include line-height($line-height, $headings-line-height);
+  @include margin-top-emcalc($margin-top, $font-size);
+  @include margin-bottom-emcalc($margin-bottom, $font-size);
+  @if $font-size != $font-size-lg {
+    @media(min-width: $breakpoint-lg) {
+      @include font-size-emcalc($font-size-lg);
+      @include margin-top($margin-top, $font-size-lg);
+      @include margin-bottom($margin-bottom, $font-size-lg);
+    }
+  }
+}
+@mixin h1() {
+  @include heading-transform($h1-font-size, $h1-font-size-lg, $h1-line-height, $h1-margin-top, $h1-margin-bottom, $tablet);
+}
+@mixin h2() {
+  @include heading-transform($h2-font-size, $h2-font-size-lg, $h2-line-height, $h2-margin-top, $h2-margin-bottom, $tablet);
+}
+@mixin h3() {
+  @include heading-transform($h3-font-size, $h3-font-size-lg, $h3-line-height, $h3-margin-top, $h3-margin-bottom, $tablet);
+}
+@mixin h4() {
+  @include heading-transform($h4-font-size, $h4-font-size-lg, $h4-line-height, $h4-margin-top, $h4-margin-bottom, $tablet);
+}
+@mixin h5() {
+  @include heading-transform($h5-font-size, $h5-font-size-lg, $h5-line-height, $h5-margin-top, $h5-margin-bottom, $tablet);
+}
+@mixin h6() {
+  @include heading-transform($h6-font-size, $h6-font-size-lg, $h6-line-height, $h6-margin-top, $h6-margin-bottom, $tablet);
+}
+
+// MENUS
+// -------------------------
+@mixin menu($font-size: $nav-font-size, $font-family: $nav-font-family, $font-weight: $nav-font-weight, $text-transform: $nav-text-transform, $link-color: $nav-link-color, $link-hover-color: $nav-link-hover-color, $link-active-color: $nav-link-active-color) {
+	@include list-unstyled;
+	@include font-family($font-family);
+	@include font-weight($font-weight);
+	@include text-transform($text-transform);
+	ul {
+		@include list-unstyled;
+	}
+	a {
+		color: $link-color;
+		text-decoration: none;
+		&:hover,
+		&:active {
+			color: $link-hover-color;
+		}
+		&:focus {
+			outline: 0;
+		}
+	}
+	.current-menu-item,
+	.current_page_item,
+	.current-cat,
+	.current-page-ancestor,
+	.current-menu-ancestor,
+	.current-cat-parent,
+	.current-category-ancestor,
+	.current-post-ancestor {
+		& > a {
+			color: $link-active-color;
+		}
+	}
+}

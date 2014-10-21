@@ -1,0 +1,12 @@
+.clearfix {
+	@include clearfix;
+}
+
+.ir {
+  @include ir;
+}
+
+.sr-only {
+  @include sr-only;
+}
+

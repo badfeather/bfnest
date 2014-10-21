@@ -1,32 +1,33 @@
-// TYPE
-// --------------------------------------------------
+// BASE TYPE STYLES
+// ---------------------------
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif: Cambria, Georgia, serif;
 @font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
 
-@font-weight-light: 200;
+@font-weight-light: 300;
 @font-weight-normal: 400;
 @font-weight-bold: 700;
 
 // Base
 @base-font-family: @font-family-sans-serif;
 @base-font-size: 16;
-@base-font-size-small: 14;
+@base-font-size-lg: 20;
+@base-font-size-sm: 14;
+@base-font-size-xs: 12;
 @base-font-weight: @font-weight-normal;
-@base-margin: 26;
+@base-margin: 24;
 @base-margin-half: @base-margin / 2;
 @base-margin-quarter: @base-margin / 4;
 @base-margin-emcalc: @base-margin / @base-font-size * 1em;
 @base-margin-half-emcalc: @base-margin-half / @base-font-size * 1em;
 @base-margin-quarter-emcalc: @base-margin-quarter / @base-font-size * 1em;
 @base-line-height: @base-margin / @base-font-size;
-@base-line-height-md: (@base-font-size + ((@base-margin - @base-font-size) / 2)) / @base-font-size;
-@base-line-height-sm: (@base-font-size + ((@base-margin - @base-font-size) / 4)) / @base-font-size;
-@base-line-height-xs: 1;
-@base-line-height-half: (@base-margin * .75) / @base-font-size;
+@base-line-height-half: (@base-font-size + ((@base-margin - @base-font-size) / 2)) / @base-font-size;
+@base-line-height-quarter: (@base-font-size + ((@base-margin - @base-font-size) / 4)) / @base-font-size;
 
-// Headings
-@headings-line-height: @base-line-height-md;
+// HEADINGS
+// ---------------------------
+@headings-line-height: @base-line-height-half;
 @headings-font-family: @font-family-sans-serif;
 @headings-font-weight: @font-weight-normal;
 @headings-color: @base-color;
@@ -35,54 +36,54 @@
 @headings-link-hover-color: @link-hover-color;
 
 @h1-font-size: 32;
-@h1-font-size-large: @h1-font-size;
-@h1-line-height: @base-line-height-sm;
+@h1-font-size-lg: @h1-font-size;
+@h1-line-height: @base-line-height-quarter;
 @h1-font-family: @headings-font-family;
 @h1-font-style: italic;
 @h1-margin-bottom: @base-margin;
 @h1-margin-top: 0;
 
 @h2-font-size: 28;
-@h2-font-size-large: @h2-font-size;
-@h2-line-height: @base-line-height-md;
+@h2-font-size-lg: @h2-font-size;
+@h2-line-height: @headings-line-height;
 @h2-margin-bottom: @base-margin-half;
 @h2-margin-top: 0;
 
-@h3-font-size: 24;
-@h3-font-size-large: @h3-font-size;
-@h3-line-height: @base-line-height-md;
+@h3-font-size: 20;
+@h3-font-size-lg: @h3-font-size;
+@h3-line-height: @headings-line-height;
 @h3-margin-bottom: @base-margin-half;
 @h3-margin-top: 0;
 
-@h4-font-size: 20;
-@h4-font-size-large: @h4-font-size;
-@h4-line-height: @base-line-height-md;
+@h4-font-size: 16;
+@h4-font-size-lg: @h4-font-size;
+@h4-line-height: @headings-line-height;
 @h4-margin-bottom: @base-margin-half;
 @h4-margin-top: 0;
 
-@h5-font-size: 16;
-@h5-font-size-large: @h5-font-size;
+@h5-font-size: 14;
+@h5-font-size-lg: @h5-font-size;
 @h5-line-height: @base-line-height;
 @h5-margin-bottom: @base-margin-quarter;
 @h5-margin-top: 0;
 
-@h6-font-size: 14;
-@h6-font-size-large: @h6-font-size;
+@h6-font-size: 12;
+@h6-font-size-lg: @h6-font-size;
 @h6-line-height: @base-line-height;
 @h6-margin-bottom: @base-margin-quarter;
 @h6-margin-top: 0;
 
-@page-title-font-size: 30;
-
-// Meta
+// META
+// ---------------------------
 @meta-font-family: @font-family-sans-serif;
 @meta-font-weight: @base-font-weight;
 @meta-color: @gray-light;
-@meta-font-size: @base-font-size-small;
-@meta-line-height: @base-line-height-md;
+@meta-font-size: @base-font-size-sm;
+@meta-line-height: @base-line-height-half;
 @meta-margin-bottom: @base-margin-quarter;
 
-// Navs
+// NAVS
+// ---------------------------
 @nav-font-family: @font-family-sans-serif;
 @nav-font-weight: @font-weight-bold;
 @nav-link-color: @link-color;
@@ -97,24 +98,30 @@
 @subnav-link-active-color: @link-active-color;
 
 // Post Navs
+@postnav-font-size: @base-font-size-sm;
+@postnav-font-family: @font-family-sans-serif;
 @postnav-link-color: @link-color;
 @postnav-link-hover-color: @link-hover-color;
-@postnav-font-family: @font-family-sans-serif;
-@postnav-font-size: 13;
 
-// Tables
-@table-bg-color: @base-background-color;
+// TABLES
+// ---------------------------
+@table-font-size: @base-font-size;
+@table-font-family: @base-font-family;
+@table-line-height: @base-line-height;
+@table-background-color: @base-background-color;
 @table-border-color: @base-border-color;
+@table-margin-top: 0;
+@table-margin-bottom: @base-margin;
 @td-border-top-width: 1px;
 @td-border-right-width: 1px;
 @td-border-bottom-width: 1px;
 @td-border-left-width: 1px;
 @td-padding-vertical: 6;
 @td-padding-horizontal: 6;
-@td-padding-emcalc: unit((@td-padding-vertical / @base-font-size), em) unit((@td-padding-horizontal / @base-font-size), em);
 
-// Blockquotes
-@blockquote-font-size: 20;
+// BLOCKQUOTES
+// ---------------------------
+@blockquote-font-size: @base-font-size-lg;
 @blockquote-font-family: @base-font-family;
 @blockquote-line-height: @base-line-height;
 @blockquote-font-weight: @base-font-weight;
@@ -124,8 +131,9 @@
 @blockquote-margin-top: 0;
 @blockquote-margin-bottom: @base-margin;
 
-// Ledes
-@lede-font-size: 20;
+// LEDES
+// ---------------------------
+@lede-font-size: @base-font-size-lg;
 @lede-font-family: @base-font-family;
 @lede-line-height: @base-line-height;
 @lede-font-weight: @font-weight-light;

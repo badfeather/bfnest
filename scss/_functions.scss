@@ -1,0 +1,9 @@
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+@function emcalc($size, $default: $base-font-size, $ems: 0) {
+  @if ($size != 0) {
+    $ems: strip-unit($size) / strip-unit($default) * 1em;
+  }
+  @return $ems;
+}

@@ -1,0 +1,29 @@
+* {
+	box-sizing: border-box;
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+html {
+	font-size: 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+// CONTENT LAYOUT
+.doc-main {
+	@include margin-bottom-emcalc($doc-margin-bottom);
+}
+.hentry {
+	@include margin-bottom-emcalc($hentry-margin-bottom);
+}
+.widget {
+	@include margin-bottom-emcalc($widget-margin-bottom);
+}
+.entry-figure {
+	@include margin-bottom-emcalc($figure-margin-bottom);
+}
+.sticky {
+	@include background-color($sticky-bg-color);
+	@include padding-emcalc($sticky-padding);
+}

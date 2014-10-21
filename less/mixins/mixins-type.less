@@ -19,11 +19,14 @@
 }
 
 // Font size. line-height and margin calculations, to be used in base.less
-.font-size-emcalc(@size: @base-font-size, @default: @base-font-size) {
+.font-size-emcalc(@size: @base-font-size; @default: @base-font-size) when not (@size = @default) {
 	font-size: unit((@size / @default), em);
 }
-.font-family(@font-family; @default-font-family) when not (@font-family = @default-font-family) {
+.font-family(@font-family; @base-font-family; @default: @base-font-family) when not (@font-family = @default) {
   font-family: @font-family;
+}
+.line-height(@line-height: @base-line-height; @default: @base-line-height) when not (@line-height = @default) {
+  line-height: @line-height;
 }
 
 // Optional hyphenation
@@ -64,53 +67,35 @@
 		}
 	}
 }
-.heading-size(@font-size: @base-font-size; @margin-bottom: @base-margin; @font-size-large: @base-font-size;) {
+.heading-mq-resize(@font-size: @base-font-size; @font-size-mq: @base-font-size; @margin-top: 0; @margin-bottom: @base-margin; @mq: @tablet) when not (@font-size-mq = @font-size) {
+  .font-size-emcalc(@font-size-mq);
+  .margin-top-emcalc(@margin-top; @font-size-mq);
+  .margin-bottom-emcalc(@margin-bottom; @font-size-mq);
+}
+.heading-size(@font-size: @base-font-size; @font-size-lg: @base-font-size; @line-height: @headings-line-height; @margin-top: 0; @margin-bottom: @base-margin; @breakpoint-lg: @tablet) {
   .font-size-emcalc(@font-size);
-  .margin-bottom-emcalc(@margin-bottom, @font-size);
-  .font-size-large(@font-size, @font-size-large) when not (@font-size = @font-size-large) {
-    @media(min-width: @tablet) {
-      .font-size-emcalc(@font-size-large);
-      .margin-top-emcalc(@margin-top, @font-size-large);
-      .margin-bottom-emcalc(@margin-bottom, @font-size-large);
-    }
+  .line-height(@line-height; @headings-line-height);
+  .heading-margin-top(@margin-top; @font-size) when (@margin-top > 0) {
+    .margin-top-emcalc(@margin-top; @font-size)
   }
-}
-.heading-line-height(@line-height: @headings-line-height, @default: @headings-line-height) when not (@line-height = @default) {
-	line-height: @line-height;
-}
-.heading-size-large(@font-size-large: @base-font-size; @margin-bottom: @base-margin; @font-size: @base-font-size) when not (@font-size-large = @font-size) {
-    @media(min-width: @tablet) {
-      .font-size-emcalc(@font-size-large);
-      .margin-bottom-emcalc(@margin-bottom, @font-size-large);
-    }
+  .margin-bottom-emcalc(@margin-bottom; @font-size);
+  .heading-mq-resize(@font-size; @font-size-lg; @margin-top; @margin-bottom; @breakpoint-lg);
 }
 .h1() {
-  .heading-size(@h1-font-size, @h1-margin-bottom);
-  .heading-size-large(@h1-font-size-large, @h1-margin-bottom, @h1-font-size);
-  .heading-line-height(@h1-line-height);
+  .heading-size(@h1-font-size; @h1-font-size-lg; @h1-line-height; @h1-margin-top; @h1-margin-bottom; @tablet);
 }
 .h2() {
-  .heading-size(@h2-font-size, @h2-margin-bottom);
-  .heading-size-large(@h2-font-size-large, @h2-margin-bottom, @h2-font-size);
-  .heading-line-height(@h2-line-height);
+  .heading-size(@h2-font-size; @h2-font-size-lg; @h2-line-height; @h2-margin-top; @h2-margin-bottom; @tablet);
 }
 .h3() {
-  .heading-size(@h3-font-size, @h3-margin-bottom);
-  .heading-size-large(@h3-font-size-large, @h3-margin-bottom, @h3-font-size);
-  .heading-line-height(@h3-line-height);
+  .heading-size(@h3-font-size; @h3-font-size-lg; @h3-line-height; @h3-margin-top; @h3-margin-bottom; @tablet);
 }
 .h4() {
-  .heading-size(@h4-font-size, @h4-margin-bottom);
-  .heading-size-large(@h4-font-size-large, @h4-margin-bottom, @h4-font-size);
-  .heading-line-height(@h4-line-height);
+  .heading-size(@h4-font-size; @h4-font-size-lg; @h4-line-height; @h4-margin-top; @h4-margin-bottom; @tablet);
 }
 .h5() {
-  .heading-size(@h5-font-size, @h5-margin-bottom);
-  .heading-size-large(@h5-font-size-large, @h5-margin-bottom, @h5-font-size);
-  .heading-line-height(@h5-line-height);
+  .heading-size(@h5-font-size; @h5-font-size-lg; @h5-line-height; @h5-margin-top; @h5-margin-bottom; @tablet);
 }
 .h6() {
-  .heading-size(@h6-font-size, @h6-margin-bottom);
-  .heading-size-large(@h6-font-size-large, @h6-margin-bottom, @h6-font-size);
-  .heading-line-height(@h6-line-height);
+  .heading-size(@h6-font-size; @h6-font-size-lg; @h6-line-height; @h6-margin-top; @h6-margin-bottom; @tablet);
 }

@@ -1,0 +1,13 @@
+// GRID SYSTEM
+$grid-column-width: 60;
+$grid-gutter-width: 30;
+$grid-columns: 12;
+
+$gutter-width-emcalc: $grid-gutter-width / $base-font-size * 1em;
+
+// Utility variable — you should never need to modify this
+$grid-width: ($grid-column-width * $grid-columns) + ($grid-gutter-width * $grid-columns);
+$grid-width-emcalc: $grid-width / $base-font-size * 1em;
+
+// Set $total-width to 100% for a fluid layout or $gridsystem-width for fixed layout
+$total-width: 100%;

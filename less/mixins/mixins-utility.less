@@ -62,6 +62,9 @@
 .square(@size) {
 	.size(@size; @size);
 }
+.circle() {
+	border-radius: 50%;
+}
 
 // Single side border-radius
 .border-top-radius(@radius) {
@@ -85,4 +88,19 @@
 .content-columns(@column-count; @column-gap: @grid-gutter-width) {
 	column-count: @column-count;
 	column-gap: @column-gap;
+}
+
+// Responsive utilities
+.responsive-visibility() {
+	display: block !important;
+	tr& { display: table-row !important; }
+	th&,
+	td& { display: table-cell !important; }
+}
+
+.responsive-invisibility() {
+	display: none !important;
+	tr& { display: none !important; }
+	th&,
+	td& { display: none !important; }
 }

@@ -1,0 +1,212 @@
+// GENERAL TYPE STYLES
+// -------------------------
+body {
+	font-size: percentage($base-font-size/16);
+	line-height: $base-line-height;
+	font-family: $base-font-family;
+	font-weight: $base-font-weight;
+	text-align: $base-text-align;
+	color: $base-color;
+	background-color: $base-background-color;
+	width: 100%;
+	@extend .clearfix;
+}
+p,
+ul,
+ol,
+dl,
+pre,
+address,
+hr {
+	@include margin-emcalc($margin-bottom: $base-margin);
+}
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+abbr,
+acronym {
+	border-bottom: emcalc(1) dotted $base-border-color;
+	cursor: help;
+}
+mark,
+ins {
+	background: $yellow;
+	text-decoration: none;
+	color: #000;
+}
+ul {
+	list-style: disc outside;
+	ul {
+		list-style-type: circle;
+		ul {
+			list-style-type: square;
+		}
+	}
+}
+ol {
+	list-style: decimal outside;
+}
+ul,
+ol {
+	padding: 0 0 0 $base-margin-emcalc;
+	ul,
+	ol {
+		padding-top: $base-margin-quarter-emcalc;
+		margin-bottom: 0;
+		font-size: 1em;
+	}
+}
+li {
+	margin-bottom: $base-margin-quarter-emcalc;
+}
+a {
+	color: $link-color;
+	text-decoration: $link-text-decoration;
+	outline: 0;
+	&:hover,
+	&:focus {
+		color: $link-hover-color;
+		text-decoration: $link-hover-text-decoration;
+	}
+
+	&:focus {
+		@include tab-focus;
+		outline: 0;
+	}
+}
+b,
+strong {
+	font-weight: $font-weight-bold;
+}
+dt,
+dd {
+	line-height: $base-line-height;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-left: 0; // Undo browser default
+	margin-bottom: $base-margin-half-emcalc;
+}
+hr {
+	border: 0;
+	border-top: 1px solid $base-border-color;
+}
+// Abbreviations and acronyms
+abbr[title],
+// Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
+	cursor: help;
+	border-bottom: 1px dotted $base-border-color;
+}
+abbr.initialism {
+	font-size: 90%;
+	text-transform: uppercase;
+}
+cite {
+  font-style: normal;
+  @include cite;
+}
+
+// Blockquotes
+blockquote {
+  @include blockquote;
+}
+
+// Ledes
+.lede {
+  @include lede;
+}
+
+// Quotes
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+	content: "";
+}
+
+// Addresses
+address {
+	display: block;
+	font-style: normal;
+	line-height: $base-line-height;
+}
+
+// Emphasis & misc
+small {
+	@include small;
+}
+
+table {
+  @include font-family($table-font-family);
+	@include font-size-emcalc($table-font-size);
+	@include line-height($table-line-height);
+	@include font-weight($table-font-weight);
+	@include text-align($table-text-align);
+	@include color($table-color);
+	@include margin-top-emcalc($table-margin-top, $table-font-size);
+	@include margin-bottom-emcalc($table-margin-bottom, $table-font-size);
+	width: 100%;
+	max-width: 100%;
+}
+th,
+td {
+  @include padding-emcalc($td-padding-vertical, $td-padding-horizontal, $td-padding-vertical, $td-padding-horizontal, $table-font-size);
+	border-style: $table-border-style;
+	border-color: $table-border-color;
+	@include border-width($td-border-top-width, $td-border-right-width, $td-border-bottom-width, $td-border-left-width, $table-font-size);
+	text-align: left;
+	vertical-align: top;
+}
+th {
+	font-weight: bold;
+}
+
+// HEADINGS
+// -------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include heading;
+}
+h1 {
+	@include h1;
+}
+h2 {
+	@include h2;
+}
+h3 {
+	@include h3;
+}
+h4 {
+	@include h4;
+}
+h5 {
+	@include h5;
+}
+h6 {
+	@include h6;
+}
+
+// META
+// -------------------------
+.entry-meta {
+  @include meta;
+	clear: both;
+}
+
+// TYPEKIT
+// -------------------------
+.wf-loading {
+	body {
+		visibility: hidden;
+	}
+}

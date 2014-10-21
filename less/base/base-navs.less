@@ -39,6 +39,13 @@
 	clear: both;
 	&:extend(.clearfix all);
 	font-family: @postnav-font-family;
+	a {
+  	color: $postnav-link-color;
+  	&:hover,
+  	&:active {
+    	color: $postnav-link-hover-color;
+  	}
+	}
 	.nav-previous,
 	.nav-next {
 		width: 50%;

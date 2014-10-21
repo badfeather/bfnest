@@ -1,116 +1,50 @@
-// GENERAL FORM STYLES
+// BUTTONS
 // ---------------------------
-// Buttons
-.btn {
-	display: inline-block;
-	margin-bottom: 0;
-	font-family: @btn-font-family;
-	font-weight: @btn-font-weight;
-	.font-size-emcalc(@btn-font-size);
-	line-height: @base-line-height;
-	.padding-emcalc( @padding-top: @form-padding-vertical, @padding-right: @form-padding-horizontal, @size: @btn-font-size);
-	color: @btn-color;
-	text-align: center;
-	vertical-align: middle;
-	background-color: @btn-bg-color;
-	border: 1px solid @btn-border-color;
-	border-radius: unit((@form-border-radius / @btn-font-size), em);
-	white-space: nowrap;
-	cursor: pointer;
-	text-transform: @btn-text-transform;
-	&:hover,
-	&:focus {
-		color: @btn-hover-color;
-		background-color: @btn-hover-bg-color;
-		text-decoration: none;
-		border-color: @btn-hover-border-color;
-	}
-	&:focus {
-		.tab-focus();
-	}
-	&:active {
-		outline: 0;
-		background-image: none;
-	}
-	&.disabled,
-	&[disabled],
-	fieldset[disabled] & {
-		cursor: not-allowed;
-		pointer-events: none; // Future-proof disabling of clicks
-		opacity: .65;
-		box-shadow: none;
-	}
-}
-
+.btn,
 button,
 input[type='submit'] {
-	&:extend(.btn all);
+	.btn();
 }
 .btn-lg {
 	.font-size-emcalc(@btn-font-size-lg);
-	//border-radius: @border-radius-lg;
-	//border-radius: unit((@border-radius-lg / @btn-font-size-lg), em);
-	.padding-emcalc( @padding-top: @form-padding-vertical-lg, @padding-right: @form-padding-horizontal-lg, @size: @btn-font-size-lg);
 }
 .btn-sm {
 	.font-size-emcalc(@btn-font-size-sm);
-	//border-radius: @border-radius-sm;
-	//border-radius: unit((@border-radius-sm / @btn-font-size-sm), em);
-	.padding-emcalc( @padding-top: @form-padding-vertical-sm, @padding-right: @form-padding-horizontal-sm, @size: @btn-font-size-sm);
 }
 .btn-xs {
 	.font-size-emcalc(@btn-font-size-xs);
-	//border-radius: @border-radius-xs;
-	//border-radius: unit((@border-radius-xs / @btn-font-size-xs), em);
-	.padding-emcalc( @padding-top: @form-padding-vertical-xs, @padding-right: @form-padding-horizontal-xs, @size: @btn-font-size-xs);
 }
-// Alternate buttons
-// --------------------------------------------------
 
-.btn-default {
-  .button-variant(@btn-default-color; @btn-default-bg-color; @btn-default-border-color);
-}
+// Alternate button states
 .btn-primary {
-  .button-variant(@btn-primary-color; @btn-primary-bg-color; @btn-primary-border-color);
+  color: @btn-primary-color;
+  background-color: @btn-primary-background-color;
+  border-color: @btn-primary-border-color;
 }
-// Success appears as green
 .btn-success {
-  .button-variant(@btn-success-color; @btn-success-bg-color; @btn-success-border-color);
+  color: @btn-success-color;
+  background-color: @btn-success-background-color;
+  border-color: @btn-success-border-color;
 }
-// Info appears as blue-green
 .btn-info {
-  .button-variant(@btn-info-color; @btn-info-bg-color; @btn-info-border-color);
+  color: @btn-info-color;
+  background-color: @btn-info-background-color;
+  border-color: @btn-info-border-color;
 }
-// Warning appears as orange
 .btn-warning {
-  .button-variant(@btn-warning-color; @btn-warning-bg-color; @btn-warning-border-color);
+  color: @btn-warning-color;
+  background-color: @btn-warning-background-color;
+  border-color: @btn-warning-border-color;
 }
-// Danger and error appear as red
 .btn-danger {
-  .button-variant(@btn-danger-color; @btn-danger-bg-color; @btn-danger-border-color);
+  color: @btn-danger-color;
+  background-color: @btn-danger-background-color;
+  border-color: @btn-danger-border-color;
 }
 
-// Other form elements
-.form-control {
-	border: 1px solid @input-placeholder-border-color;
-	line-height: @base-line-height;
-	.font-size-emcalc(@input-font-size);
-	border-radius: unit((@input-border-radius / @input-font-size), em);
-	.padding-emcalc( @padding-top: @form-padding-vertical, @padding-right: @form-padding-horizontal, @size: @input-font-size);
-	width: unit((@input-width / @input-font-size) , em);
-	outline: none;
-	font-family: @input-font-family;
-	color: @input-placeholder-color;
-	vertical-align: middle;
-	margin: 0;
-	max-width: 100%;
-	display: inline-block;
-	background-color: @input-bg-color;
-	&:focus {
-		border-color: @input-border-color;
-		color: @input-color;
-	}
-}
+// FORM CONTROLS
+// ---------------------------
+.form-control,
 textarea,
 input[type="text"],
 input[type="password"],
@@ -126,7 +60,7 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"] {
-	&:extend(.form-control all);
+	.form-control;
 }
 textarea {
 	//box-sizing: border-box;
@@ -137,14 +71,34 @@ select {
 	line-height: 2;
 }
 legend {
-	.small;
-	font-weight: @font-weight-bold;
+  .h3;
 }
 input[type="checkbox"] {
 	display: inline-block;
 	margin-right: .5em;
 }
 .required {
-	color: red;
-	font-weight: bold;
+	color: @input-required-color;
+	font-weight: @input-required-font-weight;
+}
+
+.form-control-disabled {
+  color: @input-disabled-color;
+  background-color: @input-disabled-background-color;
+  border-color: @input-disabled-border-color;
+}
+.form-control-success {
+  color: @input-success-color;
+  background-color: @input-success-background-color;
+  border-color: @input-success-border-color;
+}
+.form-control-warning {
+  color: @input-warning-color;
+  background-color: @input-warning-background-color;
+  border-color: @input-warning-border-color;
+}
+.form-control-danger {
+  color: @input-danger-color;
+  background-color: @input-danger-background-color;
+  border-color: @input-danger-border-color;
 }

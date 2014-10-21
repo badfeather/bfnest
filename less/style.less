@@ -10,9 +10,45 @@ License URI: http://opensource.org/licenses/MIT
 Text Domain: nest
 */
 
-@import "variables.less";
-@import "mixins.less";
-@import "resets.less";
-@import "base.less";
-@import "theme.less";
-@import "print.less";
+// VARIABLES
+// ---------------------------
+@import "variables/variables-color.less";
+@import "variables/variables-type.less";
+@import "variables/variables-forms.less";
+@import "variables/variables-grid.less";
+@import "variables/variables-layout.less";
+
+// MIXINS
+// ---------------------------
+@import "mixins/mixins-layout.less";
+@import "mixins/mixins-type.less";
+@import "mixins/mixins-media.less";
+@import "mixins/mixins-forms.less";
+@import "mixins/mixins-grid.less";
+@import "mixins/mixins-utility.less";
+
+// RESETS
+// ---------------------------
+@import "resets/resets-normalize.less";
+//@import "resets/resets-reset.less";
+@import "resets/resets-print.less";
+
+// BASE
+// ---------------------------
+@import "base/base-layout.less";
+@import "base/base-type.less";
+@import "base/base-media.less";
+@import "base/base-forms.less";
+@import "base/base-utility.less";
+@import "base/base-grid.less";
+
+// THEME
+// ---------------------------
+@import "theme/theme-layout.less";
+@import "theme/theme-type.less";
+@import "theme/theme-header.less";
+@import "theme/theme-main.less";
+@import "theme/theme-comments.less";
+@import "theme/theme-side.less";
+@import "theme/theme-footer.less";
+

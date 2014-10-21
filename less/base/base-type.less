@@ -14,9 +14,6 @@ p,
 ul,
 ol,
 dl,
-blockquote,
-table,
-form,
 pre,
 address,
 hr {
@@ -117,10 +114,10 @@ blockquote {
 	line-height: @blockquote-line-height;
 	font-style: @blockquote-font-style;
 	font-weight: @blockquote-font-weight;
-	.margin-top-emcalc(@blockquote-margin-top, @blockquote-font-size);
-	.margin-right-emcalc(@blockquote-margin-right, @blockquote-font-size);
-	.margin-bottom-emcalc(@blockquote-margin-bottom, @blockquote-font-size);
-	.margin-left-emcalc(@blockquote-margin-left, @blockquote-font-size);
+	.margin-top-emcalc(@blockquote-margin-top; @blockquote-font-size);
+	.margin-right-emcalc(@blockquote-margin-right; @blockquote-font-size);
+	.margin-bottom-emcalc(@blockquote-margin-bottom; @blockquote-font-size);
+	.margin-left-emcalc(@blockquote-margin-left; @blockquote-font-size);
 	em,
 	cite {
 		font-style: normal;
@@ -134,10 +131,10 @@ blockquote {
 		line-height: @lede-line-height;
 		font-style: @lede-font-style;
 		font-weight: @lede-font-weight;
-		.margin-top-emcalc(@lede-margin-top, @lede-font-size);
-		.margin-right-emcalc(@lede-margin-right, @lede-font-size);
-		.margin-bottom-emcalc(@lede-margin-bottom, @lede-font-size);
-		.margin-left-emcalc(@lede-margin-left, @lede-font-size);
+		.margin-top-emcalc(@lede-margin-top; @lede-font-size);
+		.margin-right-emcalc(@lede-margin-right; @lede-font-size);
+		.margin-bottom-emcalc(@lede-margin-bottom; @lede-font-size);
+		.margin-left-emcalc(@lede-margin-left; @lede-font-size);
 }
 
 // Quotes
@@ -157,9 +154,9 @@ address {
 
 // Emphasis & misc
 
-.small {
-	.font-size-emcalc(@base-font-size-small);
-	.margin-emcalc(@margin-bottom: @base-margin-half, @size: @base-font-size-small);
+.sm {
+	.font-size-emcalc(@base-font-size-sm);
+	.margin-emcalc(@margin-bottom: @base-margin-half; @size: @base-font-size-sm);
 }
 
 // Undo browser default styling
@@ -171,15 +168,20 @@ cite { font-style: normal; }
 .text-center { text-align: center; }
 
 table {
+  .font-size-emcalc(@table-font-size);
+  .line-height(@table-line-height);
 	width: 100%;
 	max-width: 100%;
-	background-color: @table-bg-color;
+	background-color: @table-background-color;
+	.margin-top-emcalc(@table-margin-top);
+	.margin-bottom-emcalc(@table-margin-bottom);
 }
 th,
 td {
-	padding: @td-padding-emcalc;
+	.padding-emcalc(@td-padding-vertical; @td-padding-horizontal);
 	line-height: @base-line-height;
 	vertical-align: top;
+	border-color: @table-border-color;
 	.border-top(@td-border-top-width);
 	.border-right(@td-border-right-width);
 	.border-bottom(@td-border-bottom-width);
@@ -228,7 +230,7 @@ h6 {
 	font-family: @meta-font-family;
 	font-weight: @meta-font-weight;
 	color: @meta-color;
-	.margin-bottom-emcalc(@meta-margin-bottom, @meta-font-size);
+	.margin-bottom-emcalc(@meta-margin-bottom; @meta-font-size);
 }
 
 // TYPEKIT
