@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
       },
       no_dest: {
-        src: 'style.css'
+        src: ['style.css', 'style-less.css']
       }
     },
     modernizr: {
@@ -74,10 +74,7 @@ module.exports = function(grunt) {
         devFile: 'js/vendor/modernizr/modernizr.js',
         outputFile: 'js/modernizr.min.js',
         files: {
-          'src': [
-            ['js/scripts.min.js'],
-            ['style.css']
-          ]
+          'src': ['js/scripts.min.js', 'style.css']
         },
         uglify: true,
         parseFiles: true
@@ -93,8 +90,10 @@ module.exports = function(grunt) {
           exclude: [
             'js/.*',
             'less/.*',
+            'scss/.*',
             'img/.*',
             'node_modules/.*',
+            'docs/.*'
           ]
         }
       }
@@ -103,12 +102,14 @@ module.exports = function(grunt) {
       less: {
         files: [
           'less/*.less',
+          'less/**/*.less'
         ],
         tasks: ['less']
       },
       sass: {
         files: [
           'scss/*.scss',
+          'scss/**/*.scss'
         ],
         tasks: ['sass']
       },
