@@ -1,3 +1,39 @@
+@mixin style($property, $value: 0) {
+  #{$property}: $value;
+}
+@mixin style-emcalc($property, $value: 0, $font-size: $base-font-size) {
+  #{$property}: emcalc($value, $font-size);
+}
+@mixin style-change($property, $value, $default-value) {
+  @if $value != $default-value {
+    #{$property}: $value;
+  }
+}
+
+// shorthand rules
+@mixin style-shorthand($property, $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right) {
+  @if $value-left != $value-right {
+    #{$property}: $value-top $value-right $value-bottom $value-left;
+  } @else if $value-top != $value-bottom {
+    #{$property}: $value-top $value-right $value-bottom;
+  } @else if $value-top != $value-right {
+    #{$property}: $value-top $value-right;
+  } @else {
+    #{$property}: $value-top;
+  }
+}
+@mixin style-shorthand-emcalc($property, $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base-font-size) {
+  @if $value-left != $value-right {
+    #{$property}: emcalc($value-top, $font-size) emcalc($value-right, $font-size) emcalc($value-bottom, $font-size) emcalc($value-left, $font-size);
+  } @else if $value-top != $value-bottom {
+    #{$property}: emcalc($value-top, $font-size) emcalc($value-right, $font-size) emcalc($value-bottom, $font-size);
+  } @else if $value-top != $value-right {
+    #{$property}: emcalc($value-top, $font-size) emcalc($value-right, $font-size);
+  } @else {
+    #{$property}: emcalc($value-top, $font-size);
+  }
+}
+
 // Clearfix
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
 @mixin clearfix() {

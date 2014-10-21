@@ -18,12 +18,6 @@
 	}
 }
 
-@mixin font-style-change($property, $value, $default-value) {
-  @if $value != $default-value {
-    #{$property}: $value;
-  }
-}
-
 // Font size. line-height and margin calculations, to be used in base.less
 @mixin font-size-emcalc($font-size: $base-font-size, $default-font-size: $base-font-size) {
   @if $font-size != $default-font-size {
@@ -31,28 +25,28 @@
   }
 }
 @mixin font-family($font-family: $base-font-family, $default-font-family: $base-font-family) {
-  @include font-style-change(font-family, $font-family, $default-font-family);
+  @include style-change(font-family, $font-family, $default-font-family);
 }
 @mixin line-height($line-height: $base-line-height, $default-line-height: $base-line-height) {
-  @include font-style-change(line-height, $line-height, $default-line-height);
+  @include style-change(line-height, $line-height, $default-line-height);
 }
 @mixin font-weight($font-weight: $base-font-weight, $default-font-weight: $base-font-weight) {
-  @include font-style-change(font-weight, $font-weight, $default-font-weight);
+  @include style-change(font-weight, $font-weight, $default-font-weight);
 }
 @mixin text-transform($text-transform: none, $default-text-transform: none) {
-  @include font-style-change(text-transform, $text-transform, $default-text-transform);
+  @include style-change(text-transform, $text-transform, $default-text-transform);
 }
 @mixin text-decoration($text-decoration: none, $default-text-decoration: none) {
-  @include font-style-change(text-decoration, $text-decoration, $default-text-decoration);
+  @include style-change(text-decoration, $text-decoration, $default-text-decoration);
 }
 @mixin color($color: $base-color, $default-color: $base-color) {
-  @include font-style-change(color, $color, $default-color);
+  @include style-change(color, $color, $default-color);
 }
 @mixin text-align($text-align: $base-text-align, $default-text-align: $base-text-align) {
-  @include font-style-change(text-align, $text-align, $default-text-align);
+  @include style-change(text-align, $text-align, $default-text-align);
 }
 @mixin font-style($font-style: normal, $default-font-style: normal) {
-  @include font-style-change(font-style, $font-style, $default-font-style);
+  @include style-change(font-style, $font-style, $default-font-style);
 }
 
 // Optional hyphenation
