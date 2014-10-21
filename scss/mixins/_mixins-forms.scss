@@ -133,13 +133,13 @@
   $default-focus-box-shadow: $input-focus-box-shadow
 ) {
   @include color($color, $default-color);
-  @include background-color($background-color, $default-background-color);
-  @include border-color($border-color, $default-border-color);
+  @include background-color-change($background-color, $default-background-color);
+  @include border-color-change($border-color, $default-border-color);
   @if ($focus-color != $default-focus-color) or ($focus-background-color != $default-focus-background-color) or ($focus-border-color != $default-focus-border-color) or ($focus-box-shadow != $default-focus-box-shadow) {
   	&:focus {
     	@include color($focus-color, $default-focus-color);
-    	@include background-color($focus-background-color, $default-focus-background-color);
-    	@include border-color($focus-border-color, $default-focus-border-color);
+    	@include background-color-change($focus-background-color, $default-focus-background-color);
+    	@include border-color-change($focus-border-color, $default-focus-border-color);
     	@include box-shadow($focus-box-shadow, $default-focus-box-shadow);
   	}
 	}

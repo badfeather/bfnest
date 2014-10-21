@@ -1030,23 +1030,20 @@ input[type="checkbox"] {
 
 .form-control-disabled {
   color: #9f9f9f;
-  background-color: transparent;
-  border-color: #dfdfdf;
+  background-color: #dfdfdf;
+  border-color: #ececec;
 }
 
 .form-control-success {
-  background-color: transparent;
-  border-color: #dfdfdf;
+  background-color: #797979;
 }
 
 .form-control-warning {
-  background-color: transparent;
-  border-color: #dfdfdf;
+  background-color: #797979;
 }
 
 .form-control-danger {
-  background-color: transparent;
-  border-color: #dfdfdf;
+  background-color: #797979;
 }
 
 .site {
