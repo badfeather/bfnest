@@ -14,7 +14,7 @@ $form-border-width: 1;
 $form-border-radius: $form-font-size / 4;
 
 $form-disabled-color: $gray-lighter;
-$form-primary-color: $yellow;
+$form-primary-color: $purple;
 $form-success-color: $green;
 $form-info-color: $aqua;
 $form-warning-color: $orange;
@@ -111,29 +111,29 @@ $input-required-color: $input-color;
 $input-required-font-weight: $font-weight-bold;
 
 $input-disabled-color: $meta-color;
-$input-disabled-background-color: $gray-lightest;
-$input-disabled-border-color: lighten($base-border-color, 5%);
+$input-disabled-background-color: $input-background-color;
+$input-disabled-border-color: $form-disabled-color;
 $input-disabled-focus-color: $input-disabled-color;
 $input-disabled-focus-background-color: $input-disabled-background-color;
 $input-disabled-focus-border-color: $input-disabled-border-color;
 
 $input-success-color: $input-color;
-$input-success-background-color: $base-color-light;
-$input-success-border-color: $base-border-color;
+$input-success-background-color: $input-background-color;
+$input-success-border-color: $form-success-color;
 $input-success-focus-color: $input-focus-color;
 $input-success-focus-background-color: $input-focus-background-color;
 $input-success-focus-border-color: $input-focus-border-color;
 
 $input-warning-color: $input-color;
-$input-warning-background-color: $base-color-light;
-$input-warning-border-color: $base-border-color;
+$input-warning-background-color: $input-background-color;
+$input-warning-border-color: $form-warning-color;
 $input-warning-focus-color: $input-focus-color;
 $input-warning-focus-background-color: $input-focus-background-color;
 $input-warning-focus-border-color: $input-focus-border-color;
 
 $input-danger-color: $input-color;
-$input-danger-background-color: $base-color-light;
-$input-danger-border-color: $base-border-color;
+$input-danger-background-color: $input-background-color;
+$input-danger-border-color: $form-danger-color;
 $input-danger-focus-color: $input-focus-color;
 $input-danger-focus-background-color: $input-focus-background-color;
 $input-danger-focus-border-color: $input-focus-border-color;

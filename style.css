@@ -853,8 +853,6 @@ img.alignleft, img.alignright, img.aligncenter,
   clear: both;
 }
 
-button,
-input[type='submit'],
 .button {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -872,36 +870,22 @@ input[type='submit'],
   cursor: pointer;
   text-transform: uppercase;
 }
-button:hover, button:focus,
-input[type='submit']:hover,
-input[type='submit']:focus,
-.button:hover,
-.button:focus {
+.button:hover, .button:focus {
   color: #fff;
   background-color: #f0f;
   text-decoration: none;
   border-color: #f0f;
 }
-button:focus,
-input[type='submit']:focus,
 .button:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-button:active,
-input[type='submit']:active,
 .button:active {
   outline: 0;
   background-image: none;
 }
-button.disabled, button[disabled], fieldset[disabled] button,
-input[type='submit'].disabled,
-input[type='submit'][disabled], fieldset[disabled]
-input[type='submit'],
-.button.disabled,
-.button[disabled], fieldset[disabled]
-.button {
+.button.disabled, .button[disabled], fieldset[disabled] .button {
   cursor: not-allowed;
   pointer-events: none;
   opacity: .65;
@@ -921,9 +905,18 @@ input[type='submit'],
   font-size: 0.75em;
 }
 
+.button-disabled {
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+}
+.button-disabled:hover, .button-disabled:focus {
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+}
+
 .button-primary {
-  background-color: #ff0;
-  border-color: #ff0;
+  background-color: #800080;
+  border-color: #800080;
 }
 
 .button-success {
@@ -946,21 +939,6 @@ input[type='submit'],
   border-color: #f00;
 }
 
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
 .form-control {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -979,21 +957,6 @@ input[type="color"],
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
 .form-control:focus {
   color: #606060;
   background-color: transparent;
@@ -1002,7 +965,13 @@ input[type="color"]:focus,
           box-shadow: none;
 }
 
-textarea {
+input[type="search"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+textarea,
+textarea.form-control {
   width: 100%;
 }
 
@@ -1030,20 +999,19 @@ input[type="checkbox"] {
 
 .form-control-disabled {
   color: #9f9f9f;
-  background-color: #dfdfdf;
-  border-color: #ececec;
+  border-color: #bfbfbf;
 }
 
 .form-control-success {
-  background-color: #797979;
+  border-color: #0f0;
 }
 
 .form-control-warning {
-  background-color: #797979;
+  border-color: #f90;
 }
 
 .form-control-danger {
-  background-color: #797979;
+  border-color: #f00;
 }
 
 .site {

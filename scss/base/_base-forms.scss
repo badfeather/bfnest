@@ -1,7 +1,7 @@
 // BUTTONS
 // ---------------------------
-button,
-input[type='submit'],
+//button,
+//input[type='submit'],
 .button {
 	@include button;
 }
@@ -16,6 +16,9 @@ input[type='submit'],
 }
 
 // Alternate button states
+.button-disabled {
+  @include button-disabled;
+}
 .button-primary {
   @include button-primary;
 }
@@ -34,26 +37,36 @@ input[type='submit'],
 
 // FORM CONTROLS
 // ---------------------------
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
+$form-controls: 'textarea',
+'input[type="text"]',
+'input[type="password"]',
+'input[type="datetime"]',
+'input[type="datetime-local"]',
+'input[type="date"]',
+'input[type="month"]',
+'input[type="time"]',
+'input[type="week"]',
+'input[type="number"]',
+'input[type="email"]',
+'input[type="url"]',
+'input[type="search"]',
+'input[type="tel"]',
+'input[type="color"]',
+'.form-control';
+
+// class only
 .form-control {
-	@include form-control;
+  @include form-control;
 }
-textarea {
-	//box-sizing: border-box;
+//all inputs with class
+//#{$form-controls} {
+//	@include form-control;
+//}
+input[type="search"] {
+  box-sizing: border-box;
+}
+textarea,
+textarea.form-control {
 	width: 100%;
 }
 select {
@@ -71,16 +84,46 @@ input[type="checkbox"] {
 	color: $input-required-color;
 	font-weight: $input-required-font-weight;
 }
-
+// class only
 .form-control-disabled {
   @include form-control-disabled;
 }
+// all inputs with class
+//#{$form-controls} {
+//  &.form-control-disabled {
+//    @include form-control-disabled;
+//  }
+//}
+
+// class only
 .form-control-success {
-   @include form-control-success;
+  @include form-control-success;
 }
+// all inputs with class
+//#{$form-controls} {
+//  &.form-control-success {
+//    @include form-control-success;
+//  }
+//}
+
+// class only
 .form-control-warning {
-   @include form-control-warning;
+  @include form-control-warning;
 }
+// all inputs with class
+//#{$form-controls} {
+//  &.form-control-warning {
+//    @include form-control-warning;
+//  }
+//}
+
+// class only
 .form-control-danger {
-   @include form-control-danger;
+  @include form-control-danger;
 }
+// all inputs with class
+//#{$form-controls} {
+//  &.form-control-danger {
+//    @include form-control-danger;
+//  }
+//}

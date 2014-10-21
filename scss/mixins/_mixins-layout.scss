@@ -56,6 +56,9 @@
 @mixin box-shadow($box-shadow: $base-box-shadow, $default-box-shadow: none) {
   @include style(box-shadow, $default-box-shadow);
 }
+@mixin box-shadow-change($box-shadow: normal, $default-box-shadow: normal) {
+  @include style-change(box-shadow, $box-shadow, $default-box-shadow);
+}
 
 // BACKGROUND
 @mixin background-color($background-color: $base-background-color, $default-background-color: $base-background-color) {

@@ -74,6 +74,9 @@
 }
 
 // Alternate button states
+@mixin button-disabled() {
+  @include button-variant($button-disabled-color, $button-disabled-background-color, $button-disabled-border-color, $button-disabled-hover-color, $button-disabled-hover-background-color, $button-disabled-hover-border-color);
+}
 @mixin button-primary() {
   @include button-variant($button-primary-color, $button-primary-background-color, $button-primary-border-color, $button-primary-hover-color, $button-primary-hover-background-color, $button-primary-hover-border-color);
 }
@@ -140,7 +143,7 @@
     	@include color($focus-color, $default-focus-color);
     	@include background-color-change($focus-background-color, $default-focus-background-color);
     	@include border-color-change($focus-border-color, $default-focus-border-color);
-    	@include box-shadow($focus-box-shadow, $default-focus-box-shadow);
+    	@include box-shadow-change($focus-box-shadow, $default-focus-box-shadow);
   	}
 	}
 }
