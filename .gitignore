@@ -3,4 +3,6 @@
 bower_components
 node_modules
 js/vendor
+.sass-cache
+style.css.map
 
