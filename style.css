@@ -1075,6 +1075,7 @@ input[type="checkbox"] {
 }
 
 .site-nav-title {
+  font-size: 1em;
   margin-bottom: 1.5em;
 }
 
