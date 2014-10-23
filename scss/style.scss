@@ -30,9 +30,11 @@ Text Domain: nest
 @import "mixins/mixins-media";
 @import "mixins/mixins-forms";
 @import "mixins/mixins-grid";
+@import "mixins/mixins-ib-grid";
 
 // RESETS
 // ---------------------------
+// I ususally use either normalize or the Eric Meyer reset - uncomment/comment as you see fit
 @import "resets/resets-normalize";
 //@import "resets/resets-reset";
 @import "resets/resets-print";
@@ -45,8 +47,9 @@ Text Domain: nest
 @import "base/base-navs";
 @import "base/base-media";
 @import "base/base-forms";
-// uncomment for html grid classes - i prefer mixins
+// uncomment for html grid classes - I prefer to use the mixins
 //@import "base/base-grid";
+//@import "base/base-ib-grid";
 
 // THEME
 // ---------------------------
@@ -57,4 +60,3 @@ Text Domain: nest
 @import "theme/theme-comments";
 @import "theme/theme-side";
 @import "theme/theme-footer";
-

@@ -1,110 +1,3 @@
-// GRID SYSTEM
-// ----------------------------
-// Centered container element
-@mixin container($gutter: $gutter-width-emcalc, $width: $grid-width-emcalc) {
-	padding-left: $gutter / 2;
-	padding-right: $gutter / 2;
-	max-width: ($width + $gutter);
-	@include clearfix;
-}
-@mixin container-centered {
-	margin-left: auto;
-	margin-right: auto;
-}
-@mixin container-left {
-	margin-left: 0;
-	margin-right: auto;
-}
-@mixin container-right {
-	margin-right: 0;
-	margin-left: auto;
-}
-@mixin row($gutter: $gutter-width-emcalc) {
-	margin-left: $gutter / -2;
-	margin-right: $gutter / -2;
-	@include clearfix;
-}
-@mixin column($gutter: $gutter-width-emcalc) {
-	position: relative;
-	float: left;
-	min-height: 1px;
-	padding-left: $gutter / 2;
-	padding-right: $gutter / 2;
-}
-@mixin guttered($gutter: $gutter-width-emcalc) {
-	padding-left: $gutter / 2;
-	padding-right: $gutter / 2;
-}
-
-@mixin columns($n, $columns: $grid-columns) {
-  width: percentage($n / $columns);
-}
-@mixin push($offset: 1, $columns: $grid-columns) {
-	margin-left: percentage($offset / $columns);
-}
-@mixin pull($offset: 1, $columns: $grid-columns) {
-	margin-right: percentage($offset / $columns);
-}
-@mixin column-centered {
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
-	clear: both;
-}
-@mixin uncolumn {
-	float: none;
-	width: auto;
-	padding-left: inherit;
-	padding-right: inherit;
-}
-@mixin unpush {
-	margin-left: inherit;
-}
-@mixin unpull {
-	margin-right: inherit;
-}
-
-@mixin generate-column-classes($n, $selector: '.columns', $i: 1) {
-  @while $i <= $n {
-    #{$selector}-#{$i} {
-      width: ($i * 100% / $n);
-    }
-    $i: $i + 1;
-  }
-}
-@mixin generate-push-classes($n, $selector: '.push', $i: 1) {
-  @while $i <= $n {
-    #{$selector}-#{$i} {
-      margin-left: ($i * 100% / $n);
-    }
-    $i: $i + 1;
-  }
-}
-@mixin generate-pull-classes($n, $selector: '.pull', $i: 1) {
-  @while $i <= $n {
-    #{$selector}-#{$i} {
-      margin-right: ($i * 100% / $n);
-    }
-    $i: $i + 1;
-  }
-}
-@mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $child_selector: '.column', $i: 1) {
-  @while $i <= $n {
-    #{$parent-selector}-#{$i} {
-      & > #{$child-selector} {
-  			width: percentage(1 / $i);
-  			&:nth-of-type(n) {
-  				clear: none;
-  			}
-  			&:nth-of-type(#{$i}n+1) {
-  				clear: both;
-  			}
-      }
-    }
-    $i: $i + 1;
-  }
-}
-
 // INLINE BLOCK GRID SYSTEM
 // adapted from purecss.io
 // --------------------------------------------------
@@ -119,6 +12,7 @@
     display: -ms-flexbox;
     -ms-flex-flow: row wrap;
 }
+
 @mixin ib-grid-u() {
     display: inline-block;
     *display: inline;
@@ -268,5 +162,3 @@
 @mixin ib-grid-u-1() {
     width: 100%;
 }
-
-
