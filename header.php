@@ -34,6 +34,4 @@
 			) ); ?>
 		</nav><!-- /.site-nav -->
 
-		<?php dynamic_sidebar( 'header' ); ?>
-
 	</header><!-- /.site-header -->

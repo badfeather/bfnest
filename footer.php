@@ -1,7 +1,5 @@
 	<footer class="site-footer content-info" role="contentinfo">
 
-		<?php dynamic_sidebar( 'footer' ); ?>
-
 		<div class="copyright">
 			&copy; <?php echo date( 'Y' ) . ' ' . get_bloginfo( 'name' ) . "\n"; ?>
 		</div><!-- /.copyright -->
