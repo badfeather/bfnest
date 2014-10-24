@@ -17,7 +17,7 @@
 			?>
 		</div><!-- /.entry-content -->
 
-		<footer class="entry-footer">
+		<footer class="doc-footer">
 			<?php nest_meta(); ?>
 			<?php nest_scriptless_social_share(); ?>
 		</footer>
@@ -33,4 +33,3 @@
 	</div><!-- /.doc-content.doc-content-single -->
 
 </article><!-- #post-## -->
-

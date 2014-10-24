@@ -12,21 +12,19 @@
   @include font-family($postnav-font-family);
   @include font-weight($postnav-font-weight);
   @include text-transform($postnav-text-transform);
-	@include list-unstyled;
 	@include clearfix;
   clear: both;
 	@include margin-bottom-emcalc($postnav-margin-bottom);
-	.nav-previous,
-	.nav-next {
+	.nav-link {
 		width: 50%;
 	}
-	.nav-next {
-		float: left;
-		padding-right: 1em;
-	}
-	.nav-prev {
+	.nav-link-next {
 		float: right;
 		text-align: right;
+		padding-right: 1em;
+	}
+	.nav-link-prev {
+		float: left;
 		padding-left: 1em;
 	}
 }

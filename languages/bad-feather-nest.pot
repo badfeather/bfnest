@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 2.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2014-10-23 15:02:18+00:00\n"
+"POT-Creation-Date: 2014-10-24 15:13:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -107,110 +107,110 @@ msgstr ""
 msgid "Page %s"
 msgstr ""
 
-#: inc/template-tags.php:11
+#: inc/template-tags.php:12
 msgid "&larr; Prev"
 msgstr ""
 
-#: inc/template-tags.php:12
+#: inc/template-tags.php:15
 msgid "Next &rarr;"
 msgstr ""
 
-#: inc/template-tags.php:42
+#: inc/template-tags.php:48
 msgid "%1$s by %2$s"
 msgstr ""
 
-#: inc/template-tags.php:60
+#: inc/template-tags.php:66
 msgid "Posted in: "
 msgstr ""
 
-#: inc/template-tags.php:63
+#: inc/template-tags.php:69
 msgid "Tagged: "
 msgstr ""
 
-#: inc/template-tags.php:69
+#: inc/template-tags.php:75
 msgid "Comment"
 msgstr ""
 
-#: inc/template-tags.php:71
+#: inc/template-tags.php:77
 msgid "1 Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:76 inc/template-tags.php:90 inc/template-tags.php:104
-#: inc/template-tags.php:124
+#: inc/template-tags.php:82 inc/template-tags.php:96 inc/template-tags.php:110
+#: inc/template-tags.php:130
 msgid "Edit"
 msgstr ""
 
-#: inc/template-tags.php:104
+#: inc/template-tags.php:110
 msgid "Pingback:"
 msgstr ""
 
-#: inc/template-tags.php:116
+#: inc/template-tags.php:122
 msgid "%s"
 msgstr ""
 
-#: inc/template-tags.php:127
+#: inc/template-tags.php:133
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:542
+#: inc/template-tags.php:562
 msgid "Share: "
 msgstr ""
 
-#: inc/template-tags.php:637
+#: inc/template-tags.php:657
 msgid "On Facebook"
 msgstr ""
 
-#: inc/template-tags.php:640
+#: inc/template-tags.php:660
 msgid "On Flickr"
 msgstr ""
 
-#: inc/template-tags.php:643
+#: inc/template-tags.php:663
 msgid "On Google+"
 msgstr ""
 
-#: inc/template-tags.php:646
+#: inc/template-tags.php:666
 msgid "On Instagram"
 msgstr ""
 
-#: inc/template-tags.php:649
+#: inc/template-tags.php:669
 msgid "On LinkedIn"
 msgstr ""
 
-#: inc/template-tags.php:652
+#: inc/template-tags.php:672
 msgid "On MySpace"
 msgstr ""
 
-#: inc/template-tags.php:655
+#: inc/template-tags.php:675
 msgid "On Pinterest"
 msgstr ""
 
-#: inc/template-tags.php:658
+#: inc/template-tags.php:678
 msgid "On Soundcloud"
 msgstr ""
 
-#: inc/template-tags.php:661
+#: inc/template-tags.php:681
 msgid "On Tumblr"
 msgstr ""
 
-#: inc/template-tags.php:664
+#: inc/template-tags.php:684
 msgid "On Twitter"
 msgstr ""
 
-#: inc/template-tags.php:667
+#: inc/template-tags.php:687
 msgid "On Vimeo"
 msgstr ""
 
-#: inc/template-tags.php:670
+#: inc/template-tags.php:690
 msgid "On YouTube"
 msgstr ""
 
-#: inc/template-tags.php:673
+#: inc/template-tags.php:693
 msgid "Join Our Mailing List"
 msgstr ""
 
-#: inc/template-tags.php:676
+#: inc/template-tags.php:696
 msgid "Subscribe via RSS"
 msgstr ""
 
@@ -232,10 +232,6 @@ msgstr ""
 
 #: inc/widgets.php:45
 msgid "Header"
-msgstr ""
-
-#: index.php:9
-msgid "Latest Posts"
 msgstr ""
 
 #. Theme Name of the plugin/theme
@@ -274,3 +270,13 @@ msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
+
+#: inc/template-tags.php:34
+msgctxt "Next post link"
+msgid "&larr;&nbsp;%title"
+msgstr ""
+
+#: inc/template-tags.php:35
+msgctxt "Previous post link"
+msgid "%title&nbsp;&rarr;"
+msgstr ""

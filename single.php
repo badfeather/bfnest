@@ -13,7 +13,7 @@
 
       </main><!-- /.doc-main -->
 
-			<?php get_sidebar( get_post_type() ); ?>
+			<?php get_sidebar( 'single' ); ?>
 
 		</div><!-- /.doc.site-main -->
 

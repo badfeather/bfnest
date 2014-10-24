@@ -21,14 +21,16 @@ $base-margin-quarter: $base-margin / 4;
 $base-margin-emcalc: $base-margin / $base-font-size * 1em;
 $base-margin-half-emcalc: $base-margin-half / $base-font-size * 1em;
 $base-margin-quarter-emcalc: $base-margin-quarter / $base-font-size * 1em;
+$base-line-height-xl: ($base-font-size + (($base-margin - $base-font-size) * 1.5)) / $base-font-size;
+$base-line-height-lg: ($base-font-size + (($base-margin - $base-font-size) * 1.25)) / $base-font-size;
 $base-line-height: $base-margin / $base-font-size;
-$base-line-height-half: ($base-font-size + (($base-margin - $base-font-size) / 2)) / $base-font-size;
-$base-line-height-quarter: ($base-font-size + (($base-margin - $base-font-size) / 4)) / $base-font-size;
+$base-line-height-sm: ($base-font-size + (($base-margin - $base-font-size) / 2)) / $base-font-size;
+$base-line-height-xs: ($base-font-size + (($base-margin - $base-font-size) / 4)) / $base-font-size;
 $base-text-align: left;
 
 // HEADINGS
 // ---------------------------
-$headings-line-height: $base-line-height-half;
+$headings-line-height: $base-line-height-sm;
 $headings-font-family: $font-family-sans-serif;
 $headings-font-weight: $font-weight-normal;
 $headings-font-style: normal;
@@ -38,7 +40,7 @@ $headings-link-color: $link-color;
 $headings-link-hover-color: $link-hover-color;
 
 $h1-font-size: 32;
-$h1-line-height: $base-line-height-quarter;
+$h1-line-height: $base-line-height-xs;
 $h1-font-family: $headings-font-family;
 $h1-color: $headings-color;
 $h1-font-style: $headings-font-style;
@@ -47,7 +49,7 @@ $h1-margin-bottom: $base-margin;
 $h1-font-size-lg: $h1-font-size;
 
 $h2-font-size: 28;
-$h2-line-height: $base-line-height-quarter;
+$h2-line-height: $base-line-height-xs;
 $h2-font-family: $headings-font-family;
 $h2-color: $headings-color;
 $h2-font-style: $headings-font-style;
@@ -56,7 +58,7 @@ $h2-margin-bottom: $base-margin;
 $h2-font-size-lg: $h2-font-size;
 
 $h3-font-size: 20;
-$h3-line-height: $base-line-height-quarter;
+$h3-line-height: $base-line-height-xs;
 $h3-font-family: $headings-font-family;
 $h3-color: $headings-color;
 $h3-font-style: $headings-font-style;
@@ -65,7 +67,7 @@ $h3-margin-bottom: $base-margin;
 $h3-font-size-lg: $h3-font-size;
 
 $h4-font-size: 16;
-$h4-line-height: $base-line-height-quarter;
+$h4-line-height: $base-line-height-xs;
 $h4-font-family: $headings-font-family;
 $h4-color: $headings-color;
 $h4-font-style: $headings-font-style;
@@ -74,7 +76,7 @@ $h4-margin-bottom: $base-margin;
 $h4-font-size-lg: $h4-font-size;
 
 $h5-font-size: 14;
-$h5-line-height: $base-line-height-quarter;
+$h5-line-height: $base-line-height-xs;
 $h5-font-family: $headings-font-family;
 $h5-color: $headings-color;
 $h5-font-style: $headings-font-style;
@@ -83,7 +85,7 @@ $h5-margin-bottom: $base-margin;
 $h5-font-size-lg: $h5-font-size;
 
 $h6-font-size: 12;
-$h6-line-height: $base-line-height-quarter;
+$h6-line-height: $base-line-height-xs;
 $h6-font-family: $headings-font-family;
 $h6-color: $headings-color;
 $h6-font-style: $headings-font-style;
@@ -94,7 +96,7 @@ $h6-font-size-lg: $h6-font-size;
 // META
 // ---------------------------
 $meta-font-size: $base-font-size-sm;
-$meta-line-height: $base-line-height-half;
+$meta-line-height: $base-line-height-xs;
 $meta-font-family: $font-family-sans-serif;
 $meta-font-style: normal;
 $meta-font-weight: $base-font-weight;

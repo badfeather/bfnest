@@ -7,10 +7,14 @@ function nest_archive_pager() {
 	global $wp_query, $post;
 	if ( $wp_query->max_num_pages > 1 ) {
 ?>
-	<ul class="doc-nav doc-nav-archive">
-		<li class="nav-prev"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></li>
-		<li class="nav-next"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></li>
-	</ul>
+	<div class="doc-nav doc-nav-archive">
+  	<?php if ( get_previous_posts_link() ) { ?>
+  	  <div class="nav-link nav-link-prev"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></div>
+  	<?php } ?>
+  	<?php if ( get_next_posts_link() ) { ?>
+  	  <div class="nav-link nav-link-next"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></div>
+  	<?php } ?>
+	</div><!-- /.doc-nav.doc-nav-archive -->
 <?php
 	} // endif
 }
@@ -25,10 +29,12 @@ function nest_single_pager() {
 
 	if ( $next || $previous ) {
 ?>
-	<ul class="doc-nav doc-nav-single">
-		<li class="nav-prev"><?php next_post_link( '&larr; %link' ); ?></li>
-		<li class="nav-next"><?php previous_post_link( '%link &rarr;' ); ?></li>
-	</ul>
+	<div class="doc-nav doc-nav-single">
+  	<?php
+  	  next_post_link( '<div class="nav-link nav-link-prev">%link</div>', _x( '&larr;&nbsp;%title', 'Next post link', 'nest' ) );
+      previous_post_link( '<div class="nav-link nav-link-next">%link</div>', _x( '%title&nbsp;&rarr;', 'Previous post link', 'nest' ) );
+    ?>
+	</div><!-- /.doc-nav.doc-nav-single -->
 <?php
 	}
 }
@@ -157,8 +163,8 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
  * 'output' => 'img' // can be either 'img' or 'url'
  * 'link' => false // if true, will link to full version of itself
  */
-function nest_get_first_image( $size = 'thumbnail', $atts = array() ) {
-
+function nest_get_first_image( $post_id = null, $size = 'thumbnail', $atts = array() ) {
+  $post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
 	$defaults = array(
 		'output' => 'img', // accepts either 'img' or 'url'
 		'link' => false // ignored if output is set to url
@@ -168,7 +174,7 @@ function nest_get_first_image( $size = 'thumbnail', $atts = array() ) {
 	extract( $atts, EXTR_SKIP );
 
 	$query_args = array(
-		'post_parent' => get_the_ID(),
+		'post_parent' => $post_id,
 		'post_type' => 'attachment',
 		'numberposts' => 1,
 		'order' => 'ASC',
@@ -206,28 +212,42 @@ function nest_get_first_image( $size = 'thumbnail', $atts = array() ) {
  * Echoes the first image from a post using arguments from nest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function nest_first_image( $size = 'thumbnail', $atts ) {
-	echo nest_get_first_image( $size, $atts );
+function nest_first_image( $post_id = null, $size = 'thumbnail', $atts ) {
+	echo nest_get_first_image( $post_id, $size, $atts );
 }
 
 /**
  * Echoes the first image from a post using arguments from nest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function nest_get_first_image_url( $size = 'thumbnail' ) {
-	return nest_get_first_image( $size, $atts = array( 'output' => 'url' ) );
+function nest_get_first_image_url( $post_id = null, $size = 'thumbnail' ) {
+	return nest_get_first_image( $post_id, $size, $atts = array( 'output' => 'url' ) );
+}
+
+/**
+ * Get featured or first image
+ * must be used within the loop
+ */
+function nest_get_first_or_featured_image( $post_id = null, $size = 'thumbnail' ) {
+	if ( has_post_thumbnail( $post_id ) ) {
+		get_the_post_thumbnail( $post_id, $size );
+
+	} else {
+		nest_get_first_image( $post_id, $size, $atts = array( 'output' => 'img' ) );
+
+	}
 }
 
 /**
  * Featured or first image
  * must be used within the loop
  */
-function nest_featured_or_first_image( $size = 'thumbnail' ) {
-	if ( has_post_thumbnail() ) {
-		the_post_thumbnail( $size );
+function nest_featured_or_first_image( $post_id = null, $size = 'thumbnail' ) {
+	if ( has_post_thumbnail( $post_id ) ) {
+		the_post_thumbnail( $post_id, $size );
 
 	} else {
-		nest_first_image( $size );
+		nest_first_image( $post_id, $size );
 
 	}
 }

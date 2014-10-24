@@ -1,13 +1,10 @@
 <?php get_header(); ?>
 
-		<section class="doc site-main content" role="document">
+		<div class="doc site-main content" role="document">
 		  <main class="doc-main" role="main">
   			<?php
   				if ( have_posts() ) {
   			?>
-					<header class="doc-header">
-						<h1 class="doc-title"><?php _e( 'Latest Posts', 'nest' ); ?></h1>
-					</header><!-- /.doc-header -->
 
 					<div class="doc-content">
 						<?php
@@ -28,6 +25,6 @@
 
 			<?php get_sidebar(); ?>
 
-		</section><!-- /.doc.site-main-content -->
+		</div><!-- /.doc.site-main-content -->
 
 <?php get_footer(); ?>

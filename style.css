@@ -643,7 +643,7 @@ h6 {
 
 .entry-meta {
   font-size: 0.875em;
-  line-height: 1.25;
+  line-height: 1.125;
   color: #9f9f9f;
   margin-top: 0;
   margin-bottom: 0.42857em;
@@ -684,8 +684,6 @@ h6 {
 }
 
 .doc-nav {
-  padding-left: 0;
-  list-style: none;
   clear: both;
   margin-bottom: 1.5em;
 }
@@ -696,17 +694,16 @@ h6 {
 .doc-nav:after {
   clear: both;
 }
-.doc-nav .nav-previous,
-.doc-nav .nav-next {
+.doc-nav .nav-link {
   width: 50%;
 }
-.doc-nav .nav-next {
-  float: left;
-  padding-right: 1em;
-}
-.doc-nav .nav-prev {
+.doc-nav .nav-link-next {
   float: right;
   text-align: right;
+  padding-right: 1em;
+}
+.doc-nav .nav-link-prev {
+  float: left;
   padding-left: 1em;
 }
 
@@ -714,6 +711,10 @@ img {
   vertical-align: middle;
   max-width: 100%;
   height: auto;
+}
+
+figure {
+  margin: 0 0 0.75em;
 }
 
 .wp-caption {
@@ -760,7 +761,7 @@ img.alignleft, img.alignright, img.aligncenter,
 .wp-caption-text,
 .gallery-caption {
   font-size: 0.875em;
-  line-height: 1.25;
+  line-height: 1.125;
   color: #9f9f9f;
   margin-top: 0;
   margin-bottom: 0.42857em;
@@ -855,7 +856,7 @@ img.alignleft, img.alignright, img.aligncenter,
 
 .button {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   padding: 0.5em 0.66667em;
   color: #fff;
@@ -1075,7 +1076,7 @@ input[type="checkbox"] {
 
 .comment-meta {
   font-size: 0.875em;
-  line-height: 1.25;
+  line-height: 1.125;
   color: #9f9f9f;
   margin-top: 0;
   margin-bottom: 0.42857em;
@@ -1101,7 +1102,7 @@ input[type="checkbox"] {
 .copyright,
 .credits {
   font-size: 0.875em;
-  line-height: 1.25;
+  line-height: 1.125;
   color: #9f9f9f;
   margin-top: 0;
   margin-bottom: 0.42857em;

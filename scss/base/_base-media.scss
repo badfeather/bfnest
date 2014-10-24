@@ -4,6 +4,9 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+figure {
+  @include margin-emcalc(0, 0, $figure-margin-bottom, 0);
+}
 
 // wordpress-specific
 .wp-caption {

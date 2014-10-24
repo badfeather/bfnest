@@ -25,7 +25,7 @@ $form-danger-color: $red;
 $button-font-size: $form-font-size;
 $button-font-family: $base-font-family;
 $button-line-height: $form-line-height;
-$button-font-weight: normal;
+$button-font-weight: $base-font-weight;
 $button-text-transform: uppercase;
 $button-color: $white;
 $button-background-color: $link-color;
@@ -137,4 +137,3 @@ $input-danger-border-color: $form-danger-color;
 $input-danger-focus-color: $input-focus-color;
 $input-danger-focus-background-color: $input-focus-background-color;
 $input-danger-focus-border-color: $input-focus-border-color;
-
