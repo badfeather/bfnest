@@ -573,7 +573,7 @@ h5,
 h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.25;
-  font-weight: 400;
+  font-weight: 700;
   color: #606060;
   margin-top: 0;
 }
@@ -615,30 +615,30 @@ h2 {
 }
 
 h3 {
+  font-size: 1.5em;
+  line-height: 1.125;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+h4 {
   font-size: 1.25em;
   line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1.2em;
 }
 
-h4 {
+h5 {
   line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1.5em;
 }
 
-h5 {
+h6 {
   font-size: 0.875em;
   line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1.71429em;
-}
-
-h6 {
-  font-size: 0.75em;
-  line-height: 1.125;
-  margin-top: 0;
-  margin-bottom: 2em;
 }
 
 .entry-meta {
@@ -982,10 +982,10 @@ select {
 }
 
 legend {
-  font-size: 1.25em;
+  font-size: 1.5em;
   line-height: 1.125;
   margin-top: 0;
-  margin-bottom: 1.2em;
+  margin-bottom: 1em;
 }
 
 input[type="checkbox"] {
@@ -1041,10 +1041,10 @@ input[type="checkbox"] {
 }
 
 .site-description {
-  font-size: 1.25em;
+  font-size: 1.5em;
   line-height: 1.125;
   margin-top: 0;
-  margin-bottom: 1.2em;
+  margin-bottom: 1em;
 }
 
 .comment-form textarea {

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 2.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2014-10-24 15:13:03+00:00\n"
+"POT-Creation-Date: 2014-10-25 02:36:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Continue reading &rarr;"
 msgstr ""
 
-#: footer.php:11
+#: footer.php:9
 msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
@@ -95,15 +95,7 @@ msgstr ""
 msgid "Primary Navigation"
 msgstr ""
 
-#: inc/setup.php:10
-msgid "Secondary Navigation"
-msgstr ""
-
-#: inc/setup.php:11
-msgid "Social Navigation"
-msgstr ""
-
-#: inc/setup.php:86
+#: inc/setup.php:84
 msgid "Page %s"
 msgstr ""
 
@@ -216,22 +208,6 @@ msgstr ""
 
 #: inc/widgets.php:9
 msgid "Global"
-msgstr ""
-
-#: inc/widgets.php:18
-msgid "Page"
-msgstr ""
-
-#: inc/widgets.php:27
-msgid "Archive"
-msgstr ""
-
-#: inc/widgets.php:36
-msgid "Footer"
-msgstr ""
-
-#: inc/widgets.php:45
-msgid "Header"
 msgstr ""
 
 #. Theme Name of the plugin/theme
