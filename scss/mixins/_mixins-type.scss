@@ -165,6 +165,7 @@
   $font-family: $headings-font-family,
   $color: $headings-color,
   $font-style: $headings-font-style,
+  $font-weight: $headings-font-weight,
   $text-transform: none,
   $margin-top: 0,
   $margin-bottom: $base-margin,
@@ -175,6 +176,7 @@
   @include line-height($line-height, $headings-line-height);
   @include color($color, $headings-color);
   @include font-style($font-style, $headings-font-style);
+  @include font-weight($font-weight, $headings-font-weight);
   @include text-transform($text-transform);
   @include margin-top-emcalc($margin-top, $font-size);
   @include margin-bottom-emcalc($margin-bottom, $font-size);
@@ -187,22 +189,22 @@
   }
 }
 @mixin h1() {
-  @include heading-transform($h1-font-size, $h1-line-height, $h1-font-family, $h1-color, $h1-font-style, $h1-text-transform, $h1-margin-top, $h1-margin-bottom, $h1-font-size-lg, $tablet);
+  @include heading-transform($h1-font-size, $h1-line-height, $h1-font-family, $h1-color, $h1-font-style, $h1-font-weight, $h1-text-transform, $h1-margin-top, $h1-margin-bottom, $h1-font-size-lg, $tablet);
 }
 @mixin h2() {
-  @include heading-transform($h2-font-size, $h2-line-height, $h2-font-family, $h2-color, $h2-font-style, $h2-text-transform, $h2-margin-top, $h2-margin-bottom, $h2-font-size-lg, $tablet);
+  @include heading-transform($h2-font-size, $h2-line-height, $h2-font-family, $h2-color, $h2-font-style, $h2-font-weight, $h2-text-transform, $h2-margin-top, $h2-margin-bottom, $h2-font-size-lg, $tablet);
 }
 @mixin h3() {
-  @include heading-transform($h3-font-size, $h3-line-height, $h3-font-family, $h3-color, $h3-font-style, $h3-text-transform, $h3-margin-top, $h3-margin-bottom, $h3-font-size-lg, $tablet);
+  @include heading-transform($h3-font-size, $h3-line-height, $h3-font-family, $h3-color, $h3-font-style, $h3-font-weight, $h3-text-transform, $h3-margin-top, $h3-margin-bottom, $h3-font-size-lg, $tablet);
 }
 @mixin h4() {
-  @include heading-transform($h4-font-size, $h4-line-height, $h4-font-family, $h4-color, $h4-font-style, $h4-text-transform, $h4-margin-top, $h4-margin-bottom, $h4-font-size-lg, $tablet);
+  @include heading-transform($h4-font-size, $h4-line-height, $h4-font-family, $h4-color, $h4-font-style, $h4-font-weight, $h4-text-transform, $h4-margin-top, $h4-margin-bottom, $h4-font-size-lg, $tablet);
 }
 @mixin h5() {
-  @include heading-transform($h5-font-size, $h5-line-height, $h5-font-family, $h5-color, $h5-font-style, $h5-text-transform, $h5-margin-top, $h5-margin-bottom, $h5-font-size-lg, $tablet);
+  @include heading-transform($h5-font-size, $h5-line-height, $h5-font-family, $h5-color, $h5-font-style, $h5-font-weight, $h5-text-transform, $h5-margin-top, $h5-margin-bottom, $h5-font-size-lg, $tablet);
 }
 @mixin h6() {
-  @include heading-transform($h6-font-size, $h6-line-height, $h6-font-family, $h6-color, $h6-font-style, $h6-text-transform, $h6-margin-top, $h6-margin-bottom, $h6-font-size-lg, $tablet);
+  @include heading-transform($h6-font-size, $h6-line-height, $h6-font-family, $h6-color, $h6-font-style, $h6-font-weight, $h6-text-transform, $h6-margin-top, $h6-margin-bottom, $h6-font-size-lg, $tablet);
 }
 
 // MENUS
