@@ -20,12 +20,17 @@ function nest_setup() {
   // set default image sizes
   update_option( 'thumbnail_size_w', 150 );
   update_option( 'thumbnail_size_h', 150 );
+	update_option( 'thumbnail_crop', true );
 
   update_option( 'medium_size_w', 330 );
   update_option( 'medium_size_h', 525 );
 
 	update_option( 'large_size_w', 690 );
 	update_option( 'large_size_h', 1050 );
+
+	update_option('image_default_align', 'none' );
+	update_option('image_default_link_type', 'none' );
+	update_option('image_default_size', 'large' );
 
 	// set_post_thumbnail_size( 150, 150, false );
 	// add_image_size( 'category-thumb', 300, 9999 ); // 300px wide (and unlimited height)
