@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 2.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2014-10-26 03:45:56+00:00\n"
+"POT-Creation-Date: 2014-11-10 18:43:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -95,7 +95,7 @@ msgstr ""
 msgid "Primary Navigation"
 msgstr ""
 
-#: inc/setup.php:84
+#: inc/setup.php:89
 msgid "Page %s"
 msgstr ""
 
@@ -146,63 +146,63 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:562
+#: inc/template-tags.php:564
 msgid "Share: "
 msgstr ""
 
-#: inc/template-tags.php:657
+#: inc/template-tags.php:659
 msgid "On Facebook"
 msgstr ""
 
-#: inc/template-tags.php:660
+#: inc/template-tags.php:662
 msgid "On Flickr"
 msgstr ""
 
-#: inc/template-tags.php:663
+#: inc/template-tags.php:665
 msgid "On Google+"
 msgstr ""
 
-#: inc/template-tags.php:666
+#: inc/template-tags.php:668
 msgid "On Instagram"
 msgstr ""
 
-#: inc/template-tags.php:669
+#: inc/template-tags.php:671
 msgid "On LinkedIn"
 msgstr ""
 
-#: inc/template-tags.php:672
+#: inc/template-tags.php:674
 msgid "On MySpace"
 msgstr ""
 
-#: inc/template-tags.php:675
+#: inc/template-tags.php:677
 msgid "On Pinterest"
 msgstr ""
 
-#: inc/template-tags.php:678
+#: inc/template-tags.php:680
 msgid "On Soundcloud"
 msgstr ""
 
-#: inc/template-tags.php:681
+#: inc/template-tags.php:683
 msgid "On Tumblr"
 msgstr ""
 
-#: inc/template-tags.php:684
+#: inc/template-tags.php:686
 msgid "On Twitter"
 msgstr ""
 
-#: inc/template-tags.php:687
+#: inc/template-tags.php:689
 msgid "On Vimeo"
 msgstr ""
 
-#: inc/template-tags.php:690
+#: inc/template-tags.php:692
 msgid "On YouTube"
 msgstr ""
 
-#: inc/template-tags.php:693
+#: inc/template-tags.php:695
 msgid "Join Our Mailing List"
 msgstr ""
 
-#: inc/template-tags.php:696
+#: inc/template-tags.php:698
 msgid "Subscribe via RSS"
 msgstr ""
 

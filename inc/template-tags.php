@@ -458,7 +458,8 @@ function nest_latest_posts( $args ) {
 	$query_args = array(
 		'post_type' => $post_type,
 		'posts_per_page' => $posts_per_page,
-		'orderby' => $orderby
+		'orderby' => $orderby,
+		'no_found_rows' => true
 	);
 	$latest = new WP_Query( $query_args );
 	if ( $latest->have_posts() ) {
@@ -511,7 +512,8 @@ function nest_latest_taxonomy_posts( $args ) {
 			)
 		),
 		'posts_per_page' => $posts_per_page,
-		'orderby' => $orderby
+		'orderby' => $orderby,
+		'no_found_rows' => true
 	);
 	$latest = new WP_Query( $query_args );
 	if ( $latest->have_posts() ) {
