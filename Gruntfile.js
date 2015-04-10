@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
   var jsFileList = [
     // add files, ideally installed via bower (which would put them in js/vendor)
-    'js/_main.js'
+    'assets/scripts.js'
   ];
 
   grunt.initConfig({
@@ -19,21 +19,8 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        'js/*.js',
-        '!js/scripts.js',
-        '!js/_*.js',
-        '!js/*.min.*'
+        'assets/js/*.js'
       ]
-    },
-    less: {
-      development: {
-        options: {
-        },
-        files: {
-          // target.css file: source.less file
-          'style-less.css': 'less/style.less'
-        }
-      }
     },
     sass: {
       dist: {
@@ -41,7 +28,7 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'style.css': 'scss/style.scss'
+          'style.css': 'assets/scss/style.scss'
         }
       }
     },
@@ -66,15 +53,15 @@ module.exports = function(grunt) {
         browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
       },
       no_dest: {
-        src: ['style.css', 'style-less.css']
+        src: ['style.css']
       }
     },
     modernizr: {
       build: {
-        devFile: 'js/vendor/modernizr/modernizr.js',
+        devFile: 'assets/vendor/modernizr/modernizr.js',
         outputFile: 'js/modernizr.min.js',
         files: {
-          'src': ['js/scripts.min.js', 'style.css']
+          'src': ['js/scripts.js', 'style.css']
         },
         uglify: true,
         parseFiles: true
@@ -89,8 +76,7 @@ module.exports = function(grunt) {
           updateTimestamp: true,
           exclude: [
             'js/.*',
-            'less/.*',
-            'scss/.*',
+            'assets/.*',
             'img/.*',
             'node_modules/.*',
             'docs/.*'
@@ -99,13 +85,6 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      less: {
-        files: [
-          'less/*.less',
-          'less/**/*.less'
-        ],
-        tasks: ['less']
-      },
       sass: {
         files: [
           'scss/*.scss',
@@ -128,7 +107,6 @@ module.exports = function(grunt) {
         },
         files: [
           'style.css',
-          'style-less.css',
           'js/scripts.js',
           'js/scripts.min.js',
           '*.php'
@@ -138,7 +116,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask( 'default', [
-    'less',
     'sass',
     'jshint',
     'concat',
@@ -146,7 +123,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask( 'build', [
-    'less',
     'sass',
     'jshint',
     'concat',

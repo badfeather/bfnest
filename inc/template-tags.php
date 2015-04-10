@@ -200,7 +200,7 @@ function nest_get_first_image( $post_id = null, $size = 'thumbnail', $atts = arr
 					return $img;
 				} // endif $link
 
-			} elseif ( $output == 'url' ) {
+			} elseif ( 'url' == $output ) {
 					return $img_url;
 			} // endif $output - 'img'
 

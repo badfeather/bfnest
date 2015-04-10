@@ -1,8 +1,6 @@
-#codekit config file
 .DS_Store
-bower_components
 node_modules
-js/vendor
+assets/vendor
 .sass-cache
 style.css.map
-
+.log
