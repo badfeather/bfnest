@@ -2,7 +2,7 @@
 
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-This theme uses Grunt both to process and lint SASS, LESS (for the time being), and Javascript files, as well as to install NPM and Bower dependencies. 
+This theme uses Grunt both to process and lint SASS, and Javascript files, as well as to install NPM and Bower dependencies. 
 
 ## Getting Started
 ### Installing
@@ -11,7 +11,7 @@ This theme uses Grunt both to process and lint SASS, LESS (for the time being), 
   * Find in files `'nest'` and replace with `'yourtextdomain'`
   * Find in files `nest_` and replace with `yourtextdomain`
   * Find in files `bad-feather-nest` and replace with `your-theme-name`
-  * Change the theme name and credit info in the `style.scss`, `style.less`, or `style.css` file, depending on whether you're using SASS or LESS.
+  * Change the theme name and credit info in the `assets/scss/style.scss` or `style.css` file, depending on whether you're using SASS.
 * Run `npm install` to install all the default grunt and bower dependencies
 
 ### Customizing
@@ -21,7 +21,7 @@ This theme uses Grunt both to process and lint SASS, LESS (for the time being), 
 * If you want to simply include them in your project, add a `wp_enqueue_script` call to the `inc/scripts.php` file
 
 #### SASS
-* Most style changes can/should be made in `scss/variables/*.scss` and `scss/theme/*.scss` files
+* Most style changes can/should be made in `assets/scss/variables/*.scss` and `assets/scss/theme/*.scss` files
 * Most of the SCSS variables that have anything to do with sizes should be set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `$h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 
