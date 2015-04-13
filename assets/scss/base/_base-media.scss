@@ -4,59 +4,72 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
 figure {
-  @include margin-emcalc(0, 0, $figure-margin-bottom, 0);
+  @include margin-emcalc(0, 0, $figure__margin-bottom, 0);
 }
 
 // wordpress-specific
 .wp-caption {
 	max-width: 100%;
 }
+
 .alignleft {
 	float: left;
 }
+
 .alignright {
 	float: right;
 }
+
 .aligncenter {
 	clear: both;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
+
 img,
 .wp-caption {
+
 	&.alignleft,
 	&.alignright {
 		display: inline;
 	}
+
 	&.alignleft {
-		margin-right: $base-margin-emcalc;
+		margin-right: $base__margin-emcalc;
 		clear: left;
 	}
+
 	&.alignright {
-		margin-left: $base-margin-emcalc;
+		margin-left: $base__margin-emcalc;
 		clear: right;
 	}
+
 	&.alignleft,
 	&.alignright,
 	&.aligncenter {
-		margin-bottom: $base-margin-half-emcalc;
+		margin-bottom: $base__margin-emcalc--half;
 	}
 }
+
 .wp-caption-text,
 .gallery-caption {
 	@include meta;
-	@include margin-top-emcalc($base-margin-quarter, $meta-font-size);
+	@include margin-top-emcalc($base__margin--quarter, $meta__font-size);
 }
+
 .gallery {
 	@include row;
-	margin-bottom: $base-margin-emcalc;
-	padding-top: $base-margin-half-emcalc;
+	margin-bottom: $base__margin-emcalc;
+	padding-top: $base__margin-emcalc--half;
 }
+
 .gallery-item {
 	@include column;
-	margin-bottom: $base-margin-emcalc;
+	margin-bottom: $base__margin-emcalc;
+
 	img {
 		display: block;
 	}

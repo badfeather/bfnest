@@ -1,33 +1,33 @@
 // Figures
-$figure-margin-bottom: $base-margin-half;
+$figure__margin-bottom: $base__margin--half;
 
 // Document Main
-$doc-margin-bottom: $base-margin;
+$doc__margin-bottom: $base__margin;
 
 // Entries
-$hentry-margin-bottom: $base-margin;
+$hentry__margin-bottom: $base__margin;
 
 // Widgets
-$widget-margin-bottom: $base-margin;
+$widget__margin-bottom: $base__margin;
 
 // Sticky Posts
-$sticky-bg-color: $base-background-color-alt;
-$sticky-padding: 1em;
+$sticky__background-color: $base__background-color--alt;
+$sticky__padding: 1em;
 
 // MEDIA QUERY BREAKPOINTS
 // ---------------------------
 
 // Extra small screen / phone
-$mobile: (480 / $base-font-size * 1em);
+$breakpoint__mobile: (480 / $base__font-size * 1em);
 
 // Tablet small
-$tablet-sm: (600 / $base-font-size * 1em);
+$breakpoint__tablet--sm: (600 / $base__font-size * 1em);
 
 // Small screen / tablet
-$tablet: (768 / $base-font-size * 1em);
+$breakpoint--tablet: (768 / $base__font-size * 1em);
 
 // Medium screen / desktop
-$desktop: (992 / $base-font-size * 1em);
+$breakpoint__desktop: (992 / $base__font-size * 1em);
 
 // Large screen / wide desktop
-$desktop-lg: (1200 / $base-font-size * 1em);
+$breakpoint__desktop--lg: (1200 / $base__font-size * 1em);

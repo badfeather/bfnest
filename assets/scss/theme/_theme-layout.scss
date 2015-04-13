@@ -1,8 +1,9 @@
 .site {
   @include container;
   @include container-centered;
-  padding-top: $base-margin-emcalc;
+  padding-top: $base__margin-emcalc;
 }
+
 .entry-footer {
-  margin-bottom: $base-margin-emcalc;
+  margin-bottom: $base__margin-emcalc;
 }

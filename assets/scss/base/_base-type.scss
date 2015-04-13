@@ -1,16 +1,17 @@
 // GENERAL TYPE STYLES
 // -------------------------
 body {
-	font-size: percentage($base-font-size/16);
-	line-height: $base-line-height;
-	font-family: $base-font-family;
-	font-weight: $base-font-weight;
-	text-align: $base-text-align;
-	color: $base-color;
-	background-color: $base-background-color;
+	font-size: percentage($base__font-size/16);
+	line-height: $base__line-height;
+	font-family: $base__font-family;
+	font-weight: $base__font-weight;
+	text-align: $base__text-align;
+	color: $base__color;
+	background-color: $base__background-color;
 	width: 100%;
 	@extend .clearfix;
 }
+
 p,
 ul,
 ol,
@@ -18,58 +19,70 @@ dl,
 pre,
 address,
 hr {
-	@include margin-emcalc($margin-bottom: $base-margin);
+	@include margin-emcalc($margin-bottom: $base__margin);
 }
+
 dfn,
 cite,
 em,
 i {
 	font-style: italic;
 }
+
 abbr,
 acronym {
-	border-bottom: emcalc(1) dotted $base-border-color;
+	border-bottom: emcalc(1) dotted $base__border-color;
 	cursor: help;
 }
+
 mark,
 ins {
 	background: $yellow;
 	text-decoration: none;
 	color: #000;
 }
+
 ul {
 	list-style: disc outside;
+
 	ul {
 		list-style-type: circle;
+
 		ul {
 			list-style-type: square;
 		}
 	}
 }
+
 ol {
 	list-style: decimal outside;
 }
+
 ul,
 ol {
-	padding: 0 0 0 $base-margin-emcalc;
+	padding: 0 0 0 $base__margin-emcalc;
+
 	ul,
 	ol {
-		padding-top: $base-margin-quarter-emcalc;
+		padding-top: $base__margin-emcalc--quarter;
 		margin-bottom: 0;
 		font-size: 1em;
 	}
 }
+
 li {
-	margin-bottom: $base-margin-quarter-emcalc;
+	margin-bottom: $base__margin-emcalc--quarter;
 }
+
 a {
-	color: $link-color;
-	text-decoration: $link-text-decoration;
+	color: $link__color;
+	text-decoration: $link__text-decoration;
 	outline: 0;
+
 	&:hover,
 	&:focus {
-		color: $link-hover-color;
-		text-decoration: $link-hover-text-decoration;
+		color: $link__color--hover;
+		text-decoration: $link__text-decoration--hover;
 	}
 
 	&:focus {
@@ -77,36 +90,44 @@ a {
 		outline: 0;
 	}
 }
+
 b,
 strong {
-	font-weight: $font-weight-bold;
+	font-weight: $font-weight--bold;
 }
+
 dt,
 dd {
-	line-height: $base-line-height;
+	line-height: $base__line-height;
 }
+
 dt {
 	font-weight: bold;
 }
+
 dd {
 	margin-left: 0; // Undo browser default
-	margin-bottom: $base-margin-half-emcalc;
+	margin-bottom: $base__margin-emcalc--half;
 }
+
 hr {
 	border: 0;
-	border-top: 1px solid $base-border-color;
+	border-top: 1px solid $base__border-color;
 }
+
 // Abbreviations and acronyms
 abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
 	cursor: help;
-	border-bottom: 1px dotted $base-border-color;
+	border-bottom: 1px dotted $base__border-color;
 }
+
 abbr.initialism {
 	font-size: 90%;
 	text-transform: uppercase;
 }
+
 cite {
   font-style: normal;
   @include cite;
@@ -134,7 +155,7 @@ blockquote:after {
 address {
 	display: block;
 	font-style: normal;
-	line-height: $base-line-height;
+	line-height: $base__line-height;
 }
 
 // Emphasis & misc
@@ -143,26 +164,28 @@ small {
 }
 
 table {
-  @include font-family($table-font-family);
-	@include font-size-emcalc($table-font-size);
-	@include line-height($table-line-height);
-	@include font-weight($table-font-weight);
-	@include text-align($table-text-align);
-	@include color($table-color);
-	@include margin-top-emcalc($table-margin-top, $table-font-size);
-	@include margin-bottom-emcalc($table-margin-bottom, $table-font-size);
+  @include font-family($table__font-family);
+	@include font-size-emcalc($table__font-size);
+	@include line-height($table__line-height);
+	@include font-weight($table__font-weight);
+	@include text-align($table__text-align);
+	@include color($table__color);
+	@include margin-top-emcalc($table__margin-top, $table__font-size);
+	@include margin-bottom-emcalc($table__margin-bottom, $table__font-size);
 	width: 100%;
 	max-width: 100%;
 }
+
 th,
 td {
-  @include padding-emcalc($td-padding-vertical, $td-padding-horizontal, $td-padding-vertical, $td-padding-horizontal, $table-font-size);
-	border-style: $table-border-style;
-	border-color: $table-border-color;
-	@include border-width($td-border-top-width, $td-border-right-width, $td-border-bottom-width, $td-border-left-width, $table-font-size);
+  @include padding-emcalc($td__padding-vertical, $td__padding-horizontal, $td__padding-vertical, $td__padding-horizontal, $table__font-size);
+	border-style: $table__border-style;
+	border-color: $table__border-color;
+	@include border-width($td__border-top-width, $td__border-right-width, $td__border-bottom-width, $td__border-left-width, $table__font-size);
 	text-align: left;
 	vertical-align: top;
 }
+
 th {
 	font-weight: bold;
 }
@@ -177,21 +200,27 @@ h5,
 h6 {
 	@include heading;
 }
+
 h1 {
 	@include h1;
 }
+
 h2 {
 	@include h2;
 }
+
 h3 {
 	@include h3;
 }
+
 h4 {
 	@include h4;
 }
+
 h5 {
 	@include h5;
 }
+
 h6 {
 	@include h6;
 }
@@ -206,6 +235,7 @@ h6 {
 // TYPEKIT
 // -------------------------
 .wf-loading {
+
 	body {
 		visibility: hidden;
 	}

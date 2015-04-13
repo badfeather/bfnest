@@ -1,7 +1,7 @@
 @mixin style($property, $value: 0) {
   #{$property}: $value;
 }
-@mixin style-emcalc($property, $value: 0, $font-size: $base-font-size) {
+@mixin style-emcalc($property, $value: 0, $font-size: $base__font-size) {
   #{$property}: emcalc($value, $font-size);
 }
 @mixin style-change($property, $value, $default-value) {
@@ -22,7 +22,7 @@
     #{$property}: $value-top;
   }
 }
-@mixin style-shorthand-emcalc($property, $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base-font-size) {
+@mixin style-shorthand-emcalc($property, $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base__font-size) {
   @if $value-left != $value-right {
     #{$property}: emcalc($value-top, $font-size) emcalc($value-right, $font-size) emcalc($value-bottom, $font-size) emcalc($value-left, $font-size);
   } @else if $value-top != $value-bottom {
@@ -113,7 +113,7 @@
 }
 
 // CSS3 Content Columns
-@mixin content-columns($column-count, $column-gap: $grid-gutter-width) {
+@mixin content-columns($column-count, $column-gap: $grid__gutter-width) {
 	column-count: $column-count;
 	column-gap: $column-gap;
 }

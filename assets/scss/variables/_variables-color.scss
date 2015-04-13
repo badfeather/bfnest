@@ -29,28 +29,28 @@ $silver: #C0C0C0;
 
 // BACKGROUND COLORS
 // ---------------------------
-$base-background-color: $white;
-$base-background-color-alt: $gray-lightest;
+$base__background-color: $white;
+$base__background-color--alt: $gray-lightest;
 
 // BASE COLORS
 // ---------------------------
-$base-color: $gray-dark;
-$base-color-light: lighten($base-color, 10%);
-$base-color-dark: darken($base-color, 10%);
-$base-color-alt: $gray-light;
-$base-color-comp: spin($base-color, 180);
+$base__color: $gray-dark;
+$base__color--light: lighten($base__color, 10%);
+$base__color--dark: darken($base__color, 10%);
+$base__color--alt: $gray-light;
+$base__color--comp: spin($base__color, 180);
 
 $accent-color: $cyan;
-$accent-color-alt: $magenta;
+$accent-color--alt: $magenta;
 
 // BORDER COLOR
 // ---------------------------
-$base-border-color: $gray-lightest;
+$base__border-color: $gray-lightest;
 
 // LINK COLORS
 // ---------------------------
-$link-color: $accent-color;
-$link-hover-color: $accent-color-alt;
-$link-active-color: $accent-color-alt;
-$link-text-decoration: none;
-$link-hover-text-decoration: none;
+$link__color: $accent-color;
+$link__color--hover: $accent-color--alt;
+$link__color--active: $accent-color--alt;
+$link__text-decoration: none;
+$link__text-decoration--hover: none;

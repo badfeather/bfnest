@@ -1,139 +1,139 @@
 // COMMON FORM ELEMENTS
 // ---------------------------
-$form-font-size: $base-font-size;
-$form-line-height: $base-line-height;
+$form__font-size: $base__font-size;
+$form__line-height: $base__line-height;
 
-$form-font-size-lg: $base-font-size-lg;
-$form-font-size-sm: $base-font-size-sm;
-$form-font-size-xs: $base-font-size-xs;
+$form__font-size--lg: $base__font-size--lg;
+$form__font-size--sm: $base__font-size--sm;
+$form__font-size--xs: $base__font-size--xs;
 
-$form-padding-vertical: $form-font-size / 2;
-$form-padding-horizontal: $form-font-size / 1.5;
+$form__padding-vertical: $form__font-size / 2;
+$form__padding-horizontal: $form__font-size / 1.5;
 
-$form-border-width: 1;
-$form-border-radius: $form-font-size / 4;
+$form__border-width: 1;
+$form__border-radius: $form__font-size / 4;
 
-$form-disabled-color: $gray-lighter;
-$form-primary-color: $purple;
-$form-success-color: $green;
-$form-info-color: $aqua;
-$form-warning-color: $orange;
-$form-danger-color: $red;
+$form__color--disabled: $gray-lighter;
+$form__color--primary: $purple;
+$form__color--success: $green;
+$form__color--info: $aqua;
+$form__color--warning: $orange;
+$form__color--danger: $red;
 
 // BUTTONS
 // ---------------------------
-$button-font-size: $form-font-size;
-$button-font-family: $base-font-family;
-$button-line-height: $form-line-height;
-$button-font-weight: $base-font-weight;
-$button-text-transform: uppercase;
-$button-color: $white;
-$button-background-color: $link-color;
-$button-border-color: $button-background-color;
-$button-hover-color: $white;
-$button-hover-background-color: $link-hover-color;
-$button-hover-border-color: $button-hover-background-color;
+$button__font-size: $form__font-size;
+$button__font-family: $base__font-family;
+$button__line-height: $form__line-height;
+$button__font-weight: $base__font-weight;
+$button__text-transform: uppercase;
+$button__color: $white;
+$button__background-color: $link__color;
+$button__border-color: $button__background-color;
+$button__color--hover: $white;
+$button__background-color--hover: $link__color--hover;
+$button__border-color--hover: $button__background-color--hover;
 
 // alternate sizes
-$button-font-size-lg: $form-font-size-lg;
-$button-font-size-sm: $form-font-size-sm;
-$button-font-size-xs: $form-font-size-xs;
+$button__font-size--lg: $form__font-size--lg;
+$button__font-size--sm: $form__font-size--sm;
+$button__font-size--xs: $form__font-size--xs;
 
 // Alternate buttons
-$button-disabled-color: $button-color;
-$button-disabled-background-color: $form-disabled-color;
-$button-disabled-border-color: $button-disabled-background-color;
-$button-disabled-hover-color: $button-disabled-color;
-$button-disabled-hover-background-color: $button-disabled-background-color;
-$button-disabled-hover-border-color: $button-disabled-border-color;
+$button__color--disabled: $button__color;
+$button__background-color--disabled: $form__color--disabled;
+$button__border-color--disabled: $button__background-color--disabled;
+$button__color--disabled--hover: $button__color--disabled;
+$button__background-color--disabled--hover: $button__background-color--disabled;
+$button__border-color--disabled--hover: $button__border-color--disabled;
 
-$button-primary-color: $button-color;
-$button-primary-background-color: $form-primary-color;
-$button-primary-border-color: $button-primary-background-color;
-$button-primary-hover-color: $button-hover-color;
-$button-primary-hover-background-color: $button-hover-background-color;
-$button-primary-hover-border-color: $button-hover-border-color;
+$button__color--primary: $button__color;
+$button__background-color--primary: $form__color--primary;
+$button__border-color--primary: $button__background-color--primary;
+$button__color--primary--hover: $button__color--hover;
+$button__background-color--primary--hover: $button__background-color--hover;
+$button__border-color--primary--hover: $button__border-color--hover;
 
-$button-success-color: $button-color;
-$button-success-background-color: $form-success-color;
-$button-success-border-color: $button-success-background-color;
-$button-success-hover-color: $button-hover-color;
-$button-success-hover-background-color: $button-hover-background-color;
-$button-success-hover-border-color: $button-hover-border-color;
+$button__color--success: $button__color;
+$button__background-color--success: $form__color--success;
+$button__border-color--success: $button__background-color--success;
+$button__color--success--hover: $button__color--hover;
+$button__background-color--success--hover: $button__background-color--hover;
+$button__border-color--success--hover: $button__border-color--hover;
 
-$button-info-color: $button-color;
-$button-info-background-color: $form-info-color;
-$button-info-border-color: $button-info-background-color;
-$button-info-hover-color: $button-hover-color;
-$button-info-hover-background-color: $button-hover-background-color;
-$button-info-hover-border-color: $button-hover-border-color;
+$button__color--info: $button__color;
+$button__background-color--info: $form__color--info;
+$button__border-color--info: $button__background-color--info;
+$button__color--info--hover: $button__color--hover;
+$button__background-color--info--hover: $button__background-color--hover;
+$button__border-color--info--hover: $button__border-color--hover;
 
-$button-warning-color: $button-color;
-$button-warning-background-color: $form-warning-color;
-$button-warning-border-color: $button-warning-background-color;
-$button-warning-hover-color: $button-hover-color;
-$button-warning-hover-background-color: $button-hover-background-color;
-$button-warning-hover-border-color: $button-hover-border-color;
+$button__color--warning: $button__color;
+$button__background-color--warning: $form__color--warning;
+$button__border-color--warning: $button__background-color--warning;
+$button__color--warning--hover: $button__color--hover;
+$button__background-color--warning--hover: $button__background-color--hover;
+$button__border-color--warning--hover: $button__border-color--hover;
 
-$button-danger-color: $button-color;
-$button-danger-background-color: $form-danger-color;
-$button-danger-border-color: $button-danger-background-color;
-$button-danger-hover-color: $button-hover-color;
-$button-danger-hover-background-color: $button-hover-background-color;
-$button-danger-hover-border-color: $button-hover-border-color;
+$button__color--danger: $button__color;
+$button__background-color--danger: $form__color--danger;
+$button__border-color--danger: $button__background-color--danger;
+$button__color--danger--hover: $button__color--hover;
+$button__background-color--danger--hover: $button__background-color--hover;
+$button__border-color--danger--hover: $button__border-color--hover;
 
 // INPUTS
 // ---------------------------
-$input-font-size: $form-font-size;
-$input-line-height: $form-line-height;
-$input-font-family: $base-font-family;
-$input-color: $base-color;
-$input-border-color: $base-border-color;
-$input-background-color: transparent;
-$input-box-shadow: none;
+$input__font-size: $form__font-size;
+$input__line-height: $form__line-height;
+$input__font-family: $base__font-family;
+$input__color: $base__color;
+$input__border-color: $base__border-color;
+$input__background-color: transparent;
+$input__box-shadow: none;
 
-$input-focus-color: $input-color;
-$input-focus-border-color: $accent-color;
-$input-focus-background-color: $input-background-color;
-$input-focus-box-shadow: none;
+$input__color--focus: $input__color;
+$input__border-color--focus: $accent-color;
+$input__background-color--focus: $input__background-color;
+$input__box-shadow--focus: none;
 
-$input-width: 210;
+$input__width: 210;
 
-$input-border-radius: $form-border-radius;
+$input__border-radius: $form__border-radius;
 
-$input-placeholder-color: $meta-color;
+$input__placeholder-color: $meta__color;
 
-$input-font-size-lg: $form-font-size-lg;
-$input-font-size-sm: $form-font-size-sm;
-$input-font-size-xs: $form-font-size-xs;
+$input__font-size--lg: $form__font-size--lg;
+$input__font-size--sm: $form__font-size--sm;
+$input__font-size--xs: $form__font-size--xs;
 
-$input-required-color: $input-color;
-$input-required-font-weight: $font-weight-bold;
+$input__color--required: $input__color;
+$input__font-weight--required: $font-weight--bold;
 
-$input-disabled-color: $meta-color;
-$input-disabled-background-color: $input-background-color;
-$input-disabled-border-color: $form-disabled-color;
-$input-disabled-focus-color: $input-disabled-color;
-$input-disabled-focus-background-color: $input-disabled-background-color;
-$input-disabled-focus-border-color: $input-disabled-border-color;
+$input__color--disabled: $meta__color;
+$input__background-color--disabled: $input__background-color;
+$input__border-color--disabled: $form__color--disabled;
+$input__color--disabled--focus: $input__color--disabled;
+$input__background-color--disabled--focus: $input__background-color--disabled;
+$input__border-color--disabled--focus: $input__border-color--disabled;
 
-$input-success-color: $input-color;
-$input-success-background-color: $input-background-color;
-$input-success-border-color: $form-success-color;
-$input-success-focus-color: $input-focus-color;
-$input-success-focus-background-color: $input-focus-background-color;
-$input-success-focus-border-color: $input-focus-border-color;
+$input__color--success: $input__color;
+$input__background-color--success: $input__background-color;
+$input__border-color--success: $form__color--success;
+$input__color--success--focus: $input__color--focus;
+$input__background-color--success--focus: $input__background-color--focus;
+$input__border-color--success--focus: $input__border-color--focus;
 
-$input-warning-color: $input-color;
-$input-warning-background-color: $input-background-color;
-$input-warning-border-color: $form-warning-color;
-$input-warning-focus-color: $input-focus-color;
-$input-warning-focus-background-color: $input-focus-background-color;
-$input-warning-focus-border-color: $input-focus-border-color;
+$input__color--warning: $input__color;
+$input__background-color--warning: $input__background-color;
+$input__border-color--warning: $form__color--warning;
+$input__color--warning--focus: $input__color--focus;
+$input__background-color--warning--focus: $input__background-color--focus;
+$input__border-color--warning--focus: $input__border-color--focus;
 
-$input-danger-color: $input-color;
-$input-danger-background-color: $input-background-color;
-$input-danger-border-color: $form-danger-color;
-$input-danger-focus-color: $input-focus-color;
-$input-danger-focus-background-color: $input-focus-background-color;
-$input-danger-focus-border-color: $input-focus-border-color;
+$input__color--danger: $input__color;
+$input__background-color--danger: $input__background-color;
+$input__border-color--danger: $form__color--danger;
+$input__color--danger--focus: $input__color--focus;
+$input__background-color--danger--focus: $input__background-color--focus;
+$input__border-color--danger--focus: $input__border-color--focus;

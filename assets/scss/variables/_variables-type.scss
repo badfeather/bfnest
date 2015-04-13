@@ -1,206 +1,206 @@
 // BASE TYPE STYLES
 // ---------------------------
-$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-serif: Cambria, Georgia, serif;
-$font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+$font-family--sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family--serif: Cambria, Georgia, serif;
+$font-family--monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
 
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-bold: 700;
+$font-weight--light: 300;
+$font-weight--normal: 400;
+$font-weight--bold: 700;
 
 // Base
-$base-font-family: $font-family-sans-serif;
-$base-font-size: 16;
-$base-font-size-lg: 20;
-$base-font-size-sm: 14;
-$base-font-size-xs: 12;
-$base-font-weight: $font-weight-normal;
-$base-margin: 24;
-$base-margin-half: $base-margin / 2;
-$base-margin-quarter: $base-margin / 4;
-$base-margin-emcalc: $base-margin / $base-font-size * 1em;
-$base-margin-half-emcalc: $base-margin-half / $base-font-size * 1em;
-$base-margin-quarter-emcalc: $base-margin-quarter / $base-font-size * 1em;
-$base-line-height-xl: ($base-font-size + (($base-margin - $base-font-size) * 1.5)) / $base-font-size;
-$base-line-height-lg: ($base-font-size + (($base-margin - $base-font-size) * 1.25)) / $base-font-size;
-$base-line-height: $base-margin / $base-font-size;
-$base-line-height-sm: ($base-font-size + (($base-margin - $base-font-size) / 2)) / $base-font-size;
-$base-line-height-xs: ($base-font-size + (($base-margin - $base-font-size) / 4)) / $base-font-size;
-$base-text-align: left;
+$base__font-family: $font-family--sans-serif;
+$base__font-size: 16;
+$base__font-size--lg: 20;
+$base__font-size--sm: 14;
+$base__font-size--xs: 12;
+$base__font-weight: $font-weight--normal;
+$base__margin: 24;
+$base__margin--half: $base__margin / 2;
+$base__margin--quarter: $base__margin / 4;
+$base__margin-emcalc: $base__margin / $base__font-size * 1em;
+$base__margin-emcalc--half: $base__margin--half / $base__font-size * 1em;
+$base__margin-emcalc--quarter: $base__margin--quarter / $base__font-size * 1em;
+$base__line-height--xl: ($base__font-size + (($base__margin - $base__font-size) * 1.5)) / $base__font-size;
+$base__line-height--lg: ($base__font-size + (($base__margin - $base__font-size) * 1.25)) / $base__font-size;
+$base__line-height: $base__margin / $base__font-size;
+$base__line-height--sm: ($base__font-size + (($base__margin - $base__font-size) / 2)) / $base__font-size;
+$base__line-height--xs: ($base__font-size + (($base__margin - $base__font-size) / 4)) / $base__font-size;
+$base__text-align: left;
 
 // HEADINGS
 // ---------------------------
-$headings-line-height: $base-line-height-sm;
-$headings-font-family: $font-family-sans-serif;
-$headings-font-weight: $font-weight-bold;
-$headings-font-style: normal;
-$headings-color: $base-color;
-$headings-small-color: inherit;
-$headings-link-color: $link-color;
-$headings-link-hover-color: $link-hover-color;
+$headings__line-height: $base__line-height--sm;
+$headings__font-family: $font-family--sans-serif;
+$headings__font-weight: $font-weight--bold;
+$headings__font-style: normal;
+$headings__color: $base__color;
+$headings__small-color: inherit;
+$headings__link-color: $link__color;
+$headings__link-color--hover: $link__color--hover;
 
-$h1-font-size: 32;
-$h1-line-height: $base-line-height-xs;
-$h1-font-family: $headings-font-family;
-$h1-color: $headings-color;
-$h1-font-style: $headings-font-style;
-$h1-font-weight: $headings-font-weight;
-$h1-text-transform: none;
-$h1-margin-top: 0;
-$h1-margin-bottom: $base-margin;
-$h1-font-size-lg: $h1-font-size;
+$h1__font-size: 32;
+$h1__line-height: $base__line-height--xs;
+$h1__font-family: $headings__font-family;
+$h1__color: $headings__color;
+$h1__font-style: $headings__font-style;
+$h1__font-weight: $headings__font-weight;
+$h1__text-transform: none;
+$h1__margin-top: 0;
+$h1__margin-bottom: $base__margin;
+$h1__font-size--lg: $h1__font-size;
 
-$h2-font-size: 28;
-$h2-line-height: $base-line-height-xs;
-$h2-font-family: $headings-font-family;
-$h2-color: $headings-color;
-$h2-font-style: $headings-font-style;
-$h2-font-weight: $headings-font-weight;
-$h2-text-transform: none;
-$h2-margin-top: 0;
-$h2-margin-bottom: $base-margin;
-$h2-font-size-lg: $h2-font-size;
+$h2__font-size: 28;
+$h2__line-height: $base__line-height--xs;
+$h2__font-family: $headings__font-family;
+$h2__color: $headings__color;
+$h2__font-style: $headings__font-style;
+$h2__font-weight: $headings__font-weight;
+$h2__text-transform: none;
+$h2__margin-top: 0;
+$h2__margin-bottom: $base__margin;
+$h2__font-size--lg: $h2__font-size;
 
-$h3-font-size: 24;
-$h3-line-height: $base-line-height-xs;
-$h3-font-family: $headings-font-family;
-$h3-color: $headings-color;
-$h3-font-style: $headings-font-style;
-$h3-font-weight: $headings-font-weight;
-$h3-text-transform: none;
-$h3-margin-top: 0;
-$h3-margin-bottom: $base-margin;
-$h3-font-size-lg: $h3-font-size;
+$h3__font-size: 24;
+$h3__line-height: $base__line-height--xs;
+$h3__font-family: $headings__font-family;
+$h3__color: $headings__color;
+$h3__font-style: $headings__font-style;
+$h3__font-weight: $headings__font-weight;
+$h3__text-transform: none;
+$h3__margin-top: 0;
+$h3__margin-bottom: $base__margin;
+$h3__font-size--lg: $h3__font-size;
 
-$h4-font-size: 20;
-$h4-line-height: $base-line-height-xs;
-$h4-font-family: $headings-font-family;
-$h4-color: $headings-color;
-$h4-font-style: $headings-font-style;
-$h4-font-weight: $headings-font-weight;
-$h4-text-transform: none;
-$h4-margin-top: 0;
-$h4-margin-bottom: $base-margin;
-$h4-font-size-lg: $h4-font-size;
+$h4__font-size: 20;
+$h4__line-height: $base__line-height--xs;
+$h4__font-family: $headings__font-family;
+$h4__color: $headings__color;
+$h4__font-style: $headings__font-style;
+$h4__font-weight: $headings__font-weight;
+$h4__text-transform: none;
+$h4__margin-top: 0;
+$h4__margin-bottom: $base__margin;
+$h4__font-size--lg: $h4__font-size;
 
-$h5-font-size: 16;
-$h5-line-height: $base-line-height-xs;
-$h5-font-family: $headings-font-family;
-$h5-color: $headings-color;
-$h5-font-style: $headings-font-style;
-$h5-font-weight: $headings-font-weight;
-$h5-text-transform: none;
-$h5-margin-top: 0;
-$h5-margin-bottom: $base-margin;
-$h5-font-size-lg: $h5-font-size;
+$h5__font-size: 16;
+$h5__line-height: $base__line-height--xs;
+$h5__font-family: $headings__font-family;
+$h5__color: $headings__color;
+$h5__font-style: $headings__font-style;
+$h5__font-weight: $headings__font-weight;
+$h5__text-transform: none;
+$h5__margin-top: 0;
+$h5__margin-bottom: $base__margin;
+$h5__font-size--lg: $h5__font-size;
 
-$h6-font-size: 14;
-$h6-line-height: $base-line-height-xs;
-$h6-font-family: $headings-font-family;
-$h6-color: $headings-color;
-$h6-font-style: $headings-font-style;
-$h6-font-weight: $headings-font-weight;
-$h6-text-transform: none;
-$h6-margin-top: 0;
-$h6-margin-bottom: $base-margin;
-$h6-font-size-lg: $h6-font-size;
+$h6__font-size: 14;
+$h6__line-height: $base__line-height--xs;
+$h6__font-family: $headings__font-family;
+$h6__color: $headings__color;
+$h6__font-style: $headings__font-style;
+$h6__font-weight: $headings__font-weight;
+$h6__text-transform: none;
+$h6__margin-top: 0;
+$h6__margin-bottom: $base__margin;
+$h6__font-size--lg: $h6__font-size;
 
 // META
 // ---------------------------
-$meta-font-size: $base-font-size-sm;
-$meta-line-height: $base-line-height-xs;
-$meta-font-family: $font-family-sans-serif;
-$meta-font-style: normal;
-$meta-font-weight: $base-font-weight;
-$meta-color: $gray-light;
-$meta-margin-top: 0;
-$meta-margin-bottom: $base-margin-quarter;
+$meta__font-size: $base__font-size--sm;
+$meta__line-height: $base__line-height--xs;
+$meta__font-family: $font-family--sans-serif;
+$meta__font-style: normal;
+$meta__font-weight: $base__font-weight;
+$meta__color: $gray-light;
+$meta__margin-top: 0;
+$meta__margin-bottom: $base__margin--quarter;
 
 // NAVS
 // ---------------------------
-$nav-font-size: $base-font-size;
-$nav-line-height: $base-line-height;
-$nav-font-family: $font-family-sans-serif;
-$nav-font-weight: $base-font-weight;
-$nav-link-color: $link-color;
-$nav-link-hover-color: $link-hover-color;
-$nav-link-active-color: $link-active-color;
-$nav-text-transform: none;
+$nav__font-size: $base__font-size;
+$nav__line-height: $base__line-height;
+$nav__font-family: $font-family--sans-serif;
+$nav__font-weight: $base__font-weight;
+$nav__link-color: $link__color;
+$nav__link-color--hover: $link__color--hover;
+$nav__link-color--active: $link__color--active;
+$nav__text-transform: none;
 
 // Subnavs
-$subnav-font-family: $font-family-sans-serif;
-$subnav-font-weight: $base-font-weight;
-$subnav-link-color: $link-color;
-$subnav-link-hover-color: $link-hover-color;
-$subnav-link-active-color: $link-active-color;
+$subnav__font-family: $font-family--sans-serif;
+$subnav__font-weight: $base__font-weight;
+$subnav__link-color: $link__color;
+$subnav__link-color--hover: $link__color--hover;
+$subnav__link-color--active: $link__color--active;
 
 // Post Navs
-$postnav-font-size: $base-font-size;
-$postnav-font-family: $base-font-family;
-$postnav-line-height: $base-line-height;
-$postnav-font-weight: $base-font-weight;
-$postnav-text-transform: none;
-$postnav-link-color: $link-color;
-$postnav-link-hover-color: $link-hover-color;
-$postnav-margin-bottom: $base-margin;
+$postnav__font-size: $base__font-size;
+$postnav__font-family: $base__font-family;
+$postnav__line-height: $base__line-height;
+$postnav__font-weight: $base__font-weight;
+$postnav__text-transform: none;
+$postnav__link-color: $link__color;
+$postnav__link-color--hover: $link__color--hover;
+$postnav__margin-bottom: $base__margin;
 
 // TABLES
 // ---------------------------
-$table-font-size: $base-font-size;
-$table-font-family: $base-font-family;
-$table-line-height: $base-line-height;
-$table-font-weight: $base-font-weight;
-$table-color: $base-color;
-$table-text-align: left;
-$table-background-color: $base-background-color;
-$table-border-color: $base-border-color;
-$table-border-style: solid;
-$table-margin-top: 0;
-$table-margin-bottom: $base-margin;
+$table__font-size: $base__font-size;
+$table__font-family: $base__font-family;
+$table__line-height: $base__line-height;
+$table__font-weight: $base__font-weight;
+$table__color: $base__color;
+$table__text-align: left;
+$table__background-color: $base__background-color;
+$table__border-color: $base__border-color;
+$table__border-style: solid;
+$table__margin-top: 0;
+$table__margin-bottom: $base__margin;
 
-$th-font-weight: $font-weight-bold;
-$th-text-align: $table-text-align;
+$th__font-weight: $font-weight--bold;
+$th__text-align: $table__text-align;
 
-$td-text-align: $table-text-align;
-$td-border-top-width: 1;
-$td-border-right-width: 1;
-$td-border-bottom-width: 1;
-$td-border-left-width: 1;
-$td-padding-vertical: $base-font-size / 2;
-$td-padding-horizontal: $base-font-size / 2;
+$td__text-align: $table__text-align;
+$td__border-top-width: 1;
+$td__border-right-width: 1;
+$td__border-bottom-width: 1;
+$td__border-left-width: 1;
+$td__padding-vertical: $base__font-size / 2;
+$td__padding-horizontal: $base__font-size / 2;
 
 // BLOCKQUOTES
 // ---------------------------
-$blockquote-font-size: $base-font-size-lg;
-$blockquote-font-family: $base-font-family;
-$blockquote-line-height: $base-line-height;
-$blockquote-font-weight: $base-font-weight;
-$blockquote-font-style: italic;
-$blockquote-color: $base-color;
-$blockquote-margin-top: 0;
-$blockquote-margin-right: 0;
-$blockquote-margin-bottom: $base-margin;
-$blockquote-margin-left: $base-margin;
+$blockquote__font-size: $base__font-size--lg;
+$blockquote__font-family: $base__font-family;
+$blockquote__line-height: $base__line-height;
+$blockquote__font-weight: $base__font-weight;
+$blockquote__font-style: italic;
+$blockquote__color: $base__color;
+$blockquote__margin-top: 0;
+$blockquote__margin-right: 0;
+$blockquote__margin-bottom: $base__margin;
+$blockquote__margin-left: $base__margin;
 
-$cite-font-size: $base-font-size;
-$cite-font-family: $base-font-family;
-$cite-line-height: $base-line-height;
-$cite-font-weight: $base-font-weight;
-$cite-font-style: normal;
-$cite-color: $base-color;
-$cite-margin-bottom: $base-margin;
-$cite-margin-left: $base-margin;
+$cite__font-size: $base__font-size;
+$cite__font-family: $base__font-family;
+$cite__line-height: $base__line-height;
+$cite__font-weight: $base__font-weight;
+$cite__font-style: normal;
+$cite__color: $base__color;
+$cite__margin-bottom: $base__margin;
+$cite__margin-left: $base__margin;
 
 // LEDES
 // ---------------------------
-$lede-font-size: $base-font-size-lg;
-$lede-font-family: $base-font-family;
-$lede-line-height: $base-line-height;
-$lede-font-weight: $base-font-weight;
-$lede-font-style: normal;
-$lede-color: $base-color;
-$lede-text-align: center;
-$lede-margin-top: 0;
-$lede-margin-right: 0;
-$lede-margin-bottom: $base-margin;
-$lede-margin-left: $base-margin;
+$lede__font-size: $base__font-size--lg;
+$lede__font-family: $base__font-family;
+$lede__line-height: $base__line-height;
+$lede__font-weight: $base__font-weight;
+$lede__font-style: normal;
+$lede__color: $base__color;
+$lede__text-align: center;
+$lede__margin-top: 0;
+$lede__margin-right: 0;
+$lede__margin-bottom: $base__margin;
+$lede__margin-left: $base__margin;

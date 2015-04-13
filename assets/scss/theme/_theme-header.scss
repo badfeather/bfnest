@@ -1,7 +1,8 @@
 .site-nav-title {
 	font-size: 1em;
-	margin-bottom: $base-margin-emcalc;
+	margin-bottom: $base__margin-emcalc;
 }
+
 .site-description {
   @include h3;
 }
