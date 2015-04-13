@@ -2,7 +2,7 @@
 
 		<div class="copyright">
 			&copy; <?php echo date( 'Y' ) . ' ' . get_bloginfo( 'name' ) . "\n"; ?>
-		</div><!-- /.copyright -->
+		</div><?php // /.copyright ?>
 
 		<div class="credits">
 		  <?php
@@ -11,11 +11,11 @@
 		    '<span class="sep"> | </span>',
 		    '<a href="' . esc_url( 'http://wordpress.org' ) . '" target="_blank">WordPress</a>' );
 		  ?>
-		</div><!-- /.credits -->
+		</div><?php // /.credits ?>
 
-	</footer><!-- /.site-footer.content-info -->
+	</footer><?php // /.site-footer.content-info ?>
 
-</div><!-- /.site -->
+</div><?php // /.site ?>
 
 <?php wp_footer(); ?>
 

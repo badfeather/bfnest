@@ -6,7 +6,7 @@ Template Name: Home
 <?php get_header(); ?>
 
 	  <div class="doc site-main" role="document">
-      <main class="doc-main" role="main">
+      <main class="doc-main doc-main--single doc-main--page" role="main">
 
   			<?php
   				while ( have_posts() ) {
@@ -15,10 +15,10 @@ Template Name: Home
   				}
   			?>
 
-      </main><!-- /.doc-main -->
+      </main><?php // /.doc-main.doc-main--single.doc-main--page ?>
 
 			<?php get_sidebar( 'page' ); ?>
 
-		</div><!-- /.doc.site-main -->
+		</div><?php // /.doc.site-main ?>
 
 <?php get_footer(); ?>

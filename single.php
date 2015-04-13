@@ -2,7 +2,7 @@
 
 	  <div class="doc site-main" role="document">
 
-      <main class="doc-main" role="main">
+      <main class="doc-main doc-main--single" role="main">
 
   			<?php
   				while ( have_posts() ) {
@@ -11,10 +11,10 @@
   				}
   			?>
 
-      </main><!-- /.doc-main -->
+      </main><?php // /.doc-main.doc-main--single ?>
 
 			<?php get_sidebar( 'single' ); ?>
 
-		</div><!-- /.doc.site-main -->
+		</div><?php // /.doc.site-main ?>
 
 <?php get_footer(); ?>

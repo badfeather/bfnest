@@ -2,7 +2,7 @@
 
 	  <section class="doc site-main" role="document">
 
-			<main class="doc-main" role="main">
+			<main class="doc-main doc-main--archive" role="main">
 
 				<?php
 					if ( have_posts() ) {
@@ -47,7 +47,7 @@
 						?>
 					</header>
 
-					<div class="doc-content doc-content-archive">
+					<div class="doc-content doc-content">
 
 						<?php
 							while ( have_posts() ) {
@@ -58,17 +58,17 @@
 							nest_archive_pager();
 						?>
 
-					</div><!-- /.doc-content.doc-content-archive -->
+					</div><?php // /.doc-content.doc-content ?>
 
 				<?php
 					} else {
 						get_template_part( 'content', 'no-results' );
 					} // endif
 				?>
-			</main><!-- /.doc-main -->
+			</main><?php // /.doc-main.doc-main--archive ?>
 
 			<?php get_sidebar(); ?>
 
-		</section><!-- /.doc.site-main -->
+		</section><?php // /.doc.site-main ?>
 
 <?php get_footer(); ?>

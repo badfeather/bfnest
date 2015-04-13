@@ -31,6 +31,6 @@
 				'container' => false,
 				'menu_class' => 'menu site-nav-menu'
 			) ); ?>
-		</nav><!-- /.site-nav -->
+		</nav><?php // /.site-nav ?>
 
-	</header><!-- /.site-header -->
+	</header><?php // /.site-header ?>

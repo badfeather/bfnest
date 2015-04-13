@@ -3,9 +3,9 @@
 	<header class="doc-header">
 	  <?php nest_posted_on(); ?>
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
-	</header><!-- /.doc-header -->
+	</header><?php // /.doc-header ?>
 
-	<div class="doc-content doc-content-single">
+	<div class="doc-content">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -15,7 +15,7 @@
 					'after'  => '</div>',
 				) );
 			?>
-		</div><!-- /.entry-content -->
+		</div><?php // /.entry-content ?>
 
 		<footer class="doc-footer">
 			<?php nest_meta(); ?>
@@ -30,6 +30,6 @@
 	      nest_single_pager();
 	    ?>
 
-	</div><!-- /.doc-content.doc-content-single -->
+	</div><?php // /.doc-content ?>
 
-</article><!-- #post-## -->
+</article><?php // /#post-## ?>

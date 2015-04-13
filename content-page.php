@@ -2,9 +2,9 @@
 
 	<header class="doc-header">
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
-	</header><!-- /.doc-header -->
+	</header><?php // /.doc-header ?>
 
-	<div class="doc-content doc-content-page">
+	<div class="doc-content">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -14,11 +14,11 @@
 					'after'  => '</div>',
 				) );
 			?>
-		</div><!-- /.entry-content -->
+		</div><?php // /.entry-content ?>
 
 		<?php nest_edit_footer(); ?>
 
-	</div><!-- /.doc-content.doc-content-page -->
+	</div><?php // /.doc-content ?>
 
-</article><!-- #post-## -->
+</article><?php // /#post-## ?>
 

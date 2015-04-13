@@ -5,4 +5,4 @@
 		dynamic_sidebar( 'global' );
 	?>
 
-</div><!-- /.sidebar.doc-side -->
+</div><?php // /.sidebar.doc-side ?>

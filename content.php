@@ -1,3 +1,4 @@
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
@@ -7,11 +8,11 @@
 
 	<div class="entry-content">
 		<?php the_content( __( 'Continue reading &rarr;', 'nest' ) ); ?>
-	</div><!-- /.entry-content -->
+	</div><?php // /.entry-content ?>
 
 	<footer class="entry-footer">
 		<?php nest_meta(); ?>
 		<?php nest_scriptless_social_share(); ?>
 	</footer>
 
-</article><!-- #post-## -->
+</article><?php // /#post-## ?>
