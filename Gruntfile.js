@@ -98,12 +98,12 @@ module.exports = function(grunt) {
       project: {
         pkg: 'package.json',
         src: ['package.json', 'bower.json'],
-        /*css: {
+        scss: {
           options: {
             prefix: 'Version\\:\\s'
           },
           src: [ 'assets/scss/style.scss' ],
-        }*/
+        }
       }
     },
     watch: {
