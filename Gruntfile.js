@@ -56,6 +56,16 @@ module.exports = function(grunt) {
         src: ['style.css']
       }
     },
+  	imagemin: {
+	    saga: {
+	      files: [{
+  				expand: true,
+  				cwd: 'assets/img/',
+  				src: ['**/*.{png,jpg,gif}'],
+  				dest: 'img/'
+			  }]
+	    }
+  	},
     modernizr: {
       build: {
         devFile: 'assets/vendor/modernizr/modernizr.js',
@@ -82,6 +92,18 @@ module.exports = function(grunt) {
             'docs/.*'
           ]
         }
+      }
+    },
+    version: {
+      project: {
+        pkg: 'package.json',
+        src: ['package.json', 'bower.json'],
+        /*css: {
+          options: {
+            prefix: 'Version\\:\\s'
+          },
+          src: [ 'assets/scss/style.scss' ],
+        }*/
       }
     },
     watch: {
@@ -128,6 +150,7 @@ module.exports = function(grunt) {
     'concat',
     'uglify',
     'autoprefixer',
+    'imagemin',
     'makepot',
     'modernizr'
   ]);
