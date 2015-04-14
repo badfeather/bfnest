@@ -55,7 +55,7 @@
 								get_template_part( 'content', get_post_type() );
 							} // endwhile
 
-							nest_archive_pager();
+							get_template_part( 'postnav', 'archive' );
 						?>
 
 					</div><?php // /.doc-content.doc-content ?>

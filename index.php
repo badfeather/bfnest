@@ -11,7 +11,7 @@
         			get_template_part( 'content', get_post_type() );
         		}
 
-        		nest_archive_pager();
+        		get_template_part( 'postnav', 'archive' );
         	?>
         </div><?php // /.doc-content ?>
 			<?php

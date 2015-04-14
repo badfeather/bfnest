@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="doc-header">
-	  <?php nest_posted_on(); ?>
+	  <?php get_template_part( 'meta-above', $post_type ); ?>
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
 	</header><?php // /.doc-header ?>
 
@@ -18,7 +18,7 @@
 		</div><?php // /.entry-content ?>
 
 		<footer class="doc-footer">
-			<?php nest_meta(); ?>
+			<?php get_template_part( 'meta-below', $post_type ); ?>
 			<?php nest_scriptless_social_share(); ?>
 		</footer>
 
@@ -27,7 +27,7 @@
 	      	comments_template();
 	      } // endif
 
-	      nest_single_pager();
+	      get_template_part( 'postnav', 'single' );
 	    ?>
 
 	</div><?php // /.doc-content ?>

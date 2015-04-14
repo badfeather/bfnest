@@ -1,8 +1,10 @@
-
+<?php
+  $post_type = get_post_type();
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
-		<?php nest_posted_on(); ?>
+		<?php get_template_part( 'meta-above', $post_type ); ?>
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 	</header>
 
@@ -11,7 +13,7 @@
 	</div><?php // /.entry-content ?>
 
 	<footer class="entry-footer">
-		<?php nest_meta(); ?>
+		<?php get_template_part( 'meta-below', $post_type ); ?>
 		<?php nest_scriptless_social_share(); ?>
 	</footer>
 
