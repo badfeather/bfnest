@@ -96,11 +96,11 @@ module.exports = function(grunt) {
     },
     version: {
       project: {
-        pkg: 'package.json',
         src: ['package.json', 'bower.json'],
         scss: {
           options: {
-            prefix: 'Version\\:\\s'
+            prefix: 'Version\\:\\s*'
+
           },
           src: [ 'assets/scss/style.scss' ],
         }

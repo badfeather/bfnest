@@ -6,7 +6,7 @@
 
 // POST NAVIGATION STYLES
 // ---------------------------
-.doc-nav {
+.postnav {
   @include font-size-emcalc($postnav__font-size);
   @include line-height($postnav__line-height);
   @include font-family($postnav__font-family);
@@ -16,18 +16,19 @@
   clear: both;
 	@include margin-bottom-emcalc($postnav__margin-bottom);
 
-	.nav-link {
+	.postnav__link {
 		width: 50%;
 	}
 
-	.nav-link-next {
+	.postnav__link--next {
 		float: right;
 		text-align: right;
 		padding-right: 1em;
 	}
 
-	.nav-link-prev {
+	.postnav__link--prev {
 		float: left;
 		padding-left: 1em;
 	}
 }
+

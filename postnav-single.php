@@ -5,11 +5,12 @@ $next = get_adjacent_post( false, '', false );
 
 if ( $next || $previous ) {
 ?>
-<div class="doc-nav doc-nav-single">
+<div class="postnav postnav--single">
 	<?php
-	  next_post_link( '<div class="nav-link nav-link-prev">%link</div>', _x( '&larr;&nbsp;%title', 'Next post link', 'nest' ) );
-    previous_post_link( '<div class="nav-link nav-link-next">%link</div>', _x( '%title&nbsp;&rarr;', 'Previous post link', 'nest' ) );
+	  next_post_link( '<div class="postnav__link postnav__link--prev">%link</div>', _x( '&larr;&nbsp;%title', 'Next post link', 'nest' ) );
+    previous_post_link( '<div class="postnav__link postnav__link--next">%link</div>', _x( '%title&nbsp;&rarr;', 'Previous post link', 'nest' ) );
   ?>
-</div><?php // /.doc-nav.doc-nav-single ?>
+</div><?php // /.postnav.postnav--single ?>
 <?php
 } // endif
+

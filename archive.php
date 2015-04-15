@@ -47,7 +47,7 @@
 						?>
 					</header>
 
-					<div class="doc-content doc-content">
+					<div class="doc-content">
 
 						<?php
 							while ( have_posts() ) {
@@ -58,7 +58,7 @@
 							get_template_part( 'postnav', 'archive' );
 						?>
 
-					</div><?php // /.doc-content.doc-content ?>
+					</div><?php // /.doc-content ?>
 
 				<?php
 					} else {

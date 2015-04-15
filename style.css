@@ -684,26 +684,26 @@ h6 {
   color: #f0f;
 }
 
-.doc-nav {
+.postnav {
   clear: both;
   margin-bottom: 1.5em;
 }
-.doc-nav:before, .doc-nav:after {
+.postnav:before, .postnav:after {
   content: " ";
   display: table;
 }
-.doc-nav:after {
+.postnav:after {
   clear: both;
 }
-.doc-nav .nav-link {
+.postnav .postnav__link {
   width: 50%;
 }
-.doc-nav .nav-link-next {
+.postnav .postnav__link--next {
   float: right;
   text-align: right;
   padding-right: 1em;
 }
-.doc-nav .nav-link-prev {
+.postnav .postnav__link--prev {
   float: left;
   padding-left: 1em;
 }
