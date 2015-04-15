@@ -95,15 +95,15 @@ module.exports = function(grunt) {
       }
     },
     version: {
-      project: {
-        src: ['package.json', 'bower.json'],
-        scss: {
-          options: {
-            prefix: 'Version\\:\\s*'
+      json: {
+        src: ['package.json', 'bower.json']
+      },
+      scss: {
+        options: {
+          prefix: 'Version\\:\\s'
 
-          },
-          src: [ 'assets/scss/style.scss' ],
-        }
+        },
+        src: [ 'assets/scss/style.scss' ],
       }
     },
     watch: {
