@@ -30,7 +30,7 @@
 	      	comments_template();
 	      } // endif
 
-	      get_template_part( 'postnav', 'single' );
+	      get_template_part( 'postnav-single', $post_type );
 	    ?>
 
 	</div><?php // /.doc-content ?>
