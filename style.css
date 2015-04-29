@@ -701,11 +701,11 @@ h6 {
 .postnav .postnav__link--next {
   float: right;
   text-align: right;
-  padding-right: 1em;
+  padding-left: 1em;
 }
 .postnav .postnav__link--prev {
   float: left;
-  padding-left: 1em;
+  padding-right: 1em;
 }
 
 img {

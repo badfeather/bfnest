@@ -4,10 +4,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
   <?php wp_head(); ?>
-
-  <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 </head>
 
 <body <?php body_class(); ?>>
@@ -19,7 +18,7 @@
 
 	    <?php
 	      $site_description = get_bloginfo( 'description' );
-	      if ( !empty( $site_description ) ) {
+	      if ( ! empty( $site_description ) ) {
 	        echo '<div class="site-description">' . $site_description . '</div>' . "\n";
 	      }
 	    ?>

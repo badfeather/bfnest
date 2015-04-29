@@ -11,4 +11,4 @@
 
 	<?php nest_edit_footer(); ?>
 
-</article><!-- #post-## ?>
+</article><?php // /#post-## ?>

@@ -57,7 +57,7 @@ module.exports = function(grunt) {
       }
     },
   	imagemin: {
-	    saga: {
+	    theme: {
 	      files: [{
   				expand: true,
   				cwd: 'assets/img/',

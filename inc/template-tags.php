@@ -476,31 +476,31 @@ function nest_scriptless_social_share( $args = array() ) {
 	$share_array = array();
 
 	if ( $delicious ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-delicious" href="' . esc_url( 'http://delicious.com/save?url=' . $post_url . '&title=' . $post_title ) . '" title="Delicious"' . $target . '>Delicious</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--delicious" href="' . esc_url( 'http://delicious.com/save?url=' . $post_url . '&title=' . $post_title ) . '" title="Delicious"' . $target . '>Delicious</a></span> ';
 	}
 
 	if ( $digg ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-digg" href="' . esc_url( 'http://digg.com/submit?url=' . $post_url . '&title=' . $post_title ) . '" title="Digg"' . $target . '>Digg</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--digg" href="' . esc_url( 'http://digg.com/submit?url=' . $post_url . '&title=' . $post_title ) . '" title="Digg"' . $target . '>Digg</a></span> ';
 	}
 
 	if ( $facebook ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link-facebook" href="' . esc_url( 'http://www.facebook.com/share.php?u=' . $post_url . '&t=' . $post_title ) . '" title="Facebook"' . $target . '>Facebook</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--facebook" href="' . esc_url( 'http://www.facebook.com/share.php?u=' . $post_url . '&t=' . $post_title ) . '" title="Facebook"' . $target . '>Facebook</a></span> ';
 	}
 
 	if ( $google_plus ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link-google-plus" href="' . esc_url( 'https://plus.google.com/share?url=' . $post_url ) . '" title="Google+"' . $target . '>Google+</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--google-plus" href="' . esc_url( 'https://plus.google.com/share?url=' . $post_url ) . '" title="Google+"' . $target . '>Google+</a></span> ';
 	}
 
 	if ( $instapaper ) {
-		 $share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-instapaper" href="' . esc_url( 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $post_title ) . '" title="Instapaper"' . $target . '>Instapaper</a></span> ';
+		 $share_array[] = '<span class="share__item"><a class="share__link share__link--instapaper" href="' . esc_url( 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $post_title ) . '" title="Instapaper"' . $target . '>Instapaper</a></span> ';
 	}
 
 	if ( $linked_in ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link-linked-in" href="' . esc_url( 'https://www.linkedin.com/cws/share?url=' . $post_url ) . '" title="LinkedIn"' . $target . '>LinkedIn</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--linked-in" href="' . esc_url( 'https://www.linkedin.com/cws/share?url=' . $post_url ) . '" title="LinkedIn"' . $target . '>LinkedIn</a></span> ';
 	}
 
 	if ( $myspace ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-myspace" href="' . esc_url( 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $post_title . '&c=' . $post_title ) . '" title="Myspace"' . $target . '>Myspace</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--myspace" href="' . esc_url( 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $post_title . '&c=' . $post_title ) . '" title="Myspace"' . $target . '>Myspace</a></span> ';
 	}
 
 	if ( $pinterest ) {
@@ -513,19 +513,19 @@ function nest_scriptless_social_share( $args = array() ) {
 			$image_path = nest_get_first_image_url( $size = 'large' );
 		}
 
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link-pinterest" href="' . esc_url( 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $post_title ) . '" title="Pinterest"' . $target . '>Pinterest</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--pinterest" href="' . esc_url( 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $post_title ) . '" title="Pinterest"' . $target . '>Pinterest</a></span> ';
 	}
 
 	if ( $reddit ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-reddit" href="' . esc_url( 'http://www.reddit.com/submit?url=' . $post_url . '&title=' . $post_title ) . '" title="Reddit"' . $target . '>Reddit</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--reddit" href="' . esc_url( 'http://www.reddit.com/submit?url=' . $post_url . '&title=' . $post_title ) . '" title="Reddit"' . $target . '>Reddit</a></span> ';
 	}
 
 	if ( $stumbleupon ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-stumbleupon" href="' . esc_url( 'http://www.stumbleupon.com/submit?url=' . $post_url ) . '" title="Stumbleupon"' . $target . '>Stumbleupon</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--stumbleupon" href="' . esc_url( 'http://www.stumbleupon.com/submit?url=' . $post_url ) . '" title="Stumbleupon"' . $target . '>Stumbleupon</a></span> ';
 	}
 
 	if ( $tumblr ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-tumblr" href="' . esc_url( 'http://www.tumblr.com/share/link?url=' . $post_url . '&name=' . $post_title ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--tumblr" href="' . esc_url( 'http://www.tumblr.com/share/link?url=' . $post_url . '&name=' . $post_title ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a></span> ';
 	}
 
 	if ( $twitter ) {
@@ -534,15 +534,15 @@ function nest_scriptless_social_share( $args = array() ) {
 	  if ( $twitter_handle ) {
 		  $twitter_via = '&via=' . $twitter_handle;
 	  }
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link-twitter" href="' . esc_url( 'http://twitter.com/share?url=' . $post_url . '&text=' . $post_title . $twitter_via ) . '" title="Tweet"' . $target . '>Twitter</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--twitter" href="' . esc_url( 'http://twitter.com/share?url=' . $post_url . '&text=' . $post_title . $twitter_via ) . '" title="Tweet"' . $target . '>Twitter</a></span> ';
 	}
 
 	if ( $email ) {
-		$share_array[] = '<span class="meta meta-share"><a class="share-link share-link share-link-email" href="' . esc_url( 'mailto:?subject=' . $post_title . '&body=' . $post_url ) . '" title="Email"' . $target . '>Email</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--email" href="' . esc_url( 'mailto:?subject=' . $post_title . '&body=' . $post_url ) . '" title="Email"' . $target . '>Email</a></span> ';
 	}
 
-	if ( !empty( $share_array ) ) {
-		echo '<div class="entry-meta entry-meta-share"><span class="meta-title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</div><!-- /.entry-meta.entry-meta-share -->' . "\n";
+	if ( ! empty( $share_array ) ) {
+		echo '<div class="share"><span class="meta-title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</div>' . "\n";
   } // if !empty $share_links
 }
 
@@ -604,69 +604,69 @@ function nest_follow_links( $args = array() ) {
 		$target = '';
 	}
 ?>
-<aside class="widget widget-follow">
+<aside class="widget widget--follow">
 	<h1 class="widget-title"><?php echo $follow_text; ?></h1>
 	<div class="widget-content">
 		<ul class="follow">
 			<?php
 			if ( $facebook_url ) {
-				echo '<li><a href="'. esc_url( $facebook_url ) .'" class="follow-link follow-link-facebook"'. $target .'>' . $facebook_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $facebook_url ) .'" class="follow__link follow__link--facebook"'. $target .'>' . $facebook_message . '</a></li>';
 			}
 
 			if ( $flickr_url ) {
-				echo '<li><a href="'. esc_url( $flickr_url ) .'" class="follow-link follow-link-flickr"'. $target .'>' . $flickr_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $flickr_url ) .'" class="follow__link follow__link--flickr"'. $target .'>' . $flickr_message . '</a></li>';
 			}
 
 			if ( $googleplus_url ) {
-				echo '<li><a href="'. esc_url( $googleplus_url ) .'" class="follow-link follow-link-googleplus"'. $target .'>' . $googleplus_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $googleplus_url ) .'" class="follow__link follow__link--googleplus"'. $target .'>' . $googleplus_message . '</a></li>';
 			}
 
 			if ( $instagram_url ) {
-				echo '<li><a href="'. esc_url( $instagram_url ) .'" class="follow-link follow-link-instagram"'. $target .'>' . $instagram_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $instagram_url ) .'" class="follow__link follow__link--instagram"'. $target .'>' . $instagram_message . '</a></li>';
 			}
 
 			if ( $linkedin_url ) {
-				echo '<li><a href="'. esc_url( $linkedin_url ) .'" class="follow-link follow-link-linkedin"'. $target .'>' . $linkedin_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $linkedin_url ) .'" class="follow__link follow__link--linkedin"'. $target .'>' . $linkedin_message . '</a></li>';
 			}
 
 			if ( $myspace_url ) {
-				echo '<li><a href="'. esc_url( $myspace_url ) .'" class="follow-link follow-link-myspace"'. $target .'>' . $myspace_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $myspace_url ) .'" class="follow__link follow__link--myspace"'. $target .'>' . $myspace_message . '</a></li>';
 			}
 
 			if ( $pinterest_url ) {
-				echo '<li><a href="'. esc_url( $pinterest_url ) .'" class="follow-link follow-link-pinterest"'. $target .'>' . $pinterest_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $pinterest_url ) .'" class="follow__link follow__link--pinterest"'. $target .'>' . $pinterest_message . '</a></li>';
 			}
 
 			if ( $soundcloud_url ) {
-				echo '<li><a href="'. esc_url( $soundcloud_url ) .'" class="follow-link follow-link-soundcloud"'. $target .'>' . $soundcloud_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $soundcloud_url ) .'" class="follow__link follow__link--soundcloud"'. $target .'>' . $soundcloud_message . '</a></li>';
 			}
 
 			if ( $tumblr_url ) {
-				echo '<li><a href="'. esc_url( $tumblr_url ) .'" class="follow-link follow-link-tumblr"'. $target .'>' . $tumblr_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $tumblr_url ) .'" class="follow__link follow__link--tumblr"'. $target .'>' . $tumblr_message . '</a></li>';
 			}
 
 			if ( $twitter_url ) {
-				echo '<li><a href="'. esc_url( $twitter_url ) .'" class="follow-link follow-link-twitter"'. $target .'>' . $twitter_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $twitter_url ) .'" class="follow__link follow__link--twitter"'. $target .'>' . $twitter_message . '</a></li>';
 			}
 
 			if ( $vimeo_url ) {
-				echo '<li><a href="'. esc_url( $vimeo_url ) .'" class="follow-link follow-link-vimeo"'. $target .'>' . $vimeo_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $vimeo_url ) .'" class="follow__link follow__link--vimeo"'. $target .'>' . $vimeo_message . '</a></li>';
 			}
 
 			if ( $youtube_url ) {
-				echo '<li><a href="'. esc_url( $youtube_url ) .'" class="follow-link follow-link-youtube"'. $target .'>' . $youtube_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $youtube_url ) .'" class="follow__link follow__link--youtube"'. $target .'>' . $youtube_message . '</a></li>';
 			}
 
       if ( $mailing_list_url ) {
-        echo '<li><a href="'. esc_url( $mailing_list_url ) .'" class="follow-link follow-link-mailing-list"'. $target .'>' . $mailing_list_message . '</a></li>';
+        echo '<li class="follow__item"><a href="'. esc_url( $mailing_list_url ) .'" class="follow__link follow__link--mailing-list"'. $target .'>' . $mailing_list_message . '</a></li>';
       }
 
 			if ( $rss_url ) {
-				echo '<li><a href="'. esc_url( $rss_url ) .'" class="follow-link follow-link-rss"'. $target .'>' . $rss_message . '</a></li>';
+				echo '<li class="follow__item"><a href="'. esc_url( $rss_url ) .'" class="follow__link follow__link--rss"'. $target .'>' . $rss_message . '</a></li>';
 			}
 			?>
 		</ul>
-	</div><!-- /.widget-content -->
+	</div><?php // /.widget-content ?>
 </aside>
 <?php
 }
