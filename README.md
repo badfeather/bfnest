@@ -2,7 +2,7 @@
 
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-This theme uses Grunt both to process and lint SASS, and Javascript files, as well as to install NPM and Bower dependencies. 
+This theme uses Grunt to process and lint SASS and Javascript files, minify Javascript and image files, and install NPM and Bower dependencies. 
 
 ## Getting Started
 ### Installing
@@ -26,16 +26,34 @@ This theme uses Grunt both to process and lint SASS, and Javascript files, as we
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 
 #### LESS
-* **Warning** I recently ported the main styles over to SASS, primarily because the way it handles conditional statements make way more sense to me. If you still want to use LESS, the files are included here for the time being, but will ultimately get phased out. They're still being grunted and output to `style-less.css`.
-* Same ideas regarding style changes for the SCSS files apply to the LESS files.
+* **Warning** I am no longer maintaining/including LESS
 
 #### Grunt/Bower
+* The following grunt packages are installed by default:
+  * `grunt-autoprefixer`
+  * `grunt-contrib-concat`
+  * `grunt-contrib-imagemin`
+  * `grunt-contrib-jshint`
+  * `grunt-contrib-less`
+  * `grunt-contrib-sass`
+  * `grunt-contrib-uglify`
+  * `grunt-contrib-watch`
+  * `grunt-modernizr`
+  * `grunt-version`
+  * `grunt-wp-i18n`
+  * `load-grunt-tasks`
+  * `time-grunt`
+* The following bower packages are installed by default:
+  * `modernizr`
+  * `respond`
 * To watch your files while editing, run `grunt watch` in terminal
 * To build your project for deployment, run `grunt build`
 * To install new grunt packages, run `npm install [package-name] --save-dev`. This will add it to the `package.json` file and add the files to `/node_modules`.
-* To install new bower packages, run `bower install [package-name]`. This will both add it to the `bower.json` file, and add the files to `/js/vendor/`.
-* To uninstall packages, run `npm uninstall [package-name] --save-dev` and `bower uninstall [package-name]`.
-* To update packages to their latest versions, run `npm update --save-dev` and `bower udate`.
+* To install new bower packages, run `bower install [package-name] --save-dev`. This will both add it to the `bower.json` file, and add the files to `/assets/vendor/`.
+* To uninstall packages, run `npm uninstall [package-name] --save-dev` and `bower uninstall [package-name] --save-dev`.
+* To update packages to their latest versions, run `npm update --save-dev` and `bower udate --save-dev`.
+* Any `.jpg`, `.gif`, `.png` or `.svg` images placed in `assets/img`, will be minified to the `img` directory using imagemin upon running `grunt build`
+* To bump the version number, you can run `grunt version::patch`, `grunt version::minor`, and `grunt version::major` as needed per revision. This will update the version number in the `package.json`, `bower.json` and `style.scss` files.
 
 #### Style Tester
 * Included is a very low-level style-guide of sorts. To use, open `/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. Hooray!
@@ -54,7 +72,7 @@ This theme uses Grunt both to process and lint SASS, and Javascript files, as we
 * On the scaling front, I've decided to go with percentages and `em`s, 'cause, well, I like 'em. This means there's a lot of math going on via mixins, which I'll admit, creates some ugly numbers. Yes, I know about `rem`s, and I'm well aware that most modern browsers handle `px` scaling pretty darned well. Anyway, to make `em`s work, one must be careful about inheritance, which can cause some unwanted multiplication. For that reason, set as many font sizes as possible globally, avoid setting font sizes on containers, pay special attention to nested elements, and utilize classes and descendant selectors (within reason - don't over-specify!) for specific styles.
 * Keep outputted CSS lean by minimizing specificity and utilizing SCSS extends wherever possible to group rules.
 * Rethinking each mixin or style rule poached from a framework - still work to do on this.
-* Compartmentalize the LESS files enough to make it easy to find what I'm looking for, but not get obnoxious about it.
+* Compartmentalize the SCSS files enough to make it easy to find what I'm looking for, but not get obnoxious about it.
 
 ### HTML
 * Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it.

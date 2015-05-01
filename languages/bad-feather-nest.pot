@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 2.2.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2015-05-01 19:17:41+00:00\n"
+"POT-Creation-Date: 2015-05-01 19:44:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: content-page.php:19 inc/template-tags.php:13 inc/template-tags.php:33
+#: content-page.php:19 inc/template-tags.php:53 inc/template-tags.php:73
 #: meta-below.php:28
 msgid "Edit"
 msgstr ""
@@ -100,75 +100,83 @@ msgstr ""
 msgid "Primary Navigation"
 msgstr ""
 
-#: inc/template-tags.php:13
+#: inc/template-tags.php:32
+msgid "&larr; Prev"
+msgstr ""
+
+#: inc/template-tags.php:35
+msgid "Next &rarr;"
+msgstr ""
+
+#: inc/template-tags.php:53
 msgid "Pingback:"
 msgstr ""
 
-#: inc/template-tags.php:25
+#: inc/template-tags.php:65
 msgid "%s"
 msgstr ""
 
-#: inc/template-tags.php:36
+#: inc/template-tags.php:76
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:460
+#: inc/template-tags.php:500
 msgid "Share: "
 msgstr ""
 
-#: inc/template-tags.php:555
+#: inc/template-tags.php:595
 msgid "On Facebook"
 msgstr ""
 
-#: inc/template-tags.php:558
+#: inc/template-tags.php:598
 msgid "On Flickr"
 msgstr ""
 
-#: inc/template-tags.php:561
+#: inc/template-tags.php:601
 msgid "On Google+"
 msgstr ""
 
-#: inc/template-tags.php:564
+#: inc/template-tags.php:604
 msgid "On Instagram"
 msgstr ""
 
-#: inc/template-tags.php:567
+#: inc/template-tags.php:607
 msgid "On LinkedIn"
 msgstr ""
 
-#: inc/template-tags.php:570
+#: inc/template-tags.php:610
 msgid "On MySpace"
 msgstr ""
 
-#: inc/template-tags.php:573
+#: inc/template-tags.php:613
 msgid "On Pinterest"
 msgstr ""
 
-#: inc/template-tags.php:576
+#: inc/template-tags.php:616
 msgid "On Soundcloud"
 msgstr ""
 
-#: inc/template-tags.php:579
+#: inc/template-tags.php:619
 msgid "On Tumblr"
 msgstr ""
 
-#: inc/template-tags.php:582
+#: inc/template-tags.php:622
 msgid "On Twitter"
 msgstr ""
 
-#: inc/template-tags.php:585
+#: inc/template-tags.php:625
 msgid "On Vimeo"
 msgstr ""
 
-#: inc/template-tags.php:588
+#: inc/template-tags.php:628
 msgid "On YouTube"
 msgstr ""
 
-#: inc/template-tags.php:591
+#: inc/template-tags.php:631
 msgid "Join Our Mailing List"
 msgstr ""
 
-#: inc/template-tags.php:594
+#: inc/template-tags.php:634
 msgid "Subscribe via RSS"
 msgstr ""
 
@@ -197,14 +205,6 @@ msgid "1 Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
-
-#: postnav-archive.php:7
-msgid "&larr; Prev"
-msgstr ""
-
-#: postnav-archive.php:10
-msgid "Next &rarr;"
-msgstr ""
 
 #. Theme Name of the plugin/theme
 msgid "Bad Feather Nest"
@@ -243,12 +243,12 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: postnav-single.php:10
+#: inc/template-tags.php:15
 msgctxt "Next post link"
 msgid "&larr;&nbsp;%title"
 msgstr ""
 
-#: postnav-single.php:11
+#: inc/template-tags.php:16
 msgctxt "Previous post link"
 msgid "%title&nbsp;&rarr;"
 msgstr ""

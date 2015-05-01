@@ -1,4 +1,44 @@
 <?php
+
+/**
+ * Postnav single
+ */
+function nest_postnav_single( $in_same_term = false, $taxonomy = 'category', $excluded_terms = array() ) {
+  global $wp_query, $post;
+  $previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
+  $next = get_adjacent_post( false, '', false );
+
+  if ( $next || $previous ) {
+  ?>
+  <div class="postnav postnav--single">
+  	<?php
+  	  next_post_link( '<div class="postnav__link postnav__link--prev">%link</div>', _x( '&larr;&nbsp;%title', 'Next post link', 'nest' ), $in_same_term, $excluded_terms, $taxonomy );
+      previous_post_link( '<div class="postnav__link postnav__link--next">%link</div>', _x( '%title&nbsp;&rarr;', 'Previous post link', 'nest' ), $in_same_term, $excluded_terms, $taxonomy );
+    ?>
+  </div><?php // /.postnav.postnav--single ?>
+  <?php
+  } // endif
+}
+
+/**
+ * Postnav archives
+ */
+function nest_postnav_archive() {
+  global $wp_query, $post;
+  if ( $wp_query->max_num_pages > 1 ) {
+?>
+	<nav class="postnav postnav--archive">
+  	<?php if ( get_previous_posts_link() ) { ?>
+  	  <div class="postnav__link postnav__link--prev"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></div>
+  	<?php } ?>
+  	<?php if ( get_next_posts_link() ) { ?>
+  	  <div class="postnav__link postnav__link--next"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></div>
+  	<?php } ?>
+	</nav><?php // /.postnav.postnav--archive ?>
+<?php
+  } // endif
+}
+
 /**
  * Comment listing
  */

@@ -10,7 +10,7 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "js/vendor"
+    "assets/vendor"
   ],
   "dependencies": {
     "modernizr": "2.8.2",
