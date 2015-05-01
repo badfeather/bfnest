@@ -2,7 +2,7 @@
 
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-This theme uses Grunt to process and lint SASS and Javascript files, minify Javascript and image files, and install NPM and Bower dependencies. 
+This theme uses Grunt to process, lint and minify SASS Javascript and image files, and uses Bower to maintain 3rd party dependencies. 
 
 ## Getting Started
 ### Installing
@@ -11,6 +11,8 @@ This theme uses Grunt to process and lint SASS and Javascript files, minify Java
   * Find in files `'nest'` and replace with `'yourtextdomain'`
   * Find in files `nest_` and replace with `yourtextdomain`
   * Find in files `bad-feather-nest` and replace with `your-theme-name`
+  * Find in files `Bad Feather Nest` and replace with `Your Theme Name`
+  * Change the repository, theme location and version information as needed in `package.json` and `bower.json` and `assets/scss/style.scss`
   * Change the theme name and credit info in the `assets/scss/style.scss` or `style.css` file, depending on whether you're using SASS.
 * Run `npm install` to install all the default grunt and bower dependencies
 
