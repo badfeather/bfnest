@@ -1,3 +1,17 @@
+* {
+	box-sizing: border-box;
+
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+
+html {
+	font-size: 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 .site {
   @include container;
   @include container-centered;
@@ -7,3 +21,6 @@
 .entry-footer {
   margin-bottom: $base__margin-emcalc;
 }
+
+
+

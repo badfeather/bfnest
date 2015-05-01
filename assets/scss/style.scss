@@ -2,7 +2,7 @@
 Theme Name: Bad Feather Nest
 Theme URI: https://github.com/badfeather/bad-feather-nest
 Description: A WordPress starter theme we use at Bad Feather to start new projects. Constantly under construction. Use at your own peril!
-Version: 2.1.4
+Version: 2.2.0
 Author: Brad Thomason, Bad Feather Inc.
 Author URI: http://badfeather.com/
 License: MIT License
@@ -39,22 +39,17 @@ Text Domain: nest
 //@import "resets/resets-reset";
 @import "resets/resets-print";
 
-// BASE
-// ---------------------------
-@import "base/base-utility";
-@import "base/base-layout";
-@import "base/base-type";
-@import "base/base-navs";
-@import "base/base-media";
-@import "base/base-forms";
-// uncomment for html grid classes - I prefer to use the mixins
-//@import "base/base-grid";
-//@import "base/base-ib-grid";
-
 // THEME
 // ---------------------------
+@import "theme/theme-utility";
 @import "theme/theme-layout";
+// uncomment for html grid classes - I prefer to use the mixins
+//@import "theme/theme-ib-grid";
+//@import "theme/theme-grid";
 @import "theme/theme-type";
+@import "theme/theme-forms";
+@import "theme/theme-media";
+@import "theme/theme-navs";
 @import "theme/theme-header";
 @import "theme/theme-main";
 @import "theme/theme-comments";

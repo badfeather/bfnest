@@ -187,7 +187,7 @@
   $font-size--lg: $base__font-size,
   $breakpoint-lg: $breakpoint--tablet
 ) {
-  @include font-size-emcalc($font-size);
+  font-size: emcalc($font-size);
   @include line-height($line-height, $headings__line-height);
   @include color($color, $headings__color);
   @include font-style($font-style, $headings__font-style);
