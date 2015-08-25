@@ -3,10 +3,10 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="doc-header">
+	<header class="entry-header doc-header">
 	  <?php get_template_part( 'meta-above', $post_type ); ?>
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
-	</header><?php // /.doc-header ?>
+	</header>
 
 	<div class="doc-content">
 
@@ -20,7 +20,7 @@
 			?>
 		</div><?php // /.entry-content ?>
 
-		<footer class="doc-footer">
+		<footer class="entry-footer doc-footer">
 			<?php get_template_part( 'meta-below', $post_type ); ?>
 			<?php nest_scriptless_social_share(); ?>
 		</footer>
