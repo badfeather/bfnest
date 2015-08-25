@@ -1015,19 +1015,19 @@ img.alignleft, img.alignright, img.aligncenter,
   padding-right: 1em;
 }
 
-.site-nav-title {
+.nav--primary__title {
   font-size: 1em;
   margin-bottom: 1.5em;
 }
 
-.site-description {
+.site__description {
   font-size: 1.5em;
   line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1em;
 }
 
-.doc-main {
+.doc__main {
   margin-bottom: 1.5em;
 }
 
@@ -1039,7 +1039,7 @@ img.alignleft, img.alignright, img.aligncenter,
   margin-bottom: 1.5em;
 }
 
-.entry-figure {
+.entry__figure {
   margin-bottom: 0.75em;
 }
 

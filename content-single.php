@@ -3,12 +3,12 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header doc-header">
+	<header class="doc__header">
 	  <?php get_template_part( 'meta-above', $post_type ); ?>
-		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
+		<h1 class="entry-title doc__title"><?php the_title(); ?></h1>
 	</header>
 
-	<div class="doc-content">
+	<div class="doc__content">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -20,7 +20,7 @@
 			?>
 		</div><?php // /.entry-content ?>
 
-		<footer class="entry-footer doc-footer">
+		<footer class="doc__footer">
 			<?php get_template_part( 'meta-below', $post_type ); ?>
 			<?php nest_scriptless_social_share(); ?>
 		</footer>
@@ -33,6 +33,6 @@
 	      nest_postnav_single();
 	    ?>
 
-	</div><?php // /.doc-content ?>
+	</div><?php // /.doc__content ?>
 
 </article><?php // /#post-## ?>

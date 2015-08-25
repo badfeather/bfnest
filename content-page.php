@@ -1,10 +1,10 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="doc-header">
-		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
-	</header><?php // /.doc-header ?>
+	<header class="doc__header">
+		<h1 class="entry-title doc__title"><?php the_title(); ?></h1>
+	</header>
 
-	<div class="doc-content">
+	<div class="doc__content">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -18,7 +18,7 @@
 
 		<?php edit_post_link( __( 'Edit', 'nest' ), '<footer class="entry-footer"><div class="entry-meta"><span class="meta meta-edit-link">', '</span></div></footer>' ); ?>
 
-	</div><?php // /.doc-content ?>
+	</div><?php // /.doc__content ?>
 
 </article><?php // /#post-## ?>
 

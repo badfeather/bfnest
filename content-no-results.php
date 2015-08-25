@@ -1,5 +1,5 @@
 <header class="doc-header">
-	<h1 class="doc-title"><?php _e( 'Nothing Found', 'nest' ); ?></h1>
+	<h1 class="doc-title entry-title"><?php _e( 'Nothing Found', 'nest' ); ?></h1>
 </header><?php // /.doc-header ?>
 
 <div class="doc-main">

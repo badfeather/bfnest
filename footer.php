@@ -1,4 +1,6 @@
-	<footer class="site-footer content-info" role="contentinfo">
+	</section><?php // /.doc.site-main ?>
+
+	<footer class="site__footer content-info" role="contentinfo">
 
 		<div class="copyright">
 			&copy; <?php echo date( 'Y' ) . ' ' . get_bloginfo( 'name' ) . "\n"; ?>
@@ -13,7 +15,7 @@
 		  ?>
 		</div><?php // /.credits ?>
 
-	</footer><?php // /.site-footer.content-info ?>
+	</footer><?php // /.site__footer.content-info ?>
 
 </div><?php // /.site ?>
 

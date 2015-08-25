@@ -12,24 +12,26 @@
 <body <?php body_class(); ?>>
 <div class="hfeed site">
 
-	<header class="site-header" role="banner">
+	<header class="site__header" role="banner">
 
-		<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		<h1 class="site__title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="masthead__logo"><?php bloginfo( 'name' ); ?></a></h1>
 
-	    <?php
-	      $site_description = get_bloginfo( 'description' );
-	      if ( ! empty( $site_description ) ) {
-	        echo '<div class="site-description">' . $site_description . '</div>' . "\n";
-	      }
-	    ?>
+    <?php
+      $site_description = get_bloginfo( 'description' );
+      if ( ! empty( $site_description ) ) {
+        echo '<div class="site__description">' . $site_description . '</div>' . "\n";
+      }
+    ?>
 
-		<nav class="site-nav" role="navigation">
-			<h1 class="nav-title site-nav-title" id="site-nav-toggle"><a class="menu-toggle" href="javascript:void(0)"><?php _e( 'Menu', 'nest' ); ?></a></h1>
+		<nav class="nav nav--primary site__nav" role="navigation">
+			<h1 class="nav__title nav--primary__title"><a class="nav__toggle nav__toggle--primary" id="nav__toggle--primary" href="javascript:void(0)"><?php _e( 'Menu', 'nest' ); ?></a></h1>
 			<?php wp_nav_menu( array(
 				'theme_location' => 'primary',
 				'container' => false,
-				'menu_class' => 'menu site-nav-menu'
+				'menu_class' => 'menu menu--primary'
 			) ); ?>
-		</nav><?php // /.site-nav ?>
+		</nav><?php // /.masthead__nav ?>
 
-	</header><?php // /.site-header ?>
+	</header><?php // /.site__header.masthead ?>
+
+	<section class="doc site__main">

@@ -40,8 +40,8 @@ $base__color--dark: darken($base__color, 10%);
 $base__color--alt: $gray-light;
 $base__color--comp: spin($base__color, 180);
 
-$accent-color: $cyan;
-$accent-color--alt: $magenta;
+$accent__color: $cyan;
+$accent__color--alt: $magenta;
 
 // BORDER COLOR
 // ---------------------------
@@ -49,8 +49,8 @@ $base__border-color: $gray-lightest;
 
 // LINK COLORS
 // ---------------------------
-$link__color: $accent-color;
-$link__color--hover: $accent-color--alt;
-$link__color--active: $accent-color--alt;
+$link__color: $accent__color;
+$link__color--hover: $accent__color--alt;
+$link__color--active: $accent__color--alt;
 $link__text-decoration: none;
 $link__text-decoration--hover: none;
