@@ -2,16 +2,16 @@
 	@include container;
 }
 
-.container-centered {
-	@include container-centered;
+.container--centered {
+	@include container--centered;
 }
 
-.container-left {
-	@include container-left;
+.container--left {
+	@include container--left;
 }
 
-.container-right {
-	@include container-right;
+.container--right {
+	@include container--right;
 }
 
 .row {
@@ -22,8 +22,8 @@
 	@include column;
 }
 
-.column-centered {
-	@include column-centered;
+.column--centered {
+	@include column--centered;
 }
 
 .uncolumn {

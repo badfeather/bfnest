@@ -582,7 +582,7 @@ function nest_scriptless_social_share( $args = array() ) {
 	}
 
 	if ( ! empty( $share_array ) ) {
-		echo '<div class="share"><span class="meta-title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</div>' . "\n";
+		echo '<div class="meta meta--share"><span class="meta__title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</div>' . "\n";
   } // if !empty $share_links
 }
 
@@ -645,8 +645,8 @@ function nest_follow_links( $args = array() ) {
 	}
 ?>
 <aside class="widget widget--follow">
-	<h1 class="widget-title"><?php echo $follow_text; ?></h1>
-	<div class="widget-content">
+	<h1 class="widget__title"><?php echo $follow_text; ?></h1>
+	<div class="widget__content">
 		<ul class="follow">
 			<?php
 			if ( $facebook_url ) {
@@ -706,7 +706,7 @@ function nest_follow_links( $args = array() ) {
 			}
 			?>
 		</ul>
-	</div><?php // /.widget-content ?>
+	</div><?php // /.widget__content ?>
 </aside>
 <?php
 }

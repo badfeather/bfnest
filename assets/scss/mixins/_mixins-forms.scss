@@ -45,15 +45,15 @@
 	}
 }
 
-@mixin button-lg {
+@mixin button--lg {
 	@include font-size-emcalc($button__font-size--lg);
 }
 
-@mixin button-sm {
+@mixin button--sm {
 	@include font-size-emcalc($button__font-size--sm);
 }
 
-@mixin button-xs {
+@mixin button--xs {
 	@include font-size-emcalc($button__font-size--xs);
 }
 
@@ -81,27 +81,27 @@
 }
 
 // Alternate button states
-@mixin button-disabled() {
+@mixin button--disabled() {
   @include button-variant($button__color--disabled, $button__background-color--disabled, $button__border-color--disabled, $button__color--disabled--hover, $button__background-color--disabled--hover, $button__border-color--disabled--hover);
 }
 
-@mixin button-primary() {
+@mixin button--primary() {
   @include button-variant($button__color--primary, $button__background-color--primary, $button__border-color--primary, $button__color--primary--hover, $button__background-color--primary--hover, $button__border-color--primary--hover);
 }
 
-@mixin button-success() {
+@mixin button--success() {
   @include button-variant($button__color--success, $button__background-color--success, $button__border-color--success, $button__color--success--hover, $button__background-color--success--hover, $button__background-color--success--hover);
 }
 
-@mixin button-info() {
+@mixin button--info() {
   @include button-variant($button__color--info, $button__background-color--info, $button__border-color--info, $button__color--info--hover, $button__background-color--info--hover, $button__background-color--info--hover);
 }
 
-@mixin button-warning() {
+@mixin button--warning() {
   @include button-variant($button__color--warning, $button__background-color--warning, $button__border-color--warning, $button__color--warning--hover, $button__background-color--warning--hover, $button__background-color--warning--hover);
 }
 
-@mixin button-danger() {
+@mixin button--danger() {
   @include button-variant($button__color--danger, $button__background-color--danger, $button__border-color--danger, $button__color--danger--hover, $button__background-color--danger--hover, $button__background-color--danger--hover);
 }
 
@@ -162,19 +162,19 @@
 	}
 }
 
-@mixin form-control-disabled {
+@mixin form-control--disabled {
   @include form-control-variant($input__color--disabled, $input__background-color--disabled, $input__border-color--disabled);
 }
 
-@mixin form-control-success {
+@mixin form-control--success {
    @include form-control-variant($input__color--success, $input__background-color--success, $input__border-color--success);
 }
 
-@mixin form-control-warning {
+@mixin form-control--warning {
    @include form-control-variant($input__color--warning, $input__background-color--warning, $input__border-color--warning);
 }
 
-@mixin form-control-danger {
+@mixin form-control--danger {
    @include form-control-variant($input__color--danger, $input__background-color--danger, $input__border-color--danger);
 }
 

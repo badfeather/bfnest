@@ -8,17 +8,17 @@
 	@include clearfix;
 }
 
-@mixin container-centered {
+@mixin container--centered {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-@mixin container-left {
+@mixin container--left {
 	margin-left: 0;
 	margin-right: auto;
 }
 
-@mixin container-right {
+@mixin container--right {
 	margin-right: 0;
 	margin-left: auto;
 }
@@ -54,7 +54,7 @@
 	margin-right: percentage($offset / $columns);
 }
 
-@mixin column-centered {
+@mixin column--centered {
 	float: none;
 	margin-left: auto;
 	margin-right: auto;

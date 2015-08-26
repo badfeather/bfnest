@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	  <main class="doc__main doc__main--single doc__main--page" role="main">
+	  <main class="doc__main doc__main--singular doc__main--page" role="main">
 
 			<?php
 				while ( have_posts() ) {
@@ -9,7 +9,7 @@
 				}
 			?>
 
-	  </main><?php // /.doc__main.doc__main--single.doc__main--page ?>
+	  </main><?php // /.doc__main.doc__main--singular.doc__main--page ?>
 
 		<?php get_sidebar( 'page' ); ?>
 

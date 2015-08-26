@@ -39,7 +39,7 @@
 					?>
 				</header>
 
-				<div class="doc__content">
+				<div class="doc__content entries">
 
 					<?php
 						while ( have_posts() ) {
@@ -50,7 +50,7 @@
 						nest_postnav_archive();
 					?>
 
-				</div><?php // /.doc__content ?>
+				</div><?php // /.doc__content.entries ?>
 
 			<?php
 				} else {

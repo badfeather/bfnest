@@ -6,41 +6,41 @@
 	@include button;
 }
 
-.button-lg {
-	@include button-lg;
+.button--lg {
+	@include button--lg;
 }
 
-.button-sm {
-	@include button-sm;
+.button--sm {
+	@include button--sm;
 }
 
-.button-xs {
-	@include button-xs;
+.button--xs {
+	@include button--xs;
 }
 
 // Alternate button states
-.button-disabled {
-  @include button-disabled;
+.button--disabled {
+  @include button--disabled;
 }
 
-.button-primary {
-  @include button-primary;
+.button--primary {
+  @include button--primary;
 }
 
-.button-success {
-  @include button-success;
+.button--success {
+  @include button--success;
 }
 
-.button-info {
-  @include button-info;
+.button--info {
+  @include button--info;
 }
 
-.button-warning {
-  @include button-warning;
+.button--warning {
+  @include button--warning;
 }
 
-.button-danger {
-  @include button-danger;
+.button--danger {
+  @include button--danger;
 }
 
 // FORM CONTROLS
@@ -100,50 +100,19 @@ input[type="checkbox"] {
 	font-weight: $input__font-weight--required;
 }
 
-// class only
-.form-control-disabled {
-  @include form-control-disabled;
+// alternate form control states
+.form-control--disabled {
+  @include form-control--disabled;
 }
 
-// all inputs with class
-//#{$form__controls} {
-//  &.form-control-disabled {
-//    @include form-control-disabled;
-//  }
-//}
-
-// class only
-.form-control-success {
-  @include form-control-success;
+.form-control--success {
+  @include form-control--success;
 }
 
-// all inputs with class
-//#{$form__controls} {
-//  &.form-control-success {
-//    @include form-control-success;
-//  }
-//}
-
-// class only
-.form-control-warning {
-  @include form-control-warning;
+.form-control--warning {
+  @include form-control--warning;
 }
 
-// all inputs with class
-//#{$form__controls} {
-//  &.form-control-warning {
-//    @include form-control-warning;
-//  }
-//}
-
-// class only
-.form-control-danger {
-  @include form-control-danger;
+.form-control--danger {
+  @include form-control--danger;
 }
-
-// all inputs with class
-//#{$form__controls} {
-//  &.form-control-danger {
-//    @include form-control-danger;
-//  }
-//}

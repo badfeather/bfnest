@@ -373,10 +373,6 @@ html {
   clear: both;
 }
 
-.entry-footer {
-  margin-bottom: 1.5em;
-}
-
 body {
   font-size: 100%;
   line-height: 1.5;
@@ -641,7 +637,7 @@ h6 {
   margin-bottom: 1.71429em;
 }
 
-.entry-meta {
+.entry__meta {
   font-size: 0.875em;
   line-height: 1.125;
   color: #9f9f9f;
@@ -694,48 +690,48 @@ h6 {
           box-shadow: none;
 }
 
-.button-lg {
+.button--lg {
   font-size: 1.25em;
 }
 
-.button-sm {
+.button--sm {
   font-size: 0.875em;
 }
 
-.button-xs {
+.button--xs {
   font-size: 0.75em;
 }
 
-.button-disabled {
+.button--disabled {
   background-color: #bfbfbf;
   border-color: #bfbfbf;
 }
-.button-disabled:hover, .button-disabled:focus {
+.button--disabled:hover, .button--disabled:focus {
   background-color: #bfbfbf;
   border-color: #bfbfbf;
 }
 
-.button-primary {
+.button--primary {
   background-color: #800080;
   border-color: #800080;
 }
 
-.button-success {
+.button--success {
   background-color: #0f0;
   border-color: #0f0;
 }
 
-.button-info {
+.button--info {
   background-color: #0ff;
   border-color: #0ff;
 }
 
-.button-warning {
+.button--warning {
   background-color: #f90;
   border-color: #f90;
 }
 
-.button-danger {
+.button--danger {
   background-color: #f00;
   border-color: #f00;
 }
@@ -798,20 +794,20 @@ input[type="checkbox"] {
   font-weight: 700;
 }
 
-.form-control-disabled {
+.form-control--disabled {
   color: #9f9f9f;
   border-color: #bfbfbf;
 }
 
-.form-control-success {
+.form-control--success {
   border-color: #0f0;
 }
 
-.form-control-warning {
+.form-control--warning {
   border-color: #f90;
 }
 
-.form-control-danger {
+.form-control--danger {
   border-color: #f00;
 }
 

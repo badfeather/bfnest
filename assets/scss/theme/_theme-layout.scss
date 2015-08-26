@@ -14,12 +14,8 @@ html {
 
 .site {
   @include container;
-  @include container-centered;
+  @include container--centered;
   padding-top: $base__margin-emcalc;
-}
-
-.entry-footer {
-  margin-bottom: $base__margin-emcalc;
 }
 
 
