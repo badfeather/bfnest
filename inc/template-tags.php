@@ -63,7 +63,7 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 				<span class="comment-author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					<?php printf( __( '%s', 'nest' ), sprintf( '<cite class="fn meta meta-author">%s</cite>', get_comment_author_link() ) ); ?>
-				</span><!-- /.comment-author -->
+				</span><?php // / /.comment-author ?>
 
 				<?php echo $meta_sep; ?><a class="meta meta-comment-time" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<time datetime="<?php comment_time( 'c' ); ?>">
@@ -75,12 +75,12 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 				<?php if ( '0' == $comment->comment_approved ) : ?>
 				<div class="comment-awaiting-moderation"><?php echo $meta_sep; ?><?php _e( 'Your comment is awaiting moderation.', 'nest' ); ?></div>
 				<?php endif; ?>
-			</footer><!-- /.comment-meta -->
+			</footer><?php // / /.comment-meta ?>
 
 			<div class="comment-main">
 				<div class="comment-content">
 					<?php comment_text(); ?>
-				</div><!-- /.comment-content -->
+				</div><?php // / /.comment-content ?>
 				<?php
 					comment_reply_link( array_merge( $args, array(
 						'add_below' => 'div-comment',
@@ -90,8 +90,8 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 						'after'     => '</div>',
 					) ) );
 				?>
-			</div><!-- /.comment-main -->
-		</article><!-- /.comment-body -->
+			</div><?php // / /.comment-main ?>
+		</article><?php // / /.comment-body ?>
 <?php
 	} // endif
 } // nest_comment
@@ -106,7 +106,7 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
  * 'output' => 'img' // can be either 'img' or 'url'
  * 'link' => false // if true, will link to full version of itself
  */
-function nest_get_first_image( $post_id = null, $size = 'thumbnail', $atts = array() ) {
+function nest_get_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
   $post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
 	$defaults = array(
 		'output' => 'img', // accepts either 'img' or 'url'
@@ -116,67 +116,64 @@ function nest_get_first_image( $post_id = null, $size = 'thumbnail', $atts = arr
 	$atts = wp_parse_args( $atts, $defaults );
 	extract( $atts, EXTR_SKIP );
 
-	$query_args = array(
-		'post_parent' => $post_id,
-		'post_type' => 'attachment',
-		'numberposts' => 1,
-		'order' => 'ASC',
-		'orderby' => 'menu_order',
-		'post_mime_type' => 'image'
-	);
-	$images = get_children( $query_args );
-	if ( $images ) {
-		foreach ( $images as $image ) {
-			$img = wp_get_attachment_image( $image->ID, $size );
-			$img_src = wp_get_attachment_image_src( $image->ID, $size );
-			$img_url = $img_src[0];
-			$img_full_url = wp_get_attachment_url( $image->ID );
-			$img_link = get_permalink( $image->post_parent );
-			$img_title = $image->post_title;
-			$img_caption = $image->post_excerpt;
-			$img_desc = $image->post_content;
+	$images = get_attached_media( 'image' );
 
-			if ( 'img' == $output ) {
-				if ( $link ) {
-					return '<a href="' . $img_full_url . '>">' . $img . '</a>';
-				} else {
-					return $img;
-				} // endif $link
+	if ( count( $images ) > 0 ) {
+		$image = array_shift( $images );
+		$image_id = $image->ID;
+		$img = wp_get_attachment_image( $image_id, $size );
+		$img_src = wp_get_attachment_image_src( $image_id, $size );
+		$img_url = $img_src[0];
+		$img_full_url = wp_get_attachment_url( $image_id );
+		$img_link = get_permalink( $image->post_parent );
+		$img_title = $image->post_title;
+		$img_caption = $image->post_excerpt;
+		$img_desc = $image->post_content;
 
-			} elseif ( 'url' == $output ) {
-					return $img_url;
-			} // endif $output - 'img'
+		if ( 'img' == $output ) {
 
-		} // endforeach
-	} // endif ( $images )
+			if ( $link ) {
+				return '<a href="' . $img_full_url . '>">' . $img . '</a>';
+
+			} else {
+				return $img;
+
+			} // endif $link
+
+		} elseif ( 'url' == $output ) {
+				return $img_url;
+		} // endif $output - 'img'
+
+	}
+
 }
 
 /**
  * Echoes the first image from a post using arguments from nest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function nest_first_image( $post_id = null, $size = 'thumbnail', $atts = array() ) {
-	echo nest_get_first_image( $post_id, $size, $atts );
+function nest_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
+	echo nest_get_first_image( $size, $post_id, $atts );
 }
 
 /**
  * Echoes the first image from a post using arguments from nest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function nest_get_first_image_url( $post_id = null, $size = 'thumbnail' ) {
-	return nest_get_first_image( $post_id, $size, $atts = array( 'output' => 'url' ) );
+function nest_get_first_image_url( $size = 'thumbnail', $post_id = null ) {
+	return nest_get_first_image( $size, $post_id, $atts = array( 'output' => 'url' ) );
 }
 
 /**
  * Get featured or first image
  * must be used within the loop
  */
-function nest_get_featured_or_first_image( $post_id = null, $size = 'thumbnail' ) {
+function nest_get_featured_or_first_image( $size = 'thumbnail', $post_id = null ) {
 	if ( has_post_thumbnail( $post_id ) ) {
 		return get_the_post_thumbnail( $post_id, $size );
 
 	} else {
-		return nest_get_first_image( $post_id, $size, $atts = array( 'output' => 'img' ) );
+		return nest_get_first_image( $size, $post_id, $atts = array( 'output' => 'img' ) );
 	}
 }
 
@@ -184,8 +181,8 @@ function nest_get_featured_or_first_image( $post_id = null, $size = 'thumbnail' 
  * Featured or first image
  * must be used within the loop
  */
-function nest_featured_or_first_image( $post_id = null, $size = 'thumbnail' ) {
-	echo nest_get_featured_or_first_image( $post_id, $size );
+function nest_featured_or_first_image( $size = 'thumbnail',  $post_id = null ) {
+	echo nest_get_featured_or_first_image( $size, $post_id );
 }
 
 /**
@@ -220,27 +217,14 @@ function nest_post_is_in_descendant_category( $cats, $_post = null ) {
 	return false;
 }
 
-/**
- * Inherit category template by category id
- * Checks if current category is child of category id that has a template
- */
-function nest_inherit_category_template() {
-	if ( is_category() ) {
-		$catid = get_query_var( 'cat' );
-		$cat = get_category( $catid );
-		$parent = $cat->category_parent;
-		while ( $parent ) {
-			$cat = get_category( $parent );
-			if ( locate_template('category-' . $catid . '.php') != '' ) {
-				get_template_part( 'category', $catid );
-				exit;
-			} // endif
-		} // endwhile
-	} // endif
-}
-// uncomment below statement to make it work
-// add_action( 'template_redirect', 'nest_inherit_category_template' );
+function nest_post_is_in_cat_or_descendant( $cat_id ) {
+	if ( in_category( $cat_id ) || nest_post_is_in_descendant_category( $cat_id ) ) {
+		return true;
 
+	} else {
+		return false;
+	}
+}
 
 /**
  * Get top parent page id - used in page subnav function
@@ -290,20 +274,18 @@ function nest_page_subnav( $page_id = '', $title = '' ) {
 	$top_parent_name = get_the_title( $top_parent );
 	if ( $children != '' ) {
 ?>
-<nav class="widget widget-subnav">
-<h1 class="widget-title nav-title"><?php
-	if ( $title ) {
-		echo $title;
-	} else {
-		echo $top_parent_name;
-  }
-?></h1>
-<div class="widget-content">
-	<ul class="menu menu-secondary">
+<nav class="nav nav--secondary">
+	<h1 class="nav__title"><?php
+		if ( $title ) {
+			echo $title;
+		} else {
+			echo $top_parent_name;
+	  }
+	?></h1>
+	<ul class="menu menu--secondary">
 		<?php echo $children; ?>
 	</ul>
-</div><!-- .widget-content -->
-</nav><!-- .widget.widget-subnav -->
+</nav>
 <?php
 	} // endif
 }
@@ -326,14 +308,13 @@ function nest_category_subnav() {
 		) );
 		if ( $top_parent_children != '<li>No categories</li>' ) {
 ?>
-<nav class="widget widget-subnav">
-	<h1 class="widget-title nav-title"><?php echo $top_parent_name; ?></h1>
-	<div class="widget-content">
-		<ul class="menu menu-secondary">
-			<?php echo $top_parent_children; ?>
-		</ul>
-	</div><!-- /.widget-content -->
-</nav><!-- /.widget.widget-subnav -->
+<nav class="nav nav--secondary nav--categories">
+	<h1 class="nav__title"><?php echo $top_parent_name; ?></h1>
+
+	<ul class="menu menu--secondary">
+		<?php echo $top_parent_children; ?>
+	</ul>
+</nav>
 <?php
 		}
 	}
@@ -358,19 +339,19 @@ function nest_taxonomy_subnav( $tax = '', $title = '' ) {
 		) );
 		if ( $top_parent_children && ( $top_parent_children != '<li>No categories</li>' ) ) {
 ?>
-<nav class="widget widget-subnav">
-	<h1 class="widget-title nav-title"><?php
+<nav class="nav nav--secondary nav--taxonomies">
+	<h1 class="nav__title"><?php
 		if ( $title )
 			echo $title;
 		else
 			echo $top_parent_term_name;
 		?></h1>
-	<div class="widget-content">
-		<ul class="menu menu-secondary">
+
+		<ul class="menu menu--secondary">
 			<?php echo $top_parent_children; ?>
 		</ul>
-	</div><!-- .widget-content -->
-</nav><!-- .widget.widget-subnav.widget-subnav-taxonomies -->
+
+</nav>
 <?php
 		}
 	}
@@ -400,11 +381,11 @@ function nest_latest_posts( $args ) {
 	$latest = new WP_Query( $query_args );
 	if ( $latest->have_posts() ) {
 ?>
-<aside class="widget widget-latest">
+<aside class="widget widget--latest">
 	<?php if( $widget_title ) {
-		echo '<h1 class="widget-title">'. $widget_title .'</h1>';
+		echo '<h1 class="widget__title">'. $widget_title .'</h1>';
 	} ?>
-	<div class="widget-content">
+	<div class="widget__content">
 		<?php
   		while ( $latest->have_posts() ) {
   		  $latest->the_post();
@@ -412,8 +393,8 @@ function nest_latest_posts( $args ) {
   		} // endwhile
   		wp_reset_postdata();
 		?>
-	</div><!-- /.widget-content -->
-</aside><!-- /.widget.widget-latest -->
+	</div><?php //  /.widget__content ?>
+</aside><?php //  /.widget.widget--latest ?>
 <?php
 	} // endif
 }
@@ -454,11 +435,11 @@ function nest_latest_taxonomy_posts( $args ) {
 	$latest = new WP_Query( $query_args );
 	if ( $latest->have_posts() ) {
 ?>
-<aside class="widget widget-latest-<?php echo $term_slug; ?>">
+<aside class="widget widget--latest widget--latest--<?php echo $term_slug; ?>">
   <?php if ( $widget_title ) {
-    echo '<h1 class="widget-title">' . $widget_title . '</h1>';
+    echo '<h1 class="widget__title">' . $widget_title . '</h1>';
   } ?>
-	<div class="widget-content">
+	<div class="widget__content">
 		<?php
   		while ( $latest->have_posts() ) {
     		  $latest->the_post();
@@ -466,8 +447,8 @@ function nest_latest_taxonomy_posts( $args ) {
   		} // endwhile
   		wp_reset_postdata();
 		?>
-	</div><!-- /.widget-content -->
-</aside><!-- /.widget.widget-latest -->
+	</div><?php //  /.widget__content ?>
+</aside><?php //  /.widget.widget--latest ?>
 <?php
 	} //endif
 }
@@ -485,10 +466,10 @@ function nest_scriptless_social_share( $args = array() ) {
 		'digg' => 0,
 		'facebook' => 1,
 		'twitter' => 1,
-		'google_plus' => 1,
+		'google_plus' => 0,
 		'instapaper' => 0,
 		'myspace' => 0,
-		'pinterest' => 0,
+		'pinterest' => 1,
 		'linked_in' => 0,
 		'reddit' => 0,
 		'stumbleupon' => 0,
@@ -498,7 +479,7 @@ function nest_scriptless_social_share( $args = array() ) {
 
 		'new_window' => true,
 		'share_title' => __( 'Share: ', 'nest' ),
-		'item_sep' => '<span class="sep"> | </span>'
+		'item_sep' => ' '
 	);
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
@@ -512,19 +493,20 @@ function nest_scriptless_social_share( $args = array() ) {
 	$post_url = get_permalink();
 
 	$post_title = get_the_title();
+	$encoded_title = urlencode( get_the_title() );
 
 	$share_array = array();
 
 	if ( $delicious ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--delicious" href="' . esc_url( 'http://delicious.com/save?url=' . $post_url . '&title=' . $post_title ) . '" title="Delicious"' . $target . '>Delicious</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--delicious" href="' . esc_url( 'http://delicious.com/save?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Delicious"' . $target . '>Delicious</a></span> ';
 	}
 
 	if ( $digg ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--digg" href="' . esc_url( 'http://digg.com/submit?url=' . $post_url . '&title=' . $post_title ) . '" title="Digg"' . $target . '>Digg</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--digg" href="' . esc_url( 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Digg"' . $target . '>Digg</a></span> ';
 	}
 
 	if ( $facebook ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--facebook" href="' . esc_url( 'http://www.facebook.com/share.php?u=' . $post_url . '&t=' . $post_title ) . '" title="Facebook"' . $target . '>Facebook</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--facebook" href="' . esc_url( 'http://www.facebook.com/share.php?u=' . $post_url . '&t=' . $encoded_title ) . '" title="Facebook"' . $target . '>Facebook</a></span> ';
 	}
 
 	if ( $google_plus ) {
@@ -532,7 +514,7 @@ function nest_scriptless_social_share( $args = array() ) {
 	}
 
 	if ( $instapaper ) {
-		 $share_array[] = '<span class="share__item"><a class="share__link share__link--instapaper" href="' . esc_url( 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $post_title ) . '" title="Instapaper"' . $target . '>Instapaper</a></span> ';
+		 $share_array[] = '<span class="share__item"><a class="share__link share__link--instapaper" href="' . esc_url( 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Instapaper"' . $target . '>Instapaper</a></span> ';
 	}
 
 	if ( $linked_in ) {
@@ -540,7 +522,7 @@ function nest_scriptless_social_share( $args = array() ) {
 	}
 
 	if ( $myspace ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--myspace" href="' . esc_url( 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $post_title . '&c=' . $post_title ) . '" title="Myspace"' . $target . '>Myspace</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--myspace" href="' . esc_url( 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $encoded_title . '&c=' . $encoded_title ) . '" title="Myspace"' . $target . '>Myspace</a></span> ';
 	}
 
 	if ( $pinterest ) {
@@ -553,11 +535,11 @@ function nest_scriptless_social_share( $args = array() ) {
 			$image_path = nest_get_first_image_url( $size = 'large' );
 		}
 
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--pinterest" href="' . esc_url( 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $post_title ) . '" title="Pinterest"' . $target . '>Pinterest</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--pinterest" href="' . esc_url( 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title ) . '" title="Pinterest"' . $target . '>Pinterest</a></span> ';
 	}
 
 	if ( $reddit ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--reddit" href="' . esc_url( 'http://www.reddit.com/submit?url=' . $post_url . '&title=' . $post_title ) . '" title="Reddit"' . $target . '>Reddit</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--reddit" href="' . esc_url( 'http://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Reddit"' . $target . '>Reddit</a></span> ';
 	}
 
 	if ( $stumbleupon ) {
@@ -565,7 +547,7 @@ function nest_scriptless_social_share( $args = array() ) {
 	}
 
 	if ( $tumblr ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--tumblr" href="' . esc_url( 'http://www.tumblr.com/share/link?url=' . $post_url . '&name=' . $post_title ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--tumblr" href="' . esc_url( 'http://www.tumblr.com/share/link?url=' . $post_url . '&name=' . $encoded_title ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a></span> ';
 	}
 
 	if ( $twitter ) {
@@ -574,15 +556,15 @@ function nest_scriptless_social_share( $args = array() ) {
 	  if ( $twitter_handle ) {
 		  $twitter_via = '&via=' . $twitter_handle;
 	  }
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--twitter" href="' . esc_url( 'http://twitter.com/share?url=' . $post_url . '&text=' . $post_title . $twitter_via ) . '" title="Tweet"' . $target . '>Twitter</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--twitter" href="' . esc_url( 'http://twitter.com/share?url=' . $post_url . '&text=' . $encoded_title . $twitter_via ) . '" title="Tweet"' . $target . '>Twitter</a></span> ';
 	}
 
 	if ( $email ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--email" href="' . esc_url( 'mailto:?subject=' . $post_title . '&body=' . $post_url ) . '" title="Email"' . $target . '>Email</a></span> ';
+		$share_array[] = '<span class="share__item"><a class="share__link share__link--email" href="mailto:?subject=' . $post_title . '&body=' . $post_url . '" title="Email"' . $target . '>Email</a></span> ';
 	}
 
 	if ( ! empty( $share_array ) ) {
-		echo '<div class="meta meta--share"><span class="meta__title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</div>' . "\n";
+		echo '<div class="entry__meta share"><span class="meta__title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</div>' . "\n";
   } // if !empty $share_links
 }
 
@@ -625,15 +607,17 @@ function nest_follow_links( $args = array() ) {
 		'vimeo_message' => __( 'On Vimeo', 'nest' ),
 
 		'youtube_url' => '',
-		'youutube_message' => __( 'On YouTube', 'nest' ),
+		'youtube_message' => __( 'On YouTube', 'nest' ),
 
 		'mailing_list_url' => '',
 		'mailing_list_message' => __( 'Join Our Mailing List', 'nest' ),
 
-		'rss_url' => get_bloginfo( 'rss2_url' ),
+		//'rss_url' => get_bloginfo( 'rss2_url' ),
+		'rss_url' => '',
 		'rss_message' => __( 'Subscribe via RSS', 'nest' ),
 
-		'follow_text' => 'Follow '. get_bloginfo( 'name' ),
+		//'follow_text' => __( 'Follow ', 'nest' ) . get_bloginfo( 'name' ),
+		'follow_text' => __( 'Follow Us', 'nest' ),
 		'new_window' => true
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -736,11 +720,11 @@ function nest_taxonomy_terms_links( $term_sep = ', ' ) {
 		if ( !empty( $terms ) ) {
 			$term_links_array = array();
 			foreach ( $terms as $term ) {
-				$term_links_array[] = '<a href="'. get_term_link( $term->slug, $taxonomy_slug ) .'">'. $term->name .'</a>';
+				$term_links_array[] = '<a href="'. get_term_link( $term->slug, $taxonomy_slug ) . '">' . $term->name . '</a>';
 			}
 			$term_links = join( $term_sep, $term_links_array );
 ?>
-<div class="meta meta-taxonomies"><span class="meta-title"><?php echo $taxonomy->label; ?></span>: <?php echo $term_links; ?></div>
+<span class="meta meta--taxonomies"><span class="meta__title"><?php echo $taxonomy->label; ?></span>: <?php echo $term_links; ?></span>
 <?php
 		} // endif
 
