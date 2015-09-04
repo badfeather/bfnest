@@ -14,7 +14,7 @@
 
 	<header class="site__header" role="banner">
 
-		<h1 class="site__title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="masthead__logo"><?php bloginfo( 'name' ); ?></a></h1>
+		<h1 class="site__title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site__logo"><?php bloginfo( 'name' ); ?></a></h1>
 
     <?php
       $site_description = get_bloginfo( 'description' );
@@ -30,8 +30,8 @@
 				'container' => false,
 				'menu_class' => 'menu menu--primary'
 			) ); ?>
-		</nav><?php // /.masthead__nav ?>
+		</nav><?php // /.nav.nav--primary.site__nav ?>
 
-	</header><?php // /.site__header.masthead ?>
+	</header><?php // /.site__header?>
 
 	<section class="doc site__main">

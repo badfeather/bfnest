@@ -10,12 +10,7 @@
   "bugs": {
     "url": "https://github.com/badfeather/bad-feather-nest/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
+  "license" : "MIT",
   "scripts": {
     "postinstall": "node node_modules/bower/bin/bower install && grunt build"
   },
