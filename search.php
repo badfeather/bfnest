@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-		<main class="doc__main doc__main--archive" role="main">
+		<main class="doc__main doc__main--archive doc__main--search" role="main">
 
 			<?php
 				if ( have_posts() ) {
@@ -28,7 +28,7 @@
 					get_template_part( 'content', 'no-results' );
 				} // endif
 			?>
-		</main><?php // /.doc__main.doc__main--archive ?>
+		</main><?php // /.doc__main.doc__main--archive.doc__main--search ?>
 
 		<?php get_sidebar(); ?>
 

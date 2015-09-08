@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 2.2.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2015-09-04 19:13:31+00:00\n"
+"POT-Creation-Date: 2015-09-08 19:20:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,16 +63,11 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: content-page.php:13 content-single.php:17
+#: content-single.php:20
 msgid "Pages:"
 msgstr ""
 
-#: content-page.php:19 inc/template-tags.php:53 inc/template-tags.php:73
-#: meta-below.php:28
-msgid "Edit"
-msgstr ""
-
-#: content.php:12
+#: content.php:15
 msgid "Continue reading &rarr;"
 msgstr ""
 
@@ -98,6 +93,10 @@ msgstr ""
 
 #: inc/template-tags.php:53
 msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:53 inc/template-tags.php:73 meta-below.php:32
+msgid "Edit"
 msgstr ""
 
 #: inc/template-tags.php:65
@@ -192,19 +191,19 @@ msgstr ""
 msgid "%1$s by %2$s"
 msgstr ""
 
-#: meta-below.php:12
+#: meta-below.php:13
 msgid "Posted in: "
 msgstr ""
 
-#: meta-below.php:15
+#: meta-below.php:16
 msgid "Tagged: "
 msgstr ""
 
-#: meta-below.php:21
+#: meta-below.php:25
 msgid "Comment"
 msgstr ""
 
-#: meta-below.php:23
+#: meta-below.php:27
 msgid "1 Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""

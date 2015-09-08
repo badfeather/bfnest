@@ -4,19 +4,19 @@
 
 			<?php
 				if ( have_posts() ) {
+					$term = get_queried_object();
 			?>
 
 				<header class="doc__header">
 					<h1 class="doc__title"><?php
 						if ( is_category() || is_tag() || is_tax() ) {
-							single_term_title();
+							echo $term->name;
 
 						} elseif ( is_post_type_archive() ) {
-							post_type_archive_title();
+							echo $term->labels->name;
 
 						} elseif ( is_author() ) {
-							$author = get_queried_object();
-							printf( __( 'Author: %s', 'nest' ), '<span>' . $author->display_name . '</span>' );
+							printf( __( 'Author: %s', 'nest' ), '<span>' . $term->display_name . '</span>' );
 
 						} elseif ( is_day() ) {
 							printf( __( 'Day: %s', 'nest' ), '<span>' . get_the_date() . '</span>' );
@@ -33,8 +33,8 @@
 
 					<?php
 						// Show an optional term description.
-						$term_description = term_description();
-						if ( ! empty( $term_description ) )
+						$term_description = $term->description;
+						if ( ! empty( $term_description ) && ! is_paged() )
 							printf( __( '<div class="description">%s</div>', 'nest' ), $term_description );
 					?>
 				</header>
@@ -46,11 +46,11 @@
 							the_post();
 							get_template_part( 'content', get_post_type() );
 						} // endwhile
-
-						nest_postnav_archive();
 					?>
 
 				</div><?php // /.doc__content.entries ?>
+
+				<?php nest_postnav_archive(); ?>
 
 			<?php
 				} else {

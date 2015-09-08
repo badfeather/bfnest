@@ -12,7 +12,7 @@
 <body <?php body_class(); ?>>
 <div class="hfeed site">
 
-	<header class="site__header" role="banner">
+	<header class="site__header masthead" role="banner">
 
 		<h1 class="site__title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site__logo"><?php bloginfo( 'name' ); ?></a></h1>
 
@@ -24,14 +24,16 @@
     ?>
 
 		<nav class="nav nav--primary site__nav" role="navigation">
-			<h1 class="nav__title nav--primary__title"><a class="nav__toggle nav__toggle--primary" id="nav__toggle--primary" href="javascript:void(0)"><?php _e( 'Menu', 'nest' ); ?></a></h1>
-			<?php wp_nav_menu( array(
-				'theme_location' => 'primary',
-				'container' => false,
-				'menu_class' => 'menu menu--primary'
-			) ); ?>
+			<button class="nav__toggle nav--primary__toggle"><?php _e( 'Menu', 'tpp' ); ?></button>
+			<?php
+				wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'container' => false,
+					'menu_class' => 'menu menu--primary'
+				) );
+			?>
 		</nav><?php // /.nav.nav--primary.site__nav ?>
 
-	</header><?php // /.site__header?>
+	</header><?php // /.site__header.masthead ?>
 
 	<section class="doc site__main">
