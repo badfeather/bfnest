@@ -1,14 +1,47 @@
 // GRAYSCALE
 // ---------------------------
-$black:	#000;
+$black: #000;
+$gray--31-32: #080808;
+$gray--15-16: #101010;
+$gray--29-32:	#181818;
+$gray--7-8: #202020;
+$gray--27-32: #282828;
+$gray--13-16: #303030;
+$gray--25-32: #383838;
+$gray--3-4: #404040;
+$gray--23-32: #484848;
+$gray--11-16: #505050;
+$gray--21-32: #585858;
+$gray--5-8: #606060;
+$gray--19-32: #686868;
+$gray--9-16: #707070;
+$gray--17-32: #787878;
+$gray: #808080;
+$gray--15-32: #888;
+$gray--7-16: #909090;
+$gray--13-32: #989898;
+$gray--3-8: #a0a0a0;
+$gray--11-32: #a8a8a8;
+$gray--5-16: #b0b0b0;
+$gray--9-32: #b8b8b8;
+$gray--1-4: #c0c0c0;
+$gray--7-32: #c8c8c8;
+$gray--3-16: #d0d0d0;
+$gray--5-32: #d8d8d8;
+$gray--1-8: #e0e0e0;
+$gray--3-32: #e8e8e8;
+$gray--1-16: #f0f0f0;
+$gray--1-32: #f8f8f8;
 $white: #fff;
-$gray-darkest: darken($white, 87.5%);
-$gray-darker: darken($white, 75%);
-$gray-dark: darken($white, 62.5%);
-$gray: darken($white, 50%);
-$gray-light: darken($white, 37.5%);
-$gray-lighter: darken($white, 25%);
-$gray-lightest: darken($white, 12.5%);
+
+$gray--darkest: $gray--7-8;
+$gray--darker: $gray--3-4;
+$gray--dark: $gray--5-8;
+$gray--light: $gray--3-8;
+$gray--lighter: $gray--1-4;
+$gray--lightest: $gray--1-8;
+
+
 
 // STANDARD COLORS
 // ---------------------------
@@ -30,14 +63,14 @@ $silver: #C0C0C0;
 // BACKGROUND COLORS
 // ---------------------------
 $base__background-color: $white;
-$base__background-color--alt: $gray-lightest;
+$base__background-color--alt: $gray--lightest;
 
 // BASE COLORS
 // ---------------------------
-$base__color: $gray-dark;
+$base__color: $gray--dark;
 $base__color--light: lighten($base__color, 10%);
 $base__color--dark: darken($base__color, 10%);
-$base__color--alt: $gray-light;
+$base__color--alt: $gray--light;
 $base__color--comp: spin($base__color, 180);
 
 $accent__color: $cyan;
@@ -45,7 +78,7 @@ $accent__color--alt: $magenta;
 
 // BORDER COLOR
 // ---------------------------
-$base__border-color: $gray-lightest;
+$base__border-color: $gray--lightest;
 
 // LINK COLORS
 // ---------------------------

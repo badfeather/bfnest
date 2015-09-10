@@ -2,7 +2,7 @@
 Theme Name: Bad Feather Nest
 Theme URI: https://github.com/badfeather/bad-feather-nest
 Description: A WordPress starter theme we use at Bad Feather to start new projects. Constantly under construction. Use at your own peril!
-Version: 2.2.0
+Version: 2.3.0
 Author: Brad Thomason, Bad Feather Inc.
 Author URI: http://badfeather.com/
 License: MIT License
@@ -403,7 +403,7 @@ i {
 
 abbr,
 acronym {
-  border-bottom: 0.0625em dotted #dfdfdf;
+  border-bottom: 0.0625em dotted #e0e0e0;
   cursor: help;
 }
 
@@ -482,13 +482,13 @@ dd {
 
 hr {
   border: 0;
-  border-top: 1px solid #dfdfdf;
+  border-top: 1px solid #e0e0e0;
 }
 
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #dfdfdf;
+  border-bottom: 1px dotted #e0e0e0;
 }
 
 abbr.initialism {
@@ -550,7 +550,7 @@ th,
 td {
   padding: 0.5em;
   border-style: solid;
-  border-color: #dfdfdf;
+  border-color: #e0e0e0;
   border-width: 0.0625em;
   text-align: left;
   vertical-align: top;
@@ -640,7 +640,7 @@ h6 {
 .entry__meta {
   font-size: 0.875em;
   line-height: 1.125;
-  color: #9f9f9f;
+  color: #a0a0a0;
   margin-top: 0;
   margin-bottom: 0.42857em;
   clear: both;
@@ -703,12 +703,12 @@ h6 {
 }
 
 .button--disabled {
-  background-color: #bfbfbf;
-  border-color: #bfbfbf;
+  background-color: #c0c0c0;
+  border-color: #c0c0c0;
 }
 .button--disabled:hover, .button--disabled:focus {
-  background-color: #bfbfbf;
-  border-color: #bfbfbf;
+  background-color: #c0c0c0;
+  border-color: #c0c0c0;
 }
 
 .button--primary {
@@ -739,9 +739,9 @@ h6 {
 .form-control {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  color: #9f9f9f;
-  border: 0.0625em solid #dfdfdf;
-  border: 0.0625em solid #dfdfdf;
+  color: #a0a0a0;
+  border: 0.0625em solid #e0e0e0;
+  border: 0.0625em solid #e0e0e0;
   border-radius: 0.25em;
   outline: none;
   padding: 0.5em 0.66667em;
@@ -795,8 +795,8 @@ input[type="checkbox"] {
 }
 
 .form-control--disabled {
-  color: #9f9f9f;
-  border-color: #bfbfbf;
+  color: #a0a0a0;
+  border-color: #c0c0c0;
 }
 
 .form-control--success {
@@ -866,7 +866,7 @@ img.alignleft, img.alignright, img.aligncenter,
 .gallery-caption {
   font-size: 0.875em;
   line-height: 1.125;
-  color: #9f9f9f;
+  color: #a0a0a0;
   margin-top: 0;
   margin-bottom: 0.42857em;
   margin-top: 0.42857em;
@@ -1060,11 +1060,11 @@ img.alignleft, img.alignright, img.aligncenter,
 }
 .comment-list .comment {
   margin-bottom: 1em;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #e0e0e0;
 }
 .comment-list .comment .comment {
   padding-top: 1em;
-  border-top: 1px solid #dfdfdf;
+  border-top: 1px solid #e0e0e0;
   border-bottom: 0;
 }
 .comment-list p {
@@ -1074,7 +1074,7 @@ img.alignleft, img.alignright, img.aligncenter,
 .comment-meta {
   font-size: 0.875em;
   line-height: 1.125;
-  color: #9f9f9f;
+  color: #a0a0a0;
   margin-top: 0;
   margin-bottom: 0.42857em;
 }
@@ -1100,7 +1100,7 @@ img.alignleft, img.alignright, img.aligncenter,
 .credits {
   font-size: 0.875em;
   line-height: 1.125;
-  color: #9f9f9f;
+  color: #a0a0a0;
   margin-top: 0;
   margin-bottom: 0.42857em;
 }
