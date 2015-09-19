@@ -1,9 +1,13 @@
 // GRID SYSTEM
 // ----------------------------
-// Centered container element
-@mixin container($gutter: $gutter-width-emcalc, $width: $grid__width-emcalc) {
+@mixin guttered($gutter: $grid__gutter-width-emcalc) {
 	padding-left: $gutter / 2;
 	padding-right: $gutter / 2;
+}
+
+// Centered container element
+@mixin container($gutter: $grid__gutter-width-emcalc, $width: $grid__width-emcalc) {
+	@include guttered($gutter);
 	max-width: ($width + $gutter);
 	@include clearfix;
 }
@@ -23,23 +27,17 @@
 	margin-left: auto;
 }
 
-@mixin row($gutter: $gutter-width-emcalc) {
+@mixin row($gutter: $grid__gutter-width-emcalc) {
 	margin-left: $gutter / -2;
 	margin-right: $gutter / -2;
 	@include clearfix;
 }
 
-@mixin column($gutter: $gutter-width-emcalc) {
+@mixin column($gutter: $grid__gutter-width-emcalc) {
+	@include guttered($gutter);
 	position: relative;
 	float: left;
 	min-height: 1px;
-	padding-left: $gutter / 2;
-	padding-right: $gutter / 2;
-}
-
-@mixin guttered($gutter: $gutter-width-emcalc) {
-	padding-left: $gutter / 2;
-	padding-right: $gutter / 2;
 }
 
 @mixin columns($n, $columns: $grid__columns) {

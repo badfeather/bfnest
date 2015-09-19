@@ -30,11 +30,6 @@ function nest_setup() {
 
 	// add_image_size( 'category-thumb', 300, 9999 ); // 300px wide (and unlimited height)
 
-  // set default image insertion options
-	update_option( 'image_default_align', 'none' );
-	update_option( 'image_default_link_type', 'none' );
-	update_option( 'image_default_size', 'large' );
-
 	// Add post formats (http://codex.wordpress.org/Post_Formats)
 	// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
@@ -46,11 +41,57 @@ function nest_setup() {
 add_action( 'after_setup_theme', 'nest_setup' );
 
 /**
+ * Set default theme options on theme switch
+ */
+function nest_default_options() {
+  update_option( 'thumbnail_size_w', 330 );
+  update_option( 'thumbnail_size_h', 330 );
+  update_option( 'thumbnail_crop', true );
+
+  update_option( 'medium_size_w', 330 );
+  update_option( 'medium_size_h', 800 );
+
+	update_option( 'large_size_w', 690 );
+	update_option( 'large_size_h', 1140 );
+
+	update_option( 'embed_size_w', 690 );
+
+	update_option( 'image_default_align', 'none' );
+	update_option( 'image_default_link_type', 'none' ); // can be 'file', 'attachment'
+	update_option( 'image_default_size', 'large' );
+
+	update_option( 'posts_per_page', 12 );
+	update_option( 'posts_per_rss', 12 );
+}
+
+add_action( 'switch_theme', 'nest_default_options' );
+
+/**
+ * Set gallery shortcode default options
+ */
+function nest_gallery_atts($out, $pairs, $atts) {
+
+  $atts = shortcode_atts( array(
+    //'columns' => '2',
+    //'size' => 'medium',
+  	'link' => 'file'
+  ), $atts );
+
+  //$out['columns'] = $atts['columns'];
+  //$out['size'] = $atts['size'];
+  $out['link'] = $atts['link'];
+
+  return $out;
+}
+
+add_filter('shortcode_atts_gallery', 'nest_gallery_atts', 10, 3);
+
+/**
  * Remove recent comments CSS from head
  */
-add_action( 'widgets_init', 'nest_remove_recent_comments_style' );
-
 function nest_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 }
+
+add_action( 'widgets_init', 'nest_remove_recent_comments_style' );

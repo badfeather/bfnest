@@ -12,7 +12,7 @@
 <body <?php body_class(); ?>>
 <div class="hfeed site">
 
-	<header class="site__header masthead" role="banner">
+	<header class="site__header masthead">
 
 		<h1 class="site__title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site__logo"><?php bloginfo( 'name' ); ?></a></h1>
 
@@ -23,7 +23,7 @@
       }
     ?>
 
-		<nav class="nav nav--primary site__nav" role="navigation">
+		<nav class="nav nav--primary site__nav">
 			<button class="nav__toggle nav--primary__toggle"><?php _e( 'Menu', 'tpp' ); ?></button>
 			<?php
 				wp_nav_menu( array(

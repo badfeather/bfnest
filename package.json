@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/badfeather/bad-feather-nest/issues"
   },
-  "license" : "MIT",
+  "license": "MIT",
   "scripts": {
     "postinstall": "node node_modules/bower/bin/bower install && grunt build"
   },
@@ -18,7 +18,7 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "bower": "^1.5.1",
+    "bower": "^1.5.2",
     "grunt": "~0.4.5",
     "grunt-autoprefixer": "~1.0.1",
     "grunt-contrib-concat": "^0.5.1",

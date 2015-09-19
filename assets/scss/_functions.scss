@@ -2,6 +2,13 @@
   @return $num / ($num * 0 + 1);
 }
 
+@function px($num, $px: 0) {
+	@if ($num != 0) {
+		$px: $num + px;
+	}
+  @return $px;
+}
+
 @function emcalc($size, $default: $base__font-size, $ems: 0) {
   @if ($size != 0) {
     $ems: strip-unit($size) / strip-unit($default) * 1em;
@@ -11,4 +18,14 @@
 
 @function remcalc($size, $default: $base__font-size) {
   @return ($size / $default);
+}
+
+// Add percentage of white to a color
+@function tint($color, $percent) {
+  @return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent) {
+  @return mix(black, $color, $percent);
 }

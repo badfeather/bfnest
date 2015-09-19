@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-		<main class="doc__main doc__main--archive" role="main">
+		<main class="doc__main doc__main--archive">
 
 			<?php
 				if ( have_posts() ) {

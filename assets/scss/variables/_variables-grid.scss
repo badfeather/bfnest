@@ -3,7 +3,7 @@ $grid__column-width: 60;
 $grid__gutter-width: 30;
 $grid__columns: 12;
 
-$gutter-width-emcalc: $grid__gutter-width / $base__font-size * 1em;
+$grid__gutter-width-emcalc: $grid__gutter-width / $base__font-size * 1em;
 
 // Utility variable — you should never need to modify this
 $grid__width: ($grid__column-width * $grid__columns) + ($grid__gutter-width * $grid__columns);

@@ -551,7 +551,7 @@ td {
   padding: 0.5em;
   border-style: solid;
   border-color: #e0e0e0;
-  border-width: 0.0625em;
+  border-width: 1px;
   text-align: left;
   vertical-align: top;
 }
@@ -597,42 +597,36 @@ h6 a:focus {
 
 h1 {
   font-size: 2em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 0.75em;
 }
 
 h2 {
   font-size: 1.75em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 0.85714em;
 }
 
 h3 {
   font-size: 1.5em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1em;
 }
 
 h4 {
   font-size: 1.25em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1.2em;
 }
 
 h5 {
   font-size: 1em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1.5em;
 }
 
 h6 {
   font-size: 0.875em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1.71429em;
 }
@@ -740,8 +734,7 @@ h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   color: #a0a0a0;
-  border: 0.0625em solid #e0e0e0;
-  border: 0.0625em solid #e0e0e0;
+  border: 1px solid #e0e0e0;
   border-radius: 0.25em;
   outline: none;
   padding: 0.5em 0.66667em;
@@ -779,7 +772,6 @@ select {
 
 legend {
   font-size: 1.5em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1em;
 }
@@ -887,11 +879,11 @@ img.alignleft, img.alignright, img.aligncenter,
 }
 
 .gallery-item {
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
   position: relative;
   float: left;
   min-height: 1px;
-  padding-left: 0.9375em;
-  padding-right: 0.9375em;
   margin-bottom: 1.5em;
 }
 .gallery-item img {
@@ -1018,7 +1010,6 @@ img.alignleft, img.alignright, img.aligncenter,
 
 .site__description {
   font-size: 1.5em;
-  line-height: 1.125;
   margin-top: 0;
   margin-bottom: 1em;
 }

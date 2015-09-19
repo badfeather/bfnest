@@ -1,4 +1,4 @@
-<div class="doc__side" role="complementary">
+<div class="doc__side">
 
 	<?php
 		dynamic_sidebar( 'page' );

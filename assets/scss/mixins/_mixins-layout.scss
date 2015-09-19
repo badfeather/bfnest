@@ -50,12 +50,12 @@
 }
 
 // BORDER
-@mixin border($border-width: 1, $border-style: solid, $border-color: $base__border-color, $font-size: $base__font-size) {
-  border: emcalc($border-width, $font-size) $border-style $border-color;
+@mixin border($border-width: 1, $border-style: solid, $border-color: $base__border-color) {
+  border: px($border-width) $border-style $border-color;
 }
 
-@mixin border-width($border-top-width: 1, $border-right-width: 1, $border-bottom-width: 1, $border-left-width: 1, $font-size: $font-size-base) {
-  @include style-shorthand-emcalc(border-width, $border-top-width, $border-right-width, $border-bottom-width, $border-left-width, $font-size);
+@mixin border-width($border-top-width: 1, $border-right-width: 1, $border-bottom-width: 1, $border-left-width: 1) {
+  @include style-shorthand(border-width, px($border-top-width), px($border-right-width), px($border-bottom-width), px($border-left-width));
 }
 
 @mixin border-color($border-color: $base__border-color, $default-border-color: $base__border-color) {

@@ -5,7 +5,7 @@ Template Name: Home
 ?>
 <?php get_header(); ?>
 
-    <main class="doc__main doc__main--singular doc__main--page" role="main">
+    <main class="doc__main doc__main--singular doc__main--page">
 
 			<?php
 				while ( have_posts() ) {

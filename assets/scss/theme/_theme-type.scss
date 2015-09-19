@@ -181,7 +181,7 @@ td {
   @include padding-emcalc($td__padding-vertical, $td__padding-horizontal, $td__padding-vertical, $td__padding-horizontal, $table__font-size);
 	border-style: $table__border-style;
 	border-color: $table__border-color;
-	@include border-width($td__border-top-width, $td__border-right-width, $td__border-bottom-width, $td__border-left-width, $table__font-size);
+	@include border-width($td__border-top-width, $td__border-right-width, $td__border-bottom-width, $td__border-left-width);
 	text-align: left;
 	vertical-align: top;
 }

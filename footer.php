@@ -1,6 +1,6 @@
 	</section><?php // /.doc.site__main ?>
 
-	<footer class="site__footer content-info" role="contentinfo">
+	<footer class="site__footer content-info">
 
 		<div class="copyright">
 			&copy; <?php echo date( 'Y' ) . ' ' . get_bloginfo( 'name' ) . "\n"; ?>

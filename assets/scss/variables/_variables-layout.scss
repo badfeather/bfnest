@@ -18,16 +18,19 @@ $sticky__padding: 1em;
 // ---------------------------
 
 // Extra small screen / phone
-$breakpoint--xs: (480 / $base__font-size * 1em);
+$breakpoint--xs: emcalc(480);
 
 // Tablet small
-$breakpoint__sm: (600 / $base__font-size * 1em);
+$breakpoint__sm: emcalc(600);
 
 // Small screen / tablet
-$breakpoint--md: (768 / $base__font-size * 1em);
+$breakpoint--md: emcalc(768);
 
 // Medium screen / desktop
-$breakpoint--lg: (992 / $base__font-size * 1em);
+$breakpoint--lg: emcalc(992);
 
 // Large screen / wide desktop
-$breakpoint--xl: (1200 / $base__font-size * 1em);
+$breakpoint--xl: emcalc(1200);
+
+// Base breakpoint
+$base__breakpoint: $breakpoint--md;
