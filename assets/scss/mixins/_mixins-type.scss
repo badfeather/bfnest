@@ -145,8 +145,7 @@
 	@include font-style($meta__font-style);
 	@include font-weight($meta__font-weight);
 	@include color($meta__color);
-	@include margin-top-emcalc($meta__margin-top, $meta__font-size);
-	@include margin-bottom-emcalc($meta__margin-bottom, $meta__font-size);
+	@include margin-emcalc($meta__margin-top, 0, $meta__margin-bottom, 0, $meta__font-size);
 }
 
 // small
@@ -157,50 +156,50 @@
 // HEADINGS
 // -------------------------
 @mixin heading() {
+	font-size: emcalc($headings__font-size);
   font-family: $headings__font-family;
   line-height: $headings__line-height;
   font-weight: $headings__font-weight;
   color: $headings__color;
-	margin-top: 0;
+	@include margin-emcalc($headings__margin-top, 0, $headings__margin-bottom, 0, $headings__font-size);
 
 	a {
 		color: $headings__link-color;
+		@include text-decoration($headings__link-text-decoration);
 
 		&:hover,
 		&:focus {
 			color: $headings__link-color--hover;
-			text-decoration: none;
+			@include text-decoration($headings__link-text-decoration--hover, $link__text-decoration--hover);
 		}
 	}
 }
 
 @mixin heading-transform(
-  $font-size: $base__font-size,
+  $font-size: $headings__font-size,
   $line-height: $headings__line-height,
   $font-family: $headings__font-family,
   $color: $headings__color,
   $font-style: $headings__font-style,
   $font-weight: $headings__font-weight,
-  $text-transform: none,
-  $margin-top: 0,
-  $margin-bottom: $base__margin,
-  $font-size--lg: $base__font-size,
-  $breakpoint-lg: $base__breakpoint
+  $text-transform: $headings__text-transform,
+  $margin-top: $headings__margin-top,
+  $margin-bottom: $headings__margin-bottom,
+  $font-size--lg: $headings__font-size--lg,
+  $breakpoint: $base__breakpoint
 ) {
-  font-size: emcalc($font-size);
+  @include font-size-emcalc($font-size, $headings__font-size);
   @include line-height($line-height, $headings__line-height);
   @include color($color, $headings__color);
   @include font-style($font-style, $headings__font-style);
   @include font-weight($font-weight, $headings__font-weight);
   @include text-transform($text-transform);
-  @include margin-top-emcalc($margin-top, $font-size);
-  @include margin-bottom-emcalc($margin-bottom, $font-size);
+  @include margin-emcalc($margin-top, 0, $margin-bottom, 0, $headings__font-size);
 
   @if $font-size != $font-size--lg {
-    @media(min-width: $breakpoint-lg) {
-      @include font-size-emcalc($font-size--lg);
-      @include margin-top-emcalc($margin-top, $font-size--lg);
-      @include margin-bottom-emcalc($margin-bottom, $font-size--lg);
+    @media(min-width: $breakpoint) {
+      font-size: emcalc($font-size--lg);
+      @include margin-emcalc($margin-top, 0, $margin-bottom, 0, $font-size--lg);
     }
   }
 }

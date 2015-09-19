@@ -566,11 +566,12 @@ h3,
 h4,
 h5,
 h6 {
+  font-size: 1em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.25;
   font-weight: 700;
   color: #606060;
-  margin-top: 0;
+  margin: 0 0 1.5em;
 }
 h1 a,
 h2 a,
@@ -592,51 +593,42 @@ h5 a:focus,
 h6 a:hover,
 h6 a:focus {
   color: #f0f;
-  text-decoration: none;
 }
 
 h1 {
   font-size: 2em;
-  margin-top: 0;
-  margin-bottom: 0.75em;
+  margin: 0 0 1.5em;
 }
 
 h2 {
   font-size: 1.75em;
-  margin-top: 0;
-  margin-bottom: 0.85714em;
+  margin: 0 0 1.5em;
 }
 
 h3 {
   font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 1em;
+  margin: 0 0 1.5em;
 }
 
 h4 {
   font-size: 1.25em;
-  margin-top: 0;
-  margin-bottom: 1.2em;
+  margin: 0 0 1.5em;
 }
 
 h5 {
-  font-size: 1em;
-  margin-top: 0;
-  margin-bottom: 1.5em;
+  margin: 0 0 1.5em;
 }
 
 h6 {
   font-size: 0.875em;
-  margin-top: 0;
-  margin-bottom: 1.71429em;
+  margin: 0 0 1.5em;
 }
 
 .entry__meta {
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin-top: 0;
-  margin-bottom: 0.42857em;
+  margin: 0 0 0.42857em;
   clear: both;
 }
 
@@ -772,8 +764,7 @@ select {
 
 legend {
   font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 1em;
+  margin: 0 0 1.5em;
 }
 
 input[type="checkbox"] {
@@ -859,8 +850,7 @@ img.alignleft, img.alignright, img.aligncenter,
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin-top: 0;
-  margin-bottom: 0.42857em;
+  margin: 0 0 0.42857em;
   margin-top: 0.42857em;
 }
 
@@ -1010,8 +1000,7 @@ img.alignleft, img.alignright, img.aligncenter,
 
 .site__description {
   font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 1em;
+  margin: 0 0 1.5em;
 }
 
 .doc__main {
@@ -1066,8 +1055,7 @@ img.alignleft, img.alignright, img.aligncenter,
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin-top: 0;
-  margin-bottom: 0.42857em;
+  margin: 0 0 0.42857em;
 }
 
 .comment-main {
@@ -1092,6 +1080,5 @@ img.alignleft, img.alignright, img.aligncenter,
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin-top: 0;
-  margin-bottom: 0.42857em;
+  margin: 0 0 0.42857em;
 }

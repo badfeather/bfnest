@@ -28,16 +28,29 @@ $base__line-height--sm: ($base__font-size + (($base__margin - $base__font-size) 
 $base__line-height--xs: ($base__font-size + (($base__margin - $base__font-size) / 4)) / $base__font-size;
 $base__text-align: left;
 
+// LINK COLORS
+// ---------------------------
+$link__color: $accent__color;
+$link__color--hover: $accent__color--alt;
+$link__color--active: $accent__color--alt;
+$link__text-decoration: none;
+$link__text-decoration--hover: none;
+
 // HEADINGS
 // ---------------------------
+$headings__font-size: $base__font-size;
 $headings__line-height: $base__line-height--sm;
 $headings__font-family: $font-family--sans-serif;
 $headings__font-weight: $font-weight--bold;
 $headings__font-style: normal;
 $headings__color: $base__color;
+$headings__margin-top: 0;
+$headings__margin-bottom: $base__margin;
 $headings__small-color: inherit;
 $headings__link-color: $link__color;
 $headings__link-color--hover: $link__color--hover;
+$headings__link-text-decoration: none;
+$headings__link-text-decoration--hover: none;
 
 $h1__font-size: 32;
 $h1__line-height: $headings__line-height;
