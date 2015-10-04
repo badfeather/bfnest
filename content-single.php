@@ -1,5 +1,4 @@
 <?php
-	$post = get_post();
 	$post_id = $post->ID;
 	$post_type = $post->post_type;
   $post_permalink = esc_url( get_permalink() );

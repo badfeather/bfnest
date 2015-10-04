@@ -1,14 +1,14 @@
 <?php
-	$post = get_post();
 	$post_id = $post->ID;
 	$post_type = $post->post_type;
+	$post_title = $post->post_title;
   $post_permalink = esc_url( get_permalink() );
 ?>
 <article id="post-<?php echo $post_id; ?>" <?php post_class( 'entry' ); ?>>
 
 	<header class="entry__header">
 		<?php get_template_part( 'meta-above', $post_type ); ?>
-		<h1 class="entry-title"><a href="<?php echo $post_permalink; ?>"><?php echo $post->post_title; ?></a></h1>
+		<h1 class="entry-title"><a href="<?php echo $post_permalink; ?>"><?php echo $post_title; ?></a></h1>
 	</header>
 
 	<div class="entry__content entry-content">

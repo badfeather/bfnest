@@ -190,6 +190,7 @@
 ) {
   @include font-size-emcalc($font-size, $headings__font-size);
   @include line-height($line-height, $headings__line-height);
+  @include font-family($font-family, $headings__font-family);
   @include color($color, $headings__color);
   @include font-style($font-style, $headings__font-style);
   @include font-weight($font-weight, $headings__font-weight);

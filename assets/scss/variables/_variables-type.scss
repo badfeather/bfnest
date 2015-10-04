@@ -32,7 +32,8 @@ $base__text-align: left;
 // ---------------------------
 $link__color: $accent__color;
 $link__color--hover: $accent__color--alt;
-$link__color--active: $accent__color--alt;
+$link__color--active: $link__color--hover;
+$link__color--visited: $link__color;
 $link__text-decoration: none;
 $link__text-decoration--hover: none;
 

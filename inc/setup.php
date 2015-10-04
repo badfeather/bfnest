@@ -9,10 +9,6 @@ function nest_setup() {
 		'primary' => __( 'Primary Navigation', 'nest' ),
 	) );
 
-	if ( ! isset( $content_width ) ) {
-		$content_width = 690;
-	}
-
   load_theme_textdomain( 'nest', get_template_directory() . '/languages' );
 
 	// let wordpress handle the title tag instead of hardcoding it in the header
@@ -41,6 +37,18 @@ function nest_setup() {
 add_action( 'after_setup_theme', 'nest_setup' );
 
 /**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
+function nest_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'nest_content_width', 690 );
+}
+add_action( 'after_setup_theme', 'nest_content_width', 0 );
+
+/**
  * Set default theme options on theme switch
  */
 function nest_default_options() {
@@ -64,7 +72,7 @@ function nest_default_options() {
 	update_option( 'posts_per_rss', 12 );
 }
 
-add_action( 'switch_theme', 'nest_default_options' );
+add_action( 'after_switch_theme', 'nest_default_options' );
 
 /**
  * Set gallery shortcode default options
