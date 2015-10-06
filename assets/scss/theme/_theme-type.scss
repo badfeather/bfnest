@@ -229,6 +229,22 @@ h6 {
 	@include h6;
 }
 
+.entry__title {
+	@include entry__title;
+}
+
+.doc__title {
+	@include doc__title;
+}
+
+.widget__title {
+	@include widget__title;
+}
+
+.section__title {
+	@include section__title;
+}
+
 // META
 // -------------------------
 .entry__meta {

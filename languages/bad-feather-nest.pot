@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 2.3.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2015-10-04 00:18:30+00:00\n"
+"POT-Creation-Date: 2015-10-06 23:31:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,7 +63,7 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: content-single.php:19
+#: content-singular.php:19
 msgid "Pages:"
 msgstr ""
 

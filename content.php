@@ -8,10 +8,10 @@
 
 	<header class="entry__header">
 		<?php get_template_part( 'meta-above', $post_type ); ?>
-		<h1 class="entry-title"><a href="<?php echo $post_permalink; ?>"><?php echo $post_title; ?></a></h1>
+		<h1 class="entry-title entry__title"><a href="<?php echo $post_permalink; ?>"><?php echo $post_title; ?></a></h1>
 	</header>
 
-	<div class="entry__content entry-content">
+	<div class="entry-content entry__content">
 		<?php the_content( __( 'Continue reading &rarr;', 'nest' ) ); ?>
 	</div><?php // /.entry__content.entry-content ?>
 

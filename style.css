@@ -627,6 +627,26 @@ h6 {
   margin: 0 0 1.5em;
 }
 
+.entry__title {
+  font-size: 1.5em;
+  margin: 0 0 0.75em;
+}
+
+.doc__title {
+  font-size: 2.375em;
+  margin: 0 0 1.5em;
+}
+
+.widget__title {
+  font-size: 1.375em;
+  margin: 0 0 0.75em;
+}
+
+.section__title {
+  font-size: 1.375em;
+  margin: 0 0 0.75em;
+}
+
 .entry__meta {
   font-size: 0.875em;
   line-height: 1.125;

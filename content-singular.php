@@ -12,7 +12,7 @@
 
 	<div class="doc__content">
 
-		<div class="entry-content">
+		<div class="entry-content entry__content">
 			<?php the_content(); ?>
 			<?php
 				wp_link_pages( array(
@@ -20,7 +20,7 @@
 					'after'  => '</div>',
 				) );
 			?>
-		</div><?php // /.entry-content ?>
+		</div><?php // /.entry-content.entry__content ?>
 
 		<footer class="doc__footer">
 			<?php get_template_part( 'meta-below', $post_type ); ?>

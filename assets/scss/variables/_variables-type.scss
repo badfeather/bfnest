@@ -6,8 +6,10 @@ $font-family--monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
 
 $font-weight--light: 300;
 $font-weight--normal: 400;
+$font-weight--medium: 500;
+$font-weight--semibold: 600;
 $font-weight--bold: 700;
-
+$font-weight--black: 900;
 // Base
 $base__font-family: $font-family--sans-serif;
 $base__font-size: 16;
@@ -15,6 +17,7 @@ $base__font-size--lg: 20;
 $base__font-size--sm: 14;
 $base__font-size--xs: 12;
 $base__font-weight: $font-weight--normal;
+$base__font-weight--bold: $font-weight--bold;
 $base__margin: 24;
 $base__margin--half: $base__margin / 2;
 $base__margin--quarter: $base__margin / 4;
@@ -118,6 +121,50 @@ $h6__text-transform: none;
 $h6__margin-top: 0;
 $h6__margin-bottom: $base__margin;
 $h6__font-size--lg: $h6__font-size;
+
+$entry__title__font-size: 24;
+$entry__title__line-height: $headings__line-height;
+$entry__title__font-family: $headings__font-family;
+$entry__title__color: $headings__color;
+$entry__title__font-style: $headings__font-style;
+$entry__title__font-weight: $headings__font-weight;
+$entry__title__text-transform: none;
+$entry__title__margin-top: 0;
+$entry__title__margin-bottom: $base__margin--half;
+$entry__title__font-size--lg: $entry__title__font-size;
+
+$doc__title__font-size: 38;
+$doc__title__line-height: $headings__line-height;
+$doc__title__font-family: $headings__font-family;
+$doc__title__color: $headings__color;
+$doc__title__font-style: $headings__font-style;
+$doc__title__font-weight: $headings__font-weight;
+$doc__title__text-transform: none;
+$doc__title__margin-top: 0;
+$doc__title__margin-bottom: $base__margin;
+$doc__title__font-size--lg: $doc__title__font-size;
+
+$widget__title__font-size: 22;
+$widget__title__line-height: $headings__line-height;
+$widget__title__font-family: $headings__font-family;
+$widget__title__color: $headings__color;
+$widget__title__font-style: $headings__font-style;
+$widget__title__font-weight: $headings__font-weight;
+$widget__title__text-transform: none;
+$widget__title__margin-top: 0;
+$widget__title__margin-bottom: $base__margin--half;
+$widget__title__font-size--lg: $widget__title__font-size;
+
+$section__title__font-size: 22;
+$section__title__line-height: $headings__line-height;
+$section__title__font-family: $headings__font-family;
+$section__title__color: $headings__color;
+$section__title__font-style: $headings__font-style;
+$section__title__font-weight: $headings__font-weight;
+$section__title__text-transform: none;
+$section__title__margin-top: 0;
+$section__title__margin-bottom: $base__margin--half;
+$section__title__font-size--lg: $section__title__font-size;
 
 // META
 // ---------------------------
