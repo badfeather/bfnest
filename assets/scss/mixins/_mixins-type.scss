@@ -195,7 +195,7 @@
   @include font-style($font-style, $headings__font-style);
   @include font-weight($font-weight, $headings__font-weight);
   @include text-transform($text-transform);
-  @include margin-emcalc($margin-top, 0, $margin-bottom, 0, $headings__font-size);
+  @include margin-emcalc($margin-top, 0, $margin-bottom, 0, $font-size);
 
   @if $font-size != $font-size--lg {
     @media(min-width: $breakpoint) {
