@@ -18,3 +18,12 @@
 	@include background-color($sticky__background-color);
 	@include padding-emcalc($sticky__padding);
 }
+
+.entry__header {
+	margin-bottom: $base__margin-emcalc;
+}
+
+// SINGLE POSTS
+
+
+// ARCHIVES

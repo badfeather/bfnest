@@ -6,8 +6,8 @@
 <article id="post-<?php echo $post_id; ?>" <?php post_class(); ?>>
 
 	<header class="doc__header">
-	  <?php get_template_part( 'meta-above', $post_type ); ?>
 		<h1 class="entry-title doc__title"><?php echo $post->post_title; ?></h1>
+		<?php get_template_part( 'meta-above', $post_type ); ?>
 	</header>
 
 	<div class="doc__content">

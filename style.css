@@ -1047,6 +1047,10 @@ img.alignleft, img.alignright, img.aligncenter,
   padding: 0.0625em 0;
 }
 
+.entry__header {
+  margin-bottom: 1.5em;
+}
+
 .comment-form textarea {
   display: block;
   width: 100%;

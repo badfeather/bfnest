@@ -7,8 +7,8 @@
 <article id="post-<?php echo $post_id; ?>" <?php post_class( 'entry' ); ?>>
 
 	<header class="entry__header">
-		<?php get_template_part( 'meta-above', $post_type ); ?>
 		<h1 class="entry-title entry__title"><a href="<?php echo $post_permalink; ?>"><?php echo $post_title; ?></a></h1>
+		<?php get_template_part( 'meta-above', $post_type ); ?>
 	</header>
 
 	<div class="entry-content entry__content">
