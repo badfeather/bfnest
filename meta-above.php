@@ -14,7 +14,7 @@ if ( 'post' == $post_type ) {
   $meta_array[] = '<span class="meta meta--published"><time class="published" datetime = "' . get_the_time( 'c' ) . '">' . get_the_date() . '</time></span>';
 
   // author
-  $meta_array[] = '<span class="meta meta--author"><span class="meta__title">' . __( 'Author: ', 'bsb' ) . '</span><span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></span></span>';
+  $meta_array[] = '<span class="meta meta--author"><span class="meta__title">' . __( 'Author: ', 'nest' ) . '</span><span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></span></span>';
 
 }
 
