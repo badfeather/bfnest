@@ -3,40 +3,43 @@
 /**
  * Postnav single
  */
-function nest_postnav_single( $in_same_term = false, $taxonomy = 'category', $excluded_terms = array() ) {
-  global $wp_query, $post;
-  $previous = ( is_attachment() ) ? get_post( $post->post_parent ) : get_adjacent_post( false, '', true );
-  $next = get_adjacent_post( false, '', false );
+function nest_postnav_single( $in_same_term = false, $excluded_terms = array(), $taxonomy = 'category' ) {
+	$newer = get_next_post_link( '<div class="postnav__link postnav__link--newer">%link</div>', '%title', $in_same_term, $excluded_terms, $taxonomy );
+	$older = get_previous_post_link( '<div class="postnav__link postnav__link--older">%link</div>', '%title', $in_same_term, $excluded_terms, $taxonomy );
+	$postnav = array();
 
-  if ( $next || $previous ) {
-  ?>
-  <div class="postnav postnav--single">
-  	<?php
-  	  next_post_link( '<div class="postnav__link postnav__link--prev">%link</div>', _x( '&larr;&nbsp;%title', 'Next post link', 'nest' ), $in_same_term, $excluded_terms, $taxonomy );
-      previous_post_link( '<div class="postnav__link postnav__link--next">%link</div>', _x( '%title&nbsp;&rarr;', 'Previous post link', 'nest' ), $in_same_term, $excluded_terms, $taxonomy );
-    ?>
-  </div><?php // /.postnav.postnav--single ?>
-  <?php
-  } // endif
+	if ( $newer ) {
+		$postnav[] = $newer;
+	}
+
+	if ( $older ) {
+		$postnav[] = $older;
+	}
+
+	if ( ! empty( $postnav ) ) {
+		echo '<nav class="postnav postnav--single">' . "\n" . implode( '', $postnav ) . '</nav>';
+	}
 }
 
 /**
  * Postnav archives
  */
 function nest_postnav_archive() {
-  global $wp_query, $post;
-  if ( $wp_query->max_num_pages > 1 ) {
-?>
-	<nav class="postnav postnav--archive">
-  	<?php if ( get_previous_posts_link() ) { ?>
-  	  <div class="postnav__link postnav__link--prev"><?php previous_posts_link( __( '&larr; Prev', 'nest' ) ); ?></div>
-  	<?php } ?>
-  	<?php if ( get_next_posts_link() ) { ?>
-  	  <div class="postnav__link postnav__link--next"><?php next_posts_link( __( 'Next &rarr;', 'nest' ) ); ?></div>
-  	<?php } ?>
-	</nav><?php // /.postnav.postnav--archive ?>
-<?php
-  } // endif
+	$newer = get_previous_posts_link( __( 'Newer Entries', 'nest' ) );
+	$older = get_next_posts_link( __( 'Older Entries', 'nest' ) );
+	$postnav = array();
+
+	if ( $newer ) {
+		$postnav[] = '<div class="postnav__link postnav__link--newer">' . $newer . '</div>' . "\n";
+	}
+
+	if ( $older ) {
+		$postnav[] = '<div class="postnav__link postnav__link--older">' . $older . '</div>' . "\n";
+	}
+
+	if ( ! empty( $postnav ) ) {
+		echo '<nav class="postnav postnav--archive">' . "\n" . implode( '', $postnav ) . '</nav>';
+	}
 }
 
 /**

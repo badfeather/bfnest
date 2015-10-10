@@ -1006,12 +1006,12 @@ img.alignleft, img.alignright, img.aligncenter,
 .postnav .postnav__link {
   width: 50%;
 }
-.postnav .postnav__link--next {
+.postnav .postnav__link--older {
   float: right;
   text-align: right;
   padding-left: 1em;
 }
-.postnav .postnav__link--prev {
+.postnav .postnav__link--newer {
   float: left;
   padding-right: 1em;
 }
