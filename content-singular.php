@@ -7,7 +7,12 @@
 
 	<header class="doc__header">
 		<h1 class="entry-title doc__title"><?php echo $post->post_title; ?></h1>
-		<?php get_template_part( 'meta-above', $post_type ); ?>
+		<?php
+			nest_meta( array(
+				nest_get_meta_pubdate(),
+				nest_get_meta_author(),
+			) );
+		?>
 	</header>
 
 	<div class="doc__content">
@@ -23,7 +28,14 @@
 		</div><?php // /.entry-content.entry__content ?>
 
 		<footer class="doc__footer">
-			<?php get_template_part( 'meta-below', $post_type ); ?>
+			<?php
+				nest_meta( array(
+					nest_get_meta_categories(),
+					nest_get_meta_tags(),
+					nest_get_meta_comments_link(),
+					nest_get_meta_edit_link(),
+				) );
+			?>
 			<?php nest_scriptless_social_share(); ?>
 		</footer>
 

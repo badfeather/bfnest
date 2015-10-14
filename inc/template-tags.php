@@ -699,37 +699,110 @@ function nest_follow_links( $args = array() ) {
 }
 
 /**
- * All taxonomies terms links, by taxonomy term, outputted as meta data
+ * Meta categories
+ * Checks for custom field value, falls back to first category if none is set
  */
-function nest_taxonomy_terms_links( $term_sep = ', ' ) {
-	global $post;
-	// get post by post id
-	$post = get_post( $post->ID );
+function nest_get_meta_categories() {
+	$post_id = get_the_ID();
+	return get_the_term_list( get_the_ID(), 'category', '<span class="meta meta--cats"><span class="meta__title">' . __( 'Posted in: ', 'nest' ) . '</span>', ', ', '</span>' );
+}
 
-	// get post type by post
-	$post_type = $post->post_type;
+/**
+ * Meta tags
+ * Checks for custom field value, falls back to first category if none is set
+ */
+function nest_get_meta_tags() {
+	$post_id = get_the_ID();
+	return get_the_term_list( get_the_ID(), 'post_tag', '<span class="meta meta--tags"><span class="meta__title">' . __( 'Tagged: ', 'nest' ) . '</span>', ', ', '</span>' );
+}
 
-	// get post type taxonomies
-	$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+/**
+ * Meta comments link
+ */
+function nest_get_meta_comments_link() {
+	$comment_content = '';
 
-	$out = array();
-	$sep = ', ';
+	if ( comments_open() ) {
+	  $comments_count = get_comments_number();
+	  $comments_link = get_comments_link();
 
-	foreach ( $taxonomies as $taxonomy_slug => $taxonomy ){
+		$comment_content .= '<span class="meta meta--comment"><a href="' . $comments_link . '">';
 
-		// get the terms related to post
-		$terms = get_the_terms( $post->ID, $taxonomy_slug );
+	  if ( $comments_count == 0 ) {
+	    $comment_content .= '<span class="meta--comment__text">' . __( 'Comment', 'nest' ) . '</span>';
 
-		if ( !empty( $terms ) ) {
-			$term_links_array = array();
-			foreach ( $terms as $term ) {
-				$term_links_array[] = '<a href="'. get_term_link( $term->slug, $taxonomy_slug ) . '">' . $term->name . '</a>';
+	  } else {
+	    $comment_content .= sprintf( _n(
+	    	'<span class="meta--comment__count">1</span> <span class="meta--comment__text">Comment</span>',
+	    	'<span class="meta--comment__count">%s</span> <span class="meta--comment__text">Comments</span>',
+	    $comments_count, 'nest' ), $comments_count );
+	  }
+
+	  $comment_content .= '</a></span>';
+	}
+
+	return $comment_content;
+}
+
+/**
+ * Meta pubdate
+ */
+function nest_get_meta_pubdate() {
+	if ( 'post' == get_post_type() ) {
+		return '<span class="meta meta--published"><time class="published" datetime = "' . get_the_time( 'c' ) . '">' . get_the_date() . '</time></span>';
+	}
+
+	return false;
+}
+
+/**
+ * Meta author
+ */
+function nest_get_meta_author() {
+	if ( 'post' == get_post_type() ) {
+		return '<span class="meta meta--author"><span class="meta__title">' . __( 'Author: ', 'nest' ) . '</span><span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></span></span>';
+	}
+
+	return false;
+}
+
+/**
+ * Meta edit link
+ */
+function nest_get_meta_edit_link() {
+	$edit_post_link = get_edit_post_link();
+	if ( $edit_post_link ) {
+	  return '<span class="meta meta--edit"><a href="' . $edit_post_link . '">' . __( 'Edit', 'nest' ) . '</a></span>';
+	}
+
+	return false;
+}
+
+/**
+ * Meta
+ * $metas array takes the following functions:
+ * nest_get_meta_terms() - use for custom taxonomies
+ * nest_get_meta_categories()
+ * nest_get_meta_tags()
+ * nest_get_meta_comments_link()
+ * nest_get_meta_author()
+ * nest_get_meta_pubdate()
+ * nest_get_meta_edit_link()
+ */
+function nest_meta( $metas = array(), $meta_sep = ' | ' ) {
+	$meta_array = array();
+
+	if ( ! empty( $metas ) ) {
+		foreach ( $metas as $meta ) {
+			if ( $meta ) {
+				$meta_array[] = $meta;
 			}
-			$term_links = join( $term_sep, $term_links_array );
-?>
-<span class="meta meta--taxonomies"><span class="meta__title"><?php echo $taxonomy->label; ?></span>: <?php echo $term_links; ?></span>
-<?php
-		} // endif
+		}
+	}
 
-	} // endforeach
+	if ( ! empty( $meta_array ) ) {
+  	echo "\t" . '<div class="entry__meta">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div>' . "\n";
+	}
+
+	return false;
 }
