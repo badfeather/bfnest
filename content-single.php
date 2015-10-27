@@ -1,12 +1,7 @@
-<?php
-	$post_id = $post->ID;
-	$post_type = $post->post_type;
-  $post_permalink = esc_url( get_permalink() );
-?>
-<article id="post-<?php echo $post_id; ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="doc__header">
-		<h1 class="entry-title doc__title"><?php echo $post->post_title; ?></h1>
+		<h1 class="entry-title doc__title"><?php the_title(); ?></h1>
 		<?php
 			nest_meta( array(
 				nest_get_meta_pubdate(),

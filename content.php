@@ -1,15 +1,7 @@
-<?php
-	$post_id = $post->ID;
-	$post_type = $post->post_type;
-	$post_title = $post->post_title;
-  $post_permalink = esc_url( get_permalink() );
-  $meta_sep = ' | ';
-  $item_sep = ', ';
-?>
-<article id="post-<?php echo $post_id; ?>" <?php post_class( 'entry' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry' ); ?>>
 
 	<header class="entry__header">
-		<h1 class="entry-title entry__title"><a href="<?php echo $post_permalink; ?>"><?php echo $post_title; ?></a></h1>
+		<h1 class="entry-title entry__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 		<?php
 			nest_meta( array(
 				nest_get_meta_pubdate(),
