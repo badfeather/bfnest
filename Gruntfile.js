@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
   var jsFileList = [
     // add files, ideally installed via bower (which would put them in assets/vendor)
-    'assets/scripts.js'
+    'assets/js/scripts.js'
   ];
 
   grunt.initConfig({
