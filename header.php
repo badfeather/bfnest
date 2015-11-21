@@ -24,7 +24,7 @@
     ?>
 
 		<nav class="nav nav--primary site__nav">
-			<button class="nav__toggle nav--primary__toggle"><?php _e( 'Menu', 'tpp' ); ?></button>
+			<button class="nav__toggle nav--primary__toggle"><?php _e( 'Menu', 'nest' ); ?></button>
 			<?php
 				wp_nav_menu( array(
 					'theme_location' => 'primary',
