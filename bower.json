@@ -1,6 +1,6 @@
 {
   "name": "bad-feather-nest",
-  "version": "2.6.0",
+  "version": "3.0.0",
   "homepage": "https://github.com/badfeather/bad-feather-nest",
   "authors": [
     "Brad Thomason <brad@badfeather.com>"
@@ -12,8 +12,5 @@
     "node_modules",
     "assets/vendor"
   ],
-  "dependencies": {
-    "modernizr": "2.8.2",
-    "respond": "1.4.2"
-  }
+  "dependencies": {}
 }

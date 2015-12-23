@@ -24,7 +24,7 @@ function nest_setup() {
 
   // set default image sizes
 
-	// add_image_size( 'category-thumb', 300, 9999 ); // 300px wide (and unlimited height)
+	// add_image_size( 'custom-size-name', 300, 9999 ); //  arguments are( 'size-name', width (int), height (int), true/false - hard crop or not, defaults to true )
 
 	// Add post formats (http://codex.wordpress.org/Post_Formats)
 	// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
@@ -71,28 +71,29 @@ function nest_default_options() {
 	update_option( 'posts_per_page', 12 );
 	update_option( 'posts_per_rss', 12 );
 }
-
 add_action( 'after_switch_theme', 'nest_default_options' );
+
+/**
+ * Show custom image sizes in editor when inserting images
+ * http://pippinsplugins.com/add-custom-image-sizes-to-media-uploader/
+ */
+function nest_show_custom_image_sizes( $sizes ) {
+	$sizes['custom size name'] = __( 'Custom Size', 'nest' ); // add more like these as needed
+  return $sizes;
+}
+// add_filter( 'image_size_names_choose', 'bf_show_custom_image_sizes' );
 
 /**
  * Set gallery shortcode default options
  */
-function nest_gallery_atts($out, $pairs, $atts) {
-
-  $atts = shortcode_atts( array(
-    //'columns' => '2',
-    //'size' => 'medium',
-  	'link' => 'file'
-  ), $atts );
-
-  //$out['columns'] = $atts['columns'];
-  //$out['size'] = $atts['size'];
-  $out['link'] = $atts['link'];
-
-  return $out;
+function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
+    $atts = shortcode_atts( array(
+    	'link' => 'file'
+    ), $atts );
+    $out['link'] = $atts['link'];
+    return $out;
 }
-
-add_filter('shortcode_atts_gallery', 'nest_gallery_atts', 10, 3);
+add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
 /**
  * Remove recent comments CSS from head
@@ -101,5 +102,23 @@ function nest_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 }
-
 add_action( 'widgets_init', 'nest_remove_recent_comments_style' );
+
+/**
+ * Disable default widgets
+ */
+function nest_unregister_default_wp_widgets() {
+	unregister_widget( 'WP_Widget_Pages' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Links' );
+	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Search' );
+	unregister_widget( 'WP_Widget_Text' );
+	unregister_widget( 'WP_Widget_Categories' );
+	unregister_widget( 'WP_Widget_Recent_Posts' );
+	unregister_widget( 'WP_Widget_Recent_Comments' );
+	unregister_widget( 'WP_Widget_RSS' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
+}
+add_action( 'widgets_init', 'nest_unregister_default_wp_widgets', 1 );

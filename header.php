@@ -14,7 +14,15 @@
 
 	<header class="site__header masthead">
 
-		<h1 class="site__title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site__logo"><?php bloginfo( 'name' ); ?></a></h1>
+		<?php
+			if ( ( is_front_page() && is_home() ) ) {
+				$title_tag = 'h1';
+			} else {
+				$title_tag = 'div';
+			}
+
+			echo '<' . $title_tag . ' class="site__title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site__logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>';
+		?>
 
     <?php
       $site_description = get_bloginfo( 'description' );

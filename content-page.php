@@ -19,18 +19,14 @@
 		<footer class="doc__footer">
 			<?php
 				nest_meta( array(
-					nest_get_meta_comments_link(),
-					nest_get_meta_edit_link(),
+					nest_get_meta_edit_link()
+				) );
+
+				nest_meta( array(
+					nest_get_meta_share()
 				) );
 			?>
-			<?php nest_scriptless_social_share(); ?>
 		</footer>
-
-    <?php
-      if ( comments_open() || '0' != get_comments_number() ) {
-      	comments_template();
-      } // endif
-    ?>
 
 	</div><?php // /.doc__content ?>
 

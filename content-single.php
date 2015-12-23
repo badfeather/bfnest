@@ -27,11 +27,13 @@
 				nest_meta( array(
 					nest_get_meta_categories(),
 					nest_get_meta_tags(),
-					nest_get_meta_comments_link(),
-					nest_get_meta_edit_link(),
+					nest_get_meta_edit_link()
+				) );
+
+				nest_meta( array(
+					nest_get_meta_share()
 				) );
 			?>
-			<?php nest_scriptless_social_share(); ?>
 		</footer>
 
     <?php

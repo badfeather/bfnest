@@ -278,13 +278,13 @@ function nest_page_subnav( $page_id = '', $title = '' ) {
 	if ( $children != '' ) {
 ?>
 <nav class="nav nav--secondary">
-	<h1 class="nav__title"><?php
+	<h2 class="nav__title"><?php
 		if ( $title ) {
 			echo $title;
 		} else {
 			echo $top_parent_name;
 	  }
-	?></h1>
+	?></h2>
 	<ul class="menu menu--secondary">
 		<?php echo $children; ?>
 	</ul>
@@ -312,7 +312,7 @@ function nest_category_subnav() {
 		if ( $top_parent_children != '<li>No categories</li>' ) {
 ?>
 <nav class="nav nav--secondary nav--categories">
-	<h1 class="nav__title"><?php echo $top_parent_name; ?></h1>
+	<h2 class="nav__title"><?php echo $top_parent_name; ?></h2>
 
 	<ul class="menu menu--secondary">
 		<?php echo $top_parent_children; ?>
@@ -343,12 +343,12 @@ function nest_taxonomy_subnav( $tax = '', $title = '' ) {
 		if ( $top_parent_children && ( $top_parent_children != '<li>No categories</li>' ) ) {
 ?>
 <nav class="nav nav--secondary nav--taxonomies">
-	<h1 class="nav__title"><?php
+	<h2 class="nav__title"><?php
 		if ( $title )
 			echo $title;
 		else
 			echo $top_parent_term_name;
-		?></h1>
+		?></h2>
 
 		<ul class="menu menu--secondary">
 			<?php echo $top_parent_children; ?>
@@ -457,291 +457,56 @@ function nest_latest_taxonomy_posts( $args ) {
 }
 
 /**
- * Scriptless social sharing links
- * Turn the defaults for various profiles on or off as needed using booleans
- * If 'new window' is set to true, link targets will be set to "_blank"
- * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
+ * META Functions
  */
-function nest_scriptless_social_share( $args = array() ) {
-
-	$defaults = array(
-		'delicious' => 0,
-		'digg' => 0,
-		'facebook' => 1,
-		'twitter' => 1,
-		'google_plus' => 0,
-		'instapaper' => 0,
-		'myspace' => 0,
-		'pinterest' => 1,
-		'linked_in' => 0,
-		'reddit' => 0,
-		'stumbleupon' => 0,
-		'tumblr' => 0,
-		'twitter_handle' => '',
-		'email' => 1,
-
-		'new_window' => true,
-		'share_title' => __( 'Share: ', 'nest' ),
-		'item_sep' => ' '
-	);
-	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_SKIP );
-
-	if ( $new_window ) {
-		$target = ' target="_blank"';
-	} else {
-		$target = '';
-	}
-
-	$post_url = get_permalink();
-
-	$post_title = get_the_title();
-	$encoded_title = urlencode( get_the_title() );
-
-	$share_array = array();
-
-	if ( $delicious ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--delicious" href="' . esc_url( 'http://delicious.com/save?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Delicious"' . $target . '>Delicious</a></span> ';
-	}
-
-	if ( $digg ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--digg" href="' . esc_url( 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Digg"' . $target . '>Digg</a></span> ';
-	}
-
-	if ( $facebook ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--facebook" href="' . esc_url( 'http://www.facebook.com/share.php?u=' . $post_url . '&t=' . $encoded_title ) . '" title="Facebook"' . $target . '>Facebook</a></span> ';
-	}
-
-	if ( $google_plus ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--google-plus" href="' . esc_url( 'https://plus.google.com/share?url=' . $post_url ) . '" title="Google+"' . $target . '>Google+</a></span> ';
-	}
-
-	if ( $instapaper ) {
-		 $share_array[] = '<span class="share__item"><a class="share__link share__link--instapaper" href="' . esc_url( 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Instapaper"' . $target . '>Instapaper</a></span> ';
-	}
-
-	if ( $linked_in ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--linked-in" href="' . esc_url( 'https://www.linkedin.com/cws/share?url=' . $post_url ) . '" title="LinkedIn"' . $target . '>LinkedIn</a></span> ';
-	}
-
-	if ( $myspace ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--myspace" href="' . esc_url( 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $encoded_title . '&c=' . $encoded_title ) . '" title="Myspace"' . $target . '>Myspace</a></span> ';
-	}
-
-	if ( $pinterest ) {
-
-		if ( has_post_thumbnail() ) {
-			$featured_image_id = get_post_thumbnail_id();
-			$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
-			$image_path = $featured_image[0];
-		} else {
-			$image_path = nest_get_first_image_url( $size = 'large' );
-		}
-
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--pinterest" href="' . esc_url( 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title ) . '" title="Pinterest"' . $target . '>Pinterest</a></span> ';
-	}
-
-	if ( $reddit ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--reddit" href="' . esc_url( 'http://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Reddit"' . $target . '>Reddit</a></span> ';
-	}
-
-	if ( $stumbleupon ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--stumbleupon" href="' . esc_url( 'http://www.stumbleupon.com/submit?url=' . $post_url ) . '" title="Stumbleupon"' . $target . '>Stumbleupon</a></span> ';
-	}
-
-	if ( $tumblr ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--tumblr" href="' . esc_url( 'http://www.tumblr.com/share/link?url=' . $post_url . '&name=' . $encoded_title ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a></span> ';
-	}
-
-	if ( $twitter ) {
-
-	  $twitter_via = '';
-	  if ( $twitter_handle ) {
-		  $twitter_via = '&via=' . $twitter_handle;
-	  }
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--twitter" href="' . esc_url( 'http://twitter.com/share?url=' . $post_url . '&text=' . $encoded_title . $twitter_via ) . '" title="Tweet"' . $target . '>Twitter</a></span> ';
-	}
-
-	if ( $email ) {
-		$share_array[] = '<span class="share__item"><a class="share__link share__link--email" href="mailto:?subject=' . $post_title . '&body=' . $post_url . '" title="Email"' . $target . '>Email</a></span> ';
-	}
-
-	if ( ! empty( $share_array ) ) {
-		echo '<div class="entry__meta share"><span class="meta__title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</div>' . "\n";
-  } // if !empty $share_links
-}
 
 /**
- * Follow navigation widget
+ * Meta terms
  */
-function nest_follow_links( $args = array() ) {
-	$defaults = array(
-		'facebook_url' => '',
-		'facebook_message' => __( 'On Facebook', 'nest' ),
-
-		'flickr_url' => '',
-		'flickr_message' => __( 'On Flickr', 'nest' ),
-
-		'googleplus_url' => '',
-		'googleplus_message' => __( 'On Google+', 'nest' ),
-
-		'instagram_url' => '',
-		'instagram_message' => __( 'On Instagram', 'nest' ),
-
-		'linkedin_url' => '',
-		'linkedin_message' => __( 'On LinkedIn', 'nest' ),
-
-		'myspace_url' => '',
-		'myspace_message' => __( 'On MySpace', 'nest' ),
-
-		'pinterest_url' => '',
-		'pinterest_message' => __( 'On Pinterest', 'nest' ),
-
-		'soundcloud_url' => '',
-		'soundcloud_message' => __( 'On Soundcloud', 'nest' ),
-
-		'tumblr_url' => '',
-		'tumblr_message' => __( 'On Tumblr', 'nest' ),
-
-		'twitter_url' => '',
-		'twitter_message' => __( 'On Twitter', 'nest' ),
-
-		'vimeo_url' => '',
-		'vimeo_message' => __( 'On Vimeo', 'nest' ),
-
-		'youtube_url' => '',
-		'youtube_message' => __( 'On YouTube', 'nest' ),
-
-		'mailing_list_url' => '',
-		'mailing_list_message' => __( 'Join Our Mailing List', 'nest' ),
-
-		//'rss_url' => get_bloginfo( 'rss2_url' ),
-		'rss_url' => '',
-		'rss_message' => __( 'Subscribe via RSS', 'nest' ),
-
-		//'follow_text' => __( 'Follow ', 'nest' ) . get_bloginfo( 'name' ),
-		'follow_text' => __( 'Follow Us', 'nest' ),
-		'new_window' => true
-	);
-	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_SKIP );
-	if ( $new_window ) {
-		$target = ' target="_blank"';
-	} else {
-		$target = '';
-	}
-?>
-<aside class="widget widget--follow">
-	<h1 class="widget__title"><?php echo $follow_text; ?></h1>
-	<div class="widget__content">
-		<ul class="follow">
-			<?php
-			if ( $facebook_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $facebook_url ) .'" class="follow__link follow__link--facebook"'. $target .'>' . $facebook_message . '</a></li>';
-			}
-
-			if ( $flickr_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $flickr_url ) .'" class="follow__link follow__link--flickr"'. $target .'>' . $flickr_message . '</a></li>';
-			}
-
-			if ( $googleplus_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $googleplus_url ) .'" class="follow__link follow__link--googleplus"'. $target .'>' . $googleplus_message . '</a></li>';
-			}
-
-			if ( $instagram_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $instagram_url ) .'" class="follow__link follow__link--instagram"'. $target .'>' . $instagram_message . '</a></li>';
-			}
-
-			if ( $linkedin_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $linkedin_url ) .'" class="follow__link follow__link--linkedin"'. $target .'>' . $linkedin_message . '</a></li>';
-			}
-
-			if ( $myspace_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $myspace_url ) .'" class="follow__link follow__link--myspace"'. $target .'>' . $myspace_message . '</a></li>';
-			}
-
-			if ( $pinterest_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $pinterest_url ) .'" class="follow__link follow__link--pinterest"'. $target .'>' . $pinterest_message . '</a></li>';
-			}
-
-			if ( $soundcloud_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $soundcloud_url ) .'" class="follow__link follow__link--soundcloud"'. $target .'>' . $soundcloud_message . '</a></li>';
-			}
-
-			if ( $tumblr_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $tumblr_url ) .'" class="follow__link follow__link--tumblr"'. $target .'>' . $tumblr_message . '</a></li>';
-			}
-
-			if ( $twitter_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $twitter_url ) .'" class="follow__link follow__link--twitter"'. $target .'>' . $twitter_message . '</a></li>';
-			}
-
-			if ( $vimeo_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $vimeo_url ) .'" class="follow__link follow__link--vimeo"'. $target .'>' . $vimeo_message . '</a></li>';
-			}
-
-			if ( $youtube_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $youtube_url ) .'" class="follow__link follow__link--youtube"'. $target .'>' . $youtube_message . '</a></li>';
-			}
-
-      if ( $mailing_list_url ) {
-        echo '<li class="follow__item"><a href="'. esc_url( $mailing_list_url ) .'" class="follow__link follow__link--mailing-list"'. $target .'>' . $mailing_list_message . '</a></li>';
-      }
-
-			if ( $rss_url ) {
-				echo '<li class="follow__item"><a href="'. esc_url( $rss_url ) .'" class="follow__link follow__link--rss"'. $target .'>' . $rss_message . '</a></li>';
-			}
-			?>
-		</ul>
-	</div><?php // /.widget__content ?>
-</aside>
-<?php
+function nest_get_meta_terms( $taxonomy = 'category', $before = 'Posted in: ' ) {
+	return get_the_term_list( get_the_ID(), $taxonomy, '<span class="meta meta--terms"><span class="meta__title">' . __( $before, 'nest' ) . '</span>', ', ', '</span>' );
 }
 
 /**
  * Meta categories
- * Checks for custom field value, falls back to first category if none is set
  */
-function nest_get_meta_categories() {
-	$post_id = get_the_ID();
-	return get_the_term_list( get_the_ID(), 'category', '<span class="meta meta--cats"><span class="meta__title">' . __( 'Posted in: ', 'nest' ) . '</span>', ', ', '</span>' );
+function nest_get_meta_categories( $before = 'Posted in: ' ) {
+	return nest_get_meta_terms( 'category', $before );
 }
 
 /**
  * Meta tags
- * Checks for custom field value, falls back to first category if none is set
  */
-function nest_get_meta_tags() {
-	$post_id = get_the_ID();
-	return get_the_term_list( get_the_ID(), 'post_tag', '<span class="meta meta--tags"><span class="meta__title">' . __( 'Tagged: ', 'nest' ) . '</span>', ', ', '</span>' );
+function nest_get_meta_tags( $before = 'Tagged: ' ) {
+	return nest_get_meta_terms( 'post_tag', $before );
 }
 
 /**
  * Meta comments link
  */
 function nest_get_meta_comments_link() {
-	$comment_content = '';
+	$content = '';
 
 	if ( comments_open() ) {
 	  $comments_count = get_comments_number();
 	  $comments_link = get_comments_link();
 
-		$comment_content .= '<span class="meta meta--comment"><a href="' . $comments_link . '">';
+		$content .= '<span class="meta meta--comment"><a href="' . $comments_link . '">';
 
 	  if ( $comments_count == 0 ) {
-	    $comment_content .= '<span class="meta--comment__text">' . __( 'Comment', 'nest' ) . '</span>';
+	    $content .= '<span class="meta--comment__text">' . __( 'Comment', 'nest' ) . '</span>';
 
 	  } else {
-	    $comment_content .= sprintf( _n(
+	    $content .= sprintf( _n(
 	    	'<span class="meta--comment__count">1</span> <span class="meta--comment__text">Comment</span>',
 	    	'<span class="meta--comment__count">%s</span> <span class="meta--comment__text">Comments</span>',
 	    $comments_count, 'nest' ), $comments_count );
 	  }
 
-	  $comment_content .= '</a></span>';
+	  $content .= '</a></span>';
 	}
 
-	return $comment_content;
+	return $content;
 }
 
 /**
@@ -779,15 +544,133 @@ function nest_get_meta_edit_link() {
 }
 
 /**
+ * Scriptless social sharing links
+ * Turn the defaults for various profiles on or off as needed using booleans
+ * If 'new window' is set to true, link targets will be set to "_blank"
+ * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
+ */
+function nest_get_meta_share( $args = array() ) {
+
+	$defaults = array(
+		'delicious' => 0,
+		'digg' => 0,
+		'facebook' => 1,
+		'twitter' => 1,
+		'google_plus' => 0,
+		'instapaper' => 0,
+		'myspace' => 0,
+		'pinterest' => 1,
+		'linked_in' => 0,
+		'reddit' => 0,
+		'stumbleupon' => 0,
+		'tumblr' => 0,
+		'twitter_handle' => '',
+		'email' => 1,
+
+		'new_window' => true,
+		'share_title' => __( 'Share: ', 'nest' ),
+		'item_sep' => ', '
+	);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args, EXTR_SKIP );
+
+	if ( $new_window ) {
+		$target = ' target="_blank"';
+	} else {
+		$target = '';
+	}
+
+	$post_url = get_permalink();
+
+	$post_title = get_the_title();
+	$encoded_title = urlencode( get_the_title() );
+
+	$share_array = array();
+
+	if ( $delicious ) {
+		$share_array[] = '<a class="share-link share-link--delicious" href="' . esc_url( 'http://delicious.com/save?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Delicious"' . $target . '>Delicious</a>';
+	}
+
+	if ( $digg ) {
+		$share_array[] = '<a class="share-link share-link--digg" href="' . esc_url( 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Digg"' . $target . '>Digg</a>';
+	}
+
+	if ( $facebook ) {
+		$share_array[] = '<a class="share-link share-link--facebook" href="' . esc_url( 'http://www.facebook.com/share.php?u=' . $post_url . '&t=' . $encoded_title ) . '" title="Facebook"' . $target . '>Facebook</a>';
+	}
+
+	if ( $google_plus ) {
+		$share_array[] = '<a class="share-link share-link--google-plus" href="' . esc_url( 'https://plus.google.com/share?url=' . $post_url ) . '" title="Google+"' . $target . '>Google+</a>';
+	}
+
+	if ( $instapaper ) {
+		 $share_array[] = '<a class="share-link share-link--instapaper" href="' . esc_url( 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Instapaper"' . $target . '>Instapaper</a>';
+	}
+
+	if ( $linked_in ) {
+		$share_array[] = '<a class="share-link share-link--linked-in" href="' . esc_url( 'https://www.linkedin.com/cws/share?url=' . $post_url ) . '" title="LinkedIn"' . $target . '>LinkedIn</a>';
+	}
+
+	if ( $myspace ) {
+		$share_array[] = '<a class="share-link share-link--myspace" href="' . esc_url( 'http://www.myspace.com/index.cfm?fuseaction=postto&u=' . $post_url . '&t=' . $encoded_title . '&c=' . $encoded_title ) . '" title="Myspace"' . $target . '>Myspace</a>';
+	}
+
+	if ( $pinterest ) {
+
+		if ( has_post_thumbnail() ) {
+			$featured_image_id = get_post_thumbnail_id();
+			$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
+			$image_path = $featured_image[0];
+		} else {
+			$image_path = nest_get_first_image_url( $size = 'large' );
+		}
+
+		$share_array[] = '<a class="share-link share-link--pinterest" href="' . esc_url( 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title ) . '" title="Pinterest"' . $target . '>Pinterest</a>';
+	}
+
+	if ( $reddit ) {
+		$share_array[] = '<a class="share-link share-link--reddit" href="' . esc_url( 'http://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Reddit"' . $target . '>Reddit</a>';
+	}
+
+	if ( $stumbleupon ) {
+		$share_array[] = '<a class="share-link share-link--stumbleupon" href="' . esc_url( 'http://www.stumbleupon.com/submit?url=' . $post_url ) . '" title="Stumbleupon"' . $target . '>Stumbleupon</a>';
+	}
+
+	if ( $tumblr ) {
+		$share_array[] = '<a class="share-link share-link--tumblr" href="' . esc_url( 'http://www.tumblr.com/share/link?url=' . $post_url . '&name=' . $encoded_title ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a>';
+	}
+
+	if ( $twitter ) {
+
+	  $twitter_via = '';
+	  if ( $twitter_handle ) {
+		  $twitter_via = '&via=' . $twitter_handle;
+	  }
+		$share_array[] = '<a class="share-link share-link--twitter" href="' . esc_url( 'http://twitter.com/share?url=' . $post_url . '&text=' . $encoded_title . $twitter_via ) . '" title="Tweet"' . $target . '>Twitter</a>';
+	}
+
+	if ( $email ) {
+		$share_array[] = '<a class="share-link share-link--email" href="mailto:?subject=' . $post_title . '&body=' . $post_url . '" title="Email"' . $target . '>Email</a>';
+	}
+
+	if ( ! empty( $share_array ) ) {
+		return '<span class="meta meta--share"><span class="meta__title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</span>';
+  } // if ! empty $share_links
+
+  return false;
+}
+
+/**
  * Meta
  * $metas array takes the following functions:
- * nest_get_meta_terms() - use for custom taxonomies
+ * nest_get_meta_terms() - use for custom taxonomies - use taxonomy name as argument, ie. nest_get_meta_terms( 'taxonomy_name' )
  * nest_get_meta_categories()
  * nest_get_meta_tags()
  * nest_get_meta_comments_link()
  * nest_get_meta_author()
  * nest_get_meta_pubdate()
  * nest_get_meta_edit_link()
+ * nest_get_meta_share()
  */
 function nest_meta( $metas = array(), $meta_sep = ' | ' ) {
 	$meta_array = array();

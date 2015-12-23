@@ -66,17 +66,6 @@ module.exports = function(grunt) {
 			  }]
 	    }
   	},
-    modernizr: {
-      build: {
-        devFile: 'assets/vendor/modernizr/modernizr.js',
-        outputFile: 'js/modernizr.min.js',
-        files: {
-          'src': ['js/scripts.js', 'style.css']
-        },
-        uglify: true,
-        parseFiles: true
-      }
-    },
     makepot: {
       target: {
         options: {
@@ -152,7 +141,6 @@ module.exports = function(grunt) {
     'autoprefixer',
     'imagemin',
     'makepot',
-    'modernizr'
   ]);
 
 };
