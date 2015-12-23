@@ -96,6 +96,23 @@ function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
 add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
 /**
+ * Remove recent comments style block from head
+ */
+function nest_remove_recent_comments_style() {
+	add_filter( 'show_recent_comments_widget_style', '__return_false' );
+}
+add_action( 'widgets_init', 'nest_remove_recent_comments_style' );
+
+/**
+ * remove Emoji css and js calls from head
+ */
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+/**
  * Disable default widgets
  */
 function nest_unregister_default_wp_widgets() {
