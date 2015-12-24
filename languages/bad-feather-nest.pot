@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 3.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2015-12-24 00:29:38+00:00\n"
+"POT-Creation-Date: 2015-12-24 00:48:18+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -177,6 +177,10 @@ msgstr ""
 
 #: inc/setup.php:9
 msgid "Primary Navigation"
+msgstr ""
+
+#: inc/setup.php:10
+msgid "Follow Navigation"
 msgstr ""
 
 #: inc/template-tags.php:28

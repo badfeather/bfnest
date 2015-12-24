@@ -17,13 +17,16 @@ function nest_scripts() {
 }
 
 /**
- * Header scripts - any external scripts that should be loaded in the <head> via wp_head(), ie. analytics, typekit, polyfills, etc.
+ * Header scripts - any external scripts that should be loaded in the <head> via wp_head(), ie. analytics, typekit, favicons, polyfills, etc.
  */
 add_action( 'wp_head', 'nest_header_scripts' );
 
 // paste <script> tags within function
-function nest_header_scripts() { ?>
-
+function nest_header_scripts() {
+	$template_directory = get_template_directory_uri();
+?>
+<link rel="shortcut icon" href="<?php echo esc_url( $template_directory . '/img/favicon.ico' ); ?>">
+<link rel="apple-touch-icon" href="<?php echo esc_url( $template_directory . '/img/apple-touch-icon.png' ); ?>" />
 <?php }
 
 /**

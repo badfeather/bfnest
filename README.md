@@ -16,6 +16,8 @@ This theme uses Grunt to process, lint and minify SASS, Javascript and image fil
   * Find inf files `Text Domain: nest` and replace with `Text Domain: yourtextdomain`
   * Change the repository, theme location and version information as needed in `package.json` and `bower.json` and `assets/scss/style.scss`
   * Change the theme name and credit info in the `assets/scss/style.scss` or `style.css` file, depending on whether you're using SASS.
+  * Replace existing `img/favicon.ico` file with your own
+  * Replace existing `assets/img/apple-touch-icon.png` file with your own. The current one is saved at 180px x 180px. These get optimized and added to the `img` directory when you run `grunt build`. 
 * Run `npm install` to install all the default grunt and bower dependencies
 
 ### Customizing
