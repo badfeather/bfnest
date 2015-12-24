@@ -13,6 +13,9 @@ require get_template_directory() . ( '/inc/scripts.php' );
 // widgets
 require get_template_directory() . ( '/inc/widgets.php' );
 
+// media
+require get_template_directory() . ( '/inc/media.php' );
+
 // template tags
 require get_template_directory() . ( '/inc/template-tags.php' );
 

@@ -74,28 +74,6 @@ function nest_default_options() {
 add_action( 'after_switch_theme', 'nest_default_options' );
 
 /**
- * Show custom image sizes in editor when inserting images
- * http://pippinsplugins.com/add-custom-image-sizes-to-media-uploader/
- */
-function nest_show_custom_image_sizes( $sizes ) {
-	$sizes['custom size name'] = __( 'Custom Size', 'nest' ); // add more like these as needed
-  return $sizes;
-}
-// add_filter( 'image_size_names_choose', 'bf_show_custom_image_sizes' );
-
-/**
- * Set gallery shortcode default options
- */
-function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
-    $atts = shortcode_atts( array(
-    	'link' => 'file'
-    ), $atts );
-    $out['link'] = $atts['link'];
-    return $out;
-}
-add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
-
-/**
  * Remove recent comments style block from head
  */
 function nest_remove_recent_comments_style() {
@@ -111,22 +89,3 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
-
-/**
- * Disable default widgets
- */
-function nest_unregister_default_wp_widgets() {
-	unregister_widget( 'WP_Widget_Pages' );
-	unregister_widget( 'WP_Widget_Calendar' );
-	unregister_widget( 'WP_Widget_Archives' );
-	unregister_widget( 'WP_Widget_Links' );
-	unregister_widget( 'WP_Widget_Meta' );
-	unregister_widget( 'WP_Widget_Search' );
-	unregister_widget( 'WP_Widget_Text' );
-	unregister_widget( 'WP_Widget_Categories' );
-	unregister_widget( 'WP_Widget_Recent_Posts' );
-	unregister_widget( 'WP_Widget_Recent_Comments' );
-	unregister_widget( 'WP_Widget_RSS' );
-	unregister_widget( 'WP_Widget_Tag_Cloud' );
-}
-add_action( 'widgets_init', 'nest_unregister_default_wp_widgets', 1 );
