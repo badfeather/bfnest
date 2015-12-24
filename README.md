@@ -29,9 +29,6 @@ This theme uses Grunt to process, lint and minify SASS, Javascript and image fil
 * Most of the SCSS variables that have anything to do with sizes should be set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `$h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 
-#### LESS
-* **Warning** I am no longer maintaining/including LESS
-
 #### Grunt/Bower
 * The following grunt packages are installed by default:
   * `grunt-autoprefixer`
@@ -41,14 +38,11 @@ This theme uses Grunt to process, lint and minify SASS, Javascript and image fil
   * `grunt-contrib-sass`
   * `grunt-contrib-uglify`
   * `grunt-contrib-watch`
-  * `grunt-modernizr`
   * `grunt-version`
   * `grunt-wp-i18n`
   * `load-grunt-tasks`
   * `time-grunt`
-* The following bower packages are installed by default:
-  * `modernizr`
-  * `respond`
+
 * To watch your files while editing, run `grunt watch` in terminal
 * To build your project for deployment, run `grunt build`
 * To install new grunt packages, run `npm install [package-name] --save-dev`. This will add it to the `package.json` file and add the files to `/node_modules`.
