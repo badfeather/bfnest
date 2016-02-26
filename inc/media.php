@@ -1,13 +1,45 @@
 <?php
 /**
- * Show custom image sizes in editor when inserting images
- * http://pippinsplugins.com/add-custom-image-sizes-to-media-uploader/
+ * Add theme support for post thumbnails and add custom image sizes
+ */
+function nest_media_setup() {
+
+	add_theme_support( 'post-thumbnails' );
+
+	// Set image size 'post-thumbnail'.
+	//set_post_thumbnail_size( 372, 248, true );
+	set_post_thumbnail_size( 330, 9999, false );
+}
+
+add_action( 'after_setup_theme', 'nest_media_setup' );
+
+/**
+ * Set default image sizes on theme switch
+ */
+function nest_enforce_image_size_options() {
+	update_option( 'thumbnail_size_w', 330 );
+	update_option( 'thumbnail_size_h', 9999 );
+	update_option( 'thumbnail_crop', false );
+	update_option( 'medium_size_w', 330 );
+	update_option( 'medium_size_h', 9999 );
+	update_option( 'medium_large_w', 690 );
+	update_option( 'large_size_w', 1050 );
+	update_option( 'large_size_h', 9999 );
+}
+
+add_action( 'after_switch_theme', 'nest_enforce_image_size_options' );
+
+/**
+ * Show custom image sizes in media uploader
  */
 function nest_show_custom_image_sizes( $sizes ) {
-	$sizes['custom size name'] = __( 'Custom Size', 'nest' ); // add more like these as needed
-  return $sizes;
+	$custom_sizes = array(
+		'medium_large' => __( 'Medium Large', 'nest' ),
+	);
+	return array_merge( $sizes, $custom_sizes );
 }
-// add_filter( 'image_size_names_choose', 'bf_show_custom_image_sizes' );
+
+add_filter( 'image_size_names_choose', 'nest_show_custom_image_sizes' );
 
 /**
  * Set gallery shortcode default options
@@ -19,6 +51,7 @@ function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
     $out['link'] = $atts['link'];
     return $out;
 }
+
 add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
 /**
@@ -61,7 +94,24 @@ function nest_insert_images_with_figure( $html, $id, $caption, $title, $align, $
 
   return $html;
 }
-//add_filter( 'image_send_to_editor', 'nest_insert_images_with_figure', 10, 8 );
 
-// Disable caption shortcode
-//add_filter( 'disable_captions', create_function( '$a', 'return true;' ) );
+add_filter( 'image_send_to_editor', 'nest_insert_images_with_figure', 10, 8 );
+
+/**
+ * Disable caption shortcode
+ */
+add_filter( 'disable_captions', create_function( '$a', 'return true;' ) );
+
+/**
+ * Increase the max srcset limit - default is 1600
+ */
+function nest_max_srcset_image_width( $max_width, $size_array ) {
+  $width = $size_array[0];
+
+  if ( $width > 768 ) {
+    $max_width = 2100;
+  }
+
+  return $max_width;
+}
+add_filter( 'max_srcset_image_width', 'nest_max_srcset_image_width', 10, 2 );

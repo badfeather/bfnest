@@ -156,12 +156,10 @@
 // HEADINGS
 // -------------------------
 @mixin heading() {
-	font-size: emcalc($headings__font-size);
   font-family: $headings__font-family;
   line-height: $headings__line-height;
   font-weight: $headings__font-weight;
   color: $headings__color;
-	@include margin-emcalc($headings__margin-top, 0, $headings__margin-bottom, 0, $headings__font-size);
 
 	a {
 		color: $headings__link-color;
@@ -176,7 +174,7 @@
 }
 
 @mixin heading-transform(
-  $font-size: $headings__font-size,
+  $font-size: $base__font-size,
   $line-height: $headings__line-height,
   $font-family: $headings__font-family,
   $color: $headings__color,
@@ -185,10 +183,10 @@
   $text-transform: $headings__text-transform,
   $margin-top: $headings__margin-top,
   $margin-bottom: $headings__margin-bottom,
-  $font-size--lg: $headings__font-size--lg,
+  $font-size--lg: $base__font-size,
   $breakpoint: $base__breakpoint
 ) {
-  @include font-size-emcalc($font-size, $headings__font-size);
+  font-size: $font-size;
   @include line-height($line-height, $headings__line-height);
   @include font-family($font-family, $headings__font-family);
   @include color($color, $headings__color);

@@ -650,7 +650,7 @@ function nest_get_meta_share( $args = array() ) {
 	}
 
 	if ( $email ) {
-		$share_array[] = '<a class="share-link share-link--email" href="mailto:?subject=' . $post_title . '&body=' . $post_url . '" title="Email"' . $target . '>Email</a>';
+		$share_array[] = '<a class="share-link share-link--email" href="' . esc_url( 'mailto:?subject=' . $encoded_title . '&body=' . $post_url ) . '" title="Email"' . $target . '>Email</a>';
 	}
 
 	if ( ! empty( $share_array ) ) {

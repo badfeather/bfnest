@@ -45,14 +45,13 @@ $link__text-decoration--hover: none;
 
 // HEADINGS
 // ---------------------------
-$headings__font-size: $base__font-size;
 $headings__line-height: $base__line-height--sm;
-$headings__font-family: $font-family--sans-serif;
-$headings__font-weight: $font-weight--bold;
+$headings__font-family: $base__font-family;
+$headings__font-weight: $base__font-weight--bold;
 $headings__font-style: normal;
 $headings__color: $base__color;
 $headings__margin-top: 0;
-$headings__margin-bottom: $base__margin;
+$headings__margin-bottom: $base__margin--half;
 $headings__small-color: inherit;
 $headings__link-color: $link__color;
 $headings__link-color--hover: $link__color--hover;
@@ -66,8 +65,8 @@ $h1__color: $headings__color;
 $h1__font-style: $headings__font-style;
 $h1__font-weight: $headings__font-weight;
 $h1__text-transform: none;
-$h1__margin-top: 0;
-$h1__margin-bottom: $base__margin;
+$h1__margin-top: $headings__margin-top;
+$h1__margin-bottom: $headings__margin-bottom;
 $h1__font-size--lg: $h1__font-size;
 
 $h2__font-size: 28;
@@ -77,8 +76,8 @@ $h2__color: $headings__color;
 $h2__font-style: $headings__font-style;
 $h2__font-weight: $headings__font-weight;
 $h2__text-transform: none;
-$h2__margin-top: 0;
-$h2__margin-bottom: $base__margin;
+$h2__margin-top: $headings__margin-top;
+$h2__margin-bottom: $headings__margin-bottom;
 $h2__font-size--lg: $h2__font-size;
 
 $h3__font-size: 24;
@@ -88,8 +87,8 @@ $h3__color: $headings__color;
 $h3__font-style: $headings__font-style;
 $h3__font-weight: $headings__font-weight;
 $h3__text-transform: none;
-$h3__margin-top: 0;
-$h3__margin-bottom: $base__margin;
+$h3__margin-top: $headings__margin-top;
+$h3__margin-bottom: $headings__margin-bottom;
 $h3__font-size--lg: $h3__font-size;
 
 $h4__font-size: 20;
@@ -99,8 +98,8 @@ $h4__color: $headings__color;
 $h4__font-style: $headings__font-style;
 $h4__font-weight: $headings__font-weight;
 $h4__text-transform: none;
-$h4__margin-top: 0;
-$h4__margin-bottom: $base__margin;
+$h4__margin-top: $headings__margin-top;
+$h4__margin-bottom: $headings__margin-bottom;
 $h4__font-size--lg: $h4__font-size;
 
 $h5__font-size: 16;
@@ -110,8 +109,8 @@ $h5__color: $headings__color;
 $h5__font-style: $headings__font-style;
 $h5__font-weight: $headings__font-weight;
 $h5__text-transform: none;
-$h5__margin-top: 0;
-$h5__margin-bottom: $base__margin;
+$h5__margin-top: $headings__margin-top;
+$h5__margin-bottom: $headings__margin-bottom;
 $h5__font-size--lg: $h5__font-size;
 
 $h6__font-size: 14;
@@ -121,8 +120,8 @@ $h6__color: $headings__color;
 $h6__font-style: $headings__font-style;
 $h6__font-weight: $headings__font-weight;
 $h6__text-transform: none;
-$h6__margin-top: 0;
-$h6__margin-bottom: $base__margin;
+$h6__margin-top: $headings__margin-top;
+$h6__margin-bottom: $headings__margin-bottom;
 $h6__font-size--lg: $h6__font-size;
 
 $entry__title__font-size: 24;
@@ -132,8 +131,8 @@ $entry__title__color: $headings__color;
 $entry__title__font-style: $headings__font-style;
 $entry__title__font-weight: $headings__font-weight;
 $entry__title__text-transform: none;
-$entry__title__margin-top: 0;
-$entry__title__margin-bottom: $base__margin--half;
+$entry__title__margin-top: $headings__margin-top;
+$entry__title__margin-bottom: $headings__margin-bottom;
 $entry__title__font-size--lg: $entry__title__font-size;
 
 $doc__title__font-size: 38;
@@ -143,8 +142,8 @@ $doc__title__color: $headings__color;
 $doc__title__font-style: $headings__font-style;
 $doc__title__font-weight: $headings__font-weight;
 $doc__title__text-transform: none;
-$doc__title__margin-top: 0;
-$doc__title__margin-bottom: $base__margin;
+$doc__title__margin-top: $headings__margin-top;
+$doc__title__margin-bottom: $headings__margin-bottom;
 $doc__title__font-size--lg: $doc__title__font-size;
 
 $widget__title__font-size: 22;
@@ -154,8 +153,8 @@ $widget__title__color: $headings__color;
 $widget__title__font-style: $headings__font-style;
 $widget__title__font-weight: $headings__font-weight;
 $widget__title__text-transform: none;
-$widget__title__margin-top: 0;
-$widget__title__margin-bottom: $base__margin--half;
+$widget__title__margin-top: $headings__margin-top;
+$widget__title__margin-bottom: $headings__margin-bottom;
 $widget__title__font-size--lg: $widget__title__font-size;
 
 $section__title__font-size: 22;
@@ -165,15 +164,15 @@ $section__title__color: $headings__color;
 $section__title__font-style: $headings__font-style;
 $section__title__font-weight: $headings__font-weight;
 $section__title__text-transform: none;
-$section__title__margin-top: 0;
-$section__title__margin-bottom: $base__margin--half;
+$section__title__margin-top: $headings__margin-top;
+$section__title__margin-bottom: $headings__margin-bottom;
 $section__title__font-size--lg: $section__title__font-size;
 
 // META
 // ---------------------------
 $meta__font-size: $base__font-size--sm;
 $meta__line-height: $base__line-height--xs;
-$meta__font-family: $font-family--sans-serif;
+$meta__font-family: $base__font-family;
 $meta__font-style: normal;
 $meta__font-weight: $base__font-weight;
 $meta__color: $gray--light;
@@ -184,7 +183,7 @@ $meta__margin-bottom: $base__margin--quarter;
 // ---------------------------
 $nav__font-size: $base__font-size;
 $nav__line-height: $base__line-height;
-$nav__font-family: $font-family--sans-serif;
+$nav__font-family: $base__font-family;
 $nav__font-weight: $base__font-weight;
 $nav__link-color: $link__color;
 $nav__link-color--hover: $link__color--hover;
@@ -192,7 +191,7 @@ $nav__link-color--active: $link__color--active;
 $nav__text-transform: none;
 
 // Subnavs
-$subnav__font-family: $font-family--sans-serif;
+$subnav__font-family: $base__font-family;
 $subnav__font-weight: $base__font-weight;
 $subnav__link-color: $link__color;
 $subnav__link-color--hover: $link__color--hover;
@@ -222,7 +221,7 @@ $table__border-style: solid;
 $table__margin-top: 0;
 $table__margin-bottom: $base__margin;
 
-$th__font-weight: $font-weight--bold;
+$th__font-weight: $base__font-weight--bold;
 $th__text-align: $table__text-align;
 
 $td__text-align: $table__text-align;

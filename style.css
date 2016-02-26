@@ -360,7 +360,7 @@ html {
 .site {
   padding-left: 0.9375em;
   padding-right: 0.9375em;
-  max-width: 69.375em;
+  max-width: 67.5em;
   margin-left: auto;
   margin-right: auto;
   padding-top: 1.5em;
@@ -569,12 +569,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 1em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.25;
   font-weight: 700;
   color: #606060;
-  margin: 0 0 1.5em;
 }
 h1 a,
 h2 a,
@@ -599,51 +597,52 @@ h6 a:focus {
 }
 
 h1 {
-  font-size: 2em;
-  margin: 0 0 0.75em;
+  font-size: 32;
+  margin: 0 0 0.375em;
 }
 
 h2 {
-  font-size: 1.75em;
-  margin: 0 0 0.85714em;
+  font-size: 28;
+  margin: 0 0 0.42857em;
 }
 
 h3 {
-  font-size: 1.5em;
-  margin: 0 0 1em;
+  font-size: 24;
+  margin: 0 0 0.5em;
 }
 
 h4 {
-  font-size: 1.25em;
-  margin: 0 0 1.2em;
+  font-size: 20;
+  margin: 0 0 0.6em;
 }
 
 h5 {
-  margin: 0 0 1.5em;
+  font-size: 16;
+  margin: 0 0 0.75em;
 }
 
 h6 {
-  font-size: 0.875em;
-  margin: 0 0 1.71429em;
+  font-size: 14;
+  margin: 0 0 0.85714em;
 }
 
 .entry__title {
-  font-size: 1.5em;
+  font-size: 24;
   margin: 0 0 0.5em;
 }
 
 .doc__title {
-  font-size: 2.375em;
-  margin: 0 0 0.63158em;
+  font-size: 38;
+  margin: 0 0 0.31579em;
 }
 
 .widget__title {
-  font-size: 1.375em;
+  font-size: 22;
   margin: 0 0 0.54545em;
 }
 
 .section__title {
-  font-size: 1.375em;
+  font-size: 22;
   margin: 0 0 0.54545em;
 }
 
@@ -786,8 +785,8 @@ select {
 }
 
 legend {
-  font-size: 1.5em;
-  margin: 0 0 1em;
+  font-size: 24;
+  margin: 0 0 0.5em;
 }
 
 input[type="checkbox"] {
@@ -1022,8 +1021,8 @@ img.alignleft, img.alignright, img.aligncenter,
 }
 
 .site__description {
-  font-size: 1.5em;
-  margin: 0 0 1em;
+  font-size: 24;
+  margin: 0 0 0.5em;
 }
 
 .doc__main {

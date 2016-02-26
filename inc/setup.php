@@ -19,19 +19,18 @@ function nest_setup() {
 
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
-	//add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	// add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
   add_theme_support('post-thumbnails');
 
-  // set default image sizes
-
-	// add_image_size( 'custom-size-name', 300, 9999 ); //  arguments are( 'size-name', width (int), height (int), true/false - hard crop or not, defaults to true )
+	// Custom image sizes. Use the following format:
+	// add_image_size( 'size-name', width [int], height [int], true/false [hard crop or not - defaults to false]);
 
 	// Add post formats (http://codex.wordpress.org/Post_Formats)
 	// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 	// Tell the TinyMCE editor to use a custom stylesheet
-	//add_editor_style( '/assets/css/editor-style.css' );
+	// add_editor_style( '/assets/css/editor-style.css' );
 
 }
 
