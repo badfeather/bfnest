@@ -10,8 +10,8 @@ function nest_widgets_init() {
 		'id'            => 'global',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h1 class="widget__title">',
-		'after_title'   => '</h1>' . "\n",
+		'before_title'  => '<h2 class="widget__title">',
+		'after_title'   => '</h2>' . "\n",
 	) );
 
 	register_sidebar( array(
@@ -19,8 +19,8 @@ function nest_widgets_init() {
 		'id'            => 'page',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h1 class="widget__title">',
-		'after_title'   => '</h1>' . "\n",
+		'before_title'  => '<h2 class="widget__title">',
+		'after_title'   => '</h2>' . "\n",
 	) );
 
 	register_sidebar( array(
@@ -28,8 +28,8 @@ function nest_widgets_init() {
 		'id'            => 'single',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h1 class="widget__title">',
-		'after_title'   => '</h1>' . "\n",
+		'before_title'  => '<h2 class="widget__title">',
+		'after_title'   => '</h2>' . "\n",
 	) );
 
 	register_sidebar( array(
@@ -37,8 +37,8 @@ function nest_widgets_init() {
 		'id'            => 'archive',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h1 class="widget__title">',
-		'after_title'   => '</h1>' . "\n",
+		'before_title'  => '<h2 class="widget__title">',
+		'after_title'   => '</h2>' . "\n",
 	) );
 
 }
