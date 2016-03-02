@@ -823,7 +823,7 @@ img {
 }
 
 figure {
-  margin: 0 0 0.75em;
+  margin: 0 0 1.5em;
 }
 
 .wp-caption {
@@ -1038,7 +1038,7 @@ img.alignleft, img.alignright, img.aligncenter,
 }
 
 .entry__figure {
-  margin-bottom: 0.75em;
+  margin-bottom: 1.5em;
 }
 
 .sticky {
