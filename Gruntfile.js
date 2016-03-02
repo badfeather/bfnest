@@ -73,13 +73,6 @@ module.exports = function(grunt) {
         files: {
           'src': ['js/ss.min.js', 'style.css']
         },
-        options : [
-					"setClasses",
-					"addTest",
-					"html5printshiv",
-					"testProp",
-					"fnBind"
-				],
         uglify: true,
         parseFiles: true
       }
