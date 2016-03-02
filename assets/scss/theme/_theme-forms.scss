@@ -6,42 +6,42 @@
 	@include button;
 }
 
-.button--lg {
-	@include button--lg;
-}
-
-.button--sm {
-	@include button--sm;
-}
-
-.button--xs {
-	@include button--xs;
-}
+//.button--lg {
+//	@include button--lg;
+//}
+//
+//.button--sm {
+//	@include button--sm;
+//}
+//
+//.button--xs {
+//	@include button--xs;
+//}
 
 // Alternate button states
-.button--disabled {
-  @include button--disabled;
-}
-
-.button--primary {
-  @include button--primary;
-}
-
-.button--success {
-  @include button--success;
-}
-
-.button--info {
-  @include button--info;
-}
-
-.button--warning {
-  @include button--warning;
-}
-
-.button--danger {
-  @include button--danger;
-}
+//.button--disabled {
+//  @include button--disabled;
+//}
+//
+//.button--primary {
+//  @include button--primary;
+//}
+//
+//.button--success {
+//  @include button--success;
+//}
+//
+//.button--info {
+//  @include button--info;
+//}
+//
+//.button--warning {
+//  @include button--warning;
+//}
+//
+//.button--danger {
+//  @include button--danger;
+//}
 
 // FORM CONTROLS
 // ---------------------------
@@ -101,18 +101,18 @@ input[type="checkbox"] {
 }
 
 // alternate form control states
-.form-control--disabled {
-  @include form-control--disabled;
-}
-
-.form-control--success {
-  @include form-control--success;
-}
-
-.form-control--warning {
-  @include form-control--warning;
-}
-
-.form-control--danger {
-  @include form-control--danger;
-}
+//.form-control--disabled {
+//  @include form-control--disabled;
+//}
+//
+//.form-control--success {
+//  @include form-control--success;
+//}
+//
+//.form-control--warning {
+//  @include form-control--warning;
+//}
+//
+//.form-control--danger {
+//  @include form-control--danger;
+//}
