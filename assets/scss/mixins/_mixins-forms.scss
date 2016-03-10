@@ -13,7 +13,7 @@
 	margin-bottom: 0;
 	background-color: $button__background-color;
 	@include border($button__border-width, solid, $button__border-color);
-	border-radius: ($form__border-radius / $button__font-size * 1em);
+	border-radius: emcalc($button__border-radius, $button__font-size);
 	white-space: nowrap;
 	cursor: pointer;
 	@include text-transform($button__text-transform);
@@ -112,11 +112,11 @@
 	line-height: $form__line-height;
 	color: $input__placeholder-color;
 	@include border($input__border-width, solid, $input__border-color);
-	border-radius: ($input__border-radius / $input__font-size * 1em);
+	border-radius: emcalc($input__border-radius, $input__font-size);
 	outline: none;
 	@include padding-emcalc($padding-top: $form__padding-vertical, $padding-right: $form__padding-horizontal, $font-size: $input__font-size);
 	display: inline-block;
-	width: ($input__width / $input__font-size * 1em);
+	width: emcalc($input__width, $input__font-size);
 	vertical-align: middle;
 	margin-bottom: 0;
 	max-width: 100%;
@@ -183,3 +183,16 @@
 	&:-ms-input-placeholder			 { color: $color; } // Internet Explorer 10+
 	&::-webkit-input-placeholder	{ color: $color; } // Safari and Chrome
 }
+
+@mixin label {
+	display: $label__display;
+  @include font-family($label__font-family);
+	@include font-size-emcalc($label__font-size);
+	@include line-height($label__line-height);
+	@include font-style($label__font-style);
+	@include font-weight($label__font-weight);
+	@include text-transform($label__text-transform);
+	@include color($label__color);
+	@include margin-emcalc($label__margin-top, $label__margin-right, $label__margin-bottom, $label__margin-left, $label__font-size);
+}
+

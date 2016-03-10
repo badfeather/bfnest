@@ -44,4 +44,4 @@
 
 	</header><?php // /.site__header.masthead ?>
 
-	<section class="doc site__main">
+	<div class="doc site__main">

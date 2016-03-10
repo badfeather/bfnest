@@ -1,11 +1,13 @@
 // BASE TYPE STYLES
 // ---------------------------
-$font-family--sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family--serif: Cambria, Georgia, serif;
-$font-family--monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
+$font-family--helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family--georgia: Georgia, "Times New Roman", Times, serif;
+$font-family--menlo: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
 
-// see https://medium.com/@mwichary/system-shock-6b1dc6d6596f
-$font-family--system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+$font-family--sans-serif:  $font-family--helvetica;
+$font-family--serif: $font-family--georgia;
+$font-family--monospace: $font-family--menlo;
 
 $font-weight--light: 300;
 $font-weight--normal: 400;
@@ -13,7 +15,8 @@ $font-weight--medium: 500;
 $font-weight--semibold: 600;
 $font-weight--bold: 700;
 $font-weight--black: 900;
-// Base
+
+// BASE
 $base__font-family: $font-family--sans-serif;
 $base__font-size: 16;
 $base__font-size--lg: 20;
@@ -177,7 +180,7 @@ $meta__font-style: normal;
 $meta__font-weight: $base__font-weight;
 $meta__color: $gray--light;
 $meta__margin-top: 0;
-$meta__margin-bottom: $base__margin--quarter;
+$meta__margin-bottom: $base__margin;
 
 // NAVS
 // ---------------------------
@@ -231,6 +234,35 @@ $td__border-bottom-width: 1;
 $td__border-left-width: 1;
 $td__padding-vertical: $base__font-size / 2;
 $td__padding-horizontal: $base__font-size / 2;
+
+// PREFORMATTED - used for code, pre, and kbd elements
+// ---------------------------
+$preformatted__font-family: $font-family--monospace;
+$preformatted__font-size: $base__font-size--sm;
+$preformatted__padding-vertical: ( $base__margin - $preformatted__font-size ) / 2;
+$preformatted__padding-horizontal: $base__margin - $preformatted__font-size;
+$preformatted__color: $base__color--dark;
+$preformatted__background-color: $base__background-color--alt;
+$preformatted__border-radius: 3;
+
+$code__color: $preformatted__color;
+$code__background-color: $preformatted__background-color;
+
+$kbd__color: $base__background-color;
+$kbd__background-color: $base__color;
+
+$pre__font-family: $preformatted__font-family;
+$pre__color: $preformatted__color;
+$pre__background-color: $preformatted__background-color;
+$pre__padding-vertical: $base__font-size;
+$pre__padding-horizontal: $base__font-size;
+$pre__margin-top: 0;
+$pre__margin-bottom: $base__margin;
+
+// HIGHLIGHT - used for mark and ins elements
+// ---------------------------
+$highlight__color: $base__color;
+$highlight__background-color: $yellow;
 
 // BLOCKQUOTES
 // ---------------------------

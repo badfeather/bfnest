@@ -13,9 +13,8 @@ function nest_scripts() {
 
 	wp_enqueue_script( 'nest-modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array(), null, false );
 
-	// use grunt to prepend any required plugins, which hopefully are available via bower
+	// Scripts file. Use gruntfile.php to prepend any required plugins, which hopefully are included via bower. Comment/uncomment for prod/dev versions.
 	//wp_enqueue_script( 'nest-scripts-dev', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), null, true );
-
 	wp_enqueue_script( 'nest-scripts', get_template_directory_uri() . '/js/scripts.min.js', array( 'jquery' ), null, true );
 }
 

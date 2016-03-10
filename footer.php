@@ -1,4 +1,4 @@
-	</section><?php // /.doc.site__main ?>
+	</div><?php // /.doc.site__main ?>
 
 	<footer class="site__footer content-info">
 

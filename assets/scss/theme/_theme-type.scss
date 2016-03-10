@@ -37,9 +37,9 @@ acronym {
 
 mark,
 ins {
-	background: $yellow;
+	background: $highlight__background-color;
 	text-decoration: none;
-	color: #000;
+	color: $highlight__color;
 }
 
 ul {
@@ -142,11 +142,6 @@ blockquote {
   @include blockquote;
 }
 
-// Ledes
-.lede {
-  @include lede;
-}
-
 // Quotes
 q:before,
 q:after,
@@ -194,6 +189,63 @@ th {
 	font-weight: bold;
 }
 
+code,
+kbd,
+pre,
+samp {
+  font-family: $preformatted__font-family;
+  font-size: emcalc($preformatted__font-size);
+  color: $preformatted__color;
+}
+
+code,
+kbd {
+	@include padding-emcalc($preformatted__padding-vertical, $preformatted__padding-horizontal, $preformatted__padding-vertical, $preformatted__padding-horizontal, $preformatted__font-size);
+	border-radius: emcalc($preformatted__border-radius, $preformatted__font-size);
+}
+
+code {
+  @include color($code__color, $preformatted__color);
+  background-color: $code__background-color;
+}
+
+kbd {
+  @include color($kbd__color, $preformatted__color);
+  background-color: $kbd__background-color;
+
+  kbd {
+	  padding: 0;
+	  font-size: inherit;
+	  font-weight: bold;
+  }
+}
+
+pre {
+  display: block;
+  @include font-family($pre__font-family, $preformatted__font-family);
+  @include color($pre__color, $preformatted__color);
+  background-color: $pre__background-color;
+  @include padding-emcalc($pre__padding-vertical, $pre__padding-horizontal, $pre__padding-vertical, $pre__padding-vertical, $preformatted__font-size);
+  @include margin-top-emcalc($pre__margin-top);
+  @include margin-bottom-emcalc($pre__margin-bottom);
+  border-radius: emcalc($preformatted__border-radius, $preformatted__font-size);
+	max-width: 100%;
+	overflow: auto;
+
+  code {
+	  padding: 0;
+	  font-size: inherit;
+	  color: inherit;
+	  background-color: transparent;
+	  border-radius: 0;
+  }
+}
+
+.pre-scrollable {
+  max-height: emcalc(340, $preformatted__font-size);
+  overflow-y: scroll;
+}
+
 // HEADINGS
 // -------------------------
 h1,
@@ -229,6 +281,8 @@ h6 {
 	@include h6;
 }
 
+// THEME ELEMENTS
+// -------------------------
 .entry__title {
 	@include entry__title;
 }
@@ -243,6 +297,10 @@ h6 {
 
 .section__title {
 	@include section__title;
+}
+
+.lede {
+  @include lede;
 }
 
 // META

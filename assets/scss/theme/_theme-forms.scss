@@ -1,10 +1,13 @@
 // BUTTONS
 // ---------------------------
-//button,
-//input[type='submit'],
 .button {
 	@include button;
 }
+
+//button,
+//input[type="submit"] {
+//	@extend button;
+//}
 
 //.button--lg {
 //	@include button--lg;
@@ -59,17 +62,17 @@ $form__controls: 'textarea',
 'input[type="url"]',
 'input[type="search"]',
 'input[type="tel"]',
-'input[type="color"]',
-'.form-control';
+'input[type="color"]';
 
 // class only
-.form-control {
+.form-control,
+ {
   @include form-control;
 }
 
 //all inputs with class
 //#{$form__controls} {
-//	@include form-control;
+//	@extend form-control;
 //}
 
 input[type="search"] {
@@ -116,3 +119,20 @@ input[type="checkbox"] {
 //.form-control--danger {
 //  @include form-control--danger;
 //}
+
+label {
+	@include label;
+}
+
+// WP COMMENT FORM
+.comment-form-comment textarea,
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
+	@extend .form-control;
+}
+
+.submit {
+	@extend .button;
+}
+

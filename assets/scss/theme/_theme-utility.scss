@@ -6,7 +6,8 @@
   @include ir;
 }
 
-.sr-only {
+.sr-only,
+.screen-reader-text {
   @include sr-only;
 }
 

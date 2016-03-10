@@ -31,6 +31,7 @@ $button__color: $white;
 $button__background-color: $link__color;
 $button__border-width: $form__border-width;
 $button__border-color: $button__background-color;
+$button__border-radius: $form__border-radius;
 $button__color--hover: $white;
 $button__background-color--hover: $link__color--hover;
 $button__border-color--hover: $button__background-color--hover;
@@ -139,3 +140,18 @@ $input__border-color--danger: $form__color--danger;
 $input__color--danger--focus: $input__color--focus;
 $input__background-color--danger--focus: $input__background-color--focus;
 $input__border-color--danger--focus: $input__border-color--focus;
+
+// LABELS
+// ---------------------------
+$label__display: block;
+$label__font-size: $base__font-size--sm;
+$label__line-height: $base__line-height;
+$label__font-family: $base__font-family;
+$label__font-style: normal;
+$label__color: $base__color;
+$label__font-weight: $base__font-weight;
+$label__text-transform: none;
+$label__margin-top: 0;
+$label__margin-right: 0;
+$label__margin-bottom: $base__margin--quarter;
+$label__margin-left: 0;

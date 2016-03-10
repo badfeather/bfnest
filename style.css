@@ -332,7 +332,8 @@ th {
   white-space: nowrap;
 }
 
-.sr-only, .form-allowed-tags {
+.sr-only, .form-allowed-tags,
+.screen-reader-text {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -411,7 +412,7 @@ mark,
 ins {
   background: #ff0;
   text-decoration: none;
-  color: #000;
+  color: #606060;
 }
 
 ul {
@@ -516,15 +517,6 @@ blockquote cite {
   font-style: normal;
 }
 
-.lede {
-  font-size: 1.25em;
-  text-align: center;
-  margin: 0 0 1.2em 1.2em;
-}
-.lede em {
-  font-style: italic;
-}
-
 q:before,
 q:after,
 blockquote:before,
@@ -561,6 +553,58 @@ td {
 
 th {
   font-weight: bold;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875em;
+  color: #474747;
+}
+
+code,
+kbd {
+  padding: 0.35714em 0.71429em;
+  border-radius: 0.21429em;
+}
+
+code {
+  background-color: #e0e0e0;
+}
+
+kbd {
+  color: #fff;
+  background-color: #606060;
+}
+kbd kbd {
+  padding: 0;
+  font-size: inherit;
+  font-weight: bold;
+}
+
+pre {
+  display: block;
+  background-color: #e0e0e0;
+  padding: 1.14286em;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  border-radius: 0.21429em;
+  max-width: 100%;
+  overflow: auto;
+}
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.pre-scrollable {
+  max-height: 24.28571em;
+  overflow-y: scroll;
 }
 
 h1,
@@ -646,11 +690,20 @@ h6 {
   margin: 0 0 0.54545em;
 }
 
+.lede {
+  font-size: 1.25em;
+  text-align: center;
+  margin: 0 0 1.2em 1.2em;
+}
+.lede em {
+  font-style: italic;
+}
+
 .entry__meta {
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin: 0 0 0.42857em;
+  margin: 0 0 1.71429em;
   clear: both;
 }
 
@@ -658,7 +711,7 @@ h6 {
   visibility: hidden;
 }
 
-.button {
+.button, .submit {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.5;
@@ -675,22 +728,22 @@ h6 {
   cursor: pointer;
   text-transform: uppercase;
 }
-.button:hover, .button:focus {
+.button:hover, .submit:hover, .button:focus, .submit:focus {
   color: #fff;
   background-color: #f0f;
   text-decoration: none;
   border-color: #f0f;
 }
-.button:focus {
+.button:focus, .submit:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-.button:active {
+.button:active, .submit:active {
   outline: 0;
   background-image: none;
 }
-.button.disabled, .button[disabled], fieldset[disabled] .button {
+.button.disabled, .disabled.submit, .button[disabled], [disabled].submit, fieldset[disabled] .button, fieldset[disabled] .submit {
   cursor: not-allowed;
   pointer-events: none;
   opacity: .65;
@@ -698,7 +751,10 @@ h6 {
           box-shadow: none;
 }
 
-.form-control {
+.form-control, .comment-form-comment textarea,
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   color: #a0a0a0;
@@ -715,7 +771,10 @@ h6 {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.form-control:focus {
+.form-control:focus, .comment-form-comment textarea:focus,
+.comment-form-author input:focus,
+.comment-form-email input:focus,
+.comment-form-url input:focus {
   color: #606060;
   background-color: transparent;
   border-color: #00ADF2;
@@ -729,7 +788,8 @@ input[type="search"] {
 }
 
 textarea,
-textarea.form-control {
+textarea.form-control,
+.comment-form-comment textarea {
   width: 100%;
 }
 
@@ -751,6 +811,12 @@ input[type="checkbox"] {
 .required {
   color: #606060;
   font-weight: 700;
+}
+
+label {
+  display: block;
+  font-size: 0.875em;
+  margin: 0 0 0.42857em;
 }
 
 img {
@@ -809,7 +875,7 @@ img.alignleft, img.alignright, img.aligncenter,
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin: 0 0 0.42857em;
+  margin: 0 0 1.71429em;
   margin-top: 0.42857em;
 }
 
@@ -1018,7 +1084,7 @@ img.alignleft, img.alignright, img.aligncenter,
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin: 0 0 0.42857em;
+  margin: 0 0 1.71429em;
 }
 
 .comment-main {
@@ -1034,14 +1100,10 @@ img.alignleft, img.alignright, img.aligncenter,
   display: block;
 }
 
-.bypostauthor {
-  font-weight: bold;
-}
-
 .copyright,
 .credits {
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
-  margin: 0 0 0.42857em;
+  margin: 0 0 1.71429em;
 }

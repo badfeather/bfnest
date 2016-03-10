@@ -62,8 +62,8 @@
 @mixin uncolumn {
 	float: none;
 	width: auto;
-	padding-left: inherit;
-	padding-right: inherit;
+	padding-left: initial;
+	padding-right: initial;
 }
 
 @mixin unpush {
