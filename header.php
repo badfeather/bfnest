@@ -12,7 +12,7 @@
 <body <?php body_class(); ?>>
 <div class="hfeed site">
 
-	<header class="site__header masthead">
+	<header class="site-header masthead">
 
 		<?php
 			if ( ( is_front_page() && is_home() ) ) {
@@ -21,17 +21,17 @@
 				$title_tag = 'div';
 			}
 
-			echo '<' . $title_tag . ' class="site__title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site__logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>';
+			echo '<' . $title_tag . ' class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site__logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>';
 		?>
 
     <?php
       $site_description = get_bloginfo( 'description' );
       if ( ! empty( $site_description ) ) {
-        echo '<div class="site__description">' . $site_description . '</div>' . "\n";
+        echo '<div class="site-description">' . $site_description . '</div>' . "\n";
       }
     ?>
 
-		<nav class="nav nav--primary site__nav">
+		<nav class="nav nav--primary site-nav">
 			<button class="nav__toggle nav--primary__toggle"><?php _e( 'Menu', 'nest' ); ?></button>
 			<?php
 				wp_nav_menu( array(
@@ -40,8 +40,8 @@
 					'menu_class' => 'menu menu--primary'
 				) );
 			?>
-		</nav><?php // /.nav.nav--primary.site__nav ?>
+		</nav><?php // /.nav.nav--primary.site-nav ?>
 
-	</header><?php // /.site__header.masthead ?>
+	</header><?php // /.site-header.masthead ?>
 
-	<div class="doc site__main">
+	<div class="doc site-main">
