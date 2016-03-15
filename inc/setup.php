@@ -21,8 +21,6 @@ function nest_setup() {
 
 	// add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
-  add_theme_support('post-thumbnails');
-
 	// Custom image sizes. Use the following format:
 	// add_image_size( 'size-name', width [int], height [int], true/false [hard crop or not - defaults to false]);
 
@@ -37,41 +35,14 @@ function nest_setup() {
 add_action( 'after_setup_theme', 'nest_setup' );
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function nest_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'nest_content_width', 690 );
-}
-add_action( 'after_setup_theme', 'nest_content_width', 0 );
-
-/**
  * Set default theme options on theme switch
  */
-function nest_default_options() {
-  update_option( 'thumbnail_size_w', 330 );
-  update_option( 'thumbnail_size_h', 330 );
-  update_option( 'thumbnail_crop', true );
-
-  update_option( 'medium_size_w', 330 );
-  update_option( 'medium_size_h', 800 );
-
-	update_option( 'large_size_w', 690 );
-	update_option( 'large_size_h', 1140 );
-
-	update_option( 'embed_size_w', 690 );
-
-	update_option( 'image_default_align', 'none' );
-	update_option( 'image_default_link_type', 'none' ); // can be 'file', 'attachment'
-	update_option( 'image_default_size', 'large' );
-
+function nest_reading_options() {
 	update_option( 'posts_per_page', 12 );
 	update_option( 'posts_per_rss', 12 );
 }
-add_action( 'after_switch_theme', 'nest_default_options' );
+
+add_action( 'after_switch_theme', 'nest_reading_options' );
 
 /**
  * Remove recent comments style block from head
@@ -79,6 +50,7 @@ add_action( 'after_switch_theme', 'nest_default_options' );
 function nest_remove_recent_comments_style() {
 	add_filter( 'show_recent_comments_widget_style', '__return_false' );
 }
+
 add_action( 'widgets_init', 'nest_remove_recent_comments_style' );
 
 /**
