@@ -56,11 +56,11 @@ add_filter( 'image_size_names_choose', 'nest_image_size_names_choose' );
  * Set gallery shortcode default options
  */
 function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
-    $atts = shortcode_atts( array(
-    	'link' => 'file'
-    ), $atts );
-    $out['link'] = $atts['link'];
-    return $out;
+		$atts = shortcode_atts( array(
+			'link' => 'file'
+		), $atts );
+		$out['link'] = $atts['link'];
+		return $out;
 }
 add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
@@ -94,15 +94,15 @@ function nest_insert_images_with_figure( $html, $id, $caption, $title, $align, $
 
 	$class_att = trim( 'align' . $align . $caption_class . ' entry__figure entry__figure--' . $size );
 
-  $html = sprintf( '<%1$s %2$sclass="%3$s">%4$s%5$s</%1$s>',
-  	$wrapper,
-  	$id_att,
-  	esc_attr( $class_att ),
-  	$html,
-  	$caption_att
-  );
+	$html = sprintf( '<%1$s %2$sclass="%3$s">%4$s%5$s</%1$s>',
+		$wrapper,
+		$id_att,
+		esc_attr( $class_att ),
+		$html,
+		$caption_att
+	);
 
-  return $html;
+	return $html;
 }
 add_filter( 'image_send_to_editor', 'nest_insert_images_with_figure', 10, 8 );
 
@@ -115,12 +115,12 @@ add_filter( 'disable_captions', create_function( '$a', 'return true;' ) );
  * Increase the max srcset limit - default is 1600
  */
 function nest_max_srcset_image_width( $max_width, $size_array ) {
-  $width = $size_array[0];
+	$width = $size_array[0];
 
-  if ( $width > 768 ) {
-    $max_width = 2100;
-  }
+	if ( $width > 768 ) {
+		$max_width = 2100;
+	}
 
-  return $max_width;
+	return $max_width;
 }
 add_filter( 'max_srcset_image_width', 'nest_max_srcset_image_width', 10, 2 );

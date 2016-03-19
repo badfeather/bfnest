@@ -11,7 +11,7 @@
 			<?php
 				wp_link_pages( array(
 					'before' => '<div class="page-links">' . __( 'Pages:', 'nest' ),
-					'after'  => '</div>',
+					'after'	=> '</div>',
 				) );
 			?>
 		</div><?php // /.entry-content.entry__content ?>

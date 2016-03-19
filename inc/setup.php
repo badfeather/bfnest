@@ -10,12 +10,12 @@ function nest_setup() {
 		'follow' => __( 'Follow Navigation', 'nest' )
 	) );
 
-  load_theme_textdomain( 'nest', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'nest', get_template_directory() . '/languages' );
 
 	// let wordpress handle the title tag instead of hardcoding it in the header
-  add_theme_support( 'title-tag' );
+	add_theme_support( 'title-tag' );
 
-  add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'automatic-feed-links' );
 
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 

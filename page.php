@@ -4,11 +4,11 @@
 			while ( have_posts() ) {
 				the_post();
 		?>
-	    <main class="doc__main doc__main--singular doc__main--page">
+			<main class="doc__main doc__main--singular doc__main--page">
 
 				<?php get_template_part( 'content-page', basename( get_permalink() ) ); ?>
 
-	    </main><?php // /.doc__main.doc__main--singular.doc__main--page ?>
+			</main><?php // /.doc__main.doc__main--singular.doc__main--page ?>
 
 			<?php get_sidebar( 'page' ); ?>
 

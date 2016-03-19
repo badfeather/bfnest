@@ -5,11 +5,11 @@
 				the_post();
 				$post_type = get_post_type();
 		?>
-	    <main class="doc__main doc__main--singular doc__main--single">
+			<main class="doc__main doc__main--singular doc__main--single">
 
 				<?php get_template_part( 'content-single', $post_type ); ?>
 
-	    </main><?php // /.doc__main.doc__main--singular.doc__main--single ?>
+			</main><?php // /.doc__main.doc__main--singular.doc__main--single ?>
 
 			<?php get_sidebar( 'single', $post_type ); ?>
 

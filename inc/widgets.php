@@ -6,39 +6,39 @@
 function nest_widgets_init() {
 
 	register_sidebar( array(
-		'name'          => __( 'Global', 'nest' ),
-		'id'            => 'global',
+		'name'					=> __( 'Global', 'nest' ),
+		'id'						=> 'global',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
-		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h2 class="widget__title">',
-		'after_title'   => '</h2>' . "\n",
+		'after_widget'	=> '</aside>' . "\n",
+		'before_title'	=> '<h2 class="widget__title">',
+		'after_title'		=> '</h2>' . "\n",
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Page', 'nest' ),
-		'id'            => 'page',
+		'name'					=> __( 'Page', 'nest' ),
+		'id'						=> 'page',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
-		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h2 class="widget__title">',
-		'after_title'   => '</h2>' . "\n",
+		'after_widget'	=> '</aside>' . "\n",
+		'before_title'	=> '<h2 class="widget__title">',
+		'after_title'		=> '</h2>' . "\n",
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Single', 'nest' ),
-		'id'            => 'single',
+		'name'					=> __( 'Single', 'nest' ),
+		'id'						=> 'single',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
-		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h2 class="widget__title">',
-		'after_title'   => '</h2>' . "\n",
+		'after_widget'	=> '</aside>' . "\n",
+		'before_title'	=> '<h2 class="widget__title">',
+		'after_title'		=> '</h2>' . "\n",
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Archive', 'nest' ),
-		'id'            => 'archive',
+		'name'					=> __( 'Archive', 'nest' ),
+		'id'						=> 'archive',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
-		'after_widget'  => '</aside>' . "\n",
-		'before_title'  => '<h2 class="widget__title">',
-		'after_title'   => '</h2>' . "\n",
+		'after_widget'	=> '</aside>' . "\n",
+		'before_title'	=> '<h2 class="widget__title">',
+		'after_title'		=> '</h2>' . "\n",
 	) );
 
 }

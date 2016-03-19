@@ -1,7 +1,7 @@
 <?php
-  if ( post_password_required() ) {
-  	return;
-  }
+	if ( post_password_required() ) {
+		return;
+	}
 ?>
 
 <section id="comments" class="entry-comments comments-area">
@@ -25,11 +25,11 @@
 		</ol><?php // /.comment-list ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { ?>
-  		<nav class="postnav postnav--comments" role="navigation">
-  			<h1 class="screen-reader-text"><?php _e( 'Comment Navigation', 'nest' ); ?></h1>
-  			<div class="postnav__link postnav__link--prev"><?php previous_comments_link( __( '&larr; Older Comments', 'nest' ) ); ?></div>
-  			<div class="postnav__link postnav__link--next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'nest' ) ); ?></div>
-  		</nav><?php #comment-nav-below ?>
+			<nav class="postnav postnav--comments" role="navigation">
+				<h1 class="screen-reader-text"><?php _e( 'Comment Navigation', 'nest' ); ?></h1>
+				<div class="postnav__link postnav__link--prev"><?php previous_comments_link( __( '&larr; Older Comments', 'nest' ) ); ?></div>
+				<div class="postnav__link postnav__link--next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'nest' ) ); ?></div>
+			</nav><?php #comment-nav-below ?>
 		<?php } // endif ?>
 
 	<?php } // endif have_comments ?>

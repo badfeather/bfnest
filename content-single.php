@@ -17,7 +17,7 @@
 			<?php
 				wp_link_pages( array(
 					'before' => '<div class="page-links">' . __( 'Pages:', 'nest' ),
-					'after'  => '</div>',
+					'after'	=> '</div>',
 				) );
 			?>
 		</div><?php // /.entry-content.entry__content ?>
@@ -36,13 +36,13 @@
 			?>
 		</footer>
 
-    <?php
-      if ( comments_open() || '0' != get_comments_number() ) {
-      	comments_template();
-      } // endif
+		<?php
+			if ( comments_open() || '0' != get_comments_number() ) {
+				comments_template();
+			} // endif
 
-      nest_postnav_single();
-    ?>
+			nest_postnav_single();
+		?>
 
 	</div><?php // /.doc__content ?>
 

@@ -31,9 +31,9 @@ add_filter( 'infinite_scroll_js_settings', 'nest_infinite_scroll_js_settings' );
 function nest_remove_jetpack_share() {
 	remove_filter( 'the_content', 'sharing_display', 19 );
 	remove_filter( 'the_excerpt', 'sharing_display', 19 );
-  if ( class_exists( 'Jetpack_Likes' ) ) {
-    remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
-  }
+	if ( class_exists( 'Jetpack_Likes' ) ) {
+		remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+	}
 }
 add_action( 'loop_start', 'nest_remove_jetpack_share' );
 
@@ -42,12 +42,12 @@ add_action( 'loop_start', 'nest_remove_jetpack_share' );
  */
 function sstk_jetpack_share() {
 	if ( function_exists( 'sharing_display' ) ) {
-	  sharing_display( '', true );
+		sharing_display( '', true );
 	}
 
 	if ( class_exists( 'Jetpack_Likes' ) ) {
-    $custom_likes = new Jetpack_Likes;
-    echo $custom_likes->post_likes( '' );
+		$custom_likes = new Jetpack_Likes;
+		echo $custom_likes->post_likes( '' );
 	}
 }
 
@@ -59,27 +59,27 @@ add_filter( 'jetpack_implode_frontend_css', '__return_false' );
 
 // Then, remove each CSS file, one at a time
 function nest_remove_jetpack_css() {
-  wp_deregister_style( 'AtD_style' ); // After the Deadline
-  wp_deregister_style( 'jetpack_likes' ); // Likes
-  wp_deregister_style( 'jetpack_related-posts' ); //Related Posts
-  wp_deregister_style( 'jetpack-carousel' ); // Carousel
-  wp_deregister_style( 'grunion.css' ); // Grunion contact form
-  wp_deregister_style( 'the-neverending-homepage' ); // Infinite Scroll
-  wp_deregister_style( 'noticons' ); // Notes
-  wp_deregister_style( 'post-by-email' ); // Post by Email
-  wp_deregister_style( 'publicize' ); // Publicize
-  wp_deregister_style( 'sharedaddy' ); // Sharedaddy
-  wp_deregister_style( 'sharing' ); // Sharedaddy Sharing
-  wp_deregister_style( 'stats_reports_css' ); // Stats
-  wp_deregister_style( 'jetpack-widgets' ); // Widgets
-  wp_deregister_style( 'jetpack-slideshow' ); // Slideshows
-  wp_deregister_style( 'presentations' ); // Presentation shortcode
-  wp_deregister_style( 'jetpack-subscriptions' ); // Subscriptions
-  wp_deregister_style( 'tiled-gallery' ); // Tiled Galleries
-  //wp_deregister_style( 'widget-conditions' ); // Widget Visibility
-  wp_deregister_style( 'jetpack_display_posts_widget' ); // Display Posts Widget
-  wp_deregister_style( 'gravatar-profile-widget' ); // Gravatar Widget
-  wp_deregister_style( 'widget-grid-and-list' ); // Top Posts widget
-  wp_deregister_style( 'jetpack-widgets' ); // Widgets
+	wp_deregister_style( 'AtD_style' ); // After the Deadline
+	wp_deregister_style( 'jetpack_likes' ); // Likes
+	wp_deregister_style( 'jetpack_related-posts' ); //Related Posts
+	wp_deregister_style( 'jetpack-carousel' ); // Carousel
+	wp_deregister_style( 'grunion.css' ); // Grunion contact form
+	wp_deregister_style( 'the-neverending-homepage' ); // Infinite Scroll
+	wp_deregister_style( 'noticons' ); // Notes
+	wp_deregister_style( 'post-by-email' ); // Post by Email
+	wp_deregister_style( 'publicize' ); // Publicize
+	wp_deregister_style( 'sharedaddy' ); // Sharedaddy
+	wp_deregister_style( 'sharing' ); // Sharedaddy Sharing
+	wp_deregister_style( 'stats_reports_css' ); // Stats
+	wp_deregister_style( 'jetpack-widgets' ); // Widgets
+	wp_deregister_style( 'jetpack-slideshow' ); // Slideshows
+	wp_deregister_style( 'presentations' ); // Presentation shortcode
+	wp_deregister_style( 'jetpack-subscriptions' ); // Subscriptions
+	wp_deregister_style( 'tiled-gallery' ); // Tiled Galleries
+	//wp_deregister_style( 'widget-conditions' ); // Widget Visibility
+	wp_deregister_style( 'jetpack_display_posts_widget' ); // Display Posts Widget
+	wp_deregister_style( 'gravatar-profile-widget' ); // Gravatar Widget
+	wp_deregister_style( 'widget-grid-and-list' ); // Top Posts widget
+	wp_deregister_style( 'jetpack-widgets' ); // Widgets
 }
 add_action('wp_print_styles', 'nest_remove_jetpack_css' );
