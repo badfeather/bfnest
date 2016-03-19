@@ -23,11 +23,11 @@ add_action( 'wp_before_admin_bar_render', 'nest_admin_bar_render' );
 
 // Remove "Has been updated" notification and tour bubble.
 function nest_get_user_metadata( $value, $object_id, $meta_key, $single ) {
-	if( $meta_key === 'wpseo_ignore_tour' ) {
+	if ( $meta_key === 'wpseo_ignore_tour' ) {
 		return true;
 	}
 
-	if( $meta_key === 'wpseo_seen_about_version' ) {
+	if ( $meta_key === 'wpseo_seen_about_version' ) {
 		return defined('WPSEO_VERSION') ? WPSEO_VERSION : null;
 	}
 
