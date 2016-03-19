@@ -28,4 +28,6 @@ require get_template_directory() . ( '/inc/custom.php' );
 /**
  * plugin-specific configs
  */
+// jetpack
+require get_template_directory() . ( '/inc/jetpack.php' );
 

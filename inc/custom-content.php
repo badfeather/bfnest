@@ -2,8 +2,6 @@
 /**
  * Register Custom Post Types and Taxonomies
  */
-add_action( 'init', 'nest_custom_init' );
-
 function nest_custom_init() {
 
   // CUSTOM TAXOMONIES
@@ -82,6 +80,7 @@ function nest_custom_init() {
 	);
 
 }
+add_action( 'init', 'nest_custom_init' );
 
 /**
  * Flush rewrite rules on activation

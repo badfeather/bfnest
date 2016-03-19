@@ -31,7 +31,6 @@ function nest_setup() {
 	// add_editor_style( '/assets/css/editor-style.css' );
 
 }
-
 add_action( 'after_setup_theme', 'nest_setup' );
 
 /**
@@ -41,7 +40,6 @@ function nest_reading_options() {
 	update_option( 'posts_per_page', 12 );
 	update_option( 'posts_per_rss', 12 );
 }
-
 add_action( 'after_switch_theme', 'nest_reading_options' );
 
 /**
@@ -50,7 +48,6 @@ add_action( 'after_switch_theme', 'nest_reading_options' );
 function nest_remove_recent_comments_style() {
 	add_filter( 'show_recent_comments_widget_style', '__return_false' );
 }
-
 add_action( 'widgets_init', 'nest_remove_recent_comments_style' );
 
 /**

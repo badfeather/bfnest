@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 3.1.0\n"
+"Project-Id-Version: Bad Feather Nest 3.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2016-03-10 23:32:08+00:00\n"
+"POT-Creation-Date: 2016-03-19 17:14:36+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -79,99 +79,103 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: inc/custom-content.php:14
+#: inc/custom-content.php:12
 msgid "Taxes"
 msgstr ""
 
-#: inc/custom-content.php:16
+#: inc/custom-content.php:14
 msgid "Tax"
 msgstr ""
 
-#: inc/custom-content.php:17
+#: inc/custom-content.php:15
 msgid "Search Taxes"
 msgstr ""
 
-#: inc/custom-content.php:19
+#: inc/custom-content.php:17
 msgid "All Taxes"
 msgstr ""
 
-#: inc/custom-content.php:20
+#: inc/custom-content.php:18
 msgid "Parent Tax"
 msgstr ""
 
-#: inc/custom-content.php:21
+#: inc/custom-content.php:19
 msgid "Parent Tax:"
 msgstr ""
 
-#: inc/custom-content.php:22
+#: inc/custom-content.php:20
 msgid "Edit Tax"
 msgstr ""
 
-#: inc/custom-content.php:23
+#: inc/custom-content.php:21
 msgid "View Tax"
 msgstr ""
 
-#: inc/custom-content.php:24
+#: inc/custom-content.php:22
 msgid "Update Tax"
 msgstr ""
 
-#: inc/custom-content.php:25
+#: inc/custom-content.php:23
 msgid "Add New Tax"
 msgstr ""
 
-#: inc/custom-content.php:26
+#: inc/custom-content.php:24
 msgid "New Tax Name"
 msgstr ""
 
-#: inc/custom-content.php:30
+#: inc/custom-content.php:28
 msgid "No taxes found"
 msgstr ""
 
-#: inc/custom-content.php:31
+#: inc/custom-content.php:29
 msgid "No taxes"
 msgstr ""
 
-#: inc/custom-content.php:46
+#: inc/custom-content.php:44
 msgid "Types"
 msgstr ""
 
-#: inc/custom-content.php:48
+#: inc/custom-content.php:46
 msgid "Type"
 msgstr ""
 
-#: inc/custom-content.php:49
+#: inc/custom-content.php:47
 msgid "Add New Type"
 msgstr ""
 
-#: inc/custom-content.php:50
+#: inc/custom-content.php:48
 msgid "Edit Type"
 msgstr ""
 
-#: inc/custom-content.php:51
+#: inc/custom-content.php:49
 msgid "New Type"
 msgstr ""
 
-#: inc/custom-content.php:52
+#: inc/custom-content.php:50
 msgid "View Type"
 msgstr ""
 
-#: inc/custom-content.php:53
+#: inc/custom-content.php:51
 msgid "Search Types"
 msgstr ""
 
-#: inc/custom-content.php:54
+#: inc/custom-content.php:52
 msgid "No types found"
 msgstr ""
 
-#: inc/custom-content.php:55
+#: inc/custom-content.php:53
 msgid "No types found in Trash"
 msgstr ""
 
-#: inc/custom-content.php:57
+#: inc/custom-content.php:55
 msgid "All Types"
 msgstr ""
 
-#: inc/media.php:37
+#: inc/jetpack.php:23
+msgid "Load more"
+msgstr ""
+
+#: inc/media.php:49
 msgid "Medium Large"
 msgstr ""
 
@@ -195,7 +199,7 @@ msgstr ""
 msgid "Pingback:"
 msgstr ""
 
-#: inc/template-tags.php:64 inc/template-tags.php:84 inc/template-tags.php:574
+#: inc/template-tags.php:64 inc/template-tags.php:84 inc/template-tags.php:607
 msgid "Edit"
 msgstr ""
 
@@ -207,19 +211,19 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:476 inc/template-tags.php:487
+#: inc/template-tags.php:477
 msgid "Posted in: "
 msgstr ""
 
-#: inc/template-tags.php:497
+#: inc/template-tags.php:499
 msgid "Tagged: "
 msgstr ""
 
-#: inc/template-tags.php:517
+#: inc/template-tags.php:523
 msgid "Comment"
 msgstr ""
 
-#: inc/template-tags.php:522
+#: inc/template-tags.php:528
 msgid ""
 "<span class=\"meta--comment__count\">%d</span><span "
 "class=\"meta--comment__text\"> comment</span>"
@@ -229,7 +233,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:605
+#: inc/template-tags.php:642
 msgid "Share: "
 msgstr ""
 

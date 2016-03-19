@@ -6,13 +6,11 @@ function nest_media_setup() {
 
 	add_theme_support( 'post-thumbnails' );
 
-	// Add custom image sizes - add_image_size( 'sizename' - string, width - integer, height - integer, crop - boolean (defaults to false) );
-	// add_image_size( 'size-name', 100, 100, false);
+	// Add custom image sizes - add_image_size( 'size-name', width [int], height [int], true/false [hard crop - defaults to false]);
 
-	// Set image size 'post-thumbnail'. - set_post_thumbnail_size( width - integer, height - integer, crop - boolean (defaults to false) );
+	// Set image size 'post-thumbnail'. - set_post_thumbnail_size( width [int], height[int], true/false [hard crop - defaults to false] );
 	set_post_thumbnail_size( 330, 9999, false );
 }
-
 add_action( 'after_setup_theme', 'nest_media_setup' );
 
 /**
@@ -25,7 +23,6 @@ add_action( 'after_setup_theme', 'nest_media_setup' );
 function nest_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'nest_content_width', 690 );
 }
-
 add_action( 'after_setup_theme', 'nest_content_width', 0 );
 
 /**
@@ -41,21 +38,19 @@ function nest_media_options() {
 	update_option( 'large_size_w', 1050 );
 	update_option( 'large_size_h', 9999 );
 }
-
 add_action( 'after_switch_theme', 'nest_media_options' );
 
 /**
  * Show custom image sizes in media uploader
- * Add custom sizes to $custom sizes array like so: 'sizename' => __( 'Size Name', 'nest' )
+ * Add custom sizes to $custom sizes array: 'sizename' => __( 'Size Name', 'nest' )
  */
-function nest_show_custom_image_sizes( $sizes ) {
+function nest_image_size_names_choose( $sizes ) {
 	$custom_sizes = array(
 		'medium_large' => __( 'Medium Large', 'nest' ),
 	);
 	return array_merge( $sizes, $custom_sizes );
 }
-
-add_filter( 'image_size_names_choose', 'nest_show_custom_image_sizes' );
+add_filter( 'image_size_names_choose', 'nest_image_size_names_choose' );
 
 /**
  * Set gallery shortcode default options
@@ -67,7 +62,6 @@ function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
     $out['link'] = $atts['link'];
     return $out;
 }
-
 add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
 /**
@@ -110,7 +104,6 @@ function nest_insert_images_with_figure( $html, $id, $caption, $title, $align, $
 
   return $html;
 }
-
 add_filter( 'image_send_to_editor', 'nest_insert_images_with_figure', 10, 8 );
 
 /**

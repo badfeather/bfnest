@@ -4,7 +4,7 @@
 
 			<?php if ( have_posts() ) { ?>
 
-	      <div class="doc__content entries">
+	      <div id="content" class="doc__content entries">
 	      	<?php
 	      		while ( have_posts() ) {
 	      			the_post();
@@ -13,7 +13,7 @@
 
 	      		nest_postnav_archive();
 	      	?>
-	      </div><?php // /.doc__content.entries ?>
+	      </div><?php // /#content.doc__content.entries ?>
 
 			<?php
 				} else {

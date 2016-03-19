@@ -10,7 +10,7 @@
 					<h1 class="doc__title"><?php printf( __( 'Search Results for %s', 'nest' ), get_search_query() ); ?></h1>
 				</header>
 
-				<div class="doc__content">
+				<div id="content" class="doc__content entries">
 
 					<?php
 						while ( have_posts() ) {
@@ -21,7 +21,7 @@
 						nest_postnav_archive();
 					?>
 
-				</div><?php // /.doc__content ?>
+				</div><?php // /#content.doc__content.entries ?>
 
 			<?php
 				} else {

@@ -472,20 +472,21 @@ function nest_latest_taxonomy_posts( $args ) {
  * Meta terms
  */
 function nest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', ', $element = 'span' ) {
+	$meta_title = '';
 	if ( null === $before ) {
-		$before = __( 'Posted in: ', 'nest' );
+		$meta_title = '<span class="meta__title">' . __( 'Posted in: ', 'nest' ) . '</span>';
+
+	} elseif ( ! empty( $before ) ) {
+		$meta_title = '<span class="meta__title">' . $before . '</span>';
 	}
 
-	return get_the_term_list( get_the_ID(), $taxonomy, '<' . $element . ' class="meta meta--terms"><span class="meta__title">' . $before . '</span>', $sep, '</' . $element . '>' );
+	return get_the_term_list( get_the_ID(), $taxonomy, '<' . $element . ' class="meta meta--terms">' . $meta_title, $sep, '</' . $element . '>' );
 }
 
 /**
  * Meta categories
  */
 function nest_get_meta_categories( $before = null, $sep = ', ', $element = 'span' ) {
-	if ( null === $before ) {
-		$before = __( 'Posted in: ', 'nest' );
-	}
 	return nest_get_meta_terms( 'category', $before, $sep, $element );
 }
 
@@ -493,10 +494,15 @@ function nest_get_meta_categories( $before = null, $sep = ', ', $element = 'span
  * Meta tags
  */
 function nest_get_meta_tags( $before = null, $sep = ', ', $element = 'span' ) {
+	$meta_title = '';
 	if ( null === $before ) {
-		$before = __( 'Tagged: ', 'nest' );
+		$meta_title = '<span class="meta__title">' . __( 'Tagged: ', 'nest' ) . '</span>';
+
+	} elseif ( ! empty( $before ) ) {
+		$meta_title = '<span class="meta__title">' . $before . '</span>';
 	}
-	return nest_get_meta_terms( 'post_tag', $before, $sep, $element );
+
+	return nest_get_meta_terms( 'post_tag', $meta_title, $sep, $element );
 }
 
 /**
@@ -539,7 +545,13 @@ function nest_get_meta_comments_link( $element = 'span' ) {
  */
 function nest_get_meta_pubdate( $before = null, $element = 'span' ) {
 	if ( 'post' == get_post_type() ) {
-		return '<' . $element . ' class="meta meta--published">' . $before . '<time class="published" datetime = "' . get_the_time( 'c' ) . '">' . get_the_date() . '</time></' . $element . '>';
+
+		$meta_title = '';
+		if ( $before ) {
+			$meta_title = '<span class="meta__title">' . $before . '</span>';
+		}
+
+		return '<' . $element . ' class="meta meta--published">' . $meta_title . '<time class="published" datetime = "' . get_the_time( 'c' ) . '">' . get_the_date() . '</time></' . $element . '>';
 	}
 
 	return false;
@@ -553,10 +565,31 @@ function nest_get_meta_author( $before = null, $element = 'span' ) {
 		return false;
 	}
 
-	return '<' . $element . ' class="meta meta--author"><span class="meta__title">' . $before . '</span><span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></span></' . $element . '>';
+	$meta_title = '';
+	if ( $before ) {
+		$meta_title = '<span class="meta__title">' . $before . '</span>';
+	}
 
+	return '<' . $element . ' class="meta meta--author">' . $meta_title . '<span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . get_the_author() . '</a></span></' . $element . '>';
+}
 
+/**
+ * Advanced custom fields meta
+ * Requires Advanced Custom Fields to be active, and for the field to be a text field
+ */
+function nest_get_meta_field( $meta_field = '', $before = null, $element = 'span' ) {
+	if ( empty( $meta_field ) ) {
+		return false;
+	}
 
+	$field = get_post_meta( get_the_ID(), $meta_field, true );
+
+	$meta_title = '';
+	if ( $before ) {
+		$meta_title = '<span class="meta__title">' . $before . '</span>';
+	}
+
+	return '<' . $element . ' class="meta meta--acf">' . $meta_title . $field . '</' . $element . '>';
 }
 
 /**
@@ -583,7 +616,7 @@ function nest_get_meta_edit_link( $link_text = null, $element = 'span' ) {
  * If 'new window' is set to true, link targets will be set to "_blank"
  * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
  */
-function nest_get_meta_share( $args = array(), $element = 'span' ) {
+function nest_get_meta_share( $args = array(), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
 
 	$defaults = array(
 		'delicious' => 0,
@@ -600,13 +633,17 @@ function nest_get_meta_share( $args = array(), $element = 'span' ) {
 		'tumblr' => 0,
 		'twitter_handle' => '',
 		'email' => 1,
-
-		'new_window' => true,
-		'share_title' => __( 'Share: ', 'nest' ),
-		'item_sep' => ', '
 	);
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
+
+	$meta_title = '';
+	if ( null === $before ) {
+		$meta_title = '<span class="meta__title">' . __( 'Share: ', 'nest' ) . '</span>';
+
+	} elseif ( ! empty( $before ) ) {
+		$meta_title = '<span class="meta__title">' . $before . '</span>';
+	}
 
 	if ( $new_window ) {
 		$target = ' target="_blank"';
@@ -689,7 +726,7 @@ function nest_get_meta_share( $args = array(), $element = 'span' ) {
 	}
 
 	if ( ! empty( $share_array ) ) {
-		return '<' . $element . ' class="meta meta--share"><span class="meta__title">' . $share_title . '</span>' . implode( $item_sep, array_filter( $share_array ) ) . '</' . $element . '>';
+		return '<' . $element . ' class="meta meta--share">' . $meta_title . implode( $item_sep, array_filter( $share_array ) ) . '</' . $element . '>';
   } // if ! empty $share_links
 
   return false;

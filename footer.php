@@ -17,7 +17,7 @@
 
 	</footer><?php // /.site-footer.content-info ?>
 
-</div><?php // /.site ?>
+</div><?php // /#page.site ?>
 
 <?php wp_footer(); ?>
 

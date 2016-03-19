@@ -55,3 +55,14 @@
 .bypostauthor {
 	//font-weight: bold;
 }
+
+.comment-form-comment textarea,
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
+	@extend .form-control;
+}
+
+.submit {
+	@extend .button;
+}

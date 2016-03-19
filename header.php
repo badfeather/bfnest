@@ -10,7 +10,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div class="hfeed site">
+<div id="page" class="hfeed site">
 
 	<header class="site-header masthead">
 
