@@ -711,7 +711,7 @@ h6 {
   visibility: hidden;
 }
 
-.button, .submit, #infinite-handle span {
+.button, .submit {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.5;
@@ -728,22 +728,22 @@ h6 {
   cursor: pointer;
   text-transform: uppercase;
 }
-.button:hover, .submit:hover, #infinite-handle span:hover, .button:focus, .submit:focus, #infinite-handle span:focus {
+.button:hover, .submit:hover, .button:focus, .submit:focus {
   color: #fff;
   background-color: #f0f;
   text-decoration: none;
   border-color: #f0f;
 }
-.button:focus, .submit:focus, #infinite-handle span:focus {
+.button:focus, .submit:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-.button:active, .submit:active, #infinite-handle span:active {
+.button:active, .submit:active {
   outline: 0;
   background-image: none;
 }
-.button.disabled, .disabled.submit, #infinite-handle span.disabled, .button[disabled], [disabled].submit, #infinite-handle span[disabled], fieldset[disabled] .button, fieldset[disabled] .submit, fieldset[disabled] #infinite-handle span, #infinite-handle fieldset[disabled] span {
+.button.disabled, .disabled.submit, .button[disabled], [disabled].submit, fieldset[disabled] .button, fieldset[disabled] .submit {
   cursor: not-allowed;
   pointer-events: none;
   opacity: .65;
@@ -1106,42 +1106,4 @@ img.alignleft, img.alignright, img.aligncenter,
   line-height: 1.125;
   color: #a0a0a0;
   margin: 0 0 1.71429em;
-}
-
-#infinite-handle {
-  margin-bottom: 1.5em;
-  text-align: center;
-}
-#infinite-handle button,
-#infinite-handle button:hover,
-#infinite-handle button:focus {
-  display: inline;
-  position: static;
-  padding: 0;
-  margin: 0;
-  border: none;
-  line-height: inherit;
-  background: transparent;
-  color: inherit;
-  cursor: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-}
-#infinite-handle button::-moz-focus-inner {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.infinite-loader {
-  color: #000;
-  display: block;
-  height: 28px;
-  text-indent: -9999px;
-  margin-bottom: 1.5em;
-}
-
-.spinner {
-  margin: 0 auto;
 }
