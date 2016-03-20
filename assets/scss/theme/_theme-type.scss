@@ -89,10 +89,6 @@ a {
 		@include tab-focus;
 		outline: 0;
 	}
-
-	&:visited {
-		color: $link__color--visited;
-	}
 }
 
 b,

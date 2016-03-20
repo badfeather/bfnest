@@ -461,9 +461,6 @@ a:focus {
   outline-offset: -2px;
   outline: 0;
 }
-a:visited {
-  color: #00ADF2;
-}
 
 b,
 strong {
