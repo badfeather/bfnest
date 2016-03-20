@@ -64,52 +64,76 @@ function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
 }
 add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
+
 /**
- * Wrap the inserted image html with <figure>
- * if the theme supports html5 and the current image has no caption.
+ * Wrap the inserted image html with <figure> or <div> element with additional size classes for styling purposes
+ * Additional classes are 'entry__figure entry__figure--size-[sizename]'
  */
-function nest_insert_images_with_figure( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
+function nest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
+	if ( current_theme_supports( 'html5' )  && ! $caption ) {
+	}
+	if ( ! $caption ) {
+		$el = 'div';
 
-	if ( current_theme_supports( 'html5' ) ) {
-		$wrapper = 'figure';
-		$caption_wrapper = 'figcaption';
+		if ( current_theme_supports( 'html5' ) ) {
+			$el = 'figure';
+		}
 
-	} else {
-		$wrapper = 'div';
-		$caption_wrapper = 'div';
+		$html = sprintf( '<%1$s class="entry__figure entry__figure--size-%2$s align%3$s">%4$s</%1$s>', $el, $size, $align, $html );
+	}
+	return $html;
+}
+add_filter( 'image_send_to_editor', 'nest_image_send_to_editor_with_figure', 10, 8 );
+
+
+/**
+ * Modified caption shortcode, adding size classes to wrapper element for styling purposes
+ * Additional classes are 'entry__figure entry__figure--size-[sizename]'
+ */
+function nest_img_caption_shortcode( $na, $attr, $content ) {
+
+	extract( shortcode_atts( array(
+		'id'	  => '',
+		'align'	  => 'alignnone',
+		'width'	  => '',
+		'caption' => '',
+		'class'   => '',
+	), $attr ) );
+
+	if ( $width < 1 || empty( $caption ) ) {
+		return $content;
 	}
 
-	$id_att = '';
 	if ( ! empty( $id ) ) {
-		$id_att = 'id="' . esc_attr( sanitize_html_class( $id ) ) . '" ';
+		$id = 'id="' . esc_attr( sanitize_html_class( $id ) ) . '" ';
 	}
 
-	$caption_att = '';
-	$caption_class = '';
-
-	if ( $caption ) {
-		$caption_att = '<' . $caption_wrapper . ' class="wp-caption-text">' . $caption . '</' . $caption_wrapper . '>';
-		$caption_class = ' wp-caption';
+	$add_classes = ' entry__figure';
+	if ( preg_match( '/(size-[^\s]+)/', $content, $matches ) ) {
+		$add_classes .= ' entry__figure--' . $matches[1];
 	}
 
-	$class_att = trim( 'align' . $align . $caption_class . ' entry__figure entry__figure--' . $size );
+	$size = $matches[1];
 
-	$html = sprintf( '<%1$s %2$sclass="%3$s">%4$s%5$s</%1$s>',
-		$wrapper,
-		$id_att,
-		esc_attr( $class_att ),
-		$html,
-		$caption_att
-	);
+	$class = trim( 'wp-caption ' . $align . ' ' . $class . $add_classes );
+
+	$html5 = current_theme_supports( 'html5', 'caption' );
+
+	$el = 'div';
+	$caption_el = 'p';
+
+	if ( $html5 ) {
+		$el = 'figure';
+		$caption_el = 'figcaption';
+	}
+
+	$html = '<' . $el . ' ' . $id . ' class="' . esc_attr( $class ) . '">'
+		. do_shortcode( $content ) . '<' . $caption_el . ' class="wp-caption-text">' . $caption . '</' . $caption_el . '></' . $el . '>';
 
 	return $html;
 }
-add_filter( 'image_send_to_editor', 'nest_insert_images_with_figure', 10, 8 );
+add_filter('img_caption_shortcode', 'nest_img_caption_shortcode', 10, 3 );
 
-/**
- * Disable caption shortcode
- */
-add_filter( 'disable_captions', create_function( '$a', 'return true;' ) );
 
 /**
  * Increase the max srcset limit - default is 1600
