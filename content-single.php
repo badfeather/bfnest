@@ -7,6 +7,8 @@
 				nest_get_meta_pubdate(),
 				nest_get_meta_author(),
 			) );
+
+			nest_jetpack_share();
 		?>
 	</header>
 

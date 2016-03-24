@@ -64,7 +64,6 @@ function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
 }
 add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
-
 /**
  * Wrap the inserted image html with <figure> or <div> element with additional size classes for styling purposes
  * Additional classes are 'entry__figure entry__figure--size-[sizename]'
@@ -133,7 +132,6 @@ function nest_img_caption_shortcode( $na, $attr, $content ) {
 	return $html;
 }
 add_filter('img_caption_shortcode', 'nest_img_caption_shortcode', 10, 3 );
-
 
 /**
  * Increase the max srcset limit - default is 1600

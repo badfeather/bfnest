@@ -40,7 +40,7 @@ add_action( 'loop_start', 'nest_remove_jetpack_share' );
 /**
  * Manually place sharing buttons using the following function
  */
-function sstk_jetpack_share() {
+function nest_jetpack_share() {
 	if ( function_exists( 'sharing_display' ) ) {
 		sharing_display( '', true );
 	}
@@ -83,3 +83,89 @@ function nest_remove_jetpack_css() {
 	wp_deregister_style( 'jetpack-widgets' ); // Widgets
 }
 add_action('wp_print_styles', 'nest_remove_jetpack_css' );
+
+/**
+ * Customize sharedaddy sharing markup
+ */
+function nest_sharing_display_markup( $sharing_content ) {
+
+	global $post, $wp_current_filter;
+
+	$sharing_content = '';
+
+	$sharer = new Sharing_Service();
+	$global = $sharer->get_global_options();
+	$enabled = $sharer->get_blog_services();
+
+	$sharing_content = '';
+
+	if ( count( $enabled['all'] ) > 0 ) {
+
+		$dir = get_option( 'text_direction' );
+
+		// Wrapper
+		$sharing_content .= '<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-' . $global['button_style'] . ' sd-sharing">';
+		if ( $global['sharing_label'] != '' )
+			$sharing_content .= '<h3 class="sd-title">' . $global['sharing_label'] . '</h3>';
+		$sharing_content .= '<div class="sd-content"><ul class="sd-share">';
+
+		// Visible items
+		$visible = '';
+		foreach ( $enabled['visible'] as $id => $service ) {
+			// Individual HTML for sharing service
+			$visible .= '<li class="share-' . $service->get_class() . '">' . $service->get_display( $post ) . '</li>';
+		}
+
+		$parts = array();
+		$parts[] = $visible;
+		if ( count( $enabled['hidden'] ) > 0 ) {
+			if ( count( $enabled['visible'] ) > 0 )
+				$expand = __( 'More', 'jetpack' );
+			else
+				$expand = __( 'Share', 'jetpack' );
+			$parts[] = '<li><a href="#" class="sharing-anchor sd-button share-more"><span>'.$expand.'</span></a></li>';
+		}
+
+		if ( $dir == 'rtl' )
+			$parts = array_reverse( $parts );
+
+		$sharing_content .= implode( '', $parts );
+		//$sharing_content .= '<li class="share-end"></li></ul>';
+		$sharing_content .= '</li></ul>';
+
+		if ( count( $enabled['hidden'] ) > 0 ) {
+			$sharing_content .= '<div class="sharing-hidden"><div class="inner" style="display: none;';
+
+			if ( count( $enabled['hidden'] ) == 1 )
+				$sharing_content .= 'width:150px;';
+
+			$sharing_content .= '">';
+
+			if ( count( $enabled['hidden'] ) == 1 )
+				$sharing_content .= '<ul style="background-image:none;">';
+			else
+				$sharing_content .= '<ul>';
+
+			$count = 1;
+			foreach ( $enabled['hidden'] as $id => $service ) {
+				// Individual HTML for sharing service
+				$sharing_content .= '<li class="share-'.$service->get_class().'">';
+				$sharing_content .= $service->get_display( $post );
+				$sharing_content .= '</li>';
+
+				//if ( ( $count % 2 ) == 0 )
+					//$sharing_content .= '<li class="share-end"></li>';
+
+				$count ++;
+			}
+
+			// End of wrapper
+			//$sharing_content .= '<li class="share-end"></li></ul></div></div>';
+			$sharing_content .= '</ul></div></div>';
+		}
+
+		$sharing_content .= '</div></div></div>';
+	}
+	return $sharing_content;
+}
+add_filter( 'jetpack_sharing_display_markup', 'nest_sharing_display_markup', 10, 1 );

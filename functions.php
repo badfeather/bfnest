@@ -29,8 +29,8 @@ require get_template_directory() . ( '/inc/custom.php' );
  * plugin-specific configs
  */
 // jetpack
-//require get_template_directory() . ( '/inc/jetpack.php' );
+require get_template_directory() . ( '/inc/jetpack.php' );
 
 // yoast seo
-//require get_template_directory() . ( '/inc/yoast-seo.php' );
+require get_template_directory() . ( '/inc/yoast-seo.php' );
 

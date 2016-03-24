@@ -186,7 +186,7 @@
   $font-size--lg: $base__font-size,
   $breakpoint: $base__breakpoint
 ) {
-  font-size: $font-size;
+  font-size: emcalc($font-size);
   @include line-height($line-height, $headings__line-height);
   @include font-family($font-family, $headings__font-family);
   @include color($color, $headings__color);

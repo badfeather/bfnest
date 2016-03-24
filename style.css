@@ -638,52 +638,52 @@ h6 a:focus {
 }
 
 h1 {
-  font-size: 32;
+  font-size: 2em;
   margin: 0 0 0.375em;
 }
 
 h2 {
-  font-size: 28;
+  font-size: 1.75em;
   margin: 0 0 0.42857em;
 }
 
 h3 {
-  font-size: 24;
+  font-size: 1.5em;
   margin: 0 0 0.5em;
 }
 
 h4 {
-  font-size: 20;
+  font-size: 1.25em;
   margin: 0 0 0.6em;
 }
 
 h5 {
-  font-size: 16;
+  font-size: 1em;
   margin: 0 0 0.75em;
 }
 
 h6 {
-  font-size: 14;
+  font-size: 0.875em;
   margin: 0 0 0.85714em;
 }
 
 .entry__title {
-  font-size: 24;
+  font-size: 1.5em;
   margin: 0 0 0.5em;
 }
 
 .doc__title {
-  font-size: 38;
+  font-size: 2.375em;
   margin: 0 0 0.31579em;
 }
 
 .widget__title {
-  font-size: 22;
+  font-size: 1.375em;
   margin: 0 0 0.54545em;
 }
 
 .section__title {
-  font-size: 22;
+  font-size: 1.375em;
   margin: 0 0 0.54545em;
 }
 
@@ -796,7 +796,7 @@ select {
 }
 
 legend {
-  font-size: 24;
+  font-size: 1.5em;
   margin: 0 0 0.5em;
 }
 
@@ -1021,7 +1021,7 @@ img.alignleft, img.alignright, img.aligncenter,
 }
 
 .site-description {
-  font-size: 24;
+  font-size: 1.5em;
   margin: 0 0 0.5em;
 }
 
