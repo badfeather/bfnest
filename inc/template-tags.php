@@ -748,7 +748,7 @@ function nest_get_meta_share( $args = array(), $before = null, $element = 'span'
  * nest_get_meta_edit_link()
  * nest_get_meta_share()
  */
-function nest_meta( $metas = array(), $meta_sep = ' | ' ) {
+function nest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = '' ) {
 	$meta_array = array();
 
 	if ( ! empty( $metas ) ) {
@@ -760,7 +760,7 @@ function nest_meta( $metas = array(), $meta_sep = ' | ' ) {
 	}
 
 	if ( ! empty( $meta_array ) ) {
-		echo "\t" . '<div class="entry__meta">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div>' . "\n";
+		echo "\t" . '<div class="entry__meta' . $meta_class . '">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div>' . "\n";
 	}
 
 	return false;
