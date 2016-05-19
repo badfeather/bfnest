@@ -1,8 +1,9 @@
 # Bad Feather Nest
+Version: 4.0.0
 
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-This theme uses Grunt to process, lint and minify SASS, Javascript and image files, and uses Bower to maintain 3rd party dependencies. 
+This theme uses Gulp to process, lint and minify SASS, Javascript and image files, and includes Bower to maintain 3rd party dependencies. 
 
 ## Getting Started
 ### Installing
@@ -13,49 +14,44 @@ This theme uses Grunt to process, lint and minify SASS, Javascript and image fil
   * Find in files `nest_` and replace with `yourtextdomain_`
   * Find in files `bad-feather-nest` and replace with `your-theme-name`
   * Find in files `Bad Feather Nest` and replace with `Your Theme Name`
-  * Find inf files `Text Domain: nest` and replace with `Text Domain: yourtextdomain`
-  * Change the repository, theme location and version information as needed in `package.json` and `bower.json` and `assets/scss/style.scss`
-  * Change the theme name and credit info in the `assets/scss/style.scss` or `style.css` file, depending on whether you're using SASS.
-  * Replace existing `img/favicon.ico` file with your own
-  * Replace existing `assets/img/apple-touch-icon.png` file with your own. The current one is saved at 180px x 180px. These get optimized and added to the `img` directory when you run `grunt build`. 
-* Run `npm install` to install all the default grunt and bower dependencies
+  * Find in files `Text Domain: nest` and replace with `Text Domain: yourtextdomain`
+  * Find in files `nest.badfeather.local` and replace with your local testing url for the project, which will be used by BrowserSync.
+  * Change the repository, theme location, author and version information as needed in `package.json` and `bower.json` and `assets/sass/style.scss`
+  * Change the theme name and credit info in the `assets/sass/style.scss` or `style.css` file, depending on whether you're using SASS.
+  * Replace existing `assets/img/favicon.ico` file with your own
+  * Replace existing `assets/img/apple-touch-icon.png` file with your own. The current one is saved at 180px x 180px. These get optimized and added to the `img` directory when you run `gulp`. 
+* Run `npm install` to install all the default gulp dependencies
 
 ### Customizing
 #### JS
+* Add any custom script files to the `assets/js/concat` directory.
 * Install any javascript dependencies via bower by running `bower install [package-name]` - these files will be placed in `js/vendor/`
 * These files can be concatenated to the `script.js` file by adding it to the `jsFileList` variable in the `Gruntfile.js`
 * If you want to simply include them in your project, add a `wp_enqueue_script` call to the `inc/scripts.php` file
 
 #### SASS
-* Most style changes can/should be made in `assets/scss/variables/*.scss` and `assets/scss/theme/*.scss` files
+* Most style changes can/should be made in `assets/sass/variables/*.scss` and `assets/sass/theme/*.scss` files
 * Most of the SCSS variables that have anything to do with sizes should be set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `$h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 
-#### Grunt/Bower
-* The following grunt packages are installed by default:
-  * `grunt-autoprefixer`
-  * `grunt-contrib-concat`
-  * `grunt-contrib-imagemin`
-  * `grunt-contrib-jshint`
-  * `grunt-contrib-sass`
-  * `grunt-contrib-uglify`
-  * `grunt-contrib-watch`
-  * `grunt-version`
-  * `grunt-wp-i18n`
-  * `load-grunt-tasks`
-  * `time-grunt`
-
-* To watch your files while editing, run `grunt watch` in terminal
-* To build your project for deployment, run `grunt build`
-* To install new grunt packages, run `npm install [package-name] --save-dev`. This will add it to the `package.json` file and add the files to `/node_modules`.
-* To install new bower packages, run `bower install [package-name] --save-dev`. This will both add it to the `bower.json` file, and add the files to `/assets/vendor/`.
-* To uninstall packages, run `npm uninstall [package-name] --save-dev` and `bower uninstall [package-name] --save-dev`.
-* To update packages to their latest versions, run `npm update --save-dev` and `bower udate --save-dev`.
+#### Gulp
+* This theme uses Gulp to perform a number of tasks, including SASS, js, image, and svg processing and minification.
+* To watch your files while editing, run `gulp watch` in terminal
+* To build your project for deployment, run `gulp`
 * Any `.jpg`, `.gif`, `.png` or `.svg` images placed in `assets/img`, will be minified to the `img` directory using imagemin upon running `grunt build`
-* To bump the version number, you can run `grunt version::patch`, `grunt version::minor`, and `grunt version::major` as needed per revision. This will update the version number in the `package.json`, `bower.json` and `style.scss` files.
+* Any `.svg` images placed in the `assets/img/svg-icons` directory will be combined into a single file `svg-icons.svg` in the `assets/img` directory. This will be included as an svg sprite at the top of the `<body>` if it exists.
+
+##### Versioning
+Version numbers get updated in the `.json` files, theme stylesheets and `README.md` each time you run `gulp bump` as a patch using semantic versioning, ie. '0.0.1'. To perform a minor bump, ie. '0.1.0', run `gulp bump-minor`. To perform a major bump, ie. '1.0.0', run `gulp bump-major`. 
+
+##### Modernizr
+* Included is [gulp-modernizr](https://github.com/doctyper/gulp-modernizr), which creates a custom build of Modernizr based on what it sees in your javascript.
+
+#### Bower
+* This theme uses Bower to include vendor dependencies where necessary. Packages will be installed to `assets/vendor`, which can then be included where necessary.
 
 #### Style Tester
-* Included is a very low-level style-guide of sorts. To use, open `/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. Hooray!
+* Included is a very low-level style-testing guide of sorts. To use, open `/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. Hooray!
 
 #### Good luck
 * As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.
@@ -64,7 +60,7 @@ This theme uses Grunt to process, lint and minify SASS, Javascript and image fil
 ## Theme Goals
 
 ### SASS/CSS
-* Handle all customizations through `scss/variables/*.scss`files and `scss/theme/*.scss` files.
+* Handle all customizations through `assets/sass/variables/*.scss`files and `assets/sass/theme/*.scss` files.
 * Provide variables and mixins for everything I might need.
 * Many mixins apply styles only if they're different than the default. This comes in handy in terms of keeping the CSS lean.
 * Use consistent patterns for variable names.
@@ -91,7 +87,10 @@ This theme uses Grunt to process, lint and minify SASS, Javascript and image fil
 * Use theme development best-practices, making it as flexible as possible.
 * Provide functions for things I find myself needing on most sites, ie. for social sharing, subnavs, getting the first images from posts, etc. Most of these are in the `inc/template_tags.php` directory.
 
-### Many theme concepts cobbled together and/or mercilessly stolen from, and not limited to:
+### Many concepts inspired by and/or mercilessly stolen from, and not limited to:
 * [Underscores](http://underscores.me/)
+* [wd_s](https://github.com/WebDevStudios/wd_s)
 * [Roots](http://roots.io/)
 * [Bootstrap](http://getbootstrap.com)
+
+Thanks to their respective authors. If you're ever in Philly, drop me a line and I'll buy you a beer.

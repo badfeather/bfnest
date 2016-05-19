@@ -10,6 +10,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php nest_include_svg_icons(); ?>
 <div id="page" class="hfeed site">
 
 	<header class="site-header masthead">

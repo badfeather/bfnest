@@ -121,14 +121,14 @@
 // Responsive utilities
 @mixin responsive-visibility() {
 	display: block !important;
-	tr& { display: table-row !important; }
-	th&,
-	td& { display: table-cell !important; }
+	tr & { display: table-row !important; }
+	th &,
+	td & { display: table-cell !important; }
 }
 
 @mixin responsive-invisibility() {
 	display: none !important;
-	tr& { display: none !important; }
-	th&,
-	td& { display: none !important; }
+	tr & { display: none !important; }
+	th &,
+	td & { display: none !important; }
 }

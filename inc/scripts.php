@@ -42,3 +42,19 @@ function nest_footer_scripts() {
 <?php
 } // close function
 add_action( 'wp_footer', 'nest_footer_scripts' );
+
+/**
+ * Add SVG definitions to <head>.
+ */
+function nest_include_svg_icons() {
+
+	// Define SVG sprite file.
+	$svg_icons = get_template_directory() . '/assets/img/svg-icons.svg';
+
+	// If it exsists, include it.
+	if ( file_exists( $svg_icons ) ) {
+		echo '<span class="svg-defs">';
+		require_once( $svg_icons );
+		echo '</span>' . "\n";
+	}
+}

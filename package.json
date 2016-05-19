@@ -1,6 +1,7 @@
 {
   "name": "bad-feather-nest",
-  "version": "3.2.0",
+  "version": "4.0.0",
+  "main": "Gulpfile.js",
   "homepage": "https://github.com/badfeather/bad-feather-nest",
   "author": "Brad Thomason <brad@badfeather.com>",
   "repository": {
@@ -12,12 +13,39 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install && grunt build"
+    "test": "echo \"No test specified\""
   },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "dependencies": {
-
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "bower": "^1.7.9",
+    "browser-sync": "^2.12.8",
+    "css-mqpacker": "^5.0.1",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.1.0",
+    "gulp-cheerio": "^0.6.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-modernizr": "^1.0.0-alpha",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sass-lint": "^1.1.1",
+    "gulp-sort": "^2.0.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-svgmin": "^1.2.2",
+    "gulp-svgstore": "^6.0.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "gulp-wp-pot": "^1.2.2",
+    "jshint": "^2.9.2"
   }
 }

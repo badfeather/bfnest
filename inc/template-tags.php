@@ -107,6 +107,67 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 	} // endif
 } // nest_comment
 
+/**
+ * Return SVG markup.
+ *
+ * @param  array  $args {
+ *     Parameters needed to display an SVG.
+ *
+ *     @param string $icon Required. Use the icon filename, e.g. "facebook-square".
+ *     @param string $title Optional. SVG title, e.g. "Facebook".
+ *     @param string $desc Optional. SVG description, e.g. "Share this post on Facebook".
+ * }
+ * @return string SVG markup.
+ */
+function nest_get_svg( $args = array() ) {
+
+	// Make sure $args are an array.
+	if ( empty( $args ) ) {
+		return esc_html__( 'Please define default parameters in the form of an array.', '_s' );
+	}
+
+	// YUNO define an icon?
+	if ( false === array_key_exists( 'icon', $args ) ) {
+		return esc_html__( 'Please define an SVG icon filename.', '_s' );
+	}
+
+	// Set defaults.
+	$defaults = array(
+		'icon'  => '',
+		'title' => '',
+		'desc'  => ''
+	);
+
+	// Parse args.
+	$args = wp_parse_args( $args, $defaults );
+
+	// Begin SVG markup
+	$svg = '<svg class="icon icon-' . esc_html( $args['icon'] ) . '" aria-hidden="true">';
+
+		// If there is a title, display it.
+		if ( $args['title'] ) {
+			$svg .= '<title>' . esc_html( $args['title'] ) . '</title>';
+		}
+
+		// If there is a description, display it.
+		if ( $args['desc'] ) {
+			$svg .= '<desc>' . esc_html( $args['desc'] ) . '</desc>';
+		}
+
+	$svg .= '<use xlink:href="#icon-' . esc_html( $args['icon'] ) . '"></use>';
+	$svg .= '</svg>';
+
+	return $svg;
+}
+
+/**
+ * Display an SVG.
+ *
+ * @param  array  $args  Parameters needed to display an SVG.
+ */
+function nest_do_svg( $args = array() ) {
+	echo nest_get_svg( $args );
+}
 
 /**
  * Get the first image from a post
