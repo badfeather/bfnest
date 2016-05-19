@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.3.1
- * Build http://modernizr.com/download?-addtest-fnbind-printshiv-testprop-dontmin
+ * Build http://modernizr.com/download?-addtest-fnbind-printshiv-setclasses-testprop-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -175,39 +175,6 @@
   ;
 
   /**
-   * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
-   *
-   * @author kangax
-   * @access private
-   * @function hasOwnProp
-   * @param {object} object - The object to check for a property
-   * @param {string} property - The property to check for
-   * @returns {boolean}
-   */
-
-  // hasOwnProperty shim by kangax needed for Safari 2.0 support
-  var hasOwnProp;
-
-  (function() {
-    var _hasOwnProperty = ({}).hasOwnProperty;
-    /* istanbul ignore else */
-    /* we have no way of testing IE 5.5 or safari 2,
-     * so just assume the else gets hit */
-    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
-      hasOwnProp = function(object, property) {
-        return _hasOwnProperty.call(object, property);
-      };
-    }
-    else {
-      hasOwnProp = function(object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
-      };
-    }
-  })();
-
-  
-
-  /**
    * docElement is a convenience wrapper to grab the root element of the document
    *
    * @access private
@@ -261,6 +228,39 @@
   }
 
   ;
+
+  /**
+   * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
+   *
+   * @author kangax
+   * @access private
+   * @function hasOwnProp
+   * @param {object} object - The object to check for a property
+   * @param {string} property - The property to check for
+   * @returns {boolean}
+   */
+
+  // hasOwnProperty shim by kangax needed for Safari 2.0 support
+  var hasOwnProp;
+
+  (function() {
+    var _hasOwnProperty = ({}).hasOwnProperty;
+    /* istanbul ignore else */
+    /* we have no way of testing IE 5.5 or safari 2,
+     * so just assume the else gets hit */
+    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
+      hasOwnProp = function(object, property) {
+        return _hasOwnProperty.call(object, property);
+      };
+    }
+    else {
+      hasOwnProp = function(object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
+        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
+      };
+    }
+  })();
+
+  
 
 
    // _l tracks listeners for async tests, as well as tests that execute after the initial run
@@ -1407,6 +1407,9 @@
 
   // Run each test
   testRunner();
+
+  // Remove the "no-js" class if it exists
+  setClasses(classes);
 
   delete ModernizrProto.addTest;
   delete ModernizrProto.addAsyncTest;

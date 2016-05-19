@@ -194,7 +194,15 @@ gulp.task('clean:scripts', function() {
  */
 gulp.task('modernizr', function() {
   gulp.src(paths.concat_scripts)
-    .pipe(modernizr())
+    .pipe(modernizr({
+			"options" : [
+				"setClasses",
+				"addTest",
+				"html5printshiv",
+				"testProp",
+				"fnBind"
+			]
+    }))
     .pipe(gulp.dest('assets/js'))
 });
 
@@ -304,8 +312,8 @@ gulp.task('watch', function() {
 	// Run tasks when files change.
 	gulp.watch(paths.icons, ['icons']);
 	gulp.watch(paths.sass, ['styles']);
-	gulp.watch(paths.scripts, ['scripts', 'modernizr']);
-	gulp.watch(paths.concat_scripts, ['scripts', 'modernizr']);
+	gulp.watch(paths.scripts, ['scripts']);
+	gulp.watch(paths.concat_scripts, ['scripts']);
 });
 
 /**
@@ -315,7 +323,7 @@ gulp.task('i18n', ['wp-pot']);
 gulp.task('icons', ['svg']);
 gulp.task('scripts', ['uglify']);
 gulp.task('styles', ['cssnano']);
-gulp.task('default', ['i18n', 'icons', 'modernizr', 'styles', 'scripts', 'imagemin']);
+gulp.task('default', ['i18n', 'modernizr', 'icons', 'styles', 'scripts', 'imagemin']);
 
 
 
