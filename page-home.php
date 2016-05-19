@@ -5,6 +5,7 @@ Template Name: Home
 ?>
 <?php get_header(); ?>
 
+	<div class="inner doc__inner">
 		<main class="doc__main doc__main--singular doc__main--page">
 
 			<?php
@@ -17,5 +18,6 @@ Template Name: Home
 		</main><?php // /.doc__main.doc__main--singular.doc__main--page ?>
 
 		<?php get_sidebar( 'page' ); ?>
+	</div><?php // /.inner.doc__inner ?>
 
 <?php get_footer(); ?>

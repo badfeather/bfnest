@@ -14,27 +14,27 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
 
-#: archive.php:19
+#: archive.php:20
 msgid "Author: %s"
 msgstr ""
 
-#: archive.php:22
+#: archive.php:23
 msgid "Day: %s"
 msgstr ""
 
-#: archive.php:25
+#: archive.php:26
 msgid "Month: %s"
 msgstr ""
 
-#: archive.php:28
+#: archive.php:29
 msgid "Year: %s"
 msgstr ""
 
-#: archive.php:30
+#: archive.php:31
 msgid "Archives"
 msgstr ""
 
-#: archive.php:38
+#: archive.php:39
 msgid "<div class=\"description\">%s</div>"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
-#: header.php:36
+#: header.php:35
 msgid "Menu"
 msgstr ""
 
@@ -279,6 +279,6 @@ msgstr ""
 msgid "Archive"
 msgstr ""
 
-#: search.php:10
+#: search.php:11
 msgid "Search Results for %s"
 msgstr ""

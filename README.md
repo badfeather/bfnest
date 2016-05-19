@@ -3,7 +3,7 @@ Version: 4.0.0
 
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-This theme uses Gulp to process, lint and minify SASS, Javascript and image files, and includes Bower to maintain 3rd party dependencies. 
+Starting with version 4, this theme now uses Gulp (it used to use Grunt) to process, lint and minify SASS, Javascript images, svg sprites, translation files, modernizr, and probably more that I'm forgetting about. The old `Gruntfile.js` and Grunt variant of the `package.json` are included for posterity for the time being, but will be phased out soon.
 
 ## Getting Started
 ### Installing
@@ -21,6 +21,8 @@ This theme uses Gulp to process, lint and minify SASS, Javascript and image file
   * Replace existing `assets/img/favicon.ico` file with your own
   * Replace existing `assets/img/apple-touch-icon.png` file with your own. The current one is saved at 180px x 180px. These get optimized and added to the `img` directory when you run `gulp`. 
 * Run `npm install` to install all the default gulp dependencies
+* Update the `README.md` with more relevant language for your project.
+* Save out a new screenshot.png of your site at 1200 x 900px.
 
 ### Customizing
 #### JS
@@ -42,16 +44,19 @@ This theme uses Gulp to process, lint and minify SASS, Javascript and image file
 * Any `.svg` images placed in the `assets/img/svg-icons` directory will be combined into a single file `svg-icons.svg` in the `assets/img` directory. This will be included as an svg sprite at the top of the `<body>` if it exists.
 
 ##### Versioning
-Version numbers get updated in the `.json` files, theme stylesheets and `README.md` each time you run `gulp bump` as a patch using semantic versioning, ie. '0.0.1'. To perform a minor bump, ie. '0.1.0', run `gulp bump-minor`. To perform a major bump, ie. '1.0.0', run `gulp bump-major`. 
+Version numbers get updated in the `.json` files, theme stylesheets and `README.md` with semantic versioning using the following commands:
+* To performa a patch bump, ie. '0.0.1', run `gulp bump`. 
+* To perform a minor bump, ie. '0.1.0', run `gulp bump-minor`. 
+* To perform a major bump, ie. '1.0.0', run `gulp bump-major`. 
 
 ##### Modernizr
 * Included is [gulp-modernizr](https://github.com/doctyper/gulp-modernizr), which creates a custom build of Modernizr based on what it sees in your javascript.
 
 #### Bower
-* This theme uses Bower to include vendor dependencies where necessary. Packages will be installed to `assets/vendor`, which can then be included where necessary.
+* This theme uses Bower to include vendor dependencies where necessary. Packages will be installed to `assets/vendor`, which can then be included/concatenated via the `Gulpfile.js` where necessary.
 
 #### Style Tester
-* Included is a very low-level style-testing guide of sorts. To use, open `/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. Hooray!
+* Included is a very low-level style-testing guide of sorts. To use, open `assets/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. For more thorough testing of your theme, download and import WordPress' [Theme Unit Test](https://codex.wordpress.org/Theme_Unit_Test).
 
 #### Good luck
 * As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.
@@ -67,7 +72,7 @@ Version numbers get updated in the `.json` files, theme stylesheets and `README.
 * On the scaling front, I've decided to go with percentages and `em`s, 'cause, well, I like 'em. This means there's a lot of math going on via mixins, which I'll admit, creates some ugly numbers. Yes, I know about `rem`s, and I'm well aware that most modern browsers handle `px` scaling pretty darned well. Anyway, to make `em`s work, one must be careful about inheritance, which can cause some unwanted multiplication. For that reason, set as many font sizes as possible globally, avoid setting font sizes on containers, pay special attention to nested elements, and utilize classes and descendant selectors (within reason - don't over-specify!) for specific styles.
 * Keep outputted CSS lean by minimizing specificity and utilizing SCSS extends wherever possible to group rules.
 * Rethinking each mixin or style rule poached from a framework - still work to do on this.
-* Compartmentalize the SCSS files enough to make it easy to find what I'm looking for, but not get obnoxious about it.
+* Compartmentalize the SCSS files enough to make it easy to find what I'm looking for.
 
 ### HTML
 * Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it.
@@ -81,9 +86,9 @@ Version numbers get updated in the `.json` files, theme stylesheets and `README.
 * Keep the scripts lean by concatenating and minifying whenever possible and minimizing the amount of calls to external scripts.
 
 ### Theme
-* Keep it reasonably DRY, ie. by utilizing `get_template_part())` wherever possible for re-used blocks.
+* Keep it reasonably DRY, ie. by utilizing functions and `get_template_part())` wherever possible for re-used blocks.
 * Provide enough structure for a baseline and establish patterns that can be expanded when building more complex sites that utilize custom post types and taxonomies.
-* Compartmentalize functions enough to make it easy to find what I'm looking for, but not get obnoxious about it.
+* Compartmentalize functions enough to make it easy to find what I'm looking for.
 * Use theme development best-practices, making it as flexible as possible.
 * Provide functions for things I find myself needing on most sites, ie. for social sharing, subnavs, getting the first images from posts, etc. Most of these are in the `inc/template_tags.php` directory.
 

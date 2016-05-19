@@ -7,8 +7,8 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var jsFileList = [
+    'assets/js/concat/*.js',
     // add files, ideally installed via bower (which would put them in assets/vendor)
-    'assets/js/scripts.js'
   ];
 
   grunt.initConfig({
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        'assets/js/*.js'
+        'assets/js/concat/*.js'
       ]
     },
     sass: {
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'style.css': 'assets/scss/style.scss'
+          'style.css': 'assets/sass/style.scss'
         }
       }
     },
@@ -38,13 +38,13 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [jsFileList],
-        dest: 'js/scripts.js',
+        dest: 'assets/js/project.js',
       },
     },
     uglify: {
       dist: {
         files: {
-          'js/scripts.min.js': [jsFileList]
+          'assets/js/project.min.js': [jsFileList]
         }
       }
     },
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
   				expand: true,
   				cwd: 'assets/img/',
   				src: ['**/*.{png,jpg,gif,svg}'],
-  				dest: 'img/'
+  				dest: 'assets/img/'
 			  }]
 	    }
   	},
@@ -85,9 +85,7 @@ module.exports = function(grunt) {
           type: 'wp-theme',  // Type of project (wp-plugin or wp-theme).
           updateTimestamp: true,
           exclude: [
-            'js/.*',
             'assets/.*',
-            'img/.*',
             'node_modules/.*',
             'docs/.*'
           ]
@@ -103,14 +101,14 @@ module.exports = function(grunt) {
           prefix: 'Version\\:\\s'
 
         },
-        src: [ 'assets/scss/style.scss' ],
+        src: [ 'assets/sass/style.scss' ],
       }
     },
     watch: {
       sass: {
         files: [
-          'assets/scss/*.scss',
-          'assets/scss/**/*.scss'
+          'assets/sass/*.scss',
+          'assets/sass/**/*.scss'
         ],
         tasks: ['sass']
       },
@@ -129,8 +127,8 @@ module.exports = function(grunt) {
         },
         files: [
           'style.css',
-          'js/scripts.js',
-          'js/scripts.min.js',
+          'assets/js/project.js',
+          'assets/js/project.min.js',
           '*.php'
         ]
       }

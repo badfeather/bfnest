@@ -13,9 +13,16 @@ html {
 }
 
 .site {
-  @include container;
-  @include container--centered;
   padding-top: $base__margin-emcalc;
+}
+
+.inner {
+	padding: 0 1em;
+
+	@media(min-width: $breakpoint--lg) {
+		@include container;
+		@include container--centered;
+	}
 }
 
 

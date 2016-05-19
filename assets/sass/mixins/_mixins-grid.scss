@@ -8,7 +8,7 @@
 // Centered container element
 @mixin container($gutter: $grid__gutter-width-emcalc, $width: $grid__width-emcalc) {
 	@include guttered($gutter);
-	max-width: $width;
+	max-width: $width + $gutter;
 	@include clearfix;
 }
 

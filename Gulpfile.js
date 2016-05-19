@@ -295,7 +295,7 @@ gulp.task('watch', function() {
 	browserSync({
 		open: false,             // Open project in a new tab?
 		injectChanges: true,     // Auto inject changes instead of full reload
-		proxy: "nest.badfeather.local",         // Use http://nest.badfeather.local:3000 to use BrowserSync
+		proxy: "nest.badfeather.local",  // This is assuming MAMP Pro or something similar is being used to host a local version of your site
 		watchOptions: {
 			debounceDelay: 1000  // Wait 1 second before injecting
 		}

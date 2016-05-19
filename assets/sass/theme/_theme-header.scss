@@ -1,8 +1,9 @@
-.nav--primary__title {
+.site-title {
 	font-size: 1em;
-	margin-bottom: $base__margin-emcalc;
+	margin-bottom: $base__margin-emcalc--half;
 }
 
 .site-description {
-  @include h3;
+	margin-bottom: $base__margin-emcalc--half;
 }
+

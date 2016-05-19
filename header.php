@@ -14,35 +14,34 @@
 <div id="page" class="hfeed site">
 
 	<header class="site-header masthead">
-
-		<?php
-			if ( ( is_front_page() && is_home() ) ) {
-				$title_tag = 'h1';
-			} else {
-				$title_tag = 'div';
-			}
-
-			echo '<' . $title_tag . ' class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site__logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>';
-		?>
-
-		<?php
-			$site_description = get_bloginfo( 'description' );
-			if ( ! empty( $site_description ) ) {
-				echo '<div class="site-description">' . $site_description . '</div>' . "\n";
-			}
-		?>
-
-		<nav class="nav nav--primary site-nav">
-			<button class="nav__toggle nav--primary__toggle"><?php _e( 'Menu', 'nest' ); ?></button>
+		<div class="inner masthead__inner">
 			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'primary',
-					'container' => false,
-					'menu_class' => 'menu menu--primary'
-				) );
+				if ( ( is_front_page() && is_home() ) ) {
+					$title_tag = 'h1';
+				} else {
+					$title_tag = 'div';
+				}
+				echo '<' . $title_tag . ' class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site__logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>';
 			?>
-		</nav><?php // /.nav.nav--primary.site-nav ?>
 
+			<?php
+				$site_description = get_bloginfo( 'description' );
+				if ( ! empty( $site_description ) ) {
+					echo '<div class="site-description">' . $site_description . '</div>' . "\n";
+				}
+			?>
+
+			<nav class="nav nav--primary site-nav">
+				<button class="nav__toggle nav--primary__toggle"><?php _e( 'Menu', 'nest' ); ?></button>
+				<?php
+					wp_nav_menu( array(
+						'theme_location' => 'primary',
+						'container' => false,
+						'menu_class' => 'menu menu--primary'
+					) );
+				?>
+			</nav><?php // /.nav.nav--primary.site-nav ?>
+		</div><?php // /.inner.header__inner ?>
 	</header><?php // /.site-header.masthead ?>
 
 	<div class="doc site-main">
