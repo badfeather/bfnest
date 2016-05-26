@@ -76,3 +76,7 @@ img,
 }
 
 @include generate-block-grid-classes(6, '.gallery-columns', '.gallery-item');
+
+.svg-defs {
+	display: none;
+}
