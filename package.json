@@ -1,7 +1,6 @@
 {
   "name": "bad-feather-nest",
-  "version": "4.0.0",
-  "main": "Gulpfile.js",
+  "version": "4.1.0",
   "homepage": "https://github.com/badfeather/bad-feather-nest",
   "author": "Brad Thomason <brad@badfeather.com>",
   "repository": {
@@ -11,41 +10,34 @@
   "bugs": {
     "url": "https://github.com/badfeather/bad-feather-nest/issues"
   },
-  "license": "MIT",
   "scripts": {
-    "test": "echo \"No test specified\""
+    "postinstall": "node node_modules/bower/bin/bower install && grunt"
   },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "autoprefixer": "^6.3.6",
-    "bower": "^1.7.9",
-    "browser-sync": "^2.12.8",
+  "license": "GPL-2.0+",
+  "dependencies": {
+    "autoprefixer": "^6.7.7",
+    "bower": "^1.8.0",
     "css-mqpacker": "^5.0.1",
-    "del": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-bump": "^2.1.0",
-    "gulp-cheerio": "^0.6.2",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-imagemin": "^3.0.1",
-    "gulp-jshint": "^2.0.1",
-    "gulp-modernizr": "^1.0.0-alpha",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.1.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.1",
-    "gulp-sass-lint": "^1.1.1",
-    "gulp-sort": "^2.0.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-svgmin": "^1.2.2",
-    "gulp-svgstore": "^6.0.0",
-    "gulp-uglify": "^1.5.3",
-    "gulp-util": "^3.0.7",
-    "gulp-wp-pot": "^1.2.2",
-    "jshint": "^2.9.2"
-  }
+    "glob": "^7.0.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^2.2.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-cssnano": "^2.0.1",
+    "grunt-modernizr": "^1.0.2",
+    "grunt-newer": "^1.1.1",
+    "grunt-postcss": "^0.8.0",
+    "grunt-sass": "^2.0.0",
+    "grunt-svgmin": "^4.0.0",
+    "grunt-svgstore": "^1.0.0",
+    "grunt-version": "^1.1.1",
+    "grunt-wp-i18n": "^1.0.0",
+    "load-grunt-tasks": "^3.4.0"
+  },
+  "devDependencies": {}
 }

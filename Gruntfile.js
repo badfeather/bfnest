@@ -1,156 +1,256 @@
-'use strict';
-module.exports = function(grunt) {
+module.exports = function ( grunt ) {
+	// Load all grunt tasks in package.json matching the `grunt-*` pattern.
+	require( 'load-grunt-tasks' )( grunt );
 
-  // Load all tasks
-  require('load-grunt-tasks')(grunt);
-  // Show elapsed time
-  require('time-grunt')(grunt);
+	grunt.initConfig( {
 
-  var jsFileList = [
-    'assets/js/concat/*.js',
-    // add files, ideally installed via bower (which would put them in assets/vendor)
-  ];
+		pkg: grunt.file.readJSON( 'package.json' ),
 
-  grunt.initConfig({
+		/**
+		 * Minify SVGs using SVGO.
+		 *
+		 * @link https://github.com/sindresorhus/grunt-svgmin
+		 */
+		svgmin: {
+			options: {
+				plugins: [
+					{removeComments: true},
+					{removeUselessStrokeAndFill: true},
+					{removeEmptyAttrs: true}
+				]
+			},
+			dist: {
+				files: [ {
+					expand: true,
+					cwd: 'assets/img/svg-icons/',
+					src: [ '*.svg' ],
+					dest: 'assets/img/svg-icons/'
+				} ]
+			}
+		},
 
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
-      all: [
-        'Gruntfile.js',
-        'assets/js/concat/*.js'
-      ]
-    },
-    sass: {
-      dist: {
-        options: {
-          style: 'expanded'
-        },
-        files: {
-          'style.css': 'assets/sass/style.scss'
-        }
-      }
-    },
-    concat: {
-      options: {
-        separator: ';',
-      },
-      dist: {
-        src: [jsFileList],
-        dest: 'assets/js/project.js',
-      },
-    },
-    uglify: {
-      dist: {
-        files: {
-          'assets/js/project.min.js': [jsFileList]
-        }
-      }
-    },
-    autoprefixer: {
-      options: {
-        browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
-      },
-      no_dest: {
-        src: ['style.css']
-      }
-    },
-  	imagemin: {
-	    theme: {
-	      files: [{
-  				expand: true,
-  				cwd: 'assets/img/',
-  				src: ['**/*.{png,jpg,gif,svg}'],
-  				dest: 'assets/img/'
-			  }]
-	    }
-  	},
-    modernizr: {
-      build: {
-        devFile: 'node_modules/grunt-modernizr/lib/build-files/modernizr-latest.js',
-        outputFile: 'js/modernizr.min.js',
-        files: {
-          'src': ['js/ss.min.js', 'style.css']
-        },
-        uglify: true,
-        parseFiles: true
-      }
-    },
-    makepot: {
-      target: {
-        options: {
-          domainPath: '/languages/',    // Where to save the POT file.
-          potFilename: 'bad-feather-nest.pot',   // Name of the POT file.
-          type: 'wp-theme',  // Type of project (wp-plugin or wp-theme).
-          updateTimestamp: true,
-          exclude: [
-            'assets/.*',
-            'node_modules/.*',
-            'docs/.*'
-          ]
-        }
-      }
-    },
-    version: {
-      json: {
-        src: ['package.json', 'bower.json']
-      },
-      scss: {
-        options: {
-          prefix: 'Version\\:\\s'
+		/**
+		 * Merge SVGs into a single SVG.
+		 *
+		 * @link https://github.com/FWeinb/grunt-svgstore
+		 */
+		svgstore: {
+			options: {
+				prefix: 'icon-',
+				cleanup: [ 'fill', 'style' ],
+				svg: {
+					style: 'display: none;'
+				}
+			},
+			dist: {
+				files: {
+					'assets/img/svg-defs.svg': 'assets/img/svg-icons/*.svg'
+				}
+			}
+		},
 
-        },
-        src: [ 'assets/sass/style.scss' ],
-      }
-    },
-    watch: {
-      sass: {
-        files: [
-          'assets/sass/*.scss',
-          'assets/sass/**/*.scss'
-        ],
-        tasks: ['sass']
-      },
-      js: {
-        files: [
-          jsFileList,
-          '<%= jshint.all %>'
-        ],
-        tasks: ['jshint', 'concat']
-      },
-      livereload: {
-        // Browser live reloading
-        // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
-        options: {
-          livereload: true
-        },
-        files: [
-          'style.css',
-          'assets/js/project.js',
-          'assets/js/project.min.js',
-          '*.php'
-        ]
-      }
-    }
-  });
+		/**
+		 * Compile Sass into CSS using node-sass.
+		 *
+		 * @link https://github.com/sindresorhus/grunt-sass
+		 */
+		sass: {
+			options: {
+				outputStyle: 'expanded',
+				sourceComments: false,
+				sourceMap: true,
+				includePaths: [
+				]
+			},
+			dist: {
+				files: {
+					'style.css': 'assets/sass/style.scss',
+				}
+			}
+		},
 
-  grunt.registerTask( 'default', [
-    'sass',
-    'jshint',
-    'concat',
-    'autoprefixer'
-  ]);
+		/**
+		 * Apply several post-processors to CSS using PostCSS.
+		 *
+		 * @link https://github.com/nDmitry/grunt-postcss
+		 */
+		postcss: {
+			options: {
+				map: true,
+				processors: [
+					require( 'autoprefixer' )( {'browsers': 'last 2 versions'} ),
+					require( 'css-mqpacker' )( {'sort': true} )
+				]},
+			dist: {
+				src: [ 'style.css' ]
+			}
+		},
 
-  grunt.registerTask( 'build', [
-    'sass',
-    'jshint',
-    'concat',
-    'uglify',
-    'autoprefixer',
-    'imagemin',
-    'modernizr',
-    'makepot',
-  ]);
+		/**
+		 * A modular minifier, built on top of the PostCSS ecosystem.
+		 *
+		 * @link https://github.com/ben-eb/cssnano
+		 */
+		cssnano: {
+			options: {
+				autoprefixer: false,
+				safe: true
+			},
+			dist: {
+				files: {
+					'style.min.css': 'style.css',
+				}
+			}
+		},
 
+		/**
+		 * Bump version numbers
+		 * @link https://github.com/kswedberg/grunt-version
+		 */
+		version: {
+			css: {
+				options: {
+					prefix: 'Version\\:\\s'
+				},
+				src: [ 'assets/sass/style.scss', 'style.css', 'style.min.css', 'README.md' ]
+			},
+			json: {
+				src: ['*.json']
+			},
+		},
+
+		/**
+		 * Concatenate files.
+		 *
+		 * @link https://github.com/gruntjs/grunt-contrib-concat
+		 */
+		concat: {
+			dist: {
+				src: [
+					'assets/js/concat/js-enabled.js',
+					'assets/js/concat/theme.js',
+				 ],
+				dest: 'assets/js/build/theme.js'
+			},
+		},
+
+		/**
+		 * Minify files with UglifyJS.
+		 *
+		 * @link https://github.com/gruntjs/grunt-contrib-uglify
+		 */
+		uglify: {
+			concat: {
+				options: {
+					//sourceMap: true,
+					mangle: false
+				},
+				files: [ {
+					expand: true,
+					cwd: 'assets/js/build/',
+					src: [ '**/*.js', '!**/*.min.js' ],
+					dest: 'assets/js/build/',
+					ext: '.min.js'
+				} ]
+			}
+		},
+
+		/**
+		 * Minify PNG, JPG, and GIF images.
+		 *
+		 * @link https://github.com/gruntjs/grunt-contrib-imagemin
+		 */
+		imagemin: {
+			dynamic: {
+				files: [ {
+					expand: true,
+					cwd: 'assets/img/',
+					src: [ '**/*.{png,jpg,gif}' ],
+					dest: 'assets/img/'
+				} ]
+			}
+		},
+
+		/**
+		 * Run tasks whenever watched files change.
+		 *
+		 * @link https://github.com/gruntjs/grunt-contrib-watch
+		 */
+		watch: {
+			scripts: {
+				files: [ 'assets/js/**/*.js' ],
+				tasks: [ 'javascript' ],
+				options: {
+					spawn: false,
+					livereload: true
+				}
+			},
+
+			css: {
+				files: [ 'assets/sass/**/*.scss' ],
+				tasks: [ 'styles' ],
+				options: {
+					spawn: false,
+					livereload: true
+				}
+			},
+
+			svg: {
+				files: [ 'assets/img/svg-icons/*.svg' ],
+				tasks: [ 'svgstore' ],
+				options: {
+					spawn: false,
+					livereload: true
+				}
+			},
+
+			images: {
+				files: [ 'assets/img/*' ],
+				tasks: [ 'imagemin' ],
+				options: {
+					spawn: false,
+					livereload: true
+				}
+			}
+		},
+
+		/**
+		 * Internationalize WordPress themes and plugins.
+		 *
+		 * @link https://github.com/claudiosmweb/grunt-wp-i18n
+		 */
+		makepot: {
+			target: {
+				options: {
+					domainPath: 'languages/',		 // Where to save the POT file.
+					potFilename: 'sstk-blog.pot',		// Name of the POT file.
+					type: 'wp-theme',	 // Type of project (wp-plugin or wp-theme).
+					updateTimestamp: true,
+					exclude: [
+						'assets/.*',
+						'node_modules/.*',
+						'docs/.*'
+					]
+				}
+			}
+		},
+
+	} );
+
+	// Register Grunt tasks.
+	grunt.registerTask( 'styles', [ 'sass', 'postcss', 'cssnano' ] );
+	grunt.registerTask( 'javascript', [ 'concat', 'uglify' ] );
+	grunt.registerTask( 'images', [ 'imagemin' ] );
+	grunt.registerTask( 'svg', [ 'svgmin', 'svgstore' ] );
+	grunt.registerTask( 'i18n', [ 'makepot' ] );
+	grunt.registerTask( 'bump-patch', [ 'version::patch' ] );
+	grunt.registerTask( 'bump-minor', [ 'version::minor' ] );
+	grunt.registerTask( 'bump-major', [ 'version::major' ] );
+	grunt.registerTask( 'default', [
+		'styles',
+		'javascript',
+		'images',
+		'svg',
+		'i18n'
+	] );
 };

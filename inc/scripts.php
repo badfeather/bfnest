@@ -21,12 +21,10 @@ function nest_scripts() {
 	$suffix = ( true === $debug ) ? '' : '.min';
 
 	// Enqueue styles.
-	wp_enqueue_style( 'nest-style', get_stylesheet_directory_uri() . '/style' . $suffix . '.css', array(), $version );
+	wp_enqueue_style( 'nest-style', $template_directory . '/style' . $suffix . '.css', array(), $version );
 
 	// Enqueue scripts.
-	wp_enqueue_script( 'nest-scripts', $template_directory . '/assets/js/project' . $suffix . '.js', array( 'jquery' ), $version, true );
-
-	wp_enqueue_script( 'nest-modernizr', $template_directory . '/assets/js/modernizr' . $suffix . '.js', array(), $version, false );
+	wp_enqueue_script( 'nest-scripts', $template_directory . '/assets/js/build/theme' . $suffix . '.js', array( 'jquery' ), $version, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -52,6 +50,7 @@ add_action( 'wp_head', 'nest_header_scripts' );
  * Footer scripts - any external scripts that should be loaded at the bottom of the <body> via wp_footer()
  */
 function nest_footer_scripts() {
+	$template_directory = get_template_directory_uri();
 	// paste <script> tags within function
 ?>
 
@@ -60,10 +59,20 @@ function nest_footer_scripts() {
 add_action( 'wp_footer', 'nest_footer_scripts' );
 
 /**
- * Add SVG definitions to <head>.
+ * Scripts to include immediately after opening body tag
+ * Utilizes 'body-before-scripts' action hook
+ */
+function nest_body_before_scripts() {
+?>
+<?php
+}
+add_action( 'body-before-scripts', 'nest_body_before_scripts' );
+
+/**
+ * Add SVG definitions immediately after opening body tag
+ * Utilizes 'body-before-scripts' action hook
  */
 function nest_include_svg_icons() {
-
 	// Define SVG sprite file.
 	$svg_icons = get_template_directory() . '/assets/img/svg-icons.svg';
 
@@ -74,3 +83,4 @@ function nest_include_svg_icons() {
 		echo '</span>' . "\n";
 	}
 }
+add_action( 'body-before-scripts', 'nest_include_svg_icons' );

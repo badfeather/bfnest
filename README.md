@@ -1,9 +1,11 @@
 # Bad Feather Nest
-Version: 4.0.0
+Version: 4.1.0
 
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-Starting with version 4, this theme now uses Gulp (it used to use Grunt) to process, lint and minify SASS, Javascript images, svg sprites, translation files, modernizr, and probably more that I'm forgetting about. The old `Gruntfile.js` and Grunt variant of the `package.json` are included for posterity for the time being, but will be phased out soon.
+Starting with version 4.1, this theme is <em>back to using Grunt (yes, really)</em> to lint and minify SASS and Javascript, perform PostCSS magic, compress images, create svg sprites, generate translation files, and probably more that I'm forgetting about. The old `Gulpfile.js` and Gulp variant of the `package.json` are included for posterity for the time being, but will be phased out soon.
+
+Also in 4.1, we've removed Modernizr from the build. If you want to include Modernizr, you can generate a custom build and include it in your theme.
 
 ## Getting Started
 ### Installing
@@ -28,7 +30,7 @@ Starting with version 4, this theme now uses Gulp (it used to use Grunt) to proc
 #### JS
 * Add any custom script files to the `assets/js/concat` directory.
 * Install any javascript dependencies via bower by running `bower install [package-name]` - these files will be placed in `js/vendor/`
-* These files can be concatenated to the `script.js` file by adding it to the `jsFileList` variable in the `Gruntfile.js`
+* These files can be concatenated to the `assets/js/build/theme.js` file by adding it to the `jsFileList` variable in the `Gruntfile.js`
 * If you want to simply include them in your project, add a `wp_enqueue_script` call to the `inc/scripts.php` file
 
 #### SASS
@@ -36,24 +38,24 @@ Starting with version 4, this theme now uses Gulp (it used to use Grunt) to proc
 * Most of the SCSS variables that have anything to do with sizes should be set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `$h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 
-#### Gulp
-* This theme uses Gulp to perform a number of tasks, including SASS, js, image, and svg processing and minification.
-* To watch your files while editing, run `gulp watch` in terminal
-* To build your project for deployment, run `gulp`
-* Any `.jpg`, `.gif`, `.png` or `.svg` images placed in `assets/img`, will be minified to the `img` directory using imagemin upon running `grunt build`
+#### Grunt
+* This theme uses Grunt to perform a number of tasks, including SASS, js, image, and svg processing and minification.
+* To watch your files while editing, run `grunt watch` in terminal
+* To build your project for deployment, run `grunt`
+* Any `.jpg`, `.gif`, `.png` or `.svg` images placed in `assets/img`, will be minified to the `img` directory using imagemin upon running `grunt`
 * Any `.svg` images placed in the `assets/img/svg-icons` directory will be combined into a single file `svg-icons.svg` in the `assets/img` directory. This will be included as an svg sprite at the top of the `<body>` if it exists.
 
 ##### Versioning
 Version numbers get updated in the `.json` files, theme stylesheets and `README.md` with semantic versioning using the following commands:
-* To performa a patch bump, ie. '0.0.1', run `gulp bump`. 
-* To perform a minor bump, ie. '0.1.0', run `gulp bump-minor`. 
-* To perform a major bump, ie. '1.0.0', run `gulp bump-major`. 
+* To performa a patch bump, ie. '0.0.1', run `grunt bump-patch`. 
+* To perform a minor bump, ie. '0.1.0', run `grunt bump-minor`. 
+* To perform a major bump, ie. '1.0.0', run `grunt bump-major`. 
 
 ##### Modernizr
 * Included is [gulp-modernizr](https://github.com/doctyper/gulp-modernizr), which creates a custom build of Modernizr based on what it sees in your javascript.
 
 #### Bower
-* This theme uses Bower to include vendor dependencies where necessary. Packages will be installed to `assets/vendor`, which can then be included/concatenated via the `Gulpfile.js` where necessary.
+* This theme uses Bower to include vendor dependencies where necessary. Packages will be installed to `assets/vendor`, which can then be included/concatenated via the `Gruntfile.js` where necessary.
 
 #### Style Tester
 * Included is a very low-level style-testing guide of sorts. To use, open `assets/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. For more thorough testing of your theme, download and import WordPress' [Theme Unit Test](https://codex.wordpress.org/Theme_Unit_Test).
@@ -77,12 +79,11 @@ Version numbers get updated in the `.json` files, theme stylesheets and `README.
 ### HTML
 * Provide enough classes and containers to target what I need in the CSS with as little specificity as possible, but not get obnoxious about it.
 * Keep class names reasonably semantic, opting for describing their function more than their presentation.
-* If not use SMACSS and BEM methodoligies outright, at least get what they're going for and strive for something similar.
+* If not use SMACSS and BEM methodologies outright, at least get what they're going for and strive for something similar.
 * Validate! Keep it accessible.
 * Establish a clear document outline via the HTML5 structure.
 
 ### JS
-* Provide vendor scripts, ie. Modernizr, Respond.js, etc. to make responsive sites.
 * Keep the scripts lean by concatenating and minifying whenever possible and minimizing the amount of calls to external scripts.
 
 ### Theme

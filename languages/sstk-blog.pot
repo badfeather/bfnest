@@ -1,0 +1,326 @@
+# <!=Copyright (C) 2017 Brad Thomason, Bad Feather Inc.
+# This file is distributed under the MIT License.=!>
+msgid ""
+msgstr ""
+"Project-Id-Version: Bad Feather Nest 4.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2017-04-11 21:43:06+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n1.0.0\n"
+
+#: archive.php:20
+msgid "Author: %s"
+msgstr ""
+
+#: archive.php:23
+msgid "Day: %s"
+msgstr ""
+
+#: archive.php:26
+msgid "Month: %s"
+msgstr ""
+
+#: archive.php:29
+msgid "Year: %s"
+msgstr ""
+
+#: archive.php:31
+msgid "Archives"
+msgstr ""
+
+#: archive.php:39
+msgid "<div class=\"description\">%s</div>"
+msgstr ""
+
+#: comments.php:29
+msgid "Comment Navigation"
+msgstr ""
+
+#: comments.php:30
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:31
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:38
+msgid "Comments are closed."
+msgstr ""
+
+#: content-no-results.php:2
+msgid "Nothing Found"
+msgstr ""
+
+#: content-no-results.php:7
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: content-page-home.php:13 content-page.php:13 content-single.php:21
+msgid "Pages:"
+msgstr ""
+
+#: content.php:14
+msgid "Continue reading &rarr;"
+msgstr ""
+
+#: footer.php:11
+msgid "Site by %1$s %2$s Powered by %3$s"
+msgstr ""
+
+#: header.php:35
+msgid "Menu"
+msgstr ""
+
+#: inc/custom-content.php:12
+msgid "Taxes"
+msgstr ""
+
+#: inc/custom-content.php:14
+msgid "Tax"
+msgstr ""
+
+#: inc/custom-content.php:15
+msgid "Search Taxes"
+msgstr ""
+
+#: inc/custom-content.php:17
+msgid "All Taxes"
+msgstr ""
+
+#: inc/custom-content.php:18
+msgid "Parent Tax"
+msgstr ""
+
+#: inc/custom-content.php:19
+msgid "Parent Tax:"
+msgstr ""
+
+#: inc/custom-content.php:20
+msgid "Edit Tax"
+msgstr ""
+
+#: inc/custom-content.php:21
+msgid "View Tax"
+msgstr ""
+
+#: inc/custom-content.php:22
+msgid "Update Tax"
+msgstr ""
+
+#: inc/custom-content.php:23
+msgid "Add New Tax"
+msgstr ""
+
+#: inc/custom-content.php:24
+msgid "New Tax Name"
+msgstr ""
+
+#: inc/custom-content.php:28
+msgid "No taxes found"
+msgstr ""
+
+#: inc/custom-content.php:29
+msgid "No taxes"
+msgstr ""
+
+#: inc/custom-content.php:44
+msgid "Types"
+msgstr ""
+
+#: inc/custom-content.php:46
+msgid "Type"
+msgstr ""
+
+#: inc/custom-content.php:47
+msgid "Add New Type"
+msgstr ""
+
+#: inc/custom-content.php:48
+msgid "Edit Type"
+msgstr ""
+
+#: inc/custom-content.php:49
+msgid "New Type"
+msgstr ""
+
+#: inc/custom-content.php:50
+msgid "View Type"
+msgstr ""
+
+#: inc/custom-content.php:51
+msgid "Search Types"
+msgstr ""
+
+#: inc/custom-content.php:52
+msgid "No types found"
+msgstr ""
+
+#: inc/custom-content.php:53
+msgid "No types found in Trash"
+msgstr ""
+
+#: inc/custom-content.php:55
+msgid "All Types"
+msgstr ""
+
+#: inc/jetpack.php:23
+msgid "Load more"
+msgstr ""
+
+#: inc/jetpack.php:123
+msgid "More"
+msgstr ""
+
+#: inc/jetpack.php:125
+msgid "Share"
+msgstr ""
+
+#: inc/media.php:49
+msgid "Medium Large"
+msgstr ""
+
+#: inc/setup.php:9
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/setup.php:10
+msgid "Follow Navigation"
+msgstr ""
+
+#: inc/template-tags.php:29
+msgid "&larr; Newer Entries"
+msgstr ""
+
+#: inc/template-tags.php:33
+msgid "Older Entries &rarr;"
+msgstr ""
+
+#: inc/template-tags.php:64
+msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:64 inc/template-tags.php:84 inc/template-tags.php:672
+msgid "Edit"
+msgstr ""
+
+#: inc/template-tags.php:76
+msgid "%s"
+msgstr ""
+
+#: inc/template-tags.php:87
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:126
+msgid "Please define default parameters in the form of an array."
+msgstr ""
+
+#: inc/template-tags.php:131
+msgid "Please define an SVG icon filename."
+msgstr ""
+
+#: inc/template-tags.php:542
+msgid "Posted in: "
+msgstr ""
+
+#: inc/template-tags.php:564
+msgid "Tagged: "
+msgstr ""
+
+#: inc/template-tags.php:588
+msgid "Comment"
+msgstr ""
+
+#: inc/template-tags.php:593
+msgid ""
+"<span class=\"meta--comment__count\">%d</span><span "
+"class=\"meta--comment__text\"> comment</span>"
+msgid_plural ""
+"<span class=\"meta--comment__count\">%d<span><span "
+"class=\"meta--comment__text\"> comments</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:707
+msgid "Share: "
+msgstr ""
+
+#: inc/widgets.php:9
+msgid "Global"
+msgstr ""
+
+#: inc/widgets.php:18
+msgid "Page"
+msgstr ""
+
+#: inc/widgets.php:27
+msgid "Single"
+msgstr ""
+
+#: inc/widgets.php:36
+msgid "Archive"
+msgstr ""
+
+#: search.php:11
+msgid "Search Results for %s"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Bad Feather Nest"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://github.com/badfeather/bad-feather-nest"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A WordPress starter theme we use at Bad Feather to start new projects. "
+"Constantly under construction. Use at your own peril!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Brad Thomason, Bad Feather Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://badfeather.com/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Home"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Redirect To First Child"
+msgstr ""
+
+#: comments.php:12
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: searchform.php:3 searchform.php:4
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:4
+msgctxt "placeholder"
+msgid "Search"
+msgstr ""
+
+#: searchform.php:6
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
