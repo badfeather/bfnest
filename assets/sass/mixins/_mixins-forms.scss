@@ -5,7 +5,7 @@
 	font-weight: $button__font-weight;
 	@include font-size-emcalc($button__font-size);
 	line-height: $button__line-height;
-	@include padding-emcalc($padding-top: $form__padding-vertical, $padding-right: $form__padding-horizontal, $font-size: $button__font-size);
+	@include padding-emcalc($padding-top: $button__padding-vertical, $padding-right: $button__padding-horizontal, $font-size: $button__font-size);
 	color: $button__color;
 	text-align: center;
 	vertical-align: middle;
@@ -114,7 +114,7 @@
 	@include border($input__border-width, solid, $input__border-color);
 	border-radius: emcalc($input__border-radius, $input__font-size);
 	outline: none;
-	@include padding-emcalc($padding-top: $form__padding-vertical, $padding-right: $form__padding-horizontal, $font-size: $input__font-size);
+	@include padding-emcalc($padding-top: $input__padding-vertical, $padding-right: $input__padding-horizontal, $font-size: $input__font-size);
 	display: inline-block;
 	width: emcalc($input__width, $input__font-size);
 	vertical-align: middle;

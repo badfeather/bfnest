@@ -180,37 +180,21 @@ module.exports = function ( grunt ) {
 			scripts: {
 				files: [ 'assets/js/**/*.js' ],
 				tasks: [ 'javascript' ],
-				options: {
-					spawn: false,
-					livereload: true
-				}
 			},
 
 			css: {
 				files: [ 'assets/sass/**/*.scss' ],
 				tasks: [ 'styles' ],
-				options: {
-					spawn: false,
-					livereload: true
-				}
 			},
 
 			svg: {
 				files: [ 'assets/img/svg-icons/*.svg' ],
 				tasks: [ 'svgstore' ],
-				options: {
-					spawn: false,
-					livereload: true
-				}
 			},
 
 			images: {
 				files: [ 'assets/img/*' ],
 				tasks: [ 'imagemin' ],
-				options: {
-					spawn: false,
-					livereload: true
-				}
 			}
 		},
 
