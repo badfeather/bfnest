@@ -13,7 +13,7 @@
 	<?php do_action( 'body-before-scripts' ); ?>
 	<div id="page" class="hfeed site">
 
-		<header class="site-header masthead">
+		<header class="site__header masthead">
 			<div class="inner masthead__inner">
 				<?php
 					if ( ( is_front_page() && is_home() ) ) {
@@ -42,6 +42,4 @@
 					?>
 				</nav><?php // /.nav.nav--primary.site-nav ?>
 			</div><?php // /.inner.header__inner ?>
-		</header><?php // /.site-header.masthead ?>
-
-		<div class="doc site-main">
+		</header><?php // /.site__header.masthead ?>

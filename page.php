@@ -1,19 +1,21 @@
 <?php get_header(); ?>
 
-		<div class="inner doc__inner">
-			<main class="doc__main doc__main--singular doc__main--page">
+		<div class="doc doc--singular doc--page site__main">
+			<div class="inner doc__inner">
+				<main class="doc__main">
 
-				<?php
-					while ( have_posts() ) {
-						the_post();
-						get_template_part( 'content-page', basename( get_permalink() ) );
-					}
-				?>
+					<?php
+						while ( have_posts() ) {
+							the_post();
+							get_template_part( 'content-page', basename( get_permalink() ) );
+						}
+					?>
 
-			</main><?php // /.doc__main.doc__main--singular.doc__main--page ?>
+				</main><?php // /.doc__main ?>
 
-			<?php get_sidebar( 'page' ); ?>
+				<?php get_sidebar( 'page' ); ?>
 
-		</div><?php // /.inner.doc__inner ?>
+			</div><?php // /.inner.doc__inner ?>
+		</div><?php // /.doc.doc--singular.doc--page.site__main ?>
 
 <?php get_footer(); ?>

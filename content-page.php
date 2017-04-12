@@ -6,7 +6,7 @@
 
 	<div class="doc__content">
 
-		<div class="entry-content entry__content">
+		<div class="entry-content">
 			<?php the_content(); ?>
 			<?php
 				wp_link_pages( array(
@@ -14,7 +14,7 @@
 					'after'	=> '</div>',
 				) );
 			?>
-		</div><?php // /.entry-content.entry__content ?>
+		</div><?php // /.entry-content ?>
 
 		<footer class="doc__footer">
 			<?php

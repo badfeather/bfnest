@@ -10,9 +10,9 @@
 		?>
 	</header>
 
-	<div class="entry-content entry__content">
+	<div class="entry-content">
 		<?php the_content( __( 'Continue reading &rarr;', 'nest' ) ); ?>
-	</div><?php // /.entry__content.entry-content ?>
+	</div><?php // /.entry__content ?>
 
 	<footer class="entry__footer">
 		<?php
