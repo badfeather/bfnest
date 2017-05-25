@@ -7,7 +7,7 @@
 }
 
 // comment list
-.comment-list {
+.comments__list {
 	@include list-unstyled;
 
 	.children {
@@ -33,12 +33,16 @@
 }
 
 // comment
-.comment-meta {
+.comment__meta {
 	@include meta;
 }
 
+.comment__header {
+	margin-bottom: emcalc($base__margin--half, $meta__font-size);
+}
+
 // comment-form
-.comment-main {
+.comment__main {
 	display: inline-block;
 }
 

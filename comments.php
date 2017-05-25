@@ -4,7 +4,7 @@
 	}
 ?>
 
-<section id="comments" class="entry-comments comments-area">
+<section id="comments" class="comments">
 
 	<?php if ( have_comments() ) { ?>
 		<h2 class="section__title comments__title">
@@ -14,7 +14,7 @@
 			?>
 		</h2>
 
-		<ol class="comment-list">
+		<ol class="comments__list">
 			<?php
 				wp_list_comments( array(
 					'style' => 'ol',
@@ -22,7 +22,7 @@
 					'callback' => 'nest_comment'
 				) );
 			?>
-		</ol><?php // /.comment-list ?>
+		</ol><?php // /.comments__list ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { ?>
 			<nav class="postnav postnav--comments" role="navigation">
@@ -40,4 +40,4 @@
 
 	<?php comment_form(); ?>
 
-</section><?php // /#comments.entry-comments.comments-area ?>
+</section><?php // /#comments.comments ?>

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-		<div class="doc doc--archive site__main">
+		<div id="content" class="doc doc--archive site-main">
 			<div class="inner doc__inner">
 				<main class="doc__main">
 
@@ -63,6 +63,6 @@
 
 				<?php get_sidebar(); ?>
 			</div><?php // /.inner.doc__inner ?>
-		</div><?php // /.doc.doc--archive.site__main ?>
+		</div><?php // /.doc.doc--archive.site-main ?>
 
 <?php get_footer(); ?>

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-		<div class="doc doc--singular doc--single site__main">
+		<div id="content" class="doc doc--singular doc--single site-main">
 			<div class="inner doc__inner">
 				<?php
 					while ( have_posts() ) {
@@ -17,6 +17,6 @@
 
 				<?php } // endwhile have_posts() ?>
 			</div><?php // /.inner.doc__inner ?>
-		</div><?php // /.doc.doc--single.doc--singular.site__main ?>
+		</div><?php // /.doc.doc--single.doc--singular.site-main ?>
 
 <?php get_footer(); ?>

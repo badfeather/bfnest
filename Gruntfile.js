@@ -128,6 +128,8 @@ module.exports = function ( grunt ) {
 			dist: {
 				src: [
 					'assets/js/concat/js-enabled.js',
+					'assets/js/concat/navigation.js',
+					'assets/js/concat/skip-link-focus-fix.js',
 					'assets/js/concat/theme.js',
 				 ],
 				dest: 'assets/js/build/theme.js'

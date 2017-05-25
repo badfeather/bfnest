@@ -12,17 +12,11 @@ function nest_setup() {
 
 	load_theme_textdomain( 'nest', get_template_directory() . '/languages' );
 
-	// let wordpress handle the title tag instead of hardcoding it in the header
 	add_theme_support( 'title-tag' );
 
 	add_theme_support( 'automatic-feed-links' );
 
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
-
-	// add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
-
-	// Custom image sizes. Use the following format:
-	// add_image_size( 'size-name', width [int], height [int], true/false [hard crop or not - defaults to false]);
 
 	// Add post formats (http://codex.wordpress.org/Post_Formats)
 	// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );

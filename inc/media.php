@@ -69,8 +69,6 @@ add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
  * Additional classes are 'entry__figure entry__figure--size-[sizename]'
  */
 function nest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
-	if ( current_theme_supports( 'html5' )  && ! $caption ) {
-	}
 	if ( ! $caption ) {
 		$el = 'div';
 

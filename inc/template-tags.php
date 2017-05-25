@@ -17,7 +17,7 @@ function nest_postnav_single( $in_same_term = false, $excluded_terms = array(), 
 	}
 
 	if ( ! empty( $postnav ) ) {
-		echo '<nav class="postnav postnav--single">' . "\n" . implode( '', $postnav ) . '</nav>';
+		echo '<nav class="postnav doc--single__postnav">' . "\n" . implode( '', $postnav ) . '</nav>';
 	}
 }
 
@@ -46,7 +46,7 @@ function nest_postnav_archive( $newer_title = null, $older_title = null ) {
 	}
 
 	if ( ! empty( $postnav ) ) {
-		echo '<nav class="postnav postnav--archive">' . "\n" . implode( '', $postnav ) . '</nav>';
+		echo '<nav class="postnav doc--archive__postnav">' . "\n" . implode( '', $postnav ) . '</nav>';
 	}
 }
 
@@ -60,7 +60,7 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 ?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<div class="comment-body">
+		<div class="comment__body">
 			<?php _e( 'Pingback:', 'nest' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'nest' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
 
@@ -69,26 +69,26 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 ?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
-		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-			<footer class="comment-meta">
-				<span class="comment-author vcard">
+		<article id="div-comment-<?php comment_ID(); ?>" class="comment__body">
+			<header class="comment__meta comment__header">
+				<span class="comment__author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					<?php printf( __( '%s', 'nest' ), sprintf( '<cite class="fn meta meta-author">%s</cite>', get_comment_author_link() ) ); ?>
-				</span><?php // / /.comment-author ?>
+				</span><?php // / /.comment__author ?>
 
-				<?php echo $meta_sep; ?><a class="meta meta-comment-time" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+				<?php echo $meta_sep; ?><a class="meta meta--comment--time" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<time datetime="<?php comment_time( 'c' ); ?>">
 						<?php echo human_time_diff( get_comment_time('U'), current_time('timestamp') ) . ' ago'; ?>
 					</time>
 				</a>
-				<?php edit_comment_link( __( 'Edit', 'nest' ), $meta_sep . '<span class="meta meta-edit">', '</span>' ); ?>
+				<?php edit_comment_link( __( 'Edit', 'nest' ), $meta_sep . '<span class="meta meta--edit">', '</span>' ); ?>
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
 				<div class="comment-awaiting-moderation"><?php echo $meta_sep; ?><?php _e( 'Your comment is awaiting moderation.', 'nest' ); ?></div>
 				<?php endif; ?>
-			</footer><?php // / /.comment-meta ?>
+			</header><?php // / /.comment__meta.comment__header ?>
 
-			<div class="comment-main">
+			<div class="comment__main">
 				<div class="comment-content">
 					<?php comment_text(); ?>
 				</div><?php // / /.comment-content ?>
@@ -97,12 +97,12 @@ function nest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 						'add_below' => 'div-comment',
 						'depth'			=> $depth,
 						'max_depth' => $args['max_depth'],
-						'before'		=> '<div class="comment-meta meta-reply">',
-						'after'			=> '</div>',
+						'before'		=> '<div class="comment__meta comment__meta--reply"><span class="meta meta--reply">',
+						'after'			=> '</div></div>',
 					) ) );
 				?>
-			</div><?php // / /.comment-main ?>
-		</article><?php // / /.comment-body ?>
+			</div><?php // / /.comment__main ?>
+		</article><?php // / /.comment__body ?>
 <?php
 	} // endif
 } // nest_comment

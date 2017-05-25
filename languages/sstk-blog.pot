@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 4.1.0\n"
+"Project-Id-Version: Bad Feather Nest 4.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2017-04-12 00:00:40+00:00\n"
+"POT-Creation-Date: 2017-05-25 00:00:45+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -75,7 +75,11 @@ msgstr ""
 msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
-#: header.php:35
+#: header.php:18
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:36
 msgid "Menu"
 msgstr ""
 

@@ -17,14 +17,13 @@ Also in 4.1, we've removed Modernizr from the build. If you want to include Mode
   * Find in files `bad-feather-nest` and replace with `your-theme-name`
   * Find in files `Bad Feather Nest` and replace with `Your Theme Name`
   * Find in files `Text Domain: nest` and replace with `Text Domain: yourtextdomain`
-  * Find in files `nest.badfeather.local` and replace with your local testing url for the project, which will be used by BrowserSync.
   * Change the repository, theme location, author and version information as needed in `package.json` and `bower.json` and `assets/sass/style.scss`
   * Change the theme name and credit info in the `assets/sass/style.scss` or `style.css` file, depending on whether you're using SASS.
   * Replace existing `assets/img/favicon.ico` file with your own
-  * Replace existing `assets/img/apple-touch-icon.png` file with your own. The current one is saved at 180px x 180px. These get optimized and added to the `img` directory when you run `gulp`. 
-* Run `npm install` to install all the default gulp dependencies
+  * Replace existing `assets/img/apple-touch-icon.png` file with your own. The current one is saved at 180 x 180 px. These get optimized and added to the `img` directory when you run `grunt`. 
+* Run `npm install` to install all the default grunt dependencies
 * Update the `README.md` with more relevant language for your project.
-* Save out a new screenshot.png of your site at 1200 x 900px.
+* Save out a new screenshot.png of your site at 1200 x 900 px.
 
 ### Customizing
 #### JS
