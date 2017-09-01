@@ -7,11 +7,11 @@
 						the_post();
 						$post_type = get_post_type();
 				?>
-					<main class="doc__main">
+					<main class="doc-main">
 
 						<?php get_template_part( 'content-single', $post_type ); ?>
 
-					</main><?php // /.doc__main ?>
+					</main><?php // /.doc-main ?>
 
 					<?php get_sidebar( 'single', $post_type ); ?>
 

@@ -2,15 +2,16 @@
 
 		<div id="content" class="doc doc--archive site-main">
 			<div class="inner doc__inner">
-				<main class="doc__main">
+				<main class="doc-main">
+					<?php nest_taxonomy_subnav( $title = 'TEST TAX SUBNAV' ); ?>
 
 					<?php
 						if ( have_posts() ) {
 							$term = get_queried_object();
 					?>
 
-						<header class="doc__header">
-							<h1 class="doc__title"><?php
+						<header class="doc-header">
+							<h1 class="doc-title"><?php
 								if ( is_category() || is_tag() || is_tax() ) {
 									echo $term->name;
 
@@ -41,7 +42,7 @@
 							?>
 						</header>
 
-						<div id="content" class="doc__content entries">
+						<div id="content" class="doc-content entries">
 
 							<?php
 								while ( have_posts() ) {
@@ -50,7 +51,7 @@
 								} // endwhile
 							?>
 
-						</div><?php // /#content.doc__content.entries ?>
+						</div><?php // /#content.doc-content.entries ?>
 
 						<?php nest_postnav_archive(); ?>
 
@@ -59,7 +60,7 @@
 							get_template_part( 'content', 'no-results' );
 						} // endif
 					?>
-				</main><?php // /.doc__main ?>
+				</main><?php // /.doc-main ?>
 
 				<?php get_sidebar(); ?>
 			</div><?php // /.inner.doc__inner ?>

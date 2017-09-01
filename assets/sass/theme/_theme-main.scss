@@ -1,4 +1,4 @@
-.doc__main {
+.doc-main {
 	@include margin-bottom-emcalc($doc__margin-bottom);
 }
 
@@ -10,7 +10,7 @@
 	@include margin-bottom-emcalc($widget__margin-bottom);
 }
 
-.entry__figure {
+.entry-figure {
 	@include margin-bottom-emcalc($figure__margin-bottom);
 }
 
@@ -19,7 +19,7 @@
 	@include padding-emcalc($sticky__padding);
 }
 
-.entry__header {
+.entry-header {
 	margin-bottom: $base__margin-emcalc;
 }
 

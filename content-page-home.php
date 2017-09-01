@@ -1,12 +1,12 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="doc__header">
-		<h2 class="entry-title doc__title"><?php the_title(); ?></h2>
+	<header class="doc-header">
+		<h2 class="entry-title doc-title"><?php the_title(); ?></h2>
 	</header>
 
-	<div class="doc__content">
+	<div class="doc-content">
 
-		<div class="entry-content entry__content">
+		<div class="entry-content entry-content">
 			<?php the_content(); ?>
 			<?php
 				wp_link_pages( array(
@@ -14,9 +14,9 @@
 					'after'	=> '</div>',
 				) );
 			?>
-		</div><?php // /.entry-content.entry__content ?>
+		</div><?php // /.entry-content.entry-content ?>
 
-		<footer class="doc__footer">
+		<footer class="doc-footer">
 			<?php
 				nest_meta( array(
 					nest_get_meta_edit_link()
@@ -28,6 +28,6 @@
 			?>
 		</footer>
 
-	</div><?php // /.doc__content ?>
+	</div><?php // /.doc-content ?>
 
 </article><?php // /#post-## ?>

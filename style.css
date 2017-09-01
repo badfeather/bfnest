@@ -2,7 +2,7 @@
 Theme Name: Bad Feather Nest
 Theme URI: https://github.com/badfeather/bad-feather-nest
 Description: A WordPress starter theme we use at Bad Feather to start new projects. Constantly under construction. Use at your own peril!
-Version: 4.3.0
+Version: 4.4.0
 Author: Brad Thomason, Bad Feather Inc.
 Author URI: http://badfeather.com/
 License: MIT License
@@ -118,7 +118,8 @@ figure {
 }
 
 hr {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
 }
 
@@ -178,7 +179,8 @@ input {
 
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
 }
 
@@ -189,7 +191,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="search"] {
   -webkit-appearance: textfield;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -254,11 +257,13 @@ th {
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 *:before, *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -578,12 +583,12 @@ h6 {
   margin: 0 0 0.8571428571em;
 }
 
-.entry__title {
+.entry-title {
   font-size: 1.5em;
   margin: 0 0 0.5em;
 }
 
-.doc__title {
+.doc-title {
   font-size: 2.375em;
   margin: 0 0 0.3157894737em;
 }
@@ -608,7 +613,7 @@ h6 {
   font-style: italic;
 }
 
-.entry__meta {
+.entry-meta {
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
@@ -662,7 +667,8 @@ fieldset[disabled] .submit {
   cursor: not-allowed;
   pointer-events: none;
   opacity: .65;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .form-control, .comment-form-comment textarea,
@@ -682,7 +688,8 @@ fieldset[disabled] .submit {
   margin-bottom: 0;
   max-width: 100%;
   background-color: transparent;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .form-control:focus, .comment-form-comment textarea:focus,
@@ -692,11 +699,13 @@ fieldset[disabled] .submit {
   color: #606060;
   background-color: transparent;
   border-color: #00ADF2;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 input[type="search"] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 textarea,
@@ -1004,7 +1013,8 @@ fieldset[disabled] .site-nav__toggle {
   cursor: not-allowed;
   pointer-events: none;
   opacity: .65;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .no-js .site-nav__toggle {
@@ -1038,7 +1048,7 @@ fieldset[disabled] .site-nav__toggle {
   margin-bottom: 0.75em;
 }
 
-.doc__main {
+.doc-main {
   margin-bottom: 1.5em;
 }
 
@@ -1050,7 +1060,7 @@ fieldset[disabled] .site-nav__toggle {
   margin-bottom: 1.5em;
 }
 
-.entry__figure {
+.entry-figure {
   margin-bottom: 1.5em;
 }
 
@@ -1059,7 +1069,7 @@ fieldset[disabled] .site-nav__toggle {
   padding: 0.0625em 0;
 }
 
-.entry__header {
+.entry-header {
   margin-bottom: 1.5em;
 }
 
@@ -1068,44 +1078,44 @@ fieldset[disabled] .site-nav__toggle {
   width: 100%;
 }
 
-.comments__list {
+.comments-list {
   padding-left: 0;
   list-style: none;
 }
 
-.comments__list .children {
+.comments-list .children {
   padding-left: 0;
   list-style: none;
   margin-left: 1.5em;
 }
 
-.comments__list .comment {
+.comments-list .comment {
   margin-bottom: 1em;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.comments__list .comment .comment {
+.comments-list .comment .comment {
   padding-top: 1em;
   border-top: 1px solid #e0e0e0;
   border-bottom: 0;
 }
 
-.comments__list p {
+.comments-list p {
   margin-bottom: 0.75em;
 }
 
-.comment__meta {
+.comment-meta {
   font-size: 0.875em;
   line-height: 1.125;
   color: #a0a0a0;
   margin: 0 0 1.7142857143em;
 }
 
-.comment__header {
+.comment-header {
   margin-bottom: 0.8571428571em;
 }
 
-.comment__main {
+.comment-main {
   display: inline-block;
 }
 
@@ -1157,6 +1167,7 @@ fieldset[disabled] .site-nav__toggle {
     text-shadow: none !important;
     color: #000 !important;
     background: transparent !important;
+    -webkit-box-shadow: none !important;
     box-shadow: none !important;
   }
   a,

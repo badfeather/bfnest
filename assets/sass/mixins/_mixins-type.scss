@@ -227,12 +227,12 @@
   @include heading-transform($h6__font-size, $h6__line-height, $h6__font-family, $h6__color, $h6__font-style, $h6__font-weight, $h6__text-transform, $h6__margin-top, $h6__margin-bottom, $h6__font-size--lg, $base__breakpoint);
 }
 
-@mixin entry__title() {
-  @include heading-transform($entry__title__font-size, $entry__title__line-height, $entry__title__font-family, $entry__title__color, $entry__title__font-style, $entry__title__font-weight, $entry__title__text-transform, $entry__title__margin-top, $entry__title__margin-bottom, $entry__title__font-size--lg, $base__breakpoint);
+@mixin entry-title() {
+  @include heading-transform($entry-title__font-size, $entry-title__line-height, $entry-title__font-family, $entry-title__color, $entry-title__font-style, $entry-title__font-weight, $entry-title__text-transform, $entry-title__margin-top, $entry-title__margin-bottom, $entry-title__font-size--lg, $base__breakpoint);
 }
 
-@mixin doc__title() {
-  @include heading-transform($doc__title__font-size, $doc__title__line-height, $doc__title__font-family, $doc__title__color, $doc__title__font-style, $doc__title__font-weight, $doc__title__text-transform, $doc__title__margin-top, $doc__title__margin-bottom, $doc__title__font-size--lg, $base__breakpoint);
+@mixin doc-title() {
+  @include heading-transform($doc-title__font-size, $doc-title__line-height, $doc-title__font-family, $doc-title__color, $doc-title__font-style, $doc-title__font-weight, $doc-title__text-transform, $doc-title__margin-top, $doc-title__margin-bottom, $doc-title__font-size--lg, $base__breakpoint);
 }
 
 @mixin widget__title() {

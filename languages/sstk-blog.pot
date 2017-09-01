@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 4.2.0\n"
+"Project-Id-Version: Bad Feather Nest 4.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2017-05-25 00:00:45+00:00\n"
+"POT-Creation-Date: 2017-09-01 21:21:36+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n1.0.0\n"
 
-#: archive.php:21
+#: archive.php:22
 msgid "Author: %s"
 msgstr ""
 
-#: archive.php:24
+#: archive.php:25
 msgid "Day: %s"
 msgstr ""
 
-#: archive.php:27
+#: archive.php:28
 msgid "Month: %s"
 msgstr ""
 
-#: archive.php:30
+#: archive.php:31
 msgid "Year: %s"
 msgstr ""
 
-#: archive.php:32
+#: archive.php:33
 msgid "Archives"
 msgstr ""
 
-#: archive.php:40
+#: archive.php:41
 msgid "<div class=\"description\">%s</div>"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: content-page-home.php:13 content-page.php:13 content-single.php:21
+#: content-page-home.php:13 content-page.php:13 content-single.php:19
 msgid "Pages:"
 msgstr ""
 
@@ -175,6 +175,60 @@ msgstr ""
 msgid "All Types"
 msgstr ""
 
+#: inc/fn-comments.php:14
+msgid "Pingback:"
+msgstr ""
+
+#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:164
+msgid "Edit"
+msgstr ""
+
+#: inc/fn-comments.php:26
+msgid "%s"
+msgstr ""
+
+#: inc/fn-comments.php:37
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/fn-media.php:19
+msgid "Please define default parameters in the form of an array."
+msgstr ""
+
+#: inc/fn-media.php:24
+msgid "Please define an SVG icon filename."
+msgstr ""
+
+#: inc/fn-meta.php:36
+msgid "Posted in: "
+msgstr ""
+
+#: inc/fn-meta.php:78
+msgid "Comment"
+msgstr ""
+
+#: inc/fn-meta.php:83
+msgid ""
+"<span class=\"meta--comment__count\">%d</span><span "
+"class=\"meta--comment__text\"> comment</span>"
+msgid_plural ""
+"<span class=\"meta--comment__count\">%d<span><span "
+"class=\"meta--comment__text\"> comments</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/fn-meta.php:198
+msgid "Share: "
+msgstr ""
+
+#: inc/fn-nav.php:37
+msgid "&larr; Newer Entries"
+msgstr ""
+
+#: inc/fn-nav.php:41
+msgid "Older Entries &rarr;"
+msgstr ""
+
 #: inc/jetpack.php:23
 msgid "Load more"
 msgstr ""
@@ -199,62 +253,185 @@ msgstr ""
 msgid "Follow Navigation"
 msgstr ""
 
-#: inc/template-tags.php:29
-msgid "&larr; Newer Entries"
+#: inc/widgets/class-widget-page-subnav.php:10
+msgid "A menu list of descendants of top parent Page."
 msgstr ""
 
-#: inc/template-tags.php:33
-msgid "Older Entries &rarr;"
+#: inc/widgets/class-widget-page-subnav.php:13
+msgid "Page Subnav"
 msgstr ""
 
-#: inc/template-tags.php:64
-msgid "Pingback:"
+#: inc/widgets/class-widget-page-subnav.php:98
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:159
+#: inc/widgets/class-widget-taxonomy-subnav.php:119
+msgid "Title:"
 msgstr ""
 
-#: inc/template-tags.php:64 inc/template-tags.php:84 inc/template-tags.php:672
-msgid "Edit"
+#: inc/widgets/class-widget-page-subnav.php:101
+#: inc/widgets/class-widget-taxonomy-subnav.php:122
+msgid "If title field is left empty, displays title of top parent category."
 msgstr ""
 
-#: inc/template-tags.php:76
-msgid "%s"
+#: inc/widgets/class-widget-page-subnav.php:105
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:166
+#: inc/widgets/class-widget-taxonomy-subnav.php:126
+msgid "No Title:"
 msgstr ""
 
-#: inc/template-tags.php:87
-msgid "Your comment is awaiting moderation."
+#: inc/widgets/class-widget-page-subnav.php:108
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:169
+#: inc/widgets/class-widget-taxonomy-subnav.php:129
+msgid "Check box if the title should be removed entirely."
 msgstr ""
 
-#: inc/template-tags.php:126
-msgid "Please define default parameters in the form of an array."
+#: inc/widgets/class-widget-page-subnav.php:111
+msgid "Sort by:"
 msgstr ""
 
-#: inc/template-tags.php:131
-msgid "Please define an SVG icon filename."
+#: inc/widgets/class-widget-page-subnav.php:113
+msgid "Page order"
 msgstr ""
 
-#: inc/template-tags.php:542
-msgid "Posted in: "
+#: inc/widgets/class-widget-page-subnav.php:114
+msgid "Page title"
 msgstr ""
 
-#: inc/template-tags.php:564
-msgid "Tagged: "
+#: inc/widgets/class-widget-page-subnav.php:115
+msgid "Page ID"
 msgstr ""
 
-#: inc/template-tags.php:588
-msgid "Comment"
+#: inc/widgets/class-widget-page-subnav.php:118
+#: inc/widgets/class-widget-taxonomy-subnav.php:139
+msgid "Defaults to page order."
 msgstr ""
 
-#: inc/template-tags.php:593
+#: inc/widgets/class-widget-page-subnav.php:121
+#: inc/widgets/class-widget-taxonomy-subnav.php:143
+msgid "Depth:"
+msgstr ""
+
+#: inc/widgets/class-widget-page-subnav.php:123
+#: inc/widgets/class-widget-taxonomy-subnav.php:145
+msgid "0 - Show all children"
+msgstr ""
+
+#: inc/widgets/class-widget-page-subnav.php:124
+#: inc/widgets/class-widget-taxonomy-subnav.php:146
+msgid "1 - Show only immediate children"
+msgstr ""
+
+#: inc/widgets/class-widget-page-subnav.php:125
+#: inc/widgets/class-widget-taxonomy-subnav.php:147
+msgid "2 - Show children and grandchildren"
+msgstr ""
+
+#: inc/widgets/class-widget-page-subnav.php:128
+#: inc/widgets/class-widget-taxonomy-subnav.php:150
+msgid "Defaults to 0 - Show all children."
+msgstr ""
+
+#: inc/widgets/class-widget-page-subnav.php:131
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:178
+#: inc/widgets/class-widget-taxonomy-subnav.php:154
+msgid "Exclude:"
+msgstr ""
+
+#: inc/widgets/class-widget-page-subnav.php:134
+#: inc/widgets/class-widget-taxonomy-subnav.php:157
+msgid "Page IDs, separated by commas."
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:7
+msgid "Your site&#8217;s most recent posts, by taxonomy term."
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:10
+msgid "Recent Taxonomy Entries"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:21
+msgid "Recent Entries in %1$s"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:97
+msgid "Post Type:"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:99
+msgid "Posts"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:114
+msgid "Defaults to Post."
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:122
+#: inc/widgets/class-widget-taxonomy-subnav.php:93
+msgid "Taxonomy:"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:132
+msgid "Select a taxonomy associated with this post type."
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:143
+msgid "Term:"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:151
+msgid "Select term from the above dropdown."
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:162
+msgid "If title field is left empty, defaults to \"Recent Entries in %1$s\""
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:173
+msgid "Number of posts to show:"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:181
+msgid "Term IDs to exclude, separated by commas."
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:185
+msgid "Content Part:"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-taxonomy-entries.php:188
 msgid ""
-"<span class=\"meta--comment__count\">%d</span><span "
-"class=\"meta--comment__text\"> comment</span>"
-msgid_plural ""
-"<span class=\"meta--comment__count\">%d<span><span "
-"class=\"meta--comment__text\"> comments</span>"
-msgstr[0] ""
-msgstr[1] ""
+"Enter the name of the php template file after 'content-', excluding the "
+"'.php' extension. defaults to '[post_type]', which would call "
+"'content-[post_type].php, or 'content.php' if no post-type specific "
+"template file exists."
+msgstr ""
 
-#: inc/template-tags.php:707
-msgid "Share: "
+#: inc/widgets/class-widget-taxonomy-subnav.php:10
+msgid "A menu list of descendants of top parent Taxonomy."
+msgstr ""
+
+#: inc/widgets/class-widget-taxonomy-subnav.php:13
+msgid "Taxonomy Subnav"
+msgstr ""
+
+#: inc/widgets/class-widget-taxonomy-subnav.php:95
+msgid "Categories"
+msgstr ""
+
+#: inc/widgets/class-widget-taxonomy-subnav.php:115
+msgid "Defaults to category."
+msgstr ""
+
+#: inc/widgets/class-widget-taxonomy-subnav.php:133
+msgid "Order by:"
+msgstr ""
+
+#: inc/widgets/class-widget-taxonomy-subnav.php:135
+msgid "Name"
+msgstr ""
+
+#: inc/widgets/class-widget-taxonomy-subnav.php:136
+msgid "ID"
 msgstr ""
 
 #: inc/widgets.php:9

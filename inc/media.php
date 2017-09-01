@@ -66,7 +66,7 @@ add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
 
 /**
  * Wrap the inserted image html with <figure> or <div> element with additional size classes for styling purposes
- * Additional classes are 'entry__figure entry__figure--size-[sizename]'
+ * Additional classes are 'entry-figure entry-figure--size-[sizename]'
  */
 function nest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
 	if ( ! $caption ) {
@@ -76,7 +76,7 @@ function nest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $a
 			$el = 'figure';
 		}
 
-		$html = sprintf( '<%1$s class="entry__figure entry__figure--size-%2$s align%3$s">%4$s</%1$s>', $el, $size, $align, $html );
+		$html = sprintf( '<%1$s class="entry-figure entry-figure--size-%2$s align%3$s">%4$s</%1$s>', $el, $size, $align, $html );
 	}
 	return $html;
 }
@@ -85,7 +85,7 @@ add_filter( 'image_send_to_editor', 'nest_image_send_to_editor_with_figure', 10,
 
 /**
  * Modified caption shortcode, adding size classes to wrapper element for styling purposes
- * Additional classes are 'entry__figure entry__figure--size-[sizename]'
+ * Additional classes are 'entry-figure entry-figure--size-[sizename]'
  */
 function nest_img_caption_shortcode( $na, $attr, $content ) {
 
@@ -105,9 +105,9 @@ function nest_img_caption_shortcode( $na, $attr, $content ) {
 		$id = 'id="' . esc_attr( sanitize_html_class( $id ) ) . '" ';
 	}
 
-	$add_classes = ' entry__figure';
+	$add_classes = ' entry-figure';
 	if ( preg_match( '/(size-[^\s]+)/', $content, $matches ) ) {
-		$add_classes .= ' entry__figure--' . $matches[1];
+		$add_classes .= ' entry-figure--' . $matches[1];
 	}
 
 	$size = $matches[1];

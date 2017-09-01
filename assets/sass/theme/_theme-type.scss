@@ -279,12 +279,12 @@ h6 {
 
 // THEME ELEMENTS
 // -------------------------
-.entry__title {
-	@include entry__title;
+.entry-title {
+	@include entry-title;
 }
 
-.doc__title {
-	@include doc__title;
+.doc-title {
+	@include doc-title;
 }
 
 .widget__title {
@@ -301,7 +301,7 @@ h6 {
 
 // META
 // -------------------------
-.entry__meta {
+.entry-meta {
   @include meta;
 	clear: both;
 }

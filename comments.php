@@ -14,7 +14,7 @@
 			?>
 		</h2>
 
-		<ol class="comments__list">
+		<ol class="comments-list">
 			<?php
 				wp_list_comments( array(
 					'style' => 'ol',
@@ -22,7 +22,7 @@
 					'callback' => 'nest_comment'
 				) );
 			?>
-		</ol><?php // /.comments__list ?>
+		</ol><?php // /.comments-list ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { ?>
 			<nav class="postnav postnav--comments" role="navigation">

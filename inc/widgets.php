@@ -45,9 +45,21 @@ function nest_widgets_init() {
 add_action( 'widgets_init', 'nest_widgets_init' );
 
 /**
- * Disable default widgets
+ * Register custom widgets
  */
-function nest_unregister_default_wp_widgets() {
+function nest_register_widgets() {
+	register_widget( 'sstk_widget_pages_subnav' );
+	register_widget( 'sstk_widget_taxonomy_subnav' );
+	register_widget( 'sstk_recent_taxonomy_entries' );
+}
+add_action( 'widgets_init', 'nest_register_widgets', 1 );
+
+/**
+ * Disable default widgets
+ * Can be useful for unregistering default widgets
+ * Comment/uncomment as necessary
+ */
+function nest_unregister_widgets() {
 	unregister_widget( 'WP_Widget_Pages' );
 	unregister_widget( 'WP_Widget_Calendar' );
 	unregister_widget( 'WP_Widget_Archives' );
@@ -61,4 +73,12 @@ function nest_unregister_default_wp_widgets() {
 	unregister_widget( 'WP_Widget_RSS' );
 	unregister_widget( 'WP_Widget_Tag_Cloud' );
 }
-add_action( 'widgets_init', 'nest_unregister_default_wp_widgets', 1 );
+//add_action( 'widgets_init', 'nest_unregister_widgets', 1 );
+
+/**
+ * Remove recent comments widget inline style block from head
+ */
+function nest_remove_recent_comments_widget_style() {
+	add_filter( 'show_recent_comments_widget_style', '__return_false' );
+}
+add_action( 'widgets_init', 'nest_remove_recent_comments_widget_style' );

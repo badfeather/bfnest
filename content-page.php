@@ -1,10 +1,10 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="doc__header">
-		<h1 class="entry-title doc__title"><?php the_title(); ?></h1>
+	<header class="doc-header">
+		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
 	</header>
 
-	<div class="doc__content">
+	<div class="doc-content">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -16,7 +16,7 @@
 			?>
 		</div><?php // /.entry-content ?>
 
-		<footer class="doc__footer">
+		<footer class="doc-footer">
 			<?php
 				nest_meta( array(
 					nest_get_meta_edit_link()
@@ -28,6 +28,6 @@
 			?>
 		</footer>
 
-	</div><?php // /.doc__content ?>
+	</div><?php // /.doc-content ?>
 
 </article><?php // /#post-## ?>

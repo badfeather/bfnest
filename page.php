@@ -2,7 +2,7 @@
 
 		<div id="content" class="doc doc--singular doc--page site-main">
 			<div class="inner doc__inner">
-				<main class="doc__main">
+				<main class="doc-main">
 
 					<?php
 						while ( have_posts() ) {
@@ -11,7 +11,7 @@
 						}
 					?>
 
-				</main><?php // /.doc__main ?>
+				</main><?php // /.doc-main ?>
 
 				<?php get_sidebar( 'page' ); ?>
 

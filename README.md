@@ -1,5 +1,5 @@
 # Bad Feather Nest
-Version: 4.3.0
+Version: 4.4.0
 
 A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 

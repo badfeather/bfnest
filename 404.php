@@ -3,9 +3,9 @@
 		<div id="content" class="doc doc--404 site-main">
 			<div class="inner doc__inner">
 
-				<main class="doc__main" role="main">
+				<main class="doc-main" role="main">
 					<?php get_template_part( 'content', 'no-results' ); ?>
-				</main><?php // /.doc__main ?>
+				</main><?php // /.doc-main ?>
 
 				<?php get_sidebar(); ?>
 
