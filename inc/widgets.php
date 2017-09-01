@@ -50,7 +50,6 @@ add_action( 'widgets_init', 'nest_widgets_init' );
 function nest_register_widgets() {
 	register_widget( 'sstk_widget_pages_subnav' );
 	register_widget( 'sstk_widget_taxonomy_subnav' );
-	register_widget( 'sstk_recent_taxonomy_entries' );
 }
 add_action( 'widgets_init', 'nest_register_widgets', 1 );
 

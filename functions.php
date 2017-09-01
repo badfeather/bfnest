@@ -34,7 +34,6 @@ require $template_directory . ( '/inc/fn-custom.php' );
 // Custom widgets
 require $template_directory . ( '/inc/widgets/class-widget-page-subnav.php' );
 require $template_directory . ( '/inc/widgets/class-widget-taxonomy-subnav.php' );
-require $template_directory . ( '/inc/widgets/class-widget-recent-taxonomy-entries.php' );
 
 /**
  * plugin-specific configs
