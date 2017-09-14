@@ -4,3 +4,4 @@ assets/vendor
 .sass-cache
 style.css.map
 .log
+package-lock.json
