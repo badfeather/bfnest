@@ -31,8 +31,7 @@
 				) );
 
 				nest_meta( array(
-					nest_get_meta_share()
-				) );
+					nest_get_meta_share();
 			?>
 		</footer>
 

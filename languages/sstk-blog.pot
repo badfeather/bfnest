@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 4.3.0\n"
+"Project-Id-Version: Bad Feather Nest 4.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2017-09-01 21:21:36+00:00\n"
+"POT-Creation-Date: 2017-09-14 19:19:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -218,6 +218,38 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/fn-meta.php:198
+msgid "Facebook"
+msgstr ""
+
+#: inc/fn-meta.php:212
+msgid "Twitter"
+msgstr ""
+
+#: inc/fn-meta.php:220
+msgid "Google+"
+msgstr ""
+
+#: inc/fn-meta.php:228
+msgid "LinkedIn"
+msgstr ""
+
+#: inc/fn-meta.php:246
+msgid "Pinterest"
+msgstr ""
+
+#: inc/fn-meta.php:254
+msgid "Digg"
+msgstr ""
+
+#: inc/fn-meta.php:262
+msgid "Reddit"
+msgstr ""
+
+#: inc/fn-meta.php:270
+msgid "Email"
+msgstr ""
+
+#: inc/fn-meta.php:294
 msgid "Share: "
 msgstr ""
 
@@ -262,7 +294,6 @@ msgid "Page Subnav"
 msgstr ""
 
 #: inc/widgets/class-widget-page-subnav.php:98
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:159
 #: inc/widgets/class-widget-taxonomy-subnav.php:119
 msgid "Title:"
 msgstr ""
@@ -273,13 +304,11 @@ msgid "If title field is left empty, displays title of top parent category."
 msgstr ""
 
 #: inc/widgets/class-widget-page-subnav.php:105
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:166
 #: inc/widgets/class-widget-taxonomy-subnav.php:126
 msgid "No Title:"
 msgstr ""
 
 #: inc/widgets/class-widget-page-subnav.php:108
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:169
 #: inc/widgets/class-widget-taxonomy-subnav.php:129
 msgid "Check box if the title should be removed entirely."
 msgstr ""
@@ -331,7 +360,6 @@ msgid "Defaults to 0 - Show all children."
 msgstr ""
 
 #: inc/widgets/class-widget-page-subnav.php:131
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:178
 #: inc/widgets/class-widget-taxonomy-subnav.php:154
 msgid "Exclude:"
 msgstr ""
@@ -341,77 +369,16 @@ msgstr ""
 msgid "Page IDs, separated by commas."
 msgstr ""
 
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:7
-msgid "Your site&#8217;s most recent posts, by taxonomy term."
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:10
-msgid "Recent Taxonomy Entries"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:21
-msgid "Recent Entries in %1$s"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:97
-msgid "Post Type:"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:99
-msgid "Posts"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:114
-msgid "Defaults to Post."
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:122
-#: inc/widgets/class-widget-taxonomy-subnav.php:93
-msgid "Taxonomy:"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:132
-msgid "Select a taxonomy associated with this post type."
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:143
-msgid "Term:"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:151
-msgid "Select term from the above dropdown."
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:162
-msgid "If title field is left empty, defaults to \"Recent Entries in %1$s\""
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:173
-msgid "Number of posts to show:"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:181
-msgid "Term IDs to exclude, separated by commas."
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:185
-msgid "Content Part:"
-msgstr ""
-
-#: inc/widgets/class-widget-recent-taxonomy-entries.php:188
-msgid ""
-"Enter the name of the php template file after 'content-', excluding the "
-"'.php' extension. defaults to '[post_type]', which would call "
-"'content-[post_type].php, or 'content.php' if no post-type specific "
-"template file exists."
-msgstr ""
-
 #: inc/widgets/class-widget-taxonomy-subnav.php:10
 msgid "A menu list of descendants of top parent Taxonomy."
 msgstr ""
 
 #: inc/widgets/class-widget-taxonomy-subnav.php:13
 msgid "Taxonomy Subnav"
+msgstr ""
+
+#: inc/widgets/class-widget-taxonomy-subnav.php:93
+msgid "Taxonomy:"
 msgstr ""
 
 #: inc/widgets/class-widget-taxonomy-subnav.php:95

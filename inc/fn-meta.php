@@ -167,31 +167,127 @@ function nest_get_meta_edit_link( $link_text = null, $element = 'span' ) {
 	return '<' . $element . ' class="meta meta--edit"><a href="' . $edit_post_link . '">' . $link_text . '</a></' . $element . '>';
 }
 
+function nest_get_share_data( $args = array() ) {
+
+	if ( empty( $args ) || is_wp_error( $args ) ) {
+		return false;
+	}
+
+	$defaults = array(
+		'facebook' => 0,
+		'twitter' => 0,
+		'googleplus' => 0,
+		'linkedin' => 0,
+		'pinterest' => 0,
+		'digg' => 0,
+		'reddit' => 0,
+		'email' => 0,
+	);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args, EXTR_SKIP );
+
+	$post_url = get_permalink();
+	$post_title = get_the_title();
+	//$encoded_title = urlencode( get_the_title() );
+	$encoded_title = rawurlencode( html_entity_decode( $post_title ) );
+
+	$networks = array();
+
+	if ( $facebook ) {
+		$networks[] = array(
+			'name' => __( 'Facebook', 'nest' ),
+			'slug' => 'facebook',
+			'url' => 'https://www.facebook.com/sharer.php?u=' . $post_url . '&t=' . $encoded_title,
+		);
+	}
+
+	if ( $twitter ) {
+
+		$decoded_title = html_entity_decode( $post_title );
+		//$short_title = strlen( $decoded_title ) > 117 ? substr( $decoded_title, 0, 117 ) . "..." : $decoded_title;
+		$short_title = strlen( $decoded_title ) > 117 ? substr( $decoded_title, 0, strrpos( substr( $decoded_title, 0, 117 ), ' ' ) ) . html_entity_decode( '&hellip;' ) : $decoded_title;
+		$encoded_short_title = rawurlencode( html_entity_decode( $short_title ) );
+
+		$networks[] = array(
+			'name' => __( 'Twitter', 'nest' ),
+			'slug' => 'twitter',
+			'url' => 'https://twitter.com/intent/tweet?url=' . $post_url . '&text=' . $encoded_short_title,
+		);
+	}
+
+	if ( $googleplus ) {
+		$networks[] = array(
+			'name' => __( 'Google+', 'nest' ),
+			'slug' => 'googleplus',
+			'url' => 'https://plus.google.com/share?url=' . $post_url,
+		);
+	}
+
+	if ( $linkedin ) {
+		$networks[] = array(
+			'name' => __( 'LinkedIn', 'nest' ),
+			'slug' => 'linkedin',
+			'url' => 'https://www.linkedin.com/cws/share?url=' . $post_url,
+		);
+	}
+
+	if ( $pinterest ) {
+
+		if ( has_post_thumbnail() ) {
+			$featured_image_id = get_post_thumbnail_id();
+			$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
+			$image_path = $featured_image[0];
+
+		} else {
+			$image_path = nest_get_first_image_url( $size = 'large' );
+		}
+
+		$networks[] = array(
+			'name' => __( 'Pinterest', 'nest' ),
+			'slug' => 'pinterest',
+			'url' => 'https://pinterest.com/pin/create/bookmarklet/?media=?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title,
+		);
+	}
+
+	if ( $digg ) {
+		$networks[] = array(
+			'name' => __( 'Digg', 'nest' ),
+			'slug' => 'digg',
+			'url' => 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title,
+		);
+	}
+
+	if ( $reddit ) {
+		$networks[] = array(
+			'name' => __( 'Reddit', 'nest' ),
+			'slug' => 'reddit',
+			'url' => 'https://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title,
+		);
+	}
+
+	if ( $email ) {
+		$networks[] = array(
+			'name' => __( 'Email', 'nest'),
+			'slug' => 'email',
+			'url' => 'mailto:?subject=' . $encoded_title . '&body=' . $post_url,
+		);
+	}
+
+	return $networks;
+}
+
 /**
  * Scriptless social sharing links
  * Turn the defaults for various profiles on or off as needed using booleans
  * If 'new window' is set to true, link targets will be set to "_blank"
  * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
  */
-function nest_get_meta_share( $args = array(), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
 
-	$defaults = array(
-		'digg' => 0,
-		'facebook' => 1,
-		'twitter' => 1,
-		'google_plus' => 0,
-		'instapaper' => 0,
-		'myspace' => 0,
-		'pinterest' => 1,
-		'linked_in' => 0,
-		'reddit' => 0,
-		'stumbleupon' => 0,
-		'tumblr' => 0,
-		'twitter_handle' => '',
-		'email' => 1,
-	);
-	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_SKIP );
+function nest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'googleplus' => 1  ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
+	$networks = nest_get_share_data( $args );
+	if ( empty( $networks ) && is_wp_error( $networks ) ) {
+		return false;
+	}
 
 	$meta_title = '';
 	if ( null === $before ) {
@@ -208,73 +304,10 @@ function nest_get_meta_share( $args = array(), $before = null, $element = 'span'
 		$target = '';
 	}
 
-	$post_url = get_permalink();
-
-	$post_title = get_the_title();
-	$encoded_title = urlencode( get_the_title() );
-
 	$share_array = array();
 
-	if ( $digg ) {
-		$share_array[] = '<a class="share-link share-link--digg" href="' . esc_url( 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Digg"' . $target . '>Digg</a>';
-	}
-
-	if ( $facebook ) {
-		$share_array[] = '<a class="share-link share-link--facebook" href="' . esc_url( 'https://www.facebook.com/sharer.php?u=' . $post_url . '&t=' . $encoded_title ) . '" title="Facebook"' . $target . '>Facebook</a>';
-	}
-
-	if ( $google_plus ) {
-		$share_array[] = '<a class="share-link share-link--google-plus" href="' . esc_url( 'https://plus.google.com/share?url=' . $post_url ) . '" title="Google+"' . $target . '>Google+</a>';
-	}
-
-	if ( $instapaper ) {
-		 $share_array[] = '<a class="share-link share-link--instapaper" href="' . esc_url( 'http://www.instapaper.com/hello2?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Instapaper"' . $target . '>Instapaper</a>';
-	}
-
-	if ( $linked_in ) {
-		$share_array[] = '<a class="share-link share-link--linked-in" href="' . esc_url( 'https://www.linkedin.com/cws/share?url=' . $post_url ) . '" title="LinkedIn"' . $target . '>LinkedIn</a>';
-	}
-
-	if ( $myspace ) {
-		$share_array[] = '<a class="share-link share-link--myspace" href="' . esc_url( 'https://myspace.com/post?u=' . $post_url . '&t=' . $encoded_title . '&c=' . $encoded_title ) . '" title="Myspace"' . $target . '>Myspace</a>';
-	}
-
-	if ( $pinterest ) {
-
-		if ( has_post_thumbnail() ) {
-			$featured_image_id = get_post_thumbnail_id();
-			$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
-			$image_path = $featured_image[0];
-		} else {
-			$image_path = nest_get_first_image_url( $size = 'large' );
-		}
-
-		$share_array[] = '<a class="share-link share-link--pinterest" href="' . esc_url( 'https://pinterest.com/pin/create/bookmarklet/?media=?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title ) . '" title="Pinterest"' . $target . '>Pinterest</a>';
-	}
-
-	if ( $reddit ) {
-		$share_array[] = '<a class="share-link share-link--reddit" href="' . esc_url( 'https://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title ) . '" title="Reddit"' . $target . '>Reddit</a>';
-	}
-
-	if ( $stumbleupon ) {
-		$share_array[] = '<a class="share-link share-link--stumbleupon" href="' . esc_url( 'http://www.stumbleupon.com/submit?url=' . $post_url ) . '" title="Stumbleupon"' . $target . '>Stumbleupon</a>';
-	}
-
-	if ( $tumblr ) {
-		$share_array[] = '<a class="share-link share-link--tumblr" href="' . esc_url( 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' . $post_url . '&title=' . $encoded_title ) . '" title="Share on Tumblr" title="Tumblr"' . $target . '>Tumblr</a>';
-	}
-
-	if ( $twitter ) {
-
-		$twitter_via = '';
-		if ( $twitter_handle ) {
-			$twitter_via = '&via=' . $twitter_handle;
-		}
-		$share_array[] = '<a class="share-link share-link--twitter" href="' . esc_url( 'https://twitter.com/intent/tweet?url=' . $post_url . '&text=' . $encoded_title . $twitter_via ) . '" title="Tweet"' . $target . '>Twitter</a>';
-	}
-
-	if ( $email ) {
-		$share_array[] = '<a class="share-link share-link--email" href="' . esc_url( 'mailto:?subject=' . $encoded_title . '&body=' . $post_url ) . '" title="Email"' . $target . '>Email</a>';
+	foreach ( $networks as $network ) {
+		$share_array[] = '<a class="share-link share-link--' . $network['slug'] . '" href="' . esc_url( $network['url'] ) . '" title="Share on ' . $network['name'] . '"' . $target . '>' . $network['name'] . '</a>';
 	}
 
 	if ( ! empty( $share_array ) ) {

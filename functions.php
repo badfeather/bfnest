@@ -17,6 +17,9 @@ require $template_directory . ( '/inc/widgets.php' );
 // media
 require $template_directory . ( '/inc/media.php' );
 
+// hooks
+require $template_directory . ( '/inc/hooks.php' );
+
 // Theme functions
 require $template_directory . ( '/inc/fn-comments.php' );
 require $template_directory . ( '/inc/fn-media.php' );
