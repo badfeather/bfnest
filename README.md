@@ -1,11 +1,9 @@
 # Bad Feather Nest
 Version: 4.5.0
 
-A starter theme (not to be confused with a parent theme or framework) for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
+A starter theme for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-Starting with version 4.1, this theme is <em>back to using Grunt (yes, really)</em> to lint and minify SASS and Javascript, perform PostCSS magic, compress images, create svg sprites, generate translation files, and probably more that I'm forgetting about. The old `Gulpfile.js` and Gulp variant of the `package.json` are included for posterity for the time being, but will be phased out soon.
-
-Also in 4.1, we've removed Modernizr from the build. If you want to include Modernizr, you can generate a custom build and include it in your theme.
+This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS and Javascript, compress images, create svg sprites, generate translation files, and probably more that I'm forgetting about. 
 
 ## Getting Started
 ### Installing
@@ -49,12 +47,6 @@ Version numbers get updated in the `.json` files, theme stylesheets and `README.
 * To performa a patch bump, ie. '0.0.1', run `grunt bump-patch`. 
 * To perform a minor bump, ie. '0.1.0', run `grunt bump-minor`. 
 * To perform a major bump, ie. '1.0.0', run `grunt bump-major`. 
-
-##### Modernizr
-* Included is [gulp-modernizr](https://github.com/doctyper/gulp-modernizr), which creates a custom build of Modernizr based on what it sees in your javascript.
-
-#### Bower
-* This theme uses Bower to include vendor dependencies where necessary. Packages will be installed to `assets/vendor`, which can then be included/concatenated via the `Gruntfile.js` where necessary.
 
 #### Style Tester
 * Included is a very low-level style-testing guide of sorts. To use, open `assets/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. For more thorough testing of your theme, download and import WordPress' [Theme Unit Test](https://codex.wordpress.org/Theme_Unit_Test).
