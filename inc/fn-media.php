@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Return SVG markup.
  *
@@ -66,8 +65,8 @@ function nest_the_svg( $args = array() ) {
  * Get the first image from a post
  * Must be used within the loop
  * Use nest_get_first_image( $atts ) in template, much like get_the_post_thumbnail()
- * Atts defaults:
- * 'size' => 'thumbnail'
+ * 'size' defaults to 'thumbnail'
+ * Atts array defailts to:
  * 'output' => 'img' // can be either 'img' or 'url'
  * 'link' => false // if true, will link to full version of itself
  */
