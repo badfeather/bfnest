@@ -181,6 +181,7 @@ function nest_get_share_data( $args = array() ) {
 		'pinterest' => 0,
 		'digg' => 0,
 		'reddit' => 0,
+		'stumbleupon' => 0,
 		'email' => 0,
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -265,6 +266,14 @@ function nest_get_share_data( $args = array() ) {
 		);
 	}
 
+	if ( $stumbleupon ) {
+		$networks[] = array(
+			'name' => __( 'Stumbleupon', 'nest' ),
+			'slug' => 'stumbleupon',
+			'url' => 'https://www.stumbleupon.com/submit?url=' . $post_url,
+		);
+	}
+
 	if ( $email ) {
 		$networks[] = array(
 			'name' => __( 'Email', 'nest'),
@@ -273,7 +282,7 @@ function nest_get_share_data( $args = array() ) {
 		);
 	}
 
-	return $networks;
+	return apply_filters( 'nest_add_share_networks', $networks );
 }
 
 /**
@@ -283,7 +292,7 @@ function nest_get_share_data( $args = array() ) {
  * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
  */
 
-function nest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'googleplus' => 1  ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
+function nest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'googleplus' => 1, 'stumbleupon' => 1 ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
 	$networks = nest_get_share_data( $args );
 	if ( empty( $networks ) && is_wp_error( $networks ) ) {
 		return false;
