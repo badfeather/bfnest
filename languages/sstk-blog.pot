@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 4.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2017-09-14 20:14:43+00:00\n"
+"POT-Creation-Date: 2017-09-26 00:15:17+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -179,7 +179,7 @@ msgstr ""
 msgid "Pingback:"
 msgstr ""
 
-#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:164
+#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:172
 msgid "Edit"
 msgstr ""
 
@@ -191,73 +191,71 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/fn-media.php:19
-msgid "Please define default parameters in the form of an array."
-msgstr ""
-
-#: inc/fn-media.php:24
-msgid "Please define an SVG icon filename."
-msgstr ""
-
-#: inc/fn-meta.php:36
+#: inc/fn-meta.php:37
 msgid "Posted in: "
 msgstr ""
 
-#: inc/fn-meta.php:78
-msgid "Comment"
+#: inc/fn-meta.php:62
+msgid "Tagged: "
 msgstr ""
 
-#: inc/fn-meta.php:83
-msgid ""
-"<span class=\"meta--comment__count\">%d</span><span "
-"class=\"meta--comment__text\"> comment</span>"
-msgid_plural ""
-"<span class=\"meta--comment__count\">%d<span><span "
-"class=\"meta--comment__text\"> comments</span>"
-msgstr[0] ""
-msgstr[1] ""
+#: inc/fn-meta.php:82
+msgid "Leave a comment"
+msgstr ""
 
-#: inc/fn-meta.php:198
+#: inc/fn-meta.php:207
 msgid "Facebook"
 msgstr ""
 
-#: inc/fn-meta.php:212
+#: inc/fn-meta.php:221
 msgid "Twitter"
 msgstr ""
 
-#: inc/fn-meta.php:220
+#: inc/fn-meta.php:229
 msgid "Google+"
 msgstr ""
 
-#: inc/fn-meta.php:228
+#: inc/fn-meta.php:237
 msgid "LinkedIn"
 msgstr ""
 
-#: inc/fn-meta.php:246
+#: inc/fn-meta.php:255
 msgid "Pinterest"
 msgstr ""
 
-#: inc/fn-meta.php:254
+#: inc/fn-meta.php:263
 msgid "Digg"
 msgstr ""
 
-#: inc/fn-meta.php:262
+#: inc/fn-meta.php:271
 msgid "Reddit"
 msgstr ""
 
-#: inc/fn-meta.php:270
+#: inc/fn-meta.php:279
+msgid "Stumbleupon"
+msgstr ""
+
+#: inc/fn-meta.php:287
 msgid "Email"
 msgstr ""
 
-#: inc/fn-meta.php:294
+#: inc/fn-meta.php:311
 msgid "Share: "
 msgstr ""
 
-#: inc/fn-nav.php:37
+#: inc/fn-nav.php:12
+msgid "&larr; %title"
+msgstr ""
+
+#: inc/fn-nav.php:16
+msgid "%title &rarr;"
+msgstr ""
+
+#: inc/fn-nav.php:45
 msgid "&larr; Newer Entries"
 msgstr ""
 
-#: inc/fn-nav.php:41
+#: inc/fn-nav.php:49
 msgid "Older Entries &rarr;"
 msgstr ""
 

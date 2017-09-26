@@ -3,9 +3,17 @@
 /**
  * Postnav single
  */
-function nest_postnav_single( $in_same_term = false, $excluded_terms = array(), $taxonomy = 'category', $newer_title = '&larr; %title', $older_title = '%title &rarr;' ) {
+function nest_postnav_single( $in_same_term = false, $excluded_terms = array(), $taxonomy = 'category', $newer_title = null, $older_title = null ) {
 	if ( ! is_single() ) {
 		return false;
+	}
+
+	if ( null === $newer_title ) {
+		$newer_title = __( '&larr; %title', 'nest' );
+	}
+
+	if ( null === $older_title ) {
+		$older_title = __( '%title &rarr;', 'nest' );
 	}
 
 	$newer = get_next_post_link( '<div class="postnav__link postnav__link--newer">%link</div>', $newer_title, $in_same_term, $excluded_terms, $taxonomy );
