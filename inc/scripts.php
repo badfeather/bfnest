@@ -4,20 +4,15 @@
  */
 function nest_scripts() {
 	$template_directory = get_template_directory_uri();
-	/**
-	 * If WP is in script debug, or we pass ?script_debug in a URL - set debug to true.
-	 */
+
+	// If WP is in script debug, or we pass ?script_debug in a URL - set debug to true.
 	$debug = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG == true ) || ( isset( $_GET['script_debug'] ) ) ? true : false;
 
-	/**
-	 * If we are debugging the site, use a unique version every page load so as to ensure no cache issues.
-	 */
+	// Fetch the version number of the theme, which can be appended on css/js files for debugging/cacheing issues
 	$my_theme = wp_get_theme();
 	$version = $my_theme->get( 'Version' );
 
-	/**
-	 * Should we load minified files?
-	 */
+	// Load non-minified files if 'SCRIPT_DEBUG' is set to TRUE, otherwise, use minified files in production
 	$suffix = ( true === $debug ) ? '' : '.min';
 
 	// Enqueue styles.

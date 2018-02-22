@@ -9,12 +9,15 @@ $font-family--sans-serif:  $font-family--helvetica;
 $font-family--serif: $font-family--georgia;
 $font-family--monospace: $font-family--menlo;
 
-$font-weight--light: 300;
+$font-weight--extra-light: 100;
+$font-weight--light: 200;
+$font-weight--book: 300;
 $font-weight--normal: 400;
 $font-weight--medium: 500;
 $font-weight--semibold: 600;
 $font-weight--bold: 700;
-$font-weight--black: 900;
+$font-weight--black: 800;
+$font-weight--extra-black: 900;
 
 // BASE
 $base__font-family: $font-family--sans-serif;
