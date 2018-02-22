@@ -3,7 +3,6 @@
 		<div id="content" class="doc doc--archive site-main">
 			<div class="inner doc__inner">
 				<main class="doc-main">
-					<?php nest_taxonomy_subnav( $title = 'TEST TAX SUBNAV' ); ?>
 
 					<?php
 						if ( have_posts() ) {
