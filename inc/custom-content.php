@@ -25,8 +25,8 @@ function nest_custom_init() {
 				// 'separate_items_with_commas' => __( 'Separate taxes with commas', 'nest' ), // This string isn’t used on hierarchical taxonomies.
 				// 'add_or_remove_items' => __( 'Add or remove taxes', 'nest' ), // This string isn’t used on hierarchical taxonomies.
 				// 'choose_from_most_used' => __( 'Choose from the most used taxes', 'nest' ), // This string isn’t used on hierarchical taxonomies.
-				'not_found' => __( 'No taxes found', 'nest' ),
-				'no_terms' => __( 'No taxes', 'nest' ),
+				'not_found' => __( 'No Taxes Found', 'nest' ),
+				'no_terms' => __( 'No Taxes', 'nest' ),
 			),
 			'public' => true, // Defaults to true
 			'hierarchical' => true, // (bool) Defaults to false.
@@ -49,8 +49,8 @@ function nest_custom_init() {
 				'new_item' => __( 'New Type', 'nest' ),
 				'view_item' => __( 'View Type', 'nest' ),
 				'search_items' => __( 'Search Types', 'nest' ),
-				'not_found' => __( 'No types found', 'nest' ),
-				'not_found_in_trash' => __( 'No types found in Trash', 'nest' ),
+				'not_found' => __( 'No Types Found', 'nest' ),
+				'not_found_in_trash' => __( 'No Types Found in Trash', 'nest' ),
 				// 'parent_item_colon' => __( 'Parent Type', 'nest' ), //This string isn’t used on non-hierarchical types.
 				'all_items' => __( 'All Types', 'nest' ),
 			),
