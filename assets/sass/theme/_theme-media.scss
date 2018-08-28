@@ -6,14 +6,10 @@ img {
 }
 
 figure {
-  @include margin-emcalc(0, 0, $figure__margin-bottom, 0);
+  @include margin-unitcalc( 0, 0, $figure__margin-bottom, 0 );
 }
 
 // wordpress-specific
-.wp-caption {
-	max-width: 100%;
-}
-
 .alignleft {
 	float: left;
 }
@@ -38,44 +34,74 @@ img,
 	}
 
 	&.alignleft {
-		margin-right: $base__margin-emcalc;
+		margin-right: unitcalc( $base__margin );
 		clear: left;
 	}
 
 	&.alignright {
-		margin-left: $base__margin-emcalc;
+		margin-left: unitcalc( $base__margin );
 		clear: right;
 	}
 
 	&.alignleft,
 	&.alignright,
 	&.aligncenter {
-		margin-bottom: $base__margin-emcalc--half;
+		margin-bottom: unitcalc( $base__margin--half );
 	}
+}
+
+.wp-caption {
+	max-width: 100%;
+}
+
+// used to set widths on center-aligned wp-caption boxes
+.entry-figure--size-thumbnail {
+	width: unitcalc( $image-size--th );
+}
+
+.entry-figure--size-medium {
+	width: unitcalc( $image-size--md );
+}
+
+.entry-figure--size-large {
+	width: unitcalc( $image-size--lg );
+}
+
+.entry-figure--size--x-large {
+	width: unitcalc( $image-size--xl );
 }
 
 .wp-caption-text,
 .gallery-caption {
 	@include meta;
-	@include margin-top-emcalc($base__margin--quarter, $meta__font-size);
+	@include margin-top-unitcalc( $base__margin--quarter, $meta__font-size );
 }
 
-.gallery {
+.gallery,
+.wp-block-gallery {
 	@include row;
-	margin-bottom: $base__margin-emcalc;
-	padding-top: $base__margin-emcalc--half;
+	margin-bottom: unitcalc( $base__margin );
+	padding-top: unitcalc( $base__margin--half );
 }
 
-.gallery-item {
+.wp-block-gallery {
+	@include list-unstyled;
+}
+
+.gallery-item,
+.blocks-gallery-item {
 	@include column;
-	margin-bottom: $base__margin-emcalc;
+	margin-bottom: unitcalc( $base__margin );
 
 	img {
 		display: block;
 	}
 }
 
-@include generate-block-grid-classes(6, '.gallery-columns', '.gallery-item');
+@include generate-block-grid-classes( 6, '.gallery-columns', '.gallery-item' );
+
+// gutenberg uses different classes
+//@include generate-block-grid-classes( 6, '.columns', '.blocks-gallery-item' );
 
 .svg-defs {
 	display: none;

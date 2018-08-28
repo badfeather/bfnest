@@ -1,20 +1,16 @@
 <?php get_header(); ?>
 
 		<div class="inner doc__inner">
-			<main class="doc-main doc-main--archive">
 
 			<?php if ( have_posts() ) { ?>
 
-				<div id="content" class="doc-content entries">
-					<?php
-						while ( have_posts() ) {
-							the_post();
-							get_template_part( 'content', get_post_type() );
-						}
+				<main class="doc-main doc-main--archive">
 
-						nest_postnav_archive();
-					?>
-				</div><?php // /#content.doc-content.entries ?>
+					<?php get_template_part( 'template-parts/loop-archive' ); ?>
+
+				</main><?php // /.doc-main.doc-main--archive ?>
+
+				<?php get_template_part( 'template-parts/sidebar-archive' ); ?>
 
 			<?php
 				} else {
@@ -22,9 +18,6 @@
 				} // endif
 			?>
 
-			</main><?php // /.doc-main.doc-main--archive ?>
-
-			<?php get_sidebar(); ?>
 		</div><?php // /.inner.doc__inner ?>
 
 <?php get_footer(); ?>

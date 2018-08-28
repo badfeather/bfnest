@@ -1,0 +1,48 @@
+@mixin breakpoint-up( $min: 0 ) {
+	@if ( $min > 0 ) {
+		@media ( min-width: unitcalc( $min ) ) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-down( $max: 0 ) {
+	@if ( $max > 0 ) {
+		@media ( max-width: unitcalc( $max - .02 ) ) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-between( $min: 0, $max: 0 ) {
+	@if ( $min > 0 and $max > 0 ) {
+		@media ( min-width: unitcalc( $min ) ) and ( max-width: unitcalc( $max ) ) {
+			@content;
+		}
+
+	} @else if ( $max == 0 ) {
+		@include breakpoint-up( $min );
+
+	} @else if ( $min == 0 ) {
+		@include breakpoint-down( $max );
+
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-exactly( $breakpoint: 0 ) {
+	@if ( $breakpoint > 0 ) {
+		@media ( min-width: unitcalc( $breakpoint ) ) and ( max-width: unitcalc( $breakpoint ) ) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+

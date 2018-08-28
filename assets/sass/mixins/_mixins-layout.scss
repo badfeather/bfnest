@@ -1,84 +1,141 @@
 // HEIGHT AND WIDTH
-@mixin height-emcalc($height, $font-size: $base__font-size) {
-  @include style-emcalc(height, $height, $font-size);
+@mixin height-unitcalc( $value: auto, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( height, $value, $font-size, $unit );
 }
 
-@mixin width-emcalc($width, $font-size: $base__font-size) {
-  @include style-emcalc(width, $width, $font-size);
+@mixin width-unitcalc( $value: auto, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( width, $value, $font-size, $unit );
 }
 
 // MARGINS
-@mixin margin-emcalc($margin-top: 0, $margin-right: 0, $margin-bottom: 0, $margin-left: 0, $font-size: $base__font-size) {
-  @include style-shorthand-emcalc(margin, $margin-top, $margin-right, $margin-bottom, $margin-left, $font-size);
+@mixin margin-unitcalc( $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-shorthand-unitcalc( margin, $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit );
 }
 
-@mixin margin-top-emcalc($margin-top: 0, $font-size: $base__font-size) {
-  @include style-emcalc(margin-top, $margin-top, $font-size);
+@mixin margin-change-unitcalc( $default-top: 0, $default-right: $default-top, $default-bottom: $default-top, $default-left: $default-right, $value-top: $default-top, $value-right: $default-right, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base__font-size, $unit: $base__unit ) {
+
+	@include style-change-shorthand-unitcalc( 'margin', $default-top, $default-right, $default-bottom, $default-left, $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit );
 }
 
-@mixin margin-right-emcalc($margin-right: 0, $font-size: $base__font-size) {
-  @include style-emcalc(margin-right, $margin-right, $font-size);
+@mixin margin-top-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( margin-top, $value, $font-size, $unit );
 }
 
-@mixin margin-bottom-emcalc($margin-bottom: 0, $font-size: $base__font-size) {
-  @include style-emcalc(margin-bottom, $margin-bottom, $font-size);
+@mixin margin-right-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( margin-right, $value, $font-size, $unit );
 }
 
-@mixin margin-left-emcalc($margin-left: 0, $font-size: $base__font-size) {
-  @include style-emcalc(margin-left, $margin-left, $font-size);
+@mixin margin-bottom-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( margin-bottom, $value, $font-size, $unit );
+}
+
+@mixin margin-left-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( margin-left, $value, $font-size, $unit );
 }
 
 // PADDING
-@mixin padding-emcalc($padding-top: 0, $padding-right: 0, $padding-bottom: $padding-top, $padding-left: $padding-right, $font-size: $base__font-size) {
-  @include style-shorthand-emcalc(padding, $padding-top, $padding-right, $padding-bottom, $padding-left, $font-size);
+@mixin padding-unitcalc( $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-shorthand-unitcalc( padding, $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit );
 }
 
-@mixin padding-top-emcalc($padding-top: 0, $font-size: $base__font-size) {
-  @include style-emcalc(padding-top, $padding-top, $font-size);
+@mixin padding-change-unitcalc( $default-top: 0, $default-right: $default-top, $default-bottom: $default-top, $default-left: $default-right, $value-top: $default-top, $value-right: $default-right, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base__font-size, $unit: $base__unit ) {
+
+	@include style-change-shorthand-unitcalc( 'padding', $default-top, $default-right, $default-bottom, $default-left, $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit );
 }
 
-@mixin padding-right-emcalc($padding-right: 0, $font-size: $base__font-size) {
-  @include style-emcalc(padding-right, $padding-right, $font-size);
+@mixin padding-top-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( padding-top, $value, $font-size, $unit );
 }
 
-@mixin padding-bottom-emcalc($padding-bottom: 0, $font-size: $base__font-size) {
-  @include style-emcalc(padding-bottom, $padding-bottom, $font-size);
+@mixin padding-right-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( padding-right, $value, $font-size, $unit );
 }
 
-@mixin padding-left-emcalc($padding-left: 0, $font-size: $base__font-size) {
-  @include style-emcalc(padding-left, $padding-left, $font-size);
+@mixin padding-bottom-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( padding-bottom, $value, $font-size, $unit );
+}
+
+@mixin padding-left-unitcalc( $value: 0, $font-size: $base__font-size, $unit: $base__unit ) {
+  @include style-unitcalc( padding-left, $value, $font-size, $unit );
 }
 
 // BORDER
-@mixin border($border-width: 1, $border-style: solid, $border-color: $base__border-color) {
-  border: px($border-width) $border-style $border-color;
+@mixin border( $border-width: 1, $border-style: solid, $border-color: $base__border-color, $font-size: $base__font-size, $unit: $base__unit ) {
+  border: unitcalc( $border-width, $font-size, $unit ) $border-style $border-color;
 }
 
-@mixin border-width($border-top-width: 1, $border-right-width: 1, $border-bottom-width: 1, $border-left-width: 1) {
-  @include style-shorthand(border-width, px($border-top-width), px($border-right-width), px($border-bottom-width), px($border-left-width));
+@mixin border-width-unitcalc( $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base__font-size, $unit: $base__unit) {
+	@include style-shorthand-unitcalc( border-width, $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit );
 }
 
-@mixin border-color($border-color: $base__border-color, $default-border-color: $base__border-color) {
-  @include style(border-color, $default-border-color);
+@mixin border-radius-unitcalc( $value: 0, $font-size: $base__font-size ) {
+	@include style-unitcalc( border-radius, $value, $font-size );
 }
 
-@mixin border-color-change($border-color: normal, $default-border-color: normal) {
-  @include style-change(border-color, $border-color, $default-border-color);
+@mixin border-color-change( $value: $base__border-color, $default: $base__border-color ) {
+  @include style-change( border-color, $value, $default );
 }
 
-@mixin box-shadow($box-shadow: $base__box-shadow, $default-box-shadow: none) {
-  @include style(box-shadow, $default-box-shadow);
-}
-
-@mixin box-shadow-change($box-shadow: normal, $default-box-shadow: normal) {
-  @include style-change(box-shadow, $box-shadow, $default-box-shadow);
+@mixin box-shadow-change( $value: none, $default: none ) {
+  @include style-change( box-shadow, $value, $default );
 }
 
 // BACKGROUND
-@mixin background-color($background-color: $base__background-color, $default-background-color: $base__background-color) {
-  @include style(background-color, $default-background-color);
+@mixin background-color-change( $value: transparent, $default: transparent ) {
+  @include style-change( background-color, $value, $default );
 }
 
-@mixin background-color-change($background-color: normal, $default-background-color: normal) {
-  @include style-change(background-color, $background-color, $default-background-color);
+// LEGACY EM MIXINS
+// To be phased out?
+// -----------------------------------
+
+// HEIGHT AND WIDTH
+@mixin height-emcalc( $height, $font-size: $base__font-size ) {
+  @include style-emcalc( height, $height, $font-size );
+}
+
+@mixin width-emcalc( $width, $font-size: $base__font-size ) {
+  @include style-emcalc( width, $width, $font-size );
+}
+
+// MARGINS
+@mixin margin-emcalc( $value-top: 0, $value-right: 0, $value-bottom: 0, $value-left: 0, $font-size: $base__font-size ) {
+  @include style-shorthand-emcalc( margin, $value-top, $value-right, $value-bottom, $value-left, $font-size );
+}
+
+@mixin margin-top-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( margin-top, $value, $font-size );
+}
+
+@mixin margin-right-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( margin-right, $value, $font-size );
+}
+
+@mixin margin-bottom-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( margin-bottom, $value, $font-size );
+}
+
+@mixin margin-left-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( margin-left, $value, $font-size );
+}
+
+// PADDING
+@mixin padding-emcalc( $value-top: 0, $value-right: 0, $value-bottom: $value-top, $value-left: $value-right, $font-size: $base__font-size ) {
+  @include style-shorthand-emcalc( padding, $value-top, $value-right, $value-bottom, $value-left, $font-size );
+}
+
+@mixin padding-top-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( padding-top, $value, $font-size );
+}
+
+@mixin padding-right-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( padding-right, $value, $font-size );
+}
+
+@mixin padding-bottom-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( padding-bottom, $value, $font-size );
+}
+
+@mixin padding-left-emcalc( $value: 0, $font-size: $base__font-size ) {
+  @include style-emcalc( padding-left, $value, $font-size );
 }

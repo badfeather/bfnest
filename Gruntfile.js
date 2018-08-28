@@ -1,53 +1,11 @@
 module.exports = function ( grunt ) {
 	// Load all grunt tasks in package.json matching the `grunt-*` pattern.
+	const sass = require('node-sass');
 	require( 'load-grunt-tasks' )( grunt );
 
 	grunt.initConfig( {
 
 		pkg: grunt.file.readJSON( 'package.json' ),
-
-		/**
-		 * Minify SVGs using SVGO.
-		 *
-		 * @link https://github.com/sindresorhus/grunt-svgmin
-		 */
-		svgmin: {
-			options: {
-				plugins: [
-					{removeComments: true},
-					{removeUselessStrokeAndFill: true},
-					{removeEmptyAttrs: true}
-				]
-			},
-			dist: {
-				files: [ {
-					expand: true,
-					cwd: 'assets/img/svg-icons/',
-					src: [ '*.svg' ],
-					dest: 'assets/img/svg-icons/'
-				} ]
-			}
-		},
-
-		/**
-		 * Merge SVGs into a single SVG.
-		 *
-		 * @link https://github.com/FWeinb/grunt-svgstore
-		 */
-		svgstore: {
-			options: {
-				prefix: 'icon-',
-				cleanup: [ 'fill', 'style' ],
-				svg: {
-					style: 'display: none;'
-				}
-			},
-			dist: {
-				files: {
-					'assets/img/svg-defs.svg': 'assets/img/svg-icons/*.svg'
-				}
-			}
-		},
 
 		/**
 		 * Compile Sass into CSS using node-sass.
@@ -56,15 +14,13 @@ module.exports = function ( grunt ) {
 		 */
 		sass: {
 			options: {
-				outputStyle: 'expanded',
-				sourceComments: false,
+				implementation: sass,
 				sourceMap: true,
-				includePaths: [
-				]
+				outputStyle: 'expanded',
 			},
 			dist: {
 				files: {
-					'style.css': 'assets/sass/style.scss',
+					'assets/css/theme.css': 'assets/sass/theme.scss'
 				}
 			}
 		},
@@ -82,7 +38,7 @@ module.exports = function ( grunt ) {
 					require( 'css-mqpacker' )( {'sort': true} )
 				]},
 			dist: {
-				src: [ 'style.css' ]
+				src: [ 'assets/css/theme.css' ]
 			}
 		},
 
@@ -98,7 +54,7 @@ module.exports = function ( grunt ) {
 			},
 			dist: {
 				files: {
-					'style.min.css': 'style.css',
+					'assets/css/theme.min.css': 'assets/css/theme.css',
 				}
 			}
 		},
@@ -112,7 +68,7 @@ module.exports = function ( grunt ) {
 				options: {
 					prefix: 'Version\\:\\s'
 				},
-				src: [ 'assets/sass/style.scss', 'style.css', 'style.min.css', 'README.md' ]
+				src: [ 'style.css', 'README.md' ]
 			},
 			json: {
 				src: ['*.json']
@@ -189,11 +145,6 @@ module.exports = function ( grunt ) {
 				tasks: [ 'styles' ],
 			},
 
-			svg: {
-				files: [ 'assets/img/svg-icons/*.svg' ],
-				tasks: [ 'svgstore' ],
-			},
-
 			images: {
 				files: [ 'assets/img/*' ],
 				tasks: [ 'imagemin' ],
@@ -209,7 +160,7 @@ module.exports = function ( grunt ) {
 			target: {
 				options: {
 					domainPath: 'languages/',		 // Where to save the POT file.
-					potFilename: 'sstk-blog.pot',		// Name of the POT file.
+					potFilename: 'bad-feather-nest.pot',		// Name of the POT file.
 					type: 'wp-theme',	 // Type of project (wp-plugin or wp-theme).
 					updateTimestamp: true,
 					exclude: [
@@ -227,7 +178,6 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'styles', [ 'sass', 'postcss', 'cssnano' ] );
 	grunt.registerTask( 'javascript', [ 'concat', 'uglify' ] );
 	grunt.registerTask( 'images', [ 'imagemin' ] );
-	grunt.registerTask( 'svg', [ 'svgmin', 'svgstore' ] );
 	grunt.registerTask( 'i18n', [ 'makepot' ] );
 	grunt.registerTask( 'bump-patch', [ 'version::patch' ] );
 	grunt.registerTask( 'bump-minor', [ 'version::minor' ] );
@@ -236,7 +186,6 @@ module.exports = function ( grunt ) {
 		'styles',
 		'javascript',
 		'images',
-		'svg',
 		'i18n'
 	] );
 };

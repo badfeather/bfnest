@@ -2,7 +2,7 @@
 /**
  * Displays subnavigation menu, listing descendants of top parent of current page
  */
-class sstk_widget_taxonomy_subnav extends WP_Widget {
+class nest_widget_taxonomy_subnav extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(

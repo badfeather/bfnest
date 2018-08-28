@@ -48,8 +48,8 @@ add_action( 'widgets_init', 'nest_widgets_init' );
  * Register custom widgets
  */
 function nest_register_widgets() {
-	register_widget( 'sstk_widget_pages_subnav' );
-	register_widget( 'sstk_widget_taxonomy_subnav' );
+	register_widget( 'nest_widget_pages_subnav' );
+	register_widget( 'nest_widget_taxonomy_subnav' );
 }
 add_action( 'widgets_init', 'nest_register_widgets', 1 );
 

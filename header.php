@@ -40,6 +40,8 @@
 							'container' => false,
 							'menu_class' => 'menu menu--primary'
 						) );
+
+						get_search_form();
 					?>
 				</nav><?php // /.nav.site-nav ?>
 			</div><?php // /.inner.site-header__inner ?>

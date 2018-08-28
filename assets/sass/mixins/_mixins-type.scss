@@ -8,7 +8,7 @@
 
 // Hide from everything but screen readers
 @mixin text-sr-only() {
-	clip: rect(1px, 1px, 1px, 1px);
+	clip: rect( 1px, 1px, 1px, 1px );
 	position: absolute;
 	&:hover,
 	&:active,
@@ -18,47 +18,44 @@
 	}
 }
 
-// Font size. line-height and margin calculations, to be used in base.less
-@mixin font-size-emcalc($font-size: $base__font-size, $default-font-size: $base__font-size) {
-  @if $font-size != $default-font-size {
-    font-size: emcalc($font-size, $default-font-size);
-  }
+@mixin font-size-change( $value: $base__font-size, $default: $base__font-size, $font-size: $base__font-size, $unit: $base__unit ) {
+	@include style-change-unitcalc( font-size, $value, $default, $font-size, $unit );
 }
 
-@mixin font-family($font-family: $base__font-family, $default-font-family: $base__font-family) {
-  @include style-change(font-family, $font-family, $default-font-family);
+@mixin font-family-change( $value: $base__font-family, $default: $base__font-family ) {
+	@include style-change( font-family, $value, $default );
 }
 
-@mixin line-height($line-height: $base__line-height, $default-line-height: $base__line-height) {
-  @include style-change(line-height, $line-height, $default-line-height);
+@mixin line-height-change( $value: $base__line-height, $default: $base__line-height ) {
+	@include style-change( line-height, $value, $default );
 }
 
-@mixin font-weight($font-weight: $base__font-weight, $default-font-weight: $base__font-weight) {
-  @include style-change(font-weight, $font-weight, $default-font-weight);
+@mixin font-weight-change( $value: $base__font-weight, $default: $base__font-weight ) {
+	@include style-change( font-weight, $value, $default );
 }
 
-@mixin text-transform($text-transform: none, $default-text-transform: none) {
-  @include style-change(text-transform, $text-transform, $default-text-transform);
+@mixin text-transform-change( $value: none, $default: none ) {
+	@include style-change( text-transform, $value, $default );
 }
 
-@mixin text-decoration($text-decoration: none, $default-text-decoration: none) {
-  @include style-change(text-decoration, $text-decoration, $default-text-decoration);
+@mixin text-decoration-change( $value: none, $default: none ) {
+	@include style-change( text-decoration, $value, $default );
 }
 
-@mixin color($color: $base__color, $default-color: $base__color) {
-  @include style-change(color, $color, $default-color);
+@mixin color-change( $value: $base__color, $default: $base__color ) {
+	@include style-change( color, $value, $default );
 }
 
-@mixin text-align($text-align: $base__text-align, $default-text-align: $base__text-align) {
-  @include style-change(text-align, $text-align, $default-text-align);
+@mixin text-align-change( $value: $base__text-align, $default: $base__text-align ) {
+	@include style-change( text-align, $value, $default );
 }
 
-@mixin font-style($font-style: normal, $default-font-style: normal) {
-  @include style-change(font-style, $font-style, $default-font-style);
+@mixin font-style-change( $value: normal, $default: normal ) {
+	@include style-change( font-style, $value, $default );
 }
 
 // Optional hyphenation
-@mixin hyphens($mode: auto) {
+@mixin hyphens( $mode: auto ) {
 	word-wrap: break-word;
 	hyphens: $mode;
 }
@@ -81,175 +78,187 @@
 }
 
 @mixin cite {
-  @include font-family($cite__font-family);
-	@include font-size-emcalc($cite__font-size);
-	@include line-height($cite__line-height);
-	@include font-style($cite__font-style);
-	@include font-weight($cite__font-weight);
-	@include color($cite__color);
+	@include font-family-change( $cite__font-family );
+	@include font-family-change( $cite__font-size );
+	@include line-height-change( $cite__line-height );
+	@include font-style-change( $cite__font-style );
+	@include font-weight-change( $cite__font-weight );
+	@include color-change( $cite__color );
 }
 
 // Blockquotes
 @mixin blockquote {
-  @include font-family($blockquote__font-family);
-	@include font-size-emcalc($blockquote__font-size);
-	@include line-height($blockquote__line-height);
-	@include font-style($blockquote__font-style);
-	@include font-weight($blockquote__font-weight);
-	@include color($blockquote__color);
-	@include margin-emcalc($blockquote__margin-top, $blockquote__margin-right, $blockquote__margin-bottom, $blockquote__margin-left, $blockquote__font-size);
+	@include font-family-change( $blockquote__font-family );
+	@include font-family-change( $blockquote__font-size );
+	@include line-height-change( $blockquote__line-height );
+	@include font-style-change( $blockquote__font-style );
+	@include font-weight-change( $blockquote__font-weight );
+	@include color-change( $blockquote__color );
+	@include margin-unitcalc( $blockquote__margin-top, $blockquote__margin-right, $blockquote__margin-bottom, $blockquote__margin-left, $blockquote__font-size );
 
 	em {
-  	@if $blockquote__font-style == normal {
-    	font-style: italic;
-  	} @else if $blockquote__font-style == italic {
-    	font-style: normal;
-  	}
+		@if $blockquote__font-style == normal {
+			font-style: italic;
+		} @else if $blockquote__font-style == italic {
+			font-style: normal;
+		}
 	}
 
 	cite {
-    @include font-family($cite__font-family, $blockquote__font-family);
-    @include font-size-emcalc($cite__font-size, $blockquote__font-size);
-    @include line-height($cite__line-height, $blockquote__line-height);
-    @include font-style($cite__font-style, $blockquote__font-style);
-    @include font-weight($cite__font-weight, $blockquote__font-weight);
-    @include color($cite__color, $blockquote__color);
+		@include font-family-change( $cite__font-family, $blockquote__font-family );
+		@include font-family-change( $cite__font-size, $blockquote__font-size );
+		@include line-height-change( $cite__line-height, $blockquote__line-height );
+		@include font-style-change( $cite__font-style, $blockquote__font-style );
+		@include font-weight-change( $cite__font-weight, $blockquote__font-weight );
+		@include color-change( $cite__color, $blockquote__color );
 	}
 }
 
 // Ledes
 @mixin lede {
-  @include font-family($lede__font-family);
-	@include font-size-emcalc($lede__font-size);
-	@include line-height($lede__line-height);
-	@include font-style($lede__font-style);
-	@include font-weight($lede__font-weight);
-	@include color($lede__color);
-	@include text-align($lede__text-align);
-	@include margin-emcalc($lede__margin-top, $lede__margin-right, $lede__margin-bottom, $lede__margin-left, $lede__font-size);
+	@include font-family-change( $lede__font-family );
+	@include font-family-change( $lede__font-size );
+	@include line-height-change( $lede__line-height );
+	@include font-style-change( $lede__font-style );
+	@include font-weight-change( $lede__font-weight );
+	@include color-change( $lede__color );
+	@include text-align-change( $lede__text-align );
+	@include margin-unitcalc( $lede__margin-top, $lede__margin-right, $lede__margin-bottom, $lede__margin-left, $lede__font-size );
 
 	em {
-  	@if $lede__font-style == normal {
-    	font-style: italic;
-  	} @else if $lede__font-style == italic {
-    	font-style: normal;
-  	}
+		@if $lede__font-style == normal {
+			font-style: italic;
+		} @else if $lede__font-style == italic {
+			font-style: normal;
+		}
 	}
 }
 
 // meta
 @mixin meta {
-  @include font-family($meta__font-family);
-	@include font-size-emcalc($meta__font-size);
-	@include line-height($meta__line-height);
-	@include font-style($meta__font-style);
-	@include font-weight($meta__font-weight);
-	@include color($meta__color);
-	@include margin-emcalc($meta__margin-top, 0, $meta__margin-bottom, 0, $meta__font-size);
+	@include font-family-change( $meta__font-family );
+	@include font-size-change( $meta__font-size );
+	@include line-height-change( $meta__line-height );
+	@include font-style-change( $meta__font-style );
+	@include font-weight-change( $meta__font-weight );
+	@include color-change( $meta__color );
+	@include margin-unitcalc( $meta__margin-top, 0, $meta__margin-bottom, 0, $meta__font-size );
 }
 
 // small
-@mixin small() {
-	@include font-size-emcalc($base__font-size--sm);
+@mixin small {
+	@include font-family-change( $base__font-size--sm );
 }
 
 // HEADINGS
 // -------------------------
 @mixin heading() {
-  font-family: $headings__font-family;
-  line-height: $headings__line-height;
-  font-weight: $headings__font-weight;
-  color: $headings__color;
+	font-size: unitcalc( $headings__font-size );
+	font-family: $headings__font-family;
+	line-height: $headings__line-height;
+	font-weight: $headings__font-weight;
+	@include text-transform-change( $headings__text-transform );
+	@include font-style-change( $headings__font-style );
+	color: $headings__color;
+	@include margin-unitcalc( $headings__margin-top, 0, $headings__margin-bottom, 0, $headings__font-size );
 
 	a {
 		color: $headings__link-color;
-		@include text-decoration($headings__link-text-decoration);
+		@include text-decoration-change( $headings__link-text-decoration );
 
 		&:hover,
 		&:focus {
 			color: $headings__link-color--hover;
-			@include text-decoration($headings__link-text-decoration--hover, $link__text-decoration--hover);
+			@include text-decoration-change( $headings__link-text-decoration--hover, $link__text-decoration--hover );
 		}
 	}
 }
 
 @mixin heading-transform(
-  $font-size: $base__font-size,
-  $line-height: $headings__line-height,
-  $font-family: $headings__font-family,
-  $color: $headings__color,
-  $font-style: $headings__font-style,
-  $font-weight: $headings__font-weight,
-  $text-transform: $headings__text-transform,
-  $margin-top: $headings__margin-top,
-  $margin-bottom: $headings__margin-bottom,
-  $font-size--lg: $base__font-size,
-  $breakpoint: $base__breakpoint
+	$new__font-size: $headings__font-size,
+	$new__line-height: $headings__line-height,
+	$new__font-family: $headings__font-family,
+	$new__color: $headings__color,
+	$new__font-style: $headings__font-style,
+	$new__font-weight: $headings__font-weight,
+	$new__text-transform: $headings__text-transform,
+	$new__margin-top: $headings__margin-top,
+	$new__margin-bottom: $headings__margin-bottom,
+	$new__font-size--lg: $new__font-size,
+	$new__margin-top--lg: $new__margin-top,
+	$new__margin-bottom--lg: $new__margin-bottom,
+	$new__breakpoint: $base__breakpoint
 ) {
-  font-size: emcalc($font-size);
-  @include line-height($line-height, $headings__line-height);
-  @include font-family($font-family, $headings__font-family);
-  @include color($color, $headings__color);
-  @include font-style($font-style, $headings__font-style);
-  @include font-weight($font-weight, $headings__font-weight);
-  @include text-transform($text-transform);
-  @include margin-emcalc($margin-top, 0, $margin-bottom, 0, $font-size);
+	@include font-size-change( $new__font-size, $headings__font-size );
+	@include line-height-change( $new__line-height, $headings__line-height );
+	@include font-family-change( $new__font-family, $headings__font-family );
+	@include color-change( $new__color, $headings__color );
+	@include font-style-change( $new__font-style, $headings__font-style );
+	@include font-weight-change( $new__font-weight, $headings__font-weight );
+	@include text-transform-change( $new__text-transform, $headings__text-transform );
 
-  @if $font-size != $font-size--lg {
-    @media(min-width: $breakpoint) {
-      font-size: emcalc($font-size--lg);
-      @include margin-emcalc($margin-top, 0, $margin-bottom, 0, $font-size--lg);
-    }
-  }
+	@if ( $new__font-size != $headings__font-size or $new__margin-top != $headings__margin-top or $new__margin-bottom != $headings__margin-bottom ) {
+		@include margin-change-unitcalc( $headings__margin-top, 0, $headings__margin-bottom, 0, $new__margin-top, 0, $new__margin-bottom, 0, $new__font-size );
+	}
+
+	@if ( $new__font-size != $new__font-size--lg ) {
+		@include breakpoint-up( $new__breakpoint ) {
+			@include font-size-change( $new__font-size--lg, $new__font-size );
+
+			@if ( $new__margin-top--lg != $new__margin-top or $new__margin-bottom--lg != $new__margin-bottom ) {
+				@include margin-change-unitcalc( $new__margin-top, 0, $new__margin-bottom, 0, $new__margin-top--lg, 0, $new__margin-bottom--lg, 0, $new__font-size--lg );
+			}
+		}
+	}
 }
 
 @mixin h1() {
-  @include heading-transform($h1__font-size, $h1__line-height, $h1__font-family, $h1__color, $h1__font-style, $h1__font-weight, $h1__text-transform, $h1__margin-top, $h1__margin-bottom, $h1__font-size--lg, $base__breakpoint);
+	@include heading-transform( $h1__font-size, $h1__line-height, $h1__font-family, $h1__color, $h1__font-style, $h1__font-weight, $h1__text-transform, $h1__margin-top, $h1__margin-bottom, $h1__font-size--lg, $h1__margin-top--lg, $h1__margin-bottom--lg, $base__breakpoint );
 }
 
 @mixin h2() {
-  @include heading-transform($h2__font-size, $h2__line-height, $h2__font-family, $h2__color, $h2__font-style, $h2__font-weight, $h2__text-transform, $h2__margin-top, $h2__margin-bottom, $h2__font-size--lg, $base__breakpoint);
+	@include heading-transform( $h2__font-size, $h2__line-height, $h2__font-family, $h2__color, $h2__font-style, $h2__font-weight, $h2__text-transform, $h2__margin-top, $h2__margin-bottom, $h2__font-size--lg, $h2__margin-top--lg, $h2__margin-bottom--lg, $base__breakpoint );
 }
 
 @mixin h3() {
-  @include heading-transform($h3__font-size, $h3__line-height, $h3__font-family, $h3__color, $h3__font-style, $h3__font-weight, $h3__text-transform, $h3__margin-top, $h3__margin-bottom, $h3__font-size--lg, $base__breakpoint);
+	@include heading-transform( $h3__font-size, $h3__line-height, $h3__font-family, $h3__color, $h3__font-style, $h3__font-weight, $h3__text-transform, $h3__margin-top, $h3__margin-bottom, $h3__font-size--lg, $h3__margin-top--lg, $h3__margin-bottom--lg, $base__breakpoint );
 }
 
 @mixin h4() {
-  @include heading-transform($h4__font-size, $h4__line-height, $h4__font-family, $h4__color, $h4__font-style, $h4__font-weight, $h4__text-transform, $h4__margin-top, $h4__margin-bottom, $h4__font-size--lg, $base__breakpoint);
+	@include heading-transform( $h4__font-size, $h4__line-height, $h4__font-family, $h4__color, $h4__font-style, $h4__font-weight, $h4__text-transform, $h4__margin-top, $h4__margin-bottom, $h4__font-size--lg, $h4__margin-top--lg, $h4__margin-bottom--lg, $base__breakpoint );
 }
 
 @mixin h5() {
-  @include heading-transform($h5__font-size, $h5__line-height, $h5__font-family, $h5__color, $h5__font-style, $h5__font-weight, $h5__text-transform, $h5__margin-top, $h5__margin-bottom, $h5__font-size--lg, $base__breakpoint);
+	@include heading-transform( $h5__font-size, $h5__line-height, $h5__font-family, $h5__color, $h5__font-style, $h5__font-weight, $h5__text-transform, $h5__margin-top, $h5__margin-bottom, $h5__font-size--lg, $h5__margin-top--lg, $h5__margin-bottom--lg, $base__breakpoint );
 }
 
 @mixin h6() {
-  @include heading-transform($h6__font-size, $h6__line-height, $h6__font-family, $h6__color, $h6__font-style, $h6__font-weight, $h6__text-transform, $h6__margin-top, $h6__margin-bottom, $h6__font-size--lg, $base__breakpoint);
+	@include heading-transform( $h6__font-size, $h6__line-height, $h6__font-family, $h6__color, $h6__font-style, $h6__font-weight, $h6__text-transform, $h6__margin-top, $h6__margin-bottom, $h6__font-size--lg, $h6__margin-top--lg, $h6__margin-bottom--lg, $base__breakpoint );
 }
 
 @mixin entry-title() {
-  @include heading-transform($entry-title__font-size, $entry-title__line-height, $entry-title__font-family, $entry-title__color, $entry-title__font-style, $entry-title__font-weight, $entry-title__text-transform, $entry-title__margin-top, $entry-title__margin-bottom, $entry-title__font-size--lg, $base__breakpoint);
+	@include heading-transform( $entry-title__font-size, $entry-title__line-height, $entry-title__font-family, $entry-title__color, $entry-title__font-style, $entry-title__font-weight, $entry-title__text-transform, $entry-title__margin-top, $entry-title__margin-bottom, $entry-title__font-size--lg, $entry-title__margin-top--lg, $entry-title__margin-bottom--lg, $base__breakpoint );
 }
 
 @mixin doc-title() {
-  @include heading-transform($doc-title__font-size, $doc-title__line-height, $doc-title__font-family, $doc-title__color, $doc-title__font-style, $doc-title__font-weight, $doc-title__text-transform, $doc-title__margin-top, $doc-title__margin-bottom, $doc-title__font-size--lg, $base__breakpoint);
+	@include heading-transform( $doc-title__font-size, $doc-title__line-height, $doc-title__font-family, $doc-title__color, $doc-title__font-style, $doc-title__font-weight, $doc-title__text-transform, $doc-title__margin-top, $doc-title__margin-bottom, $doc-title__font-size--lg, $doc-title__margin-top--lg, $doc-title__margin-bottom--lg, $base__breakpoint );
 }
 
-@mixin widget__title() {
-  @include heading-transform($widget__title__font-size, $widget__title__line-height, $widget__title__font-family, $widget__title__color, $widget__title__font-style, $widget__title__font-weight, $widget__title__text-transform, $widget__title__margin-top, $widget__title__margin-bottom, $widget__title__font-size--lg, $base__breakpoint);
+@mixin widget-title() {
+	@include heading-transform( $widget-title__font-size, $widget-title__line-height, $widget-title__font-family, $widget-title__color, $widget-title__font-style, $widget-title__font-weight, $widget-title__text-transform, $widget-title__margin-top, $widget-title__margin-bottom, $widget-title__font-size--lg, $widget-title__margin-top--lg, $widget-title__margin-bottom--lg, $base__breakpoint );
 }
 
-@mixin section__title() {
-  @include heading-transform($section__title__font-size, $section__title__line-height, $section__title__font-family, $section__title__color, $section__title__font-style, $section__title__font-weight, $section__title__text-transform, $section__title__margin-top, $section__title__margin-bottom, $section__title__font-size--lg, $base__breakpoint);
+@mixin section-title() {
+	@include heading-transform( $section-title__font-size, $section-title__line-height, $section-title__font-family, $section-title__color, $section-title__font-style, $section-title__font-weight, $section-title__text-transform, $section-title__margin-top, $section-title__margin-bottom, $section-title__font-size--lg, $section-title__margin-top--lg, $section-title__margin-bottom--lg, $base__breakpoint );
 }
 
 // MENUS
 // -------------------------
-@mixin menu($font-size: $nav__font-size, $font-family: $nav__font-family, $font-weight: $nav__font-weight, $text-transform: $nav__text-transform, $link__color: $nav__link-color, $link__color--hover: $nav__link-color--hover, $link__color--active: $nav__link-color--active) {
+@mixin menu( $font-size: $nav__font-size, $font-family: $nav__font-family, $font-weight: $nav__font-weight, $text-transform: $nav__text-transform, $link__color: $nav__link-color, $link__color--hover: $nav__link-color--hover, $link__color--active: $nav__link-color--active ) {
 	@include list-unstyled;
-	@include font-family($font-family);
-	@include font-weight($font-weight);
-	@include text-transform($text-transform);
+	@include font-family-change( $font-family );
+	@include font-weight-change( $font-weight );
+	@include text-transform-change( $text-transform );
 
 	ul {
 		@include list-unstyled;

@@ -1,8 +1,2 @@
-<div class="doc__side">
-
-	<?php
-		dynamic_sidebar( 'archive' );
-		dynamic_sidebar( 'global' );
-	?>
-
-</div><?php // /.doc__side ?>
+<?php
+	get_template_part( 'template-parts/sidebar-archive' );

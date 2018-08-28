@@ -1,6 +1,6 @@
 .site-nav__toggle {
 	@include button;
-	margin-bottom: emcalc( $base__margin--half, $button__font-size);
+	margin-bottom: unitcalc( $base__margin--half, $button__font-size);
 
 	.no-js & {
 		display: none;
@@ -12,7 +12,7 @@
 		border-color: $button__border-color--hover;
 	}
 
-	@media(min-width: $base__breakpoint) {
+	@include breakpoint-up( $nav__breakpoint ) {
 		display: none;
 	}
 
@@ -29,17 +29,17 @@
 		display: block;
 	}
 
-	@media(min-width: $base__breakpoint) {
+	@include breakpoint-up( $nav__breakpoint ) {
 		display: block;
 	}
 }
 
 .site-title {
 	font-size: 1em;
-	margin-bottom: $base__margin-emcalc--half;
+	margin-bottom: unitcalc( $base__margin--half );
 }
 
 .site-description {
-	margin-bottom: $base__margin-emcalc--half;
+	margin-bottom: unitcalc( $base__margin--half );
 }
 

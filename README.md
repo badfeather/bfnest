@@ -1,9 +1,9 @@
 # Bad Feather Nest
-Version: 4.6.0
+Version: 5.0.0
 
 A starter theme for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
-This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS and Javascript, compress images, create svg sprites, generate translation files, and probably more that I'm forgetting about. 
+This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS and Javascript, compress images, generate translation files, and probably more that I'm forgetting about. 
 
 ## Getting Started
 ### Installing

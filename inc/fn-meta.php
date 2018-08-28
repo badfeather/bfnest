@@ -175,6 +175,9 @@ function nest_get_meta_edit_link( $label = null, $element = 'span' ) {
 	return '<' . $element . ' class="meta meta--edit"><a href="' . $edit_post_link . '">' . $label . '</a></' . $element . '>';
 }
 
+/**
+ * Helper function for nest_get_meta_share
+ */
 function nest_get_share_data( $args = array() ) {
 
 	if ( empty( $args ) || is_wp_error( $args ) ) {
@@ -298,6 +301,7 @@ function nest_get_share_data( $args = array() ) {
  * Turn the defaults for various profiles on or off as needed using booleans
  * If 'new window' is set to true, link targets will be set to "_blank"
  * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
+ * Uses nest_get_share_data()
  */
 
 function nest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'googleplus' => 1 ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {

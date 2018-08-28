@@ -7,14 +7,14 @@
 // POST NAVIGATION STYLES
 // ---------------------------
 .postnav {
-  @include font-size-emcalc($postnav__font-size);
-  @include line-height($postnav__line-height);
-  @include font-family($postnav__font-family);
-  @include font-weight($postnav__font-weight);
-  @include text-transform($postnav__text-transform);
+  @include font-size-change( $postnav__font-size );
+  @include line-height-change( $postnav__line-height );
+  @include font-family-change( $postnav__font-family );
+  @include font-weight-change( $postnav__font-weight );
+  @include text-transform-change( $postnav__text-transform );
 	@include clearfix;
   clear: both;
-	@include margin-bottom-emcalc($postnav__margin-bottom);
+	@include margin-bottom-unitcalc( $postnav__margin-bottom );
 
 	.postnav__link {
 		width: 50%;

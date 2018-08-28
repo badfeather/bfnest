@@ -1,14 +1,14 @@
 // GRID SYSTEM
 // ----------------------------
-@mixin guttered($gutter: $grid__gutter-width-emcalc) {
-	padding-left: $gutter / 2;
-	padding-right: $gutter / 2;
+@mixin guttered( $gutter: $grid__gutter-width ) {
+	padding-left: unitcalc( $gutter / 2 );
+	padding-right: unitcalc( $gutter / 2 );
 }
 
 // Centered container element
-@mixin container($gutter: $grid__gutter-width-emcalc, $width: $grid__width-emcalc) {
-	@include guttered($gutter);
-	max-width: $width + $gutter;
+@mixin container( $gutter: $grid__gutter-width, $width: $grid__width ) {
+	@include guttered( $gutter );
+	max-width: unitcalc( $width );
 	@include clearfix;
 }
 
@@ -27,29 +27,41 @@
 	margin-left: auto;
 }
 
-@mixin row($gutter: $grid__gutter-width-emcalc) {
-	margin-left: $gutter / -2;
-	margin-right: $gutter / -2;
-	@include clearfix;
+@mixin row( $gutter: $grid__gutter-width ) {
+	margin-left: unitcalc( $gutter / -2 );
+	margin-right: unitcalc( $gutter / -2 );
+	@include clearfix; // legacy
+	display: flex;
+	flex-wrap: wrap;
 }
 
-@mixin column($gutter: $grid__gutter-width-emcalc) {
-	@include guttered($gutter);
+@mixin column( $gutter: $grid__gutter-width ) {
+	@include guttered( $gutter );
 	position: relative;
-	float: left;
+	float: left; // legacy
+	flex: 1;
 	min-height: 1px;
+
+	@supports( display: flex ) {
+		width: auto;
+	}
 }
 
-@mixin columns($n, $columns: $grid__columns) {
-  width: percentage($n / $columns);
+@mixin columns( $n, $columns: $grid__columns ) {
+	width: percentage( $n / $columns ); // legacy
+	flex: 0 0 percentage( $n / $columns );
 }
 
-@mixin push($offset: 1, $columns: $grid__columns) {
-	margin-left: percentage($offset / $columns);
+@mixin push( $offset: 1, $columns: $grid__columns ) {
+	margin-left: percentage( $offset / $columns );
 }
 
-@mixin pull($offset: 1, $columns: $grid__columns) {
-	margin-right: percentage($offset / $columns);
+@mixin pull( $offset: 1, $columns: $grid__columns ) {
+	margin-right: percentage( $offset / $columns );
+}
+
+@mixin row-centerned() {
+	justify-content: center;
 }
 
 @mixin column--centered {
@@ -74,46 +86,56 @@
 	margin-right: inherit;
 }
 
-@mixin generate-column-classes($n, $selector: '.columns', $i: 1) {
-  @while $i <= $n {
-    #{$selector}-#{$i} {
-      width: ($i * 100% / $n);
-    }
-    $i: $i + 1;
-  }
+@mixin generate-column-classes( $columns: $grid__columns, $selector: '.columns', $i: 1 ) {
+	@while $i <= $columns {
+		#{$selector}--#{$i} {
+			@include columns( $i, $columns );
+		}
+		$i: $i + 1;
+	}
 }
 
-@mixin generate-push-classes($n, $selector: '.push', $i: 1) {
-  @while $i <= $n {
-    #{$selector}-#{$i} {
-      margin-left: ($i * 100% / $n);
-    }
-    $i: $i + 1;
-  }
+@mixin generate-push-classes( $columns: $grid__columns, $selector: '.push', $i: 1 ) {
+	@while $i <= $columns {
+		#{$selector}--#{$i} {
+			@include push( $i, $columns );
+		}
+		$i: $i + 1;
+	}
 }
 
-@mixin generate-pull-classes($n, $selector: '.pull', $i: 1) {
-  @while $i <= $n {
-    #{$selector}-#{$i} {
-      margin-right: ($i * 100% / $n);
-    }
-    $i: $i + 1;
-  }
+@mixin generate-pull-classes( $columns: $grid__columns, $selector: '.pull', $i: 1 ) {
+	@while $i <= $columns {
+		#{$selector}--#{$i} {
+			@include pull( $i, $columns );
+		}
+		$i: $i + 1;
+	}
 }
 
 @mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $child_selector: '.column', $i: 1) {
-  @while $i <= $n {
-    #{$parent-selector}-#{$i} {
-      & > #{$child-selector} {
-  			width: percentage(1 / $i);
-  			&:nth-of-type(n) {
-  				clear: none;
-  			}
-  			&:nth-of-type(#{$i}n+1) {
-  				clear: both;
-  			}
-      }
-    }
-    $i: $i + 1;
-  }
+	@while $i <= $n {
+		#{$parent-selector}-#{$i} {
+			& > #{$child-selector} {
+				width: percentage(1 / $i);
+				flex: 0 0 percentage( 1 / $i );
+
+				&:nth-of-type(n) {
+					clear: none;
+				}
+				&:nth-of-type(#{$i}n+1) {
+					clear: both;
+				}
+			}
+		}
+		$i: $i + 1;
+	}
+
+	[class*="#{$parent-selector}"] {
+		& > #{$child-selector} {
+			@supports( display: flex ) {
+				width: auto;
+			}
+		}
+	}
 }

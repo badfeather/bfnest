@@ -1,7 +1,21 @@
 // GENERAL TYPE STYLES
 // -------------------------
+* {
+	box-sizing: border-box;
+
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+
+html {
+	font-size: 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 body {
-	font-size: percentage($base__font-size/16);
+	font-size: percentage( $base__font-size / 16 );
 	line-height: $base__line-height;
 	font-family: $base__font-family;
 	font-weight: $base__font-weight;
@@ -18,8 +32,9 @@ ol,
 dl,
 pre,
 address,
-hr {
-	@include margin-emcalc($margin-bottom: $base__margin);
+hr,
+table {
+	@include margin-unitcalc( $value-bottom: $base__margin );
 }
 
 dfn,
@@ -31,7 +46,7 @@ i {
 
 abbr,
 acronym {
-	border-bottom: emcalc(1) dotted $base__border-color;
+	@include border( 1, dotted, $base__border-color )
 	cursor: help;
 }
 
@@ -60,18 +75,21 @@ ol {
 
 ul,
 ol {
-	padding: 0 0 0 $base__margin-emcalc;
+	padding: 0 0 0 unitcalc( $base__margin );
 
 	ul,
 	ol {
-		padding-top: $base__margin-emcalc--quarter;
+		padding-top: unitcalc( $base__margin--quarter );
 		margin-bottom: 0;
-		font-size: 1em;
+
+		@if ( $base__unit == 'em' ) {
+			font-size: 1em;
+		}
 	}
 }
 
 li {
-	margin-bottom: $base__margin-emcalc--quarter;
+	margin-bottom: unitcalc( $base__margin--quarter );
 }
 
 a {
@@ -107,12 +125,12 @@ dt {
 
 dd {
 	margin-left: 0; // Undo browser default
-	margin-bottom: $base__margin-emcalc--half;
+	margin-bottom: unitcalc( $base__margin--half );
 }
 
 hr {
 	border: 0;
-	border-top: 1px solid $base__border-color;
+	@include border( 1, solid, $base__border-color );
 }
 
 // Abbreviations and acronyms
@@ -120,7 +138,7 @@ abbr[title],
 // Added data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
 	cursor: help;
-	border-bottom: 1px dotted $base__border-color;
+	@include border( 1, dotted, $base__border-color );
 }
 
 abbr.initialism {
@@ -159,30 +177,30 @@ small {
 }
 
 table {
-  @include font-family($table__font-family);
-	@include font-size-emcalc($table__font-size);
-	@include line-height($table__line-height);
-	@include font-weight($table__font-weight);
-	@include text-align($table__text-align);
-	@include color($table__color);
-	@include margin-top-emcalc($table__margin-top, $table__font-size);
-	@include margin-bottom-emcalc($table__margin-bottom, $table__font-size);
+  @include font-family-change( $table__font-family );
+	@include font-size-change( $table__font-size );
+	@include line-height-change( $table__line-height );
+	@include font-weight-change( $table__font-weight );
+	@include text-align-change( $table__text-align );
+	@include color-change( $table__color );
+	@include margin-change-unitcalc( 0, 0, $base__margin, 0, $table__margin-top, 0, $table__margin-bottom, 0 );
 	width: 100%;
 	max-width: 100%;
 }
 
 th,
 td {
-  @include padding-emcalc($td__padding-vertical, $td__padding-horizontal, $td__padding-vertical, $td__padding-horizontal, $table__font-size);
+  @include padding-unitcalc( $value-top: $td__padding-vertical, $value-right: $td__padding-horizontal, $font-size: $table__font-size );
 	border-style: $table__border-style;
 	border-color: $table__border-color;
-	@include border-width($td__border-top-width, $td__border-right-width, $td__border-bottom-width, $td__border-left-width);
-	text-align: left;
-	vertical-align: top;
+	@include border-width-unitcalc( $td__border-top-width, $td__border-right-width, $td__border-bottom-width, $td__border-left-width );
+	@include text-align-change( $td__text-align );
+	vertical-align: $table__vertical-align;
 }
 
 th {
-	font-weight: bold;
+	@include font-weight-change( $th__font-weight );
+	@include text-align-change( $th__text-align );
 }
 
 code,
@@ -190,23 +208,25 @@ kbd,
 pre,
 samp {
   font-family: $preformatted__font-family;
-  font-size: emcalc($preformatted__font-size);
+  font-size: unitcalc( $preformatted__font-size );
   color: $preformatted__color;
 }
 
 code,
 kbd {
-	@include padding-emcalc($preformatted__padding-vertical, $preformatted__padding-horizontal, $preformatted__padding-vertical, $preformatted__padding-horizontal, $preformatted__font-size);
-	border-radius: emcalc($preformatted__border-radius, $preformatted__font-size);
+	@include padding-unitcalc( $value-top: $preformatted__padding-vertical, $value-right: $preformatted__padding-horizontal, $font-size: $preformatted__font-size );
+	@include border-radius-unitcalc( $preformatted__border-radius, $preformatted__font-size );
 }
 
 code {
-  @include color($code__color, $preformatted__color);
+  @include color-change( $code__color, $preformatted__color );
   background-color: $code__background-color;
+  display: inline-block;
+  word-wrap: break-word;
 }
 
 kbd {
-  @include color($kbd__color, $preformatted__color);
+  @include color-change( $kbd__color, $preformatted__color );
   background-color: $kbd__background-color;
 
   kbd {
@@ -218,13 +238,13 @@ kbd {
 
 pre {
   display: block;
-  @include font-family($pre__font-family, $preformatted__font-family);
-  @include color($pre__color, $preformatted__color);
+  @include font-family-change( $pre__font-family, $preformatted__font-family );
+  @include color-change( $pre__color, $preformatted__color );
   background-color: $pre__background-color;
-  @include padding-emcalc($pre__padding-vertical, $pre__padding-horizontal, $pre__padding-vertical, $pre__padding-vertical, $preformatted__font-size);
-  @include margin-top-emcalc($pre__margin-top);
-  @include margin-bottom-emcalc($pre__margin-bottom);
-  border-radius: emcalc($preformatted__border-radius, $preformatted__font-size);
+  @include padding-unitcalc( $value-top: $pre__padding-vertical, $value-right: $pre__padding-horizontal, $font-size: $preformatted__font-size );
+  @include margin-top-unitcalc( $pre__margin-top );
+  @include margin-bottom-unitcalc( $pre__margin-bottom );
+  @include border-radius-unitcalc( $preformatted__border-radius, $preformatted__font-size );
 	max-width: 100%;
 	overflow: auto;
 
@@ -238,7 +258,7 @@ pre {
 }
 
 .pre-scrollable {
-  max-height: emcalc(340, $preformatted__font-size);
+  max-height: unitcalc( 340, $preformatted__font-size );
   overflow-y: scroll;
 }
 
@@ -288,11 +308,11 @@ h6 {
 }
 
 .widget__title {
-	@include widget__title;
+	@include widget-title;
 }
 
 .section__title {
-	@include section__title;
+	@include section-title;
 }
 
 .lede {

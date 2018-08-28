@@ -7,9 +7,10 @@ function nest_media_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// Add custom image sizes - add_image_size( 'size-name', width [int], height [int], true/false [hard crop - defaults to false]);
+	//add_image_size( 'thumbnail--lg', 356, 356, true );
 
 	// Set image size 'post-thumbnail'. - set_post_thumbnail_size( width [int], height[int], true/false [hard crop - defaults to false] );
-	set_post_thumbnail_size( 330, 9999, false );
+	set_post_thumbnail_size( 356, 9999, false );
 }
 add_action( 'after_setup_theme', 'nest_media_setup' );
 
@@ -21,7 +22,7 @@ add_action( 'after_setup_theme', 'nest_media_setup' );
  * @global int $content_width
  */
 function nest_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'nest_content_width', 690 );
+	$GLOBALS['content_width'] = apply_filters( 'nest_content_width', 712 );
 }
 add_action( 'after_setup_theme', 'nest_content_width', 0 );
 
@@ -29,13 +30,13 @@ add_action( 'after_setup_theme', 'nest_content_width', 0 );
  * Set default image sizes on theme switch
  */
 function nest_media_options() {
-	update_option( 'thumbnail_size_w', 330 );
-	update_option( 'thumbnail_size_h', 9999 );
-	update_option( 'thumbnail_crop', false );
-	update_option( 'medium_size_w', 330 );
+	update_option( 'thumbnail_size_w', 356 );
+	update_option( 'thumbnail_size_h', 356 );
+	update_option( 'thumbnail_crop', true );
+	update_option( 'medium_size_w', 546 );
 	update_option( 'medium_size_h', 9999 );
-	update_option( 'medium_large_w', 690 );
-	update_option( 'large_size_w', 1050 );
+	update_option( 'medium_large_w', 926 );
+	update_option( 'large_size_w', 1116 );
 	update_option( 'large_size_h', 9999 );
 }
 add_action( 'after_switch_theme', 'nest_media_options' );

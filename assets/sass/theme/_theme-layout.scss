@@ -1,25 +1,11 @@
-* {
-	box-sizing: border-box;
-
-	&:before,
-	&:after {
-		box-sizing: border-box;
-	}
-}
-
-html {
-	font-size: 100%;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
 .site {
-  padding-top: $base__margin-emcalc;
+  padding-top: unitcalc( $base__margin );
 }
 
 .inner {
 	padding: 0 1em;
 
-	@media(min-width: $breakpoint--lg) {
+	@include breakpoint-up($breakpoint--lg) {
 		@include container;
 		@include container--centered;
 	}

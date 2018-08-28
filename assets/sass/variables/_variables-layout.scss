@@ -12,25 +12,34 @@ $widget__margin-bottom: $base__margin;
 
 // Sticky Posts
 $sticky__background-color: $base__background-color--alt;
-$sticky__padding: 1em;
+$sticky__padding: $base__font-size;
 
 // MEDIA QUERY BREAKPOINTS
 // ---------------------------
 
 // Extra small screen / phone
-$breakpoint--xs: emcalc(480);
+$breakpoint--xs: 480;
 
 // Tablet small
-$breakpoint--sm: emcalc(600);
+$breakpoint--sm: 600;
 
 // Small screen / tablet
-$breakpoint--md: emcalc(768);
+$breakpoint--md: 768;
 
 // Medium screen / desktop
-$breakpoint--lg: emcalc(992);
+$breakpoint--lg: 992;
 
 // Large screen / wide desktop
-$breakpoint--xl: emcalc(1200);
+$breakpoint--xl: 1200;
 
 // Base breakpoint
-$base__breakpoint: $breakpoint--md;
+$base__breakpoint: $breakpoint--lg;
+$nav__breakpoint: $base__breakpoint;
+
+// IMAGE SIZES - should match image sizes set in theme, which are usually based on grid column widths
+// ---------------------------
+$image-size--th: 356;
+$image-size--md: 546;
+$image-size--ml: 926;
+$image-size--lg: 1116;
+$image-size--xl: 1440;

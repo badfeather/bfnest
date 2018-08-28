@@ -2,13 +2,21 @@
 // ---------------------------
 $form__font-size: $base__font-size;
 $form__line-height: $base__line-height;
+$form__margin-bottom: $base__margin;
 
 $form__font-size--lg: $base__font-size--lg;
 $form__font-size--sm: $base__font-size--sm;
 $form__font-size--xs: $base__font-size--xs;
 
-$form__padding-vertical: $form__font-size / 2;
-$form__padding-horizontal: $form__font-size / 1.5;
+$form__padding-vertical: 8;
+$form__padding-vertical--lg: $form__padding-vertical * $form__font-size--lg / $form__font-size;
+$form__padding-vertical--sm: $form__padding-vertical * $form__font-size--sm / $form__font-size;
+$form__padding-vertical--xs: $form__padding-vertical * $form__font-size--xs / $form__font-size;
+
+$form__padding-horizontal: 10;
+$form__padding-horizontal--lg: $form__padding-horizontal * $form__font-size--lg / $form__font-size;
+$form__padding-horizontal--sm: $form__padding-horizontal * $form__font-size--sm / $form__font-size;
+$form__padding-horizontal--xs: $form__padding-horizontal * $form__font-size--xs / $form__font-size;
 
 $form__border-width: 1;
 $form__border-radius: $form__font-size / 4;
@@ -40,8 +48,16 @@ $button__border-color--hover: $button__background-color--hover;
 
 // alternate sizes
 $button__font-size--lg: $form__font-size--lg;
+$button__padding-vertical--lg: $form__padding-vertical--lg;
+$button__padding-horizontal--lg: $form__padding-horizontal--lg;
+
 $button__font-size--sm: $form__font-size--sm;
+$button__padding-vertical--sm: $form__padding-vertical--sm;
+$button__padding-horizontal--sm: $form__padding-horizontal--sm;
+
 $button__font-size--xs: $form__font-size--xs;
+$button__padding-vertical--xs: $form__padding-vertical--xs;
+$button__padding-horizontal--xs: $form__padding-horizontal--xs;
 
 // Alternate buttons
 $button__color--disabled: $button__color;
@@ -111,8 +127,16 @@ $input__border-radius: $form__border-radius;
 $input__placeholder-color: $meta__color;
 
 $input__font-size--lg: $form__font-size--lg;
+$input__padding-vertical--lg: $form__padding-vertical--lg;
+$input__padding-horizontal--lg: $form__padding-horizontal--lg;
+
 $input__font-size--sm: $form__font-size--sm;
+$input__padding-vertical--sm: $form__padding-vertical--sm;
+$input__padding-horizontal--sm: $form__padding-horizontal--sm;
+
 $input__font-size--xs: $form__font-size--xs;
+$input__padding-vertical--xs: $form__padding-vertical--xs;
+$input__padding-horizontal--xs: $form__padding-horizontal--xs;
 
 $input__color--required: $input__color;
 $input__font-weight--required: $font-weight--bold;

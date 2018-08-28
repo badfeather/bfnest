@@ -12,7 +12,7 @@
 
 	.children {
 		@include list-unstyled;
-		margin-left: $base__margin-emcalc;
+		margin-left: unitcalc( $base__margin );
 	}
 
 	.comment {
@@ -28,7 +28,7 @@
 	}
 
 	p {
-  	margin-bottom: $base__margin-emcalc--half;
+  	margin-bottom: unitcalc( $base__margin--half );
 	}
 }
 
@@ -38,7 +38,7 @@
 }
 
 .comment-header {
-	margin-bottom: emcalc($base__margin--half, $meta__font-size);
+	margin-bottom: unitcalc( $base__margin--half, $meta__font-size );
 }
 
 // comment-form

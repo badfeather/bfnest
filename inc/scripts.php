@@ -16,7 +16,7 @@ function nest_scripts() {
 	$suffix = ( true === $debug ) ? '' : '.min';
 
 	// Enqueue styles.
-	wp_enqueue_style( 'nest-style', $template_directory . '/style' . $suffix . '.css', array(), $version );
+	wp_enqueue_style( 'nest-style', $template_directory . '/assets/css/theme' . $suffix . '.css', array(), $version );
 
 	// Enqueue scripts.
 	wp_enqueue_script( 'nest-scripts', $template_directory . '/assets/js/build/theme' . $suffix . '.js', array( 'jquery' ), $version, true );
@@ -79,6 +79,19 @@ function nest_include_svg_icons() {
 	}
 }
 add_action( 'body-before-scripts', 'nest_include_svg_icons' );
+
+/**
+ * Load Jquery in footer
+ */
+function nest_move_jquery_to_footer( $wp_scripts ) {
+	if( is_admin() ) {
+		return;
+	}
+	$wp_scripts->add_data( 'jquery', 'group', 1 );
+	$wp_scripts->add_data( 'jquery-core', 'group', 1 );
+	$wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+}
+add_action( 'wp_default_scripts', 'nest_move_jquery_to_footer' );
 
 /**
  * remove Emoji css and js calls from head

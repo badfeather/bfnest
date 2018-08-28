@@ -3,20 +3,20 @@
 @mixin button {
 	font-family: $button__font-family;
 	font-weight: $button__font-weight;
-	@include font-size-emcalc($button__font-size);
+	font-size: unitcalc( $button__font-size );
 	line-height: $button__line-height;
-	@include padding-emcalc($padding-top: $button__padding-vertical, $padding-right: $button__padding-horizontal, $font-size: $button__font-size);
+	@include padding-unitcalc( $value-top: $button__padding-vertical, $value-right: $button__padding-horizontal, $font-size: $button__font-size );
 	color: $button__color;
 	text-align: center;
 	vertical-align: middle;
 	display: inline-block;
 	margin-bottom: 0;
 	background-color: $button__background-color;
-	@include border($button__border-width, solid, $button__border-color);
-	border-radius: emcalc($button__border-radius, $button__font-size);
+	@include border( $button__border-width, solid, $button__border-color );
+	border-radius: unitcalc( $button__border-radius, $button__font-size );
 	white-space: nowrap;
 	cursor: pointer;
-	@include text-transform($button__text-transform);
+	@include text-transform-change( $button__text-transform );
 
 	&:hover,
 	&:focus {
@@ -46,82 +46,84 @@
 }
 
 @mixin button--lg {
-	@include font-size-emcalc($button__font-size--lg);
+	@include font-size-change( $button__font-size--lg );
+	@include padding-change-unitcalc( $default-top: $button__padding-vertical, $default-right: $button__padding-horizontal, $value-top: $button__padding-vertical--lg, $value-right: $button__padding-horizontal--lg, $font-size: $button__font-size--lg );
 }
 
 @mixin button--sm {
-	@include font-size-emcalc($button__font-size--sm);
+	@include font-size-change( $button__font-size--sm );
+	@include padding-change-unitcalc( $default-top: $button__padding-vertical, $default-right: $button__padding-horizontal, $value-top: $button__padding-vertical--sm, $value-right: $button__padding-horizontal--sm, $font-size: $button__font-size--sm );
 }
 
 @mixin button--xs {
-	@include font-size-emcalc($button__font-size--xs);
+	@include font-size-change( $button__font-size--xs );
+	@include padding-change-unitcalc( $default-top: $button__padding-vertical, $default-right: $button__padding-horizontal, $value-top: $button__padding-vertical--xs, $value-right: $button__padding-horizontal--xs, $font-size: $button__font-size--xs );
 }
 
 @mixin button-variant(
   $color: $button__color,
   $background-color: $button__background-color,
   $border-color: $button__border-color,
-
   $color--hover: $button__color--hover,
   $background-color--hover: $button__background-color--hover,
   $border-color--hover: $button__border-color--hover
-) {
-  @include color($color, $button__color);
-  @include background-color-change($background-color, $button__background-color);
-  @include border-color-change($border-color, $button__border-color);
-  @if ($color--hover != $button__color--hover) or ($background-color--hover != $button__background-color--hover) or ($border-color--hover != $button__border-color--hover) {
+ ) {
+  @include color-change( $color, $button__color );
+  @include background-color-change( $background-color, $button__background-color );
+  @include border-color-change( $border-color, $button__border-color );
+  @if ( $color--hover != $button__color--hover ) or ( $background-color--hover != $button__background-color--hover ) or ( $border-color--hover != $button__border-color--hover ) {
 
     &:hover,
     &:focus {
-      @include color($color--hover, $button__color--hover);
-      @include background-color-change($background-color--hover, $button__background-color--hover);
-      @include border-color-change($border-color--hover, $button__border-color--hover);
+      @include color-change( $color--hover, $button__color--hover );
+      @include background-color-change( $background-color--hover, $button__background-color--hover );
+      @include border-color-change( $border-color--hover, $button__border-color--hover );
     }
   }
 }
 
 // Alternate button states
 @mixin button--disabled() {
-  @include button-variant($button__color--disabled, $button__background-color--disabled, $button__border-color--disabled, $button__color--disabled--hover, $button__background-color--disabled--hover, $button__border-color--disabled--hover);
+  @include button-variant( $button__color--disabled, $button__background-color--disabled, $button__border-color--disabled, $button__color--disabled--hover, $button__background-color--disabled--hover, $button__border-color--disabled--hover );
 }
 
 @mixin button--primary() {
-  @include button-variant($button__color--primary, $button__background-color--primary, $button__border-color--primary, $button__color--primary--hover, $button__background-color--primary--hover, $button__border-color--primary--hover);
+  @include button-variant( $button__color--primary, $button__background-color--primary, $button__border-color--primary, $button__color--primary--hover, $button__background-color--primary--hover, $button__border-color--primary--hover );
 }
 
 @mixin button--success() {
-  @include button-variant($button__color--success, $button__background-color--success, $button__border-color--success, $button__color--success--hover, $button__background-color--success--hover, $button__background-color--success--hover);
+  @include button-variant( $button__color--success, $button__background-color--success, $button__border-color--success, $button__color--success--hover, $button__background-color--success--hover, $button__background-color--success--hover );
 }
 
 @mixin button--info() {
-  @include button-variant($button__color--info, $button__background-color--info, $button__border-color--info, $button__color--info--hover, $button__background-color--info--hover, $button__background-color--info--hover);
+  @include button-variant( $button__color--info, $button__background-color--info, $button__border-color--info, $button__color--info--hover, $button__background-color--info--hover, $button__background-color--info--hover );
 }
 
 @mixin button--warning() {
-  @include button-variant($button__color--warning, $button__background-color--warning, $button__border-color--warning, $button__color--warning--hover, $button__background-color--warning--hover, $button__background-color--warning--hover);
+  @include button-variant( $button__color--warning, $button__background-color--warning, $button__border-color--warning, $button__color--warning--hover, $button__background-color--warning--hover, $button__background-color--warning--hover );
 }
 
 @mixin button--danger() {
-  @include button-variant($button__color--danger, $button__background-color--danger, $button__border-color--danger, $button__color--danger--hover, $button__background-color--danger--hover, $button__background-color--danger--hover);
+  @include button-variant( $button__color--danger, $button__background-color--danger, $button__border-color--danger, $button__color--danger--hover, $button__background-color--danger--hover, $button__background-color--danger--hover );
 }
 
 // Form controls
 @mixin form-control {
 	font-family: $input__font-family;
-	@include font-size-emcalc($input__font-size);
+	font-size: unitcalc( $input__font-size );
 	line-height: $form__line-height;
 	color: $input__placeholder-color;
-	@include border($input__border-width, solid, $input__border-color);
-	border-radius: emcalc($input__border-radius, $input__font-size);
+	@include border( $input__border-width, solid, $input__border-color );
+	border-radius: unitcalc( $input__border-radius, $input__font-size );
 	outline: none;
-	@include padding-emcalc($padding-top: $input__padding-vertical, $padding-right: $input__padding-horizontal, $font-size: $input__font-size);
+	@include padding-unitcalc( $value-top: $input__padding-vertical, $value-right: $input__padding-horizontal, $font-size: $input__font-size );
 	display: inline-block;
-	width: emcalc($input__width, $input__font-size);
+	width: unitcalc( $input__width, $input__font-size );
 	vertical-align: middle;
 	margin-bottom: 0;
 	max-width: 100%;
 	background-color: $input__background-color;
-	@include box-shadow($input__box-shadow);
+	box-shadow: $input__box-shadow;
 
 	&:focus {
 		color: $input__color--focus;
@@ -146,38 +148,53 @@
   $default-background-color--focus: $input__background-color--focus,
   $default-border-color--focus: $input__border-color--focus,
   $default-box-shadow--focus: $input__box-shadow--focus
-) {
-  @include color($color, $default-color);
-  @include background-color-change($background-color, $default-background-color);
-  @include border-color-change($border-color, $default-border-color);
+ ) {
+  @include color-change( $color, $default-color );
+  @include background-color-change( $background-color, $default-background-color );
+  @include border-color-change( $border-color, $default-border-color );
 
-  @if ($color--focus != $default-color--focus) or ($background-color--focus != $default-background-color--focus) or ($border-color--focus != $default-border-color--focus) or ($box-shadow--focus != $default-box-shadow--focus) {
+  @if ( $color--focus != $default-color--focus ) or ( $background-color--focus != $default-background-color--focus ) or ( $border-color--focus != $default-border-color--focus ) or ( $box-shadow--focus != $default-box-shadow--focus ) {
   	&:focus {
-    	@include color($color--focus, $default-color--focus);
-    	@include background-color-change($background-color--focus, $default-background-color--focus);
-    	@include border-color-change($border-color--focus, $default-border-color--focus);
-    	@include box-shadow-change($box-shadow--focus, $default-box-shadow--focus);
+    	@include color-change( $color--focus, $default-color--focus );
+    	@include background-color-change( $background-color--focus, $default-background-color--focus );
+    	@include border-color-change( $border-color--focus, $default-border-color--focus );
+    	@include box-shadow-change( $box-shadow--focus, $default-box-shadow--focus );
   	}
 	}
 }
 
+@mixin form-control--lg {
+	@include font-size-change( $input__font-size--lg );
+	@include padding-change-unitcalc( $default-top: $input__padding-vertical, $default-right: $input__padding-horizontal, $value-top: $input__padding-vertical--lg, $value-right: $input__padding-horizontal--lg, $font-size: $input__font-size--lg );
+}
+
+@mixin form-control--sm {
+	@include font-size-change( $input__font-size--sm );
+	@include padding-change-unitcalc( $default-top: $input__padding-vertical, $default-right: $input__padding-horizontal, $value-top: $input__padding-vertical--sm, $value-right: $input__padding-horizontal--sm, $font-size: $input__font-size--sm );
+}
+
+@mixin form-control--xs {
+	@include font-size-change( $input__font-size--xs );
+	@include padding-change-unitcalc( $default-top: $input__padding-vertical, $default-right: $input__padding-horizontal, $value-top: $input__padding-vertical--xs, $value-right: $input__padding-horizontal--xs, $font-size: $input__font-size--xs );
+}
+
 @mixin form-control--disabled {
-  @include form-control-variant($input__color--disabled, $input__background-color--disabled, $input__border-color--disabled);
+  @include form-control-variant( $input__color--disabled, $input__background-color--disabled, $input__border-color--disabled );
 }
 
 @mixin form-control--success {
-   @include form-control-variant($input__color--success, $input__background-color--success, $input__border-color--success);
+   @include form-control-variant( $input__color--success, $input__background-color--success, $input__border-color--success );
 }
 
 @mixin form-control--warning {
-   @include form-control-variant($input__color--warning, $input__background-color--warning, $input__border-color--warning);
+   @include form-control-variant( $input__color--warning, $input__background-color--warning, $input__border-color--warning );
 }
 
 @mixin form-control--danger {
-   @include form-control-variant($input__color--danger, $input__background-color--danger, $input__border-color--danger);
+   @include form-control-variant( $input__color--danger, $input__background-color--danger, $input__border-color--danger );
 }
 
-@mixin placeholder($color: $input__color-placeholder) {
+@mixin placeholder( $color: $input__color-placeholder ) {
 	&:-moz-placeholder						{ color: $color; } // Firefox 4-18
 	&::-moz-placeholder					 { color: $color; } // Firefox 19+
 	&:-ms-input-placeholder			 { color: $color; } // Internet Explorer 10+
@@ -186,13 +203,13 @@
 
 @mixin label {
 	display: $label__display;
-  @include font-family($label__font-family);
-	@include font-size-emcalc($label__font-size);
-	@include line-height($label__line-height);
-	@include font-style($label__font-style);
-	@include font-weight($label__font-weight);
-	@include text-transform($label__text-transform);
-	@include color($label__color);
-	@include margin-emcalc($label__margin-top, $label__margin-right, $label__margin-bottom, $label__margin-left, $label__font-size);
+  @include font-family-change( $label__font-family );
+	@include font-size-change( $label__font-size );
+	@include line-height-change( $label__line-height );
+	@include font-style-change( $label__font-style );
+	@include font-weight-change( $label__font-weight );
+	@include text-transform-change( $label__text-transform );
+	@include color-change( $label__color );
+	@include margin-unitcalc( $label__margin-top, $label__margin-right, $label__margin-bottom, $label__margin-left, $label__font-size );
 }
 

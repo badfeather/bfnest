@@ -42,10 +42,23 @@
 	@include guttered;
 }
 
-@include generate-column-classes($grid__columns);
+@include generate-column-classes( $grid__columns );
 
-@include generate-push-classes($grid__columns);
+@include generate-push-classes( $grid__columns );
 
-@include generate-pull-classes($grid__columns);
+@include generate-pull-classes( $grid__columns );
 
-@include generate-block-grid-classes($grid__columns);
+@include generate-block-grid-classes( $grid__columns );
+
+.grid-test {
+	.column {
+		text-align: center;
+		padding-top: unitcalc( $grid__gutter-width / 2 );
+		padding-bottom: unitcalc( $grid__gutter-width / 2 );
+	}
+
+	.box {
+		background-color: #ccc;
+		padding: .5em;
+	}
+}
