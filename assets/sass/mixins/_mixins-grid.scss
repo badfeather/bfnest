@@ -6,8 +6,6 @@
 }
 
 // Centered container element
-
-// use this if you want to nest a row for the first column divisions
 @mixin container( $gutter: $grid__gutter-width, $width: $grid__width ) {
 	@include guttered( $gutter );
 	max-width: unitcalc( $width );
@@ -31,11 +29,6 @@
 @mixin row( $gutter: $grid__gutter-width ) {
 	margin-left: unitcalc( $gutter / -2 );
 	margin-right: unitcalc( $gutter / -2 );
-//	@include clearfix;
-//	@supports (display: flex) {
-//		display: flex;
-//		flex-wrap: wrap;
-//	}
 	@include clearfix;
 	display: flex;
 	flex-wrap: wrap;
@@ -44,23 +37,11 @@
 @mixin column( $gutter: $grid__gutter-width ) {
 	@include guttered( $gutter );
 	position: relative;
-//	float: left;
-//	min-height: 1px;
-//
-//	@supports (display: flex ) {
-//		flex: 0 0 auto;
-//	}
 	float: left;
 	flex: 1;
 }
 
 @mixin columns( $n, $columns: $grid__columns ) {
-//	width: percentage( $n / $columns );
-//
-//	@supports (display: flex ) {
-//		width: auto;
-//		flex: 0 0 percentage( $n / $columns );
-//	}
 	max-width: percentage( $n / $columns );
 	flex: 0 0 percentage( $n / $columns );
 }
