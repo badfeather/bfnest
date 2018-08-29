@@ -1,15 +1,9 @@
 // GRID SYSTEM
-$grid__gutter-width: 24;
+$grid__gutter-width: 30;
 $grid__columns: 12;
 
-// note: determin grid widths by dividing by columns, multiplying by number of columns, and subtracting gutter
-$grid__width--sm: 540;
-$grid__width--md: 720;
-$grid__width--lg: 960;
-$grid__width--xl: 1140;
-
 // default grid witdh
-$grid__width: 1140;
+$grid__width: 1152;
 
 // Set $grid__total-width to 100% for a fluid layout or $gridsystem-width for fixed layout
 $grid__total-width: 100%;

@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 5.0.2\n"
+"Project-Id-Version: Bad Feather Nest 5.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bad-feather-nest\n"
-"POT-Creation-Date: 2018-08-29 19:26:41+00:00\n"
+"POT-Creation-Date: 2018-08-29 23:28:47+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,15 +29,15 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:9
+#: footer.php:10
 msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
-#: header.php:18
+#: header.php:19
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:36
+#: header.php:37
 msgid "Menu"
 msgstr ""
 
@@ -227,10 +227,6 @@ msgstr ""
 
 #: inc/jetpack.php:125
 msgid "Share"
-msgstr ""
-
-#: inc/media.php:50
-msgid "Medium Large"
 msgstr ""
 
 #: inc/setup.php:9

@@ -1,8 +1,6 @@
-<div class="doc__side">
-
+<div class="doc-side">
 	<?php
 		dynamic_sidebar( 'single' );
 		dynamic_sidebar( 'global' );
 	?>
-
-</div><?php // /.doc__side ?>
+</div><?php // /.doc-side ?>

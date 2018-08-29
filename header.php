@@ -14,35 +14,37 @@
 	<div id="page" class="hfeed site">
 
 		<header class="site-header">
-			<div class="inner site-header__inner">
-				<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nest' ); ?></a>
-				<?php
-					if ( ( is_front_page() && is_home() ) ) {
-						$title_tag = 'h1';
-					} else {
-						$title_tag = 'div';
-					}
-					echo '<' . $title_tag . ' class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site-logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>';
-				?>
-
-				<?php
-					$site_description = get_bloginfo( 'description' );
-					if ( ! empty( $site_description ) ) {
-						echo '<div class="site-description">' . $site_description . '</div>' . "\n";
-					}
-				?>
-
-				<nav id="site-navigation" class="nav site-nav">
-					<button class="nav__toggle site-nav__toggle"><?php _e( 'Menu', 'nest' ); ?></button>
+			<div class="container">
+				<div class="row">
+					<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nest' ); ?></a>
 					<?php
-						wp_nav_menu( array(
-							'theme_location' => 'primary',
-							'container' => false,
-							'menu_class' => 'menu menu--primary'
-						) );
-
-						get_search_form();
+						if ( ( is_front_page() && is_home() ) ) {
+							$title_tag = 'h1';
+						} else {
+							$title_tag = 'div';
+						}
+						echo '<' . $title_tag . ' class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site-logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>';
 					?>
-				</nav><?php // /.nav.site-nav ?>
-			</div><?php // /.inner.site-header__inner ?>
+
+					<?php
+						$site_description = get_bloginfo( 'description' );
+						if ( ! empty( $site_description ) ) {
+							echo '<div class="site-description">' . $site_description . '</div>' . "\n";
+						}
+					?>
+
+					<nav id="site-navigation" class="nav site-nav">
+						<button class="nav__toggle site-nav__toggle"><?php _e( 'Menu', 'nest' ); ?></button>
+						<?php
+							wp_nav_menu( array(
+								'theme_location' => 'primary',
+								'container' => false,
+								'menu_class' => 'menu menu--primary'
+							) );
+
+							get_search_form();
+						?>
+					</nav><?php // /.nav.site-nav ?>
+				</div><?php // /.row ?>
+			</div><?php // /.container ?>
 		</header><?php // /.site-header ?>

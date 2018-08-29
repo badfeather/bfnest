@@ -6,10 +6,11 @@
 }
 
 // Centered container element
+
+// use this if you want to nest a row for the first column divisions
 @mixin container( $gutter: $grid__gutter-width, $width: $grid__width ) {
 	@include guttered( $gutter );
 	max-width: unitcalc( $width );
-	@include clearfix;
 }
 
 @mixin container--centered {
@@ -30,7 +31,12 @@
 @mixin row( $gutter: $grid__gutter-width ) {
 	margin-left: unitcalc( $gutter / -2 );
 	margin-right: unitcalc( $gutter / -2 );
-	@include clearfix; // legacy
+//	@include clearfix;
+//	@supports (display: flex) {
+//		display: flex;
+//		flex-wrap: wrap;
+//	}
+	@include clearfix;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -38,17 +44,24 @@
 @mixin column( $gutter: $grid__gutter-width ) {
 	@include guttered( $gutter );
 	position: relative;
-	float: left; // legacy
+//	float: left;
+//	min-height: 1px;
+//
+//	@supports (display: flex ) {
+//		flex: 0 0 auto;
+//	}
+	float: left;
 	flex: 1;
-	min-height: 1px;
-
-	@supports( display: flex ) {
-		width: auto;
-	}
 }
 
 @mixin columns( $n, $columns: $grid__columns ) {
-	width: percentage( $n / $columns ); // legacy
+//	width: percentage( $n / $columns );
+//
+//	@supports (display: flex ) {
+//		width: auto;
+//		flex: 0 0 percentage( $n / $columns );
+//	}
+	max-width: percentage( $n / $columns );
 	flex: 0 0 percentage( $n / $columns );
 }
 
@@ -116,26 +129,24 @@
 @mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $child_selector: '.column', $i: 1) {
 	@while $i <= $n {
 		#{$parent-selector}-#{$i} {
+
 			& > #{$child-selector} {
 				width: percentage(1 / $i);
-				flex: 0 0 percentage( 1 / $i );
+
+				@supports (display: flex ) {
+					//width: auto;
+					flex: 0 0 percentage( 1 / $i );
+				}
 
 				&:nth-of-type(n) {
 					clear: none;
 				}
+
 				&:nth-of-type(#{$i}n+1) {
 					clear: both;
 				}
 			}
 		}
 		$i: $i + 1;
-	}
-
-	[class*="#{$parent-selector}"] {
-		& > #{$child-selector} {
-			@supports( display: flex ) {
-				width: auto;
-			}
-		}
 	}
 }

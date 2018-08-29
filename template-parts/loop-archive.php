@@ -1,4 +1,4 @@
-<div id="content" class="doc-content entries">
+<div class="doc-content entries">
 
 	<?php
 		while ( have_posts() ) {
@@ -7,6 +7,6 @@
 		} // endwhile
 	?>
 
-</div><?php // /#content.doc-content.entries ?>
+</div><?php // /.doc-content.entries ?>
 
 <?php nest_postnav_archive(); ?>

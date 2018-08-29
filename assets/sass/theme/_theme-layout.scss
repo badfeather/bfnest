@@ -2,12 +2,32 @@
   padding-top: unitcalc( $base__margin );
 }
 
-.inner {
+.container {
 	padding: 0 1em;
+}
 
-	@include breakpoint-up($breakpoint--lg) {
+@include breakpoint-up($breakpoint--lg) {
+
+	.container {
 		@include container;
 		@include container--centered;
+	}
+
+	.doc-row {
+		@include row;
+	}
+
+	.doc-main,
+	.doc-side {
+		@include column;
+	}
+
+	.doc-main {
+		@include columns(8);
+	}
+
+	.doc-side {
+		@include columns(4);
 	}
 }
 
