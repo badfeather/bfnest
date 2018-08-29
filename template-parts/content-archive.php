@@ -1,33 +1,40 @@
 <?php
-	$post_type = ( is_post_type_archive() ? get_query_var( 'post_type' ) : '' );
+	$title = '';
+	if ( is_category() ) {
+	  $title = sprintf( __( 'Category: %s' ), single_cat_title( '', false ) );
+
+	} elseif ( is_tag() ) {
+	  $title = sprintf( __( 'Tag: %s' ), single_tag_title( '', false ) );
+
+	} elseif ( is_author() ) {
+	  $title = sprintf( __( 'Author: %s' ), '<span class="vcard">' . get_the_author() . '</span>' );
+
+	} elseif ( is_year() ) {
+	  $title = sprintf( __( 'Year: %s' ), get_the_date( _x( 'Y', 'yearly archives date format' ) ) );
+
+	} elseif ( is_month() ) {
+	  $title = sprintf( __( 'Month: %s' ), get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
+
+	} elseif ( is_day() ) {
+	  $title = sprintf( __( 'Day: %s' ), get_the_date( _x( 'F j, Y', 'daily archives date format' ) ) );
+
+	} elseif ( is_post_type_archive() ) {
+	  $title = sprintf( __( 'Archives: %s' ), post_type_archive_title( '', false ) );
+
+	} elseif ( is_tax() ) {
+	  $tax = get_taxonomy( get_queried_object()->taxonomy );
+	  $title = sprintf( __( '%1$s: %2$s' ), $tax->labels->singular_name, single_term_title( '', false ) );
+
+	} else {
+	  $title = __( 'Archives' );
+	}
 ?>
-<main class="doc-main">
+<header class="doc-header">
+	<h1 class="doc-title"><?php echo $title; ?></h1>
 
-		<header class="doc-header">
-			<h1 class="doc-title"><?php
-				if ( is_post_type_archive() ) {
-					post_type_archive_title();
+	<?php the_archive_description( string $before = '<div class="description">', string $after = '</div>' ); ?>
+</header>
 
-				} elseif ( is_author() ) {
-					printf( __( 'Author: %s', 'nest' ), '<span>' . $term->display_name . '</span>' );
+<?php get_template_part( 'template-parts/loop-archive' ); ?>
 
-				} elseif ( is_day() ) {
-					printf( __( 'Day: %s', 'nest' ), '<span>' . get_the_date() . '</span>' );
 
-				} elseif ( is_month() ) {
-					printf( __( 'Month: %s', 'nest' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
-
-				} elseif ( is_year() ) {
-					printf( __( 'Year: %s', 'nest' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
-
-				} else {
-					_e( 'Archives', 'nest' );
-				}
-			?></h1>
-		</header>
-
-		<?php get_template_part( 'template-parts/loop-archive', $post_type ); ?>
-
-</main><?php // /.doc-main ?>
-
-<?php get_template_part( 'template-parts/sidebar-archive', $post_type ); ?>
