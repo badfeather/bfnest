@@ -6,7 +6,7 @@
 				<main class="doc-main">
 					<?php
 						if ( have_posts() ) {
-							get_template_part( 'template-parts/content-search' );
+							get_template_part( 'template-parts/content-archive-search' );
 
 						} else {
 							get_template_part( 'template-parts/content-no-results' );
