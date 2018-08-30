@@ -32,7 +32,7 @@
 <header class="doc-header">
 	<h1 class="doc-title"><?php echo $title; ?></h1>
 
-	<?php the_archive_description( string $before = '<div class="description">', string $after = '</div>' ); ?>
+	<?php the_archive_description( '<div class="description">', '</div>' ); ?>
 </header>
 
 <?php get_template_part( 'template-parts/loop-archive' ); ?>
