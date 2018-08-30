@@ -390,11 +390,10 @@ abbr.initialism {
 
 cite {
   font-style: normal;
-  font-family: 16;
 }
 
 blockquote {
-  font-family: 21;
+  font-size: 21px;
   font-style: italic;
   margin: 0 0 24px 24px;
 }
@@ -404,7 +403,7 @@ blockquote em {
 }
 
 blockquote cite {
-  font-family: 16;
+  font-size: 16px;
   font-style: normal;
 }
 
@@ -573,7 +572,7 @@ h6 {
 }
 
 .lede {
-  font-family: 21;
+  font-size: 21px;
   text-align: center;
   margin: 0 0 24px;
 }

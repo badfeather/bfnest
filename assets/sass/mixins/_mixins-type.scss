@@ -79,7 +79,7 @@
 
 @mixin cite {
 	@include font-family-change( $cite__font-family );
-	@include font-family-change( $cite__font-size );
+	@include font-size-change( $cite__font-size );
 	@include line-height-change( $cite__line-height );
 	@include font-style-change( $cite__font-style );
 	@include font-weight-change( $cite__font-weight );
@@ -89,7 +89,7 @@
 // Blockquotes
 @mixin blockquote {
 	@include font-family-change( $blockquote__font-family );
-	@include font-family-change( $blockquote__font-size );
+	@include font-size-change( $blockquote__font-size );
 	@include line-height-change( $blockquote__line-height );
 	@include font-style-change( $blockquote__font-style );
 	@include font-weight-change( $blockquote__font-weight );
@@ -106,7 +106,7 @@
 
 	cite {
 		@include font-family-change( $cite__font-family, $blockquote__font-family );
-		@include font-family-change( $cite__font-size, $blockquote__font-size );
+		@include font-size-change( $cite__font-size, $blockquote__font-size );
 		@include line-height-change( $cite__line-height, $blockquote__line-height );
 		@include font-style-change( $cite__font-style, $blockquote__font-style );
 		@include font-weight-change( $cite__font-weight, $blockquote__font-weight );
@@ -117,7 +117,7 @@
 // Ledes
 @mixin lede {
 	@include font-family-change( $lede__font-family );
-	@include font-family-change( $lede__font-size );
+	@include font-size-change( $lede__font-size );
 	@include line-height-change( $lede__line-height );
 	@include font-style-change( $lede__font-style );
 	@include font-weight-change( $lede__font-weight );
