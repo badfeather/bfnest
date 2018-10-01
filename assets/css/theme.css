@@ -1294,7 +1294,7 @@ fieldset[disabled] .site-nav__toggle {
     margin-left: auto;
     margin-right: auto;
   }
-  .doc-row {
+  .row {
     margin-left: -15px;
     margin-right: -15px;
     display: -webkit-box;
@@ -1303,11 +1303,11 @@ fieldset[disabled] .site-nav__toggle {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  .doc-row:before, .doc-row:after {
+  .row:before, .row:after {
     content: " ";
     display: table;
   }
-  .doc-row:after {
+  .row:after {
     clear: both;
   }
   .doc-main,
