@@ -9,12 +9,8 @@ This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS
 ### Installing
 * Download or clone the theme
 * Change the name of the folder to whatever your theme should be called, then:
-  * Find in files `'bfnest'` and replace with `'yourtextdomain'`
-  * Find in files `bfnest-` and replace with `yourtextdomain-`
-  * Find in files `bfnest_` and replace with `yourtextdomain_`
-  * Find in files `bad-feather-nest` and replace with `your-theme-name`
+  * Find in files `bfnest` and replace with `yourtextdomain`
   * Find in files `Bad Feather Nest` and replace with `Your Theme Name`
-  * Find in files `Text Domain: nest` and replace with `Text Domain: yourtextdomain`
   * Change the repository, theme location, author and version information as needed in `package.json` and `bower.json` and `assets/sass/style.scss`
   * Change the theme name and credit info in the `assets/sass/style.scss` or `style.css` file, depending on whether you're using SASS.
   * Replace existing `assets/img/favicon.ico` file with your own
