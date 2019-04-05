@@ -2,7 +2,7 @@ module.exports = function ( grunt ) {
 
 	const Fiber = require('fibers');
 	const sass = require('sass');
-	
+
 	// Load all grunt tasks in package.json matching the `grunt-*` pattern.
 	require( 'load-grunt-tasks' )( grunt );
 
@@ -43,9 +43,9 @@ module.exports = function ( grunt ) {
 					require( 'css-mqpacker' )( {'sort': true} )
 				]},
 			dist: {
-				src: [ 
+				src: [
 					'assets/dist/css/theme.css',
-					'assets/dist/css/editor-style.css', 
+					'assets/dist/css/editor-style.css',
 				]
 			}
 		},
@@ -96,7 +96,7 @@ module.exports = function ( grunt ) {
 					'assets/src/js/navigation.js',
 					'assets/src/js/share-popup.js',
 					'assets/src/js/skip-link-focus-fix.js',
-					'assets/src/js/theme.js',		
+					'assets/src/js/theme.js',
 				],
 				dest: 'assets/dist/js/theme.js'
 			},
@@ -106,6 +106,15 @@ module.exports = function ( grunt ) {
 				],
 				dest: 'assets/dist/js/block-filters.js'
 			}
+		},
+
+		/**
+		 * Lint js files using WordPress eslint coding standards
+		 * https://www.npmjs.com/package/grunt-eslint
+		 * https://github.com/WordPress-Coding-Standards/eslint-plugin-wordpress
+		 */
+		eslint: {
+			src: [ 'assets/src/js/*.js' ],
 		},
 
 		/**
@@ -201,7 +210,11 @@ module.exports = function ( grunt ) {
 
 	// Register Grunt tasks.
 	grunt.registerTask( 'styles', [ 'sass', 'postcss', 'cssnano' ] );
-	grunt.registerTask( 'javascript', [ 'concat', 'uglify' ] );
+	grunt.registerTask( 'javascript', [
+		//'eslint',
+		'concat',
+		'uglify'
+	] );
 	grunt.registerTask( 'images', [ 'imagemin' ] );
 	grunt.registerTask( 'i18n', [ 'makepot' ] );
 	grunt.registerTask( 'bump-patch', [ 'version::patch' ] );

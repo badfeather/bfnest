@@ -5,7 +5,12 @@
  * navigation support for dropdown menus.
  */
 ( function() {
-	var container, button, menu, links, i, len;
+	var container,
+	button,
+	menu,
+	links,
+	i,
+	en;
 
 	container = document.getElementById( 'site-navigation' );
 	if ( ! container ) {

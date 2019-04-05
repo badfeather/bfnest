@@ -4,22 +4,25 @@
 	if ( ! container ) {
 		return;
 	}
-	
-	// edit max-width to your navigation breakpoint	
+
+	// edit max-width to your navigation breakpoint
 	var breakpoint = '(max-width: 991px)';
-				
+
 	/**
 	 * Toggles `clicked` class to allow submenu access on tablets.
 	 */
 	function clickMenu() {
 
-		var container, clickFn, i, parentLink;
-		
+		var container,
+		clickFn,
+		i,
+		parentLink;
+
 		container = document.getElementById( 'site-navigation' );
 		if ( ! container ) {
 			return;
-		}		
-		
+		}
+
 		parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
 
 		if ( 'onclick' in window ) {
@@ -45,25 +48,25 @@
 			}
 		}
 	}
-	
+
 	if ( typeof window.ontouchstart !== 'undefined' ) {
 		clickMenu();
 	}
-	
+
 	if ( typeof window.matchMedia != 'undefined' || typeof window.msMatchMedia != 'undefined' ) {
-		
+
 		var mql = window.matchMedia( breakpoint );
-		
+
 		if ( mql.matches ) {
 			clickMenu();
 		}
-	
-		function screenTest(e) {
-			if (e.matches) {
-				clickMenu();				
+
+		function screenTest( e ) {
+			if ( e.matches ) {
+				clickMenu();
 			}
 		}
-		
+
 		mql.addListener(screenTest);
 	}
 
