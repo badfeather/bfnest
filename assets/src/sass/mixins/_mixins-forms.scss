@@ -1,0 +1,329 @@
+// LABELS
+// -------------------------
+@mixin label {
+	display: $label__display;
+	@include font-family-change( $label__font-family );
+	@include font-size-change( $label__font-size );
+	@include line-height-change( $label__line-height );
+	@include font-style-change( $label__font-style );
+	@include font-weight-change( $label__font-weight );
+	@include text-transform-change( $label__text-transform );
+	@include color-change( $label__color );
+	@include margin-unitcalc( $label__margin-top, $label__margin-right, $label__margin-bottom, $label__margin-left, $label__font-size );
+	
+	@if ( $label__color--required != $label__color ) or ( $label__font-weight != $label__font-weight--required ) {
+		//input:required + &, /* uncomment to use browser native validation states */
+		input.required + & {
+			@include color-change( $label__color--required, $label__color );
+			@include font-weight-change( $label__font-weight--required, $label__font-weight );
+		}
+	}
+	
+	@if ( $label__color--invalid != $label__color ) {
+		//input:invalid + &, /* uncomment to use browser native validation states */
+		input.invalid + & {
+			color: $label__color--invalid;
+		}
+	}
+}
+
+// LEGEND
+// -------------------------
+@mixin legend {
+	// reset styles
+	display: block;
+	width: 100%;
+	max-width: 100%; 
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	color: inherit;
+	white-space: normal;
+	
+	//theme styles
+	display: $legend__display;
+	@include font-family-change( $legend__font-family );
+	@include font-size-change( $legend__font-size );
+	@include line-height-change( $legend__line-height );
+	@include font-style-change( $legend__font-style );
+	@include font-weight-change( $legend__font-weight );
+	@include text-transform-change( $legend__text-transform );
+	@include color-change( $legend__color );
+	@include margin-unitcalc( $legend__margin-top, $legend__margin-right, $legend__margin-bottom, $legend__margin-left, $legend__font-size );
+	
+	@if ( $legend__color--required != $legend__color ) or ( $legend__font-weight != $legend__font-weight--required ) {
+		//input:required + &, /* uncomment to use browser native validation states */
+		input.required + & {
+			@include color-change( $legend__color--required, $legend__color );
+			@include font-weight-change( $legend__font-weight--required, $legend__font-weight );
+		}
+	}
+	
+	@if ( $legend__color--invalid != $legend__color ) {
+		//input:invalid + &, /* uncomment to use browser native validation states */
+		input.invalid + & {
+			color: $legend__color--invalid;
+		}
+	}
+}
+
+// HELPER TEXT
+// -------------------------
+@mixin helper-text {
+	@include font-family-change( $helper-text__font-family );
+	@include font-size-change( $helper-text__font-size );
+	@include line-height-change( $helper-text__line-height );
+	@include font-style-change( $helper-text__font-style );
+	@include font-weight-change( $helper-text__font-weight );
+	@include text-transform-change( $helper-text__text-transform );
+	@include color-change( $helper-text__color );
+	@include margin-unitcalc( $helper-text__margin-top, $helper-text__margin-right, $helper-text__margin-bottom, $helper-text__margin-left, $helper-text__font-size );
+	
+	@if ( $helper-text__color--invalid != $helper-text__color ) {
+		//input:invalid ~ &, /* uncomment to use browser native validation states */
+		input.invalid ~ & {
+			color: $helper-text__color--invalid;
+		}
+	}
+}
+
+// BUTTONS
+// -------------------------
+@mixin button {
+	font-family: $button__font-family;
+	font-weight: $button__font-weight;
+	font-size: unitcalc( $button__font-size );
+	line-height: $button__line-height;
+	@include padding-unitcalc( $value-top: $button__padding-vertical, $value-right: $button__padding-horizontal, $font-size: $button__font-size );
+	color: $button__color;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	margin-bottom: 0;
+	background-color: $button__background-color;
+	@include border( $button__border-width, solid, $button__border-color );
+	border-radius: unitcalc( $button__border-radius, $button__font-size );
+	white-space: nowrap;
+	cursor: pointer;
+	@include text-transform-change( $button__text-transform );
+	@include box-shadow-change( $button__box-shadow );
+	outline: none;
+	transition: all 0.15s ease-out;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $button__color--hover;
+		@include background-color-change( $button__background-color--hover, $button__background-color );
+		@include border-color-change( $button__border-color--hover, $button__border-color );
+		@include box-shadow-change( $button__box-shadow--hover, $button__box-shadow );
+	}
+
+	&.disabled,
+	&:disabled {
+		cursor: not-allowed;
+		pointer-events: none; 
+		@include opacity-change( $button__opacity--disabled );
+		@include color-change( $button__color--disabled, $button__color );	
+		@include border-color-change( $button__border-color--disabled, $button__border-color );
+		@include background-color-change( $button__background-color--disabled, $button__background-color );	
+	}
+}
+
+@mixin button--lg {
+	@include font-size-change( $button__font-size--lg, $button__font-size  );
+	@include padding-change-unitcalc( $default-top: $button__padding-vertical, $default-right: $button__padding-horizontal, $value-top: $button__padding-vertical--lg, $value-right: $button__padding-horizontal--lg, $font-size: $button__font-size--lg );
+}
+
+@mixin button--sm {
+	@include font-size-change( $button__font-size--sm, $button__font-size  );
+	@include padding-change-unitcalc( $default-top: $button__padding-vertical, $default-right: $button__padding-horizontal, $value-top: $button__padding-vertical--sm, $value-right: $button__padding-horizontal--sm, $font-size: $button__font-size--sm );
+}
+
+@mixin button--xs {
+	@include font-size-change( $button__font-size--xs, $button__font-size  );
+	@include padding-change-unitcalc( $default-top: $button__padding-vertical, $default-right: $button__padding-horizontal, $value-top: $button__padding-vertical--xs, $value-right: $button__padding-horizontal--xs, $font-size: $button__font-size--xs );
+}
+
+@mixin button-variant(
+	$color: $button__color,
+	$background-color: $button__background-color,
+	$border-color: $button__border-color,
+	$color--hover: $color,
+	$background-color--hover: $background-color,
+	$border-color--hover: $border-color,
+	$opacity--disabled: $button__opacity--disabled,
+	$color--disabled: $color,
+	$background-color--disabled: $background-color,
+	$border-color--disabled: $border-color
+) {
+	@include color-change( $color, $button__color );
+	@include background-color-change( $background-color, $button__background-color );
+	@include border-color-change( $border-color, $button__border-color );
+
+	@if ( $color--hover != $button__color--hover ) or ( $background-color--hover != $button__background-color--hover ) or ( $border-color--hover != $button__border-color--hover ) {
+		&:hover,
+		&:focus {
+			@include color-change( $color--hover, $button__color--hover );
+			@include background-color-change( $background-color--hover, $button__background-color--hover );
+			@include border-color-change( $border-color--hover, $button__border-color--hover );
+		}
+	}
+	
+	@if ( $opacity--disabled != $button__opacity--disabled ) or ( $color--disabled != $button__color--disabled ) or ( $background-color--disabled != $button__background-color--disabled ) or ( $border-color--disabled != $button__border-color--disabled ) {		
+		&.disabled,
+		&:disabled {
+			@include opacity-change( $opacity--disabled, $button__opacity--disabled);
+			@include color-change( $color--disabled, $button__color--disabled );
+			@include background-color-change( $background-color--disabled, $button__background-color--disabled );
+			@include border-color-change( $border-color--disabled, $button__border-color--disabled );
+		}
+	}
+}
+
+// Alternate button states
+@mixin button--secondary() {
+	@include button-variant( 
+		$button--secondary__color, 
+		$button--secondary__background-color, 
+		$button--secondary__border-color, 
+		$button--secondary__color--hover, 
+		$button--secondary__background-color--hover, 
+		$button--secondary__border-color--hover, 
+		$button--secondary__opacity--disabled, 
+		$button--secondary__color--disabled, 
+		$button--secondary__background-color--disabled, 
+		$button--secondary__border-color--disabled 
+	);
+}
+
+@mixin button--success() {
+	@include button-variant( 
+		$button--success__color, 
+		$button--success__background-color, 
+		$button--success__border-color, 
+		$button--success__color--hover, 
+		$button--success__background-color--hover, 
+		$button--success__border-color--hover, 
+		$button--success__opacity--disabled, 
+		$button--success__color--disabled, 
+		$button--success__background-color--disabled, 
+		$button--success__border-color--disabled 
+	);
+}
+
+@mixin button--warning() {
+	@include button-variant( 
+		$button--warning__color, 
+		$button--warning__background-color, 
+		$button--warning__border-color, 
+		$button--warning__color--hover, 
+		$button--warning__background-color--hover, 
+		$button--warning__border-color--hover, 
+		$button--warning__opacity--disabled, 
+		$button--warning__color--disabled, 
+		$button--warning__background-color--disabled, 
+		$button--warning__border-color--disabled 
+	);
+}
+
+@mixin button--danger() {
+	@include button-variant( 
+		$button--danger__color, 
+		$button--danger__background-color, 
+		$button--danger__border-color, 
+		$button--danger__color--hover, 
+		$button--danger__background-color--hover, 
+		$button--danger__border-color--hover, 
+		$button--danger__opacity--disabled, 
+		$button--danger__color--disabled, 
+		$button--danger__background-color--disabled, 
+		$button--danger__border-color--disabled 
+	);
+}
+
+// FORM CONTROLS
+// -------------------------
+@mixin form-control {
+	display: block;
+	width: 100%;
+	@include padding-unitcalc( $value-top: $form-control__padding-vertical, $value-right: $form-control__padding-horizontal, $font-size: $form-control__font-size );
+	margin: 0;
+	font-family: $form-control__font-family;
+	font-size: unitcalc( $form-control__font-size );
+	line-height: $form__line-height;
+	color: $form-control__color;
+	@include border( $form-control__border-width, solid, $form-control__border-color );
+	border-radius: unitcalc( $form-control__border-radius, $form-control__font-size );
+	outline: none;
+	background-color: $form-control__background-color;
+	box-shadow: $form-control__box-shadow;	
+
+	&:focus {
+		background-color: $form-control__background-color--focus;
+		border-color: $form-control__border-color--focus;
+		box-shadow: $form-control__box-shadow--focus;
+	}
+	
+	&::-ms-expand {
+		background-color: transparent;
+		border: 0;
+	}	
+	
+	&::placeholder {
+		opacity: 1;
+		color: $form-control__color--placeholder;
+	}
+	
+	//&:invalid, /* uncomment to use browser native validation states */
+	&.invalid {
+		@include color-change( $form-control__color--invalid, $form-control__color );
+		@include background-color-change( $form-control__background-color--invalid, $form-control__background-color );
+		@include border-color-change( $form-control__border-color--invalid, $form-control__border-color );
+	}
+}
+
+@mixin form-control-variant(
+	$color: $form-control__color,
+	$background-color: $form-control__background-color,
+	$border-color: $form-control__border-color,
+	$color--focus: $form-control__color--focus,
+	$background-color--focus: $form-control__background-color--focus,
+	$border-color--focus: $form-control__border-color--focus,
+	$box-shadow--focus: $form-control__box-shadow--focus,
+	$default-color: $form-control__color,
+	$default-background-color: $form-control__background-color,
+	$default-border-color: $form-control__border-color,
+	$default-color--focus: $form-control__color--focus,
+	$default-background-color--focus: $form-control__background-color--focus,
+	$default-border-color--focus: $form-control__border-color--focus,
+	$default-box-shadow--focus: $form-control__box-shadow--focus
+) {
+	@include color-change( $color, $default-color );
+	@include background-color-change( $background-color, $default-background-color );
+	@include border-color-change( $border-color, $default-border-color );
+	
+	@if ( $color--focus != $default-color--focus ) or ( $background-color--focus != $default-background-color--focus ) or ( $border-color--focus != $default-border-color--focus ) or ( $box-shadow--focus != $default-box-shadow--focus ) {
+		&:focus {
+			@include color-change( $color--focus, $default-color--focus );
+			@include background-color-change( $background-color--focus, $default-background-color--focus );
+			@include border-color-change( $border-color--focus, $default-border-color--focus );
+			@include box-shadow-change( $box-shadow--focus, $default-box-shadow--focus );
+		}
+	}
+}
+
+@mixin form-control--lg {
+	@include font-size-change( $form-control__font-size--lg, $form-control__font-size );
+	@include padding-change-unitcalc( $default-top: $form-control__padding-vertical, $default-right: $form-control__padding-horizontal, $value-top: $form-control__padding-vertical--lg, $value-right: $form-control__padding-horizontal--lg, $font-size: $form-control__font-size--lg );
+}
+
+@mixin form-control--sm {
+	@include font-size-change( $form-control__font-size--sm, $form-control__font-size );
+	@include padding-change-unitcalc( $default-top: $form-control__padding-vertical, $default-right: $form-control__padding-horizontal, $value-top: $form-control__padding-vertical--sm, $value-right: $form-control__padding-horizontal--sm, $font-size: $form-control__font-size--sm );
+}
+
+@mixin form-control--xs {
+	@include font-size-change( $form-control__font-size--xs, $form-control__font-size );
+	@include padding-change-unitcalc( $default-top: $form-control__padding-vertical, $default-right: $form-control__padding-horizontal, $value-top: $form-control__padding-vertical--xs, $value-right: $form-control__padding-horizontal--xs, $font-size: $form-control__font-size--xs );
+}

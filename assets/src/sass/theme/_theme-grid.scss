@@ -1,0 +1,104 @@
+/**
+ * GRID PLACEHOLDERS
+ * use via @extends for semantic classes
+ */
+@include bp-container( '%container' );
+
+@include bp-container--centered( '%container--centered' );
+
+@include bp-row( '%row' );
+
+@include bp-column( '%column' );
+
+@include bp-columns( '%columns' );
+
+@include bp-push( '%push' );
+
+@include bp-pull( '%pull' );
+
+@include bp-column--centered( '%column' );
+
+/**
+ * GRID CLASSES
+ * Commented out by default
+ */
+.container {
+	@include container;
+}
+
+.container--centered {
+	@include container--centered;
+}
+
+.container--left {
+	@include container--left;
+}
+
+.container--right {
+	@include container--right;
+}
+
+.row {
+	@include row;
+}
+
+.column {
+	@include column;
+}
+
+.column--centered {
+	@include column--centered;
+}
+
+.uncolumn {
+	@include uncolumn;
+}
+
+.unpush {
+	@include unpush;
+}
+
+.unpull {
+	@include unpull;
+}
+
+.guttered {
+	@include guttered;
+}
+
+@include generate-column-classes( $grid__columns );
+
+@include generate-push-classes( $grid__columns );
+
+@include generate-pull-classes( $grid__columns );
+
+@include generate-block-grid-classes( $grid__columns );
+
+@include bp-container( '.container' );
+
+@include bp-container--centered( '.container--centered' );
+
+@include bp-row( '.row' );
+
+@include bp-column( '.column' );
+
+@include bp-columns( '.columns' );
+
+@include bp-push( '.push' );
+
+@include bp-pull( '.pull' );
+
+@include bp-column--centered( '.column' );
+
+//.grid-test {
+//	.column {
+//		text-align: center;
+//		padding-top: unitcalc( $grid__gutter-width / 2 );
+//		padding-bottom: unitcalc( $grid__gutter-width / 2 );
+//	}
+//
+//	.box {
+//		background-color: #ccc;
+//		padding: .5em;
+//	}
+//}

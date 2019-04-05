@@ -1,5 +1,5 @@
 # Bad Feather Nest
-Version: 5.0.6
+Version: 5.1.0
 
 A starter theme for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 
@@ -9,9 +9,9 @@ This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS
 ### Installing
 * Download or clone the theme
 * Change the name of the folder to whatever your theme should be called, then:
-  * Find in files `'nest'` and replace with `'yourtextdomain'`
-  * Find in files `nest-` and replace with `yourtextdomain-`
-  * Find in files `nest_` and replace with `yourtextdomain_`
+  * Find in files `'bfnest'` and replace with `'yourtextdomain'`
+  * Find in files `bfnest-` and replace with `yourtextdomain-`
+  * Find in files `bfnest_` and replace with `yourtextdomain_`
   * Find in files `bad-feather-nest` and replace with `your-theme-name`
   * Find in files `Bad Feather Nest` and replace with `Your Theme Name`
   * Find in files `Text Domain: nest` and replace with `Text Domain: yourtextdomain`

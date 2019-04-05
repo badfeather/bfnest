@@ -3,17 +3,17 @@
 /**
  * Postnav single
  */
-function nest_postnav_single( $in_same_term = false, $excluded_terms = array(), $taxonomy = 'category', $newer_title = null, $older_title = null ) {
+function bfnest_postnav_single( $in_same_term = false, $excluded_terms = array(), $taxonomy = 'category', $newer_title = null, $older_title = null ) {
 	if ( ! is_single() ) {
 		return false;
 	}
 
 	if ( null === $newer_title ) {
-		$newer_title = __( '&larr; %title', 'nest' );
+		$newer_title = __( '&larr; %title', 'bfnest' );
 	}
 
 	if ( null === $older_title ) {
-		$older_title = __( '%title &rarr;', 'nest' );
+		$older_title = __( '%title &rarr;', 'bfnest' );
 	}
 
 	$newer = get_next_post_link( '<div class="postnav__link postnav__link--newer">%link</div>', $newer_title, $in_same_term, $excluded_terms, $taxonomy );
@@ -36,17 +36,17 @@ function nest_postnav_single( $in_same_term = false, $excluded_terms = array(), 
 /**
  * Postnav archives
  */
-function nest_postnav_archive( $newer_title = null, $older_title = null ) {
+function bfnest_postnav_archive( $newer_title = null, $older_title = null ) {
 	if ( ! is_archive() ) {
 		return false;
 	}
 
 	if ( null === $newer_title ) {
-		$newer_title = __( '&larr; Newer Entries', 'nest' );
+		$newer_title = __( '&larr; Newer Entries', 'bfnest' );
 	}
 
 	if ( null === $older_title ) {
-		$older_title =	__( 'Older Entries &rarr;', 'nest' );
+		$older_title =	__( 'Older Entries &rarr;', 'bfnest' );
 	}
 
 	$newer = get_previous_posts_link( $newer_title );

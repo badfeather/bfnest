@@ -3,7 +3,7 @@
 /**
  * Add support for infinite scroll
  */
-function nest_jetpack_setup() {
+function bfnest_jetpack_setup() {
 	add_theme_support( 'infinite-scroll', array(
 		'type' => 'click', // options are 'scroll' or 'click'. Defaults to 'click'.
 		// 'container' => 'content', // id of loop container. defaults to 'content'
@@ -14,33 +14,33 @@ function nest_jetpack_setup() {
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
 }
-add_action( 'after_setup_theme', 'nest_jetpack_setup' );
+add_action( 'after_setup_theme', 'bfnest_jetpack_setup' );
 
 /**
  * Change text of infinite scroll load more button
  */
-function nest_infinite_scroll_js_settings( $settings ) {
-	$settings['text'] = __( 'Load more', 'nest' );
+function bfnest_infinite_scroll_js_settings( $settings ) {
+	$settings['text'] = __( 'Load more', 'bfnest' );
 	return $settings;
 }
-add_filter( 'infinite_scroll_js_settings', 'nest_infinite_scroll_js_settings' );
+add_filter( 'infinite_scroll_js_settings', 'bfnest_infinite_scroll_js_settings' );
 
 /**
  * Remove Jetpack sharing buttons from loop
  */
-function nest_remove_jetpack_share() {
+function bfnest_remove_jetpack_share() {
 	remove_filter( 'the_content', 'sharing_display', 19 );
 	remove_filter( 'the_excerpt', 'sharing_display', 19 );
 	if ( class_exists( 'Jetpack_Likes' ) ) {
 		remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
 	}
 }
-add_action( 'loop_start', 'nest_remove_jetpack_share' );
+add_action( 'loop_start', 'bfnest_remove_jetpack_share' );
 
 /**
  * Manually place sharing buttons using the following function
  */
-function nest_jetpack_share() {
+function bfnest_jetpack_share() {
 	if ( function_exists( 'sharing_display' ) ) {
 		sharing_display( '', true );
 	}
@@ -58,7 +58,7 @@ function nest_jetpack_share() {
 add_filter( 'jetpack_implode_frontend_css', '__return_false' );
 
 // Then, remove each CSS file, one at a time
-function nest_remove_jetpack_css() {
+function bfnest_remove_jetpack_css() {
 	wp_deregister_style( 'AtD_style' ); // After the Deadline
 	wp_deregister_style( 'jetpack_likes' ); // Likes
 	wp_deregister_style( 'jetpack_related-posts' ); //Related Posts
@@ -82,12 +82,12 @@ function nest_remove_jetpack_css() {
 	wp_deregister_style( 'widget-grid-and-list' ); // Top Posts widget
 	wp_deregister_style( 'jetpack-widgets' ); // Widgets
 }
-add_action('wp_print_styles', 'nest_remove_jetpack_css' );
+add_action('wp_print_styles', 'bfnest_remove_jetpack_css' );
 
 /**
  * Customize sharedaddy sharing markup
  */
-function nest_sharing_display_markup( $sharing_content ) {
+function bfnest_sharing_display_markup( $sharing_content ) {
 
 	global $post, $wp_current_filter;
 
@@ -120,9 +120,9 @@ function nest_sharing_display_markup( $sharing_content ) {
 		$parts[] = $visible;
 		if ( count( $enabled['hidden'] ) > 0 ) {
 			if ( count( $enabled['visible'] ) > 0 )
-				$expand = __( 'More', 'jetpack' );
+				$expand = __( 'More', 'bfnest' );
 			else
-				$expand = __( 'Share', 'jetpack' );
+				$expand = __( 'Share', 'bfnest' );
 			$parts[] = '<li><a href="#" class="sharing-anchor sd-button share-more"><span>'.$expand.'</span></a></li>';
 		}
 
@@ -168,4 +168,4 @@ function nest_sharing_display_markup( $sharing_content ) {
 	}
 	return $sharing_content;
 }
-add_filter( 'jetpack_sharing_display_markup', 'nest_sharing_display_markup', 10, 1 );
+add_filter( 'jetpack_sharing_display_markup', 'bfnest_sharing_display_markup', 10, 1 );

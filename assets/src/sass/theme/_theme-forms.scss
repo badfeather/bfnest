@@ -1,0 +1,196 @@
+form {
+	@include margin-unitcalc( $value-bottom: $form__margin-bottom );
+}
+
+label {
+	@include label;
+}
+
+fieldset {
+	min-width: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+legend {
+	@include legend;
+}
+
+.helper-text {
+	@include helper-text;
+}
+
+textarea {
+	width: 100%;
+}
+
+// FORM GROUPS
+// -------------------------
+.form-group {
+	@include margin-unitcalc( $form-group__margin-top, 0, $form-group__margin-bottom, 0 );
+}
+
+.form-check {
+	label {
+		display: inline-block;
+	}
+}
+
+.form-group--validate {
+	display: flex;
+	flex-direction: column;
+	
+	label {
+		order: -1;
+	}
+	
+	label,
+	.helper-text {
+		display: none;
+	}
+	
+	label,
+	.helper-text {
+		opacity: 0;
+		transition: opacity .15s ease-in-out;
+	}
+	
+	.form-control {
+		&.invalid {
+			
+			~ .helper-text {
+				display: block;
+				opacity: 1;
+			}
+		}
+	}
+	
+	input:focus {
+		& + label,
+		& ~ .helper-text {
+			display: block;
+			opacity: 1;
+		}
+	}
+}
+
+.form-row--inline {
+	//@include margin-unitcalc( $value-bottom: $form-group__margin-bottom );
+	
+	.form-control,
+	label,
+	.form-check,
+	.form-group,
+	button {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.form-control,
+	select {
+		width: auto;
+	}
+	
+	.form-control,
+	.button,
+	.form-check,
+	label {
+		margin-right: .5em;
+	}
+	
+	label {
+		margin-bottom: 0;
+	}
+}
+
+// BUTTONS
+// ---------------------------
+.button {
+	@include button;
+}
+
+//button,
+//input[type="submit"],
+.wp-block-button__link {
+	@extend .button;
+}
+
+.button--lg {
+	@include button--lg;
+}
+
+.button--sm {
+	@include button--sm;
+}
+
+.button--xs {
+	@include button--xs;
+}
+
+//	Alternate button states
+.button--secondary {
+	@include button--secondary;
+}
+
+.button--success {
+	@include button--success;
+}
+
+.button--warning {
+	@include button--warning;
+}
+
+.button--danger {
+	@include button--danger;
+}
+
+// FORM CONTROLS
+// ---------------------------
+$form__controls: 'textarea',
+'input[type="text"]',
+'input[type="password"]',
+'input[type="datetime"]',
+'input[type="datetime-local"]',
+'input[type="date"]',
+'input[type="month"]',
+'input[type="time"]',
+'input[type="week"]',
+'input[type="number"]',
+'input[type="email"]',
+'input[type="url"]',
+'input[type="search"]',
+'input[type="tel"]',
+'input[type="color"]';
+
+// class only
+.form-control {
+	@include form-control;
+}
+
+select.form-control {
+	color: $base__color;
+}
+
+//all inputs with class
+//#{$form__controls} {
+//	@extend form-control;
+//}
+
+input[type="search"] {
+	box-sizing: border-box;
+}
+
+// alternate form control states
+
+.form-control--lg {
+	@include form-control--lg;
+}
+
+.form-control--sm {
+	@include form-control--sm;
+}
+
+.form-control--xs {
+	@include form-control--xs;
+}

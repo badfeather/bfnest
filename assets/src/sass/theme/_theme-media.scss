@@ -1,0 +1,109 @@
+// Images
+img {
+	vertical-align: middle;
+	max-width: 100%;
+	height: auto;
+}
+
+figure {
+	@include margin-unitcalc( 0, 0, $figure__margin-bottom, 0 );
+}
+
+// wordpress-specific
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img,
+.wp-caption,
+.wp-block-image {
+
+	&.alignleft,
+	&.alignright {
+		display: inline;
+	}
+
+	&.alignleft {
+		margin-right: unitcalc( $base__margin );
+		clear: left;
+	}
+
+	&.alignright {
+		margin-left: unitcalc( $base__margin );
+		clear: right;
+	}
+
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin-bottom: unitcalc( $base__margin--half );
+	}
+}
+
+.wp-caption {
+	max-width: 100%;
+}
+
+// used to set widths on center-aligned wp-caption boxes
+.entry-figure--size-thumbnail {
+	width: unitcalc( $image-size--th );
+}
+
+.entry-figure--size-medium {
+	width: unitcalc( $image-size--md );
+}
+
+.entry-figure--size-large {
+	width: unitcalc( $image-size--lg );
+}
+
+.entry-figure--size--x-large {
+	width: unitcalc( $image-size--xl );
+}
+
+.wp-caption-text,
+.gallery-caption {
+	@extend .entry-meta;
+	@include margin-top-unitcalc( $base__margin--quarter, $meta__font-size );
+}
+
+.gallery,
+.wp-block-gallery {
+	@include row;
+	margin-bottom: unitcalc( $base__margin );
+	padding-top: unitcalc( $base__margin--half );
+}
+
+.wp-block-gallery {
+	@include list-unstyled;
+}
+
+.gallery-item,
+.blocks-gallery-item {
+	@include column;
+	margin-bottom: unitcalc( $base__margin );
+
+	img {
+		display: block;
+	}
+}
+
+@include generate-block-grid-classes( 6, '.gallery-columns', '.gallery-item' );
+
+// gutenberg uses different classes
+//@include generate-block-grid-classes( 6, '.columns', '.blocks-gallery-item' );
+
+.svg-defs {
+	display: none;
+}

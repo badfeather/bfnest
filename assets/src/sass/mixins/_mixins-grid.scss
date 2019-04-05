@@ -1,0 +1,243 @@
+// GRID SYSTEM
+// ----------------------------
+@mixin guttered( $gutter: $grid__gutter-width ) {
+	padding-left: unitcalc( $gutter / 2 );
+	padding-right: unitcalc( $gutter / 2 );
+}
+
+// Centered container element
+@mixin container( $gutter: $grid__gutter-width, $width: $grid__width ) {
+	@include guttered( $gutter );
+	max-width: unitcalc( $width );
+}
+
+@mixin container--centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin container--left {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+@mixin container--right {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+@mixin row( $gutter: $grid__gutter-width ) {
+	margin-left: unitcalc( $gutter / -2 );
+	margin-right: unitcalc( $gutter / -2 );
+	@include clearfix;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@mixin flex-width-fix {
+	@supports (display: flex ) {
+		width: auto;
+	}
+}
+
+@mixin column( $gutter: $grid__gutter-width ) {
+	width: 100%;
+	@include guttered( $gutter );
+	position: relative;
+	float: left;
+	flex: 1;
+}
+
+@mixin columns( $n, $columns: $grid__columns ) {
+	width: percentage( $n / $columns );
+	flex: 0 0 percentage( $n / $columns );
+	//@include flex-width-fix;
+}
+
+@mixin push( $offset: 1, $columns: $grid__columns ) {
+	margin-left: percentage( $offset / $columns );
+}
+
+@mixin pull( $offset: 1, $columns: $grid__columns ) {
+	margin-right: percentage( $offset / $columns );
+}
+
+@mixin row-centerned() {
+	justify-content: center;
+}
+
+@mixin column--centered {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	clear: both;
+}
+
+@mixin uncolumn {
+	float: none;
+	width: auto;
+	padding-left: initial;
+	padding-right: initial;
+}
+
+@mixin unpush {
+	margin-left: 0;
+}
+
+@mixin unpull {
+	margin-right: 0;
+}
+
+@mixin generate-column-classes( $columns: $grid__columns, $selector: '%columns', $i: 1 ) {
+	$flex-width-fix-classes: '';
+	
+	@while $i <= $columns {
+		#{$selector}--#{$i} {
+			@include columns( $i, $columns );
+		}
+		
+		$sep: ', ';
+		@if ( $i == $columns ) {
+			$sep: '';
+		}
+		
+		$flex-width-fix-classes: $flex-width-fix-classes + '#{$selector}--#{$i}' + $sep;
+
+		$i: $i + 1;
+	}
+	
+	#{$flex-width-fix-classes} {
+		@supports (display: flex ) {
+			width: auto;
+		}		
+	}
+}
+
+//@mixin generate-column-classes( $columns: $grid__columns, $selector: '%columns', $i: 1 ) {
+//	@while $i <= $columns {
+//		#{$selector}--#{$i} {
+//			@include columns( $i, $columns );
+//		}
+//		$i: $i + 1;
+//	}
+//}
+
+@mixin generate-push-classes( $columns: $grid__columns, $selector: '%push', $i: 1 ) {
+	@while $i <= $columns {
+		#{$selector}--#{$i} {
+			@include push( $i, $columns );
+		}
+		$i: $i + 1;
+	}
+}
+
+@mixin generate-pull-classes( $columns: $grid__columns, $selector: '%pull', $i: 1 ) {
+	@while $i <= $columns {
+		#{$selector}--#{$i} {
+			@include pull( $i, $columns );
+		}
+		$i: $i + 1;
+	}
+}
+
+@mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $child_selector: '.column', $i: 1) {
+	%flex-width-fix {
+		& > #{$child-selector} {
+			@include flex-width-fix;
+		}
+	}
+	
+	@while $i <= $n {
+		#{$parent-selector}-#{$i} {
+			
+			& > #{$child-selector} {
+				width: percentage(1 / $i);
+				flex: 0 0 percentage( 1 / $i );
+			
+				&:nth-of-type(n) {
+					clear: none;
+				}
+
+				&:nth-of-type(#{$i}n+1) {
+					clear: both;
+				}
+			}
+			@extend %flex-width-fix;
+		}
+		$i: $i + 1;
+	}
+}
+
+// BREAKPOINT MIXINS
+@mixin bp-container( $selector: '%container' ) {
+	@each $name, $value in $breakpoints {
+		#{$selector}-#{$name} {
+			@include breakpoint-up( $value ) {	
+				@include container;	
+			}
+		}
+	}
+}
+
+@mixin bp-container--centered( $selector: '%container' ) {
+	@each $name, $value in $breakpoints {
+		#{$selector}-#{$name}--centered {
+			@include breakpoint-up( $value ) {	
+				@include container--centered;	
+			}
+		}
+	}
+}
+
+@mixin bp-row( $selector: '%row' ) {
+	@each $name, $value in $breakpoints {
+		#{$selector}-#{$name} {
+			@include breakpoint-up( $value ) {	
+				@include row;	
+			}
+		}
+	}
+}
+
+@mixin bp-column( $selector: '%column' ) {
+	@each $name, $value in $breakpoints {
+		#{$selector}-#{$name} {			
+			@include breakpoint-up( $value ) {	
+				@include column;	
+			}
+		}
+	}
+}
+
+@mixin bp-columns( $selector: '%columns' ) {
+	@each $name, $value in $breakpoints {
+		@include breakpoint-up( $value ) {
+			@include generate-column-classes( $grid__columns, '#{$selector}-#{$name}', $i: 1 );
+		}
+	}
+}
+
+@mixin bp-push( $selector: '%push' ) {
+	@each $name, $value in $breakpoints {
+		@include breakpoint-up( $value ) {
+			@include generate-push-classes( $grid__columns, '#{$selector}-#{$name}', $i: 1 );
+		}
+	}
+}
+
+@mixin bp-pull( $selector: '%pull' ) {
+	@each $name, $value in $breakpoints {
+		@include breakpoint-up( $value ) {
+			@include generate-pull-classes( $grid__columns, '#{$selector}-#{$name}', $i: 1 );
+		}
+	}
+}
+
+@mixin bp-column--centered( $selector: '%column' ) {
+	@each $name, $value in $breakpoints {
+		#{$selector}-#{$name}--centered {
+			@include column--centered;
+		}
+	}
+}
+

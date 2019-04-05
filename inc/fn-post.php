@@ -3,7 +3,7 @@
  * Post is in descendant category
  * See http://codex.wordpress.org/Function_Reference/in_category
  */
-function nest_post_is_in_descendant_term( $terms, $post = null, $taxonomy = 'category' ) {
+function bfnest_post_is_in_descendant_term( $terms, $post = null, $taxonomy = 'category' ) {
 	foreach ( (array) $terms as $term ) {
 		// get_term_children() accepts integer ID only
 		$descendants = get_term_children( (int) $term, $taxonomy );
@@ -15,36 +15,35 @@ function nest_post_is_in_descendant_term( $terms, $post = null, $taxonomy = 'cat
 }
 
 /**
- * Legacy nest_post_is_in_descentant_category()
- * Uses nest_post_is_in_descendant_term()
+ * Legacy bfnest_post_is_in_descentant_category()
+ * Uses bfnest_post_is_in_descendant_term()
  */
-function nest_post_is_in_descendant_category( $terms, $post = null ) {
-	return nest_post_is_in_descendant_term( $terms, $post );
+function bfnest_post_is_in_descendant_category( $terms, $post = null ) {
+	return bfnest_post_is_in_descendant_term( $terms, $post );
 }
 
 /**
  * Check if post is in a term or a descendant term
  */
-function nest_post_is_in_term_or_term_descendant( $term_id, $post = null, $taxonomy = 'category' ) {
-	if ( has_term( $term_id, $taxonomy, $post ) || nest_post_is_in_descendant_term( $term_id, $post, $taxonomy ) ) {
+function bfnest_post_is_in_term_or_term_descendant( $term_id, $post = null, $taxonomy = 'category' ) {
+	if ( has_term( $term_id, $taxonomy, $post ) || bfnest_post_is_in_descendant_term( $term_id, $post, $taxonomy ) ) {
 		return true;
-
 	}
 	return false;
 }
 
 /**
- * Legacy nest_post_is_in_category_or_descentant_category()
- * Uses nest_post_is_in_term_or_descendant_term()
+ * Legacy bfnest_post_is_in_category_or_descentant_category()
+ * Uses bfnest_post_is_in_term_or_descendant_term()
  */
-function nest_post_is_in_category_or_category_descendant( $term_id, $post = null ) {
-	return nest_post_is_in_term_or_term_descendant( $term_id, $post, 'category' );
+function bfnest_post_is_in_category_or_category_descendant( $term_id, $post = null ) {
+	return bfnest_post_is_in_term_or_term_descendant( $term_id, $post, 'category' );
 }
 
 /**
  * Test whether the current taxonomy archive matches a term or a descendant term
  */
-function nest_is_term_or_term_descendant( $term_id = null, $taxonomy = 'category' ) {
+function bfnest_is_term_or_term_descendant( $term_id = null, $taxonomy = 'category' ) {
 	if ( ! is_tax( $taxonomy ) || ! term_exists( $term_id ) ) {
 		return false;
 	}
@@ -59,69 +58,10 @@ function nest_is_term_or_term_descendant( $term_id = null, $taxonomy = 'category
 }
 
 /**
- * Get top parent page id
- * Returns current post_id if no parents are found
- */
-function nest_get_top_parent_page_id( $post_id = null ) {
-
-	if ( null === $post_id ) {
-		$post_id = get_the_ID();
-	}
-
-	$ancestors = get_post_ancestors( $post_id );
-	array_unshift( $ancestors, $post_id );
-	return end( $ancestors );
-}
-
-/**
- * Test whether post is a descendant
- */
-function nest_is_descendant_page( $post_id = null ) {
-
-	if ( null === $post_id ) {
-		$post_id = get_the_ID();
-	}
-
-	if ( ! get_post_status( $post_id ) ) {
-		return false;
-	}
-
-	$ancestors = get_post_ancestors( $post_id );
-
-	if ( ! empty( $ancestors ) ) {
-		return true;
-	}
-
-	return false;
-}
-
-/**
- * test if is a descendant page of a particular page id
- * modified/cleaned up version of is_tree function found here:
- * https://developer.wordpress.org/reference/functions/is_page/
- */
-function nest_is_page_or_descendant_page( $post_id = null ) {
-
-	if ( null === $post_id ) {
-		$post_id = get_the_ID();
-	}
-
-	if ( ! get_post_status( $post_id ) ) {
-		return false;
-	}
-
-	if ( is_single( $post_id ) || nest_is_descendant_page( $post_id ) ) {
-		return true;
-	}
-
-	return false;
-};
-
-/**
  * Get the top parent term of current post or taxonomy archive
  * Works only on single posts and hierarchical
  */
-function nest_get_top_parent_term_id( $term_id = null, $taxonomy = 'category' ) {
+function bfnest_get_top_parent_term_id( $term_id = null, $taxonomy = 'category' ) {
 	if ( ! $term_id ) {
 
 		if ( is_single() ) {
@@ -154,8 +94,8 @@ function nest_get_top_parent_term_id( $term_id = null, $taxonomy = 'category' ) 
  * Should be used only on single post templates or taxonomy archives
  * $taxonomy detaults to 'category' but can be any hierarchical taxonomy
 */
-function nest_get_top_parent_term( $term_id = null, $taxonomy = 'category' ) {
-	$top_term_id = nest_get_top_parent_term_id( $term_id, $taxonomy );
+function bfnest_get_top_parent_term( $term_id = null, $taxonomy = 'category' ) {
+	$top_term_id = bfnest_get_top_parent_term_id( $term_id, $taxonomy );
 
 	if ( ! $top_term_id ) {
 		return false;
@@ -165,52 +105,85 @@ function nest_get_top_parent_term( $term_id = null, $taxonomy = 'category' ) {
 }
 
 /**
+ * Get top parent page id
+ * Returns current post_id if no parents are found
+ */
+function bfnest_get_top_parent_page_id( $post_id = null ) {
+
+	if ( null === $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$ancestors = get_post_ancestors( $post_id );
+	array_unshift( $ancestors, $post_id );
+	return end( $ancestors );
+}
+
+
+/**
+ * test if is a descendant page of a particular page id
+ * https://developer.wordpress.org/reference/functions/is_page/
+ */
+function bfnest_is_tree( $parent_id ) {
+    $is_tree = false;
+
+	if ( is_page( $parent_id ) ) {
+		$is_tree = true;
+	}
+ 
+    $ancestors = get_post_ancestors( get_the_ID() );
+    foreach ( $ancestors as $ancestor ) {
+        if ( is_page() && $ancestor == $parent_id ) {
+            $is_tree = true;
+        }
+    }
+    return $is_tree;  
+}
+
+/**
  * Page subnav widget
  */
-function nest_page_subnav( $page_id = '', $title = '' ) {
+function bfnest_page_subnav( $page_id = '', $title = '' ) {
 
-	global $post;
-	if ( $page_id ) {
+	if ( $page_id && is_page( $page_id ) ) {
 		$top_parent = $page_id;
 
 	} else {
-		$top_parent = nest_get_top_parent_page_id( $post->ID );
+		$top_parent = bfnest_get_top_parent_page_id( get_the_ID() );
 	}
+	
 	$children = wp_list_pages( array(
 		'sort_column' => 'menu_order',
 		'title_li' => '',
 		'child_of' => $top_parent,
 		'echo' => 0
 	) );
-	$top_parent_name = get_the_title( $top_parent );
-	if ( ! empty( $children ) ) {
+	
+	if ( empty( $children ) ) {
+		return false;
+	}
+	
+	$nav_title = ( $title ? $title : get_the_title( $top_parent ) );
 ?>
 <nav class="nav nav--secondary">
-	<h2 class="nav__title"><?php
-		if ( $title ) {
-			echo $title;
-		} else {
-			echo $top_parent_name;
-		 }
-	?></h2>
+	<h2 class="nav__title"><?php echo esc_html( $nav_title ); ?></h2>
 	<ul class="menu menu--secondary">
 		<?php echo $children; ?>
 	</ul>
 </nav>
 <?php
-	} // endif
 }
 
 /**
  * Outputs subnav list of childen of current post or current taxonomy's topmost parent
  */
-function nest_taxonomy_subnav( $taxonomy = 'category', $title = '', $exclude = '', $orderby = 'name' ) {
-	$top_parent = nest_get_top_parent_term( $taxonomy );
+function bfnest_taxonomy_subnav( $taxonomy = 'category', $title = '', $exclude = '', $orderby = 'name' ) {
+	$top_parent = bfnest_get_top_parent_term( $taxonomy );
 	if ( ! $top_parent ) {
 		return false;
 	}
 
-	$terms_list = wp_list_categories( array(
+	$children = wp_list_categories( array(
 		'child_of' => $top_parent->term_id,
 		'title_li' => '',
 		'echo' => 0,
@@ -219,35 +192,34 @@ function nest_taxonomy_subnav( $taxonomy = 'category', $title = '', $exclude = '
 		'exclude' => $exclude,
 		'orderby' => $orderby
 	) );
-
-	if ( ! $title ) {
-		$title = $top_parent->name;
+	
+	if ( ! $children ) {
+		return false;
 	}
-
-	if ( ! empty( $terms_list ) ) {
+	
+	$nav_title = ( $title ? $title : $top_parent->name );
 ?>
 <nav class="nav nav--secondary nav--taxonomies">
-	<h2 class="nav__title"><?php echo esc_html( $title ); ?></h2>
+	<h2 class="nav__title"><?php echo esc_html( $nav_title ); ?></h2>
 	<ul class="menu menu--secondary">
-		<?php echo $terms_list; ?>
+		<?php echo $children; ?>
 	</ul>
 </nav>
 <?php
-	} // endif
 }
 
 /**
  * Outputs subnav list of childen of current post or current category's topmost parent
  */
-function nest_category_subnav( $title = '' ) {
-	return nest_taxonomy_subnav( 'category', $title );
+function bfnest_category_subnav( $title = '' ) {
+	return bfnest_taxonomy_subnav( 'category', $title );
 }
 
 /**
  * Latest posts
  * Requires term ID. Defaults to 3 posts ordered by date
  */
-function nest_latest_posts( $args ) {
+function bfnest_latest_posts( $args ) {
 	$defaults = array(
 		'posts_per_page' => 3,
 		'orderby' => 'date',
@@ -268,14 +240,16 @@ function nest_latest_posts( $args ) {
 	if ( $latest->have_posts() ) {
 ?>
 <aside class="widget widget--latest">
-	<?php if( $widget_title ) {
-		echo '<h2 class="widget__title">'. $widget_title .'</h2>';
-	} ?>
+	<?php 
+		if ( $widget_title ) {
+			echo '<h2 class="widget__title">'. esc_html( $widget_title ) .'</h2>';
+		} 
+	?>
 	<div class="widget__content">
 		<?php
 			while ( $latest->have_posts() ) {
 				$latest->the_post();
-				get_template_part( 'content', $content_part );
+				get_template_part( 'partials/content', $content_part );
 			} // endwhile
 			wp_reset_postdata();
 		?>
@@ -289,7 +263,7 @@ function nest_latest_posts( $args ) {
  * Latest posts in specific taxonomy id
  * Requires term ID. Defaults to 3 posts and category as taxonomy
  */
-function nest_latest_taxonomy_posts( $args ) {
+function bfnest_latest_taxonomy_posts( $args ) {
 	$defaults = array(
 		'term_id' => '',
 		'taxonomy' => '',
@@ -323,13 +297,13 @@ function nest_latest_taxonomy_posts( $args ) {
 ?>
 <aside class="widget widget--latest widget--latest--<?php echo $term_slug; ?>">
 	<?php if ( $widget_title ) {
-		echo '<h2 class="widget__title">' . $widget_title . '</h2>';
+		echo '<h2 class="widget__title">' . esc_html( $widget_title ) . '</h2>';
 	} ?>
 	<div class="widget__content">
 		<?php
 			while ( $latest->have_posts() ) {
 					$latest->the_post();
-					get_template_part( 'content', $content_part );
+					get_template_part( 'partials/content', $content_part );
 			} // endwhile
 			wp_reset_postdata();
 		?>

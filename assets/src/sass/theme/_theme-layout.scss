@@ -1,0 +1,15 @@
+.site {
+	padding: 1em;
+}
+
+
+@include breakpoint-up($bp--lg) {
+
+	.site {
+		@include container;
+		@include container--centered;
+	}
+}
+
+
+

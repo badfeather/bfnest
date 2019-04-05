@@ -1,0 +1,53 @@
+// Figures
+$figure__margin-bottom: $base__margin;
+
+// Document Main
+$doc__margin-bottom: $base__margin;
+
+// Entries
+$hentry__margin-bottom: $base__margin;
+
+// Widgets
+$widget__margin-bottom: $base__margin;
+
+// MEDIA QUERY BREAKPOINTS
+// ---------------------------
+
+// Extra small screen / phone
+$bp--xs: 480;
+
+// Tablet small
+$bp--sm: 600;
+
+// Small screen / tablet
+$bp--md: 768;
+
+// Medium screen / desktop
+$bp--lg: 992;
+
+// Large screen / wide desktop
+$bp--xl: 1200;
+
+// Base breakpoint
+$bp--base: $bp--lg;
+$bp--nav: $bp--md;
+
+// these are used to generate classes or placeholders
+// to avoid bloat, comment out the ones you don't plan on using
+$breakpoints: (
+//	xs: $bp--xs,
+//	sm: $bp--sm,
+//	md: $bp--md,
+//	lg: $bp--lg,
+//	xl: $bp--xl,
+	base: $bp--base,
+	nav: $bp--nav
+);
+
+// IMAGE SIZES - should match image sizes set in theme, which are usually based on grid column widths
+// ---------------------------
+$image-size--th: 356;
+$image-size--md: 546;
+$image-size--ml: 926;
+$image-size--lg: 1116;
+$image-size--xl: 1440;

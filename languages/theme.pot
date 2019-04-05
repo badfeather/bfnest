@@ -1,17 +1,53 @@
-# <!=Copyright (C) 2018 Brad Thomason, Bad Feather Inc.
+# <!=Copyright (C) 2019 Brad Thomason, Bad Feather Inc.
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 5.0.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bad-feather-nest\n"
-"POT-Creation-Date: 2018-10-01 21:26:18+00:00\n"
+"Project-Id-Version: Bad Feather Nest 5.0.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
+"POT-Creation-Date: 2019-04-05 18:10:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n1.0.2\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: archive.php:10
+msgid "Category: %s"
+msgstr ""
+
+#: archive.php:14
+msgid "Tag: %s"
+msgstr ""
+
+#: archive.php:18
+msgid "Author: %s"
+msgstr ""
+
+#: archive.php:22
+msgid "Year: %s"
+msgstr ""
+
+#: archive.php:26
+msgid "Month: %s"
+msgstr ""
+
+#: archive.php:30
+msgid "Day: %s"
+msgstr ""
+
+#: archive.php:34
+msgid "Archives: %s"
+msgstr ""
+
+#: archive.php:39
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: archive.php:43
+msgid "Archives"
+msgstr ""
 
 #: comments.php:29
 msgid "Comment Navigation"
@@ -29,12 +65,16 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:10
+#: footer.php:9
 msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
-#: header.php:19
+#: header.php:17
 msgid "Skip to content"
+msgstr ""
+
+#: header.php:36
+msgid "Main navigation"
 msgstr ""
 
 #: header.php:37
@@ -137,7 +177,7 @@ msgstr ""
 msgid "Pingback:"
 msgstr ""
 
-#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:172
+#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:170
 msgid "Edit"
 msgstr ""
 
@@ -149,55 +189,67 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/fn-meta.php:37
-msgid "Posted in: "
+#: inc/fn-comments.php:74 inc/widgets/class-widget-taxonomy-subnav.php:135
+msgid "Name"
 msgstr ""
 
-#: inc/fn-meta.php:62
-msgid "Tagged: "
-msgstr ""
-
-#: inc/fn-meta.php:82
-msgid "Leave a comment"
-msgstr ""
-
-#: inc/fn-meta.php:210
-msgid "Facebook"
-msgstr ""
-
-#: inc/fn-meta.php:224
-msgid "Twitter"
-msgstr ""
-
-#: inc/fn-meta.php:232
-msgid "Google+"
-msgstr ""
-
-#: inc/fn-meta.php:240
-msgid "LinkedIn"
-msgstr ""
-
-#: inc/fn-meta.php:258
-msgid "Pinterest"
-msgstr ""
-
-#: inc/fn-meta.php:266
-msgid "Digg"
-msgstr ""
-
-#: inc/fn-meta.php:274
-msgid "Reddit"
-msgstr ""
-
-#: inc/fn-meta.php:282
-msgid "Stumbleupon"
-msgstr ""
-
-#: inc/fn-meta.php:290
+#: inc/fn-comments.php:76 inc/fn-meta.php:288
 msgid "Email"
 msgstr ""
 
-#: inc/fn-meta.php:315
+#: inc/fn-comments.php:78
+msgid "Website"
+msgstr ""
+
+#: inc/fn-meta.php:45
+msgid "Posted in: "
+msgstr ""
+
+#: inc/fn-meta.php:48
+msgid "%1$s"
+msgstr ""
+
+#: inc/fn-meta.php:70
+msgid "Tagged: "
+msgstr ""
+
+#: inc/fn-meta.php:90
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/fn-meta.php:208
+msgid "Facebook"
+msgstr ""
+
+#: inc/fn-meta.php:222
+msgid "Twitter"
+msgstr ""
+
+#: inc/fn-meta.php:230
+msgid "Google+"
+msgstr ""
+
+#: inc/fn-meta.php:238
+msgid "LinkedIn"
+msgstr ""
+
+#: inc/fn-meta.php:256
+msgid "Pinterest"
+msgstr ""
+
+#: inc/fn-meta.php:264
+msgid "Digg"
+msgstr ""
+
+#: inc/fn-meta.php:272
+msgid "Reddit"
+msgstr ""
+
+#: inc/fn-meta.php:280
+msgid "Stumbleupon"
+msgstr ""
+
+#: inc/fn-meta.php:313
 msgid "Share: "
 msgstr ""
 
@@ -345,10 +397,6 @@ msgstr ""
 msgid "Order by:"
 msgstr ""
 
-#: inc/widgets/class-widget-taxonomy-subnav.php:135
-msgid "Name"
-msgstr ""
-
 #: inc/widgets/class-widget-taxonomy-subnav.php:136
 msgid "ID"
 msgstr ""
@@ -369,62 +417,27 @@ msgstr ""
 msgid "Archive"
 msgstr ""
 
-#: template-parts/content-archive-search.php:2
-msgid "Search Results for %s"
-msgstr ""
-
-#: template-parts/content-archive.php:4
-msgid "Category: %s"
-msgstr ""
-
-#: template-parts/content-archive.php:7
-msgid "Tag: %s"
-msgstr ""
-
-#: template-parts/content-archive.php:10
-msgid "Author: %s"
-msgstr ""
-
-#: template-parts/content-archive.php:13
-msgid "Year: %s"
-msgstr ""
-
-#: template-parts/content-archive.php:16
-msgid "Month: %s"
-msgstr ""
-
-#: template-parts/content-archive.php:19
-msgid "Day: %s"
-msgstr ""
-
-#: template-parts/content-archive.php:22
-msgid "Archives: %s"
-msgstr ""
-
-#: template-parts/content-archive.php:26
-msgid "%1$s: %2$s"
-msgstr ""
-
-#: template-parts/content-archive.php:29
-msgid "Archives"
-msgstr ""
-
-#: template-parts/content-no-results.php:2
+#: partials/content-no-results.php:7
 msgid "Nothing Found"
 msgstr ""
 
-#: template-parts/content-no-results.php:7
+#: partials/content-no-results.php:12
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr ""
 
-#: template-parts/content-page.php:13 template-parts/content-single.php:19
+#: partials/content-page-style-tester.php:13 partials/content-page.php:13
+#: partials/content-single.php:18
 msgid "Pages:"
 msgstr ""
 
-#: template-parts/content.php:14
+#: partials/content.php:14
 msgid "Continue reading &rarr;"
+msgstr ""
+
+#: search.php:8
+msgid "Search Results for %s"
 msgstr ""
 
 #. Theme Name of the plugin/theme
@@ -432,7 +445,7 @@ msgid "Bad Feather Nest"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "https://github.com/badfeather/bad-feather-nest"
+msgid "https://github.com/badfeather/bfnest"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -453,6 +466,25 @@ msgstr ""
 msgid "Redirect To First Child"
 msgstr ""
 
+#. Template Name of the plugin/theme
+msgid "Style Tester"
+msgstr ""
+
+#: archive.php:22
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: archive.php:26
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: archive.php:30
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr ""
+
 #: comments.php:12
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
@@ -460,32 +492,17 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: searchform.php:3 searchform.php:4
-msgctxt "label"
-msgid "Search for:"
+#: inc/fn-comments.php:82
+msgctxt "noun"
+msgid "Comment"
+msgstr ""
+
+#: searchform.php:3
+msgctxt "placeholder"
+msgid "Search for: "
 msgstr ""
 
 #: searchform.php:4
-msgctxt "placeholder"
-msgid "Search"
-msgstr ""
-
-#: searchform.php:6
 msgctxt "submit button"
 msgid "Search"
-msgstr ""
-
-#: template-parts/content-archive.php:13
-msgctxt "yearly archives date format"
-msgid "Y"
-msgstr ""
-
-#: template-parts/content-archive.php:16
-msgctxt "monthly archives date format"
-msgid "F Y"
-msgstr ""
-
-#: template-parts/content-archive.php:19
-msgctxt "daily archives date format"
-msgid "F j, Y"
 msgstr ""

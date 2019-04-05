@@ -1,0 +1,45 @@
+.site-nav__toggle {
+	@include button;
+	margin-bottom: unitcalc( $base__margin--half, $button__font-size );
+
+	.no-js & {
+		display: none;
+	}
+
+	.toggled & {
+		color: $button__color--hover;
+		background-color: $button__background-color--hover;
+		border-color: $button__border-color--hover;
+	}
+
+	@include breakpoint-up( $bp--nav ) {
+		display: none;
+	}
+
+}
+
+.menu--primary {
+	display: none;
+
+	.no-js & {
+		display: block;
+	}
+
+	.toggled & {
+		display: block;
+	}
+
+	@include breakpoint-up( $bp--nav ) {
+		display: block;
+	}
+}
+
+.site-title {
+	font-size: 1em;
+	margin-bottom: unitcalc( $base__margin--half );
+}
+
+.site-description {
+	margin-bottom: unitcalc( $base__margin--half );
+}
+

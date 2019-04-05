@@ -4,7 +4,7 @@
  * Outputs meta functions added via first arg array
  * Use any of the the below functions or any custom functions you declare
  */
-function nest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array() ) {
+function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array(), $before = '', $after = '' ) {
 	$meta_array = array();
 
 	if ( ! empty( $metas ) ) {
@@ -15,13 +15,21 @@ function nest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array() )
 		}
 	}
 
-	array_unshift( $meta_class, 'entry-meta' );
+	array_unshift( $meta_class, 'entry-meta', 'entry__meta' );
 
 	if ( ! empty( $meta_array ) ) {
-		echo '<div class="' . join( ' ', $meta_class ) . '">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div>' . "\n";
+		echo $before . "\n" . '<div class="' . join( ' ', $meta_class ) . '">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div>' . "\n" . $after . "\n";
 	}
 
 	return false;
+}
+
+/**
+ * Edit footer - used on post type views without any other meta info in the footer
+ * $footer_class should either be 'doc' or 'entry'
+ */
+function bfnest_edit_footer( $footer_class = 'doc' ) {
+	bfnest_meta( array( bfnest_get_meta_edit_link() ), '', array(), $before = '<footer class="' . esc_attr( $footer_class ) . '__footer">', $after = '</footer>' );
 }
 
 /**
@@ -30,14 +38,14 @@ function nest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array() )
  * $before can be null, which will default to 'Posted in: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function nest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', ', $element = 'span' ) {
+function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', ', $element = 'span' ) {
 	$title = '';
 
 	if ( null === $before ) {
-		$title = '<span class="meta__title">' . __( 'Posted in: ', 'nest' ) . '</span>';
+		$title = '<span class="meta__title">' . __( 'Posted in: ', 'bfnest' ) . '</span>';
 
 	} elseif ( ! empty( $before ) ) {
-		$title = '<span class="meta__title">' . __( $before ) . '</span>';
+		$title = '<span class="meta__title">' . sprintf( __( '%1$s', 'bfnest' ), $before ) . '</span>';
 	}
 
 	return get_the_term_list( get_the_ID(), $taxonomy, '<' . $element . ' class="meta meta--terms">' . $title, $sep, '</' . $element . '>' );
@@ -48,8 +56,8 @@ function nest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', 
  * $before can be null, which will default to 'Posted in: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function nest_get_meta_categories( $before = null, $sep = ', ', $element = 'span' ) {
-	return nest_get_meta_terms( 'category', $before, $sep, $element );
+function bfnest_get_meta_categories( $before = null, $sep = ', ', $element = 'span' ) {
+	return bfnest_get_meta_terms( 'category', $before, $sep, $element );
 }
 
 /**
@@ -57,18 +65,18 @@ function nest_get_meta_categories( $before = null, $sep = ', ', $element = 'span
  * $before can be null, which will default to 'Tagged: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function nest_get_meta_tags( $before = null, $sep = ', ', $element = 'span' ) {
+function bfnest_get_meta_tags( $before = null, $sep = ', ', $element = 'span' ) {
 	if ( null === $before ) {
-		$before = __( 'Tagged: ', 'nest' );
+		$before = __( 'Tagged: ', 'bfnest' );
 	}
 
-	return nest_get_meta_terms( 'post_tag', $before, $sep, $element );
+	return bfnest_get_meta_terms( 'post_tag', $before, $sep, $element );
 }
 
 /**
  * Meta comments link
  */
-function nest_get_meta_comments_link( $element = 'span' ) {
+function bfnest_get_meta_comments_link( $element = 'span' ) {
 	if ( ! comments_open() ) {
 		return false;
 	}
@@ -79,22 +87,21 @@ function nest_get_meta_comments_link( $element = 'span' ) {
 	$label = '';
 
 	if ( $comments_count == 0 ) {
-		$label = __( 'Leave a comment', 'nest' );
+		$label = __( 'Leave a comment', 'bfnest' );
 
 	} else {
 
 		$label =  sprintf(
 			_n(
-				__( '%d comment' ),
-				__( '%d comments' ),
-				$comments_count,
-				'nest'
+				__( '%d comment', 'bfnest' ),
+				__( '%d comments', 'bfnest' ),
+				$comments_count
 			),
 			number_format_i18n( $comments_count )
 		);
 	}
 
-	$label = apply_filters( 'nest_meta_comments_link_label', $label );
+	$label = apply_filters( 'bfnest_meta_comments_link_label', $label );
 
 	return '<'. $element . ' class="meta meta--comment"><a href="' . $comments_link . '">' . $label . '</a></' . $element . '>';
 
@@ -105,35 +112,29 @@ function nest_get_meta_comments_link( $element = 'span' ) {
  * $before can be custom text, or will be otherwise omitted
  * $element expects 'span' or 'div'
  */
-function nest_get_meta_pubdate( $before = null, $element = 'span' ) {
-	if ( 'post' == get_post_type() ) {
-
-		$title = '';
-		if ( $before ) {
-			$title = '<span class="meta__title">' . $before . '</span>';
-		}
-
-		return '<' . $element . ' class="meta meta--published">' . $title . '<time class="published" datetime = "' . get_the_time( 'c' ) . '">' . get_the_date() . '</time></' . $element . '>';
+function bfnest_get_meta_pubdate( $before = null, $element = 'span' ) {
+	$date = get_the_date();
+	
+	if ( ! $date ) {
+		return false;
 	}
+	
+	$title = $before ? '<span class="meta__title">' . $before . '</span>' : '';
 
-	return false;
+	return '<' . $element . ' class="meta meta--published">' . $title . '<time class="published" datetime = "' . get_the_time( 'c' ) . '">' . $date . '</time></' . $element . '>';
 }
 
 /**
  * Meta author
  */
-function nest_get_meta_author( $before = null, $element = 'span' ) {
-
+function bfnest_get_meta_author( $before = null, $element = 'span' ) {
 	$author = get_the_author();
 
 	if ( empty( $author ) || is_wp_error( $author ) ) {
 		return false;
 	}
 
-	$title = '';
-	if ( $before ) {
-		$title = '<span class="meta__title">' . $before . '</span>';
-	}
+	$title = $before ? '<span class="meta__title">' . $before . '</span>' : '';
 
 	return '<' . $element . ' class="meta meta--author">' . $title . '<span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . $author . '</a></span></' . $element . '>';
 }
@@ -142,17 +143,14 @@ function nest_get_meta_author( $before = null, $element = 'span' ) {
  * Custom field meta
  * Expects string custom field value
  */
-function nest_get_meta_field( $meta_field = '', $before = null, $element = 'span' ) {
+function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'span' ) {
 	if ( empty( $meta_field ) ) {
 		return false;
 	}
 
 	$field = get_post_meta( get_the_ID(), $meta_field, true );
 
-	$title = '';
-	if ( $before ) {
-		$title = '<span class="meta__title">' . $before . '</span>';
-	}
+	$title = $before ? '<span class="meta__title">' . $before . '</span>' : '';
 
 	return '<' . $element . ' class="meta meta--cf">' . $title . $field . '</' . $element . '>';
 }
@@ -160,7 +158,7 @@ function nest_get_meta_field( $meta_field = '', $before = null, $element = 'span
 /**
  * Meta edit link
  */
-function nest_get_meta_edit_link( $label = null, $element = 'span' ) {
+function bfnest_get_meta_edit_link( $label = null, $element = 'span' ) {
 
 	$edit_post_link = get_edit_post_link();
 
@@ -169,16 +167,16 @@ function nest_get_meta_edit_link( $label = null, $element = 'span' ) {
 	}
 
 	if ( null === $label ) {
-		$label = __( 'Edit', 'nest' );
+		$label = __( 'Edit', 'bfnest' );
 	}
 
 	return '<' . $element . ' class="meta meta--edit"><a href="' . $edit_post_link . '">' . $label . '</a></' . $element . '>';
 }
 
 /**
- * Helper function for nest_get_meta_share
+ * Helper function for bfnest_get_meta_share
  */
-function nest_get_share_data( $args = array() ) {
+function bfnest_get_share_data( $args = array() ) {
 
 	if ( empty( $args ) || is_wp_error( $args ) ) {
 		return false;
@@ -207,7 +205,7 @@ function nest_get_share_data( $args = array() ) {
 
 	if ( $facebook ) {
 		$networks[] = array(
-			'name' => __( 'Facebook', 'nest' ),
+			'name' => __( 'Facebook', 'bfnest' ),
 			'slug' => 'facebook',
 			'url' => 'https://www.facebook.com/sharer.php?u=' . $post_url . '&t=' . $encoded_title,
 		);
@@ -221,7 +219,7 @@ function nest_get_share_data( $args = array() ) {
 		$encoded_short_title = rawurlencode( html_entity_decode( $short_title ) );
 
 		$networks[] = array(
-			'name' => __( 'Twitter', 'nest' ),
+			'name' => __( 'Twitter', 'bfnest' ),
 			'slug' => 'twitter',
 			'url' => 'https://twitter.com/intent/tweet?url=' . $post_url . '&text=' . $encoded_short_title,
 		);
@@ -229,7 +227,7 @@ function nest_get_share_data( $args = array() ) {
 
 	if ( $googleplus ) {
 		$networks[] = array(
-			'name' => __( 'Google+', 'nest' ),
+			'name' => __( 'Google+', 'bfnest' ),
 			'slug' => 'googleplus',
 			'url' => 'https://plus.google.com/share?url=' . $post_url,
 		);
@@ -237,7 +235,7 @@ function nest_get_share_data( $args = array() ) {
 
 	if ( $linkedin ) {
 		$networks[] = array(
-			'name' => __( 'LinkedIn', 'nest' ),
+			'name' => __( 'LinkedIn', 'bfnest' ),
 			'slug' => 'linkedin',
 			'url' => 'https://www.linkedin.com/cws/share?url=' . $post_url,
 		);
@@ -251,11 +249,11 @@ function nest_get_share_data( $args = array() ) {
 			$image_path = $featured_image[0];
 
 		} else {
-			$image_path = nest_get_first_image_url( $size = 'large' );
+			$image_path = bfnest_get_first_image_url( $size = 'large' );
 		}
 
 		$networks[] = array(
-			'name' => __( 'Pinterest', 'nest' ),
+			'name' => __( 'Pinterest', 'bfnest' ),
 			'slug' => 'pinterest',
 			'url' => 'https://pinterest.com/pin/create/bookmarklet/?media=?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title,
 		);
@@ -263,7 +261,7 @@ function nest_get_share_data( $args = array() ) {
 
 	if ( $digg ) {
 		$networks[] = array(
-			'name' => __( 'Digg', 'nest' ),
+			'name' => __( 'Digg', 'bfnest' ),
 			'slug' => 'digg',
 			'url' => 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title,
 		);
@@ -271,7 +269,7 @@ function nest_get_share_data( $args = array() ) {
 
 	if ( $reddit ) {
 		$networks[] = array(
-			'name' => __( 'Reddit', 'nest' ),
+			'name' => __( 'Reddit', 'bfnest' ),
 			'slug' => 'reddit',
 			'url' => 'https://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title,
 		);
@@ -279,7 +277,7 @@ function nest_get_share_data( $args = array() ) {
 
 	if ( $stumbleupon ) {
 		$networks[] = array(
-			'name' => __( 'Stumbleupon', 'nest' ),
+			'name' => __( 'Stumbleupon', 'bfnest' ),
 			'slug' => 'stumbleupon',
 			'url' => 'https://www.stumbleupon.com/submit?url=' . $post_url,
 		);
@@ -287,13 +285,13 @@ function nest_get_share_data( $args = array() ) {
 
 	if ( $email ) {
 		$networks[] = array(
-			'name' => __( 'Email', 'nest'),
+			'name' => __( 'Email', 'bfnest'),
 			'slug' => 'email',
 			'url' => 'mailto:?subject=' . $encoded_title . '&body=' . $post_url,
 		);
 	}
 
-	return apply_filters( 'nest_add_share_networks', $networks );
+	return apply_filters( 'bfnest_add_share_networks', $networks );
 }
 
 /**
@@ -301,18 +299,18 @@ function nest_get_share_data( $args = array() ) {
  * Turn the defaults for various profiles on or off as needed using booleans
  * If 'new window' is set to true, link targets will be set to "_blank"
  * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
- * Uses nest_get_share_data()
+ * Uses bfnest_get_share_data()
  */
 
-function nest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'googleplus' => 1 ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
-	$networks = nest_get_share_data( $args );
+function bfnest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'googleplus' => 1 ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
+	$networks = bfnest_get_share_data( $args );
 	if ( empty( $networks ) && is_wp_error( $networks ) ) {
 		return false;
 	}
 
 	$title = '';
 	if ( null === $before ) {
-		$title = '<span class="meta__title">' . __( 'Share: ', 'nest' ) . '</span>';
+		$title = '<span class="meta__title">' . __( 'Share: ', 'bfnest' ) . '</span>';
 
 	} elseif ( ! empty( $before ) ) {
 		$title = '<span class="meta__title">' . $before . '</span>';

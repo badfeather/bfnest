@@ -1,0 +1,68 @@
+// FUNCTIONS
+// ---------------------------
+@import "functions";
+
+// VARIABLES
+// ---------------------------
+@import "variables/variables-base";
+@import "variables/variables-layout";
+@import "variables/variables-color";
+@import "variables/variables-type";
+@import "variables/variables-forms";
+@import "variables/variables-grid";
+
+// MIXINS
+// ---------------------------
+@import "mixins/mixins-utility";
+@import "mixins/mixins-layout";
+@import "mixins/mixins-type";
+@import "mixins/mixins-media";
+@import "mixins/mixins-forms";
+@import "mixins/mixins-grid";
+@import "mixins/mixins-ib-grid";
+@import "mixins/mixins-breakpoints";
+
+// RESETS
+// ---------------------------
+// I ususally use either normalize or the Eric Meyer reset - uncomment/comment as you see fit
+//@import "resets/resets-normalize";
+//@import "resets/resets-reset";
+//@import "resets/resets-print";
+
+// THEME
+// ---------------------------
+@import "theme/theme-fonts";
+@import "theme/theme-utility";
+@import "theme/theme-type";
+@import "theme/theme-grid";
+//@import "theme/theme-ib-grid";
+@import "theme/theme-layout";
+//@import "theme/theme-forms";
+@import "theme/theme-media";
+//@import "theme/theme-navs";
+//@import "theme/theme-header";
+//@import "theme/theme-main";
+//@import "theme/theme-comments";
+//@import "theme/theme-side";
+//@import "theme/theme-footer";
+
+//@import "theme/theme-jetpack";
+
+// GUTENBERG OVERRIDES
+.editor-post-title__block {
+
+	.editor-post-title__input {
+		font-family: $doc__title__font-family;
+		font-size: unitcalc( $doc__title__font-size );
+		font-weight: $doc__title__font-weight;
+	}
+}
+
+.editor-block-list__layout {
+	font-size: unitcalc( $base__font-size );
+	line-height: $base__line-height;
+	color: $base__color;
+	font-weight: $base__font-weight;
+}
+
+

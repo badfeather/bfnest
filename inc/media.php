@@ -2,7 +2,7 @@
 /**
  * Add theme support for post thumbnails and add custom image sizes
  */
-function nest_media_setup() {
+function bfnest_media_setup() {
 
 	add_theme_support( 'post-thumbnails' );
 
@@ -12,7 +12,7 @@ function nest_media_setup() {
 	// Set image size 'post-thumbnail'. - set_post_thumbnail_size( width [int], height[int], true/false [hard crop - defaults to false] );
 	set_post_thumbnail_size( 738, 492, true );
 }
-add_action( 'after_setup_theme', 'nest_media_setup' );
+add_action( 'after_setup_theme', 'bfnest_media_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -21,15 +21,15 @@ add_action( 'after_setup_theme', 'nest_media_setup' );
  *
  * @global int $content_width
  */
-function nest_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'nest_content_width', 712 );
+function bfnest_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'bfnest_content_width', 712 );
 }
-add_action( 'after_setup_theme', 'nest_content_width', 0 );
+add_action( 'after_setup_theme', 'bfnest_content_width', 0 );
 
 /**
  * Set default image sizes on theme switch
  */
-function nest_media_options() {
+function bfnest_media_options() {
 	update_option( 'thumbnail_size_w', 258 );
 	update_option( 'thumbnail_size_h', 172 );
 	update_option( 'thumbnail_crop', true );
@@ -39,37 +39,37 @@ function nest_media_options() {
 	update_option( 'large_size_w', 738 );
 	update_option( 'large_size_h', 9999 );
 }
-add_action( 'after_switch_theme', 'nest_media_options' );
+add_action( 'after_switch_theme', 'bfnest_media_options' );
 
 /**
  * Show custom image sizes in media uploader
- * Add custom sizes to $custom sizes array: 'sizename' => __( 'Size Name', 'nest' )
+ * Add custom sizes to $custom sizes array: 'sizename' => __( 'Size Name', 'bfnest' )
  */
-function nest_image_size_names_choose( $sizes ) {
+function bfnest_image_size_names_choose( $sizes ) {
 	$custom_sizes = array(
-		//'medium_large' => __( 'Medium Large', 'nest' ),
+		//'medium_large' => __( 'Medium Large', 'bfnest' ),
 	);
 	return array_merge( $sizes, $custom_sizes );
 }
-add_filter( 'image_size_names_choose', 'nest_image_size_names_choose' );
+add_filter( 'image_size_names_choose', 'bfnest_image_size_names_choose' );
 
 /**
  * Set gallery shortcode default options
  */
-function nest_shortcode_atts_gallery( $out, $pairs, $atts ) {
+function bfnest_shortcode_atts_gallery( $out, $pairs, $atts ) {
 		$atts = shortcode_atts( array(
 			'link' => 'file'
 		), $atts );
 		$out['link'] = $atts['link'];
 		return $out;
 }
-add_filter( 'shortcode_atts_gallery', 'nest_shortcode_atts_gallery', 10, 3 );
+add_filter( 'shortcode_atts_gallery', 'bfnest_shortcode_atts_gallery', 10, 3 );
 
 /**
  * Wrap the inserted image html with <figure> or <div> element with additional size classes for styling purposes
  * Additional classes are 'entry-figure entry-figure--size-[sizename]'
  */
-function nest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
+function bfnest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
 	if ( ! $caption ) {
 		$el = 'div';
 
@@ -81,14 +81,14 @@ function nest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $a
 	}
 	return $html;
 }
-add_filter( 'image_send_to_editor', 'nest_image_send_to_editor_with_figure', 10, 8 );
+add_filter( 'image_send_to_editor', 'bfnest_image_send_to_editor_with_figure', 10, 8 );
 
 
 /**
  * Modified caption shortcode, adding size classes to wrapper element for styling purposes
  * Additional classes are 'entry-figure entry-figure--size-[sizename]'
  */
-function nest_img_caption_shortcode( $na, $attr, $content ) {
+function bfnest_img_caption_shortcode( $na, $attr, $content ) {
 
 	extract( shortcode_atts( array(
 		'id'	  => '',
@@ -130,12 +130,12 @@ function nest_img_caption_shortcode( $na, $attr, $content ) {
 
 	return $html;
 }
-add_filter('img_caption_shortcode', 'nest_img_caption_shortcode', 10, 3 );
+add_filter('img_caption_shortcode', 'bfnest_img_caption_shortcode', 10, 3 );
 
 /**
  * Increase the max srcset limit - default is 1600
  */
-function nest_max_srcset_image_width( $max_width, $size_array ) {
+function bfnest_max_srcset_image_width( $max_width, $size_array ) {
 	$width = $size_array[0];
 
 	if ( $width > 768 ) {
@@ -144,4 +144,4 @@ function nest_max_srcset_image_width( $max_width, $size_array ) {
 
 	return $max_width;
 }
-add_filter( 'max_srcset_image_width', 'nest_max_srcset_image_width', 10, 2 );
+add_filter( 'max_srcset_image_width', 'bfnest_max_srcset_image_width', 10, 2 );

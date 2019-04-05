@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-assets/vendor
+assets/src/vendor
 .sass-cache
 style.css.map
 .log

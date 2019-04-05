@@ -1,2 +1,2 @@
 <?php
-	get_template_part( 'template-parts/sidebar-archive' );
+	get_template_part( 'partials/sidebar' );

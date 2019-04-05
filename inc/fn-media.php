@@ -3,13 +3,13 @@
 /**
  * Get the first image from a post
  * Must be used within the loop
- * Use nest_get_first_image( $atts ) in template, much like get_the_post_thumbnail()
+ * Use bfnest_get_first_image( $atts ) in template, much like get_the_post_thumbnail()
  * 'size' defaults to 'thumbnail'
  * Atts array defailts to:
  * 'output' => 'img' // can be either 'img' or 'url'
  * 'link' => false // if true, will link to full version of itself
  */
-function nest_get_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
+function bfnest_get_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
 	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
 	$defaults = array(
 		'output' => 'img', // accepts either 'img' or 'url'
@@ -58,31 +58,31 @@ function nest_get_first_image( $size = 'thumbnail', $post_id = null, $atts = arr
 }
 
 /**
- * Echoes the first image from a post using arguments from nest_get_first_image() function
+ * Echoes the first image from a post using arguments from bfnest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function nest_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
-	echo nest_get_first_image( $size, $post_id, $atts );
+function bfnest_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
+	echo bfnest_get_first_image( $size, $post_id, $atts );
 }
 
 /**
- * Echoes the first image from a post using arguments from nest_get_first_image() function
+ * Echoes the first image from a post using arguments from bfnest_get_first_image() function
  * Much like the_post_thumbnail
  */
-function nest_get_first_image_url( $size = 'thumbnail', $post_id = null ) {
-	return nest_get_first_image( $size, $post_id, $atts = array( 'output' => 'url' ) );
+function bfnest_get_first_image_url( $size = 'thumbnail', $post_id = null ) {
+	return bfnest_get_first_image( $size, $post_id, $atts = array( 'output' => 'url' ) );
 }
 
 /**
  * Get featured or first image
  * must be used within the loop
  */
-function nest_get_featured_or_first_image( $size = 'thumbnail', $post_id = null ) {
+function bfnest_get_featured_or_first_image( $size = 'thumbnail', $post_id = null ) {
 	if ( has_post_thumbnail( $post_id ) ) {
 		return get_the_post_thumbnail( $post_id, $size );
 
 	} else {
-		return nest_get_first_image( $size, $post_id, $atts = array( 'output' => 'img' ) );
+		return bfnest_get_first_image( $size, $post_id, $atts = array( 'output' => 'img' ) );
 	}
 }
 
@@ -90,6 +90,6 @@ function nest_get_featured_or_first_image( $size = 'thumbnail', $post_id = null 
  * Featured or first image
  * must be used within the loop
  */
-function nest_featured_or_first_image( $size = 'thumbnail',	 $post_id = null ) {
-	echo nest_get_featured_or_first_image( $size, $post_id );
+function bfnest_featured_or_first_image( $size = 'thumbnail', $post_id = null ) {
+	echo bfnest_get_featured_or_first_image( $size, $post_id );
 }

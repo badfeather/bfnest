@@ -1,6 +1,9 @@
 module.exports = function ( grunt ) {
+
+	const Fiber = require('fibers');
+	const sass = require('sass');
+	
 	// Load all grunt tasks in package.json matching the `grunt-*` pattern.
-	const sass = require('node-sass');
 	require( 'load-grunt-tasks' )( grunt );
 
 	grunt.initConfig( {
@@ -15,12 +18,14 @@ module.exports = function ( grunt ) {
 		sass: {
 			options: {
 				implementation: sass,
+				fiber: Fiber,
 				sourceMap: true,
 				outputStyle: 'expanded',
 			},
 			dist: {
 				files: {
-					'assets/css/theme.css': 'assets/sass/theme.scss'
+					'assets/dist/css/theme.css': 'assets/src/sass/theme.scss',
+					'assets/dist/css/editor-style.css': 'assets/src/sass/editor-style.scss',
 				}
 			}
 		},
@@ -38,7 +43,10 @@ module.exports = function ( grunt ) {
 					require( 'css-mqpacker' )( {'sort': true} )
 				]},
 			dist: {
-				src: [ 'assets/css/theme.css' ]
+				src: [ 
+					'assets/dist/css/theme.css',
+					'assets/dist/css/editor-style.css', 
+				]
 			}
 		},
 
@@ -54,7 +62,8 @@ module.exports = function ( grunt ) {
 			},
 			dist: {
 				files: {
-					'assets/css/theme.min.css': 'assets/css/theme.css',
+					'assets/dist/css/theme.min.css': 'assets/dist/css/theme.css',
+					'assets/dist/css/editor-style.min.css': 'assets/dist/css/editor-style.css',
 				}
 			}
 		},
@@ -83,13 +92,20 @@ module.exports = function ( grunt ) {
 		concat: {
 			dist: {
 				src: [
-					'assets/js/concat/js-enabled.js',
-					'assets/js/concat/navigation.js',
-					'assets/js/concat/skip-link-focus-fix.js',
-					'assets/js/concat/theme.js',
-				 ],
-				dest: 'assets/js/build/theme.js'
+					'assets/src/js/js-enabled.js',
+					'assets/src/js/navigation.js',
+					'assets/src/js/share-popup.js',
+					'assets/src/js/skip-link-focus-fix.js',
+					'assets/src/js/theme.js',		
+				],
+				dest: 'assets/dist/js/theme.js'
 			},
+			blocks: {
+				src: [
+					'assets/src/js/block-filters.js',
+				],
+				dest: 'assets/dist/js/block-filters.js'
+			}
 		},
 
 		/**
@@ -98,16 +114,16 @@ module.exports = function ( grunt ) {
 		 * @link https://github.com/gruntjs/grunt-contrib-uglify
 		 */
 		uglify: {
-			concat: {
+			dist: {
 				options: {
 					//sourceMap: true,
 					mangle: false
 				},
 				files: [ {
 					expand: true,
-					cwd: 'assets/js/build/',
+					cwd: 'assets/dist/js/',
 					src: [ '**/*.js', '!**/*.min.js' ],
-					dest: 'assets/js/build/',
+					dest: 'assets/dist/js/',
 					ext: '.min.js'
 				} ]
 			}
@@ -122,9 +138,9 @@ module.exports = function ( grunt ) {
 			dynamic: {
 				files: [ {
 					expand: true,
-					cwd: 'assets/img/',
+					cwd: 'assets/src/img/',
 					src: [ '**/*.{png,jpg,gif}' ],
-					dest: 'assets/img/'
+					dest: 'assets/dist/img/'
 				} ]
 			}
 		},
@@ -136,18 +152,27 @@ module.exports = function ( grunt ) {
 		 */
 		watch: {
 			scripts: {
-				files: [ 'assets/js/**/*.js' ],
+				files: [ 'assets/src/js/*.js' ],
 				tasks: [ 'javascript' ],
+				options: {
+					spawn: false,
+				},
 			},
 
 			css: {
-				files: [ 'assets/sass/**/*.scss' ],
+				files: [ 'assets/src/sass/**/*.scss' ],
 				tasks: [ 'styles' ],
+				options: {
+					spawn: false,
+				},
 			},
 
 			images: {
-				files: [ 'assets/img/*' ],
+				files: [ 'assets/src/img/*' ],
 				tasks: [ 'imagemin' ],
+				options: {
+					spawn: false,
+				},
 			}
 		},
 

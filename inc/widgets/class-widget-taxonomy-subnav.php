@@ -2,21 +2,21 @@
 /**
  * Displays subnavigation menu, listing descendants of top parent of current page
  */
-class nest_widget_taxonomy_subnav extends WP_Widget {
+class bfnest_widget_taxonomy_subnav extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget--taxonomy-subnav',
-			'description' => __( 'A menu list of descendants of top parent Taxonomy.' ),
+			'description' => __( 'A menu list of descendants of top parent Taxonomy.', 'bfnest' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'taxonomy_subnav', __( 'Taxonomy Subnav' ), $widget_ops );
+		parent::__construct( 'taxonomy_subnav', __( 'Taxonomy Subnav', 'bfnest' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
 
 		$taxonomy = $instance['taxonomy'];
-		$top_parent = nest_get_top_parent_term( $taxonomy );
+		$top_parent = bfnest_get_top_parent_term( $taxonomy );
 		if ( ! $top_parent ) {
 			return false;
 		}
@@ -90,9 +90,9 @@ class nest_widget_taxonomy_subnav extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>"><?php _e( 'Taxonomy:' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>"><?php _e( 'Taxonomy:', 'bfnest' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>" class="widefat">
-				<option value="category"<?php selected( $instance['taxonomy'], 'category' ); ?>><?php _e( 'Categories' ); ?></option>
+				<option value="category"<?php selected( $instance['taxonomy'], 'category' ); ?>><?php _e( 'Categories', 'bfnest' ); ?></option>
 				<?php
 					// get all public hierarchical taxonomies that aren't builtin (categories)
 					$custom_taxonomies = get_taxonomies(
@@ -112,49 +112,49 @@ class nest_widget_taxonomy_subnav extends WP_Widget {
 				?>
 			</select>
 			<br />
-			<small><?php _e( 'Defaults to category.' ); ?></small>
+			<small><?php _e( 'Defaults to category.', 'bfnest' ); ?></small>
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'bfnest' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 			<br />
-			<small><?php _e( 'If title field is left empty, displays title of top parent category.' ); ?></small>
+			<small><?php _e( 'If title field is left empty, displays title of top parent category.', 'bfnest' ); ?></small>
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'untitled' ) ); ?>"><?php _e( 'No Title:' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'untitled' ) ); ?>"><?php _e( 'No Title:', 'bfnest' ); ?></label>
 			<input id="<?php echo esc_attr( $this->get_field_id( 'untitled' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'untitled' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $instance['untitled'] ); ?> />
 			<br />
-			<small><?php _e( 'Check box if the title should be removed entirely.' ); ?></small>
+			<small><?php _e( 'Check box if the title should be removed entirely.', 'bfnest' ); ?></small>
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php _e( 'Order by:' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php _e( 'Order by:', 'bfnest' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" class="widefat">
-				<option value="post_title"<?php selected( $instance['orderby'], 'name' ); ?>><?php _e( 'Name' ); ?></option>
-				<option value="ID"<?php selected( $instance['orderby'], 'id' ); ?>><?php _e( 'ID' ); ?></option>
+				<option value="post_title"<?php selected( $instance['orderby'], 'name' ); ?>><?php _e( 'Name', 'bfnest' ); ?></option>
+				<option value="ID"<?php selected( $instance['orderby'], 'id' ); ?>><?php _e( 'ID', 'bfnest' ); ?></option>
 			</select>
 			<br />
-			<small><?php _e( 'Defaults to page order.' ); ?></small>
+			<small><?php _e( 'Defaults to page order.', 'bfnest' ); ?></small>
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'depth' ) ); ?>"><?php _e( 'Depth:' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'depth' ) ); ?>"><?php _e( 'Depth:', 'bfnest' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'depth' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'depth' ) ); ?>" class="widefat">
-				<option value="0"<?php selected( $instance['depth'], 0 ); ?>><?php _e( '0 - Show all children' ); ?></option>
-				<option value="1"<?php selected( $instance['depth'], 1 ); ?>><?php _e( '1 - Show only immediate children' ); ?></option>
-				<option value="2"<?php selected( $instance['depth'], 2 ); ?>><?php _e( '2 - Show children and grandchildren' ); ?></option>
+				<option value="0"<?php selected( $instance['depth'], 0 ); ?>><?php _e( '0 - Show all children', 'bfnest' ); ?></option>
+				<option value="1"<?php selected( $instance['depth'], 1 ); ?>><?php _e( '1 - Show only immediate children', 'bfnest' ); ?></option>
+				<option value="2"<?php selected( $instance['depth'], 2 ); ?>><?php _e( '2 - Show children and grandchildren', 'bfnest' ); ?></option>
 			</select>
 			<br />
-			<small><?php _e( 'Defaults to 0 - Show all children.' ); ?></small>
+			<small><?php _e( 'Defaults to 0 - Show all children.', 'bfnest' ); ?></small>
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>"><?php _e( 'Exclude:' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>"><?php _e( 'Exclude:', 'bfnest' ); ?></label>
 			<input type="text" value="<?php echo esc_attr( $instance['exclude'] ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'exclude' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Page IDs, separated by commas.' ); ?></small>
+			<small><?php _e( 'Page IDs, separated by commas.', 'bfnest' ); ?></small>
 		</p>
 		<?php
 	}
