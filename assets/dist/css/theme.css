@@ -398,7 +398,7 @@ address {
 }
 
 small {
-  font-family: 0.875rem;
+  font-size: 0.875rem;
 }
 
 table {
@@ -1047,6 +1047,10 @@ textarea {
   border: 0;
 }
 .form-control::-webkit-input-placeholder {
+  opacity: 1;
+  color: #a0a0a0;
+}
+.form-control::-moz-placeholder {
   opacity: 1;
   color: #a0a0a0;
 }

@@ -11,7 +11,7 @@ function bfnest_is_debug() {
  */
 function bfnest_get_theme_version() {
 	$my_theme = wp_get_theme();
-	return $my_theme->get( 'Version' );		
+	return $my_theme->get( 'Version' );
 }
 
 /**
@@ -23,16 +23,16 @@ function bfnest_scripts() {
 	// Load non-minified files if 'SCRIPT_DEBUG' is set to TRUE, otherwise, use minified files in production
 	$debug = bfnest_is_debug();
 	$suffix = ( true === $debug ) ? '' : '.min';
-	
+
 	// Fetch the version number of the theme, which can be appended on css/js files for debugging/cacheing issues
-	$version = bfnest_get_theme_version();	
+	$version = bfnest_get_theme_version();
 
 	// Enqueue styles.
 	wp_enqueue_style( 'bfnest-style', $template_directory . '/assets/dist/css/theme' . $suffix . '.css', array(), $version );
 
 	// Enqueue scripts.
-	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/assets/dist/js/build/theme' . $suffix . '.js', array( 'jquery' ), $version, true );
-	
+	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/assets/dist/js/theme' . $suffix . '.js', array( 'jquery' ), $version, true );
+
 	// Dequeue Gutenberg CSS on front-end
 	//wp_dequeue_style( 'wp-block-library' );
 
@@ -56,12 +56,12 @@ add_action( 'admin_init', 'bfnest_editor_style' );
 /**
 * Enqueue editor styles for Gutenberg
 */
-// 
+//
 //function bfnest_block_editor_style() {
 //	$debug = bfnest_is_debug();
 //	$suffix = ( true === $debug ) ? '' : '.min';
-//	$version = bfnest_get_theme_version();	
-//	
+//	$version = bfnest_get_theme_version();
+//
 //    wp_enqueue_style( 'bfnest-block-editor-style', get_template_directory_uri() . '/assets/dist/css/block-editor' . $suffix . '.css', array(), $version );
 //}
 //add_action( 'enqueue_block_editor_assets', 'bfnest_block_editor_style' );

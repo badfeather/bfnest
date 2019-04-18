@@ -163,7 +163,7 @@ blockquote {
 		$blockquote__margin-bottom,
 		$blockquote__margin-left,
 		$blockquote__font-size--lg,
-		$blockquote__breakpoint		
+		$blockquote__breakpoint
 	);
 }
 
@@ -184,7 +184,7 @@ address {
 
 // Emphasis & misc
 small {
-	font-family: unitcalc( $base__font-size--sm );
+	font-size: unitcalc( $base__font-size--sm );
 }
 
 table {
