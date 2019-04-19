@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 5.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
-"POT-Creation-Date: 2019-04-19 18:37:57+00:00\n"
+"POT-Creation-Date: 2019-04-19 19:23:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -417,11 +417,11 @@ msgstr ""
 msgid "Archive"
 msgstr ""
 
-#: partials/content-no-results.php:7
+#: partials/content-no-results.php:4
 msgid "Nothing Found"
 msgstr ""
 
-#: partials/content-no-results.php:12
+#: partials/content-no-results.php:9
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
@@ -436,7 +436,7 @@ msgstr ""
 msgid "Continue reading &rarr;"
 msgstr ""
 
-#: search.php:8
+#: search.php:7
 msgid "Search Results for %s"
 msgstr ""
 
