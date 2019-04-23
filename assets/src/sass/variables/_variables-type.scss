@@ -133,7 +133,7 @@ $h6__font-size--lg: $h6__font-size;
 $h6__breakpoint: $headings__breakpoint;
 
 $entry__title__font-family: $h2__font-family;
-$entry__title__font-size: 28;
+$entry__title__font-size: $h2__font-size;
 $entry__title__line-height: $h2__line-height;
 $entry__title__font-weight: $h2__font-weight;
 $entry__title__text-align: $h2__text-align;
@@ -150,7 +150,7 @@ $entry__title__font-size--lg: $entry__title__font-size;
 $entry__title__breakpoint: $h2__breakpoint;
 
 $doc__title__font-family: $h1__font-family;
-$doc__title__font-size: 42;
+$doc__title__font-size: $h1__font-size;
 $doc__title__line-height: $h1__line-height;
 $doc__title__font-weight: $h1__font-weight;
 $doc__title__text-align: $h1__text-align;
@@ -167,7 +167,7 @@ $doc__title__font-size--lg: $doc__title__font-size;
 $doc__title__breakpoint: $h1__breakpoint;
 
 $widget__title__font-family: $h2__font-family;
-$widget__title__font-size: 18;
+$widget__title__font-size: $h2__font-size;
 $widget__title__line-height: $h2__line-height;
 $widget__title__font-weight: $h2__font-weight;
 $widget__title__text-align: $h2__text-align;
@@ -184,7 +184,7 @@ $widget__title__font-size--lg: $widget__title__font-size;
 $widget__title__breakpoint: $h2__breakpoint;
 
 $section__title__font-family: $h2__font-family;
-$section__title__font-size: 18;
+$section__title__font-size: $h2__font-size;
 $section__title__line-height: $h2__line-height;
 $section__title__font-weight: $h2__font-weight;
 $section__title__text-align: $h2__text-align;
@@ -201,7 +201,7 @@ $section__title__font-size--lg: $section__title__font-size;
 $section__title__breakpoint: $h2__breakpoint;
 
 $nav__title__font-family: $h2__font-family;
-$nav__title__font-size: 18;
+$nav__title__font-size: $h2__font-size;
 $nav__title__line-height: $h2__line-height;
 $nav__title__font-weight: $h2__font-weight;
 $nav__title__text-align: $h2__text-align;
