@@ -1,94 +1,123 @@
-/**
- * GRID PLACEHOLDERS
- * use via @extends for semantic classes
- */
-@include bp-container( '%container' );
+// GENERATE GRID PLACEHOLDERS
+// Creates grid placeholder classes at each breakpoint defined in $breakpoints map
+// Use via @extends for semantic classes
+// -----------------------------
 
-@include bp-container--centered( '%container--centered' );
+// Usage - no breakpoint: @extend %contaner;
+// Usage - with breakpoint: @extend %container-[$breakpoints key];
+@include bp-container( '%' );
 
-@include bp-row( '%row' );
+// Usage - no breakpoint: @extend %container--centered;
+// Usage - with breakpoint: @extend %container-[$breakpoints key]--centered;
+@include bp-container--centered( '%' );
 
-@include bp-column( '%column' );
+// Usage - no breakpoint: @extend %container--left;
+// Usage - with breakpoint: @extend %container-[$breakpoints key]--left;
+@include bp-container--left( '%' );
 
-@include bp-columns( '%columns' );
+// Usage - no breakpoint: @extend %container--right;
+// Usage - with breakpoint: @extend %container-[$breakpoints key]--right;
+@include bp-container--right( '%' );
 
-@include bp-push( '%push' );
+// Usage - no breakpoint: @extend %row;
+// Usage - with breakpoint: @extend %row-[$breakpoints key];
+@include bp-row( '%' );
 
-@include bp-pull( '%pull' );
+// Usage - no breakpoint: @extend %row--centered;
+// Usage - with breakpoint: @extend %row-[$breakpoints key]--centered;
+@include bp-row--centered( '%' );
 
-@include bp-column--centered( '%column' );
+// Usage - no breakpoint: @extend %column;
+// Usage - with breakpoint: @extend %column-[$breakpoints key];
+@include bp-column( '%' );
 
-/**
- * GRID CLASSES
- * Commented out by default
- */
-.container {
-	@include container;
-}
+// Usage - no breakpoint: @extend %columns-[n];
+// Usage - with breakpoint: @extend %columns-[$breakpoints key]--[n];
+@include bp-columns( '%' );
 
-.container--centered {
-	@include container--centered;
-}
+// Usage - no breakpoint: @extend %push-[n];
+// Usage - with breakpoint: @extend %push-[$breakpoints key]--[n];
+@include bp-push( '%' );
 
-.container--left {
-	@include container--left;
-}
+// Usage - no breakpoint: @extend %pull-[n];
+// Usage - with breakpoint: @extend %pull-[$breakpoints key]--[n];
+@include bp-pull( '%' );
 
-.container--right {
-	@include container--right;
-}
+// Usage - no breakpoint: @extend %column--centered;
+// Usage - with breakpoint: @extend %column-[$breakpoints key]--centered;
+@include bp-column--centered( '%' );
 
-.row {
-	@include row;
-}
+// Usage - no breakpoint: @extend %unpush-centered;
+// Usage - with breakpoint: @extend %unpush-[$breakpoints key]--centered;
+@include bp-unpush( '%' );
 
-.column {
-	@include column;
-}
+// Usage - no breakpoint: @extend %unpull-centered;
+// Usage - with breakpoint: @extend %unpull-[$breakpoints key]--centered;
+@include bp-unpull( '%' );
 
-.column--centered {
-	@include column--centered;
-}
+// Usage - no breakpoint: @extend %guttered--centered;
+// Usage - with breakpoint: @extend %guttered-[$breakpoints key]--centered;
+@include bp-guttered( '%' );
 
-.uncolumn {
-	@include uncolumn;
-}
-
-.unpush {
-	@include unpush;
-}
-
-.unpull {
-	@include unpull;
-}
-
-.guttered {
-	@include guttered;
-}
-
-@include generate-column-classes( $grid__columns );
-
-@include generate-push-classes( $grid__columns );
-
-@include generate-pull-classes( $grid__columns );
-
-@include generate-block-grid-classes( $grid__columns );
-
-@include bp-container( '.container' );
-
-@include bp-container--centered( '.container--centered' );
-
-@include bp-row( '.row' );
-
-@include bp-column( '.column' );
-
-@include bp-columns( '.columns' );
-
-@include bp-push( '.push' );
-
-@include bp-pull( '.pull' );
-
-@include bp-column--centered( '.column' );
+// GRID CLASSES
+// Generates grid classes at each breakpoint defined in $breakpoints map
+// Commented out by default in favor of placeholders
+// -----------------------------
+//// Usage - no breakpoint: @extend .contaner;
+//// Usage - with breakpoint: @extend .container-[$breakpoints key];
+//@include bp-container( '.' );
+//
+//// Usage - no breakpoint: @extend .container--centered;
+//// Usage - with breakpoint: @extend .container-[$breakpoints key]--centered;
+//@include bp-container--centered( '.' );
+//
+//// Usage - no breakpoint: @extend .container--left;
+//// Usage - with breakpoint: @extend .container-[$breakpoints key]--left;
+//@include bp-container--left( '.' );
+//
+//// Usage - no breakpoint: @extend .container--right;
+//// Usage - with breakpoint: @extend .container-[$breakpoints key]--right;
+//@include bp-container--right( '.' );
+//
+//// Usage - no breakpoint: @extend .row;
+//// Usage - with breakpoint: @extend .row-[$breakpoints key];
+//@include bp-row( '.' );
+//
+//// Usage - no breakpoint: @extend .row--centered;
+//// Usage - with breakpoint: @extend .row-[$breakpoints key]--centered;
+//@include bp-row--centered( '.' );
+//
+//// Usage - no breakpoint: @extend .column;
+//// Usage - with breakpoint: @extend .column-[$breakpoints key];
+//@include bp-column( '.' );
+//
+//// Usage - no breakpoint: @extend .columns-[n];
+//// Usage - with breakpoint: @extend .columns-[$breakpoints key]--[n];
+//@include bp-columns( '.' );
+//
+//// Usage - no breakpoint: @extend .push-[n];
+//// Usage - with breakpoint: @extend .push-[$breakpoints key]--[n];
+//@include bp-push( '.' );
+//
+//// Usage - no breakpoint: @extend .pull-[n];
+//// Usage - with breakpoint: @extend .pull-[$breakpoints key]--[n];
+//@include bp-pull( '.' );
+//
+//// Usage - no breakpoint: @extend .column--centered;
+//// Usage - with breakpoint: @extend .column-[$breakpoints key]--centered;
+//@include bp-column--centered( '.' );
+//
+//// Usage - no breakpoint: @extend .unpush-centered;
+//// Usage - with breakpoint: @extend .unpush-[$breakpoints key]--centered;
+//@include bp-unpush( '.' );
+//
+//// Usage - no breakpoint: @extend .unpull-centered;
+//// Usage - with breakpoint: @extend .unpull-[$breakpoints key]--centered;
+//@include bp-unpull( '.' );
+//
+//// Usage - no breakpoint: @extend .guttered--centered;
+//// Usage - with breakpoint: @extend .guttered-[$breakpoints key]--centered;
+//@include bp-guttered( '.' );
 
 //.grid-test {
 //	.column {
