@@ -1,9 +1,9 @@
-.doc__main {
-	@include margin-bottom-unitcalc( $doc__margin-bottom );
+.doc-main {
+	@include margin-bottom-unitcalc( $doc-margin-bottom );
 }
 
 .hentry {
-	@include margin-bottom-unitcalc( $hentry__margin-bottom );
+	@include margin-bottom-unitcalc( $entry__margin-bottom );
 }
 
 .widget {

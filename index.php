@@ -2,7 +2,7 @@
 
 <?php if ( have_posts() ) { ?>
 	<div class="site-content doc doc--archive doc--archive-index">
-		<main id="content" class="doc__main">
+		<main id="content" class="doc-main">
 			<?php get_template_part(  'partials/loop-archive' ); ?>
 		</main>
 

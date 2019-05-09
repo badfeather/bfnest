@@ -7,7 +7,7 @@
 <section id="comments" class="comments">
 
 	<?php if ( have_comments() ) { ?>
-		<h2 class="section__title comments__title">
+		<h2 class="section-title comments__title">
 			<?php
 				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'bfnest' ),
 					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );

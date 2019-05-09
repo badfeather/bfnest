@@ -130,14 +130,14 @@ function bfnest_is_tree( $parent_id ) {
 	if ( is_page( $parent_id ) ) {
 		$is_tree = true;
 	}
- 
+
     $ancestors = get_post_ancestors( get_the_ID() );
     foreach ( $ancestors as $ancestor ) {
         if ( is_page() && $ancestor == $parent_id ) {
             $is_tree = true;
         }
     }
-    return $is_tree;  
+    return $is_tree;
 }
 
 /**
@@ -151,22 +151,22 @@ function bfnest_page_subnav( $page_id = '', $title = '' ) {
 	} else {
 		$top_parent = bfnest_get_top_parent_page_id( get_the_ID() );
 	}
-	
+
 	$children = wp_list_pages( array(
 		'sort_column' => 'menu_order',
 		'title_li' => '',
 		'child_of' => $top_parent,
 		'echo' => 0
 	) );
-	
+
 	if ( empty( $children ) ) {
 		return false;
 	}
-	
+
 	$nav_title = ( $title ? $title : get_the_title( $top_parent ) );
 ?>
 <nav class="nav nav--secondary">
-	<h2 class="nav__title"><?php echo esc_html( $nav_title ); ?></h2>
+	<h2 class="nav-title"><?php echo esc_html( $nav_title ); ?></h2>
 	<ul class="menu menu--secondary">
 		<?php echo $children; ?>
 	</ul>
@@ -192,15 +192,15 @@ function bfnest_taxonomy_subnav( $taxonomy = 'category', $title = '', $exclude =
 		'exclude' => $exclude,
 		'orderby' => $orderby
 	) );
-	
+
 	if ( ! $children ) {
 		return false;
 	}
-	
+
 	$nav_title = ( $title ? $title : $top_parent->name );
 ?>
 <nav class="nav nav--secondary nav--taxonomies">
-	<h2 class="nav__title"><?php echo esc_html( $nav_title ); ?></h2>
+	<h2 class="nav-title"><?php echo esc_html( $nav_title ); ?></h2>
 	<ul class="menu menu--secondary">
 		<?php echo $children; ?>
 	</ul>
@@ -240,12 +240,12 @@ function bfnest_latest_posts( $args ) {
 	if ( $latest->have_posts() ) {
 ?>
 <aside class="widget widget--latest">
-	<?php 
+	<?php
 		if ( $widget_title ) {
-			echo '<h2 class="widget__title">'. esc_html( $widget_title ) .'</h2>';
-		} 
+			echo '<h2 class="widget-title">'. esc_html( $widget_title ) .'</h2>';
+		}
 	?>
-	<div class="widget__content">
+	<div class="widget-content">
 		<?php
 			while ( $latest->have_posts() ) {
 				$latest->the_post();
@@ -253,7 +253,7 @@ function bfnest_latest_posts( $args ) {
 			} // endwhile
 			wp_reset_postdata();
 		?>
-	</div><?php //	 /.widget__content ?>
+	</div><?php //	 /.widget-content ?>
 </aside><?php //	/.widget.widget--latest ?>
 <?php
 	} // endif
@@ -297,9 +297,9 @@ function bfnest_latest_taxonomy_posts( $args ) {
 ?>
 <aside class="widget widget--latest widget--latest--<?php echo $term_slug; ?>">
 	<?php if ( $widget_title ) {
-		echo '<h2 class="widget__title">' . esc_html( $widget_title ) . '</h2>';
+		echo '<h2 class="widget-title">' . esc_html( $widget_title ) . '</h2>';
 	} ?>
-	<div class="widget__content">
+	<div class="widget-content">
 		<?php
 			while ( $latest->have_posts() ) {
 					$latest->the_post();
@@ -307,7 +307,7 @@ function bfnest_latest_taxonomy_posts( $args ) {
 			} // endwhile
 			wp_reset_postdata();
 		?>
-	</div><?php //	 /.widget__content ?>
+	</div><?php //	 /.widget-content ?>
 </aside><?php //	/.widget.widget--latest ?>
 <?php
 	} //endif

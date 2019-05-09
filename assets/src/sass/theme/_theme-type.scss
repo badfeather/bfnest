@@ -310,24 +310,24 @@ h6 {
 
 // THEME ELEMENTS
 // -------------------------
-.entry__title {
-	@include entry__title;
+.entry-title {
+	@include entry-title;
 }
 
-.doc__title {
-	@include doc__title;
+.doc-title {
+	@include doc-title;
 }
 
-.widget__title {
-	@include widget__title;
+.widget-title {
+	@include widget-title;
 }
 
-.section__title {
-	@include section__title;
+.section-title {
+	@include section-title;
 }
 
-.nav__title {
-	@include nav__title;
+.nav-title {
+	@include nav-title;
 }
 
 .lede {

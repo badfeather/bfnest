@@ -4,7 +4,7 @@
 	$post_type = get_post_type();
 ?>
 <div class="site-content doc doc--single doc--single-<?php echo esc_attr( $post_type ); ?>">
-	<main id="content" class="doc__main">
+	<main id="content" class="doc-main">
 		<?php
 			while ( have_posts() ) {
 				the_post();

@@ -12,7 +12,7 @@
 		border-color: $button__border-color--hover;
 	}
 
-	@include breakpoint-up( $bp--nav ) {
+	@include bp-md__mq-up {
 		display: none;
 	}
 
@@ -29,7 +29,7 @@
 		display: block;
 	}
 
-	@include breakpoint-up( $bp--nav ) {
+	@include bp-md__mq-up {
 		display: block;
 	}
 }

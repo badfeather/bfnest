@@ -1,4 +1,4 @@
-<div class="doc__content entries">
+<div class="doc-content entries">
 
 	<?php
 		while ( have_posts() ) {

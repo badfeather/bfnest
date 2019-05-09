@@ -40,7 +40,7 @@ $button__font-size: $form__font-size;
 $button__font-family: $base__font-family;
 $button__line-height: $form__line-height;
 $button__font-weight: $base__font-weight;
-$button__text-transform: uppercase;
+$button__text-transform: none;
 $button__padding-vertical: $form__padding-vertical;
 $button__padding-horizontal: $form__padding-horizontal;
 $button__border-width: $form__border-width;
@@ -62,12 +62,12 @@ $button__padding-horizontal--lg: $form__padding-horizontal--lg;
 // BUTTON COLORS
 
 // button
-$button__color: $white;
+$button__color: $base__color;
 $button__background-color: $accent__color;
 $button__border-color: $button__background-color;
 $button__box-shadow: none;
 
-$button__color--hover: $white;
+$button__color--hover: $base__color;
 $button__background-color--hover: tint($button__background-color, 25%);
 $button__border-color--hover: tint($button__border-color, 25%);
 $button__box-shadow--hover: none;
@@ -148,7 +148,7 @@ $form-control__border-radius: $form__border-radius;
 $form-control__background-color: transparent;
 $form-control__box-shadow: none;
 
-$form-control__color--placeholder: $meta__color;
+$form-control__color--placeholder: $entry-meta__color;
 
 $form-control__border-color--focus: $form__color--primary;
 $form-control__background-color--focus: $form-control__background-color;
@@ -178,7 +178,7 @@ $label__font-size: $base__font-size--sm;
 $label__line-height: $base__line-height;
 $label__font-family: $base__font-family;
 $label__font-style: normal;
-$label__color: $meta__color;
+$label__color: $entry-meta__color;
 $label__font-weight: $base__font-weight;
 $label__text-transform: none;
 $label__margin-top: 0;
@@ -198,7 +198,7 @@ $legend__font-size: $base__font-size--sm;
 $legend__line-height: $base__line-height;
 $legend__font-family: $base__font-family;
 $legend__font-style: normal;
-$legend__color: $meta__color;
+$legend__color: $entry-meta__color;
 $legend__font-weight: $base__font-weight;
 $legend__text-transform: none;
 $legend__margin-top: 0;
@@ -217,7 +217,7 @@ $helper-text__font-size: $base__font-size--sm;
 $helper-text__line-height: $base__line-height;
 $helper-text__font-family: $base__font-family;
 $helper-text__font-style: normal;
-$helper-text__color: $meta__color;
+$helper-text__color: $entry-meta__color;
 $helper-text__font-weight: $base__font-weight;
 $helper-text__text-transform: none;
 $helper-text__margin-top: $base__margin--quarter;

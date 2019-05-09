@@ -1,4 +1,4 @@
-<div class="doc__side">
+<div class="doc-side">
 	<?php
 		dynamic_sidebar( 'archive' );
 		dynamic_sidebar( 'global' );

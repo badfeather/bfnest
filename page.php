@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="site-content doc doc--page">
-	<main id="content" class="doc__main">
+	<main id="content" class="doc-main">
 		<?php
 			while ( have_posts() ) {
 				the_post();

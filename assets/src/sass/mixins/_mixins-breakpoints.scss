@@ -45,4 +45,67 @@
 	}
 }
 
+// Shorthands for commonly used breakpoints
+@mixin bp-xs__mq-up() {
+	@include breakpoint-up( $bp-xs ) {
+		@content;
+	}
+}
+
+@mixin bp-sm__mq-up() {
+	@include breakpoint-up( $bp-sm ) {
+		@content;
+	}
+}
+
+@mixin bp-md__mq-up() {
+	@include breakpoint-up( $bp-md ) {
+		@content;
+	}
+}
+
+@mixin bp-lg__mq-up() {
+	@include breakpoint-up( $bp-lg ) {
+		@content;
+	}
+}
+
+@mixin bp-xl__mq-up() {
+	@include breakpoint-up( $bp-xl ) {
+		@content;
+	}
+}
+
+@mixin bp-xs__mq-down() {
+	@include breakpoint-down( $bp-xs ) {
+		@content;
+	}
+}
+
+@mixin bp-sm__mq-down() {
+	@include breakpoint-down( $bp-sm ) {
+		@content;
+	}
+}
+
+@mixin bp-md__mq-down() {
+	@include breakpoint-down( $bp-md ) {
+		@content;
+	}
+}
+
+@mixin bp-lg__mq-down() {
+	@include breakpoint-down( $bp-lg ) {
+		@content;
+	}
+}
+
+@mixin bp-xl__mq-down() {
+	@include breakpoint-down( $bp-xl ) {
+		@content;
+	}
+}
+
+
+
 

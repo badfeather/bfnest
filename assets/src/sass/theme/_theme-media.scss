@@ -75,7 +75,7 @@ img,
 .wp-caption-text,
 .gallery-caption {
 	@extend .entry-meta;
-	@include margin-top-unitcalc( $base__margin--quarter, $meta__font-size );
+	@include margin-top-unitcalc( $base__margin--quarter, $entry-meta__font-size );
 }
 
 .gallery,

@@ -6,7 +6,7 @@ Template Name: Style Tester
 <?php get_header(); ?>
 
 <div class="site-content doc doc--page doc--page-style-tester">
-	<main id="content" class="doc__main">
+	<main id="content" class="doc-main">
 	<?php
 		while ( have_posts() ) {
 			the_post();

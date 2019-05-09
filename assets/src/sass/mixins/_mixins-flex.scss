@@ -1,0 +1,58 @@
+// FLEX BREAKPOINT CLASSES
+// $selector-type expects '.' (outputs classes) or '%' (outputs placeholders)
+@mixin flex-classes( $selector-type: '.', $prefix: null ) {
+	#{$selector-type}#{$prefix}flex-direction--row { flex-direction: row !important; }
+	#{$selector-type}#{$prefix}flex-direction--column { flex-direction: column !important; }
+	#{$selector-type}#{$prefix}flex-direction--row-reverse { flex-direction: row-reverse !important; }
+	#{$selector-type}#{$prefix}flex-direction--column-reverse { flex-direction: column-reverse !important; }
+
+	#{$selector-type}#{$prefix}flex-wrap--wrap { flex-wrap: wrap !important; }
+	#{$selector-type}#{$prefix}flex-wrap--nowrap { flex-wrap: nowrap !important; }
+	#{$selector-type}#{$prefix}flex-wrap--wrap-reverse { flex-wrap: wrap-reverse !important; }
+	#{$selector-type}#{$prefix}flex-wrap--fill { flex: 1 1 auto !important; }
+	#{$selector-type}#{$prefix}flex-wrap--grow-0 { flex-grow: 0 !important; }
+	#{$selector-type}#{$prefix}flex-wrap--grow-1 { flex-grow: 1 !important; }
+	#{$selector-type}#{$prefix}flex-wrap--shrink-0 { flex-shrink: 0 !important; }
+	#{$selector-type}#{$prefix}flex-wrap--shrink-1 { flex-shrink: 1 !important; }
+
+	#{$selector-type}#{$prefix}justify-content--start { justify-content: flex-start !important; }
+	#{$selector-type}#{$prefix}justify-content--end { justify-content: flex-end !important; }
+	#{$selector-type}#{$prefix}justify-content--center { justify-content: center !important; }
+	#{$selector-type}#{$prefix}justify-content--between { justify-content: space-between !important; }
+	#{$selector-type}#{$prefix}justify-content--around { justify-content: space-around !important; }
+
+	#{$selector-type}#{$prefix}align-items--start { align-items: flex-start !important; }
+	#{$selector-type}#{$prefix}align-items--end { align-items: flex-end !important; }
+	#{$selector-type}#{$prefix}align-items--center { align-items: center !important; }
+	#{$selector-type}#{$prefix}align-items--baseline { align-items: baseline !important; }
+	#{$selector-type}#{$prefix}align-items--stretch { align-items: stretch !important; }
+
+	#{$selector-type}#{$prefix}align-content--start { align-content: flex-start !important; }
+	#{$selector-type}#{$prefix}align-content--end { align-content: flex-end !important; }
+	#{$selector-type}#{$prefix}align-content--center { align-content: center !important; }
+	#{$selector-type}#{$prefix}align-content--between { align-content: space-between !important; }
+	#{$selector-type}#{$prefix}align-content--around { align-content: space-around !important; }
+	#{$selector-type}#{$prefix}align-content--stretch { align-content: stretch !important; }
+
+	#{$selector-type}#{$prefix}align-self--auto { align-self: auto !important; }
+	#{$selector-type}#{$prefix}align-self--start { align-self: flex-start !important; }
+	#{$selector-type}#{$prefix}align-self--end { align-self: flex-end !important; }
+	#{$selector-type}#{$prefix}align-self--center { align-self: center !important; }
+	#{$selector-type}#{$prefix}align-self--baseline { align-self: baseline !important; }
+	#{$selector-type}#{$prefix}align-self--stretch { align-self: stretch !important; }
+}
+
+@mixin bp-flex-classes( $selector-type: '.' ) {
+	@each $name, $value in $breakpoints {
+		@if $value == 0 {
+			@include flex-classes( $selector-type );
+
+		} @else {
+			$prefix: #{$name}__;
+			@include breakpoint-up( $value ) {
+				@include flex-classes( $selector-type, $prefix );
+			}
+		}
+	}
+}
+

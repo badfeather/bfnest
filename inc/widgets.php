@@ -10,7 +10,7 @@ function bfnest_widgets_init() {
 		'id' => 'global',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
-		'before_title' => '<h2 class="widget__title">',
+		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
 	) );
 
@@ -19,7 +19,7 @@ function bfnest_widgets_init() {
 		'id' => 'page',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
-		'before_title' => '<h2 class="widget__title">',
+		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
 	) );
 
@@ -28,7 +28,7 @@ function bfnest_widgets_init() {
 		'id' => 'single',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
-		'before_title' => '<h2 class="widget__title">',
+		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
 	) );
 
@@ -37,7 +37,7 @@ function bfnest_widgets_init() {
 		'id' => 'archive',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
-		'before_title' => '<h2 class="widget__title">',
+		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
 	) );
 

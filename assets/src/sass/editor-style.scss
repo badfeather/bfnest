@@ -52,9 +52,9 @@
 .editor-post-title__block {
 
 	.editor-post-title__input {
-		font-family: $doc__title__font-family;
-		font-size: unitcalc( $doc__title__font-size );
-		font-weight: $doc__title__font-weight;
+		font-family: $doc-title__font-family;
+		font-size: unitcalc( $doc-title__font-size );
+		font-weight: $doc-title__font-weight;
 	}
 }
 

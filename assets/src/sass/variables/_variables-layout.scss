@@ -2,10 +2,10 @@
 $figure__margin-bottom: $base__margin;
 
 // Document Main
-$doc__margin-bottom: $base__margin;
+$doc-margin-bottom: $base__margin;
 
 // Entries
-$hentry__margin-bottom: $base__margin;
+$entry__margin-bottom: $base__margin;
 
 // Widgets
 $widget__margin-bottom: $base__margin;
@@ -14,34 +14,28 @@ $widget__margin-bottom: $base__margin;
 // ---------------------------
 
 // Extra small screen / phone
-$bp--xs: 480;
+$bp-xs: 480;
 
 // Tablet small
-$bp--sm: 600;
+$bp-sm: 600;
 
 // Small screen / tablet
-$bp--md: 768;
+$bp-md: 768;
 
 // Medium screen / desktop
-$bp--lg: 992;
+$bp-lg: 992;
 
 // Large screen / wide desktop
-$bp--xl: 1200;
+$bp-xl: 1200;
 
 // Base breakpoint
-$bp--base: $bp--lg;
-$bp--nav: $bp--md;
-
-// these are used to generate classes or placeholders
-// to avoid bloat, comment out the ones you don't plan on using
 $breakpoints: (
-//	xs: $bp--xs,
-//	sm: $bp--sm,
-//	md: $bp--md,
-//	lg: $bp--lg,
-//	xl: $bp--xl,
-	base: $bp--base,
-	nav: $bp--nav
+	bp-none: 0, // do not remove or comment out
+	bp-xs: $bp-xs,
+	bp-sm: $bp-sm,
+	bp-md: $bp-md,
+	bp-lg: $bp-lg,
+	bp-xl: $bp-xl,
 );
 
 // IMAGE SIZES - should match image sizes set in theme, which are usually based on grid column widths

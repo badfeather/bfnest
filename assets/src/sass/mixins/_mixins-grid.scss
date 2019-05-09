@@ -5,13 +5,6 @@
 	padding-right: unitcalc( $gutter / 2 );
 }
 
-// utility mixin
-@mixin flex-width-fix {
-	@supports (display: flex ) {
-		width: auto;
-	}
-}
-
 // Centered container element
 @mixin container( $gutter: $grid__gutter-width, $width: $grid__width ) {
 	@include guttered( $gutter );
@@ -34,29 +27,41 @@
 }
 
 @mixin row( $gutter: $grid__gutter-width ) {
+    letter-spacing: -0.31em; // Inline-block fallback: Webkit: collapse white-space between units
+    *letter-spacing: normal; // Inline-block fallback: reset IE < 8
+    word-spacing: -0.43em; // Inline-block fallback: collapse white-space between units
+	text-rendering: optimizespeed; // Inline-block fallback: Webkit: fixes text-rendering: optimizeLegibility
+	font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif; // Inline-block fallback: known to obey correct letter-spacing
 	margin-left: unitcalc( $gutter / -2 );
 	margin-right: unitcalc( $gutter / -2 );
-	@include clearfix;
+	//@include clearfix;
 	display: flex;
 	flex-wrap: wrap;
 }
 
 @mixin row--centered {
+	text-align: center;
 	justify-content: center;
 }
 
 @mixin column( $gutter: $grid__gutter-width ) {
+    display: inline-block; // Inline-block fallback
+    *display: inline; // Inline-block fallback: IE < 8: fake inline-block
+    zoom: 1; // Inline-block fallback
+    letter-spacing: normal; // Inline-block fallback
+    word-spacing: normal; // Inline-block fallback
+    vertical-align: top; // Inline-block fallback
+	text-rendering: auto; // Inline-block fallback
+	font-family: $base__font-family;
 	width: 100%;
 	@include guttered( $gutter );
 	position: relative;
-	float: left;
 	flex: 1;
 }
 
 @mixin columns( $n, $columns: $grid__columns ) {
 	width: percentage( $n / $columns );
 	flex: 0 0 percentage( $n / $columns );
-	//@include flex-width-fix;
 }
 
 @mixin push( $offset: 1, $columns: $grid__columns ) {
@@ -68,15 +73,15 @@
 }
 
 @mixin column--centered {
-	float: none;
+	display: block; // Inline-block fallback
 	margin-left: auto;
 	margin-right: auto;
 	clear: both;
 }
 
 @mixin uncolumn {
-	float: none;
-	width: auto;
+	display: block; // Inline-block fallback
+	width: 100%;
 	padding-left: initial;
 	padding-right: initial;
 }
@@ -90,27 +95,11 @@
 }
 
 @mixin generate-column-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'columns', $i: 1, $prefix: '' ) {
-	$flex-width-fix-classes: '';
-
 	@while $i <= $columns {
 		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
 			@include columns( $i, $columns );
 		}
-
-		$sep: ', ';
-		@if ( $i == $columns ) {
-			$sep: '';
-		}
-
-		$flex-width-fix-classes: $flex-width-fix-classes + '#{$selector-type}#{$prefix}#{$selector-name}-#{$i}' + $sep;
-
 		$i: $i + 1;
-	}
-
-	#{$flex-width-fix-classes} {
-		@supports (display: flex ) {
-			width: auto;
-		}
 	}
 }
 
@@ -132,261 +121,62 @@
 	}
 }
 
-// BREAKPOINT MIXINS
-@mixin bp-container( $selector-type: '%', $selector-name: 'container' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include container;
-			}
-		} @else {
-			#{$selector-type}#{$name}__#{$selector-name} {
-				@include breakpoint-up( $value ) {
-					@include container;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-container--centered( $selector-type: '%', $selector-name: 'container--centered' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include container--centered;
-			}
-		} @else {
-			#{$selector-type}#{$name}__#{$selector-name} {
-				@include breakpoint-up( $value ) {
-					@include container--centered;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-container--left( $selector-type: '%', $selector-name: 'container--left' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include container--left;
-			}
-		} @else {
-			#{$selector-type}#{$name}__#{$selector-name} {
-				@include breakpoint-up( $value ) {
-					@include container--left;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-container--right( $selector-type: '%', $selector-name: 'container--right' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include container--right;
-			}
-		} @else {
-			#{$selector-type}#{$name}__#{$selector-name} {
-				@include breakpoint-up( $value ) {
-					@include container--right;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-row( $selector-type: '%', $selector-name: 'row' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include row;
-			}
-		} @else {
-			#{$selector-type}#{$name}__#{$selector-name} {
-				@include breakpoint-up( $value ) {
-					@include row;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-row--centered( $selector-type: '%', $selector-name: 'row--centered' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include row--centered;
-			}
-		} @else {
-			#{$selector-type}#{$name}__#{$selector-name} {
-				@include breakpoint-up( $value ) {
-					@include row--centered;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-column( $selector-type: '%', $selector-name: 'column' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include column;
-			}
-		} @else {
-			#{$selector-type}#{$name}__#{$selector-name} {
-				@include breakpoint-up( $value ) {
-					@include column;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-columns( $selector-type: '%', $selector-name: 'columns' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			@include generate-column-classes( $grid__columns, $selector-type, $selector-name, 1, '' );
-		} @else {
-			@include breakpoint-up( $value ) {
-				@include generate-column-classes( $grid__columns, $selector-type, $selector-name, 1, '#{$name}__' );
-			}
-		}
-	}
-}
-
-@mixin bp-push( $selector-type: '%', $selector-name: 'push' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			@include generate-push-classes( $grid__columns, $selector-type, $selector-name, 1, '' );
-		} @else {
-			@include breakpoint-up( $value ) {
-				@include generate-push-classes(  $grid__columns, $selector-type, $selector-name, 1, '#{$name}__' );
-			}
-		}
-	}
-}
-
-@mixin bp-pull( $selector-type: '%', $selector-name: 'pull' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			@include generate-pull-classes( $grid__columns, $selector-type, $selector-name, 1, '' );
-		} @else {
-			@include breakpoint-up( $value ) {
-				@include generate-pull-classes(  $grid__columns, $selector-type, $selector-name, 1, '#{$name}__' );
-			}
-		}
-	}
-}
-
-@mixin bp-column--centered( $selector-type: '%', $selector-name: 'column--centered' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include column--centered;
-			}
-		} @else {
-			@include breakpoint-up( $value ) {
-				#{$selector-type}#{$name}__#{$selector-name} {
-					@include column--centered;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-uncolumn( $selector-type: '%', $selector-name: 'uncolumn' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include uncolumn;
-			}
-		} @else {
-			@include breakpoint-up( $value ) {
-				#{$selector-type}#{$name}__#{$selector-name} {
-					@include uncolumn;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-unpush( $selector-type: '%', $selector-name: 'unpush' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include unpush;
-			}
-		} @else {
-			@include breakpoint-up( $value ) {
-				#{$selector-type}#{$name}__#{$selector-name} {
-					@include unpush;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-unpull( $selector-type: '%', $selector-name: 'unpull' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include unpull;
-			}
-		} @else {
-			@include breakpoint-up( $value ) {
-				#{$selector-type}#{$name}__#{$selector-name} {
-					@include unpull;
-				}
-			}
-		}
-	}
-}
-
-@mixin bp-guttered( $selector-type: '%', $selector-name: 'guttered' ) {
-	@each $name, $value in $breakpoints {
-		@if $value == 0 {
-			#{$selector-type}#{$selector-name} {
-				@include guttered;
-			}
-		} @else {
-			@include breakpoint-up( $value ) {
-				#{$selector-type}#{$name}__#{$selector-name} {
-					@include guttered;
-				}
-			}
-		}
-	}
-}
-
 // BLOCK GRID
-@mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $child_selector: '.column', $i: 1) {
-	%flex-width-fix {
-		& > #{$child-selector} {
-			@include flex-width-fix;
-		}
+@mixin generate-block-grid-classes( $n, $parent-selector: '.block-grid', $parent-modifier-selector: 'block-grid', $child_selector: '.column', $i: 1 ) {
+	#{$parent-selector} {
+		@include row;
+	}
+
+	#{$parent-selector} #{$child-selector} {
+		@include column;
 	}
 
 	@while $i <= $n {
-		#{$parent-selector}-#{$i} {
-
+		#{$parent-modifier-selector}-#{$i} {
 			& > #{$child-selector} {
 				width: percentage(1 / $i);
 				flex: 0 0 percentage( 1 / $i );
-
-				&:nth-of-type(n) {
-					clear: none;
-				}
-
-				&:nth-of-type(#{$i}n+1) {
-					clear: both;
-				}
 			}
-			@extend %flex-width-fix;
 		}
 		$i: $i + 1;
 	}
 }
+
+// GRID BREAKPOINT CLASSES
+// $selector-type expects '.' (outputs classes) or '%' (outputs placeholders)
+@mixin grid-classes( $selector-type: '.', $prefix: null ) {
+	#{$selector-type}#{$prefix}guttered { @include guttered; }
+	#{$selector-type}#{$prefix}container { @include container; }
+	#{$selector-type}#{$prefix}container--centered { @include container--centered; }
+	#{$selector-type}#{$prefix}container--left { @include container--left; }
+	#{$selector-type}#{$prefix}container--right { @include container--right; }
+	#{$selector-type}#{$prefix}row { @include row; }
+	#{$selector-type}#{$prefix}row--centered { @include row--centered; }
+	#{$selector-type}#{$prefix}column { @include column; }
+	@include generate-column-classes( $grid__columns, $selector-type, 'columns', 1, $prefix );
+	@include generate-push-classes( $grid__columns, $selector-type, 'push', 1, $prefix );
+	@include generate-pull-classes( $grid__columns, $selector-type, 'pull', 1, $prefix );
+	#{$selector-type}#{$prefix}column--centered { @include column--centered; }
+	#{$selector-type}#{$prefix}uncolumn { @include uncolumn; }
+	#{$selector-type}#{$prefix}unpush { @include unpush; }
+	#{$selector-type}#{$prefix}unpull { @include unpull; }
+}
+
+@mixin bp-grid-classes( $selector-type: '.' ) {
+	@each $name, $value in $breakpoints {
+		@if $value == 0 {
+			@include grid-classes( $selector-type );
+
+		} @else {
+			$prefix: #{$name}__;
+			@include breakpoint-up( $value ) {
+				@include grid-classes( $selector-type, $prefix );
+			}
+		}
+	}
+}
+
+
+
+
 

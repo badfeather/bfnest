@@ -20,6 +20,7 @@
 @import "mixins/mixins-forms";
 @import "mixins/mixins-grid";
 @import "mixins/mixins-ib-grid";
+@import "mixins/mixins-flex";
 @import "mixins/mixins-breakpoints";
 
 // RESETS
@@ -36,6 +37,7 @@
 @import "theme/theme-type";
 @import "theme/theme-grid";
 //@import "theme/theme-ib-grid";
+@import "theme/theme-flex";
 @import "theme/theme-layout";
 @import "theme/theme-forms";
 @import "theme/theme-media";

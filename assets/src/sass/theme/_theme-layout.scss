@@ -2,13 +2,11 @@
 	padding: 1em;
 }
 
-
-@include breakpoint-up($bp--lg) {
-
-	.site {
-		@include container;
-		@include container--centered;
-	}
+.site-header,
+.site-content,
+.site-footer {
+	@extend %bp-lg__container;
+	@extend %bp-lg__container--centered;
 }
 
 

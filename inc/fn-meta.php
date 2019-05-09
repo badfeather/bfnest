@@ -15,7 +15,7 @@ function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array()
 		}
 	}
 
-	array_unshift( $meta_class, 'entry-meta', 'entry__meta' );
+	array_unshift( $meta_class, 'entry-meta' );
 
 	if ( ! empty( $meta_array ) ) {
 		echo $before . "\n" . '<div class="' . join( ' ', $meta_class ) . '">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div>' . "\n" . $after . "\n";
@@ -29,7 +29,7 @@ function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array()
  * $footer_class should either be 'doc' or 'entry'
  */
 function bfnest_edit_footer( $footer_class = 'doc' ) {
-	bfnest_meta( array( bfnest_get_meta_edit_link() ), '', array(), $before = '<footer class="' . esc_attr( $footer_class ) . '__footer">', $after = '</footer>' );
+	bfnest_meta( array( bfnest_get_meta_edit_link() ), '', array(), $before = '<footer class="' . esc_attr( $footer_class ) . '_-footer">', $after = '</footer>' );
 }
 
 /**
@@ -42,10 +42,10 @@ function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = '
 	$title = '';
 
 	if ( null === $before ) {
-		$title = '<span class="meta__title">' . __( 'Posted in: ', 'bfnest' ) . '</span>';
+		$title = '<span class="meta-title">' . __( 'Posted in: ', 'bfnest' ) . '</span>';
 
 	} elseif ( ! empty( $before ) ) {
-		$title = '<span class="meta__title">' . sprintf( __( '%1$s', 'bfnest' ), $before ) . '</span>';
+		$title = '<span class="meta-title">' . sprintf( __( '%1$s', 'bfnest' ), $before ) . '</span>';
 	}
 
 	return get_the_term_list( get_the_ID(), $taxonomy, '<' . $element . ' class="meta meta--terms">' . $title, $sep, '</' . $element . '>' );
@@ -114,12 +114,12 @@ function bfnest_get_meta_comments_link( $element = 'span' ) {
  */
 function bfnest_get_meta_pubdate( $before = null, $element = 'span' ) {
 	$date = get_the_date();
-	
+
 	if ( ! $date ) {
 		return false;
 	}
-	
-	$title = $before ? '<span class="meta__title">' . $before . '</span>' : '';
+
+	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
 
 	return '<' . $element . ' class="meta meta--published">' . $title . '<time class="published" datetime = "' . get_the_time( 'c' ) . '">' . $date . '</time></' . $element . '>';
 }
@@ -134,7 +134,7 @@ function bfnest_get_meta_author( $before = null, $element = 'span' ) {
 		return false;
 	}
 
-	$title = $before ? '<span class="meta__title">' . $before . '</span>' : '';
+	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
 
 	return '<' . $element . ' class="meta meta--author">' . $title . '<span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . $author . '</a></span></' . $element . '>';
 }
@@ -150,7 +150,7 @@ function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'sp
 
 	$field = get_post_meta( get_the_ID(), $meta_field, true );
 
-	$title = $before ? '<span class="meta__title">' . $before . '</span>' : '';
+	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
 
 	return '<' . $element . ' class="meta meta--cf">' . $title . $field . '</' . $element . '>';
 }
@@ -310,10 +310,10 @@ function bfnest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 
 
 	$title = '';
 	if ( null === $before ) {
-		$title = '<span class="meta__title">' . __( 'Share: ', 'bfnest' ) . '</span>';
+		$title = '<span class="meta-title">' . __( 'Share: ', 'bfnest' ) . '</span>';
 
 	} elseif ( ! empty( $before ) ) {
-		$title = '<span class="meta__title">' . $before . '</span>';
+		$title = '<span class="meta-title">' . $before . '</span>';
 	}
 
 	if ( $new_window ) {

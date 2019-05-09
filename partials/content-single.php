@@ -1,6 +1,6 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="doc__header">
-		<h1 class="doc__title entry-title"><?php the_title(); ?></h1>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry' ); ?>>
+	<header class="doc-header">
+		<h1 class="doc-title entry-title"><?php the_title(); ?></h1>
 		<?php
 			bfnest_meta( array(
 				bfnest_get_meta_pubdate(),
@@ -9,7 +9,7 @@
 		?>
 	</header>
 
-	<div class="doc__content">
+	<div class="doc-content">
 
 		<div class="entry-content">
 			<?php the_content(); ?>
@@ -21,7 +21,7 @@
 			?>
 		</div>
 
-		<footer class="doc__footer">
+		<footer class="doc-footer">
 			<?php
 				bfnest_meta( array(
 					bfnest_get_meta_categories(),

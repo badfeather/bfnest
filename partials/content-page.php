@@ -1,10 +1,10 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry' ); ?>>
 
-	<header class="doc__header>">
-		<h1 class="doc__title entry-title"><?php the_title(); ?></h1>
+	<header class="doc-header">
+		<h1 class="doc-title entry-title"><?php the_title(); ?></h1>
 	</header>
 
-	<div class="doc__content">
+	<div class="doc-content">
 
 		<div class="entry-content">
 			<?php the_content(); ?>

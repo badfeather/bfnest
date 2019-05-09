@@ -114,24 +114,24 @@
 	@include letter-spacing-change( $letter-spacing, normal );
 	@include text-decoration-change( $text-decoration, none );
 	@include margin-change-unitcalc( 0, 0, 0, 0, $margin-top, $margin-right, $margin-bottom, $margin-left, $font-size );
-	
+
 	@if ( $font-size--lg != $font-size ) {
 		@include breakpoint-up( $bp ) {
 			font-size: unitcalc( $font-size--lg );
-			
+
 			@if ( $base__unit == em ) {
 				@include margin-change-unitcalc( $margin-top, $margin-right, $margin-bottom, $margin-left, $font-size--lg );
 			}
 		}
 	}
-	
+
 	@if ( $link-color != $link__color ) or ( $link-text-decoration != $link__text-decoration ) {
 		a {
 			@include color-change( $link-color, $link__color );
 			@include text-decoration-change( $link-text-decoration, $link__text-decoration );
 		}
 	}
-	
+
 	@if ( $link-color--hover != $link__color--hover ) or ( $link-text-decoration--hover != $link__text-decoration--hover ) {
 		a:hover,
 		a:focus {
@@ -143,15 +143,15 @@
 
 // HEADINGS
 // -------------------------
-@mixin heading() {	
+@mixin heading() {
 	@if ( $headings__font-size == $base__font-size ) {
 		font-size: unitcalc( $headings__font-size );
 	}
-	
+
 	@if ( $headings__font-weight == $base__font-weight ) {
 		font-weight: $headings__font-weight;
 	}
-	
+
 	@include text-style(
 		$headings__font-family,
 		$headings__font-size,
@@ -172,7 +172,7 @@
 		$headings-link__color,
 		$headings-link__text-decoration,
 		$headings-link__color--hover,
-		$headings-link__text-decoration--hover		
+		$headings-link__text-decoration--hover
 	);
 }
 
@@ -193,7 +193,7 @@
 	$margin-left: $headings__margin-left,
 	$font-size--lg: $font-size,
 	$bp: $headings__breakpoint,
-	
+
 	//defaults
 	$default__font-family: $headings__font-family,
 	$default__font-size: $headings__font-size,
@@ -221,11 +221,11 @@
 	@include letter-spacing-change( $letter-spacing, $default__letter-spacing );
 	@include text-decoration-change( $text-decoration, $default__text-decoration );
 	@include margin-change-unitcalc( $default__margin-top, $default__margin-right, $default__margin-bottom, $default__margin-left, $margin-top, $margin-right, $margin-bottom, $margin-left, $font-size );
-	
+
 	@if ( $font-size--lg != $font-size ) {
 		@include breakpoint-up( $bp ) {
 			font-size: unitcalc( $font-size--lg );
-			
+
 			@if ( $base__unit == em ) {
 				@include margin-unitcalc( $margin-top, $margin-right, $margin-bottom, $margin-left, $font-size--lg );
 			}
@@ -250,7 +250,7 @@
 		$h1__margin-bottom,
 		$h1__margin-left,
 		$h1__font-size--lg,
-		$h1__breakpoint		
+		$h1__breakpoint
 	);
 }
 
@@ -271,7 +271,7 @@
 		$h2__margin-bottom,
 		$h2__margin-left,
 		$h2__font-size--lg,
-		$h2__breakpoint		
+		$h2__breakpoint
 	);
 }
 
@@ -292,7 +292,7 @@
 		$h3__margin-bottom,
 		$h3__margin-left,
 		$h3__font-size--lg,
-		$h3__breakpoint		
+		$h3__breakpoint
 	);
 }
 
@@ -313,7 +313,7 @@
 		$h4__margin-bottom,
 		$h4__margin-left,
 		$h4__font-size--lg,
-		$h4__breakpoint		
+		$h4__breakpoint
 	);
 }
 
@@ -334,7 +334,7 @@
 		$h5__margin-bottom,
 		$h5__margin-left,
 		$h5__font-size--lg,
-		$h5__breakpoint		
+		$h5__breakpoint
 	);
 }
 
@@ -355,30 +355,30 @@
 		$h6__margin-bottom,
 		$h6__margin-left,
 		$h6__font-size--lg,
-		$h6__breakpoint		
+		$h6__breakpoint
 	);
 }
 
 // THEME ELEMENTS
 // -------------------------
-@mixin doc__title {
+@mixin doc-title {
 	@include heading-style(
-		$doc__title__font-family,
-		$doc__title__font-size,
-		$doc__title__line-height,
-		$doc__title__font-weight,
-		$doc__title__text-align,
-		$doc__title__color,
-		$doc__title__font-style,
-		$doc__title__text-transform,
-		$doc__title__letter-spacing,
-		$doc__title__text-decoration,
-		$doc__title__margin-top,
-		$doc__title__margin-right,
-		$doc__title__margin-bottom,
-		$doc__title__margin-left,
-		$doc__title__font-size--lg,
-		$doc__title__breakpoint,
+		$doc-title__font-family,
+		$doc-title__font-size,
+		$doc-title__line-height,
+		$doc-title__font-weight,
+		$doc-title__text-align,
+		$doc-title__color,
+		$doc-title__font-style,
+		$doc-title__text-transform,
+		$doc-title__letter-spacing,
+		$doc-title__text-decoration,
+		$doc-title__margin-top,
+		$doc-title__margin-right,
+		$doc-title__margin-bottom,
+		$doc-title__margin-left,
+		$doc-title__font-size--lg,
+		$doc-title__breakpoint,
 		$h1__font-family,
 		$h1__font-size,
 		$h1__line-height,
@@ -392,28 +392,28 @@
 		$h1__margin-top,
 		$h1__margin-right,
 		$h1__margin-bottom,
-		$h1__margin-left		
+		$h1__margin-left
 	);
 }
 
-@mixin entry__title {
+@mixin entry-title {
 	@include heading-style(
-		$entry__title__font-family,
-		$entry__title__font-size,
-		$entry__title__line-height,
-		$entry__title__font-weight,
-		$entry__title__text-align,
-		$entry__title__color,
-		$entry__title__font-style,
-		$entry__title__text-transform,
-		$entry__title__letter-spacing,
-		$entry__title__text-decoration,
-		$entry__title__margin-top,
-		$entry__title__margin-right,
-		$entry__title__margin-bottom,
-		$entry__title__margin-left,
-		$entry__title__font-size--lg,
-		$entry__title__breakpoint,
+		$entry-title__font-family,
+		$entry-title__font-size,
+		$entry-title__line-height,
+		$entry-title__font-weight,
+		$entry-title__text-align,
+		$entry-title__color,
+		$entry-title__font-style,
+		$entry-title__text-transform,
+		$entry-title__letter-spacing,
+		$entry-title__text-decoration,
+		$entry-title__margin-top,
+		$entry-title__margin-right,
+		$entry-title__margin-bottom,
+		$entry-title__margin-left,
+		$entry-title__font-size--lg,
+		$entry-title__breakpoint,
 		$h2__font-family,
 		$h2__font-size,
 		$h2__line-height,
@@ -427,28 +427,28 @@
 		$h2__margin-top,
 		$h2__margin-right,
 		$h2__margin-bottom,
-		$h2__margin-left		
+		$h2__margin-left
 	);
 }
 
-@mixin widget__title {
+@mixin widget-title {
 	@include heading-style(
-		$widget__title__font-family,
-		$widget__title__font-size,
-		$widget__title__line-height,
-		$widget__title__font-weight,
-		$widget__title__text-align,
-		$widget__title__color,
-		$widget__title__font-style,
-		$widget__title__text-transform,
-		$widget__title__letter-spacing,
-		$widget__title__text-decoration,
-		$widget__title__margin-top,
-		$widget__title__margin-right,
-		$widget__title__margin-bottom,
-		$widget__title__margin-left,
-		$widget__title__font-size--lg,
-		$widget__title__breakpoint,
+		$widget-title__font-family,
+		$widget-title__font-size,
+		$widget-title__line-height,
+		$widget-title__font-weight,
+		$widget-title__text-align,
+		$widget-title__color,
+		$widget-title__font-style,
+		$widget-title__text-transform,
+		$widget-title__letter-spacing,
+		$widget-title__text-decoration,
+		$widget-title__margin-top,
+		$widget-title__margin-right,
+		$widget-title__margin-bottom,
+		$widget-title__margin-left,
+		$widget-title__font-size--lg,
+		$widget-title__breakpoint,
 		$h2__font-family,
 		$h2__font-size,
 		$h2__line-height,
@@ -462,28 +462,28 @@
 		$h2__margin-top,
 		$h2__margin-right,
 		$h2__margin-bottom,
-		$h2__margin-left		
+		$h2__margin-left
 	);
 }
 
-@mixin section__title {
+@mixin section-title {
 	@include heading-style(
-		$section__title__font-family,
-		$section__title__font-size,
-		$section__title__line-height,
-		$section__title__font-weight,
-		$section__title__text-align,
-		$section__title__color,
-		$section__title__font-style,
-		$section__title__text-transform,
-		$section__title__letter-spacing,
-		$section__title__text-decoration,
-		$section__title__margin-top,
-		$section__title__margin-right,
-		$section__title__margin-bottom,
-		$section__title__margin-left,
-		$section__title__font-size--lg,
-		$section__title__breakpoint,
+		$section-title__font-family,
+		$section-title__font-size,
+		$section-title__line-height,
+		$section-title__font-weight,
+		$section-title__text-align,
+		$section-title__color,
+		$section-title__font-style,
+		$section-title__text-transform,
+		$section-title__letter-spacing,
+		$section-title__text-decoration,
+		$section-title__margin-top,
+		$section-title__margin-right,
+		$section-title__margin-bottom,
+		$section-title__margin-left,
+		$section-title__font-size--lg,
+		$section-title__breakpoint,
 		$h2__font-family,
 		$h2__font-size,
 		$h2__line-height,
@@ -497,28 +497,28 @@
 		$h2__margin-top,
 		$h2__margin-right,
 		$h2__margin-bottom,
-		$h2__margin-left	
+		$h2__margin-left
 	);
 }
 
-@mixin nav__title {
+@mixin nav-title {
 	@include heading-style(
-		$nav__title__font-family,
-		$nav__title__font-size,
-		$nav__title__line-height,
-		$nav__title__font-weight,
-		$nav__title__text-align,
-		$nav__title__color,
-		$nav__title__font-style,
-		$nav__title__text-transform,
-		$nav__title__letter-spacing,
-		$nav__title__text-decoration,
-		$nav__title__margin-top,
-		$nav__title__margin-right,
-		$nav__title__margin-bottom,
-		$nav__title__margin-left,
-		$nav__title__font-size--lg,
-		$nav__title__breakpoint,
+		$nav-title__font-family,
+		$nav-title__font-size,
+		$nav-title__line-height,
+		$nav-title__font-weight,
+		$nav-title__text-align,
+		$nav-title__color,
+		$nav-title__font-style,
+		$nav-title__text-transform,
+		$nav-title__letter-spacing,
+		$nav-title__text-decoration,
+		$nav-title__margin-top,
+		$nav-title__margin-right,
+		$nav-title__margin-bottom,
+		$nav-title__margin-left,
+		$nav-title__font-size--lg,
+		$nav-title__breakpoint,
 		$h2__font-family,
 		$h2__font-size,
 		$h2__line-height,
@@ -532,7 +532,7 @@
 		$h2__margin-top,
 		$h2__margin-right,
 		$h2__margin-bottom,
-		$h2__margin-left	
+		$h2__margin-left
 	);
 }
 
@@ -553,7 +553,7 @@
 		$lede__margin-bottom,
 		$lede__margin-left,
 		$lede__font-size--lg,
-		$lede__breakpoint		
+		$lede__breakpoint
 	);
 }
 
@@ -561,21 +561,21 @@
 // -------------------------
 @mixin entry-meta {
 	@include text-style(
-		$meta__font-family,
-		$meta__font-size,
-		$meta__line-height,
-		$meta__font-weight,
-		$meta__text-align,
-		$meta__color,
-		$meta__font-style,
-		$meta__text-transform,
-		$meta__letter-spacing,
-		$meta__text-decoration,
-		$meta__margin-top,
-		$meta__margin-right,
-		$meta__margin-bottom,
-		$meta__margin-left,
-		$meta__font-size--lg,
-		$meta__breakpoint		
+		$entry-meta__font-family,
+		$entry-meta__font-size,
+		$entry-meta__line-height,
+		$entry-meta__font-weight,
+		$entry-meta__text-align,
+		$entry-meta__color,
+		$entry-meta__font-style,
+		$entry-meta__text-transform,
+		$entry-meta__letter-spacing,
+		$entry-meta__text-decoration,
+		$entry-meta__margin-top,
+		$entry-meta__margin-right,
+		$entry-meta__margin-bottom,
+		$entry-meta__margin-left,
+		$entry-meta__font-size--lg,
+		$entry-meta__breakpoint
 	);
 }

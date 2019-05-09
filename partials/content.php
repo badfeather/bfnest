@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( array( 'entry', 'entry--' . get_post_type() ) ); ?>>
 
-	<header class="entry__header">
-		<h2 class="entry__title entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+	<header class="entry-header">
+		<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 		<?php
 			bfnest_meta( array(
 				bfnest_get_meta_pubdate(),
@@ -10,11 +10,11 @@
 		?>
 	</header>
 
-	<div class="entry-content entry__content">
+	<div class="entry-content">
 		<?php the_content( __( 'Continue reading &rarr;', 'bfnest' ) ); ?>
 	</div>
 
-	<footer class="entry__footer">
+	<footer class="entry-footer">
 		<?php
 			bfnest_meta( array(
 				bfnest_get_meta_categories(),
