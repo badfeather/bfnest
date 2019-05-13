@@ -579,3 +579,26 @@
 		$entry-meta__breakpoint
 	);
 }
+
+// FIGCAPTION
+// -------------------------
+@mixin figcaption {
+	@include text-style(
+		$figcaption__font-family,
+		$figcaption__font-size,
+		$figcaption__line-height,
+		$figcaption__font-weight,
+		$figcaption__text-align,
+		$figcaption__color,
+		$figcaption__font-style,
+		$figcaption__text-transform,
+		$figcaption__letter-spacing,
+		$figcaption__text-decoration,
+		$figcaption__margin-top,
+		$figcaption__margin-right,
+		$figcaption__margin-bottom,
+		$figcaption__margin-left,
+		$figcaption__font-size--lg,
+		$figcaption__breakpoint
+	);
+}

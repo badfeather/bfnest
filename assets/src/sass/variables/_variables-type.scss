@@ -368,3 +368,22 @@ $entry-meta__margin-bottom: $base__margin;
 $entry-meta__margin-left: 0;
 $entry-meta__font-size--lg: $entry-meta__font-size;
 $entry-meta__breakpoint: $bp-lg;
+
+// FIGCAPTION
+// ---------------------------
+$figcaption__font-family: $base__font-family;
+$figcaption__font-size: $base__font-size--sm;
+$figcaption__line-height: $base__line-height;
+$figcaption__font-weight: $base__font-weight;
+$figcaption__text-align: $base__text-align;
+$figcaption__color: $base__color--secondary;
+$figcaption__font-style: normal;
+$figcaption__text-transform: none;
+$figcaption__letter-spacing: normal;
+$figcaption__text-decoration: none;
+$figcaption__margin-top: 0;
+$figcaption__margin-right: 0;
+$figcaption__margin-bottom: 0;
+$figcaption__margin-left: 0;
+$figcaption__font-size--lg: $figcaption__font-size;
+$figcaption__breakpoint: $bp-lg;

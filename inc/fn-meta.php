@@ -29,7 +29,7 @@ function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array()
  * $footer_class should either be 'doc' or 'entry'
  */
 function bfnest_edit_footer( $footer_class = 'doc' ) {
-	bfnest_meta( array( bfnest_get_meta_edit_link() ), '', array(), $before = '<footer class="' . esc_attr( $footer_class ) . '_-footer">', $after = '</footer>' );
+	bfnest_meta( array( bfnest_get_meta_edit_link() ), '', array(), $before = '<footer class="' . esc_attr( $footer_class ) . '-footer">', $after = '</footer>' );
 }
 
 /**

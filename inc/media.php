@@ -71,66 +71,130 @@ add_filter( 'shortcode_atts_gallery', 'bfnest_shortcode_atts_gallery', 10, 3 );
  */
 function bfnest_image_send_to_editor_with_figure( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
 	if ( ! $caption ) {
-		$el = 'div';
+		$el = current_theme_supports( 'html5' ) ? 'figure' : 'div';
 
-		if ( current_theme_supports( 'html5' ) ) {
-			$el = 'figure';
-		}
+		$img_src = wp_get_attachment_image_src( $id, $size );
+		$width = $img_src[1];
 
-		$html = sprintf( '<%1$s class="entry-figure entry-figure--size-%2$s align%3$s">%4$s</%1$s>', $el, $size, $align, $html );
+		// to omit the inline style, return zero
+		$figure_width = apply_filters( 'img_figure_width', $width );
+
+		$style = $figure_width ? ' style="width: ' . esc_attr( $figure_width ) . 'px;"' : '';
+
+		$html = sprintf( '<%1$s class="entry-figure entry-figure--size-%2$s align%3$s"%4$s>%5$s</%1$s>', $el, $size, $align, $style, $html );
 	}
 	return $html;
 }
 add_filter( 'image_send_to_editor', 'bfnest_image_send_to_editor_with_figure', 10, 8 );
 
-
 /**
  * Modified caption shortcode, adding size classes to wrapper element for styling purposes
  * Additional classes are 'entry-figure entry-figure--size-[sizename]'
  */
-function bfnest_img_caption_shortcode( $na, $attr, $content ) {
+function bfnest_img_caption_shortcode( $na, $attr, $content) {
+	$atts = shortcode_atts(
+		array(
+			'id' => '',
+			'caption_id' => '',
+			'align' => 'alignnone',
+			'width' => '',
+			'caption' => '',
+			'class' => '',
+		),
+		$attr,
+		'caption'
+	);
 
-	extract( shortcode_atts( array(
-		'id'	  => '',
-		'align'	  => 'alignnone',
-		'width'	  => '',
-		'caption' => '',
-		'class'   => '',
-	), $attr ) );
-
-	if ( $width < 1 || empty( $caption ) ) {
+	$atts['width'] = (int) $atts['width'];
+	if ( $atts['width'] < 1 || empty( $atts['caption'] ) ) {
 		return $content;
 	}
 
-	if ( ! empty( $id ) ) {
-		$id = 'id="' . esc_attr( sanitize_html_class( $id ) ) . '" ';
+	$id = $caption_id = $describedby = '';
+
+	if ( $atts['id'] ) {
+		$atts['id'] = sanitize_html_class( $atts['id'] );
+		$id = 'id="' . esc_attr( $atts['id'] ) . '" ';
 	}
 
-	$add_classes = ' entry-figure';
+	if ( $atts['caption_id'] ) {
+		$atts['caption_id'] = sanitize_html_class( $atts['caption_id'] );
+
+	} elseif ( $atts['id'] ) {
+		$atts['caption_id'] = 'caption-' . str_replace( '_', '-', $atts['id'] );
+	}
+
+	if ( $atts['caption_id'] ) {
+		$caption_id  = 'id="' . esc_attr( $atts['caption_id'] ) . '" ';
+		$describedby = 'aria-describedby="' . esc_attr( $atts['caption_id'] ) . '" ';
+	}
+
+	$classes = array( 'wp-caption', 'entry-figure', $atts['align'], $atts['class'] );
+
 	if ( preg_match( '/(size-[^\s]+)/', $content, $matches ) ) {
-		$add_classes .= ' entry-figure--' . $matches[1];
+		$classes[] = 'entry-figure--' . $matches[1];
 	}
 
-	$size = $matches[1];
-
-	$class = trim( 'wp-caption ' . $align . ' ' . $class . $add_classes );
+	$class = join( ' ', $classes );
 
 	$html5 = current_theme_supports( 'html5', 'caption' );
+	// HTML5 captions never added the extra 10px to the image width
+	$width = $html5 ? $atts['width'] : ( 10 + $atts['width'] );
 
-	$el = 'div';
-	$caption_el = 'p';
+	/**
+	 * Filters the width of an image's caption.
+	 *
+	 * By default, the caption is 10 pixels greater than the width of the image,
+	 * to prevent post content from running up against a floated image.
+	 *
+	 * @since 3.7.0
+	 *
+	 * @see img_caption_shortcode()
+	 *
+	 * @param int	$width	Width of the caption in pixels. To remove this inline style,
+	 *						 return zero.
+	 * @param array  $atts	 Attributes of the caption shortcode.
+	 * @param string $content  The image element, possibly wrapped in a hyperlink.
+	 */
+	$caption_width = apply_filters( 'img_caption_shortcode_width', $width, $atts, $content );
 
-	if ( $html5 ) {
-		$el = 'figure';
-		$caption_el = 'figcaption';
+	$style = '';
+	if ( $caption_width ) {
+		$style = 'style="width: ' . (int) $caption_width . 'px" ';
 	}
 
-	$html = '<' . $el . ' ' . $id . ' class="' . esc_attr( $class ) . '">'
-		. do_shortcode( $content ) . '<' . $caption_el . ' class="wp-caption-text">' . $caption . '</' . $caption_el . '></' . $el . '>';
+	if ( $html5 ) {
+		$html = sprintf(
+			'<figure %s%s%sclass="%s">%s%s</figure>',
+			$id,
+			$describedby,
+			$style,
+			esc_attr( $class ),
+			do_shortcode( $content ),
+			sprintf(
+				'<figcaption %sclass="wp-caption-text">%s</figcaption>',
+				$caption_id,
+				$atts['caption']
+			)
+		);
+	} else {
+		$html = sprintf(
+			'<div %s%sclass="%s">%s%s</div>',
+			$id,
+			$style,
+			esc_attr( $class ),
+			str_replace( '<img ', '<img ' . $describedby, do_shortcode( $content ) ),
+			sprintf(
+				'<p %sclass="wp-caption-text">%s</p>',
+				$caption_id,
+				$atts['caption']
+			)
+		);
+	}
 
 	return $html;
 }
-add_filter('img_caption_shortcode', 'bfnest_img_caption_shortcode', 10, 3 );
+add_filter( 'img_caption_shortcode', 'bfnest_img_caption_shortcode', 10, 3 );
 
 /**
  * Increase the max srcset limit - default is 1600
