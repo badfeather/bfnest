@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 5.2.0\n"
+"Project-Id-Version: Bad Feather Nest 5.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
-"POT-Creation-Date: 2019-05-13 19:26:25+00:00\n"
+"POT-Creation-Date: 2019-06-12 19:31:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Pingback:"
 msgstr ""
 
-#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:170
+#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:196
 msgid "Edit"
 msgstr ""
 
@@ -193,7 +193,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: inc/fn-comments.php:76 inc/fn-meta.php:288
+#: inc/fn-comments.php:76 inc/fn-meta.php:302
 msgid "Email"
 msgstr ""
 
@@ -201,55 +201,51 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: inc/fn-meta.php:45
+#: inc/fn-meta.php:53
 msgid "Posted in: "
 msgstr ""
 
-#: inc/fn-meta.php:48
+#: inc/fn-meta.php:56
 msgid "%1$s"
 msgstr ""
 
-#: inc/fn-meta.php:70
+#: inc/fn-meta.php:78
 msgid "Tagged: "
 msgstr ""
 
-#: inc/fn-meta.php:90
+#: inc/fn-meta.php:98
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/fn-meta.php:208
+#: inc/fn-meta.php:232
 msgid "Facebook"
 msgstr ""
 
-#: inc/fn-meta.php:222
+#: inc/fn-meta.php:245
 msgid "Twitter"
 msgstr ""
 
-#: inc/fn-meta.php:230
-msgid "Google+"
-msgstr ""
-
-#: inc/fn-meta.php:238
+#: inc/fn-meta.php:253
 msgid "LinkedIn"
 msgstr ""
 
-#: inc/fn-meta.php:256
+#: inc/fn-meta.php:270
 msgid "Pinterest"
 msgstr ""
 
-#: inc/fn-meta.php:264
+#: inc/fn-meta.php:278
 msgid "Digg"
 msgstr ""
 
-#: inc/fn-meta.php:272
+#: inc/fn-meta.php:286
 msgid "Reddit"
 msgstr ""
 
-#: inc/fn-meta.php:280
+#: inc/fn-meta.php:294
 msgid "Stumbleupon"
 msgstr ""
 
-#: inc/fn-meta.php:313
+#: inc/fn-meta.php:329
 msgid "Share: "
 msgstr ""
 

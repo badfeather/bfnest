@@ -27,11 +27,7 @@
 }
 
 @mixin row( $gutter: $grid__gutter-width ) {
-    letter-spacing: -0.31em; // Inline-block fallback: Webkit: collapse white-space between units
-    *letter-spacing: normal; // Inline-block fallback: reset IE < 8
-    word-spacing: -0.43em; // Inline-block fallback: collapse white-space between units
-	text-rendering: optimizespeed; // Inline-block fallback: Webkit: fixes text-rendering: optimizeLegibility
-	font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif; // Inline-block fallback: known to obey correct letter-spacing
+    @include clearfix; // flex fallback
 	margin-left: unitcalc( $gutter / -2 );
 	margin-right: unitcalc( $gutter / -2 );
 	//@include clearfix;
@@ -45,14 +41,7 @@
 }
 
 @mixin column( $gutter: $grid__gutter-width ) {
-    display: inline-block; // Inline-block fallback
-    *display: inline; // Inline-block fallback: IE < 8: fake inline-block
-    zoom: 1; // Inline-block fallback
-    letter-spacing: normal; // Inline-block fallback
-    word-spacing: normal; // Inline-block fallback
-    vertical-align: top; // Inline-block fallback
-	text-rendering: auto; // Inline-block fallback
-	font-family: $base__font-family;
+	float: left;
 	width: 100%;
 	@include guttered( $gutter );
 	position: relative;
@@ -60,7 +49,7 @@
 }
 
 @mixin columns( $n, $columns: $grid__columns ) {
-	width: percentage( $n / $columns );
+	max-width: percentage( $n / $columns );
 	flex: 0 0 percentage( $n / $columns );
 }
 
@@ -73,15 +62,15 @@
 }
 
 @mixin column--centered {
-	display: block; // Inline-block fallback
+	float: none;
+	clear: both;
 	margin-left: auto;
 	margin-right: auto;
-	clear: both;
 }
 
 @mixin uncolumn {
-	display: block; // Inline-block fallback
-	width: 100%;
+	float: none;
+	width: auto;
 	padding-left: initial;
 	padding-right: initial;
 }
@@ -94,8 +83,25 @@
 	margin-right: 0;
 }
 
+@mixin block-grid-float-fix( $columns: 3, $child-selector: null ) {
+	@if ( null == $child-selector ) {
+		$child-selector: '*';
+	}
+
+	& > #{child-selector} {
+		&:nth-of-type(n) {
+			clear: none;
+		}
+
+		&:nth-of-type(#{$columns}n+1) {
+			clear: both;
+		}
+	}
+}
+
 @mixin generate-column-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'columns', $i: 1, $prefix: '' ) {
 	@while $i <= $columns {
+
 		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
 			@include columns( $i, $columns );
 		}
@@ -122,7 +128,7 @@
 }
 
 // BLOCK GRID
-@mixin generate-block-grid-classes( $n, $parent-selector: '.block-grid', $parent-modifier-selector: 'block-grid', $child_selector: '.column', $i: 1 ) {
+@mixin generate-block-grid-classes( $n, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.column', $i: 1 ) {
 	#{$parent-selector} {
 		@include row;
 	}
@@ -136,6 +142,14 @@
 			& > #{$child-selector} {
 				width: percentage(1 / $i);
 				flex: 0 0 percentage( 1 / $i );
+
+				&:nth-of-type(n) {
+					clear: none;
+				}
+
+				&:nth-of-type(#{$i}n+1) {
+					clear: both;
+				}
 			}
 		}
 		$i: $i + 1;

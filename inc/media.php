@@ -38,6 +38,10 @@ function bfnest_media_options() {
 	update_option( 'medium_large_w', 546 );
 	update_option( 'large_size_w', 738 );
 	update_option( 'large_size_h', 9999 );
+
+	update_option( 'image_default_align', 'none' );
+	update_option( 'image_default_link_type', 'file' );
+	update_option( 'image_default_size', 'large' );
 }
 add_action( 'after_switch_theme', 'bfnest_media_options' );
 
@@ -74,7 +78,7 @@ function bfnest_image_send_to_editor_with_figure( $html, $id, $caption, $title, 
 		$el = current_theme_supports( 'html5' ) ? 'figure' : 'div';
 
 		$img_src = wp_get_attachment_image_src( $id, $size );
-		$width = $img_src[1];
+		$width = $img_src ? $img_src[1] : '';
 
 		// to omit the inline style, return zero
 		$figure_width = apply_filters( 'img_figure_width', $width );

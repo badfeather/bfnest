@@ -27,7 +27,6 @@ require $template_directory . ( '/inc/fn-meta.php' );
 require $template_directory . ( '/inc/fn-nav.php' );
 require $template_directory . ( '/inc/fn-post.php' );
 require $template_directory . ( '/inc/fn-shortcodes.php' );
-require $template_directory . ( '/inc/fn-utility.php' );
 
 // register any custom theme functions in this file
 require $template_directory . ( '/inc/fn-custom.php' );

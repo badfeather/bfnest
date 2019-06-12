@@ -4,7 +4,8 @@
  * Outputs meta functions added via first arg array
  * Use any of the the below functions or any custom functions you declare
  */
-function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array(), $before = '', $after = '' ) {
+// Get function
+function bfnest_get_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array(), $before = '', $after = '' ) {
 	$meta_array = array();
 
 	if ( ! empty( $metas ) ) {
@@ -17,11 +18,18 @@ function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array()
 
 	array_unshift( $meta_class, 'entry-meta' );
 
+	$meta_array = array_values( array_filter( $meta_array ) );
+
 	if ( ! empty( $meta_array ) ) {
-		echo $before . "\n" . '<div class="' . join( ' ', $meta_class ) . '">' . implode( $meta_sep, array_filter( $meta_array ) ) . '</div>' . "\n" . $after . "\n";
+		return $before . "\n" . '<div class="' . join( ' ', $meta_class ) . '">' . join( $meta_sep, $meta_array ) . '</div>' . "\n" . $after . "\n";
 	}
 
 	return false;
+}
+
+// Echo function
+function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array(), $before = '', $after = '' ) {
+	echo bfnest_get_meta( $metas, $meta_sep, $meta_class, $before, $after );
 }
 
 /**
@@ -143,23 +151,41 @@ function bfnest_get_meta_author( $before = null, $element = 'span' ) {
  * Custom field meta
  * Expects string custom field value
  */
-function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'span' ) {
+function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'span', $class = '' ) {
 	if ( empty( $meta_field ) ) {
 		return false;
 	}
 
 	$field = get_post_meta( get_the_ID(), $meta_field, true );
-
 	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
+	$add_class = $class ? ' ' . $class : '';
 
-	return '<' . $element . ' class="meta meta--cf">' . $title . $field . '</' . $element . '>';
+	return '<' . $element . ' class="meta meta--cf' . esc_attr( $add_class ) . '">' . $title . $field . '</' . $element . '>';
+}
+
+/**
+ * Custom field link meta
+ * Expects url custom field value
+ * $linked_text defaults to 'Download'
+ */
+function bfnest_get_meta_field_link( $meta_field = '', $before = null, $linked_text = 'Download', $element = 'span', $class = '' ) {
+	if ( empty( $meta_field ) ) {
+		return false;
+	}
+
+	$field = get_post_meta( get_the_ID(), $meta_field, true );
+	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
+	$add_class = $class ? ' ' . $class : '';
+
+	return '<' . $element . ' class="meta meta--cf-link' . esc_attr( $add_class ) . '">' . $title . '<a href="' . esc_url( $field ) . '">' .
+	esc_html( $linked_text ) .
+	'</a></' . $element . '>';
 }
 
 /**
  * Meta edit link
  */
 function bfnest_get_meta_edit_link( $label = null, $element = 'span' ) {
-
 	$edit_post_link = get_edit_post_link();
 
 	if ( ! $edit_post_link ) {
@@ -177,7 +203,6 @@ function bfnest_get_meta_edit_link( $label = null, $element = 'span' ) {
  * Helper function for bfnest_get_meta_share
  */
 function bfnest_get_share_data( $args = array() ) {
-
 	if ( empty( $args ) || is_wp_error( $args ) ) {
 		return false;
 	}
@@ -185,7 +210,6 @@ function bfnest_get_share_data( $args = array() ) {
 	$defaults = array(
 		'facebook' => 0,
 		'twitter' => 0,
-		'googleplus' => 0,
 		'linkedin' => 0,
 		'pinterest' => 0,
 		'digg' => 0,
@@ -212,7 +236,6 @@ function bfnest_get_share_data( $args = array() ) {
 	}
 
 	if ( $twitter ) {
-
 		$decoded_title = html_entity_decode( $post_title );
 		//$short_title = strlen( $decoded_title ) > 117 ? substr( $decoded_title, 0, 117 ) . "..." : $decoded_title;
 		$short_title = strlen( $decoded_title ) > 117 ? substr( $decoded_title, 0, strrpos( substr( $decoded_title, 0, 117 ), ' ' ) ) . html_entity_decode( '&hellip;' ) : $decoded_title;
@@ -225,14 +248,6 @@ function bfnest_get_share_data( $args = array() ) {
 		);
 	}
 
-	if ( $googleplus ) {
-		$networks[] = array(
-			'name' => __( 'Google+', 'bfnest' ),
-			'slug' => 'googleplus',
-			'url' => 'https://plus.google.com/share?url=' . $post_url,
-		);
-	}
-
 	if ( $linkedin ) {
 		$networks[] = array(
 			'name' => __( 'LinkedIn', 'bfnest' ),
@@ -242,7 +257,6 @@ function bfnest_get_share_data( $args = array() ) {
 	}
 
 	if ( $pinterest ) {
-
 		if ( has_post_thumbnail() ) {
 			$featured_image_id = get_post_thumbnail_id();
 			$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
@@ -291,6 +305,8 @@ function bfnest_get_share_data( $args = array() ) {
 		);
 	}
 
+	$networks = array_values( array_filter( $networks ) );
+
 	return apply_filters( 'bfnest_add_share_networks', $networks );
 }
 
@@ -302,9 +318,9 @@ function bfnest_get_share_data( $args = array() ) {
  * Uses bfnest_get_share_data()
  */
 
-function bfnest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'googleplus' => 1 ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
+function bfnest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'email' => 1 ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
 	$networks = bfnest_get_share_data( $args );
-	if ( empty( $networks ) && is_wp_error( $networks ) ) {
+	if ( empty( $networks ) || is_wp_error( $networks ) ) {
 		return false;
 	}
 
@@ -330,7 +346,7 @@ function bfnest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 
 	}
 
 	if ( ! empty( $share_array ) ) {
-		return '<' . $element . ' class="meta meta--share">' . $title . implode( $item_sep, array_filter( $share_array ) ) . '</' . $element . '>';
+		return '<' . $element . ' class="meta meta--share">' . $title . join( $item_sep, $share_array ) . '</' . $element . '>';
 	} // if ! empty $share_links
 
 	return false;
