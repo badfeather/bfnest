@@ -11,25 +11,26 @@ This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS
 * Change the name of the folder to whatever your theme should be called, then:
   * Find in files `bfnest` and replace with `yourtextdomain`
   * Find in files `Bad Feather Nest` and replace with `Your Theme Name`
-  * Change the repository, theme location, author and version information as needed in `package.json` and `bower.json` and `assets/sass/style.scss`
+  * Change the repository, theme location, author and version information as needed in `package.json`,`bower.json`, and `style.css`
   * Change the theme name and credit info in the `assets/sass/style.scss` or `style.css` file, depending on whether you're using SASS.
-  * Replace existing `assets/img/favicon.ico` file with your own
-  * Replace existing `assets/img/apple-touch-icon.png` file with your own. The current one is saved at 180 x 180 px. These get optimized and added to the `img` directory when you run `grunt`. 
+  * Replace existing `assets/src/img/apple-touch-icon.png` file with your own. The current one is saved at 180 x 180 px. These get optimized and added to the `assets/dist/img` directory when you run `grunt`. 
+  * Replace existing `assets/dist/favicon.ico` file with your own. The grunt task to minify images does not handle .ico files
+  
 * Run `npm install` to install all the default grunt dependencies
 * Update the `README.md` with more relevant language for your project.
 * Save out a new screenshot.png of your site at 1200 x 900 px.
 
 ### Customizing
 #### JS
-* Add any custom script files to the `assets/js/concat` directory.
-* Install any javascript dependencies via bower by running `bower install [package-name]` - these files will be placed in `js/vendor/`
-* These files can be concatenated to the `assets/js/build/theme.js` file by adding it to the `jsFileList` variable in the `Gruntfile.js`
-* If you want to simply include them in your project, add a `wp_enqueue_script` call to the `inc/scripts.php` file
+* Add any custom script files to the `assets/src/js` directory.
+* Install any javascript dependencies via bower by running `bower install [package-name]` - these files will be placed in `assets/src/vendor/`
+* Concatenate files can be concatenated to the `assets/dist/js/` directory file in the concat section of `Gruntfile.js`
+* If you want to include the concatenated files in your project, add `wp_enqueue_script` calls as necessary in the `inc/scripts.php` file
 
 #### SASS
-* Most style changes can/should be made in `assets/sass/variables/*.scss` and `assets/sass/theme/*.scss` files
+* Most style changes can/should be made in `assets/src/sass/variables/*.scss` and `assets/src/sass/theme/*.scss` files
 * Most of the SCSS variables that have anything to do with sizes should be set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `$h2-font-size: 20`.
-* The `archive.php`, `single.php`, etc. all use `get_template_part( 'content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
+* The `archive.php`, `single.php`, etc. all use `get_template_part( 'partials/content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 
 #### Grunt
 * This theme uses Grunt to perform a number of tasks, including SASS, js, image, and svg processing and minification.
@@ -45,7 +46,7 @@ Version numbers get updated in the `.json` files, theme stylesheets and `README.
 * To perform a major bump, ie. '1.0.0', run `grunt bump-major`. 
 
 #### Style Tester
-* Included is a very low-level style-testing guide of sorts. To use, open `assets/docs/style-tester.html`, copy all the contents, and paste in a new post or page on your Wordpress install in Text (not Visual) editing mode. Save this as a draft, then preview. Now you can see your type styles in action. For more thorough testing of your theme, download and import WordPress' [Theme Unit Test](https://codex.wordpress.org/Theme_Unit_Test).
+* Included is a very low-level style-tester custom page template. To use in your theme, set a page in your site to use that template. To add content to the style tester, edit `partials/style-tester.php`
 
 #### Good luck
 * As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.
@@ -54,11 +55,11 @@ Version numbers get updated in the `.json` files, theme stylesheets and `README.
 ## Theme Goals
 
 ### SASS/CSS
-* Handle all customizations through `assets/sass/variables/*.scss`files and `assets/sass/theme/*.scss` files.
+* Handle all customizations through `assets/src/sass/variables/*.scss`files and `assets/src/sass/theme/*.scss` files.
 * Provide variables and mixins for everything I might need.
 * Many mixins apply styles only if they're different than the default. This comes in handy in terms of keeping the CSS lean.
 * Use consistent patterns for variable names.
-* On the scaling front, I've decided to go with percentages and `em`s, 'cause, well, I like 'em. This means there's a lot of math going on via mixins, which I'll admit, creates some ugly numbers. Yes, I know about `rem`s, and I'm well aware that most modern browsers handle `px` scaling pretty darned well. Anyway, to make `em`s work, one must be careful about inheritance, which can cause some unwanted multiplication. For that reason, set as many font sizes as possible globally, avoid setting font sizes on containers, pay special attention to nested elements, and utilize classes and descendant selectors (within reason - don't over-specify!) for specific styles.
+* This site utilizes a SASS function called `unitcalc()` wherever necessary for sizing. In `assets/src/variables/_variables-base.scss`, there's a `$base__unit` variable that accepts `rem`, `px`, or `em`, which gets passed on to unitcalc to declare sizes. By default, this is set to `rem`.
 * Keep outputted CSS lean by minimizing specificity and utilizing SCSS extends wherever possible to group rules.
 * Rethinking each mixin or style rule poached from a framework - still work to do on this.
 * Compartmentalize the SCSS files enough to make it easy to find what I'm looking for.
