@@ -112,7 +112,7 @@ function bfnest_include_svg_icons() {
 	// If it exsists, include it.
 	if ( file_exists( $svg_icons ) ) {
 		echo '<span class="svg-defs">';
-		get_template_part( $svg_icons );
+		require_once $svg_icons;
 		echo '</span>' . "\n";
 	}
 }

@@ -39,7 +39,7 @@ module.exports = function ( grunt ) {
 			options: {
 				map: true,
 				processors: [
-					require( 'autoprefixer' )( {'browsers': 'last 2 versions'} ),
+					require( 'autoprefixer' ),
 					require( 'css-mqpacker' )( {'sort': true} )
 				]},
 			dist: {
@@ -139,6 +139,26 @@ module.exports = function ( grunt ) {
 		},
 
 		/**
+		 * Merge SVGs into a single SVG.
+		 *
+		 * @link https://github.com/FWeinb/grunt-svgstore
+		 */
+		svgstore: {
+			options: {
+				prefix: 'icon-',
+				cleanup: [ 'fill', 'style' ],
+				svg: {
+					style: 'display: none;'
+				}
+			},
+			dist: {
+				files: {
+					'assets/dist/img/svg-icons.svg': 'assets/src/img/svg-icons/*.svg'
+				}
+			}
+		},
+
+		/**
 		 * Minify PNG, JPG, and GIF images.
 		 *
 		 * @link https://github.com/gruntjs/grunt-contrib-imagemin
@@ -215,6 +235,7 @@ module.exports = function ( grunt ) {
 		'concat',
 		'uglify'
 	] );
+	grunt.registerTask( 'svg', [ 'svgstore' ] );
 	grunt.registerTask( 'images', [ 'imagemin' ] );
 	grunt.registerTask( 'i18n', [ 'makepot' ] );
 	grunt.registerTask( 'bump-patch', [ 'version::patch' ] );
@@ -223,6 +244,7 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'default', [
 		'styles',
 		'javascript',
+		//'svg', // uncomment if using svg sprite system
 		'images',
 		'i18n'
 	] );
