@@ -36,8 +36,8 @@
 @import "theme/theme-type";
 @import "theme/theme-grid";
 //@import "theme/theme-ib-grid";
-@import "theme/theme-layout";
-//@import "theme/theme-forms";
+//@import "theme/theme-layout";
+@import "theme/theme-forms";
 @import "theme/theme-media";
 //@import "theme/theme-navs";
 //@import "theme/theme-header";
@@ -48,9 +48,10 @@
 
 //@import "theme/theme-jetpack";
 
+@import "theme/theme-blocks";
+
 // GUTENBERG OVERRIDES
 .editor-post-title__block {
-
 	.editor-post-title__input {
 		font-family: $doc-title__font-family;
 		font-size: unitcalc( $doc-title__font-size );

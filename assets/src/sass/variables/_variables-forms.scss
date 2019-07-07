@@ -62,12 +62,12 @@ $button__padding-horizontal--lg: $form__padding-horizontal--lg;
 // BUTTON COLORS
 
 // button
-$button__color: $base__color;
+$button__color: $white;
 $button__background-color: $accent__color;
 $button__border-color: $button__background-color;
 $button__box-shadow: none;
 
-$button__color--hover: $base__color;
+$button__color--hover: $white;
 $button__background-color--hover: tint($button__background-color, 25%);
 $button__border-color--hover: tint($button__border-color, 25%);
 $button__box-shadow--hover: none;

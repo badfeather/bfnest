@@ -1,0 +1,42 @@
+//.wp-block-rss {
+//	&.alignleft {
+////		/*rtl:ignore*/
+////		margin-right: 2em;
+//		margin-right: unitcalc( $base__margin );
+//	}
+//	&.alignright {
+////		/*rtl:ignore*/
+////		margin-left: 2em;
+//		margin-left: unitcalc( $base__margin );
+//	}
+//	&.is-grid {
+//		@include list-unstyled();
+////		display: flex;
+////		flex-wrap: wrap;
+////		padding: 0;
+////		list-style: none;
+////
+////		li {
+////			margin: 0 16px 16px 0;
+////			width: 100%;
+////		}
+//	}
+//
+////	@include break-small {
+////		@for $i from 2 through 6 {
+////			&.columns-#{ $i } li {
+////				width: calc(( 100% / #{ $i } ) - 16px);
+////			}
+////		}
+////	}
+//}
+//
+//@include generate-block-grid-classes( 6, '.wp-block-rss.columns', 'li' );
+//
+//.wp-block-rss__item-publish-date,
+//.wp-block-rss__item-author {
+//	display: block;
+////	color: $dark-gray-300;
+////	font-size: $default-font-size;
+//	@include meta;
+//}

@@ -197,6 +197,7 @@ table {
 	@include margin-change-unitcalc( 0, 0, $base__margin, 0, $table__margin-top, 0, $table__margin-bottom, 0 );
 	width: 100%;
 	max-width: 100%;
+	word-break: break-all;
 }
 
 th,

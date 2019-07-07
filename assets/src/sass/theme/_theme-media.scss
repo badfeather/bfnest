@@ -9,6 +9,10 @@ figure {
 	@include margin-unitcalc( 0, 0, $figure__margin-bottom, 0 );
 }
 
+figcaption {
+	@include figcaption;
+}
+
 // wordpress-specific
 .alignleft {
 	float: left;
@@ -26,8 +30,7 @@ figure {
 }
 
 img,
-.wp-caption,
-.wp-block-image {
+.wp-caption {
 
 	&.alignleft,
 	&.alignright {
@@ -72,25 +75,13 @@ img,
 	width: unitcalc( $image-size--xl );
 }
 
-.wp-caption-text,
-.gallery-caption {
-	@include figcaption;
-	@include margin-top-unitcalc( $base__margin--quarter, $entry-meta__font-size );
-}
-
-.gallery,
-.wp-block-gallery {
+.gallery {
 	@include row;
 	margin-bottom: unitcalc( $base__margin );
 	padding-top: unitcalc( $base__margin--half );
 }
 
-.wp-block-gallery {
-	@include list-unstyled;
-}
-
-.gallery-item,
-.blocks-gallery-item {
+.gallery-item {
 	@include column;
 	margin-bottom: unitcalc( $base__margin );
 
@@ -100,9 +91,6 @@ img,
 }
 
 @include generate-block-grid-classes( 6, '.gallery-columns', '.gallery-item' );
-
-// gutenberg uses different classes
-//@include generate-block-grid-classes( 6, '.columns', '.blocks-gallery-item' );
 
 .svg-defs {
 	display: none;

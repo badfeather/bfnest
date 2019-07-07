@@ -23,11 +23,35 @@ function bfnest_setup() {
 
 	// gutenberg/editor styles and options
 	add_theme_support( 'editor-styles' );
+	add_editor_style( 'assets/dist/css/editor-style.css' );
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'responsive-embeds' );
-	
-	add_theme_support('disable-custom-font-sizes');
-	
+
+
+	add_theme_support( 'editor-font-sizes', array(
+//	    array(
+//	        'name' => __( 'Small', 'bfnest' ),
+//	        'size' => 12,
+//	        'slug' => 'small'
+//	    ),
+	    array(
+	        'name' => __( 'Normal', 'bfnest' ),
+	        'size' => 16,
+	        'slug' => 'normal'
+	    ),
+//	    array(
+//	        'name' => __( 'Large', 'bfnest' ),
+//	        'size' => 36,
+//	        'slug' => 'large'
+//	    ),
+//	    array(
+//	        'name' => __( 'Huge', 'bfnest' ),
+//	        'size' => 50,
+//	        'slug' => 'huge'
+//	    )
+	) );
+	add_theme_support( 'disable-custom-font-sizes' );
+
 	// set custom palette to empty first, so it's removed for buttons as well
 	add_theme_support( 'editor-color-palette', array() );
 	add_theme_support( 'disable-custom-colors' );
