@@ -157,6 +157,10 @@ function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'sp
 	}
 
 	$field = get_post_meta( get_the_ID(), $meta_field, true );
+	if ( ! $field ) {
+		return false;
+	}
+
 	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
 	$add_class = $class ? ' ' . $class : '';
 
@@ -168,16 +172,21 @@ function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'sp
  * Expects url custom field value
  * $linked_text defaults to 'Download'
  */
-function bfnest_get_meta_field_link( $meta_field = '', $before = null, $linked_text = 'Download', $element = 'span', $class = '' ) {
+function bfnest_get_meta_field_link( $meta_field = '', $before = null, $linked_text = 'Download', $element = 'span', $class = '', $new_window = false ) {
 	if ( empty( $meta_field ) ) {
 		return false;
 	}
 
 	$field = get_post_meta( get_the_ID(), $meta_field, true );
+	if ( ! $field ) {
+		return false;
+	}
+
 	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
+	$target = $new_window ? ' target="_blank"' : '';
 	$add_class = $class ? ' ' . $class : '';
 
-	return '<' . $element . ' class="meta meta--cf-link' . esc_attr( $add_class ) . '">' . $title . '<a href="' . esc_url( $field ) . '">' .
+	return '<' . $element . ' class="meta meta--cf-link' . esc_attr( $add_class ) . '">' . $title . '<a href="' . esc_url( $field ) . '"' . $target . '>' .
 	esc_html( $linked_text ) .
 	'</a></' . $element . '>';
 }

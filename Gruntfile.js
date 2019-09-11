@@ -1,7 +1,6 @@
 module.exports = function ( grunt ) {
 
-	const Fiber = require('fibers');
-	const sass = require('sass');
+	const sass = require('node-sass');
 
 	// Load all grunt tasks in package.json matching the `grunt-*` pattern.
 	require( 'load-grunt-tasks' )( grunt );
@@ -18,7 +17,6 @@ module.exports = function ( grunt ) {
 		sass: {
 			options: {
 				implementation: sass,
-				fiber: Fiber,
 				sourceMap: true,
 				outputStyle: 'expanded',
 			},
@@ -36,35 +34,32 @@ module.exports = function ( grunt ) {
 		 * @link https://github.com/nDmitry/grunt-postcss
 		 */
 		postcss: {
-			options: {
-				map: true,
-				processors: [
-					require( 'autoprefixer' ),
-					require( 'css-mqpacker' )( {'sort': true} )
-				]},
-			dist: {
+			css: {
+				options: {
+					map: true,
+					processors: [
+						require( 'autoprefixer' ),
+						require('pixrem')(),
+						require( 'css-mqpacker' )( {'sort': true} ),
+						//require('cssnano')()
+					]
+				},
 				src: [
 					'assets/dist/css/theme.css',
 					'assets/dist/css/editor-style.css',
 				]
-			}
-		},
-
-		/**
-		 * A modular minifier, built on top of the PostCSS ecosystem.
-		 *
-		 * @link https://github.com/ben-eb/cssnano
-		 */
-		cssnano: {
-			options: {
-				autoprefixer: false,
-				safe: true
 			},
-			dist: {
-				files: {
-					'assets/dist/css/theme.min.css': 'assets/dist/css/theme.css',
-					'assets/dist/css/editor-style.min.css': 'assets/dist/css/editor-style.css',
-				}
+			min: {
+				options: {
+					map: false,
+					processors: [
+						require('cssnano')()
+					]
+				},
+				files: [
+					{ src: 'assets/dist/css/theme.css', dest: 'assets/dist/css/theme.min.css' },
+					{ src: 'assets/dist/css/editor-style.css', dest: 'assets/dist/css/editor-style.min.css' }
+				]
 			}
 		},
 
@@ -229,7 +224,10 @@ module.exports = function ( grunt ) {
 	} );
 
 	// Register Grunt tasks.
-	grunt.registerTask( 'styles', [ 'sass', 'postcss', 'cssnano' ] );
+	grunt.registerTask( 'styles', [
+		'sass',
+		'postcss',
+	] );
 	grunt.registerTask( 'javascript', [
 		//'eslint',
 		'concat',

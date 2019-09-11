@@ -1,78 +1,42 @@
 <?php
-/**
- * Enqueue/dequeue block assets
+	/**
+ * Add block categories
  */
-function bfnest_enqueue_block_assets() {
-	wp_enqueue_script(
-		'bfnest-block-filters',
-		get_template_directory_uri() . '/assets/dist/js/block-filters.js',
-		['wp-blocks']
+function bfnest_block_categories( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'bfnest-blocks',
+				'title' => __( 'Bad Feather Nest Blocks', 'bfnest' ),
+			),
+		)
 	);
-
-	// Overwrite Core block styles with empty styles.
-	wp_deregister_style( 'wp-block-library' );
-	wp_register_style( 'wp-block-library', '' );
-
-	// Overwrite Core theme styles with empty styles.
-	wp_deregister_style( 'wp-block-library-theme' );
-	wp_register_style( 'wp-block-library-theme', '' );
 }
-add_action( 'enqueue_block_assets', 'bfnest_enqueue_block_assets' );
+add_filter( 'block_categories', 'bfnest_block_categories', 10, 2 );
 
 /**
- * Turn on/off core block types
+ * Register Blocks
+ * @ see https://www.advancedcustomfields.com/resources/acf_register_block_type/
  */
-function bfnest_allowed_block_types( $allowed_blocks, $post ) {
+function bfnest_register_acf_blocks() {
 
-	$allowed_blocks = array(
-		// common
-		'core/paragraph',
-		'core/image',
-		'core/heading',
-		'core/gallery',
-		'core/list',
-		'core/quote',
-		'core/audio',
-		'core/cover',
-		'core/file',
-		'core/video',
-		// formatting
-		'core/table',
-		'core/verse',
-		'core/code',
-		'core/freeform', // classic
-		'core/html',
-		'core/preformatted',
-		'core/pullquote',
-		// layout
-		'core/button',
-		'core/text-columns',
-		'core/media-text',
-		'core/more',
-		'core/next-page',
-		'core/separator',
-		'core/spacer',
-		//widgets
-		'core/shortcode',
-//		'core/archives',
-//		'core/categories',
-//		'core/latest-posts',
-//		'core/calendar',
-//		'core/rss',
-		'core/search',
-//		'core/tag-cloud',
-		// embeds
-		'core/core-embed',
-		// see all embed options to turn on/off individually
+	if ( ! function_exists( 'acf_register_block_type' ) ) {
+		return;
+	}
 
-	);
-
-//	if( $post->post_type === 'page' ) {
-//		$allowed_blocks[] = 'core/shortcode';
-//	}
-
-	return $allowed_blocks;
-
+//	acf_register_block_type( array(
+//		'name' => 'name' // unique identifier
+//		'title' => __( 'Name', 'bfnest' ),
+//		//'description' => __( 'Description', 'bfnest' ), // (optional)
+//		'category' => 'embed', // options: 'common", 'formatting', 'layout', 'widgets', 'embed'
+//		'icon' => 'book-alt', // use dashicons (https://developer.wordpress.org/resource/dashicons/) or custom svg
+//		'post_types' => array( 'page' ),
+//		'keywords' => array( 'testimonial', 'quote', 'mention', 'cite' ),
+//		'mode' => 'preview', // options: 'preview' (default), 'auto', 'edit'
+//		'align' => '', // options: '' (default), 'left', 'center', 'right', 'wide', 'full'
+//		'render_template' => 'partials/block-name.php', // path to template
+//	) );
 }
-add_filter( 'allowed_block_types', 'bfnest_allowed_block_types', 10, 2 );
+//add_action('acf/init', 'bfnest_register_acf_blocks' );
 

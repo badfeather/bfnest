@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bad Feather Nest 5.2.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
-"POT-Creation-Date: 2019-07-07 18:48:05+00:00\n"
+"POT-Creation-Date: 2019-09-11 23:21:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -79,6 +79,10 @@ msgstr ""
 
 #: header.php:35
 msgid "Menu"
+msgstr ""
+
+#: inc/blocks.php:11
+msgid "Bad Feather Nest Blocks"
 msgstr ""
 
 #: inc/custom-content.php:12
@@ -177,7 +181,7 @@ msgstr ""
 msgid "Pingback:"
 msgstr ""
 
-#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:196
+#: inc/fn-comments.php:14 inc/fn-comments.php:34 inc/fn-meta.php:205
 msgid "Edit"
 msgstr ""
 
@@ -193,7 +197,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: inc/fn-comments.php:76 inc/fn-meta.php:302
+#: inc/fn-comments.php:76 inc/fn-meta.php:311
 msgid "Email"
 msgstr ""
 
@@ -217,35 +221,35 @@ msgstr ""
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/fn-meta.php:232
+#: inc/fn-meta.php:241
 msgid "Facebook"
 msgstr ""
 
-#: inc/fn-meta.php:245
+#: inc/fn-meta.php:254
 msgid "Twitter"
 msgstr ""
 
-#: inc/fn-meta.php:253
+#: inc/fn-meta.php:262
 msgid "LinkedIn"
 msgstr ""
 
-#: inc/fn-meta.php:270
+#: inc/fn-meta.php:279
 msgid "Pinterest"
 msgstr ""
 
-#: inc/fn-meta.php:278
+#: inc/fn-meta.php:287
 msgid "Digg"
 msgstr ""
 
-#: inc/fn-meta.php:286
+#: inc/fn-meta.php:295
 msgid "Reddit"
 msgstr ""
 
-#: inc/fn-meta.php:294
+#: inc/fn-meta.php:303
 msgid "Stumbleupon"
 msgstr ""
 
-#: inc/fn-meta.php:329
+#: inc/fn-meta.php:338
 msgid "Share: "
 msgstr ""
 
@@ -485,7 +489,7 @@ msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr ""
 
-#: comments.php:12
+#: comments.php:11
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"

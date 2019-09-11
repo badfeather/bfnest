@@ -83,14 +83,17 @@ img,
 
 .gallery-item {
 	@include column;
-	margin-bottom: unitcalc( $base__margin );
+	margin-bottom: unitcalc( $grid__gutter-width );
+	figure {
+		margin: 0;
+	}
 
 	img {
 		display: block;
 	}
 }
 
-@include generate-block-grid-classes( 6, '.gallery-columns', '.gallery-item' );
+@include generate-block-grid-classes( 6, '.gallery', '.gallery-columns', '.gallery-item' );
 
 .svg-defs {
 	display: none;

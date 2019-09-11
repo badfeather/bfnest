@@ -157,4 +157,4 @@
 }
 
 // gutenberg uses different classes
-@include generate-block-grid-classes( 6, '.columns', '.blocks-gallery-item' );
+@include generate-block-grid-classes( 6, '.wp-block-gallery', '.columns', '.blocks-gallery-item' );

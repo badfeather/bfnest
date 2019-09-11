@@ -5,7 +5,6 @@
 ?>
 
 <section id="comments" class="comments">
-
 	<?php if ( have_comments() ) { ?>
 		<h2 class="section-title comments__title">
 			<?php
@@ -18,6 +17,7 @@
 			<?php
 				wp_list_comments( array(
 					'style' => 'ol',
+					'type' => 'comment',
 					'short_ping' => true,
 					'callback' => 'bfnest_comment'
 				) );
@@ -39,5 +39,4 @@
 	<?php } // endif ?>
 
 	<?php comment_form(); ?>
-
 </section>

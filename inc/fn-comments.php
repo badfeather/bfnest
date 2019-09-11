@@ -24,7 +24,7 @@ function bfnest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 				<span class="comment__author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					<?php printf( __( '%s', 'bfnest' ), sprintf( '<cite class="fn meta meta-author">%s</cite>', get_comment_author_link() ) ); ?>
-				</span><?php // / /.comment__author ?>
+				</span>
 
 				<?php echo $meta_sep; ?><a class="meta meta--comment--time" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 					<time datetime="<?php comment_time( 'c' ); ?>">
@@ -45,10 +45,10 @@ function bfnest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 				<?php
 					comment_reply_link( array_merge( $args, array(
 						'add_below' => 'div-comment',
-						'depth'			=> $depth,
+						'depth' => $depth,
 						'max_depth' => $args['max_depth'],
-						'before'		=> '<div class="comment-meta comment-meta--reply"><span class="meta meta--reply">',
-						'after'			=> '</div></div>',
+						'before' => '<div class="comment-meta comment-meta--reply"><span class="meta meta--reply">',
+						'after' => '</span></div>',
 					) ) );
 				?>
 			</div>
@@ -69,7 +69,7 @@ function bfnest_comment_form( $args ) {
     $req = get_option( 'require_name_email' );
     $html_req = ( $req ? " required='required'" : '' );
     $html5 = 'html5' === $args['format'];
-    	
+
 	$args['fields'] = array(
 		'author' => '<p class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'bfnest' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
 		'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" maxlength="245"' . $html_req . ' /></p>',
@@ -78,11 +78,11 @@ function bfnest_comment_form( $args ) {
 		'url' => '<p class="comment-form-url form-group"><label for="url">' . __( 'Website', 'bfnest' ) . '</label> ' .
 		'<input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" maxlength="200" /></p>',
 	);
-	
+
 	$args['comment_field'] = '<p class="comment-form-comment form-group"><label for="comment">' . _x( 'Comment', 'noun', 'bfnest' ) . '</label> <textarea id="comment" class="form-control" name="comment" rows="8" maxlength="65525" required="required"></textarea></p>';
-        
+
 	$args['class_submit'] = 'submit button';
-  
+
     return $args;
 }
 add_filter( 'comment_form_defaults', 'bfnest_comment_form' );

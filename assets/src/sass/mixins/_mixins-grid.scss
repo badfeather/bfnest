@@ -27,12 +27,10 @@
 }
 
 @mixin row( $gutter: $grid__gutter-width ) {
-    @include clearfix; // flex fallback
-	margin-left: unitcalc( $gutter / -2 );
-	margin-right: unitcalc( $gutter / -2 );
-	//@include clearfix;
 	display: flex;
 	flex-wrap: wrap;
+	margin-left: unitcalc( $gutter / -2 );
+	margin-right: unitcalc( $gutter / -2 );
 }
 
 @mixin row--centered {
@@ -41,11 +39,15 @@
 }
 
 @mixin column( $gutter: $grid__gutter-width ) {
-	float: left;
+	position: relative;
 	width: 100%;
 	@include guttered( $gutter );
-	position: relative;
-	flex: 1;
+}
+
+@mixin column--auto {
+	flex: 0 0 auto;
+	width: auto;
+	max-width: 100%;
 }
 
 @mixin columns( $n, $columns: $grid__columns ) {
@@ -62,14 +64,11 @@
 }
 
 @mixin column--centered {
-	float: none;
-	clear: both;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 @mixin uncolumn {
-	float: none;
 	width: auto;
 	padding-left: initial;
 	padding-right: initial;
@@ -83,19 +82,19 @@
 	margin-right: 0;
 }
 
-@mixin block-grid-float-fix( $columns: 3, $child-selector: null ) {
-	@if ( null == $child-selector ) {
-		$child-selector: '*';
-	}
+// make element in column break wider
+// align can be 'left', 'center', or 'right'
+@mixin break-columns( $n, $parent-n, $gutter: $grid__gutter-width, $align: 'center' ) {
+	$width: ( $grid__column-total-width * $n ) - $gutter;
+	$parent-width: ( $grid__column-total-width * $parent-n ) - $gutter;
+	$difference: $width - $parent-width;
+	width: percentage( $width  / $parent-width );
 
-	& > #{child-selector} {
-		&:nth-of-type(n) {
-			clear: none;
-		}
+	@if ( $align == 'right' ) {
+		margin-left: percentage( $difference / $parent-width * -1 );
 
-		&:nth-of-type(#{$columns}n+1) {
-			clear: both;
-		}
+	} @else if ( $align == 'center' ) {
+		margin-left: percentage( ( $difference / -2 ) / $parent-width );
 	}
 }
 
@@ -140,16 +139,9 @@
 	@while $i <= $n {
 		#{$parent-modifier-selector}-#{$i} {
 			& > #{$child-selector} {
-				width: percentage(1 / $i);
+				max-width: percentage( 1 / $i );
 				flex: 0 0 percentage( 1 / $i );
 
-				&:nth-of-type(n) {
-					clear: none;
-				}
-
-				&:nth-of-type(#{$i}n+1) {
-					clear: both;
-				}
 			}
 		}
 		$i: $i + 1;
@@ -167,6 +159,7 @@
 	#{$selector-type}#{$prefix}row { @include row; }
 	#{$selector-type}#{$prefix}row--centered { @include row--centered; }
 	#{$selector-type}#{$prefix}column { @include column; }
+	#{$selector-type}#{$prefix}column--auto { @include column--auto; }
 	@include generate-column-classes( $grid__columns, $selector-type, 'columns', 1, $prefix );
 	@include generate-push-classes( $grid__columns, $selector-type, 'push', 1, $prefix );
 	@include generate-pull-classes( $grid__columns, $selector-type, 'pull', 1, $prefix );
