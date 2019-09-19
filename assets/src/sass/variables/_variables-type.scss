@@ -5,7 +5,7 @@ $link__color--hover: $accent__color--alt;
 $link__color--active: $link__color--hover;
 $link__color--visited: $link__color;
 $link__text-decoration: none;
-$link__text-decoration--hover: none;
+$link__text-decoration--hover: $link__text-decoration;
 
 // HEADINGS
 // ---------------------------

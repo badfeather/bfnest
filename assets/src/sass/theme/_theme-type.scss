@@ -100,7 +100,7 @@ a {
 	&:hover,
 	&:focus {
 		color: $link__color--hover;
-		text-decoration: $link__text-decoration--hover;
+		@include text-decoration-change( $link__text-decoration--hover, $link__text-decoration );
 	}
 
 	&:focus {

@@ -343,7 +343,6 @@ a {
 
 a:hover, a:focus {
   color: #f0f;
-  text-decoration: none;
 }
 
 a:focus {
