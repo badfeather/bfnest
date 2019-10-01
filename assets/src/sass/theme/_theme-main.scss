@@ -1,5 +1,5 @@
 .doc-main {
-	@include margin-bottom-unitcalc( $doc-margin-bottom );
+	@include margin-bottom-unitcalc( $doc__margin-bottom );
 }
 
 .hentry {

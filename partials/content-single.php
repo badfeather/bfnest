@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'entry', 'single', 'single--' . get_post_type() ) ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'entry', 'entry--single', 'entry--single-' . get_post_type() ) ); ?>>
 	<header class="doc-header">
 		<h1 class="doc-title entry-title"><?php the_title(); ?></h1>
 		<?php
