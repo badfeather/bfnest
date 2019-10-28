@@ -5,7 +5,8 @@ img {
 	height: auto;
 }
 
-figure {
+figure,
+.wp-video {
 	@include margin-unitcalc( 0, 0, $figure__margin-bottom, 0 );
 }
 
@@ -31,7 +32,6 @@ figcaption {
 
 img,
 .wp-caption {
-
 	&.alignleft,
 	&.alignright {
 		display: inline;

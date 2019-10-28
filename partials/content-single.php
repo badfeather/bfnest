@@ -10,7 +10,6 @@
 	</header>
 
 	<div class="doc-content">
-
 		<div class="entry-content">
 			<?php the_content(); ?>
 			<?php
@@ -42,7 +41,6 @@
 
 			bfnest_postnav_single();
 		?>
-
 	</div>
 </article>
 

@@ -1,5 +1,4 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( array( 'entry', 'entry--' . get_post_type() ) ); ?>>
-
 	<header class="entry-header">
 		<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 		<?php
@@ -24,5 +23,4 @@
 			) );
 		?>
 	</footer>
-
 </article>

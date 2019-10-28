@@ -1,95 +1,136 @@
 <?php
-
 /**
- * Get the first image from a post
- * Must be used within the loop
- * Use bfnest_get_first_image( $atts ) in template, much like get_the_post_thumbnail()
- * 'size' defaults to 'thumbnail'
- * Atts array defailts to:
- * 'output' => 'img' // can be either 'img' or 'url'
- * 'link' => false // if true, will link to full version of itself
+ * Get ID of first image from post
+ * If no $post_id argument is supplied, must be used within the loop
  */
-function bfnest_get_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
+function bfnest_get_first_image_id( $post_id = null ) {
 	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
-	$defaults = array(
-		'output' => 'img', // accepts either 'img' or 'url'
-		'link' => false // ignored if output is set to url
-	);
-
-	$atts = wp_parse_args( $atts, $defaults );
-	extract( $atts, EXTR_SKIP );
-
-	$images = get_attached_media( 'image' );
+	$images = get_attached_media( 'image', $post_id );
 
 	if ( empty( $images ) || is_wp_error( $images ) ) {
 		return false;
-
-	} else {
-
-		$image = array_shift( $images );
-		$image_id = $image->ID;
-		$img = wp_get_attachment_image( $image_id, $size );
-		$img_src = wp_get_attachment_image_src( $image_id, $size );
-		$img_url = $img_src[0];
-		$img_full_url = wp_get_attachment_url( $image_id );
-		//$img_link = get_permalink( $image->post_parent );
-		//$img_title = $image->post_title;
-		//$img_caption = $image->post_excerpt;
-		//$img_desc = $image->post_content;
-
-		if ( 'img' == $output ) {
-
-			if ( $link ) {
-				return '<a href="' . $img_full_url . '>">' . $img . '</a>';
-
-			} else {
-				return $img;
-
-			} // endif $link
-
-		} elseif ( 'url' == $output ) {
-				return $img_url;
-		} // endif $output - 'img'
-
 	}
 
-	return false;
-
+	$image = array_shift( $images );
+	return $image->ID;
 }
 
 /**
- * Echoes the first image from a post using arguments from bfnest_get_first_image() function
- * Much like the_post_thumbnail
+ * Get first image as <img ... /> tag
+ * If no $post_id argument is supplied, must be used within the loop
  */
-function bfnest_first_image( $size = 'thumbnail', $post_id = null, $atts = array() ) {
-	echo bfnest_get_first_image( $size, $post_id, $atts );
+// Get function
+function bfnest_get_first_image( $size = 'thumbnail', $post_id = null ) {
+	$image_id = bfnest_get_first_image_id( $post_id );
+
+	if ( ! $image_id ) {
+		return false;
+	}
+
+	return wp_get_attachment_image( $image_id, $size );
+}
+
+// Echo function
+function bfnest_first_image( $size = 'thumbnail', $post_id = null ) {
+	echo bfnest_get_first_image( $size, $post_id );
 }
 
 /**
- * Echoes the first image from a post using arguments from bfnest_get_first_image() function
- * Much like the_post_thumbnail
+ * Get first image url
+ * If no $post_id argument is supplied, must be used within the loop
  */
+// Get function
 function bfnest_get_first_image_url( $size = 'thumbnail', $post_id = null ) {
-	return bfnest_get_first_image( $size, $post_id, $atts = array( 'output' => 'url' ) );
-}
+	$image_id = bfnest_get_first_image_id( $post_id );
 
-/**
- * Get featured or first image
- * must be used within the loop
- */
-function bfnest_get_featured_or_first_image( $size = 'thumbnail', $post_id = null ) {
-	if ( has_post_thumbnail( $post_id ) ) {
-		return get_the_post_thumbnail( $post_id, $size );
-
-	} else {
-		return bfnest_get_first_image( $size, $post_id, $atts = array( 'output' => 'img' ) );
+	if ( ! $image_id ) {
+		return false;
 	}
+
+	return wp_get_attachment_image_url( $image_id, $size );
+}
+
+// Echo function
+function bfnest_first_image_url( $size = 'thumbnail', $post_id = null ) {
+	echo bfnest_get_first_image_url( $size, $post_id );
 }
 
 /**
- * Featured or first image
- * must be used within the loop
+ * Get first image, linked to full image
+ * If no $post_id argument is supplied, must be used within the loop
  */
+// Get function
+function bfnest_get_first_image_link( $size = 'thumbnail', $post_id = null ) {
+	$image_id = bfnest_get_first_image_id( $post_id );
+
+	if ( ! $image_id ) {
+		return false;
+	}
+
+	return wp_get_attachment_link( $image_id, $size );
+}
+
+// Echo function
+function bfnest_first_image_link( $size = 'thumbnail', $post_id = null ) {
+	echo bfnest_get_first_image_link( $size, $post_id );
+}
+
+/**
+ * Get id of featured or first image in post
+ * If no $post_id argument is supplied, must be used within the loop
+ */
+function bfnest_get_featured_or_first_image_id( $post_id = null ) {
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	return get_post_thumbnail_id( $post_id ) ? get_post_thumbnail_id( $post_id ) : bfnest_get_first_image_id( $post_id );
+}
+
+/**
+ * Get featured or first image in post  as <img.. /> tag
+ * If no $post_id argument is supplied, must be used within the loop
+ */
+// Get function
+function bfnest_get_featured_or_first_image( $size = 'thumbnail', $post_id = null ) {
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	$image_id = bfnest_get_featured_or_first_image_id( $post_id );
+
+	return $image_id ? wp_get_attachment_image( $image_id, $size ) : false;
+}
+
+// Echo function
 function bfnest_featured_or_first_image( $size = 'thumbnail', $post_id = null ) {
 	echo bfnest_get_featured_or_first_image( $size, $post_id );
+}
+
+/**
+ * Get featured or first image in post  as <img.. /> tag
+ * If no $post_id argument is supplied, must be used within the loop
+ */
+// Get function
+function bfnest_get_featured_or_first_image_url( $size = 'thumbnail', $post_id = null ) {
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	$image_id = bfnest_get_featured_or_first_image_id( $post_id );
+
+	return $image_id ? wp_get_attachment_image_url( $image_id, $size ) : false;
+}
+
+// Echo function
+function bfnest_featured_or_first_image_url( $size = 'thumbnail', $post_id = null ) {
+	echo bfnest_get_featured_or_first_image_url( $size, $post_id );
+}
+
+/**
+ * Get featured or first image in post, linking to full image
+ * If no $post_id argument is supplied, must be used within the loop
+ */
+// Get function
+function bfnest_get_featured_or_first_image_link( $size = 'thumbnail', $post_id = null ) {
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	$image_id = bfnest_get_featured_or_first_image_id( $post_id );
+
+	return $image_id ? wp_get_attachment_link( $image_id, $size ) : false;
+}
+
+// Echo function
+function bfnest_featured_or_first_image_link( $size = 'thumbnail', $post_id = null ) {
+	echo bfnest_get_featured_or_first_image_link( $size, $post_id );
 }

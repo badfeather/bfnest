@@ -1,11 +1,9 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( array( 'entry', 'entry--page' ) ); ?>>
-
 	<header class="doc-header">
 		<h1 class="doc-title entry-title"><?php the_title(); ?></h1>
 	</header>
 
 	<div class="doc-content">
-
 		<div class="entry-content">
 			<?php the_content(); ?>
 			<?php
@@ -17,9 +15,7 @@
 		</div>
 
 		<?php bfnest_edit_footer(); ?>
-
 	</div>
-
 </article>
 
 
