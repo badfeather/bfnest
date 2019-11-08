@@ -1,13 +1,9 @@
 .site {
-	padding: 1em;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.site-header,
-.site-content,
-.site-footer {
-	@extend %bp-lg__container;
-	@extend %bp-lg__container--centered;
+.site-content {
+  flex: 1;
 }
-
-
-

@@ -4,6 +4,8 @@ $grid__column-width: 65;
 $grid__column-total-width: $grid__gutter-width + $grid__column-width;
 $grid__columns: 12;
 
+$form-grid__gutter-width: 10;
+
 // default grid witdh
 $grid__width: $grid__column-total-width * $grid__columns;
 //$grid__width: 1140;
