@@ -331,6 +331,44 @@ $blockquote__margin-left: 0;
 $blockquote__font-size--lg: $blockquote__font-size;
 $blockquote__breakpoint: $bp-lg;
 
+// CITE
+// ---------------------------
+$cite__font-family: $base__font-family;
+$cite__font-size: $base__font-size;
+$cite__line-height: $base__line-height;
+$cite__font-weight: $base__font-weight;
+$cite__text-align: $base__text-align;
+$cite__color: $base__color;
+$cite__font-style: normal;
+$cite__text-transform: none;
+$cite__letter-spacing: normal;
+$cite__text-decoration: none;
+$cite__margin-top: 0;
+$cite__margin-right: 0;
+$cite__margin-bottom: $base__margin;
+$cite__margin-left: 0;
+$cite__font-size--lg: $cite__font-size;
+$cite__breakpoint: $bp-lg;
+
+// PULLQUOTE
+// ---------------------------
+$pullquote__font-family: $base__font-family;
+$pullquote__font-size: $base__font-size;
+$pullquote__line-height: $base__line-height;
+$pullquote__font-weight: $base__font-weight;
+$pullquote__text-align: $base__text-align;
+$pullquote__color: $base__color;
+$pullquote__font-style: normal;
+$pullquote__text-transform: none;
+$pullquote__letter-spacing: normal;
+$pullquote__text-decoration: none;
+$pullquote__margin-top: 0;
+$pullquote__margin-right: 0;
+$pullquote__margin-bottom: $base__margin;
+$pullquote__margin-left: 0;
+$pullquote__font-size--lg: $pullquote__font-size;
+$pullquote__breakpoint: $bp-lg;
+
 // LEDE
 // ---------------------------
 $lede__font-family: $base__font-family;

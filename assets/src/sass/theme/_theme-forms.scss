@@ -85,6 +85,7 @@ textarea {
 
 .form-row--inline {
 	//@include margin-unitcalc( $value-bottom: $form-group__margin-bottom );
+	margin-bottom: unitcalc( $form-group__margin-bottom / 2 );
 
 	.form-control,
 	label,
@@ -104,7 +105,8 @@ textarea {
 	.button,
 	.form-check,
 	label {
-		margin-right: .5em;
+		margin-right: unitcalc( $form-grid__gutter-width );
+		margin-bottom: unitcalc( $form-group__margin-bottom / 2 );
 	}
 
 	label {
@@ -151,6 +153,18 @@ textarea {
 
 .button--danger {
 	@include button--danger;
+}
+
+.button--light {
+	@include button--light;
+}
+
+.button--outline {
+	@include button--outline;
+}
+
+.button--trans {
+	@include button--trans;
 }
 
 // FORM CONTROLS

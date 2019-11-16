@@ -9,35 +9,39 @@
 @mixin container( $gutter: $grid__gutter-width, $width: $grid__width ) {
 	@include guttered( $gutter );
 	max-width: unitcalc( $width );
-}
-
-@mixin container--centered {
 	margin-left: auto;
 	margin-right: auto;
 }
 
 @mixin container--left {
 	margin-left: 0;
-	margin-right: auto;
 }
 
 @mixin container--right {
 	margin-right: 0;
-	margin-left: auto;
+}
+
+@mixin row-gutters( $gutter: $grid__gutter-width ) {
+	margin-left: unitcalc( $gutter / -2 );
+	margin-right: unitcalc( $gutter / -2 );
 }
 
 @mixin row( $gutter: $grid__gutter-width ) {
 	display: flex;
 	flex-wrap: wrap;
-	margin-left: unitcalc( $gutter / -2 );
-	margin-right: unitcalc( $gutter / -2 );
+	@include row-gutters( $gutter );
 }
 
 @mixin form-row( $gutter: $form-grid__gutter-width ) {
 	display: flex;
 	flex-wrap: wrap;
-	margin-left: unitcalc( $gutter / -2 );
-	margin-right: unitcalc( $gutter / -2 );
+	@include row-gutters( $gutter );
+}
+
+@mixin gallery-row( $gutter: $gallery-grid__gutter-width ) {
+	display: flex;
+	flex-wrap: wrap;
+	@include row-gutters( $gutter );
 }
 
 @mixin row--centered {
@@ -45,25 +49,31 @@
 	justify-content: center;
 }
 
-@mixin column( $gutter: $grid__gutter-width ) {
+@mixin col( $gutter: $grid__gutter-width ) {
 	position: relative;
 	width: 100%;
 	@include guttered( $gutter );
 }
 
-@mixin form-column( $gutter: $form-grid__gutter-width ) {
+@mixin form-col( $gutter: $form-grid__gutter-width ) {
 	position: relative;
 	width: 100%;
 	@include guttered( $gutter );
 }
 
-@mixin column--auto {
+@mixin gallery-col( $gutter: $gallery-grid__gutter-width ) {
+	position: relative;
+	width: 100%;
+	@include guttered( $gutter );
+}
+
+@mixin col--auto {
 	flex: 0 0 auto;
 	width: auto;
 	max-width: 100%;
 }
 
-@mixin columns( $n, $columns: $grid__columns ) {
+@mixin cols( $n, $columns: $grid__columns ) {
 	max-width: percentage( $n / $columns );
 	flex: 0 0 percentage( $n / $columns );
 }
@@ -76,12 +86,12 @@
 	margin-right: percentage( $offset / $columns );
 }
 
-@mixin column--centered {
+@mixin col--centered {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-@mixin uncolumn {
+@mixin uncol {
 	width: auto;
 	padding-left: initial;
 	padding-right: initial;
@@ -111,17 +121,19 @@
 	}
 }
 
-@mixin generate-column-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'columns', $i: 1, $prefix: '' ) {
+@mixin generate-cols-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'cols', $prefix: '' ) {
+	$i: 1;
 	@while $i <= $columns {
 
 		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
-			@include columns( $i, $columns );
+			@include cols( $i, $columns );
 		}
 		$i: $i + 1;
 	}
 }
 
-@mixin generate-push-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'push', $i: 1, $prefix: '' ) {
+@mixin generate-push-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'push', $prefix: '' ) {
+	$i: 1;
 	@while $i <= $columns {
 		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
 			@include push( $i, $columns );
@@ -130,7 +142,8 @@
 	}
 }
 
-@mixin generate-pull-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'pull', $i: 1, $prefix: '' ) {
+@mixin generate-pull-classes( $columns: $grid__columns, $selector-type: '%', $selector-name: 'pull', $prefix: '' ) {
+	$i: 1;
 	@while $i <= $columns {
 		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
 			@include pull( $i, $columns );
@@ -140,13 +153,14 @@
 }
 
 // BLOCK GRID
-@mixin generate-block-grid-classes( $n, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.column', $i: 1 ) {
+@mixin generate-block-grid-classes( $n, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.col' ) {
+	$i: 1;
 	#{$parent-selector} {
 		@include row;
 	}
 
 	#{$parent-selector} #{$child-selector} {
-		@include column;
+		@include col;
 	}
 
 	@while $i <= $n {
@@ -164,22 +178,21 @@
 // GRID BREAKPOINT CLASSES
 // $selector-type expects '.' (outputs classes) or '%' (outputs placeholders)
 @mixin grid-classes( $selector-type: '.', $prefix: null ) {
-	#{$selector-type}#{$prefix}guttered { @include guttered; }
-	#{$selector-type}#{$prefix}container { @include container; }
-	#{$selector-type}#{$prefix}container--centered { @include container--centered; }
-	#{$selector-type}#{$prefix}container--left { @include container--left; }
-	#{$selector-type}#{$prefix}container--right { @include container--right; }
-	#{$selector-type}#{$prefix}row { @include row; }
-	#{$selector-type}#{$prefix}form-row { @include form-row; }
-	#{$selector-type}#{$prefix}row--centered { @include row--centered; }
-	#{$selector-type}#{$prefix}column { @include column; }
-	#{$selector-type}#{$prefix}form-column { @include form-column; }
-	#{$selector-type}#{$prefix}column--auto { @include column--auto; }
-	@include generate-column-classes( $grid__columns, $selector-type, 'columns', 1, $prefix );
-	@include generate-push-classes( $grid__columns, $selector-type, 'push', 1, $prefix );
-	@include generate-pull-classes( $grid__columns, $selector-type, 'pull', 1, $prefix );
-	#{$selector-type}#{$prefix}column--centered { @include column--centered; }
-	#{$selector-type}#{$prefix}uncolumn { @include uncolumn; }
+//	#{$selector-type}#{$prefix}guttered { @include guttered; }
+//	#{$selector-type}#{$prefix}container { @include container; }
+//	#{$selector-type}#{$prefix}container--left { @include container--left; }
+//	#{$selector-type}#{$prefix}container--right { @include container--right; }
+//	#{$selector-type}#{$prefix}row { @include row; }
+//	#{$selector-type}#{$prefix}form-row { @include form-row; }
+//	#{$selector-type}#{$prefix}row--centered { @include row--centered; }
+//	#{$selector-type}#{$prefix}col { @include col; }
+//	#{$selector-type}#{$prefix}form-col { @include form-col; }
+//	#{$selector-type}#{$prefix}col--auto { @include col--auto; }
+	@include generate-cols-classes( $grid__columns, $selector-type, 'cols', $prefix );
+	@include generate-push-classes( $grid__columns, $selector-type, 'push', $prefix );
+	@include generate-pull-classes( $grid__columns, $selector-type, 'pull', $prefix );
+	#{$selector-type}#{$prefix}col--centered { @include col--centered; }
+	#{$selector-type}#{$prefix}uncol { @include uncol; }
 	#{$selector-type}#{$prefix}unpush { @include unpush; }
 	#{$selector-type}#{$prefix}unpull { @include unpull; }
 }

@@ -134,6 +134,48 @@ $button--danger__color--disabled: $button--danger__color;
 $button--danger__background-color--disabled: $button--danger__background-color;
 $button--danger__border-color--disabled: $button--danger__border-color;
 
+//light
+$button--light__color: $button__background-color;
+$button--light__background-color: $white;
+$button--light__border-color: $white;
+
+$button--light__color--hover: $button--light__color;
+$button--light__background-color--hover: $base__background-color--alt;
+$button--light__border-color--hover: $base__background-color--alt;
+
+$button--light__opacity--disabled: $button__opacity--disabled;
+$button--light__color--disabled: $button--light__color;
+$button--light__background-color--disabled: $button--light__background-color;
+$button--light__border-color--disabled: $button--light__border-color;
+
+//outline
+$button--outline__color: $button__background-color;
+$button--outline__background-color: transparent;
+$button--outline__border-color: $button--outline__color;
+
+$button--outline__color--hover: $white;
+$button--outline__background-color--hover: $button__background-color;
+$button--outline__border-color--hover: $button--outline__background-color--hover;
+
+$button--outline__opacity--disabled: $button__opacity--disabled;
+$button--outline__color--disabled: $button--outline__color;
+$button--outline__background-color--disabled: $button--outline__background-color;
+$button--outline__border-color--disabled: $button--outline__border-color;
+
+//trans
+$button--trans__color: $accent__color;
+$button--trans__background-color: transparent;
+$button--trans__border-color: transparent;
+
+$button--trans__color--hover: $link__color--hover;
+$button--trans__background-color--hover: $button--trans__background-color;
+$button--trans__border-color--hover: $button--trans__border-color;
+
+$button--trans__opacity--disabled: $button__opacity--disabled;
+$button--trans__color--disabled: $button--trans__color;
+$button--trans__background-color--disabled: $button--trans__background-color;
+$button--trans__border-color--disabled: $button--trans__border-color;
+
 // INPUTS
 // ---------------------------
 $form-control__font-size: $form__font-size;

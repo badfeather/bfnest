@@ -89,7 +89,7 @@ function bfnest_image_send_to_editor_with_figure( $html, $id, $caption, $title, 
 	}
 	return $html;
 }
-add_filter( 'image_send_to_editor', 'bfnest_image_send_to_editor_with_figure', 10, 8 );
+//add_filter( 'image_send_to_editor', 'bfnest_image_send_to_editor_with_figure', 10, 8 );
 
 /**
  * Modified caption shortcode, adding size classes to wrapper element for styling purposes
@@ -212,4 +212,4 @@ function bfnest_max_srcset_image_width( $max_width, $size_array ) {
 
 	return $max_width;
 }
-add_filter( 'max_srcset_image_width', 'bfnest_max_srcset_image_width', 10, 2 );
+//add_filter( 'max_srcset_image_width', 'bfnest_max_srcset_image_width', 10, 2 );

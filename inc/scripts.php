@@ -34,7 +34,7 @@ function bfnest_scripts() {
 	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/assets/dist/js/theme' . $suffix . '.js', array( 'jquery' ), $version, true );
 
 	// Dequeue Gutenberg CSS on front-end
-	wp_dequeue_style( 'wp-block-library' );
+	//wp_dequeue_style( 'wp-block-library' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

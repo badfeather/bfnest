@@ -6,12 +6,9 @@ img {
 }
 
 figure,
+.figure,
 .wp-video {
 	@include margin-unitcalc( 0, 0, $figure__margin-bottom, 0 );
-}
-
-figcaption {
-	@include figcaption;
 }
 
 // wordpress-specific
@@ -76,13 +73,13 @@ img,
 }
 
 .gallery {
-	@include row;
+	@include gallery-row;
 	margin-bottom: unitcalc( $base__margin );
 	padding-top: unitcalc( $base__margin--half );
 }
 
 .gallery-item {
-	@include column;
+	@include col;
 	margin-bottom: unitcalc( $grid__gutter-width );
 	figure {
 		margin: 0;

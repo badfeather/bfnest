@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 5.2.7\n"
+"Project-Id-Version: Bad Feather Nest 5.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
-"POT-Creation-Date: 2019-11-08 00:02:56+00:00\n"
+"POT-Creation-Date: 2019-11-16 21:52:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -421,11 +421,11 @@ msgstr ""
 msgid "Archive"
 msgstr ""
 
-#: partials/content-no-results.php:4
+#: partials/content-no-results.php:5
 msgid "Nothing Found"
 msgstr ""
 
-#: partials/content-no-results.php:9
+#: partials/content-no-results.php:10
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
@@ -440,7 +440,7 @@ msgstr ""
 msgid "Continue reading &rarr;"
 msgstr ""
 
-#: search.php:7
+#: search.php:8
 msgid "Search Results for %s"
 msgstr ""
 
@@ -501,12 +501,12 @@ msgctxt "noun"
 msgid "Comment"
 msgstr ""
 
-#: searchform.php:3
+#: searchform.php:4
 msgctxt "placeholder"
 msgid "Search for: "
 msgstr ""
 
-#: searchform.php:4
+#: searchform.php:6
 msgctxt "submit button"
 msgid "Search"
 msgstr ""

@@ -1,3 +1,7 @@
+.site-header {
+	@include guttered;
+}
+
 .site-nav__toggle {
 	@include button;
 	margin-bottom: unitcalc( $base__margin--half, $button__font-size );

@@ -26,10 +26,10 @@ function bfnest_register_acf_blocks() {
 	}
 
 //	acf_register_block_type( array(
-//		'name' => 'name' // unique identifier
+//		'name' => 'name', // unique identifier
 //		'title' => __( 'Name', 'bfnest' ),
 //		//'description' => __( 'Description', 'bfnest' ), // (optional)
-//		'category' => 'embed', // options: 'common", 'formatting', 'layout', 'widgets', 'embed'
+//		'category' => 'bfnest-blocks', // options: 'common", 'formatting', 'layout', 'widgets', 'embed'
 //		'icon' => 'book-alt', // use dashicons (https://developer.wordpress.org/resource/dashicons/) or custom svg
 //		'post_types' => array( 'page' ),
 //		'keywords' => array( 'testimonial', 'quote', 'mention', 'cite' ),

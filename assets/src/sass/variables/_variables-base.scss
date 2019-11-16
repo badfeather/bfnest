@@ -5,7 +5,7 @@ $font-family--georgia: Georgia, "Times New Roman", Times, serif;
 $font-family--menlo: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family--system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-$font-family--sans-serif:  $font-family--helvetica;
+$font-family--sans-serif:  $font-family--system;
 $font-family--serif: $font-family--georgia;
 $font-family--monospace: $font-family--menlo;
 
@@ -21,10 +21,11 @@ $font-weight--extra-black: 900;
 
 // BASE
 $base__font-family: $font-family--sans-serif;
-$base__unit: 'rem';
+$base__unit: 'px';
 $base__font-size: 16;
 $base__font-size--md: 18;
-$base__font-size--lg: 21;
+$base__font-size--lg: 24;
+$base__font-size--xl: 32;
 $base__font-size--sm: 14;
 $base__font-size--xs: 12;
 $base__font-weight: $font-weight--normal;

@@ -34,7 +34,7 @@
 @import "theme/theme-fonts";
 @import "theme/theme-utility";
 @import "theme/theme-type";
-@import "theme/theme-grid";
+//@import "theme/theme-grid";
 //@import "theme/theme-ib-grid";
 //@import "theme/theme-layout";
 @import "theme/theme-forms";
@@ -48,8 +48,8 @@
 
 //@import "theme/theme-jetpack";
 
-@import "theme/theme-blocks";
-
+@import "theme/theme-blocks-core";
+@import "theme/theme-blocks-custom";
 // GUTENBERG OVERRIDES
 .editor-post-title__block {
 	.editor-post-title__input {
@@ -65,5 +65,4 @@
 	color: $base__color;
 	font-weight: $base__font-weight;
 }
-
 

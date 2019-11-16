@@ -44,17 +44,19 @@
 		}
 ?>
 	<div class="site-content doc doc--archive<?php echo esc_attr( $archive_class ); ?>">
-		<main id="content" class="doc-main">
-			<header class="doc-header">
-				<h1 class="doc-title"><?php echo esc_html( $title ); ?></h1>
+		<div class="container">
+			<main id="content" class="doc-main">
+				<header class="doc-header">
+					<h1 class="doc-title"><?php echo esc_html( $title ); ?></h1>
 
-				<?php the_archive_description( '<div class="doc-description">', '</div>' ); ?>
-			</header>
+					<?php the_archive_description( '<div class="doc-description">', '</div>' ); ?>
+				</header>
 
-			<?php get_template_part( 'partials/loop-archive' ); ?>
-		</main>
+				<?php get_template_part( 'partials/loop-archive' ); ?>
+			</main>
 
-		<?php get_template_part( 'partials/sidebar-archive', $post_type ); ?>
+			<?php get_template_part( 'partials/sidebar-archive', $post_type ); ?>
+	</div>
 	</div>
 <?php
 	} else {
