@@ -33,7 +33,7 @@
 
 	<nav id="site-navigation" class="site-nav nav nav-primary" role="navigation" aria-label="<?php _e( 'Main', 'bfnest' ); ?>">
 		<button class="site-nav__toggle button button--trans button--icon"><?php
-			$ui_icons_path = get_template_directory_uri() . '/assets/dist/img/ui-icons/';
+			$ui_icons_path = get_stylesheet_directory() . '/assets/dist/img/ui-icons/';
 			$menu_svg = bfnest_get_svg( esc_url( $ui_icons_path . 'menu.svg' ) );
 			$close_svg = bfnest_get_svg( esc_url( $ui_icons_path . 'close.svg' ) );
 			$before = $after = '';
