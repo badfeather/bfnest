@@ -102,7 +102,7 @@ function bfnest_social_nav_menu_icons( $item_output, $item, $depth, $args, $text
 		//return $item_output;
 		foreach ( $social_icons as $attr => $value ) {
 			if ( strpos( $item_output, $attr ) ) {
-				$svg = bfnest_get_svg( get_stylesheet_directory() . '/assets/dist/img/social-icons/' . $value . '.svg' );
+				$svg = bfnest_get_svg( get_template_directory_uri() . '/assets/dist/img/social-icons/' . $value . '.svg' );
 				$before = $after = '';
 				if ( $svg ) {
 					$before = '<span class="social-link-icon social-link-icon--' . $value . '" aria-hidden="true">' . $svg . '</span>';

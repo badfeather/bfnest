@@ -46,7 +46,7 @@
 	.current-post-ancestor {
 
 		& > a {
-			color: $link__color--active;
+			color: $menu-link__color--current;
 		}
 	}
 }

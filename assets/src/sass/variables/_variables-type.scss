@@ -235,10 +235,14 @@ $menu__margin-bottom: $base__margin;
 $menu__margin-left: 0;
 $menu__font-size--lg: $menu__font-size;
 $menu__breakpoint: $bp-lg;
+
 $menu-link__color: $link__color;
 $menu-link__text-decoration: $link__text-decoration;
+
 $menu-link__color--hover: $link__color--hover;
 $menu-link__text-decoration--hover: $link__text-decoration--hover;
+
+$menu-link__color--current: $menu-link__color--hover;
 
 // Subnavs
 $subnav__font-family: $base__font-family;
