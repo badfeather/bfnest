@@ -42,8 +42,8 @@
 				$before .= $close_svg ? '<span class="toggle-icon toggle-icon--close" aria-hidden="true">' . $close_svg . '</span>' : '';
 				$before .= '<span class="sr-only">';
 				$after .= '</span>';
-				echo $before . __( 'Menu', 'bfnest' ) . $after;
 			}
+			echo $before . __( 'Menu', 'bfnest' ) . $after;
 		?></button>
 		<?php
 			wp_nav_menu( array(
