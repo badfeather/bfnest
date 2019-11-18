@@ -7,7 +7,8 @@ function bfnest_setup() {
 	// Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
 	register_nav_menus( array(
 		'primary' => __( 'Primary Navigation', 'bfnest' ),
-		'follow' => __( 'Follow Navigation', 'bfnest' )
+		'secondary' => __( 'Secondary Navigation', 'bfnest' ),
+		'social' => __( 'Social Navigation', 'bfnest' ),
 	) );
 
 	load_theme_textdomain( 'bfnest', get_template_directory() . '/languages' );

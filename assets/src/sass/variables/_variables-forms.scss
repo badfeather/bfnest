@@ -163,7 +163,7 @@ $button--outline__background-color--disabled: $button--outline__background-color
 $button--outline__border-color--disabled: $button--outline__border-color;
 
 //trans
-$button--trans__color: $accent__color;
+$button--trans__color: $button__background-color;
 $button--trans__background-color: transparent;
 $button--trans__border-color: transparent;
 

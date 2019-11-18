@@ -92,23 +92,6 @@ function bfnest_body_before_scripts() {
 add_action( 'body-before-scripts', 'bfnest_body_before_scripts' );
 
 /**
- * Add SVG definitions immediately after opening body tag
- * Utilizes 'body-before-scripts' action hook
- */
-function bfnest_include_svg_icons() {
-	// Define SVG sprite file.
-	$svg_icons = get_template_directory() . '/assets/dist/img/svg-icons.svg';
-
-	// If it exsists, include it.
-	if ( file_exists( $svg_icons ) ) {
-		echo '<span class="svg-defs">';
-		require_once $svg_icons;
-		echo '</span>' . "\n";
-	}
-}
-add_action( 'body-before-scripts', 'bfnest_include_svg_icons' );
-
-/**
  * Load Jquery in footer
  */
 function bfnest_move_jquery_to_footer( $wp_scripts ) {

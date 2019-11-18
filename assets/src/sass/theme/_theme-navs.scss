@@ -21,16 +21,16 @@
 		$menu-link__color,
 		$menu-link__text-decoration,
 		$menu-link__color--hover,
-		$menu-link__text-decoration--hover			
+		$menu-link__text-decoration--hover
 	);
-	
+
 	@include list-unstyled;
-	
+
 	ul {
 		@include list-unstyled;
 		margin: 0;
 	}
-	
+
 	ul,
 	li {
 		margin: 0;
@@ -76,6 +76,33 @@
 	.postnav__link--newer {
 		float: left;
 		padding-right: 1em;
+	}
+}
+
+// SOCIAL NAV
+// ---------------------------
+.menu--social {
+	.menu-item {
+		display: inline-block;
+		margin: 0 1em 1em 0;
+	}
+
+	.social-link-icon {
+		display: inline-block;
+		margin-right: .5em;
+		vertical-align: middle;
+	}
+}
+//@include brand-colors(); // uncomment if you want to just use the inherit menu link colors
+
+@each $name, $value in $social-colors {
+	.social-link-icon--#{$name} {
+		color: $value;
+
+		&:hover,
+		&:focus {
+			color: tint( $value, 25% );
+		}
 	}
 }
 

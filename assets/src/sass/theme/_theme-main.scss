@@ -22,6 +22,27 @@
 }
 
 // SINGLE POSTS
+.share-link {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+@each $name, $value in $share-colors {
+	.share-link--#{$name} {
+		color: $value;
+
+		&:hover,
+		&:focus {
+			color: tint( $value, 25% );
+		}
+	}
+}
+
+.share-link-icon {
+	display: inline-block;
+	margin-right: .5em;
+	vertical-align: middle;
+}
 
 
 // ARCHIVES

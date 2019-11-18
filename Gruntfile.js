@@ -134,6 +134,28 @@ module.exports = function ( grunt ) {
 		},
 
 		/**
+		 * Minify SVG files using SVGO
+		 * @link https://github.com/sindresorhus/grunt-svgmin
+		 */
+		svgmin: {
+			options: {
+				plugins: [
+					{
+						removeViewBox: false
+					},
+				]
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'assets/src/img/',
+					src: ['**/*.svg'],
+					dest: 'assets/dist/img/',
+				}]
+			}
+		},
+
+		/**
 		 * Merge SVGs into a single SVG.
 		 *
 		 * @link https://github.com/FWeinb/grunt-svgstore
@@ -148,7 +170,7 @@ module.exports = function ( grunt ) {
 			},
 			dist: {
 				files: {
-					'assets/dist/img/svg-icons.svg': 'assets/src/img/svg-icons/*.svg'
+					'assets/dist/img/svg-sprite.svg': 'assets/dist/img/svg-sprite/**/*.svg'
 				}
 			}
 		},
@@ -233,7 +255,10 @@ module.exports = function ( grunt ) {
 		'concat',
 		'uglify'
 	] );
-	grunt.registerTask( 'svg', [ 'svgstore' ] );
+	grunt.registerTask( 'svg', [
+		'svgmin',
+		'svgstore', // uncomment if using svg sprite system
+	] );
 	grunt.registerTask( 'images', [ 'imagemin' ] );
 	grunt.registerTask( 'i18n', [ 'makepot' ] );
 	grunt.registerTask( 'bump-patch', [ 'version::patch' ] );
@@ -242,7 +267,7 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'default', [
 		'styles',
 		'javascript',
-		//'svg', // uncomment if using svg sprite system
+		'svg',
 		'images',
 		'i18n'
 	] );

@@ -54,16 +54,24 @@
 	@include row;
 }
 
-.form-row {
-	@include row;
-}
-
 .row--centered {
 	@include row--centered;
 }
 
+.row--inline {
+	align-items: center;
+}
+
 .col {
 	@include col;
+}
+
+.form-row {
+	@include form-row;
+}
+
+.form-col {
+	@include form-col;
 }
 
 .col--auto {

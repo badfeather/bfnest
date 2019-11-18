@@ -569,18 +569,15 @@ figcaption,
   margin-right: -15px;
 }
 
-.form-row {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
 .row--centered {
   text-align: center;
   -webkit-box-pack: center;
           justify-content: center;
+}
+
+.row--inline {
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .col {
@@ -588,6 +585,21 @@ figcaption,
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.form-row {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.form-col {
+  position: relative;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .col--auto {
@@ -1267,6 +1279,12 @@ textarea {
   border-color: transparent;
 }
 
+.button--icon svg {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+}
+
 .form-control {
   display: block;
   width: 100%;
@@ -1350,6 +1368,10 @@ img {
   vertical-align: middle;
   max-width: 100%;
   height: auto;
+}
+
+svg:not([fill]) {
+  fill: currentColor;
 }
 
 figure,
@@ -1558,54 +1580,350 @@ img.alignleft, img.alignright, img.aligncenter,
   padding-right: 1em;
 }
 
+.menu--social .menu-item {
+  display: inline-block;
+  margin: 0 1em 1em 0;
+}
+
+.menu--social .social-link-icon {
+  display: inline-block;
+  margin-right: .5em;
+  vertical-align: middle;
+}
+
+.social-link-icon--airbnb {
+  color: #FF5A5F;
+}
+
+.social-link-icon--airbnb:hover, .social-link-icon--airbnb:focus {
+  color: #ff8387;
+}
+
+.social-link-icon--apple-music {
+  color: #000;
+}
+
+.social-link-icon--apple-music:hover, .social-link-icon--apple-music:focus {
+  color: #404040;
+}
+
+.social-link-icon--bandcamp {
+  color: #408294;
+}
+
+.social-link-icon--bandcamp:hover, .social-link-icon--bandcamp:focus {
+  color: #70a1af;
+}
+
+.social-link-icon--behance {
+  color: #1769FF;
+}
+
+.social-link-icon--behance:hover, .social-link-icon--behance:focus {
+  color: #518fff;
+}
+
+.social-link-icon--blogger {
+  color: #FF5722;
+}
+
+.social-link-icon--blogger:hover, .social-link-icon--blogger:focus {
+  color: #ff8159;
+}
+
+.social-link-icon--codepen {
+  color: #000;
+}
+
+.social-link-icon--codepen:hover, .social-link-icon--codepen:focus {
+  color: #404040;
+}
+
+.social-link-icon--deviantart {
+  color: #05CC47;
+}
+
+.social-link-icon--deviantart:hover, .social-link-icon--deviantart:focus {
+  color: #44d975;
+}
+
+.social-link-icon--digg {
+  color: #000;
+}
+
+.social-link-icon--digg:hover, .social-link-icon--digg:focus {
+  color: #404040;
+}
+
+.social-link-icon--dribbble {
+  color: #EA4C89;
+}
+
+.social-link-icon--dribbble:hover, .social-link-icon--dribbble:focus {
+  color: #ef79a7;
+}
+
+.social-link-icon--ello {
+  color: #000;
+}
+
+.social-link-icon--ello:hover, .social-link-icon--ello:focus {
+  color: #404040;
+}
+
+.social-link-icon--facebook {
+  color: #4172B8;
+}
+
+.social-link-icon--facebook:hover, .social-link-icon--facebook:focus {
+  color: #7195ca;
+}
+
+.social-link-icon--flickr {
+  color: #0063DC;
+}
+
+.social-link-icon--flickr:hover, .social-link-icon--flickr:focus {
+  color: #408ae5;
+}
+
+.social-link-icon--foursquare {
+  color: #F94877;
+}
+
+.social-link-icon--foursquare:hover, .social-link-icon--foursquare:focus {
+  color: #fb7699;
+}
+
+.social-link-icon--github {
+  color: #181717;
+}
+
+.social-link-icon--github:hover, .social-link-icon--github:focus {
+  color: #525151;
+}
+
+.social-link-icon--instagram {
+  color: #E4405F;
+}
+
+.social-link-icon--instagram:hover, .social-link-icon--instagram:focus {
+  color: #eb7087;
+}
+
+.social-link-icon--last-fm {
+  color: #D51007;
+}
+
+.social-link-icon--last-fm:hover, .social-link-icon--last-fm:focus {
+  color: #e04c45;
+}
+
+.social-link-icon--linkedin {
+  color: #0077B5;
+}
+
+.social-link-icon--linkedin:hover, .social-link-icon--linkedin:focus {
+  color: #4099c8;
+}
+
+.social-link-icon--mail {
+  color: #000;
+}
+
+.social-link-icon--mail:hover, .social-link-icon--mail:focus {
+  color: #404040;
+}
+
+.social-link-icon--medium {
+  color: #12100E;
+}
+
+.social-link-icon--medium:hover, .social-link-icon--medium:focus {
+  color: #4d4c4a;
+}
+
+.social-link-icon--mix {
+  color: #FF8126;
+}
+
+.social-link-icon--mix:hover, .social-link-icon--mix:focus {
+  color: #ffa15c;
+}
+
+.social-link-icon--pinboard {
+  color: #0000FF;
+}
+
+.social-link-icon--pinboard:hover, .social-link-icon--pinboard:focus {
+  color: #4040ff;
+}
+
+.social-link-icon--pinterest {
+  color: #BD081C;
+}
+
+.social-link-icon--pinterest:hover, .social-link-icon--pinterest:focus {
+  color: #ce4655;
+}
+
+.social-link-icon--pocket {
+  color: #EF3F56;
+}
+
+.social-link-icon--pocket:hover, .social-link-icon--pocket:focus {
+  color: #f36f80;
+}
+
+.social-link-icon--reddit {
+  color: #FF4500;
+}
+
+.social-link-icon--reddit:hover, .social-link-icon--reddit:focus {
+  color: #ff7440;
+}
+
+.social-link-icon--rss {
+  color: #FFA500;
+}
+
+.social-link-icon--rss:hover, .social-link-icon--rss:focus {
+  color: #ffbc40;
+}
+
+.social-link-icon--skype {
+  color: #00AFF0;
+}
+
+.social-link-icon--skype:hover, .social-link-icon--skype:focus {
+  color: #40c3f4;
+}
+
+.social-link-icon--snapchat {
+  color: #FFFC00;
+}
+
+.social-link-icon--snapchat:hover, .social-link-icon--snapchat:focus {
+  color: #fffd40;
+}
+
+.social-link-icon--soundcloud {
+  color: #FF3300;
+}
+
+.social-link-icon--soundcloud:hover, .social-link-icon--soundcloud:focus {
+  color: #ff6640;
+}
+
+.social-link-icon--spotify {
+  color: #1ED760;
+}
+
+.social-link-icon--spotify:hover, .social-link-icon--spotify:focus {
+  color: #56e188;
+}
+
+.social-link-icon--tumblr {
+  color: #36465D;
+}
+
+.social-link-icon--tumblr:hover, .social-link-icon--tumblr:focus {
+  color: #687486;
+}
+
+.social-link-icon--twitch {
+  color: #6441A4;
+}
+
+.social-link-icon--twitch:hover, .social-link-icon--twitch:focus {
+  color: #8b71bb;
+}
+
+.social-link-icon--twitter {
+  color: #1DA1F2;
+}
+
+.social-link-icon--twitter:hover, .social-link-icon--twitter:focus {
+  color: #56b9f5;
+}
+
+.social-link-icon--vimeo {
+  color: #1AB7EA;
+}
+
+.social-link-icon--vimeo:hover, .social-link-icon--vimeo:focus {
+  color: #53c9ef;
+}
+
+.social-link-icon--wordpress {
+  color: #21759B;
+}
+
+.social-link-icon--wordpress:hover, .social-link-icon--wordpress:focus {
+  color: #5998b4;
+}
+
+.social-link-icon--yahoo {
+  color: #440099;
+}
+
+.social-link-icon--yahoo:hover, .social-link-icon--yahoo:focus {
+  color: #7340b3;
+}
+
+.social-link-icon--yelp {
+  color: #D32323;
+}
+
+.social-link-icon--yelp:hover, .social-link-icon--yelp:focus {
+  color: #de5a5a;
+}
+
+.social-link-icon--ycombinator {
+  color: #F0652F;
+}
+
+.social-link-icon--ycombinator:hover, .social-link-icon--ycombinator:focus {
+  color: #f48c63;
+}
+
+.social-link-icon--youtube {
+  color: #F00;
+}
+
+.social-link-icon--youtube:hover, .social-link-icon--youtube:focus {
+  color: #ff4040;
+}
+
 .site-header {
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .site-nav__toggle {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 8px 10px;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  display: inline-block;
-  margin-bottom: 0;
-  background-color: #00ADF2;
-  border: 1px solid #00ADF2;
-  border-radius: 4px;
-  white-space: nowrap;
-  cursor: pointer;
-  -webkit-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
   margin-bottom: 12px;
-}
-
-.site-nav__toggle:hover, .site-nav__toggle:focus, .site-nav__toggle:active {
-  text-decoration: none;
-  color: #fff;
-  background-color: #40c2f5;
-  border-color: #40c2f5;
-}
-
-.site-nav__toggle.disabled, .site-nav__toggle:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.25;
+  padding: 0;
+  border: 0;
 }
 
 .no-js .site-nav__toggle {
   display: none;
 }
 
+.site-nav__toggle .toggle-icon--close {
+  display: none;
+}
+
 .toggled .site-nav__toggle {
-  color: #fff;
-  background-color: #40c2f5;
-  border-color: #40c2f5;
+  color: #f0f;
+}
+
+.toggled .site-nav__toggle .toggle-icon--menu {
+  display: none;
+}
+
+.toggled .site-nav__toggle .toggle-icon--close {
+  display: block;
 }
 
 .menu--primary {
@@ -1647,6 +1965,81 @@ img.alignleft, img.alignright, img.aligncenter,
 
 .entry-header {
   margin-bottom: 24px;
+}
+
+.share-link {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.share-link--digg {
+  color: #000;
+}
+
+.share-link--digg:hover, .share-link--digg:focus {
+  color: #404040;
+}
+
+.share-link--facebook {
+  color: #4172B8;
+}
+
+.share-link--facebook:hover, .share-link--facebook:focus {
+  color: #7195ca;
+}
+
+.share-link--linkedin {
+  color: #0077B5;
+}
+
+.share-link--linkedin:hover, .share-link--linkedin:focus {
+  color: #4099c8;
+}
+
+.share-link--mail {
+  color: #000;
+}
+
+.share-link--mail:hover, .share-link--mail:focus {
+  color: #404040;
+}
+
+.share-link--pinterest {
+  color: #BD081C;
+}
+
+.share-link--pinterest:hover, .share-link--pinterest:focus {
+  color: #ce4655;
+}
+
+.share-link--pocket {
+  color: #EF3F56;
+}
+
+.share-link--pocket:hover, .share-link--pocket:focus {
+  color: #f36f80;
+}
+
+.share-link--reddit {
+  color: #FF4500;
+}
+
+.share-link--reddit:hover, .share-link--reddit:focus {
+  color: #ff7440;
+}
+
+.share-link--twitter {
+  color: #1DA1F2;
+}
+
+.share-link--twitter:hover, .share-link--twitter:focus {
+  color: #56b9f5;
+}
+
+.share-link-icon {
+  display: inline-block;
+  margin-right: .5em;
+  vertical-align: middle;
 }
 
 .comments-list {

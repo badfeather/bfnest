@@ -3,17 +3,27 @@
 }
 
 .site-nav__toggle {
-	@include button;
 	margin-bottom: unitcalc( $base__margin--half, $button__font-size );
+	padding: 0;
+	border: 0;
 
 	.no-js & {
 		display: none;
 	}
 
+	.toggle-icon--close {
+		display: none;
+	}
+
 	.toggled & {
-		color: $button__color--hover;
-		background-color: $button__background-color--hover;
-		border-color: $button__border-color--hover;
+		color: $button--trans__color--hover;
+		.toggle-icon--menu {
+			display: none;
+		}
+
+		.toggle-icon--close {
+			display: block;
+		}
 	}
 
 	@include bp-md__mq-up {

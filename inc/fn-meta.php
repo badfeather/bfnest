@@ -221,9 +221,9 @@ function bfnest_get_share_data( $args = array() ) {
 		'twitter' => 0,
 		'linkedin' => 0,
 		'pinterest' => 0,
+		'pocket' => 0,
 		'digg' => 0,
 		'reddit' => 0,
-		'stumbleupon' => 0,
 		'email' => 0,
 	);
 	$args = wp_parse_args( $args, $defaults );
@@ -266,19 +266,21 @@ function bfnest_get_share_data( $args = array() ) {
 	}
 
 	if ( $pinterest ) {
-		if ( has_post_thumbnail() ) {
-			$featured_image_id = get_post_thumbnail_id();
-			$featured_image = wp_get_attachment_image_src( $featured_image_id, 'large' );
-			$image_path = $featured_image[0];
-
-		} else {
-			$image_path = bfnest_get_first_image_url( $size = 'large' );
+		$image = bfnest_get_featured_or_first_image_url( $size = 'large' );
+		if ( $image ) {
+			$networks[] = array(
+				'name' => __( 'Pinterest', 'bfnest' ),
+				'slug' => 'pinterest',
+				'url' => 'https://pinterest.com/pin/create/bookmarklet/?media=?url=' . $post_url . '&media=' . $image . '&description='. $encoded_title,
+			);
 		}
+	}
 
+	if ( $pocket ) {
 		$networks[] = array(
-			'name' => __( 'Pinterest', 'bfnest' ),
-			'slug' => 'pinterest',
-			'url' => 'https://pinterest.com/pin/create/bookmarklet/?media=?url=' . $post_url . '&media=' . $image_path . '&description='. $encoded_title,
+			'name' => __( 'Pocket', 'bfnest' ),
+			'slug' => 'pocket',
+			'url' => 'href="https://getpocket.com/save?url=' . $post_url,
 		);
 	}
 
@@ -298,18 +300,10 @@ function bfnest_get_share_data( $args = array() ) {
 		);
 	}
 
-	if ( $stumbleupon ) {
-		$networks[] = array(
-			'name' => __( 'Stumbleupon', 'bfnest' ),
-			'slug' => 'stumbleupon',
-			'url' => 'https://www.stumbleupon.com/submit?url=' . $post_url,
-		);
-	}
-
 	if ( $email ) {
 		$networks[] = array(
 			'name' => __( 'Email', 'bfnest'),
-			'slug' => 'email',
+			'slug' => 'mail',
 			'url' => 'mailto:?subject=' . $encoded_title . '&body=' . $post_url,
 		);
 	}
@@ -327,7 +321,24 @@ function bfnest_get_share_data( $args = array() ) {
  * Uses bfnest_get_share_data()
  */
 
-function bfnest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 'email' => 1 ), $before = null, $element = 'span', $item_sep = ', ', $new_window = true ) {
+function bfnest_get_meta_share(
+		$args = array(
+			'facebook' => 1,
+			'twitter' => 1,
+			'linkedin' => 1,
+			'pinterest' => 1,
+			'pocket' => 1,
+			'digg' => 1,
+			'reddit' => 1,
+			'email' => 1,
+		),
+		$before = null,
+		$element = 'span',
+		$item_sep = ' ',
+		$new_window = true,
+		$add_icons = true,
+		$text_replace = true
+	) {
 	$networks = bfnest_get_share_data( $args );
 	if ( empty( $networks ) || is_wp_error( $networks ) ) {
 		return false;
@@ -351,7 +362,22 @@ function bfnest_get_meta_share( $args = array( 'facebook' => 1, 'twitter' => 1, 
 	$share_array = array();
 
 	foreach ( $networks as $network ) {
-		$share_array[] = '<a class="share-link share-link--' . $network['slug'] . '" href="' . esc_url( $network['url'] ) . '" title="Share on ' . $network['name'] . '"' . $target . '>' . $network['name'] . '</a>';
+		$network_before = $network_after = '';
+		$network_slug = $network['slug'];
+		$network_name = $network['name'];
+		$before_link = $after_link = '';
+		if ( $add_icons ) {
+			$svg = bfnest_get_svg( get_stylesheet_directory() . '/assets/dist/img/social-icons/' . $network['slug'] . '.svg' );
+			if ( $svg ) {
+				$network_before .= '<span class="share-link-icon" aria-hidden="true">' . $svg . '</span>';
+				if ( $text_replace ) {
+					$network_before .= '<span class="sr-only">';
+					$network_after .= '</span>';
+				}
+			}
+		}
+
+		$share_array[] = '<a class="share-link share-link--' . $network['slug'] . '" href="' . esc_url( $network['url'] ) . '" title="Share on ' . $network['name'] . '"' . $target . ' rel="noopener noreferrer nofollow">' . $network_before . $network['name'] . $network_after . '</a>';
 	}
 
 	if ( ! empty( $share_array ) ) {

@@ -5,6 +5,10 @@ img {
 	height: auto;
 }
 
+svg:not([fill]) {
+	fill: currentColor;
+}
+
 figure,
 .figure,
 .wp-video {

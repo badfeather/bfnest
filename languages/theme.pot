@@ -2,9 +2,9 @@
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 5.3.0\n"
+"Project-Id-Version: Bad Feather Nest 6.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
-"POT-Creation-Date: 2019-11-16 21:52:27+00:00\n"
+"POT-Creation-Date: 2019-11-18 19:42:29+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,7 +65,15 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:9
+#: footer.php:23
+msgid "Secondary"
+msgstr ""
+
+#: footer.php:29
+msgid "Social"
+msgstr ""
+
+#: footer.php:46
 msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
@@ -74,10 +82,10 @@ msgid "Skip to content"
 msgstr ""
 
 #: header.php:34
-msgid "Main navigation"
+msgid "Main"
 msgstr ""
 
-#: header.php:35
+#: header.php:45
 msgid "Menu"
 msgstr ""
 
@@ -197,7 +205,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: inc/fn-comments.php:76 inc/fn-meta.php:311
+#: inc/fn-comments.php:76 inc/fn-meta.php:305
 msgid "Email"
 msgstr ""
 
@@ -233,23 +241,23 @@ msgstr ""
 msgid "LinkedIn"
 msgstr ""
 
-#: inc/fn-meta.php:279
+#: inc/fn-meta.php:272
 msgid "Pinterest"
 msgstr ""
 
-#: inc/fn-meta.php:287
+#: inc/fn-meta.php:281
+msgid "Pocket"
+msgstr ""
+
+#: inc/fn-meta.php:289
 msgid "Digg"
 msgstr ""
 
-#: inc/fn-meta.php:295
+#: inc/fn-meta.php:297
 msgid "Reddit"
 msgstr ""
 
-#: inc/fn-meta.php:303
-msgid "Stumbleupon"
-msgstr ""
-
-#: inc/fn-meta.php:338
+#: inc/fn-meta.php:349
 msgid "Share: "
 msgstr ""
 
@@ -286,10 +294,14 @@ msgid "Primary Navigation"
 msgstr ""
 
 #: inc/setup.php:10
-msgid "Follow Navigation"
+msgid "Secondary Navigation"
 msgstr ""
 
-#: inc/setup.php:38
+#: inc/setup.php:11
+msgid "Social Navigation"
+msgstr ""
+
+#: inc/setup.php:39
 msgid "Normal"
 msgstr ""
 
@@ -444,6 +456,10 @@ msgstr ""
 msgid "Search Results for %s"
 msgstr ""
 
+#: searchform.php:15
+msgid "Search"
+msgstr ""
+
 #. Theme Name of the plugin/theme
 msgid "Bad Feather Nest"
 msgstr ""
@@ -501,12 +517,12 @@ msgctxt "noun"
 msgid "Comment"
 msgstr ""
 
-#: searchform.php:4
+#: searchform.php:12
 msgctxt "placeholder"
 msgid "Search for: "
 msgstr ""
 
-#: searchform.php:6
-msgctxt "submit button"
-msgid "Search"
+#: searchform.php:12
+msgctxt "aria-label"
+msgid "Search for: "
 msgstr ""

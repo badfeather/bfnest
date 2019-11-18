@@ -167,6 +167,14 @@ textarea {
 	@include button--trans;
 }
 
+.button--icon {
+	svg {
+		display: block;
+		width: $button__line-height * 1em;
+		height: $button__line-height * 1em;
+	}
+}
+
 // FORM CONTROLS
 // ---------------------------
 $form__controls: 'textarea',

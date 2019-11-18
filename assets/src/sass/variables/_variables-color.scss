@@ -43,26 +43,96 @@ $gray--lightest: $gray--1-8;
 
 // SOCIAL NETWORK COLORS
 // ---------------------------
-$twitter: #00aced;
-$facebook: #3b5998;
-$googleplus: #dd4b39;
-$pinterest: #cb2027;
-$linkedin: #007bb6;
-$youtube: #bb0000;
-$vimeo: #aad450;
-$tumblr: #32506d;
-$instagram: #517fa4;
-$flickr: #ff0084;
-$dribbble: #ea4c89;
-$quora: #a82400;
-$foursquare: #0072b1;
-$forrst: #5B9A68;
-$vk: #45668e;
-$wordpress: #21759b;
-$stumbleupon: #EB4823;
-$yahoo: #7B0099;
-$blogger: #fb8f3d;
-$soundcloud: #ff3a00;
+$airbnb: #FF5A5F;
+$apple-music: #000;
+$bandcamp: #408294;
+$behance: #1769FF;
+$blogger: #FF5722;
+$codepen: #000;
+$deviantart: #05CC47;
+$digg: #000;
+$dribbble: #EA4C89;
+$ello: #000;
+$facebook: #4172B8;
+$flickr: #0063DC;
+$foursquare: #F94877;
+$github: #181717;
+$instagram: #E4405F;
+$last-fm: #D51007;
+$linkedin: #0077B5;
+$mail: #000;
+$medium: #12100E;
+$mix: #FF8126;
+$pinboard: #0000FF;
+$pinterest: #BD081C;
+$pocket: #EF3F56;
+$reddit: #FF4500;
+$rss: #FFA500;
+$skype: #00AFF0;
+$snapchat: #FFFC00;
+$soundcloud: #FF3300;
+$spotify: #1ED760;
+$tumblr: #36465D;
+$twitch: #6441A4;
+$twitter: #1DA1F2;
+$vimeo: #1AB7EA;
+$wordpress: #21759B;
+$yahoo: #440099;
+$yelp: #D32323;
+$ycombinator: #F0652F;
+$youtube: #F00;
+
+$social-colors: (
+	'airbnb': $airbnb,
+	'apple-music': $apple-music,
+	'bandcamp': $bandcamp,
+	'behance': $behance,
+	'blogger': $blogger,
+	'codepen': $codepen,
+	'deviantart': $deviantart,
+	'digg': $digg,
+	'dribbble': $dribbble,
+	'ello': $ello,
+	'facebook': $facebook,
+	'flickr': $flickr,
+	'foursquare': $foursquare,
+	'github': $github,
+	'instagram': $instagram,
+	'last-fm': $last-fm,
+	'linkedin': $linkedin,
+	'mail': $mail,
+	'medium': $medium,
+	'mix': $mix,
+	'pinboard': $pinboard,
+	'pinterest': $pinterest,
+	'pocket': $pocket,
+	'reddit': $reddit,
+	'rss': $rss,
+	'skype': $skype,
+	'snapchat': $snapchat,
+	'soundcloud': $soundcloud,
+	'spotify': $spotify,
+	'tumblr': $tumblr,
+	'twitch': $twitch,
+	'twitter': $twitter,
+	'vimeo': $vimeo,
+	'wordpress': $wordpress,
+	'yahoo': $yahoo,
+	'yelp': $yelp,
+	'ycombinator': $ycombinator,
+	'youtube': $youtube,
+);
+
+$share-colors: (
+	'digg': $digg,
+	'facebook': $facebook,
+	'linkedin': $linkedin,
+	'mail': $mail,
+	'pinterest': $pinterest,
+	'pocket': $pocket,
+	'reddit': $reddit,
+	'twitter': $twitter,
+);
 
 // STANDARD COLORS
 // ---------------------------

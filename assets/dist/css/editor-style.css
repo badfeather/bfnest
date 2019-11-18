@@ -622,6 +622,12 @@ textarea {
   border-color: transparent;
 }
 
+.button--icon svg {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+}
+
 .form-control {
   display: block;
   width: 100%;
@@ -705,6 +711,10 @@ img {
   vertical-align: middle;
   max-width: 100%;
   height: auto;
+}
+
+svg:not([fill]) {
+  fill: currentColor;
 }
 
 figure,
