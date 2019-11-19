@@ -141,7 +141,7 @@
 	.wp-block-column {
 //		flex-basis: calc(50% - 16px);
 //		flex-grow: 0;
-		$flex-basis: 50%;
+		flex-basis: 50%;
 	}
 	.wp-block-column:nth-child(even) {
 //		margin-left: 32px;

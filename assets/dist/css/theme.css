@@ -2578,6 +2578,9 @@ p.wp-block-subhead {
   .bp-sm__unpull {
     margin-right: 0;
   }
+  .wp-block-column {
+    flex-basis: 50%;
+  }
   .wp-block-column:nth-child(even) {
     margin-left: 0;
   }

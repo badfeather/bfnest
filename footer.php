@@ -44,9 +44,9 @@
 			<div class="site-credits">
 				<?php
 					printf( __( 'Site by %1$s %2$s Powered by %3$s', 'bfnest' ),
-					'<a href="' . esc_url( 'https://www.badfeather.com/' ) . '" target="_blank">Bad Feather</a>',
+					'<a href="' . esc_url( 'https://www.badfeather.com/' ) . '" target="_blank" rel="noopener noreferrer">Bad Feather</a>',
 					'<span class="sep"> | </span>',
-					'<a href="' . esc_url( 'https://wordpress.org/' ) . '" target="_blank">WordPress</a>' );
+					'<a href="' . esc_url( 'https://wordpress.org/' ) . '" target="_blank" rel="noopener noreferrer">WordPress</a>' );
 				?>
 			</div>
 		</div>
