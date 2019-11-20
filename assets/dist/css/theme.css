@@ -1364,7 +1364,8 @@ input[type="search"] {
   padding: 6px 7.5px;
 }
 
-img {
+img,
+svg {
   vertical-align: middle;
   max-width: 100%;
   height: auto;
