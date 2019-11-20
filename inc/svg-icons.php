@@ -20,16 +20,23 @@ function bfnest_svg( $path = null ) {
  * Add SVG definitions immediately after opening body tag
  * Utilizes 'body-before-scripts' action hook
  */
-function bfnest_include_svg_icons() {
+function bfnest_include_svg_sprite() {
 	// Define SVG sprite file.
-	$svg_icons = get_stylesheet_directory() . '/assets/dist/img/svg-sprite.svg';
+	$sprite_path = get_stylesheet_directory() . '/assets/dist/img/svg-sprite.svg';
 
-	// If it exsists, include it.
-	if ( file_exists( $svg_icons ) ) {
-		require_once $svg_icons;
+	$sprite = bfnest_get_svg( $sprite_path );
+	if ( ! $sprite ) {
+		return;
 	}
+
+	if ( $sprite === '<svg style="display: none;"/>' ) {
+		return;
+	}
+
+	echo $sprite;
 }
-add_action( 'wp_footer', 'bfnest_include_svg_icons', 1099 );
+add_action( 'wp_footer', 'bfnest_include_svg_sprite', 1099 );
+
 
 
 /**

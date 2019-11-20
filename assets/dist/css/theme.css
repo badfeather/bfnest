@@ -2038,7 +2038,7 @@ img.alignleft, img.alignright, img.aligncenter,
 
 .share-link-icon {
   display: inline-block;
-  margin-right: .5em;
+  margin-left: .5em;
   vertical-align: middle;
 }
 
