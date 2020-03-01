@@ -56,7 +56,7 @@
 			</main>
 
 			<?php get_template_part( 'partials/sidebar-archive', $post_type ); ?>
-	</div>
+		</div>
 	</div>
 <?php
 	} else {

@@ -269,6 +269,7 @@ module.exports = function ( grunt ) {
 		'javascript',
 		'svg',
 		'images',
-		'i18n'
+		'i18n',
+		'bump-patch'
 	] );
 };

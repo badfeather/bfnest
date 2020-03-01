@@ -28,6 +28,7 @@ function bfnest_custom_init() {
 				'not_found' => __( 'No Taxes Found', 'bfnest' ),
 				'no_terms' => __( 'No Taxes', 'bfnest' ),
 			),
+			'show_in_rest' => true, // Defaults to false
 			'public' => true, // Defaults to true
 			'hierarchical' => true, // (bool) Defaults to false.
 			'show_admin_column' => true, // (bool) Defaults to false.
@@ -54,6 +55,7 @@ function bfnest_custom_init() {
 				// 'parent_item_colon' => __( 'Parent Type', 'bfnest' ), // This string isn’t used on non-hierarchical post types.
 				'all_items' => __( 'All Types', 'bfnest' ),
 			),
+			'show_in_rest' => true, // whether to use gutenberg or not. defaults to false
 			'public' => true,
 			'hierarchical' => false, // (bool) Default false.
 			'exclude_from_search' => false, // (bool) Default is the opposite value of $public.

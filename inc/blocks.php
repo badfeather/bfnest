@@ -1,5 +1,5 @@
 <?php
-	/**
+/**
  * Add block categories
  */
 function bfnest_block_categories( $categories, $post ) {

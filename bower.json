@@ -1,6 +1,6 @@
 {
-  "name": "bad-feather-nest",
-  "version": "6.1.3",
+  "name": "bfnest",
+  "version": "6.1.4",
   "homepage": "https://github.com/badfeather/bfnest",
   "authors": [
     "Brad Thomason <brad@badfeather.com>"

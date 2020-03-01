@@ -2,7 +2,7 @@
 	@include margin-bottom-unitcalc( $doc__margin-bottom );
 }
 
-.hentry {
+.entry {
 	@include margin-bottom-unitcalc( $entry__margin-bottom );
 }
 

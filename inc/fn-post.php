@@ -63,7 +63,6 @@ function bfnest_is_term_or_term_descendant( $term_id = null, $taxonomy = 'catego
  */
 function bfnest_get_top_parent_term_id( $term_id = null, $taxonomy = 'category' ) {
 	if ( ! $term_id ) {
-
 		if ( is_single() ) {
 			$terms = get_the_terms( get_the_ID(), $taxonomy );
 			$term_ids = array();
@@ -83,9 +82,7 @@ function bfnest_get_top_parent_term_id( $term_id = null, $taxonomy = 'category' 
 	}
 
 	$ancestors = get_ancestors( $term_id, $taxonomy, 'taxonomy' );
-
 	array_unshift( $ancestors, $term_id );
-
 	return end( $ancestors );
 }
 
@@ -109,11 +106,7 @@ function bfnest_get_top_parent_term( $term_id = null, $taxonomy = 'category' ) {
  * Returns current post_id if no parents are found
  */
 function bfnest_get_top_parent_page_id( $post_id = null ) {
-
-	if ( null === $post_id ) {
-		$post_id = get_the_ID();
-	}
-
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
 	$ancestors = get_post_ancestors( $post_id );
 	array_unshift( $ancestors, $post_id );
 	return end( $ancestors );
@@ -125,12 +118,7 @@ function bfnest_get_top_parent_page_id( $post_id = null ) {
  * https://developer.wordpress.org/reference/functions/is_page/
  */
 function bfnest_is_tree( $parent_id ) {
-    $is_tree = false;
-
-	if ( is_page( $parent_id ) ) {
-		$is_tree = true;
-	}
-
+	$is_tree = is_page( $parent_id ) ? true : false;
     $ancestors = get_post_ancestors( get_the_ID() );
     foreach ( $ancestors as $ancestor ) {
         if ( is_page() && $ancestor == $parent_id ) {
@@ -144,7 +132,6 @@ function bfnest_is_tree( $parent_id ) {
  * Page subnav widget
  */
 function bfnest_page_subnav( $page_id = '', $title = '' ) {
-
 	if ( $page_id && is_page( $page_id ) ) {
 		$top_parent = $page_id;
 

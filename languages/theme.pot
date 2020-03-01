@@ -1,14 +1,14 @@
-# <!=Copyright (C) 2019 Brad Thomason, Bad Feather Inc.
+# <!=Copyright (C) 2020 Brad Thomason, Bad Feather Inc.
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 6.1.2\n"
+"Project-Id-Version: Bad Feather Nest 6.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
-"POT-Creation-Date: 2019-11-20 14:34:16+00:00\n"
+"POT-Creation-Date: 2020-03-01 18:25:04+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
@@ -145,43 +145,43 @@ msgstr ""
 msgid "No Taxes"
 msgstr ""
 
-#: inc/custom-content.php:44
+#: inc/custom-content.php:45
 msgid "Types"
 msgstr ""
 
-#: inc/custom-content.php:46
+#: inc/custom-content.php:47
 msgid "Type"
 msgstr ""
 
-#: inc/custom-content.php:47
+#: inc/custom-content.php:48
 msgid "Add New Type"
 msgstr ""
 
-#: inc/custom-content.php:48
+#: inc/custom-content.php:49
 msgid "Edit Type"
 msgstr ""
 
-#: inc/custom-content.php:49
+#: inc/custom-content.php:50
 msgid "New Type"
 msgstr ""
 
-#: inc/custom-content.php:50
+#: inc/custom-content.php:51
 msgid "View Type"
 msgstr ""
 
-#: inc/custom-content.php:51
+#: inc/custom-content.php:52
 msgid "Search Types"
 msgstr ""
 
-#: inc/custom-content.php:52
+#: inc/custom-content.php:53
 msgid "No Types Found"
 msgstr ""
 
-#: inc/custom-content.php:53
+#: inc/custom-content.php:54
 msgid "No Types Found in Trash"
 msgstr ""
 
-#: inc/custom-content.php:55
+#: inc/custom-content.php:56
 msgid "All Types"
 msgstr ""
 
@@ -432,6 +432,17 @@ msgstr ""
 #: inc/widgets.php:36
 msgid "Archive"
 msgstr ""
+
+#: inc/woocommerce.php:227
+msgid "View your shopping cart"
+msgstr ""
+
+#: inc/woocommerce.php:231
+#. translators: number of items in the mini cart.
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] ""
+msgstr[1] ""
 
 #: partials/content-no-results.php:5
 msgid "Nothing Found"

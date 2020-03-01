@@ -384,7 +384,7 @@ function bfnest_get_meta_share(
 		$network_name = $network['name'];
 		$before_link = $after_link = '';
 		if ( $add_icons ) {
-			$svg = bfnest_get_svg( get_stylesheet_directory() . '/assets/dist/img/social-icons/' . $network['slug'] . '.svg' );
+			$svg = bfnest_get_social_svg( $network['slug'] );
 			if ( $svg ) {
 				$network_before .= '<span class="share-link-icon" aria-hidden="true">' . $svg . '</span>';
 				if ( $text_replace ) {
