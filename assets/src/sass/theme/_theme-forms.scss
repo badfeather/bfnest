@@ -167,6 +167,11 @@ textarea {
 	@include button--trans;
 }
 
+.button--block {
+	display: block;
+	text-align: center;
+}
+
 .button--icon {
 	svg {
 		display: block;

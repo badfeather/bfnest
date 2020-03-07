@@ -55,7 +55,8 @@ img,
 	}
 }
 
-.wp-caption {
+.wp-caption,
+.wp-block-image {
 	max-width: 100%;
 }
 
@@ -76,15 +77,18 @@ img,
 	width: unitcalc( $image-size--xl );
 }
 
-.gallery {
+.gallery,
+.blocks-gallery-grid {
 	@include gallery-row;
 	margin-bottom: unitcalc( $base__margin );
 	padding-top: unitcalc( $base__margin--half );
 }
 
-.gallery-item {
+.gallery-item,
+.blocks-gallery-item {
 	@include col;
 	margin-bottom: unitcalc( $grid__gutter-width );
+
 	figure {
 		margin: 0;
 	}
@@ -95,6 +99,7 @@ img,
 }
 
 @include generate-block-grid-classes( 6, '.gallery', '.gallery-columns', '.gallery-item' );
+@include generate-block-grid-classes( 6, '.blocks-gallery-grid', '.columns', '.blocks-gallery-item' );
 
 .svg-defs {
 	display: none;

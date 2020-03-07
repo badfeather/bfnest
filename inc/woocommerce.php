@@ -29,9 +29,18 @@ add_action( 'after_setup_theme', 'bfnest_woocommerce_setup' );
  * @return void
  */
 function bfnest_woocommerce_scripts() {
-	wp_enqueue_style( 'bfnest-woocommerce-style', get_template_directory_uri() . 'assets/dist/css/woocommerce.css' );
+	$template_directory = get_template_directory_uri();
 
-	$font_path   = WC()->plugin_url() . '/assets/fonts/';
+	// Load non-minified files if 'SCRIPT_DEBUG' is set to TRUE, otherwise, use minified files in production
+	$debug = bfnest_is_debug();
+	$suffix = ( true === $debug ) ? '' : '.min';
+
+	// Fetch the version number of the theme, which can be appended on css/js files for debugging/cacheing issues
+	$version = bfnest_get_theme_version();
+
+	wp_enqueue_style( 'bfnest-woocommerce-style', $template_directory . '/assets/dist/css/woocommerce' . $suffix . '.css', array( 'bfnest-style' ), $version );
+
+	$font_path = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
 			font-family: "star";
 			src: url("' . $font_path . 'star.eot");
@@ -109,11 +118,10 @@ add_filter( 'loop_shop_columns', 'bfnest_woocommerce_loop_columns' );
 function bfnest_woocommerce_related_products_args( $args ) {
 	$defaults = array(
 		'posts_per_page' => 3,
-		'columns'        => 3,
+		'columns' => 3,
 	);
 
 	$args = wp_parse_args( $defaults, $args );
-
 	return $args;
 }
 add_filter( 'woocommerce_output_related_products_args', 'bfnest_woocommerce_related_products_args' );
@@ -159,8 +167,9 @@ if ( ! function_exists( 'bfnest_woocommerce_wrapper_before' ) ) {
 	 */
 	function bfnest_woocommerce_wrapper_before() {
 		?>
-		<div id="primary" class="content-area">
-			<main id="main" class="site-main" role="main">
+<div class="site-content doc doc--page">
+	<div class="container">
+		<main id="content" class="doc-main">
 			<?php
 	}
 }

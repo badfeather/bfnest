@@ -33,8 +33,6 @@ function bfnest_scripts() {
 	// Enqueue scripts.
 	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/assets/dist/js/theme' . $suffix . '.js', array( 'jquery' ), $version, true );
 
-	// Dequeue Gutenberg CSS on front-end
-	//wp_dequeue_style( 'wp-block-library' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -42,19 +40,6 @@ function bfnest_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'bfnest_scripts' );
-
-/**
-* Enqueue editor styles for Gutenberg
-*/
-//
-//function bfnest_block_editor_style() {
-//	$debug = bfnest_is_debug();
-//	$suffix = ( true === $debug ) ? '' : '.min';
-//	$version = bfnest_get_theme_version();
-//
-//    wp_enqueue_style( 'bfnest-block-editor-style', get_template_directory_uri() . '/assets/dist/css/block-editor' . $suffix . '.css', array(), $version );
-//}
-//add_action( 'enqueue_block_editor_assets', 'bfnest_block_editor_style' );
 
 /**
  * Header scripts - any external scripts that should be loaded in the <head> via wp_head(), ie. analytics, typekit, favicons, polyfills, etc.

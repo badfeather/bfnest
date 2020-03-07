@@ -165,7 +165,8 @@
 
 	@while $i <= $n {
 		#{$parent-modifier-selector}-#{$i} {
-			& > #{$child-selector} {
+			//& > #{$child-selector} {
+			#{$child-selector} {
 				max-width: percentage( 1 / $i );
 				flex: 0 0 percentage( 1 / $i );
 

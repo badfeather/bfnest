@@ -17,6 +17,9 @@
 		'link_after' => '</span>'
 	) );
 ?>
+<?php // /.site-content.doc ?>
+</div>
+
 <footer class="site-footer" role="contentinfo">
 	<div class="container">
 		<?php if ( $secondary_nav ) { ?>

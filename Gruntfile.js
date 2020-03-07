@@ -24,6 +24,7 @@ module.exports = function ( grunt ) {
 				files: {
 					'assets/dist/css/theme.css': 'assets/src/sass/theme.scss',
 					'assets/dist/css/editor-style.css': 'assets/src/sass/editor-style.scss',
+					'assets/dist/css/woocommerce.css': 'assets/src/sass/woocommerce.scss'
 				}
 			}
 		},
@@ -45,8 +46,10 @@ module.exports = function ( grunt ) {
 					]
 				},
 				src: [
-					'assets/dist/css/theme.css',
-					'assets/dist/css/editor-style.css',
+					'assets/dist/css/*.css',
+					'!assets/dist/css/*.min.css',
+//					'assets/dist/css/theme.css',
+//					'assets/dist/css/editor-style.css',
 				]
 			},
 			min: {
@@ -56,10 +59,17 @@ module.exports = function ( grunt ) {
 						require('cssnano')()
 					]
 				},
-				files: [
-					{ src: 'assets/dist/css/theme.css', dest: 'assets/dist/css/theme.min.css' },
-					{ src: 'assets/dist/css/editor-style.css', dest: 'assets/dist/css/editor-style.min.css' }
-				]
+//				files: [
+//					{ src: 'assets/dist/css/theme.css', dest: 'assets/dist/css/theme.min.css' },
+//					{ src: 'assets/dist/css/editor-style.css', dest: 'assets/dist/css/editor-style.min.css' }
+//				]
+				files: [ {
+					expand: true,
+					cwd: 'assets/dist/css/',
+					src: [ '**/*.css', '!**/*.min.css' ],
+					dest: 'assets/dist/css/',
+					ext: '.min.css'
+				} ],
 			}
 		},
 

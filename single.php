@@ -9,7 +9,7 @@
 			<?php
 				while ( have_posts() ) {
 					the_post();
-					get_template_part( 'partials/content-single', $post_type );
+					get_template_part( 'partials/single', $post_type );
 				} // endwhile
 			?>
 		</main>

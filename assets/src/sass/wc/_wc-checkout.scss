@@ -1,0 +1,12 @@
+.col2-set {
+	@include row;
+
+	.form-row-first,
+	.form-row-last {
+		@include col;
+
+		@include bp-md__mq-up {
+			@include cols(6);
+		}
+	}
+}

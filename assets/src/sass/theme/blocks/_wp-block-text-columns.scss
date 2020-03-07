@@ -1,0 +1,38 @@
+.wp-block-text-columns {
+//	display: flex;
+	@include row;
+}
+
+//.wp-block-text-columns.aligncenter {
+//	display: flex;
+//}
+
+.wp-block-text-columns .wp-block-column {
+//	margin: 0 16px;
+	padding: 0;
+	margin: 0;
+	@include col;
+}
+
+.wp-block-text-columns .wp-block-column:first-child {
+	margin-left: 0;
+}
+
+.wp-block-text-columns .wp-block-column:last-child {
+	margin-right: 0;
+}
+
+.wp-block-text-columns.columns-2 .wp-block-column {
+//	width: calc(100% / 2);
+	@include cols( 2 );
+}
+
+.wp-block-text-columns.columns-3 .wp-block-column {
+//	width: calc(100% / 3);
+	@include cols( 4 );
+}
+
+.wp-block-text-columns.columns-4 .wp-block-column {
+//	width: calc(100% / 4);
+	@include cols( 3 );
+}

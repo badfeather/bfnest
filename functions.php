@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Initial setup includes
  */

@@ -1,0 +1,72 @@
+.wp-block-columns {
+	display: flex;
+//	margin-bottom: 28px;
+	flex-wrap: wrap;
+	margin-bottom: unitcalc( $block__margin-bottom );
+	@include row-gutters();
+}
+
+@media (min-width: 782px) {
+	.wp-block-columns {
+		flex-wrap: nowrap;
+	}
+}
+
+.wp-block-column {
+	flex-grow: 1;
+	min-width: 0;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	width: 100%;
+	@include guttered();
+}
+
+@media (max-width: 599px) {
+	.wp-block-column {
+		flex-basis: 100% !important;
+	}
+}
+
+@media (min-width: 600px) {
+	.wp-block-column {
+//		flex-basis: calc(50% - 16px);
+		flex-grow: 0;
+		flex-basis: 50%;
+	}
+//	.wp-block-column:nth-child(even) {
+//		margin-left: 32px;
+//	}
+}
+
+//@media (min-width: 782px) {
+//	.wp-block-column:not(:first-child) {
+//		margin-left: 32px;
+//	}
+//}
+
+// All Columns Alignment
+.wp-block-columns.are-vertically-aligned-top {
+	align-items: flex-start;
+}
+
+.wp-block-columns.are-vertically-aligned-center {
+	align-items: center;
+}
+
+.wp-block-columns.are-vertically-aligned-bottom {
+	align-items: flex-end;
+}
+
+// Individual Column Alignment
+.wp-block-column.is-vertically-aligned-top {
+	align-self: flex-start;
+}
+
+.wp-block-column.is-vertically-aligned-center {
+	-ms-grid-row-align: center;
+	align-self: center;
+}
+
+.wp-block-column.is-vertically-aligned-bottom {
+	align-self: flex-end;
+}
