@@ -42,14 +42,11 @@ module.exports = function ( grunt ) {
 						require( 'autoprefixer' ),
 						require('pixrem')(),
 						require( 'css-mqpacker' )( {'sort': true} ),
-						//require('cssnano')()
 					]
 				},
 				src: [
 					'assets/dist/css/*.css',
 					'!assets/dist/css/*.min.css',
-//					'assets/dist/css/theme.css',
-//					'assets/dist/css/editor-style.css',
 				]
 			},
 			min: {
@@ -59,10 +56,6 @@ module.exports = function ( grunt ) {
 						require('cssnano')()
 					]
 				},
-//				files: [
-//					{ src: 'assets/dist/css/theme.css', dest: 'assets/dist/css/theme.min.css' },
-//					{ src: 'assets/dist/css/editor-style.css', dest: 'assets/dist/css/editor-style.min.css' }
-//				]
 				files: [ {
 					expand: true,
 					cwd: 'assets/dist/css/',
