@@ -41,7 +41,7 @@ module.exports = function ( grunt ) {
 					processors: [
 						require( 'autoprefixer' ),
 						require('pixrem')(),
-						require( 'css-mqpacker' )( {'sort': true} ),
+						require( 'postcss-combine-media-query' )(),
 					]
 				},
 				src: [

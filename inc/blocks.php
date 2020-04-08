@@ -94,8 +94,8 @@ function bfnest_register_acf_blocks() {
 //		'keywords' => array( 'testimonial', 'quote', 'mention', 'cite' ),
 //		'mode' => 'preview', // options: 'preview' (default), 'auto', 'edit'
 //		'align' => '', // options: '' (default), 'left', 'center', 'right', 'wide', 'full'
-//		'render_template' => 'partials/block-name.php', // path to template
-//		'supports' => $supports
+//		'supports' => $supports,
+//		'render_callback' => 'bfnest_acf_block_render_callback',
 //	) );
 
 	acf_register_block_type( array(
@@ -108,9 +108,21 @@ function bfnest_register_acf_blocks() {
 		'keywords' => array( 'testimonial', 'quote', 'mention', 'cite' ),
 		'mode' => 'preview',
 		'align' => '',
-		'render_template' => 'partials/block-style-tester.php',
-		'supports' => $supports
+		'supports' => $supports,
+		'render_callback' => 'bfnest_acf_block_render_callback',
 	) );
 }
 add_action('acf/init', 'bfnest_register_acf_blocks' );
+
+/**
+ * Our callback function – this looks for the block based on its given name.
+ * Name accordingly to the file name!
+ */
+function bfnest_acf_block_render_callback( $block ) {
+	$block_slug = str_replace( 'acf/', '', $block['name'] );
+
+	if ( file_exists( get_theme_file_path( '/partials/block-' . $block_slug . '.php' ) ) ) {
+		include get_theme_file_path( '/partials/block-' . $block_slug . '.php' );
+	}
+}
 
