@@ -1,5 +1,4 @@
 ( function() {
-
 	var container = document.getElementById( 'site-navigation' );
 	if ( ! container ) {
 		return;

@@ -26,7 +26,12 @@ function bfnest_gutenberg_setup() {
 
 	// set custom palette to empty first, so it's removed for buttons as well
 	add_theme_support( 'editor-color-palette', array() );
+	add_theme_support( 'editor-color-palette' );
 	add_theme_support( 'disable-custom-colors' );
+
+	// Disable custom gradients.
+	add_theme_support( 'editor-gradient-presets', array() );
+	add_theme_support( 'disable-custom-gradients' );
 }
 add_action( 'after_setup_theme', 'bfnest_gutenberg_setup' );
 

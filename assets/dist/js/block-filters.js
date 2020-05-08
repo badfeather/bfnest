@@ -16,6 +16,7 @@ wp.domReady( function() {
 	wp.blocks.unregisterBlockStyle( 'core/separator', [ 'default', 'wide', 'dots' ] );
 	//wp.blocks.unregisterBlockStyle( 'core/table', 'stripes' );
 
+
 	wp.blocks.registerBlockStyle(
 		'core/button',
 		[

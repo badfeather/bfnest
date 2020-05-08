@@ -163,24 +163,20 @@
 	@include background-color-change( $background-color, $button__background-color );
 	@include border-color-change( $border-color, $button__border-color );
 
-	@if ( $color--hover != $button__color--hover ) or ( $background-color--hover != $button__background-color--hover ) or ( $border-color--hover != $button__border-color--hover ) {
-		&:hover,
-		&:focus,
-		&:active {
-			@include color-change( $color--hover, $button__color--hover );
-			@include background-color-change( $background-color--hover, $button__background-color--hover );
-			@include border-color-change( $border-color--hover, $button__border-color--hover );
-		}
+	&:hover,
+	&:focus,
+	&:active {
+		@include color-change( $color--hover, $color );
+		@include background-color-change( $background-color--hover, $background-color );
+		@include border-color-change( $border-color--hover, $border-color );
 	}
 
-	@if ( $opacity--disabled != $button__opacity--disabled ) or ( $color--disabled != $button__color--disabled ) or ( $background-color--disabled != $button__background-color--disabled ) or ( $border-color--disabled != $button__border-color--disabled ) {
-		&.disabled,
-		&:disabled {
-			@include opacity-change( $opacity--disabled, $button__opacity--disabled);
-			@include color-change( $color--disabled, $button__color--disabled );
-			@include background-color-change( $background-color--disabled, $button__background-color--disabled );
-			@include border-color-change( $border-color--disabled, $button__border-color--disabled );
-		}
+	&.disabled,
+	&:disabled {
+		@include opacity-change( $opacity--disabled, $button__opacity--disabled );
+		@include color-change( $color--disabled, $color );
+		@include background-color-change( $background-color--disabled, $background-color );
+		@include border-color-change( $border-color--disabled, $border-color );
 	}
 }
 
@@ -288,6 +284,11 @@
 		$button--trans__background-color--disabled,
 		$button--trans__border-color--disabled
 	);
+}
+
+@mixin button--block() {
+	display: block;
+	text-align: center;
 }
 
 // FORM CONTROLS

@@ -18,6 +18,10 @@ function bfnest_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+	if ( is_singular() && has_blocks() ) {
+		$classes[] = 'has-blocks';
+	}
+
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
