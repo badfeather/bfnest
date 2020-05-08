@@ -68,7 +68,7 @@ function bfnest_block_categories( $categories, $post ) {
 		array(
 			array(
 				'slug' => 'bfnest-blocks',
-				'title' => __( 'Bad Feather Nest Blocks', 'bfnest' ),
+				'title' => __( 'Theme Blocks', 'bfnest' ),
 			),
 		)
 	);

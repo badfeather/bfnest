@@ -32,19 +32,7 @@
 	?>
 
 	<nav id="site-navigation" class="site-nav nav nav-primary" role="navigation" aria-label="<?php _e( 'Main', 'bfnest' ); ?>">
-		<button class="site-nav__toggle button button--trans button--icon"><?php
-			$ui_icons_path = get_stylesheet_directory() . '/assets/dist/img/ui-icons/';
-			$menu_svg = bfnest_get_svg( esc_url( $ui_icons_path . 'menu.svg' ) );
-			$close_svg = bfnest_get_svg( esc_url( $ui_icons_path . 'close.svg' ) );
-			$before = $after = '';
-			if ( $menu_svg ) {
-				$before .= '<span class="toggle-icon toggle-icon--menu" aria-hidden="true">' . $menu_svg . '</span>';
-				$before .= $close_svg ? '<span class="toggle-icon toggle-icon--close" aria-hidden="true">' . $close_svg . '</span>' : '';
-				$before .= '<span class="sr-only">';
-				$after .= '</span>';
-			}
-			echo $before . __( 'Menu', 'bfnest' ) . $after;
-		?></button>
+		<button class="site-nav__toggle"><?php _e( 'Menu', 'psmeats' ); ?></button>
 		<?php
 			wp_nav_menu( array(
 				'theme_location' => 'primary',
