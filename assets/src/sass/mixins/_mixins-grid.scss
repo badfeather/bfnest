@@ -67,12 +67,6 @@
 	@include guttered( $gutter );
 }
 
-@mixin col--auto {
-	flex: 0 0 auto;
-	width: auto;
-	max-width: 100%;
-}
-
 @mixin cols( $n, $columns: $grid__columns ) {
 	max-width: percentage( $n / $columns );
 	flex: 0 0 percentage( $n / $columns );
@@ -84,6 +78,18 @@
 
 @mixin pull( $offset: 1, $columns: $grid__columns ) {
 	margin-right: percentage( $offset / $columns );
+}
+
+@mixin col--grow {
+	flex-basis: 0;
+	flex-grow: 1;
+	max-width: 100%;
+}
+
+@mixin col--auto {
+	flex: 0 0 auto;
+	width: auto;
+	max-width: 100%;
 }
 
 @mixin col--centered {
@@ -192,6 +198,8 @@
 	@include generate-cols-classes( $grid__columns, $selector-type, 'cols', $prefix );
 	@include generate-push-classes( $grid__columns, $selector-type, 'push', $prefix );
 	@include generate-pull-classes( $grid__columns, $selector-type, 'pull', $prefix );
+	#{$selector-type}#{$prefix}col--grow { @include col--grow; }
+	#{$selector-type}#{$prefix}col--auto { @include col--auto; }
 	#{$selector-type}#{$prefix}col--centered { @include col--centered; }
 	#{$selector-type}#{$prefix}uncol { @include uncol; }
 	#{$selector-type}#{$prefix}unpush { @include unpush; }
