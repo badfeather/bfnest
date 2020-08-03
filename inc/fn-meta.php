@@ -297,7 +297,7 @@ function bfnest_get_share_data( $args = array() ) {
 		$networks[] = array(
 			'name' => __( 'Pocket', 'bfnest' ),
 			'slug' => 'pocket',
-			'url' => 'href="https://getpocket.com/save?url=' . $post_url,
+			'url' => 'https://getpocket.com/save?url=' . $post_url,
 		);
 	}
 
