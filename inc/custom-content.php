@@ -6,8 +6,8 @@ function bfnest_custom_init() {
 
 	// CUSTOM TAXOMONIES
 	register_taxonomy(
-		'bfnest-tax', // Key - namespaced
-		array( 'bfnest-type' ),
+		'bfnest-custom-tax', // Key - namespaced
+		array( 'bfnest-custom-type' ),
 		array(
 			'label' => __( 'Taxes', 'bfnest' ),
 			'labels' => array(
@@ -33,18 +33,19 @@ function bfnest_custom_init() {
 			'hierarchical' => true, // (bool) Defaults to false
 			'show_admin_column' => true, // (bool) Defaults to false
 			'rewrite' => array(
-				'slug' => 'types/tax'
+				'slug' => 'custom-types/custom-tax',
+				'hierarchical' => true,
 			),
 		)
 	);
 
 	// CUSTOM POST TYPES
 	register_post_type(
-		'bfnest-type', // Key - namespaced
+		'bfnest-custom-type', // Key - namespaced
 		array(
-			'label' => __( 'Types', 'bfnest' ),
+			'label' => __( 'Post Types', 'bfnest' ),
 			'labels' => array(
-				'singular_name' => __( 'Type', 'bfnest' ),
+				'singular_name' => __( 'Post Type', 'bfnest' ),
 				'add_new_item' => __( 'Add New Type', 'bfnest' ),
 				'edit_item' => __( 'Edit Type', 'bfnest' ),
 				'new_item' => __( 'New Type', 'bfnest' ),
@@ -61,8 +62,8 @@ function bfnest_custom_init() {
 			'exclude_from_search' => false, // (bool) Default is the opposite value of $public
 			'menu_position' => null, // (int) Default null (at the bottom)
 			'supports' => array(
-				'title', // default
-				'editor', // default
+				'title',
+				'editor',
 				// 'comments',
 				// 'revisions',
 				// 'trackbacks',
@@ -74,9 +75,9 @@ function bfnest_custom_init() {
 				// 'post-formats'
 			),
 			'taxonomies' => array(),
-			'has_archive' => false, // (bool) Default is false
+			'has_archive' => true, // (bool) Default is false
 			'rewrite' => array(
-				'slug' => 'types'
+				'slug' => 'custom-types'
 			),
 		)
 	);

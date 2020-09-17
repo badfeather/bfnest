@@ -336,25 +336,30 @@
 	$color: $form-control__color,
 	$background-color: $form-control__background-color,
 	$border-color: $form-control__border-color,
-	$color--focus: $form-control__color--focus,
 	$background-color--focus: $form-control__background-color--focus,
 	$border-color--focus: $form-control__border-color--focus,
 	$box-shadow--focus: $form-control__box-shadow--focus,
+	$color--placeholder: $form-control__color--placeholder,
 	$default-color: $form-control__color,
 	$default-background-color: $form-control__background-color,
 	$default-border-color: $form-control__border-color,
-	$default-color--focus: $form-control__color--focus,
 	$default-background-color--focus: $form-control__background-color--focus,
 	$default-border-color--focus: $form-control__border-color--focus,
-	$default-box-shadow--focus: $form-control__box-shadow--focus
+	$default-box-shadow--focus: $form-control__box-shadow--focus,
+	$default-color--placeholder: $form-control__color--placeholder
 ) {
 	@include color-change( $color, $default-color );
 	@include background-color-change( $background-color, $default-background-color );
 	@include border-color-change( $border-color, $default-border-color );
 
-	@if ( $color--focus != $default-color--focus ) or ( $background-color--focus != $default-background-color--focus ) or ( $border-color--focus != $default-border-color--focus ) or ( $box-shadow--focus != $default-box-shadow--focus ) {
+	@if ( $color--placeholder != $default-color--placeholder ) {
+		&::placeholder {
+			color: $color--placeholder;
+		}
+	}
+
+	@if ( ( $background-color--focus != $default-background-color--focus ) or ( $border-color--focus != $default-border-color--focus ) or ( $box-shadow--focus != $default-box-shadow--focus ) ) {
 		&:focus {
-			@include color-change( $color--focus, $default-color--focus );
 			@include background-color-change( $background-color--focus, $default-background-color--focus );
 			@include border-color-change( $border-color--focus, $default-border-color--focus );
 			@include box-shadow-change( $box-shadow--focus, $default-box-shadow--focus );
