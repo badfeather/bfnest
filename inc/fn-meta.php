@@ -46,7 +46,7 @@ function bfnest_edit_footer( $footer_class = 'doc' ) {
  * $before can be null, which will default to 'Posted in: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', ', $element = 'span', $link = 'true' ) {
+function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', ', $element = 'span', $link = true ) {
 	$title = '';
 
 	if ( null === $before ) {
@@ -81,7 +81,7 @@ function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = '
  * $before can be null, which will default to 'Posted in: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function bfnest_get_meta_categories( $before = null, $sep = ', ', $element = 'span', $link = 'true' ) {
+function bfnest_get_meta_categories( $before = null, $sep = ', ', $element = 'span', $link = true ) {
 	return bfnest_get_meta_terms( 'category', $before, $sep, $element, $link );
 }
 
@@ -90,7 +90,7 @@ function bfnest_get_meta_categories( $before = null, $sep = ', ', $element = 'sp
  * $before can be null, which will default to 'Tagged: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function bfnest_get_meta_tags( $before = null, $sep = ', ', $element = 'span', $link = 'true' ) {
+function bfnest_get_meta_tags( $before = null, $sep = ', ', $element = 'span', $link = true ) {
 	if ( null === $before ) {
 		$before = __( 'Tagged: ', 'bfnest' );
 	}
