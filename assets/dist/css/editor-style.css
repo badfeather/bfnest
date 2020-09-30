@@ -687,11 +687,6 @@ textarea {
   color: #a0a0a0;
 }
 
-.form-control::-ms-input-placeholder {
-  opacity: 1;
-  color: #a0a0a0;
-}
-
 .form-control::placeholder {
   opacity: 1;
   color: #a0a0a0;
