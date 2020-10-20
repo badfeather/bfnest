@@ -24,11 +24,13 @@ $headings__margin-right: 0;
 $headings__margin-bottom: $base__margin;
 $headings__margin-left: 0;
 $headings__font-size--lg: $headings__font-size;
+$headings__line-height--lg: $headings__line-height;
+$headings__letter-spacing--lg: $headings__letter-spacing;
 $headings__breakpoint: $bp-lg;
 $headings-link__color: $link__color;
-$headings-link__text-decoration: $link__text-decoration;
+$headings-link__text-decoration: none;
 $headings-link__color--hover: $link__color--hover;
-$headings-link__text-decoration--hover: $link__text-decoration--hover;
+$headings-link__text-decoration--hover: none;
 
 $h1__font-family: $headings__font-family;
 $h1__font-size: 36;
@@ -45,6 +47,8 @@ $h1__margin-right: $headings__margin-right;
 $h1__margin-bottom: $headings__margin-bottom;
 $h1__margin-left: $headings__margin-left;
 $h1__font-size--lg: $h1__font-size;
+$h1__line-height--lg: $h1__line-height;
+$h1__letter-spacing--lg: $h1__letter-spacing;
 $h1__breakpoint: $headings__breakpoint;
 
 $h2__font-family: $headings__font-family;
@@ -62,6 +66,8 @@ $h2__margin-right: $headings__margin-right;
 $h2__margin-bottom: $headings__margin-bottom;
 $h2__margin-left: $headings__margin-left;
 $h2__font-size--lg: $h2__font-size;
+$h2__line-height--lg: $h2__line-height;
+$h2__letter-spacing--lg: $h2__letter-spacing;
 $h2__breakpoint: $headings__breakpoint;
 
 $h3__font-family: $headings__font-family;
@@ -79,6 +85,8 @@ $h3__margin-right: $headings__margin-right;
 $h3__margin-bottom: $headings__margin-bottom;
 $h3__margin-left: $headings__margin-left;
 $h3__font-size--lg: $h3__font-size;
+$h3__line-height--lg: $h3__line-height;
+$h3__letter-spacing--lg: $h3__letter-spacing;
 $h3__breakpoint: $headings__breakpoint;
 
 $h4__font-family: $headings__font-family;
@@ -96,6 +104,8 @@ $h4__margin-right: $headings__margin-right;
 $h4__margin-bottom: $headings__margin-bottom;
 $h4__margin-left: $headings__margin-left;
 $h4__font-size--lg: $h4__font-size;
+$h4__line-height--lg: $h4__line-height;
+$h4__letter-spacing--lg: $h4__letter-spacing;
 $h4__breakpoint: $headings__breakpoint;
 
 $h5__font-family: $headings__font-family;
@@ -113,6 +123,8 @@ $h5__margin-right: $headings__margin-right;
 $h5__margin-bottom: $headings__margin-bottom;
 $h5__margin-left: $headings__margin-left;
 $h5__font-size--lg: $h5__font-size;
+$h5__line-height--lg: $h5__line-height;
+$h5__letter-spacing--lg: $h5__letter-spacing;
 $h5__breakpoint: $headings__breakpoint;
 
 $h6__font-family: $headings__font-family;
@@ -130,6 +142,8 @@ $h6__margin-right: $headings__margin-right;
 $h6__margin-bottom: $headings__margin-bottom;
 $h6__margin-left: $headings__margin-left;
 $h6__font-size--lg: $h6__font-size;
+$h6__line-height--lg: $h6__line-height;
+$h6__letter-spacing--lg: $h6__letter-spacing;
 $h6__breakpoint: $headings__breakpoint;
 
 $entry-title__font-family: $h2__font-family;
@@ -147,6 +161,8 @@ $entry-title__margin-right: $h2__margin-right;
 $entry-title__margin-bottom: $h2__margin-bottom;
 $entry-title__margin-left: $h2__margin-left;
 $entry-title__font-size--lg: $entry-title__font-size;
+$entry-title__line-height--lg: $entry-title__line-height;
+$entry-title__letter-spacing--lg: $entry-title__letter-spacing;
 $entry-title__breakpoint: $h2__breakpoint;
 
 $doc-title__font-family: $h1__font-family;
@@ -164,6 +180,8 @@ $doc-title__margin-right: $h1__margin-right;
 $doc-title__margin-bottom: $h1__margin-bottom;
 $doc-title__margin-left: $h1__margin-left;
 $doc-title__font-size--lg: $doc-title__font-size;
+$doc-title__line-height--lg: $doc-title__line-height;
+$doc-title__letter-spacing--lg: $doc-title__letter-spacing;
 $doc-title__breakpoint: $h1__breakpoint;
 
 $widget-title__font-family: $h2__font-family;
@@ -181,6 +199,8 @@ $widget-title__margin-right: $h2__margin-right;
 $widget-title__margin-bottom: $h2__margin-bottom;
 $widget-title__margin-left: $h2__margin-left;
 $widget-title__font-size--lg: $widget-title__font-size;
+$widget-title__line-height--lg: $widget-title__line-height;
+$widget-title__letter-spacing--lg: $widget-title__letter-spacing;
 $widget-title__breakpoint: $h2__breakpoint;
 
 $section-title__font-family: $h2__font-family;
@@ -198,6 +218,8 @@ $section-title__margin-right: $h2__margin-right;
 $section-title__margin-bottom: $h2__margin-bottom;
 $section-title__margin-left: $h2__margin-left;
 $section-title__font-size--lg: $section-title__font-size;
+$section-title__line-height--lg: $section-title__line-height;
+$section-title__letter-spacing--lg: $section-title__letter-spacing;
 $section-title__breakpoint: $h2__breakpoint;
 
 $nav-title__font-family: $h2__font-family;
@@ -215,6 +237,8 @@ $nav-title__margin-right: $h2__margin-right;
 $nav-title__margin-bottom: $h2__margin-bottom;
 $nav-title__margin-left: $h2__margin-left;
 $nav-title__font-size--lg: $nav-title__font-size;
+$nav-title__line-height--lg: $nav-title__line-height;
+$nav-title__letter-spacing--lg: $nav-title__letter-spacing;
 $nav-title__breakpoint: $h2__breakpoint;
 
 // NAVS
@@ -234,13 +258,15 @@ $menu__margin-right: 0;
 $menu__margin-bottom: $base__margin;
 $menu__margin-left: 0;
 $menu__font-size--lg: $menu__font-size;
+$menu__line-height--lg: $menu__line-height;
+$menu__letter-spacing--lg: $menu__letter-spacing;
 $menu__breakpoint: $bp-lg;
 
 $menu-link__color: $link__color;
-$menu-link__text-decoration: $link__text-decoration;
+$menu-link__text-decoration: none;
 
 $menu-link__color--hover: $link__color--hover;
-$menu-link__text-decoration--hover: $link__text-decoration--hover;
+$menu-link__text-decoration--hover: none;
 
 $menu-link__color--current: $menu-link__color--hover;
 
@@ -293,7 +319,7 @@ $preformatted__font-family: $font-family--monospace;
 $preformatted__font-size: $base__font-size--sm;
 $preformatted__padding-vertical: ( $base__margin - $preformatted__font-size ) / 2;
 $preformatted__padding-horizontal: $base__margin - $preformatted__font-size;
-$preformatted__color: $base__color--dark;
+$preformatted__color: $base__color;
 $preformatted__background-color: $base__background-color--alt;
 $preformatted__border-radius: 3;
 
@@ -333,6 +359,8 @@ $blockquote__margin-right: 0;
 $blockquote__margin-bottom: $base__margin;
 $blockquote__margin-left: 0;
 $blockquote__font-size--lg: $blockquote__font-size;
+$blockquote__line-height--lg: $blockquote__line-height;
+$blockquote__letter-spacing--lg: $blockquote__letter-spacing;
 $blockquote__breakpoint: $bp-lg;
 
 // CITE
@@ -352,6 +380,8 @@ $cite__margin-right: 0;
 $cite__margin-bottom: $base__margin;
 $cite__margin-left: 0;
 $cite__font-size--lg: $cite__font-size;
+$cite__line-height--lg: $cite__line-height;
+$cite__letter-spacing--lg: $cite__letter-spacing;
 $cite__breakpoint: $bp-lg;
 
 // PULLQUOTE
@@ -371,6 +401,8 @@ $pullquote__margin-right: 0;
 $pullquote__margin-bottom: $base__margin;
 $pullquote__margin-left: 0;
 $pullquote__font-size--lg: $pullquote__font-size;
+$pullquote__line-height--lg: $pullquote__line-height;
+$pullquote__letter-spacing--lg: $pullquote__letter-spacing;
 $pullquote__breakpoint: $bp-lg;
 
 // LEDE
@@ -390,6 +422,8 @@ $lede__margin-right: 0;
 $lede__margin-bottom: $base__margin;
 $lede__margin-left: 0;
 $lede__font-size--lg: $lede__font-size;
+$lede__line-height--lg: $lede__line-height;
+$lede__letter-spacing--lg: $lede__letter-spacing;
 $lede__breakpoint: $bp-lg;
 
 // META
@@ -409,6 +443,8 @@ $entry-meta__margin-right: 0;
 $entry-meta__margin-bottom: $base__margin;
 $entry-meta__margin-left: 0;
 $entry-meta__font-size--lg: $entry-meta__font-size;
+$entry-meta__line-height--lg: $entry-meta__line-height;
+$entry-meta__letter-spacing--lg: $entry-meta__letter-spacing;
 $entry-meta__breakpoint: $bp-lg;
 
 // FIGCAPTION
@@ -428,4 +464,6 @@ $figcaption__margin-right: 0;
 $figcaption__margin-bottom: 0;
 $figcaption__margin-left: 0;
 $figcaption__font-size--lg: $figcaption__font-size;
+$figcaption__line-height--lg: $figcaption__line-height;
+$figcaption__letter-spacing--lg: $figcaption__letter-spacing;
 $figcaption__breakpoint: $bp-lg;
