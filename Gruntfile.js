@@ -24,7 +24,7 @@ module.exports = function ( grunt ) {
 				files: {
 					'assets/dist/css/theme.css': 'assets/src/sass/theme.scss',
 					'assets/dist/css/editor-style.css': 'assets/src/sass/editor-style.scss',
-					'assets/dist/css/woocommerce.css': 'assets/src/sass/woocommerce.scss'
+					'assets/dist/css/woocommerce.css': 'assets/src/sass/woocommerce.scss',
 				}
 			}
 		},
@@ -42,6 +42,7 @@ module.exports = function ( grunt ) {
 						require( 'autoprefixer' ),
 						require('pixrem')(),
 						require( 'postcss-combine-media-query' )(),
+						require('postcss-sort-media-queries')(),
 					]
 				},
 				src: [
