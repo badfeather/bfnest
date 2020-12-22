@@ -1,6 +1,6 @@
 {
 	"name": "bfnest",
-	"version": "6.1.27",
+	"version": "6.1.28",
 	"homepage": "https://github.com/badfeather/bfnest",
 	"author": "Brad Thomason <brad@badfeather.com>",
 	"repository": {
@@ -20,10 +20,9 @@
 		"defaults"
 	],
 	"license": "GPL-2.0+",
-	"dependencies": {},
 	"devDependencies": {
 		"@lodder/grunt-postcss": "^3.0.0",
-		"autoprefixer": "^10.0.2",
+		"autoprefixer": "^10.1.0",
 		"bower": "^1.8.8",
 		"cssnano": "^4.1.10",
 		"eslint-config-wordpress": "^2.0.0",
@@ -44,8 +43,8 @@
 		"load-grunt-tasks": "^5.1.0",
 		"node-sass": "^5.0.0",
 		"pixrem": "^5.0.0",
-		"postcss": "^8.1.7",
+		"postcss": "^8.2.1",
 		"postcss-combine-media-query": "^1.0.1",
-		"postcss-sort-media-queries": "^2.1.11"
+		"postcss-sort-media-queries": "^2.3.15"
 	}
 }

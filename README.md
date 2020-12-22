@@ -1,5 +1,5 @@
 # Bad Feather Nest
-Version: 6.1.27
+Version: 6.1.28
 
 A starter theme for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
 

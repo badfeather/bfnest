@@ -51,13 +51,13 @@ add_action( 'enqueue_block_assets', function() {
 /**
  * Enqueue editor assets
  */
-function be_gutenberg_scripts() {
+function bfnest_gutenberg_scripts() {
 	$template_directory = get_template_directory_uri();
-	$version = bfnest_get_theme_version();
+	$version = fg_get_theme_version();
 
-	wp_enqueue_script( 'bfnest-block-filters', $template_directory . '/assets/dist/js/block-filters.js', array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'fg-block-filters', $template_directory . '/assets/dist/js/block-filters.js', array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ), $version, true );
 }
-add_action( 'enqueue_block_editor_assets', 'be_gutenberg_scripts' );
+add_action( 'enqueue_block_editor_assets', 'bfnest_gutenberg_scripts' );
 
 /**
  * Add block categories
@@ -68,7 +68,7 @@ function bfnest_block_categories( $categories, $post ) {
 		array(
 			array(
 				'slug' => 'bfnest-blocks',
-				'title' => __( 'Theme Blocks', 'bfnest' ),
+				'title' => __( 'Bad Feather Nest Blocks', 'bfnest' ),
 			),
 		)
 	);
@@ -110,9 +110,9 @@ function bfnest_register_acf_blocks() {
 		'category' => 'bfnest-blocks',
 		'icon' => 'book-alt',
 		'post_types' => array( 'page', 'post' ),
-		'keywords' => array( 'testimonial', 'quote', 'mention', 'cite' ),
+		'keywords' => array( 'starter' ),
 		'mode' => 'preview',
-		'align' => '',
+		'align' => 'wide',
 		'supports' => $supports,
 		'render_callback' => 'bfnest_acf_block_render_callback',
 	) );
