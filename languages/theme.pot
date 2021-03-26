@@ -1,14 +1,14 @@
-# <!=Copyright (C) 2020 Brad Thomason, Bad Feather Inc.
+# <!=Copyright (C) 2021 Brad Thomason, Bad Feather Inc.
 # This file is distributed under the MIT License.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Bad Feather Nest 6.1.27\n"
+"Project-Id-Version: Bad Feather Nest 6.1.30\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/bfnest\n"
-"POT-Creation-Date: 2020-12-22 01:07:57+00:00\n"
+"POT-Creation-Date: 2021-03-26 15:22:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
@@ -29,27 +29,27 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: footer.php:23
+#: footer.php:22
 msgid "Secondary"
 msgstr ""
 
-#: footer.php:29
+#: footer.php:28
 msgid "Social"
 msgstr ""
 
-#: footer.php:46
+#: footer.php:45
 msgid "Site by %1$s %2$s Powered by %3$s"
 msgstr ""
 
-#: header.php:17
+#: header.php:16
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:36
+#: header.php:35
 msgid "Main"
 msgstr ""
 
-#: header.php:37
+#: header.php:36
 msgid "Menu"
 msgstr ""
 
@@ -422,11 +422,11 @@ msgstr[1] ""
 msgid "Continue reading &rarr;"
 msgstr ""
 
-#: partials/no-results.php:5
+#: partials/no-results.php:4
 msgid "Nothing Found"
 msgstr ""
 
-#: partials/no-results.php:10
+#: partials/no-results.php:9
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
@@ -436,7 +436,7 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: search.php:8
+#: search.php:7
 msgid "Search Results for %s"
 msgstr ""
 

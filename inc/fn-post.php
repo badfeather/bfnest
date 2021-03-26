@@ -299,3 +299,108 @@ function bfnest_latest_taxonomy_posts( $args ) {
 <?php
 	} //endif
 }
+
+/**
+ * Get first term assigned to post
+ */
+function bfnest_get_first_term( $taxonomy = 'category', $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$terms = get_the_terms( $post_id, $taxonomy );
+	if ( empty( $terms ) || is_wp_error( $terms ) ) {
+		return false;
+	}
+	return array_pop( $terms );
+}
+
+/**
+ * Get primary term
+ * uses Yoast primary term if available, otherwise returns first term
+ */
+function bfnest_get_primary_term( $taxonomy = 'category', $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$first_term = bfnest_get_first_term( $taxonomy, $post_id );
+
+	if ( ! class_exists( 'WPSEO_Primary_Term' ) ) {
+		return $first_term;
+	}
+	$wpseo_term = new WPSEO_Primary_Term( $taxonomy, $post_id );
+	$primary_term_id = $wpseo_term->get_primary_term();
+	$primary_term = get_term( $primary_term_id );
+	return ! empty( $primary_term ) && ! is_wp_error( $primary_term ) ? $primary_term : $first_term;
+}
+
+/**
+ * Pretty print array/object
+ * Used for debugging
+ */
+function bfnest_pretty_print( $array = array() ) {
+	if ( empty( $array ) ) {
+		return;
+	}
+	echo '<pre>';
+	print_r( $array );
+	echo '</pre>' . "\n";
+}
+
+/**
+ * Get alternate title via custom field if available, otherwise title
+ */
+function bfnest_get_alternate_title( $field = 'alternate_title', $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$alt_title = get_post_meta( $post_id, $field, true );
+	return $alt_title ? $alt_title : get_the_title();
+}
+
+function bfnest_alternate_title( $field = 'alternate_title', $post_id = null ) {
+	echo bfnest_get_alternate_title( $field, $post_id );
+}
+
+/**
+ * Display post lede based via custom field
+ */
+function bfnest_get_lede( $field = 'lede', $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$lede = get_post_meta( $post_id, $field, true );
+	if ( ! $lede ) {
+		return false;
+	}
+	return '<div class="entry-lede">' . wp_kses_post( $lede ) . '</div>' . "\n";
+}
+
+function bfnest_lede( $field = 'lede', $post_id = null ) {
+	echo bfnest_get_lede( $field, $post_id );
+}
+
+/**
+ * Display post subtitle based via custom field
+ */
+function bfnest_get_subtitle( $field = 'subtitle', $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$subtitle = get_post_meta( $post_id, $field, true );
+	if ( ! $subtitle ) {
+		return false;
+	}
+	return '<div class="entry-subtitle">' . esc_html( $subtitle ) . '</div>' . "\n";
+}
+
+function bfnest_subtitle( $field = 'subtitle', $post_id = null ) {
+	echo bfnest_get_subtitle( $field, $post_id );
+}
+
+/**
+ * Get content flag
+ */
+function bfnest_get_content_flag( $taxonomy = 'category', $link = true, $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$term = bfnest_get_primary_term( $taxonomy, $post_id );
+	if ( empty( $term ) ) {
+		return false;
+	}
+	$link_before = $link ? '<a href="' . get_term_link( $term, $taxonomy ) . '">' : '';
+	$link_after = $link ? '</a>' : '';
+	return '<div class="entry-content-flag">' . $link_before . $term->name . $link_after . '</div>' . "\n";
+}
+
+function bfnest_content_flag( $taxonomy = 'category', $link = true, $post_id = null ) {
+	echo bfnest_get_content_flag( $taxonomy, $link, $post_id );
+}

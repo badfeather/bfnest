@@ -17,8 +17,7 @@
 		'link_after' => '</span>'
 	) );
 ?>
-	<footer class="site-footer" role="contentinfo">
-		<div class="container">
+		<footer class="site-footer" role="contentinfo">
 			<?php if ( $secondary_nav ) { ?>
 				<nav id="secondary-navigation" class="nav nav-secondary" role="navigation" aria-label="<?php _e( 'Secondary', 'bfnest' ); ?>">
 					<?php echo $secondary_nav; ?>
@@ -50,11 +49,9 @@
 					?>
 				</div>
 			</div>
-		</div>
-	</footer>
-</div>
+		</footer>
+	</div>
 
-<?php wp_footer(); ?>
-
+	<?php wp_footer(); ?>
 </body>
 </html>

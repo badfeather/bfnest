@@ -65,3 +65,45 @@ function bfnest_postnav_archive( $newer_title = null, $older_title = null ) {
 		echo '<nav class="postnav doc--archive__postnav">' . "\n" . implode( '', $postnav ) . '</nav>';
 	}
 }
+
+/**
+ * WP_nav_menu separate submenu output.
+ *
+ * Optional $args contents:
+ *
+ * string theme_location - The menu that is desired.  Accepts (matching in order) id, slug, name. Defaults to blank.
+ * string xpath - Optional. xPath syntax.
+ * string before - Optional. Text before the menu tree.
+ * string after - Optional. Text after the menu tree.
+ * bool echo - Optional, default is TRUE. Whether to echo the menu or return it.
+ *
+ * @param array $args Arguments
+ * @return String If $echo value is set to FALSE.
+ * https://www.isitwp.com/wp_nav_menu-separate-submenu-output/
+ */
+function bfnest_the_submenu( $args = array() ) {
+	$defaults = array(
+		'theme_location' => '',
+		'xpath' => "./li[contains(@class,'current-menu-item') or contains(@class,'current-menu-ancestor')]/ul",
+		'before' => '',
+		'after' => '',
+		'echo' => true
+	);
+	$args = wp_parse_args( $args, $defaults );
+	$args = (object) $args;
+	$output = array();
+	$menu_tree = wp_nav_menu( array( 'theme_location' => $args->theme_location, 'container' => '', 'echo' => false ) );
+	$menu_tree_XML = new SimpleXMLElement( $menu_tree );
+	$path = $menu_tree_XML->xpath( $args->xpath );
+	$output[] = $args->before;
+	if ( ! empty( $path ) ) {
+		$output[] = $path[0]->asXML();
+	}
+	$output[] = $args->after;
+	$html = join( '', $output );
+	if ( $args->echo ) {
+		echo $html;
+		return;
+	}
+	return $html;
+}

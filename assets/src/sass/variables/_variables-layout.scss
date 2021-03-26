@@ -41,6 +41,8 @@ $breakpoints: (
 	bp-xl: $bp-xl,
 );
 
+$base__breakpoint: $bp-lg;
+
 // IMAGE SIZES - should match image sizes set in theme, which are usually based on grid column widths
 // ---------------------------
 $image-size--th: 356;

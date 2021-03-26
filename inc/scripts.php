@@ -70,11 +70,11 @@ add_action( 'wp_footer', 'bfnest_footer_scripts' );
  * Scripts to include immediately after opening body tag
  * Utilizes 'body-before-scripts' action hook
  */
-function bfnest_body_before_scripts() {
+function bfnest_body_open_scripts() {
 ?>
 <?php
 }
-add_action( 'body-before-scripts', 'bfnest_body_before_scripts' );
+add_action( 'wp_body_open', 'bfnest_body_open_scripts' );
 
 /**
  * Load Jquery in footer

@@ -20,7 +20,7 @@
 			$return: strip-unit( $value ) / strip-unit( $default ) * 1em;
 
 		} @else if ( $unit == rem ) {
-			$return: strip-unit( $value ) / 16 * 1rem; // calcultated from <html>, which is set to 16px
+			$return: strip-unit( $value ) / $default * 1rem;
 
 		} @else if ( $unit == percentage ) {
 			$return: percentage( strip-unit( $value ) / $default );

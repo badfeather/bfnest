@@ -53,8 +53,8 @@
 	display: block;
 //	color: #6c7781;
 //	font-size: 13px;
-	color: $entry-meta__color;
-	font-size: unitcalc( $entry-meta__font-size );
+	color: $meta__color;
+	font-size: unitcalc( $meta__font-size );
 }
 
 .wp-block-latest-posts__post-excerpt {

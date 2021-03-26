@@ -588,7 +588,28 @@ h6 {
 	);
 }
 
-.lede {
+.entry-subtitle {
+	@include text-style(
+		$subtitle__font-family,
+		$subtitle__font-size,
+		$subtitle__line-height,
+		$subtitle__font-weight,
+		$subtitle__text-align,
+		$subtitle__color,
+		$subtitle__font-style,
+		$subtitle__text-transform,
+		$subtitle__letter-spacing,
+		$subtitle__text-decoration,
+		$subtitle__margin-top,
+		$subtitle__margin-right,
+		$subtitle__margin-bottom,
+		$subtitle__margin-left,
+		$subtitle__font-size--lg,
+		$subtitle__breakpoint
+	);
+}
+
+.entry-lede {
 	@include text-style(
 		$lede__font-family,
 		$lede__font-size,
@@ -605,9 +626,28 @@ h6 {
 		$lede__margin-bottom,
 		$lede__margin-left,
 		$lede__font-size--lg,
-		$lede__line-height--lg,
-		$lede__letter-spacing--lg,
 		$lede__breakpoint
+	);
+}
+
+.entry-content-flag {
+	@include text-style(
+		$content-flag__font-family,
+		$content-flag__font-size,
+		$content-flag__line-height,
+		$content-flag__font-weight,
+		$content-flag__text-align,
+		$content-flag__color,
+		$content-flag__font-style,
+		$content-flag__text-transform,
+		$content-flag__letter-spacing,
+		$content-flag__text-decoration,
+		$content-flag__margin-top,
+		$content-flag__margin-right,
+		$content-flag__margin-bottom,
+		$content-flag__margin-left,
+		$content-flag__font-size--lg,
+		$content-flag__breakpoint
 	);
 }
 
@@ -662,24 +702,24 @@ cite,
 // -------------------------
 .entry-meta {
 	@include text-style(
-		$entry-meta__font-family,
-		$entry-meta__font-size,
-		$entry-meta__line-height,
-		$entry-meta__font-weight,
-		$entry-meta__text-align,
-		$entry-meta__color,
-		$entry-meta__font-style,
-		$entry-meta__text-transform,
-		$entry-meta__letter-spacing,
-		$entry-meta__text-decoration,
-		$entry-meta__margin-top,
-		$entry-meta__margin-right,
-		$entry-meta__margin-bottom,
-		$entry-meta__margin-left,
-		$entry-meta__font-size--lg,
-		$entry-meta__line-height--lg,
-		$entry-meta__letter-spacing--lg,
-		$entry-meta__breakpoint
+		$meta__font-family,
+		$meta__font-size,
+		$meta__line-height,
+		$meta__font-weight,
+		$meta__text-align,
+		$meta__color,
+		$meta__font-style,
+		$meta__text-transform,
+		$meta__letter-spacing,
+		$meta__text-decoration,
+		$meta__margin-top,
+		$meta__margin-right,
+		$meta__margin-bottom,
+		$meta__margin-left,
+		$meta__font-size--lg,
+		$meta__line-height--lg,
+		$meta__letter-spacing--lg,
+		$meta__breakpoint
 	);
 	clear: both;
 }
