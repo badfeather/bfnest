@@ -40,18 +40,8 @@ function bfnest_widgets_init() {
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
 	) );
-
 }
 add_action( 'widgets_init', 'bfnest_widgets_init' );
-
-/**
- * Register custom widgets
- */
-function bfnest_register_widgets() {
-	register_widget( 'bfnest_widget_pages_subnav' );
-	register_widget( 'bfnest_widget_taxonomy_subnav' );
-}
-add_action( 'widgets_init', 'bfnest_register_widgets', 1 );
 
 /**
  * Disable default widgets

@@ -1,5 +1,28 @@
 <?php
 /**
+ * Used in post type and taxonomy archives
+ * Add any custom post type/taxonomy conditionals here
+ */
+function bfnest_get_archive_post_type() {
+	if ( ! ( is_archive() || is_home() ) ) {
+		return false;
+	}
+	$type = false;
+
+	if ( is_home() || is_category() || is_tag() || is_date() || is_author() ) {
+		$type = 'post';
+	}
+
+	// add conditionals for other post types
+
+//	if ( is_post_type_archive( 'product' ) || is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) {
+//		$type = 'product';
+//	}
+
+	return $type;
+}
+
+/**
  * Post is in descendant category
  * See http://codex.wordpress.org/Function_Reference/in_category
  */
@@ -237,13 +260,13 @@ function bfnest_latest_posts( $args ) {
 			while ( $latest->have_posts() ) {
 				$latest->the_post();
 				get_template_part( 'partials/content', $content_part );
-			} // endwhile
+			}
 			wp_reset_postdata();
 		?>
-	</div><?php //	 /.widget-content ?>
-</aside><?php //	/.widget.widget--latest ?>
+	</div>
+</aside>
 <?php
-	} // endif
+	}
 }
 
 /**
@@ -291,13 +314,13 @@ function bfnest_latest_taxonomy_posts( $args ) {
 			while ( $latest->have_posts() ) {
 					$latest->the_post();
 					get_template_part( 'partials/content', $content_part );
-			} // endwhile
+			}
 			wp_reset_postdata();
 		?>
-	</div><?php //	 /.widget-content ?>
-</aside><?php //	/.widget.widget--latest ?>
+	</div>
+</aside>
 <?php
-	} //endif
+	}
 }
 
 /**

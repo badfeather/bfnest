@@ -81,7 +81,6 @@ function bfnest_custom_init() {
 			),
 		)
 	);
-
 }
 add_action( 'init', 'bfnest_custom_init' );
 

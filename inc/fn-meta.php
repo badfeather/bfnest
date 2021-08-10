@@ -369,15 +369,9 @@ function bfnest_get_meta_share(
 		$title = '<span class="meta-title">' . $before . '</span>';
 	}
 
-	if ( $new_window ) {
-		$target = ' target="_blank"';
-
-	} else {
-		$target = '';
-	}
+	$target = $new_window ? ' target="_blank" rel="noopener noreferrer"' : '';
 
 	$share_array = array();
-
 	foreach ( $networks as $network ) {
 		$network_before = $network_after = '';
 		$network_slug = $network['slug'];

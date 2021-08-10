@@ -37,7 +37,7 @@ function bfnest_postnav_single( $in_same_term = false, $excluded_terms = array()
  * Postnav archives
  */
 function bfnest_postnav_archive( $newer_title = null, $older_title = null ) {
-	if ( ! is_archive() ) {
+	if ( ! ( is_archive() || is_home() ) ) {
 		return false;
 	}
 

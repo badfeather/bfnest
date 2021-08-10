@@ -1,16 +1,19 @@
 <?php get_header(); ?>
 
-<div class="site-content doc doc--page">
+<?php
+	$post_type = 'page';
+?>
+<div class="site-content doc doc--singular doc--singular-<?php echo esc_attr( $post_type ); ?>">
 	<main id="content" class="doc-main">
 		<?php
 			while ( have_posts() ) {
 				the_post();
-				get_template_part( 'partials/single-page' );
-			} // endwhile
+				get_template_part( 'partials/entry-singular', $post_type );
+			}
 		?>
 	</main>
 
-	<?php get_template_part( 'partials/sidebar', 'page' ); ?>
+	<?php get_template_part( 'partials/sidebar-singular', $post_type ); ?>
 </div>
 
 <?php get_footer(); ?>

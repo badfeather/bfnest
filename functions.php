@@ -37,10 +37,6 @@ require $template_directory . '/inc/fn-custom.php';
 // Gutenberg
 require $template_directory . '/inc/blocks.php';
 
-// Custom widgets
-require $template_directory . '/inc/widgets/class-widget-page-subnav.php';
-require $template_directory . '/inc/widgets/class-widget-taxonomy-subnav.php';
-
 /**
  * plugin-specific configs
  */
@@ -48,5 +44,9 @@ require $template_directory . '/inc/widgets/class-widget-taxonomy-subnav.php';
 if ( class_exists( 'WooCommerce' ) ) {
 	require $template_directory . '/inc/woocommerce.php';
 }
+
+//if( is_plugin_active( 'plugin-folder/main-plugin-file.php' ) ) {
+//	require $template_directory . '/inc/plugin-name.php';
+//}
 
 

@@ -53,7 +53,7 @@ add_action( 'enqueue_block_assets', function() {
  */
 function bfnest_gutenberg_scripts() {
 	$template_directory = get_template_directory_uri();
-	$version = fg_get_theme_version();
+	$version = bfnest_get_theme_version();
 
 	wp_enqueue_script( 'fg-block-filters', $template_directory . '/assets/dist/js/block-filters.js', array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ), $version, true );
 }
