@@ -15,7 +15,7 @@ This theme uses NPM, SASS, ESLint, and PostCSS to lint, concatenate and minify C
 * Bower has been removed. Recommend using NPM or Yarn
 * Imagemin has been removed from the build tools due to the extension no longer maintained and has security vulnerabilities in its dependencies. We recommend minifying theme images on your local machine using [ImageOptim](https://imageoptim.com/mac) before saving to the `assets/dist/img` folder. We may revisit integrating  [Squoosh](https://github.com/GoogleChromeLabs/squoosh) into the build process.
 * Svgmin has been removed from the build tools. We recommend using [SVGOMG](https://jakearchibald.github.io/svgomg/) or [ImageOptim](https://imageoptim.com/mac) before saving SVGs to the `assets/dist/img` folder. We may revisit integrating SVGO into the build process.
-* Svgstore has been removed from the build tools. Replaced with [svg-sprite](https://github.com/svg-sprite/svg-sprite), but build step is still in the works.
+* Svgstore has been removed from the build tools. 
 * i18N has been removed from build tools. If required, use [WP-CLI](https://developer.wordpress.org/cli/commands/i18n/make-pot/) to generate .pot files.
 
 ## Getting Started
