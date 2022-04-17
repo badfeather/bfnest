@@ -1,0 +1,279 @@
+// COLORS
+// ---------------------------
+$gray: #808080;
+$black: #000;
+$white: #fff;
+
+$hsl-red: #f00; // hsl hue: 0
+$hsl-orange: #ff8000; // hsl hue: 30
+$hsl-yellow: #ff0; // hsl hue: 60
+$hsl-grass: #80FF00; // hsl hue: 90
+$hsl-green: #0f0; // hsl hue: 120
+$hsl-aqua: #00ff80; //hsl hue: 150
+$hsl-cyan: #0ff; // hsl hue: 180
+$hsl-sky: #007fff; // hsl hue: 210
+$hsl-blue: #00f; // hsl hue: 240
+$hsl-violet: #7f00ff; // hsl hue: 270
+$hsl-magenta: #f0f; // hsl hue: 300
+$hsl-pink: #ff0080; // hsl hue: 330
+
+// uniform contrast base colors
+// see: https://www.hsluv.org/
+$red: hsluv.hsluv(10deg, 100%, 49%);
+$orange: hsluv.hsluv(40deg, 100%, 49%);
+$yellow: hsluv.hsluv(70deg, 100%, 50%);
+$grass: hsluv.hsluv(100deg, 100%, 49%);
+$green: hsluv.hsluv(130deg, 100%, 49%);
+$aqua: hsluv.hsluv(160deg, 100%, 49%);
+$cyan: hsluv.hsluv(190deg, 100%, 49%);
+$sky: hsluv.hsluv(220deg, 100%, 49%);
+$blue: hsluv.hsluv(250deg, 100%, 49%);
+$violet: hsluv.hsluv(280deg, 100%, 49%);
+$magenta: hsluv.hsluv(310deg, 100%, 49%);
+$pink: hsluv.hsluv(340deg, 100%, 49%);
+
+$silver: #C0C0C0;
+
+// Social Networks
+$airbnb: #FF5A5F;
+$apple-music: #000;
+$bandcamp: #408294;
+$behance: #1769FF;
+$blogger: #FF5722;
+$codepen: #000;
+$deviantart: #05CC47;
+$digg: #000;
+$dribbble: #EA4C89;
+$ello: #000;
+$facebook: #4172B8;
+$flickr: #0063DC;
+$foursquare: #F94877;
+$github: #181717;
+$instagram: #E4405F;
+$last-fm: #D51007;
+$linkedin: #0077B5;
+$mail: #000;
+$medium: #12100E;
+$mix: #FF8126;
+$pinboard: #0000FF;
+$pinterest: #BD081C;
+$pocket: #EF3F56;
+$reddit: #FF4500;
+$rss: #FFA500;
+$skype: #00AFF0;
+$snapchat: #FFFC00;
+$soundcloud: #FF3300;
+$spotify: #1ED760;
+$tumblr: #36465D;
+$twitch: #6441A4;
+$twitter: #1DA1F2;
+$vimeo: #1AB7EA;
+$wordpress: #21759B;
+$yahoo: #440099;
+$yelp: #D32323;
+$ycombinator: #F0652F;
+$youtube: #F00;
+
+$social-colors: (
+	'airbnb': $airbnb,
+	'apple-music': $apple-music,
+	'bandcamp': $bandcamp,
+	'behance': $behance,
+	'blogger': $blogger,
+	'codepen': $codepen,
+	'deviantart': $deviantart,
+	'digg': $digg,
+	'dribbble': $dribbble,
+	'ello': $ello,
+	'facebook': $facebook,
+	'flickr': $flickr,
+	'foursquare': $foursquare,
+	'github': $github,
+	'instagram': $instagram,
+	'last-fm': $last-fm,
+	'linkedin': $linkedin,
+	'mail': $mail,
+	'medium': $medium,
+	'mix': $mix,
+	'pinboard': $pinboard,
+	'pinterest': $pinterest,
+	'pocket': $pocket,
+	'reddit': $reddit,
+	'rss': $rss,
+	'skype': $skype,
+	'snapchat': $snapchat,
+	'soundcloud': $soundcloud,
+	'spotify': $spotify,
+	'tumblr': $tumblr,
+	'twitch': $twitch,
+	'twitter': $twitter,
+	'vimeo': $vimeo,
+	'wordpress': $wordpress,
+	'yahoo': $yahoo,
+	'yelp': $yelp,
+	'ycombinator': $ycombinator,
+	'youtube': $youtube,
+);
+
+$share-colors: (
+	'digg': $digg,
+	'facebook': $facebook,
+	'linkedin': $linkedin,
+	'mail': $mail,
+	'pinterest': $pinterest,
+	'pocket': $pocket,
+	'reddit': $reddit,
+	'twitter': $twitter,
+);
+
+// Theme
+$color-text: shade($gray, 80%);
+$color-text--alt: shade($gray, 20%);
+$color-background: $white;
+$color-background--alt: tint($gray, 80%);
+$color-border: tint($gray, 60%);
+
+$color-primary: check-contrast($blue, $color-background, 4.5);
+$color-secondary: check-contrast($magenta, $color-background, 4.5);
+$color-info: check-contrast($cyan, $color-background, 4.5);
+$color-success: check-contrast($green, $color-background, 4.5);
+$color-warning: check-contrast($orange, $color-background, 4.5);
+$color-danger: check-contrast($red, $color-background, 4.5);
+$color-highlight: check-contrast(tint($yellow, 70%), $color-text, 4.5);
+
+$color-primary--hover: shade($color-primary, 30%);
+$color-secondary--hover: shade($color-secondary, 30%);
+$color-info--hover: shade($color-info, 30%);
+$color-success--hover: shade($color-success, 30%);
+$color-warning--hover: shade($color-warning, 30%);
+$color-danger--hover: shade($color-danger, 30%);
+
+$url-color-text: url-friendly-color($color-text);
+$select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$url-color-text}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
+
+// Alt scheme theme
+$alt-scheme__color-text: $white;
+$alt-scheme__color-text--alt: tint($gray, 20%);
+$alt-scheme__color-background: shade($gray, 80%);
+$alt-scheme__color-background--alt: $black;
+$alt-scheme__color-border: shade($gray, 40%);
+
+$alt-scheme__color-primary: check-contrast(tint($blue, 20%), $alt-scheme__color-background, 4.5);
+$alt-scheme__color-secondary: check-contrast(tint($magenta, 20%), $alt-scheme__color-background, 4.5);
+$alt-scheme__color-info: check-contrast(tint($cyan, 20%), $alt-scheme__color-background, 4.5);
+$alt-scheme__color-success: check-contrast(tint($green, 20%), $alt-scheme__color-background, 4.5);
+$alt-scheme__color-warning: check-contrast(tint($orange, 20%), $alt-scheme__color-background, 4.5);
+$alt-scheme__color-danger: check-contrast(tint($red, 20%), $alt-scheme__color-background, 4.5);
+
+$alt-scheme__color-primary--hover: tint($alt-scheme__color-primary, 40%);
+$alt-scheme__color-secondary--hover: tint($alt-scheme__color-secondary, 40%);
+$alt-scheme__color-info--hover: tint($alt-scheme__color-info, 40%);
+$alt-scheme__color-success--hover: tint($alt-scheme__color-success, 40%);
+$alt-scheme__color-warning--hover: tint($alt-scheme__color-warning, 40%);
+$alt-scheme__color-danger--hover: tint($alt-scheme__color-danger, 40%);
+
+$alt-scheme__url-color-text: url-friendly-color($alt-scheme__color-text);
+$alt-scheme__select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$alt-scheme__url-color-text}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
+
+$color-scheme: 'light';
+$has-alt-scheme: true;
+$color-scheme--alt: 'dark';
+
+$root-colors: (
+	'color-text': $color-text,
+	'color-text--alt': $color-text--alt,
+	'color-background': $color-background,
+	'color-background--alt': $color-background--alt,
+	'color-border': $color-border,
+	'color-primary': $color-primary,
+	'color-secondary': $color-secondary,
+	'color-info': $color-info,
+	'color-success': $color-success,
+	'color-warning': $color-warning,
+	'color-danger': $color-danger,
+	'color-primary--hover': $color-primary--hover,
+	'color-secondary--hover': $color-secondary--hover,
+	'color-info--hover': $color-info--hover,
+	'color-success--hover': $color-success--hover,
+	'color-warning--hover': $color-warning--hover,
+	'color-danger--hover': $color-danger--hover,
+	'color-highlight': $color-highlight,
+	'select-icon': $select-icon,
+);
+
+$root-colors--alt: (
+	'color-text': $alt-scheme__color-text,
+	'color-text--alt': $alt-scheme__color-text--alt,
+	'color-background': $alt-scheme__color-background,
+	'color-background--alt': $alt-scheme__color-background--alt,
+	'color-border': $alt-scheme__color-border,
+	'color-primary': $alt-scheme__color-primary,
+	'color-secondary': $alt-scheme__color-secondary,
+	'color-info': $alt-scheme__color-info,
+	'color-success': $alt-scheme__color-success,
+	'color-warning': $alt-scheme__color-warning,
+	'color-danger': $alt-scheme__color-danger,
+	'color-primary--hover': $alt-scheme__color-primary--hover,
+	'color-secondary--hover': $alt-scheme__color-secondary--hover,
+	'color-info--hover': $alt-scheme__color-info--hover,
+	'color-success--hover': $alt-scheme__color-success--hover,
+	'color-warning--hover': $alt-scheme__color-warning--hover,
+	'color-danger--hover': $alt-scheme__color-danger--hover,
+	'select-icon': $alt-scheme__select-icon,
+);
+
+// TYPOGRAPHY
+$font-family--helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family--georgia: Georgia, "Times New Roman", Times, serif;
+$font-family--menlo: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family--system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+$font-family--sans-serif:  $font-family--system;
+$font-family--serif: $font-family--georgia;
+$font-family--monospace: $font-family--menlo;
+
+$root-fonts: (
+	'font-family': $font-family--sans-serif,
+	'fonf-family--display': $font-family--serif,
+	'font-family--alt': $font-family--sans-serif,
+	'font-family--code': $font-family--monospace
+);
+
+$font-weight--extra-light: 100;
+$font-weight--light: 200;
+$font-weight--book: 300;
+$font-weight--normal: 400;
+$font-weight--medium: 500;
+$font-weight--semibold: 600;
+$font-weight--bold: 700;
+$font-weight--black: 800;
+$font-weight--extra-black: 900;
+
+$font-size--4xs: remcalc(10);
+$font-size--3xs: remcalc(11);
+$font-size--2xs: remcalc(12);
+$font-size--xs: remcalc(14);
+$font-size--sm: remcalc(16);
+$font-size--base: remcalc(18);
+$font-size--lg: remcalc(21);
+$font-size--xl: remcalc(24);
+$font-size--2xl: remcalc(30);
+$font-size--3xl: remcalc(36);
+$font-size--4xl: remcalc(48);
+$font-size--5xl: remcalc(60);
+
+$line-height--3xs: 1;
+$line-height--2xs: 1.125;
+$line-height--xs: 1.25;
+$line-height--sm: 1.375;
+$line-height--base: 1.5;
+$line-height--lg: 1.625;
+$line-height--xl: 1.75;
+$line-height--2xl: 1.875;
+$line-height--3xl: 2;
+
+$spacing: $font-size--base * $line-height--base;
+
+// used for unitcalc mixins
+$base__unit: 'rem';
+

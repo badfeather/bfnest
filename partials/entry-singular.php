@@ -1,6 +1,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( array( 'entry', 'singular', 'singular--' . get_post_type() ) ); ?>>
-	<header class="doc-header">
-		<h1 class="doc-title entry-title"><?php the_title(); ?></h1>
+	<header class="entry-header doc-header">
+		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
 		<?php
 			bfnest_meta( array(
 				bfnest_get_meta_pubdate(),
@@ -9,8 +9,12 @@
 		?>
 	</header>
 
-	<div class="doc-content">
-		<div class="entry-content">
+	<div class="doc-content entry-content-wrap">
+		<div class="entry-content blocks">
+
+			<?php //bfnest_pretty_print( wp_get_global_settings() ); ?>
+			<?php //bfnest_pretty_print( wp_get_global_styles() ); ?>
+
 			<?php the_content(); ?>
 			<?php
 				wp_link_pages( array(
@@ -20,7 +24,7 @@
 			?>
 		</div>
 
-		<footer class="doc-footer">
+		<footer class="entry-footer">
 			<?php
 				bfnest_meta( array(
 					bfnest_get_meta_categories(),

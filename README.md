@@ -1,9 +1,22 @@
 # Bad Feather Nest
-Version: 6.1.32
+Version: 7.0.0
 
-A starter theme for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril. 
+A starter theme for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril.
 
-This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS and Javascript, compress images, generate translation files, and probably more that I'm forgetting about. 
+This theme uses NPM, SASS, ESLint, and PostCSS to lint, concatenate and minify CSS and Javascript, compress images, generate translation files, and probably more that I'm forgetting about.
+
+## Version 7.0 breaking changes:
+* SASS design system has been largely overhauled with the following goals:
+  * Add CSS variables for basic settings (colors)
+  * Reduce abstraction and folder nesting
+  * Reduce overuse of variables and mixins
+  * Fold reset styles into native elements
+* Grunt has been replaced with NPM scripts as a build tool
+* Bower has been removed. Recommend using NPM or Yarn
+* Imagemin has been removed from the build tools due to the extension no longer maintained and has security vulnerabilities in its dependencies. We recommend minifying theme images on your local machine using [ImageOptim](https://imageoptim.com/mac) before saving to the `assets/dist/img` folder. We may revisit integrating  [Squoosh](https://github.com/GoogleChromeLabs/squoosh) into the build process.
+* Svgmin has been removed from the build tools. We recommend using [SVGOMG](https://jakearchibald.github.io/svgomg/) or [ImageOptim](https://imageoptim.com/mac) before saving SVGs to the `assets/dist/img` folder. We may revisit integrating SVGO into the build process.
+* Svgstore has been removed from the build tools. Replaced with [svg-sprite](https://github.com/svg-sprite/svg-sprite), but build step is still in the works.
+* i18N has been removed from build tools. If required, use [WP-CLI](https://developer.wordpress.org/cli/commands/i18n/make-pot/) to generate .pot files.
 
 ## Getting Started
 ### Installing
@@ -11,20 +24,19 @@ This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS
 * Change the name of the folder to whatever your theme should be called, then:
   * Find in files `bfnest` and replace with `yourtextdomain`
   * Find in files `Bad Feather Nest` and replace with `Your Theme Name`
-  * Change the repository, theme location, author and version information as needed in `package.json`,`bower.json`, and `style.css`
-  * Change the theme name and credit info in the `assets/sass/style.scss` or `style.css` file, depending on whether you're using SASS.
-  * Replace existing `assets/src/img/apple-touch-icon.png` file with your own. The current one is saved at 180 x 180 px. These get optimized and added to the `assets/dist/img` directory when you run `grunt`. 
-  * Replace existing `assets/dist/favicon.ico` file with your own. The grunt task to minify images does not handle .ico files
-  
-* Run `npm install` to install all the default grunt dependencies
+  * Find production url `https://bfnest.com` and replace with `https://yourproductionurl.com`
+  * Change the repository, theme location, author and version information as needed in `package.json` and `style.css`
+  * Replace existing `apple-touch-icon.png`, `favicon.ico`, and `favicon.svg` files with your own in the `assets/dist/img` directory.
+
+* Run `npm install` to install all the default dependencies
 * Update the `README.md` with more relevant language for your project.
-* Save out a new screenshot.png of your site at 1200 x 900 px.
+* Save out a new screenshot.png for your site at 1200 x 900 px.
+* Run `npm run build` to build all dist assets
 
 ### Customizing
 #### JS
-* Add any custom script files to the `assets/src/js` directory.
-* Install any javascript dependencies via bower by running `bower install [package-name]` - these files will be placed in `assets/src/vendor/`
-* Concatenate files can be concatenated to the `assets/dist/js/` directory file in the concat section of `Gruntfile.js`
+* Add any custom script files to the `assets/src/js` directory
+* Concatenate files can be concatenated to the `assets/dist/js/` directory file in the `concat-js` command in the `package.json` file
 * If you want to include the concatenated files in your project, add `wp_enqueue_script` calls as necessary in the `inc/scripts.php` file
 
 #### SASS
@@ -32,21 +44,11 @@ This theme uses NPM, Grunt, SASS and PostCSS to lint, concatenate and minify CSS
 * Most of the SCSS variables that have anything to do with sizes should be set unitless, as the majority of the sizing is calculated to in `em`s. For example, if you want the `h2`s to have a font-size of 20px, you would declare `$h2-font-size: 20`.
 * The `archive.php`, `single.php`, etc. all use `get_template_part( 'partials/content', get_post_type() )`. This can come in handy if you start adding custom post types, in which case you could add a `content-[post-type-name].php` to the `part` directory.
 
-#### Grunt
-* This theme uses Grunt to perform a number of tasks, including SASS, js, image, and svg processing and minification.
-* To watch your files while editing, run `grunt watch` in terminal
-* To build your project for deployment, run `grunt`
-* Any `.jpg`, `.gif`, `.png` or `.svg` images placed in `assets/img`, will be minified to the `img` directory using imagemin upon running `grunt`
-* Any `.svg` images placed in the `assets/img/svg-icons` directory will be combined into a single file `svg-icons.svg` in the `assets/img` directory. This will be included as an svg sprite at the top of the `<body>` if it exists.
-
-##### Versioning
-Version numbers get updated in the `.json` files, theme stylesheets and `README.md` with semantic versioning using the following commands:
-* To performa a patch bump, ie. '0.0.1', run `grunt bump-patch`. 
-* To perform a minor bump, ie. '0.1.0', run `grunt bump-minor`. 
-* To perform a major bump, ie. '1.0.0', run `grunt bump-major`. 
-
-#### Style Tester
-* Included is a very low-level style-tester custom page template. To use in your theme, set a page in your site to use that template. To add content to the style tester, edit `partials/style-tester.php`
+#### NPM Scripts
+This theme uses NPM Scripts as a build tool, and performs SASS compiling to CSS, PostCSS actions and minification, JS linting and concatenation, and version bumping. The actions below should be performed in terminal in your theme directory:
+* To watch your JS and SASS and CSS files while editing, run `npm run watch`
+* To build your project for deployment, run `npm run build`. In addition to building your compiled CSS and JS files
+* To bump your version manually (patch versions happen on every build), you can run `npm run bump:patch`, `npm run bump:minor`, or `npm run bump:major`
 
 #### Good luck
 * As with all things code-related, the only real way to understand where I'm coming from is to read the code and scratch your head.

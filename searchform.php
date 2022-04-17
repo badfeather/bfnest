@@ -1,5 +1,5 @@
 <?php
-$svg = bfnest_get_svg( get_template_directory_uri() . '/assets/dist/img/ui-icons/search.svg' );
+$svg = bfnest_get_svg( get_template_directory_uri() . '/img/ui-icons/search.svg' );
 $button_before = $button_after = $button_add_class = '';
 if ( $svg ) {
 	$button_before = '<span class="search-icon" aria-hidden="true">' . $svg . '</span><span class="sr-only">';

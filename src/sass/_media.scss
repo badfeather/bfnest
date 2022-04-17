@@ -1,0 +1,105 @@
+img,
+picture,
+video,
+canvas,
+svg {
+	max-width: 100%;
+	height: auto;
+}
+
+audio,
+canvas,
+video {
+	display: inline-block;
+}
+
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+
+svg:not([fill]) {
+	fill: currentColor;
+}
+
+figure,
+.figure,
+.wp-video {
+	margin: 0 0 $figure__margin-bottom;
+}
+
+// wordpress-specific - old styles
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img,
+.wp-caption {
+	&.alignleft {
+		margin-left: 0;
+		margin-right: $spacing--base;
+		clear: left;
+	}
+
+	&.alignright {
+		margin-left: $spacing--base;
+		margin-right: 0;
+		clear: right;
+	}
+
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin-bottom: $figure__margin-bottom;;
+	}
+}
+
+.wp-caption {
+	display: table;
+	max-width: 100%;
+
+	img {
+		display: block;
+	}
+
+	figcaption {
+		display: table-caption;
+		caption-side: bottom;
+	}
+}
+
+.gallery  {
+	@include gallery-row;
+	margin-bottom: $figure__margin-bottom;
+	padding-top: $spacing--sm;
+}
+
+.gallery-item {
+	@include gallery-col;
+	margin-bottom: $figure__margin-bottom;
+
+	figure {
+		margin: 0;
+	}
+
+	img {
+		display: block;
+	}
+}
+
+@include generate-block-grid-classes(6, '.gallery', '.gallery-columns', '.gallery-item');
+
+.svg-defs {
+	display: none;
+}

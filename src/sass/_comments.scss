@@ -1,0 +1,57 @@
+// comment list
+.comments-list {
+	@include list-unstyled;
+
+	.children {
+		@include list-unstyled;
+		margin-left: $spacing--base;
+	}
+
+	.comment {
+		margin-bottom: 1em;
+		border-bottom: 1px solid border-color;
+	}
+
+	.comment .comment {
+		padding-top: 1em;
+		border-top: 1px solid border-color;
+		border-bottom: 0;
+		//border-bottom: 1px solid @base-border-color;
+	}
+
+	p {
+		margin-bottom: $spacing--sm;
+	}
+}
+
+// comment
+.comment-meta {
+	@extend .entry-meta;
+}
+
+.comment-header {
+	margin-bottom: $spacing--sm;
+}
+
+// comment-form
+.comment-main {
+	display: inline-block;
+}
+
+.form-allowed-tags {
+	clear: both;
+	width: 95%;
+	@extend .sr-only;
+}
+
+.form-allowed-tags code {
+	display: block;
+}
+
+.bypostauthor {
+	//font-weight: bold;
+}
+
+.submit {
+	@extend .button;
+}

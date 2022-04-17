@@ -7,10 +7,13 @@ function bfnest_media_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// Add custom image sizes - add_image_size( 'size-name', width [int], height [int], true/false [hard crop - defaults to false]);
-	//add_image_size( 'thumbnail--lg', 356, 356, true );
+	add_image_size( 'thumbnail-uc', 285,  0, false );
+	add_image_size( 'thumbnail-1-1-c', 285, 285, true );
+	add_image_size( 'wide-uc', 915, 0, false );
+	add_image_size( 'container-uc', 1230, 0, false );
 
 	// Set image size 'post-thumbnail'. - set_post_thumbnail_size( width [int], height[int], true/false [hard crop - defaults to false] );
-	set_post_thumbnail_size( 738, 492, true );
+	set_post_thumbnail_size( 285, 190, true );
 }
 add_action( 'after_setup_theme', 'bfnest_media_setup' );
 
@@ -22,7 +25,7 @@ add_action( 'after_setup_theme', 'bfnest_media_setup' );
  * @global int $content_width
  */
 function bfnest_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'bfnest_content_width', 712 );
+	$GLOBALS['content_width'] = apply_filters( 'bfnest_content_width', 1020 );
 }
 add_action( 'after_setup_theme', 'bfnest_content_width', 0 );
 
@@ -30,17 +33,15 @@ add_action( 'after_setup_theme', 'bfnest_content_width', 0 );
  * Set default image sizes on theme switch
  */
 function bfnest_media_options() {
-	update_option( 'thumbnail_size_w', 258 );
-	update_option( 'thumbnail_size_h', 172 );
+	update_option( 'thumbnail_size_w', 285 );
+	update_option( 'thumbnail_size_h', 190 );
 	update_option( 'thumbnail_crop', true );
-	update_option( 'medium_size_w', 354 );
-	update_option( 'medium_size_h', 9999 );
-	update_option( 'medium_large_w', 546 );
-	update_option( 'large_size_w', 738 );
-	update_option( 'large_size_h', 9999 );
+	update_option( 'medium_size_w', 390 );
+	update_option( 'medium_size_h', 0 );
+	update_option( 'medium_large_w', 600 );
+	update_option( 'large_size_w', 705 );
+	update_option( 'large_size_h', 0 );
 
-	update_option( 'image_default_align', 'none' );
-	update_option( 'image_default_link_type', 'file' );
 	update_option( 'image_default_size', 'large' );
 }
 add_action( 'after_switch_theme', 'bfnest_media_options' );
@@ -52,6 +53,8 @@ add_action( 'after_switch_theme', 'bfnest_media_options' );
 function bfnest_image_size_names_choose( $sizes ) {
 	$custom_sizes = array(
 		//'medium_large' => __( 'Medium Large', 'bfnest' ),
+		'wide-uc' => __( 'Wide', 'bfnest' ),
+		'container-uc' => __( 'Container', 'bfnest' ),
 	);
 	return array_merge( $sizes, $custom_sizes );
 }

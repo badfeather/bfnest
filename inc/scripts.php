@@ -20,18 +20,20 @@ function bfnest_get_theme_version() {
 function bfnest_scripts() {
 	$template_directory = get_template_directory_uri();
 
-	// Load non-minified files if 'SCRIPT_DEBUG' is set to TRUE, otherwise, use minified files in production
-	$debug = bfnest_is_debug();
-	$suffix = ( true === $debug ) ? '' : '.min';
-
 	// Fetch the version number of the theme, which can be appended on css/js files for debugging/cacheing issues
 	$version = bfnest_get_theme_version();
 
+	// move jQuery to footer
+	wp_script_add_data( 'jquery-core', 'group', 1 );
+    wp_script_add_data( 'jquery-migrate', 'group', 1 );
+	wp_script_add_data( 'jquery', 'group', 1 );
+
 	// Enqueue styles.
-	wp_enqueue_style( 'bfnest-style', $template_directory . '/assets/dist/css/theme' . $suffix . '.css', array(), $version );
+	wp_enqueue_style( 'bfnest-style', $template_directory . '/css/theme.css', array(), $version );
 
 	// Enqueue scripts.
-	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/assets/dist/js/theme' . $suffix . '.js', array( 'jquery' ), $version, true );
+	// if using jQuery, add 'jquery' to dependencies array
+	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/js/theme.js', array(), $version, true );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -42,20 +44,35 @@ function bfnest_scripts() {
 add_action( 'wp_enqueue_scripts', 'bfnest_scripts' );
 
 /**
- * Header scripts - any external scripts that should be loaded in the <head> via wp_head(), ie. analytics, typekit, favicons, polyfills, etc.
+ * Head scripts - script and link tags to add to head
  */
-function bfnest_header_scripts() {
+function bfnest_head_scripts() {
 	$template_directory = get_template_directory_uri();
 	// paste <script> tags within function
 ?>
-<link rel="shortcut icon" href="<?php echo esc_url( $template_directory . '/assets/dist/img/favicon.ico' ); ?>">
-<link rel="apple-touch-icon" href="<?php echo esc_url( $template_directory . '/assets/dist/img/apple-touch-icon.png' ); ?>" />
+<link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.ico' ); ?>" sizes="any">
+<link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.svg' ); ?>" type="image/svg+xml">
+<link rel="apple-touch-icon" href="<?php echo esc_url( $template_directory . '/img/apple-touch-icon.png' ); ?>" />
 <?php
-} // close function
-add_action( 'wp_head', 'bfnest_header_scripts' );
+}
+add_action( 'wp_head', 'bfnest_head_scripts' );
 
 /**
- * Footer scripts - any external scripts that should be loaded at the bottom of the <body> via wp_footer()
+ * Admin head scripts
+ */
+function bfnest_admin_head_scripts() {
+	$template_directory = get_template_directory_uri();
+?>
+<link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.ico' ); ?>" sizes="any">
+<link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.svg' ); ?>" type="image/svg+xml">
+<?php
+}
+
+add_action( 'login_head', 'bfnest_admin_head_scripts' );
+add_action( 'admin_head', 'bfnest_admin_head_scripts' );
+
+/**
+ * Footer scripts - script tags to add to end of body
  */
 function bfnest_footer_scripts() {
 	$template_directory = get_template_directory_uri();
@@ -63,31 +80,32 @@ function bfnest_footer_scripts() {
 ?>
 
 <?php
-} // close function
+}
 add_action( 'wp_footer', 'bfnest_footer_scripts' );
 
 /**
  * Scripts to include immediately after opening body tag
- * Utilizes 'body-before-scripts' action hook
  */
 function bfnest_body_open_scripts() {
 ?>
+<script>document.body.classList.remove('no-js');</script>
 <?php
 }
 add_action( 'wp_body_open', 'bfnest_body_open_scripts' );
 
 /**
- * Load Jquery in footer
+ * Remove jQuery migrate and move jQuery to footer
  */
-function bfnest_move_jquery_to_footer( $wp_scripts ) {
-	if( is_admin() ) {
-		return;
-	}
-	$wp_scripts->add_data( 'jquery', 'group', 1 );
-	$wp_scripts->add_data( 'jquery-core', 'group', 1 );
-	$wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+function bfnest_remove_jquery_migrate( $scripts ) {
+    if ( !is_admin() && isset( $scripts->registered['jquery'] ) ) {
+        $script = $scripts->registered['jquery'];
+
+        if ( $script->deps ) {
+            $script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+        }
+    }
 }
-add_action( 'wp_default_scripts', 'bfnest_move_jquery_to_footer' );
+add_action( 'wp_default_scripts', 'bfnest_remove_jquery_migrate' );
 
 /**
  * remove Emoji css and js calls from head

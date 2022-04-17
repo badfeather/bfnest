@@ -1,6 +1,6 @@
 {
 	"name": "bfnest",
-	"version": "6.1.32",
+	"version": "7.0.0",
 	"homepage": "https://github.com/badfeather/bfnest",
 	"author": "Brad Thomason <brad@badfeather.com>",
 	"repository": {
@@ -13,34 +13,42 @@
 	"engines": {
 		"node": ">= 0.10.0"
 	},
-	"browserslist": [
-		"defaults"
-	],
 	"license": "GPL-2.0+",
+	"browserslist": [
+		"last 2 versions"
+	],
+	"scripts": {
+		"bump:patch": "bump patch package.json package-lock.json README.md style.css",
+		"bump:minor": "bump minor package.json package-lock.json README.md style.css",
+		"bump:major": "bump major package.json package-lock.json README.md style.css",
+		"css": "sass src/sass:css",
+		"postcss": "postcss css/**/*.css -u autoprefixer postcss-combine-media-query postcss-sort-media-queries cssnano -r -m",
+		"prejs": "eslint 'src/js/**/*.js'",
+		"js": "rollup -c rollup.config.js",
+		"watch:css": "chokidar 'src/sass/**/*.scss' -c 'npm run css'",
+		"watch:js": "chokidar 'src/js/**/*.js' -c 'npm run js'",
+		"watch": "run-p watch:*",
+		"build": "run-p css js",
+		"postbuild": "npm run bump:patch",
+		"postinstall": "npm run build"
+	},
 	"devDependencies": {
-		"@lodder/grunt-postcss": "^3.0.0",
-		"autoprefixer": "^10.2.5",
-		"cssnano": "^5.0.6",
-		"eslint-config-wordpress": "^2.0.0",
-		"glob": "^7.1.6",
-		"grunt": "^1.3.0",
-		"grunt-contrib-concat": "^1.0.1",
-		"grunt-contrib-imagemin": "^4.0.0",
-		"grunt-contrib-jshint": "^3.0.0",
-		"grunt-contrib-uglify": "^5.0.0",
-		"grunt-contrib-watch": "^1.1.0",
-		"grunt-eslint": "^23.0.0",
-		"grunt-newer": "^1.3.0",
-		"grunt-sass": "^3.1.0",
-		"grunt-svgmin": "^6.0.1",
-		"grunt-svgstore": "^2.0.0",
-		"grunt-version": "^2.0.0",
-		"grunt-wp-i18n": "^1.0.3",
-		"load-grunt-tasks": "^5.1.0",
-		"node-sass": "^6.0.0",
-		"pixrem": "^5.0.0",
-		"postcss": "^8.2.8",
+		"@jsdevtools/version-bump-prompt": "^6.1.0",
+		"@rollup/plugin-node-resolve": "^13.2.0",
+		"autoprefixer": "^10.3.1",
+		"chokidar-cli": "^3.0.0",
+		"concat": "^1.0.3",
+		"cssnano": "^5.0.7",
+		"eslint": "^8.2.0",
+		"hsluv-sass": "^2.0.1",
+		"npm-run-all": "^4.1.5",
+		"postcss": "^8.3.6",
+		"postcss-cli": "^9.0.0",
 		"postcss-combine-media-query": "^1.0.1",
-		"postcss-sort-media-queries": "^3.6.5"
+		"postcss-sort-media-queries": "^4.1.0",
+		"rollup": "^2.68.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"sass": "^1.49.7",
+		"terser": "^5.10.0"
 	}
 }

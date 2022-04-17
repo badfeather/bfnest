@@ -3,7 +3,6 @@
  * Adds custom classes to the array of body classes.
  */
 function bfnest_body_classes( $classes ) {
-
 	global $is_IE;
 
 	if ( $is_IE ) {

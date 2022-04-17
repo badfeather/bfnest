@@ -1,0 +1,49 @@
+.doc-main {
+	margin-bottom: $doc__margin-bottom;
+}
+
+.entry {
+	margin-bottom: $entry__margin-bottom;
+}
+
+.widget {
+	margin-bottom: $widget__margin-bottom;
+}
+
+.entry-figure {
+	margin-bottom: $figure__margin-bottom;
+}
+
+//.sticky {
+//}
+
+.entry-header {
+	margin-bottom: $spacing--base;
+}
+
+// SINGLE POSTS
+.share-link {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+// Uncomment below to output social network colors
+//@each $name, $value in $share-colors {
+//	.share-link--#{$name} {
+//		color: $value;
+//
+//		&:hover,
+//		&:focus {
+//			color: tint($value, 25%);
+//		}
+//	}
+//}
+
+.share-link-icon {
+	display: inline-block;
+	margin-left: .5em;
+	vertical-align: middle;
+}
+
+
+// ARCHIVES

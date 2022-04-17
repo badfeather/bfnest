@@ -22,7 +22,7 @@ function bfnest_get_ui_svg( $id = '' ) {
 	if ( ! $id ) {
 		return;
 	}
-	$path = get_stylesheet_directory() . '/assets/dist/img/ui-icons/';
+	$path = get_stylesheet_directory() . '/img/ui-icons/';
 	return bfnest_get_svg( $path, $id );
 }
 
@@ -31,7 +31,7 @@ function bfnest_get_social_svg( $id = '' ) {
 	if ( ! $id ) {
 		return;
 	}
-	$path = get_stylesheet_directory() . '/assets/dist/img/social-icons/';
+	$path = get_stylesheet_directory() . '/img/social-icons/';
 	return bfnest_get_svg( $path, $id );
 }
 
@@ -62,22 +62,22 @@ function bfnest_ir_svg( $text = '', $path = '', $id = '' ) {
 }
 
 function bfnest_inline_svg_social( $id = '' ) {
-	$path = get_stylesheet_directory() . '/assets/dist/img/social-icons/';
+	$path = get_stylesheet_directory() . '/img/social-icons/';
 	bfnest_inline_svg( $path, $id );
 }
 
 function bfnest_inline_svg_ui( $id = '' ) {
-	$path = get_stylesheet_directory() . '/assets/dist/img/ui-icons/';
+	$path = get_stylesheet_directory() . '/img/ui-icons/';
 	bfnest_inline_svg( $path, $id );
 }
 
 function bfnest_ir_svg_social( $text = '', $id = '' ) {
-	$path = get_stylesheet_directory() . '/assets/dist/img/social-icons/';
+	$path = get_stylesheet_directory() . '/img/social-icons/';
 	bfnest_ir_svg( $path, $id );
 }
 
 function bfnest_ir_svg_ui( $text = '', $id = '' ) {
-	$path = get_stylesheet_directory() . '/assets/dist/img/ui-icons/';
+	$path = get_stylesheet_directory() . '/img/ui-icons/';
 	bfnest_ir_svg( $path, $id );
 }
 
@@ -87,7 +87,7 @@ function bfnest_ir_svg_ui( $text = '', $id = '' ) {
  */
 function bfnest_include_svg_sprite() {
 	// Define SVG sprite file.
-	$sprite_path = get_stylesheet_directory() . '/assets/dist/img/svg-sprite.svg';
+	$sprite_path = get_stylesheet_directory() . '/img/svg-sprite.svg';
 
 	$sprite = bfnest_get_svg( $sprite_path );
 	if ( ! $sprite ) {

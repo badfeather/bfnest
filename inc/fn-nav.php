@@ -107,3 +107,7 @@ function bfnest_the_submenu( $args = array() ) {
 	}
 	return $html;
 }
+
+function bfnest_color_scheme_button() {
+	echo '<button class="button button--color-scheme" data-toggle-color-scheme>Toggle color scheme</button>';
+}

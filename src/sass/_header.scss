@@ -1,0 +1,42 @@
+.site-nav__toggle {
+	margin-bottom: $spacing--sm;
+
+	.no-js & {
+		display: none;
+	}
+
+	&[aria-expanded="true"] {
+
+	}
+
+	// @include bp-md__mq-up {
+	// 	display: none;
+	// }
+
+}
+
+.menu--primary[aria-hidden] {
+	display: none;
+
+	.no-js & {
+		display: block;
+	}
+
+	// [aria-expanded="true"] & {
+	// 	display: block;
+	// }
+
+	// @include bp-md__mq-up {
+	// 	display: block;
+	// }
+}
+
+.site-title {
+	font-size: 1em;
+	margin-bottom: $spacing--sm;
+}
+
+.site-description {
+	margin-bottom: $spacing--sm;
+}
+

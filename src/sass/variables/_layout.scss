@@ -1,0 +1,46 @@
+// spacing
+$spacing--base: $font-size--base * $line-height--base;
+$spacing--2xs: $spacing--base * .125;
+$spacing--xs: $spacing--base * .25;
+$spacing--sm: $spacing--base * .5;
+$spacing--lg: $spacing--base * 1.5;
+$spacing--xl: $spacing--base * 2;
+$spacing--2xl: $spacing--base * 3;
+
+// component margins
+$doc__margin-bottom: $spacing--base;
+$entry__margin-bottom: $spacing--lg;
+$widget__margin-bottom: $spacing--lg;
+$block__margin-bottom: $spacing--lg;
+$figure__margin-bottom: $spacing--lg;
+
+// breakpoints
+$bp-xs: 480px;
+$bp-sm: 600px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+$breakpoints: (
+	bp-none: 0,
+	bp-xs: $bp-xs,
+	bp-sm: $bp-sm,
+	bp-md: $bp-md,
+	bp-lg: $bp-lg,
+	bp-xl: $bp-xl,
+);
+
+$type__breakpoint: $bp-lg;
+$nav__breakpoint: $bp-lg;
+
+$block__cols: 7;
+$alignwide__cols: 9;
+$alignfull__cols: 12;
+$block__max-width: math.div($block__cols, 12) * 100%;
+$alignwide__max-width: math.div($alignwide__cols, 12) * 100%;
+$alignfull__max-width: math.div($alignfull__cols, 12) * 100%;
+
+$alignleft__margin-left: 0;
+$alignleft__margin-right: $spacing--base;
+$alignright__margin-left: $spacing--base;
+$alignright__margin-right: 0;

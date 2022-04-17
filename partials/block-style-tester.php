@@ -67,9 +67,9 @@
 		<h4>Preformatted Text:</h4>
 
 		<pre>&ldquo;Beware the Jabberwock, my son!
-		The jaws that bite, the claws that catch!
-		Beware the Jubjub bird, and shun
-		The frumious Bandersnatch!&rdquo;</pre>
+The jaws that bite, the claws that catch!
+Beware the Jubjub bird, and shun
+The frumious Bandersnatch!&rdquo;</pre>
 
 		<hr />
 
@@ -77,10 +77,10 @@
 		<p>Code can be presented inline, like <code>&lt;?php bloginfo('stylesheet_url'); ?&gt;</code>, or within a <code>&lt;pre&gt;</code> block. Because we have more specific typographic needs for code, we&#8217;ll specify Consolas and Monaco ahead of the browser-defined monospace font.</p>
 
 		<pre><code>#container {
-		float: left;
-		margin: 0 -240px 0 0;
-		width: 100%;
-		}</code></pre>
+	float: left;
+	margin: 0 -240px 0 0;
+	width: 100%;
+}</code></pre>
 
 		<hr />
 
@@ -113,28 +113,16 @@
 			<div class="form-group">
 				<label for="textarea">Textarea</label>
 				<textarea name="textarea" id="textarea" class="form-control" placeholder="Textarea"></textarea>
-
 			</div>
 
 			<div class="form-group">
-				<label for="text-disabled">Form Control Disabled</label>
-				<input id="text-disabled" name="text-disabled" type="text" class="form-control form-control-disabled" placeholder="disabled" />
-
-			</div>
-
-			<div class="form-group">
-				<label for="text-success">Form Control Success</label>
-				<input id="text-success" name="text-success" type="text" class="form-control form-control-success" placeholder="success" />
-			</div>
-
-			<div class="form-group">
-				<label for="text-warning">Form Control Warning</label>
-				<input id="text-warning" name="text-warning" type="text" class="form-control form-control-warning" placeholder="warning" />
-			</div>
-
-			<div class="form-group">
-				<label for="text-danger">Form Control Danger</label>
-				<input id="text-danger" name="text-danger" type="text" class="form-control form-control-danger" placeholder="danger" />
+				<label for="select">Select</label>
+				<select id="select" class="form-control">
+					<option selected>- select an option -</option>
+					<option value="1">One</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+				</select>
 			</div>
 
 			<fieldset class="form-group">
@@ -210,20 +198,9 @@
 
 				<div class="form-check">
 					<input type="checkbox" id="inline-checkbox-3" name="inline-checkbox-3" value="inline-checkbox-3" />
-					<label for="checkbox-3">Checkbox 3</label>
-				</div>
+					<label for="checkbox-3">Checkbox 3</label>				</div>
 
 			</fieldset>
-
-			<div class="form-group">
-				<label for="select">Select</label>
-				<select id="select" class="form-control">
-					<option selected>- select an option -</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-			</div>
 
 			<input name="submit" type="submit" value="Submit" class="button" />
 
@@ -266,7 +243,7 @@
 
 		<p><a class="button button--danger">button--danger</a></p>
 
-		<p><a class="button button--light">button--light</a></p>
+		<p><a class="button button--info">button--info</a></p>
 
 		<p><a class="button button--outline">button--outline</a></p>
 

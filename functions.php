@@ -1,52 +1,32 @@
 <?php
 /**
- * Initial setup includes
+ * Get all include files for the theme
  */
-$template_directory = get_template_directory();
+function bfnest_get_theme_requires() {
+	$requires = [
+		'/inc/setup.php',
+		'/inc/scripts.php',
+		'/inc/widgets.php',
+		'/inc/custom-content.php',
+		'/inc/blocks.php',
+		'/inc/media.php',
+		'/inc/hooks.php',
+		'/inc/fn-comments.php',
+		'/inc/fn-media.php',
+		'/inc/fn-meta.php',
+		'/inc/fn-nav.php',
+		'/inc/fn-post.php',
+		'/inc/fn-shortcodes.php',
+		'/inc/svg-icons.php',
+		'/inc/fn-custom.php',
+	];
 
-// initial setup
-require $template_directory . '/inc/setup.php';
-
-// scripts and stylesheets
-require $template_directory . '/inc/scripts.php';
-
-// widgets
-require $template_directory . '/inc/widgets.php';
-
-// media
-require $template_directory . '/inc/media.php';
-
-// hooks
-require $template_directory . '/inc/hooks.php';
-
-// Theme functions
-require $template_directory . '/inc/fn-comments.php';
-require $template_directory . '/inc/fn-media.php';
-require $template_directory . '/inc/fn-meta.php';
-require $template_directory . '/inc/fn-nav.php';
-require $template_directory . '/inc/fn-post.php';
-require $template_directory . '/inc/fn-shortcodes.php';
-require $template_directory . '/inc/svg-icons.php';
-
-// register any custom theme functions in this file
-require $template_directory . '/inc/fn-custom.php';
-
-// register custom post types and taxonomies
-// require get_template_directory() . '/inc/custom-content.php';
-
-// Gutenberg
-require $template_directory . '/inc/blocks.php';
-
-/**
- * plugin-specific configs
- */
-// Load WooCommerce compatibility file.
-if ( class_exists( 'WooCommerce' ) ) {
-	require $template_directory . '/inc/woocommerce.php';
+	if ( class_exists( 'woocommerce' ) ) {
+		$requires[] = '/inc/woocommerce.php';
+	}
+	return $requires;
 }
 
-//if( is_plugin_active( 'plugin-folder/main-plugin-file.php' ) ) {
-//	require $template_directory . '/inc/plugin-name.php';
-//}
-
-
+foreach ( bfnest_get_theme_requires() as $require ) {
+	require trailingslashit( get_template_directory() ) . $require;
+}

@@ -1,0 +1,80 @@
+// BUTTONS
+// -------------------------
+@mixin button-variant(
+	$color: $button__color,
+	$background-color: $button__background-color,
+	$border-color: $button__border-color,
+	$color--hover: $color,
+	$background-color--hover: $background-color,
+	$border-color--hover: $border-color,
+	$opacity--disabled: $button__opacity--disabled
+) {
+	@include color-change($color, $button__color);
+	@include background-color-change($background-color, $button__background-color);
+	@include border-color-change($border-color, $button__border-color);
+
+	&:hover,
+	&:focus,
+	&:active {
+		@include color-change($color--hover, $button__color);
+		@include background-color-change($background-color--hover, $button__background-color--hover);
+		@include border-color-change($border-color--hover, $button__border-color--hover);
+	}
+
+	&.disabled,
+	&:disabled {
+		@include opacity-change($opacity--disabled, $button__opacity--disabled);
+	}
+}
+
+// FORM CONTROLS
+// -------------------------
+@mixin form-control-variant(
+	$color: $form-control__color,
+	$background-color: $form-control__background-color,
+	$border-color: $form-control__border-color,
+	$background-color--focus: $form-control__background-color--focus,
+	$border-color--focus: $form-control__border-color--focus,
+	$box-shadow--focus: $form-control__box-shadow--focus,
+	$color--placeholder: $form-control__color--placeholder,
+	$default-color: $form-control__color,
+	$default-background-color: $form-control__background-color,
+	$default-border-color: $form-control__border-color,
+	$default-background-color--focus: $form-control__background-color--focus,
+	$default-border-color--focus: $form-control__border-color--focus,
+	$default-box-shadow--focus: $form-control__box-shadow--focus,
+	$default-color--placeholder: $form-control__color--placeholder
+) {
+	@include color-change($color, $default-color);
+	@include background-color-change($background-color, $default-background-color);
+	@include border-color-change($border-color, $default-border-color);
+
+	@if ($color--placeholder != $default-color--placeholder) {
+		&::placeholder {
+			color: $color--placeholder;
+		}
+	}
+
+	@if (($background-color--focus != $default-background-color--focus) or ($border-color--focus != $default-border-color--focus) or ($box-shadow--focus != $default-box-shadow--focus)) {
+		&:focus {
+			@include background-color-change($background-color--focus, $default-background-color--focus);
+			@include border-color-change($border-color--focus, $default-border-color--focus);
+			@include box-shadow-change($box-shadow--focus, $default-box-shadow--focus);
+		}
+	}
+}
+
+@mixin form-control--lg {
+	@include font-size-change($form-control__font-size--lg, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--lg, $value-right: $form-control__padding-x--lg);
+}
+
+@mixin form-control--sm {
+	@include font-size-change($form-control__font-size--sm, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--sm, $value-right: $form-control__padding-x--sm);
+}
+
+@mixin form-control--xs {
+	@include font-size-change($form-control__font-size--xs, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--xs, $value-right: $form-control__padding-x--xs);
+}

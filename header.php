@@ -9,13 +9,13 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-color-scheme="light">
 	<?php wp_body_open(); ?>
 
-	<div id="page" class="hfeed site">
+	<div id="page" class="hfeed site container">
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bfnest' ); ?></a>
 
-		<header id="site-header" class="site-header" role="banner">
+		<header id="site-header" class="site-header" role="banner" data-expand-parent>
 			<?php
 				if ( ( is_front_page() && is_home() ) ) {
 					$title_tag = 'h1';
@@ -33,13 +33,15 @@
 			?>
 
 			<nav id="site-navigation" class="site-nav nav nav-primary" role="navigation" aria-label="<?php _e( 'Main', 'bfnest' ); ?>">
-				<button class="site-nav__toggle"><?php _e( 'Menu', 'psmeats' ); ?></button>
+				<button class="site-nav__toggle" data-expand="primary-menu"><?php _e( 'Menu', 'bfnest' ); ?></button>
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'primary',
 						'container' => false,
-						'menu_class' => 'menu menu--primary site-nav__menu'
+						'menu_class' => 'menu menu--primary site-nav__menu',
+						'menu_id' => 'primary-menu'
 					) );
 				?>
 			</nav>
+			<?php bfnest_color_scheme_button(); ?>
 		</header>

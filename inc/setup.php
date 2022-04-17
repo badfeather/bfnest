@@ -10,7 +10,7 @@ function bfnest_setup() {
 		'social' => __( 'Social Navigation', 'bfnest' ),
 	) );
 
-	load_theme_textdomain( 'bfnest' );
+	// load_theme_textdomain( 'bfnest', get_template_directory() . '/languages' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'html5', array(
@@ -32,9 +32,16 @@ function bfnest_setup() {
 
 	// gutenberg/editor styles and options
 	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/dist/css/editor-style.css' );
+	add_editor_style( 'css/editor-style.css' );
 }
 add_action( 'after_setup_theme', 'bfnest_setup' );
+
+/**
+ * Set environment to 'development' if one isn't set in wp-config.php
+ */
+if ( ! defined( 'WP_ENVIRONMENT' ) ) {
+    define( 'WP_ENVIRONMENT', 'development' );
+}
 
 /**
  * Set default theme options on theme switch

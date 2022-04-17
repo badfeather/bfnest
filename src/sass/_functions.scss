@@ -1,0 +1,122 @@
+@function strip-unit($value) {
+	@return math.div($value, $value * 0 + 1);
+}
+
+@function unitcalc($value, $default: 16, $unit: 'rem', $return: 0) {
+	$calc: math.div(strip-unit($value), strip-unit($default));
+
+	@if ($value != 0) {
+		@if ($unit == 'px') {
+			$return: strip-unit($value) + px;
+
+		} @else if ($unit == 'em') {
+			$return: $calc * 1em;
+
+		} @else if ($unit == 'rem') {
+			$return: $calc * 1rem;
+
+		} @else if ($unit == 'percent') {
+			$return: $calc * 100%;
+		}
+	}
+
+	@return $return;
+}
+
+@function pxcalc($value) {
+	@return unitcalc($value, $unit: 'px');
+}
+
+@function emcalc($value, $default: 16) {
+	@return unitcalc($value, $default, 'em');
+}
+
+@function remcalc($value, $default: 16) {
+	@return unitcalc($value, $default, $unit: 'rem');
+}
+
+// Add percentage of white to a color
+@function tint($color, $percent) {
+	// @return mix(#fff, $color, $percent);
+	@return color.scale($color, $lightness: ($percent));
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent) {
+	// @return mix(#000, $color, $percent);
+	@return color.scale($color, $lightness: (-$percent));
+}
+
+@function hex-to-rgb($hex) {
+	@return red($hex), green($hex), blue($hex);
+}
+
+@function url-friendly-color($color) {
+    @return '%23' + str-slice('#{$color}', 2, -1);
+}
+
+// WCAG COLOR CONTRAST FUNCTIONS
+// see https://jonnykates.medium.com/automating-colour-contrast-ratios-with-sass-e201f3b52797
+// ---------------------------
+@function contrast-ratio($text-color, $background-color) {
+	$l-background: luminance($background-color);
+	$l-text: luminance($text-color);
+
+	@if ($l-background > $l-text) {
+		@return math.div($l-background + .05, $l-text + .05);
+	}
+
+	@return math.div($l-text + .05, $l-background + .05)
+}
+
+@function luminance($color) {
+	$rgb: (
+		"red": red($color),
+		"green": green($color),
+		"blue": blue($color)
+	);
+
+	@each $color, $value in $rgb {
+		$value: math.div($value, 255);
+
+		@if ($value <= 0.03928) {
+			$value: math.div($value, 12.92);
+		} @else {
+			$value: math.div($value + .055, 1.055);
+			$value: math.pow($value, 2.4);
+		}
+
+		$rgb: map-merge($rgb, ($color: $value));
+	}
+
+	$luminance: (map-get($rgb, 'red') * .2126) + (map-get($rgb, 'green') * .7152) + (map-get($rgb, 'blue') * .0722);
+
+	@return $luminance;
+}
+
+// $ratio defaults to 'AA' standard for small text (under 24px/18pt) - 4.5
+// For large text (24px/18pt and up), bold text (18.5px/14pt and up), 3 is the recommended ratio for 'AA'
+//
+@function check-contrast( $text-color, $bg-color, $ratio: 4.5 ) {
+	$contrast: contrast-ratio($text-color, $bg-color);
+	@if $contrast < $ratio {
+		@warn "Contrast ratio for #{$text-color}:#{$bg-color} is #{$contrast}:1, FAILS #{$ratio}:1";
+	}
+	@return $text-color;
+}
+
+ // Replace `$search` with `$replace` in `$string`
+ // @author Kitty Giraudel
+ // @param {String} $string - Initial string
+ // @param {String} $search - Substring to replace
+ // @param {String} $replace ('') - New value
+ // @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}

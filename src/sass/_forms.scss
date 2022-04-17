@@ -1,0 +1,532 @@
+// RESETS
+button,
+input,
+optgroup,
+select,
+textarea,
+label,
+legend {
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+button,
+input {
+	overflow: visible;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+[role=button] {
+  cursor: pointer;
+}
+
+select {
+  word-wrap: normal;
+  appearance: none;
+}
+
+select:disabled {
+  opacity: 1;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+
+	&::-moz-focus-inner {
+		border-style: none;
+		padding: 0;
+	}
+
+	&::-moz-focusring {
+		outline: 1px dotted ButtonText;
+	}
+}
+
+legend {
+	box-sizing: border-box;
+	color: inherit;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal;
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+textarea {
+	overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+[type="search"] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+// THEME
+form {
+	margin-bottom: $form__margin-bottom;
+}
+
+label {
+	display: $label__display;
+	@include font-family-change($label__font-family);
+	@include font-size-change($label__font-size);
+	@include line-height-change($label__line-height);
+	@include font-style-change($label__font-style);
+	@include font-weight-change($label__font-weight);
+	@include text-transform-change($label__text-transform);
+	@include color-change($label__color);
+	margin: $label__margin-top $label__margin-right $label__margin-bottom $label__margin-left;
+
+	@if ($label__color--required != $label__color) or ($label__font-weight != $label__font-weight--required) {
+		//input:required + &, // uncomment to use browser native validation states
+		input.required + & {
+			@include color-change($label__color--required, $label__color);
+			@include font-weight-change($label__font-weight--required, $label__font-weight);
+		}
+	}
+
+	@if ($label__color--invalid != $label__color) {
+		//input:invalid + &, // uncomment to use browser native validation states
+		input.invalid + & {
+			color: $label__color--invalid;
+		}
+	}
+}
+
+fieldset {
+	min-width: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+legend {
+	// reset styles
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	color: inherit;
+	white-space: normal;
+
+	//theme styles
+	display: $legend__display;
+	@include font-family-change($legend__font-family);
+	@include font-size-change($legend__font-size);
+	@include line-height-change($legend__line-height);
+	@include font-style-change($legend__font-style);
+	@include font-weight-change($legend__font-weight);
+	@include text-transform-change($legend__text-transform);
+	@include color-change($legend__color);
+	margin: $legend__margin-top $legend__margin-right $legend__margin-bottom $legend__margin-left;
+
+	@if ($legend__color--required != $legend__color) or ($legend__font-weight != $legend__font-weight--required) {
+		//input:required + &, // uncomment to use browser native validation states
+		input.required + & {
+			@include color-change($legend__color--required, $legend__color);
+			@include font-weight-change($legend__font-weight--required, $legend__font-weight);
+		}
+	}
+
+	@if ($legend__color--invalid != $legend__color) {
+		//input:invalid + &, // uncomment to use browser native validation states
+		input.invalid + & {
+			color: $legend__color--invalid;
+		}
+	}
+}
+
+.helper-text {
+	@include font-family-change($helper-text__font-family);
+	@include font-size-change($helper-text__font-size);
+	@include line-height-change($helper-text__line-height);
+	@include font-style-change($helper-text__font-style);
+	@include font-weight-change($helper-text__font-weight);
+	@include text-transform-change($helper-text__text-transform);
+	@include color-change($helper-text__color);
+	margin: $helper-text__margin-top $helper-text__margin-right $helper-text__margin-bottom $helper-text__margin-left;
+
+	@if ($helper-text__color--invalid != $helper-text__color) {
+		//input:invalid ~ &, // uncomment to use browser native validation states
+		input.invalid ~ & {
+			color: $helper-text__color--invalid;
+		}
+	}
+}
+
+textarea {
+	width: 100%;
+	resize: vertical;
+}
+
+// FORM GROUPS
+// -------------------------
+.form-group {
+	margin: $form-group__margin-top 0 $form-group__margin-bottom;
+}
+
+.form-row {
+	margin-bottom: $form-row__margin-bottom;
+
+	.form-group {
+		margin-bottom:$form-row__margin-bottom;
+	}
+}
+
+// .form-check {
+// 	input,
+// 	label {
+// 		display: inline-block;
+// 	}
+// }
+
+.form-group--validate {
+	display: flex;
+	flex-direction: column;
+
+	label {
+		order: -1;
+	}
+
+	label,
+	.helper-text {
+		display: none;
+	}
+
+	label,
+	.helper-text {
+		opacity: 0;
+		transition: opacity .15s ease-in-out;
+	}
+
+	.form-control {
+		&.invalid {
+			~ .helper-text {
+				display: block;
+				opacity: 1;
+			}
+		}
+	}
+
+	input:focus {
+		& + label,
+		& ~ .helper-text {
+			display: block;
+			opacity: 1;
+		}
+	}
+}
+
+.form-row--inline {
+	//@include margin-unitcalc($value-bottom: $form-group__margin-bottom);
+	margin-bottom: $form-row__margin-bottom;
+
+	.form-control,
+	label,
+	.form-check,
+	.form-group,
+	button {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.form-control,
+	select {
+		width: auto;
+	}
+
+	.form-control,
+	.button,
+	.form-check,
+	label {
+		margin-right: $form-grid__gutter-width;
+		margin-bottom: $form-row__margin-bottom;
+	}
+
+	label {
+		margin-bottom: 0;
+	}
+}
+
+// BUTTONS
+// ---------------------------
+.button,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+a[role="button"] {
+	@include font-family-change($button__font-family);
+	@include font-size-change($button__font-size);
+	@include line-height-change($button__line-height);
+	@include font-weight-change($button__font-weight);
+	font-family: $button__font-family;
+	font-weight: $button__font-weight;
+	font-size: $button__font-size;
+	line-height: $button__line-height;
+	padding: $button__padding-y $button__padding-x;
+	color: $button__color;
+	text-align: center;
+	text-decoration: $button__text-decoration;
+	vertical-align: middle;
+	display: inline-block;
+	margin-bottom: 0;
+	background-color: $button__background-color;
+	border: $button__border-width solid $button__border-color;
+	border-radius: $button__border-radius;
+	white-space: nowrap;
+	@include text-transform-change($button__text-transform);
+	@include box-shadow-change($button__box-shadow);
+	outline: none;
+	transition: $button__transition;
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $button__color--hover;
+		@include text-decoration-change($button__text-decoration--hover, $link__text-decoration--hover);
+		@include text-decoration-change($button__text-decoration--hover, $button__text-decoration);
+		@include background-color-change($button__background-color--hover, $button__background-color);
+		@include border-color-change($button__border-color--hover, $button__border-color);
+		@include box-shadow-change($button__box-shadow--hover, $button__box-shadow);
+	}
+
+	&:focus,
+	&:active {
+		@include box-shadow-change($button__box-shadow--focus, $button__box-shadow);
+	}
+
+	&.disabled,
+	&:disabled {
+		cursor: not-allowed;
+		pointer-events: none;
+		@include opacity-change($button__opacity--disabled);
+	}
+}
+
+option {
+	color: $body__color;
+}
+
+.button--lg {
+	@include font-size-change($button__font-size--lg, $button__font-size);
+	@include padding-change($default-top: $button__padding-y, $default-right: $button__padding-x, $value-top: $button__padding-y--lg, $value-right: $button__padding-x--lg);
+}
+
+.button--sm {
+	@include font-size-change($button__font-size--sm, $button__font-size);
+	@include padding-change($default-top: $button__padding-y, $default-right: $button__padding-x, $value-top: $button__padding-y--sm, $value-right: $button__padding-x--sm);
+}
+
+.button--xs {
+	@include font-size-change($button__font-size--xs, $button__font-size);
+	@include padding-change($default-top: $button__padding-y, $default-right: $button__padding-x, $value-top: $button__padding-y--xs, $value-right: $button__padding-x--xs);
+}
+
+//	Alternate button states
+.button--secondary {
+	@include button-variant(
+		$button--secondary__color,
+		$button--secondary__background-color,
+		$button--secondary__border-color,
+		$button--secondary__color--hover,
+		$button--secondary__background-color--hover,
+		$button--secondary__border-color--hover,
+		$button--secondary__opacity--disabled
+	);
+}
+
+.button--success {
+	@include button-variant(
+		$button--success__color,
+		$button--success__background-color,
+		$button--success__border-color,
+		$button--success__color--hover,
+		$button--success__background-color--hover,
+		$button--success__border-color--hover,
+		$button--success__opacity--disabled
+	);
+}
+
+.button--warning {
+	@include button-variant(
+		$button--warning__color,
+		$button--warning__background-color,
+		$button--warning__border-color,
+		$button--warning__color--hover,
+		$button--warning__background-color--hover,
+		$button--warning__border-color--hover,
+		$button--warning__opacity--disabled
+	);
+}
+
+.button--info {
+	@include button-variant(
+		$button--info__color,
+		$button--info__background-color,
+		$button--info__border-color,
+		$button--info__color--hover,
+		$button--info__background-color--hover,
+		$button--info__border-color--hover,
+		$button--info__opacity--disabled
+	);
+}
+
+.button--danger {
+	@include button-variant(
+		$button--danger__color,
+		$button--danger__background-color,
+		$button--danger__border-color,
+		$button--danger__color--hover,
+		$button--danger__background-color--hover,
+		$button--danger__border-color--hover,
+		$button--danger__opacity--disabled
+	);
+}
+
+.button--outline {
+	@include button-variant(
+		$button--outline__color,
+		$button--outline__background-color,
+		$button--outline__border-color,
+		$button--outline__color--hover,
+		$button--outline__background-color--hover,
+		$button--outline__border-color--hover,
+		$button--outline__opacity--disabled
+	);
+}
+
+.button--trans {
+	@include button-variant(
+		$button--trans__color,
+		$button--trans__background-color,
+		$button--trans__border-color,
+		$button--trans__color--hover,
+		$button--trans__background-color--hover,
+		$button--trans__border-color--hover,
+		$button--trans__opacity--disabled
+	);
+}
+
+.button--block {
+	display: block;
+	text-align: center;
+}
+
+.button--icon {
+	svg {
+		display: block;
+		width: $button__line-height * 1em;
+		height: $button__line-height * 1em;
+	}
+}
+
+// FORM CONTROLS
+// ---------------------------
+.form-control,
+textarea,
+input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="radio"]):not([type="checkbox"]),
+select,
+optgroup {
+	@include font-family-change($form-control__font-family);
+	@include font-size-change($form-control__font-size);
+	@include line-height-change($form-control__line-height);
+	display: block;
+	width: 100%;
+	padding: $form-control__padding-y $form-control__padding-x;
+	margin: 0;
+	color: $form-control__color;
+	border: $form-control__border-width solid $form-control__border-color;
+	border-radius: $form-control__border-radius;
+	outline: none;
+	background-color: $form-control__background-color;
+	box-shadow: $form-control__box-shadow;
+
+	&:focus {
+		background-color: $form-control__background-color--focus;
+		border-color: $form-control__border-color--focus;
+		box-shadow: $form-control__box-shadow--focus;
+	}
+
+	&::-ms-expand {
+		background-color: transparent;
+		border: 0;
+	}
+
+	&::placeholder {
+		opacity: 1;
+		color: $form-control__color--placeholder;
+	}
+
+	//&:invalid, /* uncomment to use browser native validation states */
+	&.invalid {
+		@include color-change($form-control__color--invalid, $form-control__color);
+		@include background-color-change($form-control__background-color--invalid, $form-control__background-color);
+		@include border-color-change($form-control__border-color--invalid, $form-control__border-color);
+	}
+}
+
+select {
+	appearance: none;
+	padding-right: $form-control__padding-y * 2;
+	background-image: var(--select-icon);
+	background-repeat: no-repeat;
+	background-position: right ($form-control__padding-y * .5) top 50%;
+	background-size: 1em auto;
+}
+
+input[type="search"] {
+	box-sizing: border-box;
+}
+
+.form-control--lg {
+	@include font-size-change($form-control__font-size--lg, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--lg, $value-right: $form-control__padding-x--lg);
+}
+
+.form-control--sm {
+	@include font-size-change($form-control__font-size--sm, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--sm, $value-right: $form-control__padding-x--sm);
+}
+
+.form-control--xs {
+	@include font-size-change($form-control__font-size--xs, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--xs, $value-right: $form-control__padding-x--xs);
+}

@@ -1,0 +1,22 @@
+:root {
+	@each $key, $value in $root-fonts {
+		--#{$key}: #{$value};
+	}
+}
+:root,
+[data-color-scheme="#{$color-scheme}"] {
+	@each $key, $value in $root-colors {
+		--#{$key}: #{$value};
+	}
+}
+
+@if $has-alt-scheme {
+	[data-color-scheme="#{$color-scheme--alt}"] {
+		@each $key, $value in $root-colors--alt {
+			--#{$key}: #{$value};
+		}
+
+	}
+}
+
+

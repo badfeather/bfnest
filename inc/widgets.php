@@ -1,10 +1,8 @@
 <?php
-
 /**
  * Register widgetized area and update sidebar with default widgets
  */
 function bfnest_widgets_init() {
-
 	register_sidebar( array(
 		'name' => __( 'Global', 'bfnest' ),
 		'id' => 'global',

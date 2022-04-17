@@ -1,0 +1,117 @@
+@mixin breakpoint-up($min: 0) {
+	@if ($min > 0) {
+		@media (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-down($max: 0) {
+	@if ($max > 0) {
+		@media (max-width: ($max - .02)) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-between($min: 0, $max: 0) {
+	@if ($min > 0 and $max > 0) {
+		@media (min-width: $min) and (max-width: $max) {
+			@content;
+		}
+
+	} @else if ($max == 0) {
+		@include breakpoint-up($min);
+
+	} @else if ($min == 0) {
+		@include breakpoint-down($max);
+
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-exactly($bp: 0) {
+	@if ($bp > 0) {
+		@media (min-width: $bp) and (max-width: $bp) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// Shorthands for commonly used breakpoints
+@mixin bp-xs__mq-up() {
+	@include breakpoint-up($bp-xs) {
+		@content;
+	}
+}
+
+@mixin bp-sm__mq-up() {
+	@include breakpoint-up($bp-sm) {
+		@content;
+	}
+}
+
+@mixin bp-md__mq-up() {
+	@include breakpoint-up($bp-md) {
+		@content;
+	}
+}
+
+@mixin bp-lg__mq-up() {
+	@include breakpoint-up($bp-lg) {
+		@content;
+	}
+}
+
+@mixin bp-xl__mq-up() {
+	@include breakpoint-up($bp-xl) {
+		@content;
+	}
+}
+
+@mixin bp-xs__mq-down() {
+	@include breakpoint-down($bp-xs) {
+		@content;
+	}
+}
+
+@mixin bp-sm__mq-down() {
+	@include breakpoint-down($bp-sm) {
+		@content;
+	}
+}
+
+@mixin bp-md__mq-down() {
+	@include breakpoint-down($bp-md) {
+		@content;
+	}
+}
+
+@mixin bp-lg__mq-down() {
+	@include breakpoint-down($bp-lg) {
+		@content;
+	}
+}
+
+@mixin bp-xl__mq-down() {
+	@include breakpoint-down($bp-xl) {
+		@content;
+	}
+}
+
+@mixin bp-type__mq-up() {
+	@include breakpoint-up($bp-type) {
+		@content;
+	}
+}
+
+
+
+
