@@ -100,155 +100,84 @@
 	}
 }
 
-@mixin text-style(
-	$font-family: $body__font-family,
-	$font-size: $body__font-size,
-	$line-height: $body__line-height,
-	$font-weight: $body__font-weight,
-	$text-align: $body__text-align,
-	$color: $body__color,
-	$font-style: normal,
-	$text-transform: none,
-	$letter-spacing: normal,
-	$text-decoration: none,
-	$margin-top: 0,
-	$margin-right: 0,
-	$margin-bottom: 0,
-	$margin-left: 0,
-	$font-size--bp-lg: $font-size,
-	$line-height--bp-lg: $line-height,
-	$letter-spacing--bp-lg: $letter-spacing,
-	$bp: $type__breakpoint,
-	$link-color: $link__color,
-	$link-text-decoration: $link__text-decoration,
-	$link-color--hover: $link__color--hover,
-	$link-text-decoration--hover: $link__text-decoration--hover,
-	$default__font-family: $body__font-family,
-	$default__font-size: $body__font-size,
-	$default__line-height: $body__line-height,
-	$default__font-weight: $body__font-weight,
-	$default__text-align: $body__text-align,
-	$default__color: $body__color,
-	$default__font-style: normal,
-	$default__text-transform: none,
-	$default__letter-spacing: normal,
-	$default__text-decoration: none,
-	$default__margin-top: 0,
-	$default__margin-right: 0,
-	$default__margin-bottom: 0,
-	$default__margin-left: 0,
-	$default__font-size--bp-lg: $font-size,
-	$default__line-height--bp-lg: $line-height,
-	$default__letter-spacing--bp-lg: $letter-spacing,
-	$default__link-color: $link__color,
-	$default__link-text-decoration: $link__text-decoration,
-	$default__link-color--hover: $link__color--hover,
-	$default__link-text-decoration--hover: $link__text-decoration--hover
-) {
-	@include font-family-change($font-family, $default__font-family);
-	@include font-size-change($font-size, $default__font-size);
-	@include line-height-change($line-height, $default__line-height);
-	@include font-weight-change($font-weight, $default__font-weight);
-	@include text-align-change($text-align, $default__text-align);
-	@include color-change($color, $default__color);
-	@include font-style-change($font-style, $default__font-style);
-	@include text-transform-change($text-transform, $default__text-transform);
-	@include letter-spacing-change($letter-spacing, $default__letter-spacing);
-	@include text-decoration-change($text-decoration, $default__text-decoration);
-	@include margin-change($default__margin-top, $default__margin-right, $default__margin-bottom, $default__margin-left, $margin-top, $margin-right, $margin-bottom, $margin-left);
-	@include bp-up-font-size-change($font-size--bp-lg, $font-size);
-	@include bp-up-line-height-change($line-height--bp-lg, $line-height);
-	@include bp-up-letter-spacing-change($letter-spacing--bp-lg, $letter-spacing);
-
-	@if ($link-color != $default__link-color) or ($link-text-decoration != $default__link-text-decoration) {
-		a {
-			@include color-change($link-color, $default__link-color);
-			@include text-decoration-change($link-text-decoration, $default__link-text-decoration);
-		}
-	}
-
-	@if ($link-color--hover != $default__link-color--hover) or ($link-text-decoration--hover != $default__link-text-decoration--hover) {
-		a:hover,
-		a:focus {
-			@include color-change($link-color--hover, $default__link-color--hover);
-			@include text-decoration-change($link-text-decoration--hover, $default__link-text-decoration--hover);
-		}
-	}
-}
-
-// HEADINGS
-// -------------------------
-@mixin heading-style(
-	$font-family: $headings__font-family,
-	$font-size: $headings__font-size,
-	$line-height: $headings__line-height,
-	$font-weight: $headings__font-weight,
-	$text-align: $headings__text-align,
-	$color: $headings__color,
-	$font-style: $headings__font-style,
-	$text-transform: $headings__text-transform,
-	$letter-spacing: $headings__letter-spacing,
-	$text-decoration: $headings__text-decoration,
-	$margin-top: $headings__margin-top,
-	$margin-right: $headings__margin-right,
-	$margin-bottom: $headings__margin-bottom,
-	$margin-left: $headings__margin-left,
-	$font-size--bp-lg: $font-size,
-	$line-height--bp-lg: $line-height,
-	$letter-spacing--bp-lg: $letter-spacing,
-	$bp: $headings__breakpoint,
-	$link-color: $headings__link-color,
-	$link-text-decoration: $headings__link-text-decoration,
-	$link-color--hover: $headings__link-color--hover,
-	$link-text-decoration--hover: $headings__link-text-decoration--hover
-) {
-	@include text-style(
-		$font-family,
-		$font-size,
-		$line-height,
-		$font-weight,
-		$text-align,
-		$color,
-		$font-style,
-		$text-transform,
-		$letter-spacing,
-		$text-decoration,
-		$margin-top,
-		$margin-right,
-		$margin-bottom,
-		$margin-left,
-		$font-size,
-		$line-height,
-		$letter-spacing,
-		$bp,
-		$link-color,
-		$link-text-decoration,
-		$link-color--hover,
-		$link-text-decoration--hover,
-		$headings__font-family,
-		$headings__font-size,
-		$headings__line-height,
-		$headings__font-weight,
-		$headings__text-align,
-		$headings__color,
-		$headings__font-style,
-		$headings__text-transform,
-		$headings__letter-spacing,
-		$headings__text-decoration,
-		$headings__margin-top,
-		$headings__margin-right,
-		$headings__margin-bottom,
-		$headings__margin-left,
-		$headings__font-size--bp-lg,
-		$headings__line-height--bp-lg,
-		$headings__letter-spacing--bp-lg,
-		$headings__link-color,
-		$headings__link-text-decoration,
-		$headings__link-color--hover,
-		$headings__link-text-decoration--hover
-	);
-}
-
+// @mixin text-style(
+// 	$font-family: $body__font-family,
+// 	$font-size: $body__font-size,
+// 	$line-height: $body__line-height,
+// 	$font-weight: $body__font-weight,
+// 	$text-align: $body__text-align,
+// 	$color: $body__color,
+// 	$font-style: normal,
+// 	$text-transform: none,
+// 	$letter-spacing: normal,
+// 	$text-decoration: none,
+// 	$margin-top: 0,
+// 	$margin-right: 0,
+// 	$margin-bottom: 0,
+// 	$margin-left: 0,
+// 	$font-size--bp-l: $font-size,
+// 	$line-height--bp-l: $line-height,
+// 	$letter-spacing--bp-l: $letter-spacing,
+// 	$bp: $type__breakpoint,
+// 	$link-color: $link__color,
+// 	$link-text-decoration: $link__text-decoration,
+// 	$link-color--hover: $link__color--hover,
+// 	$link-text-decoration--hover: $link__text-decoration--hover,
+// 	$default__font-family: $body__font-family,
+// 	$default__font-size: $body__font-size,
+// 	$default__line-height: $body__line-height,
+// 	$default__font-weight: $body__font-weight,
+// 	$default__text-align: $body__text-align,
+// 	$default__color: $body__color,
+// 	$default__font-style: normal,
+// 	$default__text-transform: none,
+// 	$default__letter-spacing: normal,
+// 	$default__text-decoration: none,
+// 	$default__margin-top: 0,
+// 	$default__margin-right: 0,
+// 	$default__margin-bottom: 0,
+// 	$default__margin-left: 0,
+// 	$default__font-size--bp-l: $font-size,
+// 	$default__line-height--bp-l: $line-height,
+// 	$default__letter-spacing--bp-l: $letter-spacing,
+// 	$default__link-color: $link__color,
+// 	$default__link-text-decoration: $link__text-decoration,
+// 	$default__link-color--hover: $link__color--hover,
+// 	$default__link-text-decoration--hover: $link__text-decoration--hover
+// ) {
+// 	@include font-family-change($font-family, $default__font-family);
+// 	@include font-size-change($font-size, $default__font-size);
+// 	@include line-height-change($line-height, $default__line-height);
+// 	@include font-weight-change($font-weight, $default__font-weight);
+// 	@include text-align-change($text-align, $default__text-align);
+// 	@include color-change($color, $default__color);
+// 	@include font-style-change($font-style, $default__font-style);
+// 	@include text-transform-change($text-transform, $default__text-transform);
+// 	@include letter-spacing-change($letter-spacing, $default__letter-spacing);
+// 	@include text-decoration-change($text-decoration, $default__text-decoration);
+// 	@include margin-change($default__margin-top, $default__margin-right, $default__margin-bottom, $default__margin-left, $margin-top, $margin-right, $margin-bottom, $margin-left);
+// 	@include bp-up-font-size-change($font-size--bp-l, $font-size);
+// 	@include bp-up-line-height-change($line-height--bp-l, $line-height);
+// 	@include bp-up-letter-spacing-change($letter-spacing--bp-l, $letter-spacing);
+//
+// 	@if ($link-color != $default__link-color) or ($link-text-decoration != $default__link-text-decoration) {
+// 		a {
+// 			@include color-change($link-color, $default__link-color);
+// 			@include text-decoration-change($link-text-decoration, $default__link-text-decoration);
+// 		}
+// 	}
+//
+// 	@if ($link-color--hover != $default__link-color--hover) or ($link-text-decoration--hover != $default__link-text-decoration--hover) {
+// 		a:hover,
+// 		a:focus {
+// 			@include color-change($link-color--hover, $default__link-color--hover);
+// 			@include text-decoration-change($link-text-decoration--hover, $default__link-text-decoration--hover);
+// 		}
+// 	}
+// }
+//
+// // HEADINGS
+// // -------------------------
 // @mixin heading-style(
 // 	$font-family: $headings__font-family,
 // 	$font-size: $headings__font-size,
@@ -264,39 +193,58 @@
 // 	$margin-right: $headings__margin-right,
 // 	$margin-bottom: $headings__margin-bottom,
 // 	$margin-left: $headings__margin-left,
-// 	$font-size--bp-lg: $font-size,
-// 	$line-height--bp-lg: $line-height,
-// 	$letter-spacing--bp-lg: $letter-spacing,
+// 	$font-size--bp-l: $font-size,
+// 	$line-height--bp-l: $line-height,
+// 	$letter-spacing--bp-l: $letter-spacing,
 // 	$bp: $headings__breakpoint,
-//
-// 	// defaults
-// 	$default__font-family: $headings__font-family,
-// 	$default__font-size: $headings__font-size,
-// 	$default__line-height: $headings__line-height,
-// 	$default__font-weight: $headings__font-weight,
-// 	$default__text-align: $headings__text-align,
-// 	$default__color: $headings__color,
-// 	$default__font-style: $headings__font-style,
-// 	$default__text-transform: $headings__text-transform,
-// 	$default__letter-spacing: $headings__letter-spacing,
-// 	$default__text-decoration: $headings__text-decoration,
-// 	$default__margin-top: $headings__margin-top,
-// 	$default__margin-right: $headings__margin-right,
-// 	$default__margin-bottom: $headings__margin-bottom,
-// 	$default__margin-left: $headings__margin-left
+// 	$link-color: $headings__link-color,
+// 	$link-text-decoration: $headings__link-text-decoration,
+// 	$link-color--hover: $headings__link-color--hover,
+// 	$link-text-decoration--hover: $headings__link-text-decoration--hover
 // ) {
-// 	@include font-family-change($font-family, $default__font-family);
-// 	@include font-size-change($font-size, $default__font-size);
-// 	@include line-height-change($line-height, $default__line-height);
-// 	@include font-weight-change($font-weight, $default__font-weight);
-// 	@include text-align-change($text-align, $default__text-align);
-// 	@include color-change($color, $default__color);
-// 	@include font-style-change($font-style, $default__font-style);
-// 	@include text-transform-change($text-transform, $default__text-transform);
-// 	@include letter-spacing-change($letter-spacing, $default__letter-spacing);
-// 	@include text-decoration-change($text-decoration, $default__text-decoration);
-// 	@include margin-change($default__margin-top, $default__margin-right, $default__margin-bottom, $default__margin-left, $margin-top, $margin-right, $margin-bottom, $margin-left);
-// 	@include bp-up-font-size-change($font-size--bp-lg, $font-size);
-// 	@include bp-up-line-height-change($line-height--bp-lg, $line-height);
-// 	@include bp-up-letter-spacing-change($letter-spacing--bp-lg, $letter-spacing);
+// 	@include text-style(
+// 		$font-family,
+// 		$font-size,
+// 		$line-height,
+// 		$font-weight,
+// 		$text-align,
+// 		$color,
+// 		$font-style,
+// 		$text-transform,
+// 		$letter-spacing,
+// 		$text-decoration,
+// 		$margin-top,
+// 		$margin-right,
+// 		$margin-bottom,
+// 		$margin-left,
+// 		$font-size,
+// 		$line-height,
+// 		$letter-spacing,
+// 		$bp,
+// 		$link-color,
+// 		$link-text-decoration,
+// 		$link-color--hover,
+// 		$link-text-decoration--hover,
+// 		$headings__font-family,
+// 		$headings__font-size,
+// 		$headings__line-height,
+// 		$headings__font-weight,
+// 		$headings__text-align,
+// 		$headings__color,
+// 		$headings__font-style,
+// 		$headings__text-transform,
+// 		$headings__letter-spacing,
+// 		$headings__text-decoration,
+// 		$headings__margin-top,
+// 		$headings__margin-right,
+// 		$headings__margin-bottom,
+// 		$headings__margin-left,
+// 		$headings__font-size--bp-l,
+// 		$headings__line-height--bp-l,
+// 		$headings__letter-spacing--bp-l,
+// 		$headings__link-color,
+// 		$headings__link-text-decoration,
+// 		$headings__link-color--hover,
+// 		$headings__link-text-decoration--hover
+// 	);
 // }

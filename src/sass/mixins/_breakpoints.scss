@@ -52,20 +52,20 @@
 	}
 }
 
-@mixin bp-sm__mq-up() {
-	@include breakpoint-up($bp-sm) {
+@mixin bp-s__mq-up() {
+	@include breakpoint-up($bp-s) {
 		@content;
 	}
 }
 
-@mixin bp-md__mq-up() {
-	@include breakpoint-up($bp-md) {
+@mixin bp-m__mq-up() {
+	@include breakpoint-up($bp-m) {
 		@content;
 	}
 }
 
-@mixin bp-lg__mq-up() {
-	@include breakpoint-up($bp-lg) {
+@mixin bp-l__mq-up() {
+	@include breakpoint-up($bp-l) {
 		@content;
 	}
 }
@@ -82,20 +82,20 @@
 	}
 }
 
-@mixin bp-sm__mq-down() {
-	@include breakpoint-down($bp-sm) {
+@mixin bp-s__mq-down() {
+	@include breakpoint-down($bp-s) {
 		@content;
 	}
 }
 
-@mixin bp-md__mq-down() {
-	@include breakpoint-down($bp-md) {
+@mixin bp-m__mq-down() {
+	@include breakpoint-down($bp-m) {
 		@content;
 	}
 }
 
-@mixin bp-lg__mq-down() {
-	@include breakpoint-down($bp-lg) {
+@mixin bp-l__mq-down() {
+	@include breakpoint-down($bp-l) {
 		@content;
 	}
 }

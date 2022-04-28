@@ -52,6 +52,7 @@ function bfnest_woocommerce_scripts() {
 
 	// remove woocommerce blocks css
 	wp_dequeue_style( 'wc-blocks-style' );
+	wp_dequeue_script( 'selectWoo' );
 
 	wp_enqueue_style( 'bfnest-woocommerce-style', $template_directory . '/css/woocommerce.css', array( 'bfnest-style' ), $version );
 }

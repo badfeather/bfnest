@@ -1,8 +1,8 @@
-<div class="doc-content entries">
+<div class="doc-content entries cards row">
 	<?php
 		while ( have_posts() ) {
 			the_post();
-			get_template_part( 'partials/entry-article', get_post_type() );
+			get_template_part( 'partials/entry-card', get_post_type() );
 		} // endwhile
 	?>
 </div>

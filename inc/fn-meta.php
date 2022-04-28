@@ -1,52 +1,52 @@
 <?php
-
 /**
- * Outputs meta functions added via first arg array
- * Use any of the the below functions or any custom functions you declare
+ * Outputs meta functions
+ * @param array $metas Array of functions to return
+ * @param string $meta_sep Separator
+ * @param array $classes Array of classes to add
  */
-// Get function
-function bfnest_get_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array(), $before = '', $after = '' ) {
-	$meta_array = array();
+// Get
+function bfnest_get_meta( $metas = [], $meta_sep = ' | ', $classes = [] ) {
+	if ( ! is_array( $metas ) || empty( $metas ) ) return false;
+	$meta_array = [];
 
-	if ( ! empty( $metas ) ) {
-		foreach ( $metas as $meta ) {
-			if ( $meta ) {
-				$meta_array[] = $meta;
-			}
-		}
+	foreach ( $metas as $meta ) {
+		$meta_array[] = $meta;
 	}
 
-	array_unshift( $meta_class, 'entry-meta' );
+	$classes = is_array( $classes ) ? $classes : [];
+	if ( ! in_array( 'entry-meta', $classes ) ) $classes[] = 'entry-meta';
 
-	$meta_array = array_values( array_filter( $meta_array ) );
-
-	if ( ! empty( $meta_array ) ) {
-		return $before . "\n" . '<div class="' . join( ' ', $meta_class ) . '">' . join( $meta_sep, $meta_array ) . '</div>' . "\n" . $after . "\n";
-	}
-
-	return false;
+	return '<div class="' . esc_attr( join( ' ', $classes ) ) . '">' . join( esc_html( $meta_sep ), $meta_array ) . '</div>' ."\n";
 }
 
-// Echo function
-function bfnest_meta( $metas = array(), $meta_sep = ' | ', $meta_class = array(), $before = '', $after = '' ) {
-	echo bfnest_get_meta( $metas, $meta_sep, $meta_class, $before, $after );
+// Echo
+function bfnest_meta( $metas = [], $meta_sep = ' | ', $classes = [] ) {
+	echo bfnest_get_meta( $metas, $meta_sep, $classes );
 }
 
 /**
  * Edit footer - used on post type views without any other meta info in the footer
  * $footer_class should either be 'doc' or 'entry'
  */
-function bfnest_edit_footer( $footer_class = 'doc' ) {
-	bfnest_meta( array( bfnest_get_meta_edit_link() ), '', array(), $before = '<footer class="' . esc_attr( $footer_class ) . '-footer">', $after = '</footer>' );
+function bfnest_get_edit_footer( $classes = [] ) {
+	$classes = is_array( $classes ) ? $classes : [];
+	if ( ! in_array( 'entry-footer', $classes ) ) $classes[] = 'entry-footer';
+	return '<footer class="' . esc_attr( join( ' ', $classes ) ) . '">' . bfnest_get_meta( [ bfnest_get_meta_edit_link() ] ) . '</footer>' . "\n";
+}
+
+function bfnest_edit_footer( $classes = [] ) {
+	echo bfnest_get_edit_footer( $classes );
 }
 
 /**
  * Meta taxonomy terms
- * $taxonomy defaults to 'category'
- * $before can be null, which will default to 'Posted in: ', '', which will omit the title, or any custom text
- * $element expects 'span' or 'div'
+ * @param string $taxonomy Taxonomy key
+ * @param string $before Text to display before terms
+ * @param string $sep Term separator
+ * @param boolean $inline Whether to display meta block inline ('span') or block ('div')
  */
-function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', ', $element = 'span', $link = true ) {
+function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = ', ', $inline = 1, $link = true ) {
 	$title = '';
 
 	if ( null === $before ) {
@@ -61,7 +61,7 @@ function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = '
 		return false;
 	}
 
-	$terms_array = array();
+	$terms_array = [];
 
 	foreach ( $terms as $term ) {
 		$term_before = $term_after = '';
@@ -72,8 +72,8 @@ function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = '
 		}
 		$terms_array[] = $term_before . $term->name . $term_after;
 	}
-
-	return '<' . $element . ' class="meta meta--terms">' . $title . join( $sep, $terms_array ) . '</' . $element . '>' . "\n";
+	$element = $inline ? 'span' : 'div';
+	return '<' . $element . ' class="meta meta--terms meta--' . esc_attr( $taxonomy ) . '-terms">' . $title . join( esc_html( $sep ), $terms_array ) . '</' . $element . '>' . "\n";
 }
 
 /**
@@ -81,8 +81,8 @@ function bfnest_get_meta_terms( $taxonomy = 'category', $before = null, $sep = '
  * $before can be null, which will default to 'Posted in: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function bfnest_get_meta_categories( $before = null, $sep = ', ', $element = 'span', $link = true ) {
-	return bfnest_get_meta_terms( 'category', $before, $sep, $element, $link );
+function bfnest_get_meta_categories( $before = null, $sep = ', ', $inline = 1, $link = true ) {
+	return bfnest_get_meta_terms( 'category', $before, $sep, $inline, $link );
 }
 
 /**
@@ -90,18 +90,18 @@ function bfnest_get_meta_categories( $before = null, $sep = ', ', $element = 'sp
  * $before can be null, which will default to 'Tagged: ', '', which will omit the title, or any custom text
  * $element expects 'span' or 'div'
  */
-function bfnest_get_meta_tags( $before = null, $sep = ', ', $element = 'span', $link = true ) {
+function bfnest_get_meta_tags( $before = null, $sep = ', ', $inline = 1, $link = true ) {
 	if ( null === $before ) {
 		$before = __( 'Tagged: ', 'bfnest' );
 	}
 
-	return bfnest_get_meta_terms( 'post_tag', $before, $sep, $element, $link );
+	return bfnest_get_meta_terms( 'post_tag', $before, $sep, $inline, $link );
 }
 
 /**
  * Meta comments link
  */
-function bfnest_get_meta_comments_link( $element = 'span' ) {
+function bfnest_get_meta_comments_link( $inline = 1 ) {
 	if ( ! comments_open() ) {
 		return false;
 	}
@@ -127,6 +127,7 @@ function bfnest_get_meta_comments_link( $element = 'span' ) {
 	}
 
 	$label = apply_filters( 'bfnest_meta_comments_link_label', $label );
+	$element = $inline ? 'span' : 'div';
 
 	return '<'. $element . ' class="meta meta--comment"><a href="' . $comments_link . '">' . $label . '</a></' . $element . '>';
 
@@ -137,7 +138,7 @@ function bfnest_get_meta_comments_link( $element = 'span' ) {
  * $before can be custom text, or will be otherwise omitted
  * $element expects 'span' or 'div'
  */
-function bfnest_get_meta_pubdate( $before = null, $element = 'span' ) {
+function bfnest_get_meta_pubdate( $before = null, $inline = 1 ) {
 	$date = get_the_date();
 
 	if ( ! $date ) {
@@ -145,14 +146,14 @@ function bfnest_get_meta_pubdate( $before = null, $element = 'span' ) {
 	}
 
 	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
-
+	$element = $inline ? 'span' : 'div';
 	return '<' . $element . ' class="meta meta--published">' . $title . '<time class="published" datetime = "' . get_the_time( 'c' ) . '">' . $date . '</time></' . $element . '>';
 }
 
 /**
  * Meta author
  */
-function bfnest_get_meta_author( $before = null, $element = 'span' ) {
+function bfnest_get_meta_author( $before = null, $inline = 1 ) {
 	$author = get_the_author();
 
 	if ( empty( $author ) || is_wp_error( $author ) ) {
@@ -160,7 +161,7 @@ function bfnest_get_meta_author( $before = null, $element = 'span' ) {
 	}
 
 	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
-
+	$element = $inline ? 'span' : 'div';
 	return '<' . $element . ' class="meta meta--author">' . $title . '<span class="byline author vcard"><a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author" class="fn">' . $author . '</a></span></' . $element . '>';
 }
 
@@ -168,7 +169,7 @@ function bfnest_get_meta_author( $before = null, $element = 'span' ) {
  * Custom field meta
  * Expects string custom field value
  */
-function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'span', $class = '' ) {
+function bfnest_get_meta_field( $meta_field = '', $before = null, $inline = 1, $class = '' ) {
 	if ( empty( $meta_field ) ) {
 		return false;
 	}
@@ -180,7 +181,7 @@ function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'sp
 
 	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
 	$add_class = $class ? ' ' . $class : '';
-
+	$element = $inline ? 'span' : 'div';
 	return '<' . $element . ' class="meta meta--cf' . esc_attr( $add_class ) . '">' . $title . $field . '</' . $element . '>';
 }
 
@@ -189,7 +190,7 @@ function bfnest_get_meta_field( $meta_field = '', $before = null, $element = 'sp
  * Expects url custom field value
  * $linked_text defaults to 'Download'
  */
-function bfnest_get_meta_field_link( $meta_field = '', $before = null, $linked_text = 'Download', $element = 'span', $class = '', $new_window = false ) {
+function bfnest_get_meta_field_link( $meta_field = '', $before = null, $linked_text = 'Download', $inline = 1, $class = '', $new_window = false ) {
 	if ( empty( $meta_field ) ) {
 		return false;
 	}
@@ -202,7 +203,7 @@ function bfnest_get_meta_field_link( $meta_field = '', $before = null, $linked_t
 	$title = $before ? '<span class="meta-title">' . $before . '</span>' : '';
 	$target = $new_window ? ' target="_blank"' : '';
 	$add_class = $class ? ' ' . $class : '';
-
+	$element = $inline ? 'span' : 'div';
 	return '<' . $element . ' class="meta meta--cf-link' . esc_attr( $add_class ) . '">' . $title . '<a href="' . esc_url( $field ) . '"' . $target . '>' .
 	esc_html( $linked_text ) .
 	'</a></' . $element . '>';
@@ -211,7 +212,7 @@ function bfnest_get_meta_field_link( $meta_field = '', $before = null, $linked_t
 /**
  * Meta edit link
  */
-function bfnest_get_meta_edit_link( $label = null, $element = 'span' ) {
+function bfnest_get_meta_edit_link( $label = null, $inline = 1 ) {
 	$edit_post_link = get_edit_post_link();
 
 	if ( ! $edit_post_link ) {
@@ -221,14 +222,14 @@ function bfnest_get_meta_edit_link( $label = null, $element = 'span' ) {
 	if ( null === $label ) {
 		$label = __( 'Edit', 'bfnest' );
 	}
-
+	$element = $inline ? 'span' : 'div';
 	return '<' . $element . ' class="meta meta--edit"><a href="' . $edit_post_link . '">' . $label . '</a></' . $element . '>';
 }
 
 /**
  * Helper function for bfnest_get_meta_share
  */
-function bfnest_get_share_data( $args = array() ) {
+function bfnest_get_share_data( $args = [] ) {
 	if ( empty( $args ) || is_wp_error( $args ) ) {
 		return false;
 	}
@@ -251,7 +252,7 @@ function bfnest_get_share_data( $args = array() ) {
 	//$encoded_title = urlencode( get_the_title() );
 	$encoded_title = rawurlencode( html_entity_decode( $post_title ) );
 
-	$networks = array();
+	$networks = [];
 
 	if ( $facebook ) {
 		$networks[] = array(
@@ -342,15 +343,15 @@ function bfnest_get_meta_share(
 		$args = array(
 			'facebook' => 1,
 			'twitter' => 1,
-			'linkedin' => 1,
-			'pinterest' => 1,
-			'pocket' => 1,
-			'digg' => 1,
-			'reddit' => 1,
+			'linkedin' => 0,
+			'pinterest' => 0,
+			'pocket' => 0,
+			'digg' => 0,
+			'reddit' => 0,
 			'email' => 1,
 		),
 		$before = null,
-		$element = 'span',
+		$inline = 1,
 		$item_sep = ' ',
 		$new_window = true,
 		$add_icons = true,
@@ -371,7 +372,7 @@ function bfnest_get_meta_share(
 
 	$target = $new_window ? ' target="_blank" rel="noopener noreferrer"' : '';
 
-	$share_array = array();
+	$share_array = [];
 	foreach ( $networks as $network ) {
 		$network_before = $network_after = '';
 		$network_slug = $network['slug'];
@@ -392,9 +393,9 @@ function bfnest_get_meta_share(
 	}
 
 	if ( ! empty( $share_array ) ) {
+		$element = $inline ? 'span' : 'div';
 		return '<' . $element . ' class="meta meta--share">' . $title . join( $item_sep, $share_array ) . '</' . $element . '>';
-	} // if ! empty $share_links
-
+	}
 	return false;
 }
 

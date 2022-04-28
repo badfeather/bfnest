@@ -82,7 +82,6 @@ function bfnest_archive_title_prefix( $prefix ) {
  * See https://www.w3.org/WAI/tutorials/menus/flyout/
  */
 function bfnest_wcag_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
-
     // Add [aria-haspopup] and [aria-expanded] to menu items that have children
     $item_has_children = in_array( 'menu-item-has-children', $item->classes );
     if ( $item_has_children ) {

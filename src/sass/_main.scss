@@ -1,24 +1,35 @@
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
 .doc-main {
-	margin-bottom: $doc__margin-bottom;
+	padding-top: var(--spacing--l);
+	margin: 0 0 var(--spacing);
 }
 
 .entry {
-	margin-bottom: $entry__margin-bottom;
+	margin: 0 0 var(--spacing--l);
 }
 
 .widget {
-	margin-bottom: $widget__margin-bottom;
+	margin: 0 0 var(--spacing);
 }
 
 .entry-figure {
-	margin-bottom: $figure__margin-bottom;
+	margin: 0 0 var(--spacing--l);
 }
 
 //.sticky {
 //}
 
 .entry-header {
-	margin-bottom: $spacing--base;
+	margin-bottom: var(--spacing);
 }
 
 // SINGLE POSTS

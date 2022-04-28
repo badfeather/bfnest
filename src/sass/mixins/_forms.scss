@@ -27,6 +27,16 @@
 	}
 }
 
+@mixin button--unstyled() {
+	border: 0;
+	background: none;
+	padding: 0;
+	color: inherit;
+	margin: 0;
+	cursor: pointer;
+	//display: inline-block;
+}
+
 // FORM CONTROLS
 // -------------------------
 @mixin form-control-variant(
@@ -64,14 +74,14 @@
 	}
 }
 
-@mixin form-control--lg {
-	@include font-size-change($form-control__font-size--lg, $form-control__font-size);
-	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--lg, $value-right: $form-control__padding-x--lg);
+@mixin form-control--l {
+	@include font-size-change($form-control__font-size--l, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--l, $value-right: $form-control__padding-x--l);
 }
 
-@mixin form-control--sm {
-	@include font-size-change($form-control__font-size--sm, $form-control__font-size);
-	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--sm, $value-right: $form-control__padding-x--sm);
+@mixin form-control--s {
+	@include font-size-change($form-control__font-size--s, $form-control__font-size);
+	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--s, $value-right: $form-control__padding-x--s);
 }
 
 @mixin form-control--xs {

@@ -8,14 +8,12 @@ function bfnest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) {
 ?>
-
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment__body">
 			<?php _e( 'Pingback:', 'bfnest' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'bfnest' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
-
 <?php
-	} else { // else if not pingback or trackback
+	} else {
 ?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>

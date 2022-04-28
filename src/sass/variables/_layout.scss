@@ -1,37 +1,36 @@
-// spacing
-$spacing--base: $font-size--base * $line-height--base;
-$spacing--2xs: $spacing--base * .125;
-$spacing--xs: $spacing--base * .25;
-$spacing--sm: $spacing--base * .5;
-$spacing--lg: $spacing--base * 1.5;
-$spacing--xl: $spacing--base * 2;
-$spacing--2xl: $spacing--base * 3;
-
 // component margins
-$doc__margin-bottom: $spacing--base;
-$entry__margin-bottom: $spacing--lg;
-$widget__margin-bottom: $spacing--lg;
-$block__margin-bottom: $spacing--lg;
-$figure__margin-bottom: $spacing--lg;
+$doc__margin-bottom: var(--spacing);
+$entry__margin-bottom: var(--spacing--l);
+$widget__margin-bottom: var(--spacing--l);
+$block__margin-bottom: var(--spacing--l);
+$figure__margin-bottom: var(--spacing--l);
+
+$doc__margin: 0 0 var(--spacing);
+$entry__margin: 0 0 var(--spacing--l);
+$widget__margin: 0 0 var(--spacing--l);
+$block__margin: 0 0 var(--spacing--l);
+$figure__margin: 0 0 var(--spacing--l);
+
+$margin--base: 0 0 var(--spacing);
 
 // breakpoints
 $bp-xs: 480px;
-$bp-sm: 600px;
-$bp-md: 768px;
-$bp-lg: 992px;
+$bp-s: 600px;
+$bp-m: 768px;
+$bp-l: 992px;
 $bp-xl: 1200px;
 
 $breakpoints: (
-	bp-none: 0,
-	bp-xs: $bp-xs,
-	bp-sm: $bp-sm,
-	bp-md: $bp-md,
-	bp-lg: $bp-lg,
-	bp-xl: $bp-xl,
+	'none': 0,
+	'xs': $bp-xs,
+	's': $bp-s,
+	'm': $bp-m,
+	'l': $bp-l,
+	'xl': $bp-xl,
 );
 
-$type__breakpoint: $bp-lg;
-$nav__breakpoint: $bp-lg;
+$type__breakpoint: $bp-l;
+$nav__breakpoint: $bp-l;
 
 $block__cols: 7;
 $alignwide__cols: 9;

@@ -26,45 +26,26 @@
 	margin-right: $gutter * -.5;
 }
 
+@mixin col($gutter: $grid__gutter-width) {
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	@include guttered($gutter);
+}
+
 @mixin row($gutter: $grid__gutter-width) {
 	display: flex;
 	flex-wrap: wrap;
 	@include row-gutters($gutter);
-}
 
-@mixin form-row($gutter: $form-grid__gutter-width) {
-	display: flex;
-	flex-wrap: wrap;
-	@include row-gutters($gutter);
-}
-
-@mixin gallery-row($gutter: $gallery-grid__gutter-width) {
-	display: flex;
-	flex-wrap: wrap;
-	@include row-gutters($gutter);
+	& > * {
+		@include col($gutter);
+	}
 }
 
 @mixin row--centered {
 	text-align: center;
 	justify-content: center;
-}
-
-@mixin col($gutter: $grid__gutter-width) {
-	position: relative;
-	width: 100%;
-	@include guttered($gutter);
-}
-
-@mixin form-col($gutter: $form-grid__gutter-width) {
-	position: relative;
-	width: 100%;
-	@include guttered($gutter);
-}
-
-@mixin gallery-col($gutter: $gallery-grid__gutter-width) {
-	position: relative;
-	width: 100%;
-	@include guttered($gutter);
 }
 
 @mixin cols($n, $columns: $grid__columns) {
@@ -84,13 +65,11 @@
 @mixin col--grow {
 	flex-basis: 0;
 	flex-grow: 1;
-	max-width: 100%;
 }
 
 @mixin col--auto {
 	flex: 0 0 auto;
 	width: auto;
-	max-width: 100%;
 }
 
 @mixin col--centered {
@@ -167,9 +146,9 @@
 		@include row;
 	}
 
-	#{$parent-selector} #{$child-selector} {
-		@include col;
-	}
+	// #{$parent-selector} #{$child-selector} {
+	// 	@include col;
+	// }
 
 	@while $i <= $n {
 		$calc: math.div(1, $i) * 100%;
@@ -215,7 +194,7 @@
 			@include grid-classes($selector-type);
 
 		} @else {
-			$prefix: #{$name}__;
+			$prefix: bp-#{$name}__;
 			@include breakpoint-up($value) {
 				@include grid-classes($selector-type, $prefix);
 			}

@@ -46,7 +46,7 @@
 	}
 }
 
-@include bp-sm__mq-up {
+@include bp-s__mq-up {
 	.wp-block-column {
 		flex-grow: 0;
 		flex-basis: 50%;

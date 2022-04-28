@@ -1,6 +1,5 @@
 body {
-	font-size: $body__font-size;
-	@include bp-font-size-change($body__font-size--bp-lg, $body__font-size);
+	font-size: var(--font-size);
 	padding-left: 1em;
 	padding-right: 1em;
 

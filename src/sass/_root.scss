@@ -1,8 +1,29 @@
 :root {
-	@each $key, $value in $root-fonts {
-		--#{$key}: #{$value};
+	@each $key, $value in $root-font-families {
+		@if $key == '' {
+			--font-family: #{$value};
+		} @else {
+			--font-family--#{$key}: #{$value};
+		}
+	}
+
+	@each $key, $value in $root-font-sizes {
+		@if $key == '' {
+			--font-size: #{$value};
+		} @else {
+			--font-size--#{$key}: #{$value};
+		}
+	}
+
+	@each $key, $value in $root-spacings {
+		@if $key == '' {
+			--spacing: #{$value};
+		} @else {
+			--spacing--#{$key}: #{$value};
+		}
 	}
 }
+
 :root,
 [data-color-scheme="#{$color-scheme}"] {
 	@each $key, $value in $root-colors {
@@ -15,7 +36,6 @@
 		@each $key, $value in $root-colors--alt {
 			--#{$key}: #{$value};
 		}
-
 	}
 }
 

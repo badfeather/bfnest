@@ -28,7 +28,7 @@
 	@include row;
 
 	li {
-		@include col;
+		// @include col;
 		cursor: pointer;
 
 		&:hover {
@@ -55,10 +55,10 @@
 	}
 
 	&.in-stock {
-		color: $woocommerce__color-success;
+		color: var(--color-success);
 	}
 
 	&.out-of-stock {
-		color: $woocommerce__color-error;
+		color: var(--color-danger);
 	}
 }

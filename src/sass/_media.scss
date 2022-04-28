@@ -25,7 +25,7 @@ svg:not([fill]) {
 figure,
 .figure,
 .wp-video {
-	margin: 0 0 $figure__margin-bottom;
+	margin: $figure__margin;
 }
 
 // wordpress-specific - old styles
@@ -46,6 +46,12 @@ figure,
 
 img,
 .wp-caption {
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin: $figure__margin;
+	}
+
 	&.alignleft {
 		margin-left: 0;
 		margin-right: $spacing--base;
@@ -56,12 +62,6 @@ img,
 		margin-left: $spacing--base;
 		margin-right: 0;
 		clear: right;
-	}
-
-	&.alignleft,
-	&.alignright,
-	&.aligncenter {
-		margin-bottom: $figure__margin-bottom;;
 	}
 }
 
@@ -80,14 +80,12 @@ img,
 }
 
 .gallery  {
-	@include gallery-row;
-	margin-bottom: $figure__margin-bottom;
-	padding-top: $spacing--sm;
+	@extend .gallery-row;
+	margin: 0 0 $figure__margin;
 }
 
 .gallery-item {
-	@include gallery-col;
-	margin-bottom: $figure__margin-bottom;
+	margin: 0 0 $figure__margin-bottom;
 
 	figure {
 		margin: 0;

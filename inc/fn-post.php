@@ -88,7 +88,7 @@ function bfnest_get_top_parent_term_id( $term_id = null, $taxonomy = 'category' 
 	if ( ! $term_id ) {
 		if ( is_single() ) {
 			$terms = get_the_terms( get_the_ID(), $taxonomy );
-			$term_ids = array();
+			$term_ids = [];
 			foreach ( $terms as $term ) {
 				$term_ids[] = $term->term_id;
 			}
@@ -324,7 +324,9 @@ function bfnest_latest_taxonomy_posts( $args ) {
 }
 
 /**
- * Get first term assigned to post
+ * Get first taxonomy term assigned to post
+ * @param string $taxonomy Taxonomy key
+ * @param integer $post_id Post ID, defaults to current post
  */
 function bfnest_get_first_term( $taxonomy = 'category', $post_id = null ) {
 	$post_id = null === $post_id ? get_the_ID() : $post_id;
@@ -336,8 +338,9 @@ function bfnest_get_first_term( $taxonomy = 'category', $post_id = null ) {
 }
 
 /**
- * Get primary term
- * uses Yoast primary term if available, otherwise returns first term
+ * Get primary taxonomy term assigned to post
+ * @param string $taxonomy Taxonomy key
+ * @param integer $post_id Post ID, defaults to current post
  */
 function bfnest_get_primary_term( $taxonomy = 'category', $post_id = null ) {
 	$post_id = null === $post_id ? get_the_ID() : $post_id;
@@ -353,33 +356,37 @@ function bfnest_get_primary_term( $taxonomy = 'category', $post_id = null ) {
 }
 
 /**
- * Pretty print array/object
- * Used for debugging
+ * Pretty print array/object - basically a print_r with a <pre> wrapper
+ * @param $array data
  */
-function bfnest_pretty_print( $array = array() ) {
-	if ( empty( $array ) ) {
+function bfnest_pretty_print( $data = [] ) {
+	if ( empty( $data ) ) {
 		return;
 	}
 	echo '<pre>';
-	print_r( $array );
+	print_r( $data );
 	echo '</pre>' . "\n";
 }
 
 /**
- * Get alternate title via custom field if available, otherwise title
+ * Get post title based via custom field, with fallback to post title
+ * @param string $field Custom field key
+ * @param intenger $post_id Post ID. Defaults to current ID
  */
-function bfnest_get_alternate_title( $field = 'alternate_title', $post_id = null ) {
+function bfnest_get_title( $field = 'alternate_title', $post_id = null ) {
 	$post_id = null === $post_id ? get_the_ID() : $post_id;
 	$alt_title = get_post_meta( $post_id, $field, true );
 	return $alt_title ? $alt_title : get_the_title();
 }
 
-function bfnest_alternate_title( $field = 'alternate_title', $post_id = null ) {
-	echo bfnest_get_alternate_title( $field, $post_id );
+function bfnest_title( $field = 'alternate_title', $post_id = null ) {
+	echo bfnest_get_title( $field, $post_id );
 }
 
 /**
- * Display post lede based via custom field
+ * Get post lede based via custom field
+ * @param string $field Custom field key
+ * @param intenger $post_id Post ID. Defaults to current ID
  */
 function bfnest_get_lede( $field = 'lede', $post_id = null ) {
 	$post_id = null === $post_id ? get_the_ID() : $post_id;
@@ -395,8 +402,11 @@ function bfnest_lede( $field = 'lede', $post_id = null ) {
 }
 
 /**
- * Display post subtitle based via custom field
+ * Get post subtitle based via custom field
+ * @param string $field Custom field key
+ * @param intenger $post_id Post ID. Defaults to current ID
  */
+// Get
 function bfnest_get_subtitle( $field = 'subtitle', $post_id = null ) {
 	$post_id = null === $post_id ? get_the_ID() : $post_id;
 	$subtitle = get_post_meta( $post_id, $field, true );
@@ -406,24 +416,109 @@ function bfnest_get_subtitle( $field = 'subtitle', $post_id = null ) {
 	return '<div class="entry-subtitle">' . esc_html( $subtitle ) . '</div>' . "\n";
 }
 
+// Echo
 function bfnest_subtitle( $field = 'subtitle', $post_id = null ) {
 	echo bfnest_get_subtitle( $field, $post_id );
 }
 
 /**
- * Get content flag
+ * Get primary term and output in div with class 'entry-content-flag'
+ * @param string $taxonomy Taxonomy key
+ * @param boolean $link Whether to link to term
+ * @param integer $post_id Defaults to current post if not specified
+ * @return string Div with 'entry-content-flag' class, with term name optionally linked to term
  */
-function bfnest_get_content_flag( $taxonomy = 'category', $link = true, $post_id = null ) {
+// Get
+function bfnest_get_content_flag( $taxonomy = 'category', $link = 1, $post_id = null ) {
 	$post_id = null === $post_id ? get_the_ID() : $post_id;
 	$term = bfnest_get_primary_term( $taxonomy, $post_id );
 	if ( empty( $term ) ) {
 		return false;
 	}
-	$link_before = $link ? '<a href="' . get_term_link( $term, $taxonomy ) . '">' : '';
-	$link_after = $link ? '</a>' : '';
-	return '<div class="entry-content-flag">' . $link_before . $term->name . $link_after . '</div>' . "\n";
+	$name = $term->name;
+	$name = $link ?  '<a href="' . get_term_link( $term, $taxonomy ) . '">' . $name . '</a>' : $name;
+	return '<div class="entry-content-flag">' . $name . '</div>' . "\n";
 }
 
+// Echo
 function bfnest_content_flag( $taxonomy = 'category', $link = true, $post_id = null ) {
 	echo bfnest_get_content_flag( $taxonomy, $link, $post_id );
+}
+
+/**
+ * Get taxonomy terms outputted in div with class 'entry-content-flag'
+ * @param string $taxonomy Taxonomy key
+ * @param boolean $link Whether to link terms
+ * @param string $sep Term separator
+ */
+function bfnest_get_content_flags( $taxonomy = 'category', $link = true, $sep = ' &nbsp;' ) {
+	$flags = bfnest_get_meta_terms( $taxonomy, '', $sep, 'div', $link );
+	if ( ! $flags ) return false;
+	return '<div class="entry-content-flag">' . $flags . '</div>' . "\n";
+}
+
+function bfnest_content_flags( $taxonomy = 'category', $link = true, $sep = ' ' ) {
+	echo bfnest_get_content_flags( $taxonomy, $link, $sep );
+}
+
+/**
+ * Get featured image and return in figure, with optional link
+ * @param string $size The media size
+ * @param boolean $link Whether to link to post (default) or url specified in $url
+ * @param string $url URL to link to other than post if $link is set to true
+ * @param boolean $caption Whether to display image caption or not
+ * @param array $classes Additional classes to add to figure in addition to 'entry-figure'
+ * @param boolean $use_first Whether to use the first image if no featured image is found
+ * @param integer $post_id The post ID. Defaults to current post in query if not specified
+ * @return figure element with featured image, optionally linking to post or other url
+ */
+// Get
+function bfnest_get_figure( $size = 'thumbnail', $link = 1, $url = '', $caption = 0, $classes = [], $use_first = 0, $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$image_id = $use_first ? bfnest_get_featured_or_first_image_id( $post_id ) : get_post_thumbnail_id( $post_id );
+	if ( ! $image_id ) return false;
+	$image = wp_get_attachment_image( $image_id, $size );
+	$figcaption = $caption ? wp_get_attachment_caption( $post_id ) : '';
+	if ( $link ) {
+		$href = $url ? $url : get_permalink( $post_id );
+		$atts = $url ? ' target="_blank" rel="noopener nofollow"' : '';
+		$image = '<a href="' . esc_url( $href ) . '"' . $atts . '>' . $image . '</a>';
+	}
+	if ( ! in_array( 'entry-figure', $classes ) ) {
+		$classes[] = 'entry-figure';
+	}
+	$classes[] = 'entry-figure--size-' . $size;
+	return '<figure class="' . esc_attr( join( ' ', $classes ) ) . '">' . $image . $figcaption . '</figure>' . "\n";
+}
+
+// Echo
+function bfnest_figure( $size = 'thumbnail', $link = 1, $url = '', $caption = 0, $classes = [], $use_first = 0, $post_id = null ) {
+	echo bfnest_get_figure( $size, $link, $url, $caption, $classes, $use_first, $post_id );
+}
+
+/**
+ * Get post excerpt, with optional read more link
+ * @param boolean $auto Whether to use auto excerpts. If false, only displays excerpt if manual one is set.
+ * @param boolean $link Whether to add link to post after excerpt
+ * @param string $link_text Inner text of link
+ * @param array $link_classes Classes to add to link
+ * @return string div containing entry excerpt or false if none exists
+ */
+// Get
+function bfnest_get_excerpt( $auto = 0, $link = 0, $link_text = 'Read more', $link_classes = [], $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$excerpt = $auto ? get_the_excerpt() : '';
+	$excerpt = ! $auto && has_excerpt() ? get_the_excerpt() : '';
+	if ( ! $excerpt ) return;
+	$add_link = '';
+	if ( $link && $link_text ) {
+		$class = ! empty( $link_classes ) ? ' class="' . esc_attr( join( ' ', $link_classes ) ) . '"' : '';
+		$add_link = '<a href="' . get_permalink( $post_id ) . '"' . $class . '>' . esc_html( $link_text ) . '</a>';
+	}
+	return '<div class="entry-excerpt">' . $excerpt . $add_link . '</div>' . "\n";
+}
+
+// Echo
+function bfnest_excerpt( $auto = 0, $link = 0, $link_text = 'Read more', $link_classes = [], $post_id = null ) {
+	echo bfnest_get_excerpt( $auto, $link, $link_text, $link_classes, $post_id );
 }

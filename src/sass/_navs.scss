@@ -1,36 +1,16 @@
 // GENERAL NAV STYLES
 // -------------------------
 .menu {
-	@include text-style(
-		$menu__font-family,
-		$menu__font-size,
-		$menu__line-height,
-		$menu__font-weight,
-		$menu__text-align,
-		$menu__color,
-		$menu__font-style,
-		$menu__text-transform,
-		$menu__letter-spacing,
-		$menu__text-decoration,
-		$menu__margin-top,
-		$menu__margin-right,
-		$menu__margin-bottom,
-		$menu__margin-left,
-		$menu__font-size--bp-lg,
-		$menu__line-height--bp-lg,
-		$menu__letter-spacing--bp-lg,
-		$menu__breakpoint,
-		$menu-link__color,
-		$menu-link__text-decoration,
-		$menu-link__color--hover,
-		$menu-link__text-decoration--hover
-	);
-
-	a:focus {
-		outline: red;
-	}
-
 	@include list-unstyled;
+
+	a {
+		color: var(--color-primary--hover);
+
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
 
 	ul {
 		@include list-unstyled;
@@ -51,7 +31,7 @@
 	.current-category-ancestor,
 	.current-post-ancestor {
 		& > a {
-			color: $menu-link__color--current;
+			color: var(--color-primary--hover);
 		}
 	}
 }
@@ -59,28 +39,16 @@
 // POST NAVIGATION STYLES
 // ---------------------------
 .postnav {
-	@include font-size-change($postnav__font-size);
-	@include line-height-change($postnav__line-height);
-	@include font-family-change($postnav__font-family);
-	@include font-weight-change($postnav__font-weight);
-	@include text-transform-change($postnav__text-transform);
-	@include clearfix;
 	clear: both;
-	margin-bottom: $postnav__margin-bottom;
+	@include row;
 
 	.postnav__link {
-		width: 50%;
+		@include cols(6);
 	}
 
 	.postnav__link--older {
-		float: right;
+		order: 2;
 		text-align: right;
-		padding-left: 1em;
-	}
-
-	.postnav__link--newer {
-		float: left;
-		padding-right: 1em;
 	}
 }
 

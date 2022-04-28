@@ -14,6 +14,23 @@
 	}
 }
 
+// expects maps of 'property': 'value' pairs
+@mixin map-diff-styles($map, $defaults) {
+	$merged: map.merge($defaults, $map);
+
+	// remove any keys from $merged that have values identical to those in $defaults
+	@each $property, $value in $merged {
+		@if map.get($defaults, $property) == $value {
+			$merged: map.remove($merged, $property);
+		}
+	}
+
+	// dive through nested selectors
+	@each $property, $value in $merged {
+		#{$property}: $value;
+	}
+}
+
 // breakpoint change
 @mixin bp-up-style-change($property, $value, $default, $bp) {
 	@if $value != $default {

@@ -11,9 +11,8 @@
 	}
 
 	.wp-block-button {
-		@extend .form-col;
 		width: auto;
-		margin: 0 0 $spacing--base;
+		margin-bottom: var(--spacing--s);
 	}
 
 	.has-custom-width {

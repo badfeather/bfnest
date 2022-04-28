@@ -14,7 +14,7 @@
 
 // EXAMPLES
 // No media query: Use html class 'guttered' or @extend %guttered
-// Media query: Use html class .bp-sm__guttered or @extend %bp-sm__guttered
+// Media query: Use html class .bp-s__guttered or @extend %bp-s__guttered
 // Media query with column count: .bp-xl__columns-2 or @extend %bp-xl__columns-2
 
 // AVAILABLE CLASSES
@@ -62,25 +62,25 @@
 	align-items: center;
 }
 
-.col {
-	@include col;
-}
-
 .form-row {
-	@include form-row;
+	@include row($form-grid__gutter-width);
 }
 
-.form-col {
-	@include form-col;
+.gallery-row {
+	@include row($gallery-grid__gutter-width);
+}
+
+.col--grow {
+	@include col--grow;
 }
 
 .col--auto {
 	@include col--auto;
 }
 
-//@include generate-cols-classes($grid__columns, '.', 'cols', '');
-//@include generate-push-classes($grid__columns, '.', 'push', '');
-//@include generate-pull-classes($grid__columns, '.', 'pull', '');
+// @include generate-cols-classes($grid__columns, '.', 'cols', '');
+// @include generate-push-classes($grid__columns, '.', 'push', '');
+// @include generate-pull-classes($grid__columns, '.', 'pull', '');
 
 @include bp-grid-classes($selector-type: '%');
-//@include bp-grid-classes($selector-type: '.'); // uncomment to output classes
+// @include bp-grid-classes($selector-type: '.'); // uncomment to output classes

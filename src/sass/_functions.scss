@@ -2,7 +2,10 @@
 	@return math.div($value, $value * 0 + 1);
 }
 
-@function unitcalc($value, $default: 16, $unit: 'rem', $return: 0) {
+// set to 10 or 16, depending on whether you set font-size to 100% or 62.5% on html
+$html__font-size: 16;
+
+@function unitcalc($value, $default: $html__font-size, $unit: 'rem', $return: 0) {
 	$calc: math.div(strip-unit($value), strip-unit($default));
 
 	@if ($value != 0) {
@@ -27,11 +30,11 @@
 	@return unitcalc($value, $unit: 'px');
 }
 
-@function emcalc($value, $default: 16) {
+@function emcalc($value, $default: $html__font-size) {
 	@return unitcalc($value, $default, 'em');
 }
 
-@function remcalc($value, $default: 16) {
+@function remcalc($value, $default: $html__font-size) {
 	@return unitcalc($value, $default, $unit: 'rem');
 }
 

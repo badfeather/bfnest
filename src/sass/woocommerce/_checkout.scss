@@ -3,9 +3,9 @@
 
 	.form-row-first,
 	.form-row-last {
-		@include col;
+		// @include col;
 
-		@include bp-md__mq-up {
+		@include bp-m__mq-up {
 			@include cols(6);
 		}
 	}

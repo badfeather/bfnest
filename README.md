@@ -1,9 +1,14 @@
 # Bad Feather Nest
-Version: 7.0.0
+Version: 7.1.1
 
 A starter theme for Bad Feather projects. It's useful for us, so hell, it might be helpful to you. A constant work in progress. Use at your own peril.
 
-This theme uses NPM, SASS, ESLint, and PostCSS to lint, concatenate and minify CSS and Javascript, compress images, generate translation files, and probably more that I'm forgetting about.
+This theme uses NPM scripts, along with Rollup.js, SASS, ESLint, and PostCSS to lint, concatenate and minify CSS and Javascript, compress images, and probably more that I'm forgetting about.
+
+## Version 7.1 breaking changes:
+* Ditched all of the text variables and complicated style-change mixins in favor of just styling things inline on the elements. In short, the goal of reducing abstraction continues. 
+* Added more CSS variables for spacing, font-sizes, and font-families. In other words, CSS variables are great.
+* Killed the CSS sass maps for now. 
 
 ## Version 7.0 breaking changes:
 * SASS design system has been largely overhauled with the following goals:
@@ -11,11 +16,12 @@ This theme uses NPM, SASS, ESLint, and PostCSS to lint, concatenate and minify C
   * Reduce abstraction and folder nesting
   * Reduce overuse of variables and mixins
   * Fold reset styles into native elements
+  * Style native elements over classes wherever possible
 * Grunt has been replaced with NPM scripts as a build tool
 * Bower has been removed. Recommend using NPM or Yarn
 * Imagemin has been removed from the build tools due to the extension no longer maintained and has security vulnerabilities in its dependencies. We recommend minifying theme images on your local machine using [ImageOptim](https://imageoptim.com/mac) before saving to the `assets/dist/img` folder. We may revisit integrating  [Squoosh](https://github.com/GoogleChromeLabs/squoosh) into the build process.
 * Svgmin has been removed from the build tools. We recommend using [SVGOMG](https://jakearchibald.github.io/svgomg/) or [ImageOptim](https://imageoptim.com/mac) before saving SVGs to the `assets/dist/img` folder. We may revisit integrating SVGO into the build process.
-* Svgstore has been removed from the build tools. 
+* Svgstore has been removed from the build tools. We may revisit integrating [svg-min](https://github.com/svg-sprite/svg-sprite) into the build process.
 * i18N has been removed from build tools. If required, use [WP-CLI](https://developer.wordpress.org/cli/commands/i18n/make-pot/) to generate .pot files.
 
 ## Getting Started

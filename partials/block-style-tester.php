@@ -36,30 +36,26 @@
 
 		<h4>Tables:</h4>
 		<table>
-			<thead>
-				<tr>
-					<th>Table Header 1</th>
-					<th>Table Header 2</th>
-					<th>Table Header 3</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Division 1</td>
-					<td>Division 2</td>
-					<td>Division 3</td>
-				</tr>
-				<tr>
-					<td>Division 1</td>
-					<td>Division 2</td>
-					<td>Division 3</td>
-				</tr>
-				<tr>
-					<td>Division 1</td>
-					<td>Division 2</td>
-					<td>Division 3</td>
-				</tr>
-			</tbody>
+			<tr>
+				<th>Table Header 1</th>
+				<th>Table Header 2</th>
+				<th>Table Header 3</th>
+			</tr>
+			<tr>
+				<td>Division 1</td>
+				<td>Division 2</td>
+				<td>Division 3</td>
+			</tr>
+			<tr>
+				<td>Division 1</td>
+				<td>Division 2</td>
+				<td>Division 3</td>
+			</tr>
+			<tr>
+				<td>Division 1</td>
+				<td>Division 2</td>
+				<td>Division 3</td>
+			</tr>
 		</table>
 
 		<hr />
@@ -164,7 +160,7 @@ The frumious Bandersnatch!&rdquo;</pre>
 
 			</fieldset>
 
-			<fieldset class="form-group form-row--inline">
+			<fieldset class="form-group form-row form-row--inline">
 				<legend>Radio</legend>
 
 				<div class="form-check">
@@ -183,7 +179,7 @@ The frumious Bandersnatch!&rdquo;</pre>
 				</div>
 			</fieldset>
 
-			<fieldset class="form-group form-row--inline">
+			<fieldset class="form-group form-row form-row--inline">
 				<legend>Choose some monster features</legend>
 
 				<div class="form-check">
@@ -198,8 +194,8 @@ The frumious Bandersnatch!&rdquo;</pre>
 
 				<div class="form-check">
 					<input type="checkbox" id="inline-checkbox-3" name="inline-checkbox-3" value="inline-checkbox-3" />
-					<label for="checkbox-3">Checkbox 3</label>				</div>
-
+					<label for="checkbox-3">Checkbox 3</label>
+				</div>
 			</fieldset>
 
 			<input name="submit" type="submit" value="Submit" class="button" />

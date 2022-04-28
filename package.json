@@ -1,6 +1,6 @@
 {
 	"name": "bfnest",
-	"version": "7.0.0",
+	"version": "7.1.2",
 	"homepage": "https://github.com/badfeather/bfnest",
 	"author": "Brad Thomason <brad@badfeather.com>",
 	"repository": {
@@ -22,7 +22,7 @@
 		"bump:minor": "bump minor package.json package-lock.json README.md style.css",
 		"bump:major": "bump major package.json package-lock.json README.md style.css",
 		"css": "sass src/sass:css",
-		"postcss": "postcss css/**/*.css -u autoprefixer postcss-combine-media-query postcss-sort-media-queries cssnano -r -m",
+		"postcss": "postcss css/**/*.css -u autoprefixer postcss-combine-media-query postcss-sort-media-queries cssnano -r --no-map",
 		"prejs": "eslint 'src/js/**/*.js'",
 		"js": "rollup -c rollup.config.js",
 		"watch:css": "chokidar 'src/sass/**/*.scss' -c 'npm run css'",

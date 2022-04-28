@@ -1,5 +1,5 @@
 .site-nav__toggle {
-	margin-bottom: $spacing--sm;
+	margin-bottom: var(--spacing--s);
 
 	.no-js & {
 		display: none;
@@ -9,7 +9,7 @@
 
 	}
 
-	// @include bp-md__mq-up {
+	// @include bp-m__mq-up {
 	// 	display: none;
 	// }
 
@@ -26,17 +26,17 @@
 	// 	display: block;
 	// }
 
-	// @include bp-md__mq-up {
+	// @include bp-m__mq-up {
 	// 	display: block;
 	// }
 }
 
 .site-title {
 	font-size: 1em;
-	margin-bottom: $spacing--sm;
+	margin-bottom: var(--spacing--s);
 }
 
 .site-description {
-	margin-bottom: $spacing--sm;
+	margin-bottom:var(--spacing--s);
 }
 

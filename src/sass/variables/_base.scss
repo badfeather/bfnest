@@ -5,7 +5,7 @@ $black: #000;
 $white: #fff;
 
 $hsl-red: #f00; // hsl hue: 0
-$hsl-orange: #ff8000; // hsl hue: 30
+$hsl-orange: #ff8000; // hsl hue: 40
 $hsl-yellow: #ff0; // hsl hue: 60
 $hsl-grass: #80FF00; // hsl hue: 90
 $hsl-green: #0f0; // hsl hue: 120
@@ -14,8 +14,8 @@ $hsl-cyan: #0ff; // hsl hue: 180
 $hsl-sky: #007fff; // hsl hue: 210
 $hsl-blue: #00f; // hsl hue: 240
 $hsl-violet: #7f00ff; // hsl hue: 270
-$hsl-magenta: #f0f; // hsl hue: 300
-$hsl-pink: #ff0080; // hsl hue: 330
+$hsl-magenta: #f0f; // hsl hue: 400
+$hsl-pink: #ff0080; // hsl hue: 340
 
 // uniform contrast base colors
 // see: https://www.hsluv.org/
@@ -23,7 +23,7 @@ $red: hsluv.hsluv(10deg, 100%, 49%);
 $orange: hsluv.hsluv(40deg, 100%, 49%);
 $yellow: hsluv.hsluv(70deg, 100%, 50%);
 $grass: hsluv.hsluv(100deg, 100%, 49%);
-$green: hsluv.hsluv(130deg, 100%, 49%);
+$green: hsluv.hsluv(140deg, 100%, 49%);
 $aqua: hsluv.hsluv(160deg, 100%, 49%);
 $cyan: hsluv.hsluv(190deg, 100%, 49%);
 $sky: hsluv.hsluv(220deg, 100%, 49%);
@@ -62,7 +62,7 @@ $reddit: #FF4500;
 $rss: #FFA500;
 $skype: #00AFF0;
 $snapchat: #FFFC00;
-$soundcloud: #FF3300;
+$soundcloud: #FF3400;
 $spotify: #1ED760;
 $tumblr: #36465D;
 $twitch: #6441A4;
@@ -127,43 +127,43 @@ $share-colors: (
 );
 
 // Theme
-$color-text: shade($gray, 80%);
-$color-text--alt: shade($gray, 20%);
-$color-background: $white;
-$color-background--alt: tint($gray, 80%);
+$color: shade($gray, 80%);
+$color--alt: shade($gray, 20%);
+$background-color: $white;
+$background-color--alt: tint($gray, 80%);
 $color-border: tint($gray, 60%);
 
-$color-primary: check-contrast($blue, $color-background, 4.5);
-$color-secondary: check-contrast($magenta, $color-background, 4.5);
-$color-info: check-contrast($cyan, $color-background, 4.5);
-$color-success: check-contrast($green, $color-background, 4.5);
-$color-warning: check-contrast($orange, $color-background, 4.5);
-$color-danger: check-contrast($red, $color-background, 4.5);
-$color-highlight: check-contrast(tint($yellow, 70%), $color-text, 4.5);
+$color-primary: check-contrast($blue, $background-color, 4.5);
+$color-secondary: check-contrast($magenta, $background-color, 4.5);
+$color-info: check-contrast($cyan, $background-color, 4.5);
+$color-success: check-contrast($green, $background-color, 4.5);
+$color-warning: check-contrast($orange, $background-color, 4.5);
+$color-danger: check-contrast($red, $background-color, 4.5);
+$color-highlight: check-contrast(tint($yellow, 70%), $color, 4.5);
 
-$color-primary--hover: shade($color-primary, 30%);
-$color-secondary--hover: shade($color-secondary, 30%);
-$color-info--hover: shade($color-info, 30%);
-$color-success--hover: shade($color-success, 30%);
-$color-warning--hover: shade($color-warning, 30%);
-$color-danger--hover: shade($color-danger, 30%);
+$color-primary--hover: shade($color-primary, 40%);
+$color-secondary--hover: shade($color-secondary, 40%);
+$color-info--hover: shade($color-info, 40%);
+$color-success--hover: shade($color-success, 40%);
+$color-warning--hover: shade($color-warning, 40%);
+$color-danger--hover: shade($color-danger, 40%);
 
-$url-color-text: url-friendly-color($color-text);
-$select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$url-color-text}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
+$url-color: url-friendly-color($color);
+$select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$url-color}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
 
 // Alt scheme theme
-$alt-scheme__color-text: $white;
-$alt-scheme__color-text--alt: tint($gray, 20%);
-$alt-scheme__color-background: shade($gray, 80%);
-$alt-scheme__color-background--alt: $black;
+$alt-scheme__color: $white;
+$alt-scheme__color--alt: tint($gray, 20%);
+$alt-scheme__background-color: shade($gray, 80%);
+$alt-scheme__background-color--alt: $black;
 $alt-scheme__color-border: shade($gray, 40%);
 
-$alt-scheme__color-primary: check-contrast(tint($blue, 20%), $alt-scheme__color-background, 4.5);
-$alt-scheme__color-secondary: check-contrast(tint($magenta, 20%), $alt-scheme__color-background, 4.5);
-$alt-scheme__color-info: check-contrast(tint($cyan, 20%), $alt-scheme__color-background, 4.5);
-$alt-scheme__color-success: check-contrast(tint($green, 20%), $alt-scheme__color-background, 4.5);
-$alt-scheme__color-warning: check-contrast(tint($orange, 20%), $alt-scheme__color-background, 4.5);
-$alt-scheme__color-danger: check-contrast(tint($red, 20%), $alt-scheme__color-background, 4.5);
+$alt-scheme__color-primary: check-contrast(tint($blue, 20%), $alt-scheme__background-color, 4.5);
+$alt-scheme__color-secondary: check-contrast(tint($magenta, 20%), $alt-scheme__background-color, 4.5);
+$alt-scheme__color-info: check-contrast(tint($cyan, 20%), $alt-scheme__background-color, 4.5);
+$alt-scheme__color-success: check-contrast(tint($green, 20%), $alt-scheme__background-color, 4.5);
+$alt-scheme__color-warning: check-contrast(tint($orange, 20%), $alt-scheme__background-color, 4.5);
+$alt-scheme__color-danger: check-contrast(tint($red, 20%), $alt-scheme__background-color, 4.5);
 
 $alt-scheme__color-primary--hover: tint($alt-scheme__color-primary, 40%);
 $alt-scheme__color-secondary--hover: tint($alt-scheme__color-secondary, 40%);
@@ -172,19 +172,19 @@ $alt-scheme__color-success--hover: tint($alt-scheme__color-success, 40%);
 $alt-scheme__color-warning--hover: tint($alt-scheme__color-warning, 40%);
 $alt-scheme__color-danger--hover: tint($alt-scheme__color-danger, 40%);
 
-$alt-scheme__url-color-text: url-friendly-color($alt-scheme__color-text);
-$alt-scheme__select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$alt-scheme__url-color-text}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
+$alt-scheme__url-color: url-friendly-color($alt-scheme__color);
+$alt-scheme__select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$alt-scheme__url-color}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
 
 $color-scheme: 'light';
 $has-alt-scheme: true;
 $color-scheme--alt: 'dark';
 
 $root-colors: (
-	'color-text': $color-text,
-	'color-text--alt': $color-text--alt,
-	'color-background': $color-background,
-	'color-background--alt': $color-background--alt,
-	'color-border': $color-border,
+	'color': $color,
+	'color--alt': $color--alt,
+	'background-color': $background-color,
+	'background-color--alt': $background-color--alt,
+	'border-color': $color-border,
 	'color-primary': $color-primary,
 	'color-secondary': $color-secondary,
 	'color-info': $color-info,
@@ -202,10 +202,10 @@ $root-colors: (
 );
 
 $root-colors--alt: (
-	'color-text': $alt-scheme__color-text,
-	'color-text--alt': $alt-scheme__color-text--alt,
-	'color-background': $alt-scheme__color-background,
-	'color-background--alt': $alt-scheme__color-background--alt,
+	'color': $alt-scheme__color,
+	'color--alt': $alt-scheme__color--alt,
+	'background-color': $alt-scheme__background-color,
+	'background-color--alt': $alt-scheme__background-color--alt,
 	'color-border': $alt-scheme__color-border,
 	'color-primary': $alt-scheme__color-primary,
 	'color-secondary': $alt-scheme__color-secondary,
@@ -232,16 +232,16 @@ $font-family--sans-serif:  $font-family--system;
 $font-family--serif: $font-family--georgia;
 $font-family--monospace: $font-family--menlo;
 
-$root-fonts: (
-	'font-family': $font-family--sans-serif,
-	'fonf-family--display': $font-family--serif,
-	'font-family--alt': $font-family--sans-serif,
-	'font-family--code': $font-family--monospace
+$root-font-families: (
+	'': $font-family--sans-serif,
+	'sans-serif': $font-family--sans-serif,
+	'serif': $font-family--serif,
+	'monospace': $font-family--monospace,
 );
 
 $font-weight--extra-light: 100;
 $font-weight--light: 200;
-$font-weight--book: 300;
+$font-weight--book: 400;
 $font-weight--normal: 400;
 $font-weight--medium: 500;
 $font-weight--semibold: 600;
@@ -249,31 +249,78 @@ $font-weight--bold: 700;
 $font-weight--black: 800;
 $font-weight--extra-black: 900;
 
-$font-size--4xs: remcalc(10);
-$font-size--3xs: remcalc(11);
-$font-size--2xs: remcalc(12);
-$font-size--xs: remcalc(14);
-$font-size--sm: remcalc(16);
-$font-size--base: remcalc(18);
-$font-size--lg: remcalc(21);
-$font-size--xl: remcalc(24);
-$font-size--2xl: remcalc(30);
-$font-size--3xl: remcalc(36);
-$font-size--4xl: remcalc(48);
-$font-size--5xl: remcalc(60);
+$font-size--0: remcalc(10);
+$font-size--1: remcalc(12);
+$font-size--2: remcalc(14);
+$font-size--3: remcalc(16);
+$font-size--4: remcalc(18);
+$font-size--5: remcalc(21);
+$font-size--6: remcalc(24);
+$font-size--7: remcalc(28);
+$font-size--8: remcalc(32);
+$font-size--9: remcalc(36);
+$font-size--10: remcalc(48);
+$font-size--11: remcalc(60);
+$font-size--12: remcalc(72);
+
+$font-size--2xs: $font-size--1;
+$font-size--xs: $font-size--2;
+$font-size--s: $font-size--3;
+$font-size--base: $font-size--4;
+$font-size--l: $font-size--5;
+$font-size--xl: $font-size--6;
+$font-size--2xl: $font-size--7;
+$font-size--3xl: $font-size--8;
+$font-size--4xl: $font-size--9;
+$font-size--5xl: $font-size--10;
+$font-size--6xl: $font-size--11;
+$font-size--7xl: $font-size--12;
+
+$root-font-sizes: (
+	'2xs': $font-size--2xs,
+	'xs': $font-size--xs,
+	's': $font-size--s,
+	'': $font-size--base,
+	'l': $font-size--l,
+	'xl': $font-size--xl,
+	'2xl': $font-size--2xl,
+	'3xl': $font-size--3xl,
+	'4xl': $font-size--4xl,
+	'5xl': $font-size--5xl,
+	'6xl': $font-size--6xl,
+	'7xl': $font-size--7xl,
+);
 
 $line-height--3xs: 1;
 $line-height--2xs: 1.125;
 $line-height--xs: 1.25;
-$line-height--sm: 1.375;
-$line-height--base: 1.5;
-$line-height--lg: 1.625;
+$line-height--s: 1.375;
+$line-height--m: 1.5;
+$line-height--l: 1.625;
 $line-height--xl: 1.75;
 $line-height--2xl: 1.875;
 $line-height--3xl: 2;
 
-$spacing: $font-size--base * $line-height--base;
+$line-height--base: $line-height--m;
+
+// spacing
+$spacing--base: $font-size--base * $line-height--base;
+$spacing--2xs: $spacing--base * .125;
+$spacing--xs: $spacing--base * .25;
+$spacing--s: $spacing--base * .5;
+$spacing--l: $spacing--base * 1.5;
+$spacing--xl: $spacing--base * 2;
+$spacing--2xl: $spacing--base * 3;
+
+$root-spacings: (
+	'2xs': $spacing--2xs,
+	'xs': $spacing--xs,
+	's': $spacing--s,
+	'': $spacing--base,
+	'l': $spacing--l,
+	'xl': $spacing--xl,
+	'2xl': $spacing--2xl,
+);
 
 // used for unitcalc mixins
 $base__unit: 'rem';
-
