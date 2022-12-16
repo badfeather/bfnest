@@ -111,7 +111,7 @@ add_action( 'wp_footer', 'bfnest_include_svg_sprite', 1099 );
  */
 function bfnest_social_links_icons() {
 	// Supported social links icons.
-	$social_links_icons = array(
+	$social_links_icons = [
 		'airbnb.com' => 'airbnb',
 		'music.apple.com' => 'apple-music',
 		'bandcamp.com' => 'bandcamp',
@@ -152,7 +152,7 @@ function bfnest_social_links_icons() {
 		'yelp.com' => 'yelp',
 		'ycombinator.com' => 'ycombinator',
 		'youtube.com' => 'youtube',
-	);
+	];
 	return apply_filters( 'bfnest_social_links_icons', $social_links_icons );
 }
 

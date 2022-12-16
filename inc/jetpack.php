@@ -4,12 +4,12 @@
  * Add support for infinite scroll
  */
 function bfnest_jetpack_setup() {
-	add_theme_support( 'infinite-scroll', array(
+	add_theme_support( 'infinite-scroll', [
 		'type' => 'click', // options are 'scroll' or 'click'. Defaults to 'click'.
 		// 'container' => 'content', // id of loop container. defaults to 'content'
 		'footer' => false, // id of site wrapper. defaults to 'page'
 		'posts_per_page' => get_option( 'posts_per_page' ) // defaults to 7 for 'scroll' or standard posts per page for click
-	) );
+	] );
 
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
@@ -32,7 +32,7 @@ function bfnest_remove_jetpack_share() {
 	remove_filter( 'the_content', 'sharing_display', 19 );
 	remove_filter( 'the_excerpt', 'sharing_display', 19 );
 	if ( class_exists( 'Jetpack_Likes' ) ) {
-		remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+		remove_filter( 'the_content', [ Jetpack_Likes::init(), 'post_likes' ], 30, 1 );
 	}
 }
 add_action( 'loop_start', 'bfnest_remove_jetpack_share' );

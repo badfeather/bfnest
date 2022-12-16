@@ -55,7 +55,7 @@ function bfnest_woocommerce_scripts() {
 	wp_dequeue_style( 'wc-blocks-style' );
 	wp_dequeue_script( 'selectWoo' );
 
-	wp_enqueue_style( 'bfnest-woocommerce-style', $template_directory . '/css/woocommerce' . $suffix . '.css', array( 'bfnest-style' ), $version );
+	wp_enqueue_style( 'bfnest-woocommerce-style', $template_directory . '/css/woocommerce' . $suffix . '.css', [ 'bfnest-style' ], $version );
 }
 add_action( 'wp_enqueue_scripts', 'bfnest_woocommerce_scripts' );
 
@@ -119,10 +119,10 @@ add_filter( 'loop_shop_columns', 'bfnest_woocommerce_loop_columns' );
  * @return array $args related products args.
  */
 function bfnest_woocommerce_related_products_args( $args ) {
-	$defaults = array(
+	$defaults = [
 		'posts_per_page' => 4,
 		'columns' => 0,
-	);
+	];
 
 	$args = wp_parse_args( $defaults, $args );
 	return $args;
@@ -223,7 +223,7 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'bfnest_woocommerce_cart_link_f
  * @return void
  */
 function bfnest_woocommerce_cart_link() {
-	?>
+?>
 	<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'bfnest' ); ?>">
 		<?php
 		$item_count_text = sprintf(
@@ -234,7 +234,7 @@ function bfnest_woocommerce_cart_link() {
 		?>
 		<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo esc_html( $item_count_text ); ?></span>
 	</a>
-	<?php
+<?php
 }
 
 /**
@@ -248,21 +248,21 @@ function bfnest_woocommerce_header_cart() {
 	} else {
 		$class = '';
 	}
-	?>
+?>
 	<ul id="site-header-cart" class="site-header-cart">
 		<li class="<?php echo esc_attr( $class ); ?>">
 			<?php bfnest_woocommerce_cart_link(); ?>
 		</li>
 		<li>
 			<?php
-			$instance = array(
+			$instance = [
 				'title' => '',
-			);
+			];
 
 			the_widget( 'WC_Widget_Cart', $instance );
 			?>
 		</li>
 	</ul>
-	<?php
+<?php
 }
 

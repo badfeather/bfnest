@@ -399,13 +399,23 @@ $line-height--3xs: 1;
 $line-height--2xs: 1.125;
 $line-height--xs: 1.25;
 $line-height--s: 1.375;
-$line-height--m: 1.5;
+$line-height--base: 1.5;
 $line-height--l: 1.625;
 $line-height--xl: 1.75;
 $line-height--2xl: 1.875;
 $line-height--3xl: 2;
 
-$line-height--base: $line-height--m;
+$root-line-heights: (
+	'3xs': $line-height--3xs,
+	'2xs': $line-height--2xs,
+	'xs': $line-height--xs,
+	's': $line-height--s,
+	'': $line-height--base,
+	'l': $line-height--l,
+	'xl': $line-height--xl,
+	'2xl': $line-height--2xl,
+	'3xl': $line-height--3xl,
+);
 
 // spacing
 $spacing--base: $font-size--base * $line-height--base;

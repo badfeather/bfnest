@@ -236,7 +236,7 @@ function bfnest_get_share_data( $args = [] ) {
 		return false;
 	}
 
-	$defaults = array(
+	$defaults = [
 		'facebook' => 0,
 		'twitter' => 0,
 		'linkedin' => 0,
@@ -245,7 +245,7 @@ function bfnest_get_share_data( $args = [] ) {
 		'digg' => 0,
 		'reddit' => 0,
 		'email' => 0,
-	);
+	];
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
 
@@ -257,11 +257,11 @@ function bfnest_get_share_data( $args = [] ) {
 	$networks = [];
 
 	if ( $facebook ) {
-		$networks[] = array(
+		$networks[] = [
 			'name' => __( 'Facebook', 'bfnest' ),
 			'slug' => 'facebook',
 			'url' => 'https://www.facebook.com/sharer.php?u=' . $post_url . '&t=' . $encoded_title,
-		);
+		];
 	}
 
 	if ( $twitter ) {
@@ -270,62 +270,62 @@ function bfnest_get_share_data( $args = [] ) {
 		$short_title = strlen( $decoded_title ) > 117 ? substr( $decoded_title, 0, strrpos( substr( $decoded_title, 0, 117 ), ' ' ) ) . html_entity_decode( '&hellip;' ) : $decoded_title;
 		$encoded_short_title = rawurlencode( html_entity_decode( $short_title ) );
 
-		$networks[] = array(
+		$networks[] = [
 			'name' => __( 'Twitter', 'bfnest' ),
 			'slug' => 'twitter',
 			'url' => 'https://twitter.com/intent/tweet?url=' . $post_url . '&text=' . $encoded_short_title,
-		);
+		];
 	}
 
 	if ( $linkedin ) {
-		$networks[] = array(
+		$networks[] = [
 			'name' => __( 'LinkedIn', 'bfnest' ),
 			'slug' => 'linkedin',
 			'url' => 'https://www.linkedin.com/cws/share?url=' . $post_url,
-		);
+		];
 	}
 
 	if ( $pinterest ) {
 		$image = bfnest_get_featured_or_first_image_url( $size = 'large' );
 		if ( $image ) {
-			$networks[] = array(
+			$networks[] = [
 				'name' => __( 'Pinterest', 'bfnest' ),
 				'slug' => 'pinterest',
 				'url' => 'https://pinterest.com/pin/create/bookmarklet/?media=?url=' . $post_url . '&media=' . $image . '&description='. $encoded_title,
-			);
+			];
 		}
 	}
 
 	if ( $pocket ) {
-		$networks[] = array(
+		$networks[] = [
 			'name' => __( 'Pocket', 'bfnest' ),
 			'slug' => 'pocket',
 			'url' => 'https://getpocket.com/save?url=' . $post_url,
-		);
+		];
 	}
 
 	if ( $digg ) {
-		$networks[] = array(
+		$networks[] = [
 			'name' => __( 'Digg', 'bfnest' ),
 			'slug' => 'digg',
 			'url' => 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title,
-		);
+		];
 	}
 
 	if ( $reddit ) {
-		$networks[] = array(
+		$networks[] = [
 			'name' => __( 'Reddit', 'bfnest' ),
 			'slug' => 'reddit',
 			'url' => 'https://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title,
-		);
+		];
 	}
 
 	if ( $email ) {
-		$networks[] = array(
+		$networks[] = [
 			'name' => __( 'Email', 'bfnest'),
 			'slug' => 'mail',
 			'url' => 'mailto:?subject=' . $encoded_title . '&body=' . $post_url,
-		);
+		];
 	}
 
 	$networks = array_values( array_filter( $networks ) );
@@ -342,7 +342,7 @@ function bfnest_get_share_data( $args = [] ) {
  */
 
 function bfnest_get_meta_share(
-		$args = array(
+		$args = [
 			'facebook' => 1,
 			'twitter' => 1,
 			'linkedin' => 0,
@@ -351,7 +351,7 @@ function bfnest_get_meta_share(
 			'digg' => 0,
 			'reddit' => 0,
 			'email' => 1,
-		),
+		],
 		$before = null,
 		$inline = 1,
 		$item_sep = ' ',

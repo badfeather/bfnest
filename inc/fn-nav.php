@@ -82,17 +82,17 @@ function bfnest_postnav_archive( $newer_title = null, $older_title = null ) {
  * https://www.isitwp.com/wp_nav_menu-separate-submenu-output/
  */
 function bfnest_the_submenu( $args = [] ) {
-	$defaults = array(
+	$defaults = [
 		'theme_location' => '',
 		'xpath' => "./li[contains(@class,'current-menu-item') or contains(@class,'current-menu-ancestor')]/ul",
 		'before' => '',
 		'after' => '',
 		'echo' => true
-	);
+	];
 	$args = wp_parse_args( $args, $defaults );
 	$args = (object) $args;
 	$output = [];
-	$menu_tree = wp_nav_menu( array( 'theme_location' => $args->theme_location, 'container' => '', 'echo' => false ) );
+	$menu_tree = wp_nav_menu( [ 'theme_location' => $args->theme_location, 'container' => '', 'echo' => false ] );
 	$menu_tree_XML = new SimpleXMLElement( $menu_tree );
 	$path = $menu_tree_XML->xpath( $args->xpath );
 	$output[] = $args->before;

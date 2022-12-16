@@ -51,11 +51,11 @@ add_action( 'after_switch_theme', 'bfnest_media_options' );
  * Add custom sizes to $custom sizes array: 'sizename' => __( 'Size Name', 'bfnest' )
  */
 function bfnest_image_size_names_choose( $sizes ) {
-	$custom_sizes = array(
+	$custom_sizes = [
 		//'medium_large' => __( 'Medium Large', 'bfnest' ),
 		'wide-uc' => __( 'Wide', 'bfnest' ),
 		'container-uc' => __( 'Container', 'bfnest' ),
-	);
+	];
 	return array_merge( $sizes, $custom_sizes );
 }
 add_filter( 'image_size_names_choose', 'bfnest_image_size_names_choose' );
@@ -64,9 +64,9 @@ add_filter( 'image_size_names_choose', 'bfnest_image_size_names_choose' );
  * Set gallery shortcode default options
  */
 function bfnest_shortcode_atts_gallery( $out, $pairs, $atts ) {
-		$atts = shortcode_atts( array(
+		$atts = shortcode_atts( [
 			'link' => 'file'
-		), $atts );
+		], $atts );
 		$out['link'] = $atts['link'];
 		return $out;
 }
@@ -100,14 +100,14 @@ function bfnest_image_send_to_editor_with_figure( $html, $id, $caption, $title, 
  */
 function bfnest_img_caption_shortcode( $na, $attr, $content) {
 	$atts = shortcode_atts(
-		array(
+		[
 			'id' => '',
 			'caption_id' => '',
 			'align' => 'alignnone',
 			'width' => '',
 			'caption' => '',
 			'class' => '',
-		),
+		],
 		$attr,
 		'caption'
 	);
@@ -136,7 +136,7 @@ function bfnest_img_caption_shortcode( $na, $attr, $content) {
 		$describedby = 'aria-describedby="' . esc_attr( $atts['caption_id'] ) . '" ';
 	}
 
-	$classes = array( 'wp-caption', 'entry-figure', $atts['align'], $atts['class'] );
+	$classes = [ 'wp-caption', 'entry-figure', $atts['align'], $atts['class'] ];
 
 	if ( preg_match( '/(size-[^\s]+)/', $content, $matches ) ) {
 		$classes[] = 'entry-figure--' . $matches[1];

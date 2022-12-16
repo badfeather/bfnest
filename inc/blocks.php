@@ -49,7 +49,7 @@ function bfnest_block_editor_assets() {
 	$template_directory = get_template_directory_uri();
 	$version = bfnest_get_theme_version();
 
-	wp_enqueue_script( 'bfnest-block-filters', $template_directory . '/js/block-filters.js', array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ), $version, true );
+	wp_enqueue_script( 'bfnest-block-filters', $template_directory . '/js/block-filters.js', [ 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ], $version, true );
 }
 add_action( 'enqueue_block_editor_assets', 'bfnest_block_editor_assets' );
 
@@ -106,76 +106,28 @@ remove_action( 'in_admin_header', 'wp_global_styles_render_svg_filters' );
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 
-remove_action( 'init', 'register_block_core_gallery', 100 );
-
-
 /**
  * Add block categories
  */
 function bfnest_block_categories( $categories, $post ) {
 	return array_merge(
 		$categories,
-		array(
-			array(
+		[
+			[
 				'slug' => 'bfnest-blocks',
 				'title' => __( 'Bad Feather Nest Blocks', 'bfnest' ),
-			),
-		)
+			],
+		]
 	);
 }
 add_filter( 'block_categories_all', 'bfnest_block_categories', 10, 2 );
 
 /**
  * Register Blocks
- * @ see https://www.advancedcustomfields.com/resources/acf_register_block_type/
  */
 function bfnest_register_acf_blocks() {
-	if ( ! function_exists( 'acf_register_block_type' ) ) {
-		return;
-	}
-
-//	acf_register_block_type( array(
-//		'name' => 'name', // unique identifier
-//		'title' => __( 'Name', 'bfnest' ),
-//		//'description' => __( 'Description', 'bfnest' ), // (optional)
-//		'category' => 'bfnest-blocks', // options: 'common", 'formatting', 'layout', 'widgets', 'embed'
-//		'icon' => 'book-alt', // use dashicons (https://developer.wordpress.org/resource/dashicons/) or custom svg
-//		'post_types' => array( 'page' ),
-//		'keywords' => array( 'testimonial', 'quote', 'mention', 'cite' ),
-//		'mode' => 'preview', // options: 'preview' (default), 'auto', 'edit'
-//		'align' => '', // options: '' (default), 'left', 'center', 'right', 'wide', 'full'
-//		'supports' => $supports,
-//		'render_callback' => 'bfnest_acf_block_render_callback',
-//	) );
-
-	acf_register_block_type( array(
-		'name' => 'style-tester',
-		'title' => __( 'Style Tester', 'bfnest' ),
-		'description' => __( 'Displays various headline, type, form, and table styles for testing purposes.', 'bfnest' ),
-		'category' => 'bfnest-blocks',
-		'icon' => 'book-alt',
-		'post_types' => array( 'page', 'post' ),
-		'keywords' => array( 'starter' ),
-		'mode' => 'preview',
-		'align' => '',
-		'supports' => array(
-			'align' => array( 'wide', 'full' ),
-			'anchor' => true
-		),
-		'render_callback' => 'bfnest_acf_block_render_callback',
-	) );
-}
-add_action( 'acf/init', 'bfnest_register_acf_blocks' );
-
-/**
- * Our callback function – this looks for the block based on its given name.
- * Name accordingly to the file name!
- */
-function bfnest_acf_block_render_callback( $block ) {
-	$block_slug = str_replace( 'acf/', '', $block['name'] );
-
-	if ( file_exists( get_theme_file_path( '/partials/block-' . $block_slug . '.php' ) ) ) {
-		include get_theme_file_path( '/partials/block-' . $block_slug . '.php' );
+	foreach ( glob( get_stylesheet_directory() . "/blocks/*/block.json" ) as $file ) {
+    	register_block_type( $file );
 	}
 }
-
+add_action( 'init', 'bfnest_register_acf_blocks' );

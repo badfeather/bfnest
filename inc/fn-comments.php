@@ -41,13 +41,13 @@ function bfnest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 					<?php comment_text(); ?>
 				</div>
 				<?php
-					comment_reply_link( array_merge( $args, array(
+					comment_reply_link( array_merge( $args, [
 						'add_below' => 'div-comment',
 						'depth' => $depth,
 						'max_depth' => $args['max_depth'],
 						'before' => '<div class="comment-meta comment-meta--reply"><span class="meta meta--reply">',
 						'after' => '</span></div>',
-					) ) );
+					] ) );
 				?>
 			</div>
 		</article>
@@ -68,14 +68,14 @@ function bfnest_comment_form( $args ) {
     $html_req = ( $req ? " required='required'" : '' );
     $html5 = 'html5' === $args['format'];
 
-	$args['fields'] = array(
+	$args['fields'] = [
 		'author' => '<p class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'bfnest' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
 		'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" maxlength="245"' . $html_req . ' /></p>',
 		'email' => '<p class="comment-form-email form-group"><label for="email">' . __( 'Email', 'bfnest' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
 		'<input id="email" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" maxlength="100" aria-describedby="email-notes"' . $html_req . ' /></p>',
 		'url' => '<p class="comment-form-url form-group"><label for="url">' . __( 'Website', 'bfnest' ) . '</label> ' .
 		'<input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" maxlength="200" /></p>',
-	);
+	];
 
 	$args['comment_field'] = '<p class="comment-form-comment form-group"><label for="comment">' . _x( 'Comment', 'noun', 'bfnest' ) . '</label> <textarea id="comment" class="form-control" name="comment" rows="8" maxlength="65525" required="required"></textarea></p>';
 

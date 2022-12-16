@@ -15,6 +15,14 @@
 		}
 	}
 
+	@each $key, $value in $root-line-heights {
+		@if $key == '' {
+			--#{$root-prefix}line-height: #{$value};
+		} @else {
+			--#{$root-prefix}line-height--#{$key}: #{$value};
+		}
+	}
+
 	@each $key, $value in $root-spacings {
 		@if $key == '' {
 			--#{$root-prefix}spacing: #{$value};

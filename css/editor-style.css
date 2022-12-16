@@ -16,6 +16,15 @@
   --font-size--5xl: 3rem;
   --font-size--6xl: 3.75rem;
   --font-size--7xl: 4.5rem;
+  --line-height--3xs: 1;
+  --line-height--2xs: 1.125;
+  --line-height--xs: 1.25;
+  --line-height--s: 1.375;
+  --line-height: 1.5;
+  --line-height--l: 1.625;
+  --line-height--xl: 1.75;
+  --line-height--2xl: 1.875;
+  --line-height--3xl: 2;
   --spacing--2xs: 0.2109375rem;
   --spacing--xs: 0.421875rem;
   --spacing--s: 0.84375rem;
@@ -265,7 +274,7 @@ template {
 
 body {
   font-size: var(--font-size);
-  line-height: 1.5;
+  line-height: var(--line-height);
   font-family: var(--font-family);
   font-weight: normal;
   text-align: left;
@@ -365,7 +374,7 @@ strong {
 
 dt,
 dd {
-  line-height: 1.5;
+  line-height: var(--line-height);
 }
 
 dt {

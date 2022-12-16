@@ -1,21 +1,21 @@
 <?php
-	$secondary_nav = wp_nav_menu( array(
-		'theme_location' => 'secondary',
-		'container' => false,
-		'menu_class' => 'menu menu--secondary',
-		'echo' => false,
-		'fallback_cb' => '__return_false'
-	) );
+$secondary_nav = wp_nav_menu( [
+	'theme_location' => 'secondary',
+	'container' => false,
+	'menu_class' => 'menu menu--secondary',
+	'echo' => false,
+	'fallback_cb' => '__return_false'
+] );
 
-	$social_nav = wp_nav_menu( array(
-		'theme_location' => 'social',
-		'container' => false,
-		'menu_class' => 'menu menu--social',
-		'echo' => false,
-		'fallback_cb' => '__return_false',
-		'link_before' => '<span>',
-		'link_after' => '</span>'
-	) );
+$social_nav = wp_nav_menu( [
+	'theme_location' => 'social',
+	'container' => false,
+	'menu_class' => 'menu menu--social',
+	'echo' => false,
+	'fallback_cb' => '__return_false',
+	'link_before' => '<span>',
+	'link_after' => '</span>'
+] );
 ?>
 		<footer class="site-footer" role="contentinfo">
 			<?php if ( $secondary_nav ) { ?>
@@ -42,10 +42,10 @@
 
 				<div class="site-credits">
 					<?php
-						printf( __( 'Site by %1$s %2$s Powered by %3$s', 'bfnest' ),
-						'<a href="' . esc_url( 'https://www.badfeather.com/' ) . '" target="_blank" rel="noopener noreferrer">Bad Feather</a>',
-						'<span class="sep"> | </span>',
-						'<a href="' . esc_url( 'https://wordpress.org/' ) . '" target="_blank" rel="noopener noreferrer">WordPress</a>' );
+					printf( __( 'Site by %1$s %2$s Powered by %3$s', 'bfnest' ),
+					'<a href="' . esc_url( 'https://www.badfeather.com/' ) . '" target="_blank" rel="noopener noreferrer">Bad Feather</a>',
+					'<span class="sep"> | </span>',
+					'<a href="' . esc_url( 'https://wordpress.org/' ) . '" target="_blank" rel="noopener noreferrer">WordPress</a>' );
 					?>
 				</div>
 			</div>

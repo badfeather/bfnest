@@ -34,7 +34,7 @@ template {
 
 body {
 	font-size: var(--font-size);
-	line-height: $line-height--base;
+	line-height: var(--line-height);
 	font-family: var(--font-family);
 	font-weight: normal;
 	text-align: left;
@@ -137,7 +137,7 @@ strong {
 
 dt,
 dd {
-	line-height: $line-height--base;
+	line-height: var(--line-height);
 }
 
 dt {

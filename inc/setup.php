@@ -4,16 +4,16 @@
  */
 function bfnest_setup() {
 	// Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
-	register_nav_menus( array(
+	register_nav_menus( [
 		'primary' => __( 'Primary Navigation', 'bfnest' ),
 		'secondary' => __( 'Secondary Navigation', 'bfnest' ),
 		'social' => __( 'Social Navigation', 'bfnest' ),
-	) );
+	] );
 
 	// load_theme_textdomain( 'bfnest', get_template_directory() . '/languages' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'automatic-feed-links' );
-	add_theme_support( 'html5', array(
+	add_theme_support( 'html5', [
 		'search-form',
 		'comment-form',
 		'comment-list',
@@ -21,10 +21,10 @@ function bfnest_setup() {
 		'caption',
 		'script',
 		'style'
-	) );
+	] );
 
 	// Add post formats (http://codex.wordpress.org/Post_Formats)
-	// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
+	// add_theme_support( 'post-formats', [ 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ] );
 
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'responsive-embeds' );

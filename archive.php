@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
 <?php
-	if ( have_posts() ) {
-		//$post_type = ( is_post_type_archive() ? get_query_var( 'post_type' ) : '' );
-		$post_type = bfnest_get_archive_post_type();
+if ( have_posts() ) {
+	//$post_type = ( is_post_type_archive() ? get_query_var( 'post_type' ) : '' );
+	$post_type = bfnest_get_archive_post_type();
 ?>
 	<div class="site-content doc doc--archive">
 		<main id="content" class="doc-main">
@@ -19,9 +19,9 @@
 		<?php get_template_part( 'partials/sidebar-archive', $post_type ); ?>
 	</div>
 <?php
-	} else {
-		get_template_part( 'partials/no-results' );
-	}
+} else {
+	get_template_part( 'partials/no-results' );
+}
 ?>
 
 <?php get_footer(); ?>

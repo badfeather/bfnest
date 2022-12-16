@@ -162,12 +162,12 @@ function bfnest_page_subnav( $page_id = '', $title = '' ) {
 		$top_parent = bfnest_get_top_parent_page_id( get_the_ID() );
 	}
 
-	$children = wp_list_pages( array(
+	$children = wp_list_pages( [
 		'sort_column' => 'menu_order',
 		'title_li' => '',
 		'child_of' => $top_parent,
 		'echo' => 0
-	) );
+	] );
 
 	if ( empty( $children ) ) {
 		return false;
@@ -193,7 +193,7 @@ function bfnest_taxonomy_subnav( $taxonomy = 'category', $title = '', $exclude =
 		return false;
 	}
 
-	$children = wp_list_categories( array(
+	$children = wp_list_categories( [
 		'child_of' => $top_parent->term_id,
 		'title_li' => '',
 		'echo' => 0,
@@ -201,7 +201,7 @@ function bfnest_taxonomy_subnav( $taxonomy = 'category', $title = '', $exclude =
 		'show_option_none' => '',
 		'exclude' => $exclude,
 		'orderby' => $orderby
-	) );
+	] );
 
 	if ( ! $children ) {
 		return false;
@@ -230,22 +230,22 @@ function bfnest_category_subnav( $title = '' ) {
  * Requires term ID. Defaults to 3 posts ordered by date
  */
 function bfnest_latest_posts( $args ) {
-	$defaults = array(
+	$defaults = [
 		'posts_per_page' => 3,
 		'orderby' => 'date',
 		'post_type' => 'post',
 		'content_part' => '',
 		'widget_title' => 'Latest Posts',
 		'exclude' => ''
-	);
+	];
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
-	$query_args = array(
+	$query_args = [
 		'post_type' => $post_type,
 		'posts_per_page' => $posts_per_page,
 		'orderby' => $orderby,
 		'no_found_rows' => true
-	);
+	];
 	$latest = new WP_Query( $query_args );
 	if ( $latest->have_posts() ) {
 ?>
@@ -274,7 +274,7 @@ function bfnest_latest_posts( $args ) {
  * Requires term ID. Defaults to 3 posts and category as taxonomy
  */
 function bfnest_latest_taxonomy_posts( $args ) {
-	$defaults = array(
+	$defaults = [
 		'term_id' => '',
 		'taxonomy' => '',
 		'posts_per_page' => 3,
@@ -283,25 +283,25 @@ function bfnest_latest_taxonomy_posts( $args ) {
 		'content_part' => '',
 		'widget_title' => 'Latest Posts in ' . $term_name,
 		'exclude' => ''
-	);
+	];
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
 	$term = get_term_by( 'id', $term_id, $taxonomy );
 	$term_name = $term->name;
 	$term_slug = $term->slug;
-	$query_args = array(
+	$query_args = [
 		'post_type' => $post_type,
-		'tax_query' => array(
-			array(
+		'tax_query' => [
+			[
 				'taxonomy' => $taxonomy,
 				'field' => 'ID',
 				'terms' => $term_id
-			)
-		),
+			]
+		],
 		'posts_per_page' => $posts_per_page,
 		'orderby' => $orderby,
 		'no_found_rows' => true
-	);
+	];
 	$latest = new WP_Query( $query_args );
 	if ( $latest->have_posts() ) {
 ?>

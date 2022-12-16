@@ -105,7 +105,7 @@ function bfnest_remove_jquery_migrate( $scripts ) {
         $script = $scripts->registered['jquery'];
 
         if ( $script->deps ) {
-            $script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+            $script->deps = array_diff( $script->deps, [ 'jquery-migrate' ] );
         }
     }
 }
