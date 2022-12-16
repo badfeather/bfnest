@@ -49,12 +49,13 @@ function bfnest_woocommerce_scripts() {
 
 	// Fetch the version number of the theme, which can be appended on css/js files for debugging/cacheing issues
 	$version = bfnest_get_theme_version();
+	$suffix = bfnest_is_debug() ? '' : '.min';
 
 	// remove woocommerce blocks css
 	wp_dequeue_style( 'wc-blocks-style' );
 	wp_dequeue_script( 'selectWoo' );
 
-	wp_enqueue_style( 'bfnest-woocommerce-style', $template_directory . '/css/woocommerce.css', array( 'bfnest-style' ), $version );
+	wp_enqueue_style( 'bfnest-woocommerce-style', $template_directory . '/css/woocommerce' . $suffix . '.css', array( 'bfnest-style' ), $version );
 }
 add_action( 'wp_enqueue_scripts', 'bfnest_woocommerce_scripts' );
 

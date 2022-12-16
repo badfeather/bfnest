@@ -43,6 +43,14 @@
 	}
 }
 
+@mixin form-row {
+	@include row($form-grid__gutter-width);
+}
+
+@mixin gallery-row {
+	@include row($gallery-grid__gutter-width);
+}
+
 @mixin row--centered {
 	text-align: center;
 	justify-content: center;
@@ -89,6 +97,18 @@
 
 @mixin unpull {
 	margin-right: 0;
+}
+
+@mixin valcols($n, $column-total-width: $grid__column-total-width) {
+	max-width: $n * $column-total-width;
+}
+
+@mixin valpush($n, $column-total-width: $grid__column-total-width) {
+	margin-left: $n * $column-total-width;
+}
+
+@mixin valpull($n, $column-total-width: $grid__column-total-width) {
+	margin-right: $n * $column-total-width;
 }
 
 // make element in column break wider
@@ -140,15 +160,11 @@
 }
 
 // BLOCK GRID
-@mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.col') {
+@mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.col', $gutter: $grid__gutter-width) {
 	$i: 1;
 	#{$parent-selector} {
-		@include row;
+		@include row($gutter);
 	}
-
-	// #{$parent-selector} #{$child-selector} {
-	// 	@include col;
-	// }
 
 	@while $i <= $n {
 		$calc: math.div(1, $i) * 100%;

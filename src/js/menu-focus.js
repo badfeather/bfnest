@@ -1,7 +1,8 @@
 /**
- * Toggle 'focus' class on menu links
+ * Toggle 'focus' class on menu links on focus/blur events
+ * Toggle 'focus' and preventDefault on parent menu item touch events
  */
-function menuFocus() {
+( function() {
 	let links = document.querySelectorAll('.menu-item a');
 	if (!links.length) return;
 	let menus = document.querySelectorAll('.menu');
@@ -13,8 +14,8 @@ function menuFocus() {
 		let menu = link.closest('.menu');
 		if (!item || !menu) return;
 		let items = menu.querySelectorAll('.menu-item');
-
 		item.classList.toggle('focus');
+
 		if (!event.type === 'touchstart') return;
 		if (item.classList.contains('menu-item-has-children') || item.classList.contains('page_item_has_children')) {
 			event.preventDefault();
@@ -30,8 +31,4 @@ function menuFocus() {
 		menu.addEventListener('blur', toggleFocus, true);
 		menu.addEventListener('touchstart', toggleFocus, false);
 	}
-}
-
-document.addEventListener('DOMContentLoaded', menuFocus, false);
-
-export {menuFocus};
+} )();

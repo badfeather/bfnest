@@ -6,29 +6,29 @@ function bfnest_custom_init() {
 
 	// CUSTOM TAXOMONIES
 	// register_taxonomy(
-	// 	'bfnest-tax',
+	// 	'bfnest-term',
 	// 	array( 'bfnest-type' ),
 	// 	array(
-	// 		'label' => __( 'Taxes', 'bfnest' ),
+	// 		'label' => __( 'Terms', 'bfnest' ),
 	// 		'labels' => array(
-	// 			'singular_name' => __( 'Tax', 'bfnest' ),
-	// 			'search_items' => __( 'Search Taxes', 'bfnest' ),
-	// 			'all_items' => __( 'All Taxes', 'bfnest' ),
-	// 			'parent_item_colon' => __( 'Parent Tax:', 'bfnest' ),
-	// 			'edit_item' => __( 'Edit Tax', 'bfnest' ),
-	// 			'view_item' => __( 'View Tax', 'bfnest' ),
-	// 			'update_item' => __( 'Update Tax', 'bfnest' ),
-	// 			'add_new_item' => __( 'Add New Tax', 'bfnest' ),
-	// 			'new_item_name' => __( 'New Tax Name', 'bfnest' ),
-	// 			'not_found' => __( 'No Taxes Found', 'bfnest' ),
-	// 			'no_terms' => __( 'No Taxes', 'bfnest' ),
+	// 			'singular_name' => __( 'Term', 'bfnest' ),
+	// 			'search_items' => __( 'Search Terms', 'bfnest' ),
+	// 			'all_items' => __( 'All Terms', 'bfnest' ),
+	// 			'parent_item_colon' => __( 'Parent Term:', 'bfnest' ),
+	// 			'edit_item' => __( 'Edit Term', 'bfnest' ),
+	// 			'view_item' => __( 'View Term', 'bfnest' ),
+	// 			'update_item' => __( 'Update Term', 'bfnest' ),
+	// 			'add_new_item' => __( 'Add New Term', 'bfnest' ),
+	// 			'new_item_name' => __( 'New Term Name', 'bfnest' ),
+	// 			'not_found' => __( 'No Terms Found', 'bfnest' ),
+	// 			'no_terms' => __( 'No Terms', 'bfnest' ),
 	// 		),
 	// 		'show_in_rest' => true, // Defaults to false
 	// 		'public' => true,
 	// 		'hierarchical' => true,
 	// 		'show_admin_column' => true, // (bool) Defaults to false
 	// 		'rewrite' => array(
-	// 			'slug' => 'types/tax',
+	// 			'slug' => 'types/term',
 	// 			'hierarchical' => true,
 	// 		),
 	// 	)
@@ -67,7 +67,7 @@ function bfnest_custom_init() {
 	// 			// 'custom-fields',
 	// 			// 'post-formats'
 	// 		),
-	// 		'taxonomies' => array(),
+	// 		'taxonomies' => [],
 	// 		'has_archive' => true,
 	// 		'rewrite' => array(
 	// 			'slug' => 'types'

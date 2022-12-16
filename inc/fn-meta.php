@@ -13,6 +13,8 @@ function bfnest_get_meta( $metas = [], $meta_sep = ' | ', $classes = [] ) {
 	foreach ( $metas as $meta ) {
 		$meta_array[] = $meta;
 	}
+	$meta_array = array_filter( $meta_array );
+	if ( empty( $meta_array ) ) return false;
 
 	$classes = is_array( $classes ) ? $classes : [];
 	if ( ! in_array( 'entry-meta', $classes ) ) $classes[] = 'entry-meta';

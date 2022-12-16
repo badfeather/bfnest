@@ -11,7 +11,8 @@
 @import "fonts";
 @import "icons";
 @import "utility";
-@import "base";
+@import "type";
+@import "blocks/editor-resets";
 @import "grid";
 @import "forms";
 @import "media";
@@ -22,7 +23,7 @@
 //@import "comments";
 //@import "side";
 //@import "footer";
-@import "blocks/editor-resets";
+
 @import "blocks";
 //@import "print";
 //@import "jetpack";

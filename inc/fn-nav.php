@@ -3,7 +3,7 @@
 /**
  * Postnav single
  */
-function bfnest_postnav_single( $in_same_term = false, $excluded_terms = array(), $taxonomy = 'category', $newer_title = null, $older_title = null ) {
+function bfnest_postnav_single( $in_same_term = false, $excluded_terms = [], $taxonomy = 'category', $newer_title = null, $older_title = null ) {
 	if ( ! is_single() ) {
 		return false;
 	}
@@ -18,7 +18,7 @@ function bfnest_postnav_single( $in_same_term = false, $excluded_terms = array()
 
 	$newer = get_next_post_link( '<div class="postnav__link postnav__link--newer">%link</div>', $newer_title, $in_same_term, $excluded_terms, $taxonomy );
 	$older = get_previous_post_link( '<div class="postnav__link postnav__link--older">%link</div>', $older_title, $in_same_term, $excluded_terms, $taxonomy );
-	$postnav = array();
+	$postnav = [];
 
 	if ( $newer ) {
 		$postnav[] = $newer;
@@ -51,7 +51,7 @@ function bfnest_postnav_archive( $newer_title = null, $older_title = null ) {
 
 	$newer = get_previous_posts_link( $newer_title );
 	$older = get_next_posts_link( $older_title );
-	$postnav = array();
+	$postnav = [];
 
 	if ( $newer ) {
 		$postnav[] = '<div class="postnav__link postnav__link--newer">' . $newer . '</div>' . "\n";
@@ -81,7 +81,7 @@ function bfnest_postnav_archive( $newer_title = null, $older_title = null ) {
  * @return String If $echo value is set to FALSE.
  * https://www.isitwp.com/wp_nav_menu-separate-submenu-output/
  */
-function bfnest_the_submenu( $args = array() ) {
+function bfnest_the_submenu( $args = [] ) {
 	$defaults = array(
 		'theme_location' => '',
 		'xpath' => "./li[contains(@class,'current-menu-item') or contains(@class,'current-menu-ancestor')]/ul",
@@ -91,7 +91,7 @@ function bfnest_the_submenu( $args = array() ) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 	$args = (object) $args;
-	$output = array();
+	$output = [];
 	$menu_tree = wp_nav_menu( array( 'theme_location' => $args->theme_location, 'container' => '', 'echo' => false ) );
 	$menu_tree_XML = new SimpleXMLElement( $menu_tree );
 	$path = $menu_tree_XML->xpath( $args->xpath );

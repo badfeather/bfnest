@@ -123,3 +123,34 @@ $html__font-size: 16;
 
 	@return $string;
 }
+
+// Return map of shades
+// @param {Variable} $color - color value
+// @param {String} $name - color name
+// @param {Map} map object or variable with shades noted in the following pattern where the keys are the step name, and the values are the difference from 50%:
+// (
+// 	'5': 45%,
+// '90': -40%
+// );
+@function hsluv-shades($colorName, $colors, $shades: (
+	5: 45%,
+	10: 40%,
+	20: 30%,
+	30: 20%,
+	40: 10%,
+	50: 0%,
+	60: -10%,
+	70: -20%,
+	80: -30%,
+	90: -40%,
+)) {
+	$map: ();
+	$color: map.get($colors, $colorName);
+	@each $key, $value in $shades {
+		// $shade: color.scale($color, $lightness: $value);
+		$shade: rgba(hsluv.hsluv(map.get($color, h), map.get($color, s), (map.get($color, l) + $value)), 1);
+		$map: map.set($map, #{$key}, #{$shade});
+
+	}
+	@return $map;
+}

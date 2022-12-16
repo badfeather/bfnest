@@ -22,6 +22,7 @@ function bfnest_scripts() {
 
 	// Fetch the version number of the theme, which can be appended on css/js files for debugging/cacheing issues
 	$version = bfnest_get_theme_version();
+	$suffix = bfnest_is_debug() ? '' : '.min';
 
 	// move jQuery to footer
 	wp_script_add_data( 'jquery-core', 'group', 1 );
@@ -29,11 +30,11 @@ function bfnest_scripts() {
 	wp_script_add_data( 'jquery', 'group', 1 );
 
 	// Enqueue styles.
-	wp_enqueue_style( 'bfnest-style', $template_directory . '/css/theme.css', array(), $version );
+	wp_enqueue_style( 'bfnest-style', $template_directory . '/css/theme' . $suffix . '.css', [], $version );
 
 	// Enqueue scripts.
 	// if using jQuery, add 'jquery' to dependencies array
-	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/js/theme.js', array(), $version, true );
+	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/js/theme' . $suffix . '.js', [], $version, true );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -48,11 +49,13 @@ add_action( 'wp_enqueue_scripts', 'bfnest_scripts' );
  */
 function bfnest_head_scripts() {
 	$template_directory = get_template_directory_uri();
+
+	$fonts = [];
+	foreach ( $fonts as $font ) {
+		echo '<link rel="preload" as="font" href="' . esc_url( $template_directory . '/fonts/' . $font . '.woff2' ) . '" type="font/woff2" crossorigin="anonymous">' . "\n";
+	}
 	// paste <script> tags within function
 ?>
-<link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.ico' ); ?>" sizes="any">
-<link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.svg' ); ?>" type="image/svg+xml">
-<link rel="apple-touch-icon" href="<?php echo esc_url( $template_directory . '/img/apple-touch-icon.png' ); ?>" />
 <?php
 }
 add_action( 'wp_head', 'bfnest_head_scripts' );
@@ -60,16 +63,17 @@ add_action( 'wp_head', 'bfnest_head_scripts' );
 /**
  * Admin head scripts
  */
-function bfnest_admin_head_scripts() {
+function bfnest_site_icons() {
 	$template_directory = get_template_directory_uri();
 ?>
 <link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.ico' ); ?>" sizes="any">
 <link rel="icon" href="<?php echo esc_url( $template_directory . '/img/favicon.svg' ); ?>" type="image/svg+xml">
+<link rel="apple-touch-icon" href="<?php echo esc_url( $template_directory . '/img/apple-touch-icon.png' ); ?>" />
 <?php
 }
-
-add_action( 'login_head', 'bfnest_admin_head_scripts' );
-add_action( 'admin_head', 'bfnest_admin_head_scripts' );
+add_action( 'wp_head', 'bfnest_site_icons' );
+add_action( 'login_head', 'bfnest_site_icons' );
+add_action( 'admin_head', 'bfnest_site_icons' );
 
 /**
  * Footer scripts - script tags to add to end of body

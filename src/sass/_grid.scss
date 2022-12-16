@@ -63,11 +63,11 @@
 }
 
 .form-row {
-	@include row($form-grid__gutter-width);
+	@include form-row;
 }
 
 .gallery-row {
-	@include row($gallery-grid__gutter-width);
+	@include gallery-row;
 }
 
 .col--grow {
@@ -76,6 +76,14 @@
 
 .col--auto {
 	@include col--auto;
+}
+
+.grid-test {
+	.box {
+		background-color: var(--background-color--alt);
+		padding: 1em;
+		margin-bottom: $grid__gutter-width;
+	}
 }
 
 // @include generate-cols-classes($grid__columns, '.', 'cols', '');

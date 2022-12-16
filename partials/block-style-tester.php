@@ -7,7 +7,6 @@
 	if ( $align ) {
 		$classes[] = 'align' . $align;
 	}
-	$grid_test = get_field( 'grid_test' );
 ?>
 <div id="<?php echo esc_attr( $id ); ?>" class="<?php echo join( ' ', $classes ); ?>">
 	<div class="style-tester">
@@ -198,7 +197,7 @@ The frumious Bandersnatch!&rdquo;</pre>
 				</div>
 			</fieldset>
 
-			<input name="submit" type="submit" value="Submit" class="button" />
+			<input name="submit" type="submit" value="Submit" class="btn" />
 
 		</form>
 
@@ -213,7 +212,7 @@ The frumious Bandersnatch!&rdquo;</pre>
 					<input type="checkbox" id="checkbox-inline" name="checkbox-inline" value="checkbox-inline" checked />
 				</div>
 
-				<input name="submit" type="submit" value="Submit" class="button" />
+				<input name="submit" type="submit" value="Submit" class="btn" />
 			</div>
 		</form>
 
@@ -221,33 +220,33 @@ The frumious Bandersnatch!&rdquo;</pre>
 
 		<h4>Button Classes:</h4>
 
-		<p><a class="button">button</a></p>
+		<p><button>button</button></p>
 
-		<p><a class="button button--lg">button--lg</a></p>
+		<p><button class="btn--l">btn--l</button></p>
 
-		<p><a class="button button--sm">button--sm</a></p>
+		<p><button class="btn--s">btn--s</button></p>
 
-		<p><a class="button button--xs">button--xs</a></p>
+		<p><button class="btn--xs">btn--xs</button></p>
 
-		<p><a class="button disabled">button--disabled</a></p>
+		<p><button class="disabled">btn--disabled</button></p>
 
-		<p><a class="button button--secondary">button--secondary</a></p>
+		<p><button class="btn--secondary">btn--secondary</button></p>
 
-		<p><a class="button button--success">button--success</a></p>
+		<p><button class="btn--success">btn--success</button></p>
 
-		<p><a class="button button--warning">button--warning</a></p>
+		<p><button class="btn--warning">btn--warning</button></p>
 
-		<p><a class="button button--danger">button--danger</a></p>
+		<p><button class="btn--danger">btn--danger</button></p>
 
-		<p><a class="button button--info">button--info</a></p>
+		<p><button class="btn--info">btn--info</button></p>
 
-		<p><a class="button button--outline">button--outline</a></p>
+		<p><button class="btn--outline">btn--outline</button></p>
 
-		<p><a class="button button--trans">button--trans</a></p>
+		<p><button class="btn--trans">btn--trans</button></p>
 
-		<p><a class="button button--block">button--block</a></p>
+		<p><button class="btn--block">btn--block</button></p>
 
-		<p><a class="button">Link button</a> next to a <button class="button">&lt;button&gt;</button> next to a <input name="submit" class="button" type="submit" value="&lt;Submit&gt;"></p>
+		<p><a class="btn">Link button</a> next to a <button>&lt;button&gt;</button> next to a <input name="submit" class="btn" type="submit" value="&lt;Submit&gt;"></p>
 
 		<hr />
 
@@ -310,46 +309,227 @@ The frumious Bandersnatch!&rdquo;</pre>
 		<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 
-		<?php if ( $grid_test ) { ?>
-			<h4>Grid:</h4>
-			<div class="row grid-test">
-				<div class="column columns--4">
-					<div class="box">4</div>
-				</div>
-				<div class="column columns--4">
-					<div class="box">4</div>
-				</div>
-				<div class="column columns--4">
-					<div class="box">4</div>
-				</div>
-				<div class="column columns--2">
-					<div class="box">2</div>
-				</div>
-				<div class="column columns--2">
-					<div class="box">2</div>
-				</div>
-				<div class="column columns--2">
-					<div class="box">2</div>
-				</div>
-				<div class="column columns--2">
-					<div class="box">2 with longer content to break to more lines.</div>
-				</div>
-				<div class="column columns--2">
-					<div class="box">2</div>
-				</div>
-				<div class="column columns--2">
-					<div class="box">2</div>
-				</div>
-				<div class="column columns--2 push--2">
-					<div class="box">2 push 2</div>
-				</div>
-				<div class="column columns--4">
-					<div class="box">4</div>
-				</div>
-				<div class="column columns--4">
-					<div class="box">4</div>
-				</div>
+		<h4>Grid:</h4>
+		<div class="row grid-test">
+			<div class="cols-4">
+				<div class="box">4</div>
 			</div>
-		<?php }  // endif $grid_test ?>
+			<div class="cols-4">
+				<div class="box">4</div>
+			</div>
+			<div class="cols-4">
+				<div class="box">4</div>
+			</div>
+			<div class="cols-2">
+				<div class="box">2</div>
+			</div>
+			<div class="cols-2">
+				<div class="box">2</div>
+			</div>
+			<div class="cols-2">
+				<div class="box">2</div>
+			</div>
+			<div class="cols-2">
+				<div class="box">2 with longer content to break to more lines.</div>
+			</div>
+			<div class="cols-2">
+				<div class="box">2</div>
+			</div>
+			<div class="cols-2">
+				<div class="box">2</div>
+			</div>
+			<div class="cols-2 push-2">
+				<div class="box">2 push 2</div>
+			</div>
+			<div class="cols-4">
+				<div class="box">4</div>
+			</div>
+			<div class="cols-4">
+				<div class="box">4</div>
+			</div>
+		</div>
+
+		<h4>Colors</h4>
+		<h5>grays</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--gray-5)">05</div>
+			<div class="box" style="background-color: var(--gray-10)">10</div>
+			<div class="box" style="background-color: var(--gray-20)">20</div>
+			<div class="box" style="background-color: var(--gray-30)">30</div>
+			<div class="box" style="background-color: var(--gray-40)">40</div>
+			<div class="box" style="background-color: var(--gray-50)">50</div>
+			<div class="box" style="background-color: var(--gray-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--gray-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--gray-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--gray-90); color: #fff;">90</div>
+		</div>
+
+		<h5>reds</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--red-5)">05</div>
+			<div class="box" style="background-color: var(--red-10)">10</div>
+			<div class="box" style="background-color: var(--red-20)">20</div>
+			<div class="box" style="background-color: var(--red-30)">30</div>
+			<div class="box" style="background-color: var(--red-40)">40</div>
+			<div class="box" style="background-color: var(--red-50)">50</div>
+			<div class="box" style="background-color: var(--red-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--red-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--red-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--red-90); color: #fff;">90</div>
+		</div>
+
+		<h5>oranges</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--orange-5)">05</div>
+			<div class="box" style="background-color: var(--orange-10)">10</div>
+			<div class="box" style="background-color: var(--orange-20)">20</div>
+			<div class="box" style="background-color: var(--orange-30)">30</div>
+			<div class="box" style="background-color: var(--orange-40)">40</div>
+			<div class="box" style="background-color: var(--orange-50)">50</div>
+			<div class="box" style="background-color: var(--orange-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--orange-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--orange-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--orange-90); color: #fff;">90</div>
+		</div>
+
+		<h5>yellows</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--yellow-5)">05</div>
+			<div class="box" style="background-color: var(--yellow-10)">10</div>
+			<div class="box" style="background-color: var(--yellow-20)">20</div>
+			<div class="box" style="background-color: var(--yellow-30)">30</div>
+			<div class="box" style="background-color: var(--yellow-40)">40</div>
+			<div class="box" style="background-color: var(--yellow-50)">50</div>
+			<div class="box" style="background-color: var(--yellow-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--yellow-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--yellow-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--yellow-90); color: #fff;">90</div>
+		</div>
+
+		<h5>limes</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--lime-5)">05</div>
+			<div class="box" style="background-color: var(--lime-10)">10</div>
+			<div class="box" style="background-color: var(--lime-20)">20</div>
+			<div class="box" style="background-color: var(--lime-30)">30</div>
+			<div class="box" style="background-color: var(--lime-40)">40</div>
+			<div class="box" style="background-color: var(--lime-50)">50</div>
+			<div class="box" style="background-color: var(--lime-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--lime-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--lime-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--lime-90); color: #fff;">90</div>
+		</div>
+
+		<h5>greens</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--green-5)">05</div>
+			<div class="box" style="background-color: var(--green-10)">10</div>
+			<div class="box" style="background-color: var(--green-20)">20</div>
+			<div class="box" style="background-color: var(--green-30)">30</div>
+			<div class="box" style="background-color: var(--green-40)">40</div>
+			<div class="box" style="background-color: var(--green-50)">50</div>
+			<div class="box" style="background-color: var(--green-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--green-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--green-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--green-90); color: #fff;">90</div>
+		</div>
+
+		<h5>springs</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--spring-5)">05</div>
+			<div class="box" style="background-color: var(--spring-10)">10</div>
+			<div class="box" style="background-color: var(--spring-20)">20</div>
+			<div class="box" style="background-color: var(--spring-30)">30</div>
+			<div class="box" style="background-color: var(--spring-40)">40</div>
+			<div class="box" style="background-color: var(--spring-50)">50</div>
+			<div class="box" style="background-color: var(--spring-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--spring-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--spring-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--spring-90); color: #fff;">90</div>
+		</div>
+
+		<h5>cyans</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--cyan-5)">05</div>
+			<div class="box" style="background-color: var(--cyan-10)">10</div>
+			<div class="box" style="background-color: var(--cyan-20)">20</div>
+			<div class="box" style="background-color: var(--cyan-30)">30</div>
+			<div class="box" style="background-color: var(--cyan-40)">40</div>
+			<div class="box" style="background-color: var(--cyan-50)">50</div>
+			<div class="box" style="background-color: var(--cyan-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--cyan-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--cyan-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--cyan-90); color: #fff;">90</div>
+		</div>
+
+		<h5>azures</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--azure-5)">05</div>
+			<div class="box" style="background-color: var(--azure-10)">10</div>
+			<div class="box" style="background-color: var(--azure-20)">20</div>
+			<div class="box" style="background-color: var(--azure-30)">30</div>
+			<div class="box" style="background-color: var(--azure-40)">40</div>
+			<div class="box" style="background-color: var(--azure-50)">50</div>
+			<div class="box" style="background-color: var(--azure-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--azure-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--azure-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--azure-90); color: #fff;">90</div>
+		</div>
+
+		<h5>blues</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--blue-5)">05</div>
+			<div class="box" style="background-color: var(--blue-10)">10</div>
+			<div class="box" style="background-color: var(--blue-20)">20</div>
+			<div class="box" style="background-color: var(--blue-30)">30</div>
+			<div class="box" style="background-color: var(--blue-40)">40</div>
+			<div class="box" style="background-color: var(--blue-50)">50</div>
+			<div class="box" style="background-color: var(--blue-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--blue-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--blue-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--blue-90); color: #fff;">90</div>
+		</div>
+
+		<h5>violets</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--violet-5)">05</div>
+			<div class="box" style="background-color: var(--violet-10)">10</div>
+			<div class="box" style="background-color: var(--violet-20)">20</div>
+			<div class="box" style="background-color: var(--violet-30)">30</div>
+			<div class="box" style="background-color: var(--violet-40)">40</div>
+			<div class="box" style="background-color: var(--violet-50)">50</div>
+			<div class="box" style="background-color: var(--violet-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--violet-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--violet-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--violet-90); color: #fff;">90</div>
+		</div>
+
+		<h5>magentas</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--magenta-5)">05</div>
+			<div class="box" style="background-color: var(--magenta-10)">10</div>
+			<div class="box" style="background-color: var(--magenta-20)">20</div>
+			<div class="box" style="background-color: var(--magenta-30)">30</div>
+			<div class="box" style="background-color: var(--magenta-40)">40</div>
+			<div class="box" style="background-color: var(--magenta-50)">50</div>
+			<div class="box" style="background-color: var(--magenta-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--magenta-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--magenta-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--magenta-90); color: #fff;">90</div>
+		</div>
+
+		<h5>pinks</h5>
+		<div class="grid-test color-test" style="display: flex;">
+			<div class="box" style="background-color: var(--pink-5)">05</div>
+			<div class="box" style="background-color: var(--pink-10)">10</div>
+			<div class="box" style="background-color: var(--pink-20)">20</div>
+			<div class="box" style="background-color: var(--pink-30)">30</div>
+			<div class="box" style="background-color: var(--pink-40)">40</div>
+			<div class="box" style="background-color: var(--pink-50)">50</div>
+			<div class="box" style="background-color: var(--pink-60); color: #fff;">60</div>
+			<div class="box" style="background-color: var(--pink-70); color: #fff;">70</div>
+			<div class="box" style="background-color: var(--pink-80); color: #fff;">80</div>
+			<div class="box" style="background-color: var(--pink-90); color: #fff;">90</div>
+		</div>
 	</div>
 </div>

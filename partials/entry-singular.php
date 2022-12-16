@@ -9,10 +9,11 @@
 				bfnest_get_meta_edit_link(),
 			) );
 		?>
+		<?php echo '<h2>Is block theme: ' . wp_is_block_theme() . '</h2>'; ?>
 	</header>
 
 	<div class="doc-content entry-content-wrap">
-		<div class="entry-content blocks">
+		<div class="entry-content blocks is-root-container">
 			<?php the_content(); ?>
 			<?php
 				wp_link_pages( array(

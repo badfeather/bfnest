@@ -19,19 +19,6 @@ html {
 	font-size: 100%;
 }
 
-body {
-	font-size: var(--font-size);
-	line-height: $line-height--base;
-	font-family: var(--font-family);
-	font-weight: normal;
-	text-align: left;
-	color: var(--color);
-	background-color: var(--background-color);
-	width: 100%;
-	@extend .clearfix;
-	margin: 0;
-}
-
 main {
 	display: block;
 }
@@ -43,6 +30,19 @@ template {
 .hidden,
 [hidden] {
 	display: none;
+}
+
+body {
+	font-size: var(--font-size);
+	line-height: $line-height--base;
+	font-family: var(--font-family);
+	font-weight: normal;
+	text-align: left;
+	color: var(--color);
+	background-color: var(--background-color);
+	width: 100%;
+	@extend .clearfix;
+	margin: 0;
 }
 
 p,
@@ -236,10 +236,12 @@ kbd {
 }
 
 pre {
+	background: var(--background-color--alt);
 	padding: 1em;
 	display: block;
 	max-width: 100%;
 	overflow: auto;
+	border-radius: .25em;
 
 	code {
 		padding: 0;
@@ -367,6 +369,13 @@ blockquote {
 
 cite {
 	font-style: normal;
+	font-size: var(--font-size);
+	font-weight: var(--font-weight);
+
+	&:before {
+		content: '\2014';
+		display: inline-block;
+	}
 }
 
 // META
@@ -380,4 +389,5 @@ figcaption,
 .figcaption {
 	font-size: var(--font-size--s);
 	color: var(--color--alt);
+	word-break: break-word;
 }

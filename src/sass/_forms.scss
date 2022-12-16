@@ -211,12 +211,13 @@ textarea {
 
 // BUTTONS
 // ---------------------------
-.button,
+.btn,
 button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
 a[role="button"] {
+	font-family: var(--font-family--sans-serif);
 	padding: .5em 1.125em;
 	color: var(--background-color);
 	text-align: center;
@@ -256,20 +257,20 @@ a[role="button"] {
 	}
 }
 
-.button--l {
+.btn--l {
 	font-size: var(--font-size--l);
 }
 
-.button--s {
+.btn--s {
 	font-size: var(--font-size--s);
 }
 
-.button--xs {
+.btn--xs {
 	font-size: var(--font-size--xs);
 }
 
 //	Alternate button states
-%button--secondary {
+.btn--secondary {
 	background-color: var(--color-secondary);
 	border-color: var(--color-secondary);
 
@@ -280,7 +281,7 @@ a[role="button"] {
 	}
 }
 
-%button--success {
+.btn--success {
 	background-color: var(--color-success);
 	border-color: var(--color-success);
 
@@ -291,7 +292,7 @@ a[role="button"] {
 	}
 }
 
-%button--warning {
+.btn--warning {
 	background-color: var(--color-warning);
 	border-color: var(--color-warning);
 
@@ -302,7 +303,7 @@ a[role="button"] {
 	}
 }
 
-%button--info {
+.btn--info {
 	background-color: var(--color-info);
 	border-color: var(--color-info);
 
@@ -313,7 +314,7 @@ a[role="button"] {
 	}
 }
 
-%button--danger {
+.btn--danger {
 	background-color: var(--color-danger);
 	border-color: var(--color-danger);
 
@@ -324,7 +325,7 @@ a[role="button"] {
 	}
 }
 
-.button--outline {
+.btn--outline {
 	background-color: transparent;
 	color: var(--color-primary);
 
@@ -336,7 +337,7 @@ a[role="button"] {
 	}
 }
 
-.button--trans {
+.btn--trans {
 	color: var(--color-primary);
 	background-color: transparent;
 	border-color: transparent;
@@ -349,8 +350,8 @@ a[role="button"] {
 	}
 }
 
-.button--link {
-	@include button--unstyled();
+.btn--link {
+	@include btn--unstyled();
 	color: var(--color-primary);
 
 	&:hover,
@@ -359,12 +360,12 @@ a[role="button"] {
 	}
 }
 
-.button--block {
+.btn--block {
 	display: block;
 	text-align: center;
 }
 
-.button--icon {
+.btn--icon {
 	svg {
 		display: block;
 		width: 1em;
@@ -376,9 +377,23 @@ a[role="button"] {
 // ---------------------------
 .form-control,
 textarea,
-input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]),
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="time"],
+input[type="week"],
+input[type="month"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
 select,
 optgroup {
+	font-family: var(--font-family--sans-serif);
 	display: block;
 	width: 100%;
 	padding: 0.5em 0.75em;

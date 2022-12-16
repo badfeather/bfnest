@@ -1,40 +1,92 @@
 :root {
 	@each $key, $value in $root-font-families {
 		@if $key == '' {
-			--font-family: #{$value};
+			--#{$root-prefix}font-family: #{$value};
 		} @else {
-			--font-family--#{$key}: #{$value};
+			--#{$root-prefix}font-family--#{$key}: #{$value};
 		}
 	}
 
 	@each $key, $value in $root-font-sizes {
 		@if $key == '' {
-			--font-size: #{$value};
+			--#{$root-prefix}font-size: #{$value};
 		} @else {
-			--font-size--#{$key}: #{$value};
+			--#{$root-prefix}font-size--#{$key}: #{$value};
 		}
 	}
 
 	@each $key, $value in $root-spacings {
 		@if $key == '' {
-			--spacing: #{$value};
+			--#{$root-prefix}spacing: #{$value};
 		} @else {
-			--spacing--#{$key}: #{$value};
+			--#{$root-prefix}spacing--#{$key}: #{$value};
 		}
+	}
+
+	@each $key, $value in $grays {
+		--#{$root-prefix}gray-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $reds {
+		--#{$root-prefix}red-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $oranges {
+		--#{$root-prefix}orange-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $yellows {
+		--#{$root-prefix}yellow-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $limes {
+		--#{$root-prefix}lime-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $greens {
+		--#{$root-prefix}green-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $springs {
+		--#{$root-prefix}spring-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $cyans {
+		--#{$root-prefix}cyan-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $azures {
+		--#{$root-prefix}azure-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $blues {
+		--#{$root-prefix}blue-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $violets {
+		--#{$root-prefix}violet-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $magentas {
+		--#{$root-prefix}magenta-#{$key}: #{$value};
+	}
+
+	@each $key, $value in $pinks {
+		--#{$root-prefix}pink-#{$key}: #{$value};
 	}
 }
 
 :root,
 [data-color-scheme="#{$color-scheme}"] {
 	@each $key, $value in $root-colors {
-		--#{$key}: #{$value};
+		--#{$root-prefix}#{$key}: #{$value};
 	}
 }
 
 @if $has-alt-scheme {
 	[data-color-scheme="#{$color-scheme--alt}"] {
 		@each $key, $value in $root-colors--alt {
-			--#{$key}: #{$value};
+			--#{$root-prefix}#{$key}: #{$value};
 		}
 	}
 }

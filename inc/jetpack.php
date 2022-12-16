@@ -116,7 +116,7 @@ function bfnest_sharing_display_markup( $sharing_content ) {
 			$visible .= '<li class="share-' . $service->get_class() . '">' . $service->get_display( $post ) . '</li>';
 		}
 
-		$parts = array();
+		$parts = [];
 		$parts[] = $visible;
 		if ( count( $enabled['hidden'] ) > 0 ) {
 			if ( count( $enabled['visible'] ) > 0 )

@@ -11,6 +11,9 @@
 
 	<div class="doc-content entry-content-wrap">
 		<div class="entry-content blocks">
+			<?php // bfnest_pretty_print( wp_get_global_settings() ); ?>
+			<?php // bfnest_pretty_print( wp_get_global_styles() ); ?>
+
 			<?php the_content(); ?>
 
 			<?php

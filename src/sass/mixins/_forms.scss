@@ -1,6 +1,6 @@
 // BUTTONS
 // -------------------------
-@mixin button-variant(
+@mixin btn-variant(
 	$color: $button__color,
 	$background-color: $button__background-color,
 	$border-color: $button__border-color,
@@ -27,7 +27,7 @@
 	}
 }
 
-@mixin button--unstyled() {
+@mixin btn--unstyled() {
 	border: 0;
 	background: none;
 	padding: 0;

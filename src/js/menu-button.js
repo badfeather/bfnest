@@ -1,320 +1,363 @@
-/*
- * This content is licensed according to the W3C Software License at
- * https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+import emitEvent from './helpers/events.js';
+
+function isPrintableChar (str) {
+	return str.length === 1 && str.match(/\S/);
+}
+
+// TODO - test (natch), add hover/click focus classes
+/**
+ * For WP Nav items, use:
+ * let itemSelector = '.menu-item a';
  *
- * File: menu-button-links.js
- *
- * Desc: Creates a menu button that opens a menu of links
+ * For all focusable elements, use:
+ * let itemSelector = [
+ * 	'a[href]:not([tabindex^="-"])',
+ * 	'area[href]:not([tabindex^="-"])',
+ * 	'input:not([type="hidden"]):not([type="radio"]):not([disabled]):not([tabindex^="-"])',
+ * 	'input[type="radio"]:not([disabled]):not([tabindex^="-"])',
+ * 	'select:not([disabled]):not([tabindex^="-"])',
+ * 	'textarea:not([disabled]):not([tabindex^="-"])',
+ * 	'Toggle:not([disabled]):not([tabindex^="-"])',
+ * 	'iframe:not([tabindex^="-"])',
+ * 	'audio[controls]:not([tabindex^="-"])',
+ * 	'video[controls]:not([tabindex^="-"])',
+ * 	'[contenteditable]:not([tabindex^="-"])',
+ * 	'[tabindex]:not([tabindex^="-"])'
+ * ].join(',');
  */
-'use strict';
+function MenuToggle (toggle, itemSelector = 'a', options = {}) {
+	if (!toggle) return;
+	if (!(toggle instanceof Element)) {
+		throw new Error("No toggle element passed in.");
+	}
 
-class MenuButtonLinks {
-	constructor(domNode) {
-		this.domNode = domNode;
-		this.buttonNode = domNode.querySelector('button');
-		this.menuNode = domNode.querySelector('[role="menu"]');
-		this.menuitemNodes = [];
-		this.firstMenuitem = false;
-		this.lastMenuitem = false;
-		this.firstChars = [];
+	let menuId = toggle.getAttribute('data-expand');
+	if (!menuId) return;
 
-		this.buttonNode.addEventListener('keydown', this.onButtonKeydown.bind(this));
-		this.buttonNode.addEventListener('click', this.onButtonClick.bind(this));
+	let menu = document.getElementById(menuId);
+	if (!menu) return;
 
-		var nodes = domNode.querySelectorAll('[role="menuitem"]');
+	let settings = Object.assign({
+		setMaxHeight: 0,
+		setAriaHidden: 0,
+		onOutsideClick: 0,
+		shiftFocus: 1,
+		accordion: 0
+	}, options);
+	Object.freeze(settings);
 
-		for (var i = 0; i < nodes.length; i++) {
-			var menuitem = nodes[i];
-			this.menuitemNodes.push(menuitem);
-			menuitem.tabIndex = -1;
-			this.firstChars.push(menuitem.textContent.trim()[0].toLowerCase());
+	this.toggle = toggle;
+	this.menuId = menuId;
+	this.menu = menu;
+	this.parent = toggle.closest('[data-expand-parent]');
+	this.settings = settings;
+	this.expanded = menu.getAttribute('data-expand-open') ? true : false;
+	this.firstMenuItem = false;
+	this.lastMenuItem = false;
+	this.currentMenuItem = false;
+	this.firstChars = [];
+	this.menuItems = [];
 
-			menuitem.addEventListener('keydown', this.onMenuitemKeydown.bind(this));
-			menuitem.addEventListener('mouseover', this.onMenuitemMouseover.bind(this));
+	this.expand = this.expand.bind(this);
+	this.collapse = this.collapse.bind(this);
+	this.setFocusToItem = this.setFocusToItem.bind(this);
+	this.setFocusToFirstItem = this.setFocusToFirstItem.bind(this);
+	this.setFocusToLastItem = this.setFocusToLastItem.bind(this);
+	this.setFocusToPrevItem = this.setFocusToPrevItem.bind(this);
+	this.setFocusToNextItem = this.setFocusToNextItem.bind(this);
+	this.setFocusByFirstChar = this.setFocusByFirstChar.bind(this);
+	this.onOutsideClick = this.onOutsideClick.bind(this);
+	this.onToggleClick = this.onToggleClick.bind(this);
+	this.onToggleKeydown = this.onToggleKeydown.bind(this);
+	this.onMenuKeydown = this.onMenuKeydown.bind(this);
 
-			if (!this.firstMenuitem) {
-				this.firstMenuitem = menuitem;
-			}
-			this.lastMenuitem = menuitem;
+	let menuItems = menu.querySelectorAll(itemSelector);
+	if (menuItems.length) {
+		for (let menuItem of menuItems) {
+			this.menuItems.push(menuItem);
+			menuItem.tabIndex = -1;
+			this.firstChars.push(menuItem.textContent.trim()[0].toLowerCase());
+			if (!this.firstMenuItem) this.firstMenuItem = menuItem;
+			this.lastMenuItem = menuItem;
 		}
-
-		domNode.addEventListener('focusin', this.onFocusin.bind(this));
-		domNode.addEventListener('focusout', this.onFocusout.bind(this));
-
-		window.addEventListener(
-			'mousedown',
-			this.onBackgroundMousedown.bind(this),
-			true
-		);
 	}
 
-	setFocusToMenuitem(newMenuitem) {
-		this.menuitemNodes.forEach(function (item) {
-			if (item === newMenuitem) {
-				item.tabIndex = 0;
-				newMenuitem.focus();
-			} else {
-				item.tabIndex = -1;
-			}
-		});
+	this.toggle.setAttribute('aria-controls', this.menuId);
+	this.menu.hasAttribute('aria-labelledby') || this.menu.setAttribute('aria-label', this.toggle.innerText);
+
+	if (this.expanded) {
+		this.expand();
+
+	} else {
+		this.collapse();
 	}
 
-	setFocusToFirstMenuitem() {
-		this.setFocusToMenuitem(this.firstMenuitem);
+	this.toggle.addEventListener('click', this.onToggleClick, false);
+	this.toggle.addEventListener('keydown', this.onToggleKeydown, false);
+
+	if (this.parent && this.settings.onOutsideClick) {
+		document.addEventListener('click', this.onOutsideClick, false);
 	}
 
-	setFocusToLastMenuitem() {
-		this.setFocusToMenuitem(this.lastMenuitem);
-	}
+	emitEvent('MenuToggle:ready', {
+		MenuToggle: this,
+		expanded: this.expanded
+	});
+}
 
-	setFocusToPreviousMenuitem(currentMenuitem) {
-		var newMenuitem, index;
+MenuToggle.prototype.expand = function () {
+	this.toggle.setAttribute('aria-expanded', 'true');
+	if (this.parent) this.parent.setAttribute('aria-expanded', 'true');
+	if (this.settings.setAriaHidden) this.menu.removeAttribute('aria-hidden');
+	if (this.settings.setMaxHeight) this.menu.style.maxHeight = this.menu.scrollHeight + "px";
+	this.expanded = true;
+	this.menu.addEventListener('keydown', this.onMenuKeydown, false);
+	this.menu.addEventListener('focusin', this.onFocusin, false);
+	this.menu.addEventListener('focusout', this.onFocusout, false);
+	this.menu.addEventListener('mouseOver', this.onMenuMouseover, false);
+	emitEvent('MenuToggle:expand', {
+		MenuToggle: this,
+		expanded: this.expanded
+	});
+	return this;
+}
 
-		if (currentMenuitem === this.firstMenuitem) {
-			newMenuitem = this.lastMenuitem;
+MenuToggle.prototype.collapse = function () {
+	this.toggle.setAttribute('aria-expanded', 'false');
+	this.expanded = false;
+	this.currentMenuItem = false;
+	if (this.parent) this.parent.setAttribute('aria-expanded', 'false');
+	if (this.settings.setAriaHidden) this.menu.setAttribute('aria-hidden', '');
+	if (this.settings.setMaxHeight) this.menu.style.maxHeight = null;
+	this.menu.removeEventListener('keydown', this.onMenuKeydown, false);
+	this.menu.removeEventListener('focusin', this.onFocusin, false);
+	this.menu.removeEventListener('focusout', this.onFocusout, false);
+	this.menu.removeEventListener('mouseOver', this.onMenuMouseover, false);
+	emitEvent('MenuToggle:collapse', {
+		MenuToggle: this,
+		expanded: this.expanded
+	});
+	return this;
+}
+
+MenuToggle.prototype.setFocusToItem = function (item) {
+	for (let menuItem of this.menuItems) {
+		if (item === menuItem) {
+			menuItem.tabIndex = 0;
+			menuItem.focus();
+			this.currentMenuItem = menuItem;
 		} else {
-			index = this.menuitemNodes.indexOf(currentMenuitem);
-			newMenuitem = this.menuitemNodes[index - 1];
-		}
-
-		this.setFocusToMenuitem(newMenuitem);
-
-		return newMenuitem;
-	}
-
-	setFocusToNextMenuitem(currentMenuitem) {
-		var newMenuitem, index;
-
-		if (currentMenuitem === this.lastMenuitem) {
-			newMenuitem = this.firstMenuitem;
-		} else {
-			index = this.menuitemNodes.indexOf(currentMenuitem);
-			newMenuitem = this.menuitemNodes[index + 1];
-		}
-		this.setFocusToMenuitem(newMenuitem);
-
-		return newMenuitem;
-	}
-
-	setFocusByFirstCharacter(currentMenuitem, char) {
-		var start, index;
-
-		if (char.length > 1) {
-			return;
-		}
-
-		char = char.toLowerCase();
-
-		// Get start index for search based on position of currentItem
-		start = this.menuitemNodes.indexOf(currentMenuitem) + 1;
-		if (start >= this.menuitemNodes.length) {
-			start = 0;
-		}
-
-		// Check remaining slots in the menu
-		index = this.firstChars.indexOf(char, start);
-
-		// If not found in remaining slots, check from beginning
-		if (index === -1) {
-			index = this.firstChars.indexOf(char, 0);
-		}
-
-		// If match was found...
-		if (index > -1) {
-			this.setFocusToMenuitem(this.menuitemNodes[index]);
+			menuItem.tabIndex = -1;
 		}
 	}
+}
 
-	// Utilities
+MenuToggle.prototype.setFocusToFirstItem = function () {
+	this.setFocusToItem(this.firstMenuItem);
+}
 
-	getIndexFirstChars(startIndex, char) {
-		for (var i = startIndex; i < this.firstChars.length; i++) {
-			if (char === this.firstChars[i]) {
-				return i;
-			}
+MenuToggle.prototype.setFocusToLastItem = function () {
+	this.setFocusToItem(this.LastMenuItem);
+}
+
+MenuToggle.prototype.setFocusToPrevItem = function () {
+	if (!this.currentMenuItem) return;
+	let prev, index;
+	if (this.currentMenuItem === this.firstMenuItem) {
+		prev = this.lastMenuItem;
+	} else {
+		index = this.menuItems.indexOf(this.currentMenuItem);
+		prev = this.menuItems[index - 1];
+	}
+	this.setFocusToItem(prev);
+}
+
+MenuToggle.prototype.setFocusToNextItem = function () {
+	if (!this.currentMenuItem) return;
+	let next, index;
+	if (this.currentMenuItem === this.lastMenuItem) {
+		next = this.firstMenuItem;
+	} else {
+		index = this.menuItems.indexOf(this.currentMenuItem);
+		next = this.menuItems[index + 1];
+	}
+	this.setFocusToItem(next);
+}
+
+MenuToggle.prototype.setFocusByFirstChar = function (char) {
+	if (char.length > 1) return;
+	char = char.toLowerCase();
+	let start = this.menuItems.indexOf(this.currentMenuItem) + 1;
+	let index = this.firstChars.indexOf(char, start);
+	index = index === -1 ? this.firstChars.indexOf(char, 0) : index;
+	if (index > -1) this.setFocusToMenuItem(this.menuItems[index]);
+}
+
+MenuToggle.prototype.onOutsideClick = function (event) {
+	if (this.menu.contains(event.target) || !this.expanded) return;
+	this.collapse();
+	return this;
+}
+
+MenuToggle.prototype.onToggleKeydown = function (event) {
+	let key = event.key,
+		flag = false;
+
+	switch (key) {
+		case ' ':
+		case 'Enter':
+		case 'ArrowDown':
+		case 'Down':
+			this.expand();
+			this.setFocusToFirstItem();
+			flag = true;
+			break;
+
+		case 'Esc':
+		case 'Escape':
+			this.collapse();
+			this.toggle.focus();
+			flag = true;
+			break;
+
+		case 'Up':
+		case 'ArrowUp':
+			this.expand();
+			this.setFocusToLastItem();
+			flag = true;
+			break;
+
+		default:
+			break;
+	}
+
+	if (flag) {
+		event.stopPropagation();
+		event.preventDefault();
+	}
+}
+
+MenuToggle.prototype.onFocusin = function (event) {
+	let a = event.target.closest('a');
+	if (!a) return;
+	a.classList.add('focus');
+}
+
+MenuToggle.prototype.onFocusout = function (event) {
+	let a = event.target.closest('a');
+	if (!a) return;
+	a.classList.remove('focus');
+}
+
+MenuToggle.prototype.onToggleClick = function (event) {
+	if (this.expanded) {
+		this.collapse();
+		this.toggle.focus();
+
+	} else {
+		this.expand();
+		this.setFocusToFirstItem();
+	}
+
+	event.stopPropagation();
+	event.preventDefault();
+}
+
+MenuToggle.prototype.onMenuMouseover = function (event) {
+	let a = event.target.closest('a');
+	if (!a) return;
+	a.focus();
+}
+
+MenuToggle.prototype.onMenuKeydown = function (event) {
+	if (!this.menu.contains(event.target)) return;
+	let tgt = event.currentTarget,
+		key = event.key,
+		flag = false;
+
+	if (event.ctrlKey || event.altKey || event.metaKey) {
+		return;
+	}
+
+	if (event.shiftKey) {
+		if (isPrintableChar(key)) {
+			this.setFocusByFirstChar(tgt, key);
+			flag = true;
 		}
-		return -1;
-	}
 
-	// Popup menu methods
-
-	openPopup() {
-		this.menuNode.style.display = 'block';
-		this.buttonNode.setAttribute('aria-expanded', 'true');
-	}
-
-	closePopup() {
-		if (this.isOpen()) {
-			this.buttonNode.removeAttribute('aria-expanded');
-			this.menuNode.style.display = 'none';
+		if (key === 'Tab') {
+			this.toggleEl.focus();
+			this.collapse();
+			flag = true;
 		}
-	}
 
-	isOpen() {
-		return this.buttonNode.getAttribute('aria-expanded') === 'true';
-	}
-
-	// Menu event handlers
-
-	onFocusin() {
-		this.domNode.classList.add('focus');
-	}
-
-	onFocusout() {
-		this.domNode.classList.remove('focus');
-	}
-
-	onButtonKeydown(event) {
-		var key = event.key,
-			flag = false;
-
+	} else {
 		switch (key) {
 			case ' ':
-			case 'Enter':
-			case 'ArrowDown':
-			case 'Down':
-				this.openPopup();
-				this.setFocusToFirstMenuitem();
-				flag = true;
+				window.location.href = tgt.href;
 				break;
 
 			case 'Esc':
 			case 'Escape':
-				this.closePopup();
-				this.buttonNode.focus();
+				this.collapse();
+				this.toggleEl.focus();
 				flag = true;
 				break;
 
 			case 'Up':
 			case 'ArrowUp':
-				this.openPopup();
-				this.setFocusToLastMenuitem();
+				this.setFocusToPrevItem(tgt);
 				flag = true;
+				break;
+
+			case 'ArrowDown':
+			case 'Down':
+				this.setFocusToNextItem(tgt);
+				flag = true;
+				break;
+
+			case 'Home':
+			case 'PageUp':
+				this.setFocusToFirstItem();
+				flag = true;
+				break;
+
+			case 'End':
+			case 'PageDown':
+				this.setFocusToLastItem();
+				flag = true;
+				break;
+
+			case 'Tab':
+				this.collapse();
 				break;
 
 			default:
+				if (isPrintableChar(key)) {
+					this.setFocusByFirstChar(tgt, key);
+					flag = true;
+				}
 				break;
-		}
-
-		if (flag) {
-			event.stopPropagation();
-			event.preventDefault();
 		}
 	}
 
-	onButtonClick(event) {
-		if (this.isOpen()) {
-			this.closePopup();
-			this.buttonNode.focus();
-		} else {
-			this.openPopup();
-			this.setFocusToFirstMenuitem();
-		}
-
+	if (flag) {
 		event.stopPropagation();
 		event.preventDefault();
 	}
+	emitEvent('MenuToggle:menuKeydown', {
+		MenuToggle: this
+	});
+}
 
-	onMenuitemKeydown(event) {
-		var tgt = event.currentTarget,
-			key = event.key,
-			flag = false;
-
-		function isPrintableCharacter(str) {
-			return str.length === 1 && str.match(/\S/);
-		}
-
-		if (event.ctrlKey || event.altKey || event.metaKey) {
-			return;
-		}
-
-		if (event.shiftKey) {
-			if (isPrintableCharacter(key)) {
-				this.setFocusByFirstCharacter(tgt, key);
-				flag = true;
-			}
-
-			if (event.key === 'Tab') {
-				this.buttonNode.focus();
-				this.closePopup();
-				flag = true;
-			}
-		} else {
-			switch (key) {
-				case ' ':
-					window.location.href = tgt.href;
-					break;
-
-				case 'Esc':
-				case 'Escape':
-					this.closePopup();
-					this.buttonNode.focus();
-					flag = true;
-					break;
-
-				case 'Up':
-				case 'ArrowUp':
-					this.setFocusToPreviousMenuitem(tgt);
-					flag = true;
-					break;
-
-				case 'ArrowDown':
-				case 'Down':
-					this.setFocusToNextMenuitem(tgt);
-					flag = true;
-					break;
-
-				case 'Home':
-				case 'PageUp':
-					this.setFocusToFirstMenuitem();
-					flag = true;
-					break;
-
-				case 'End':
-				case 'PageDown':
-					this.setFocusToLastMenuitem();
-					flag = true;
-					break;
-
-				case 'Tab':
-					this.closePopup();
-					break;
-
-				default:
-					if (isPrintableCharacter(key)) {
-						this.setFocusByFirstCharacter(tgt, key);
-						flag = true;
-					}
-					break;
-			}
-		}
-
-		if (flag) {
-			event.stopPropagation();
-			event.preventDefault();
-		}
-	}
-
-	onMenuitemMouseover(event) {
-		var tgt = event.currentTarget;
-		tgt.focus();
-	}
-
-	onBackgroundMousedown(event) {
-		if (!this.domNode.contains(event.target)) {
-			if (this.isOpen()) {
-				this.closePopup();
-				this.buttonNode.focus();
-			}
-		}
+function initToggles () {
+	let toggles = document.querySelectorAll('[data-expand]');
+	if (!toggles.length) return;
+	for (let toggle of toggles) {
+		new MenuToggle(toggle);
 	}
 }
 
-// Initialize menu buttons
+document.addEventListener('DOMContentLoaded', initToggles, false);
 
-window.addEventListener('load', function () {
-	var menuButtons = document.querySelectorAll('.menu-button-links');
-	for (let i = 0; i < menuButtons.length; i++) {
-		new MenuButtonLinks(menuButtons[i]);
-	}
-});
+export {MenuToggle as default};

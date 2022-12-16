@@ -1,3 +1,6 @@
+// $root-prefix: 'bfnest-';
+$root-prefix: '';
+
 // COLORS
 // ---------------------------
 $gray: #808080;
@@ -7,11 +10,11 @@ $white: #fff;
 $hsl-red: #f00; // hsl hue: 0
 $hsl-orange: #ff8000; // hsl hue: 40
 $hsl-yellow: #ff0; // hsl hue: 60
-$hsl-grass: #80FF00; // hsl hue: 90
+$hsl-lime: #80FF00; // hsl hue: 90
 $hsl-green: #0f0; // hsl hue: 120
-$hsl-aqua: #00ff80; //hsl hue: 150
+$hsl-spring: #00ff80; //hsl hue: 150
 $hsl-cyan: #0ff; // hsl hue: 180
-$hsl-sky: #007fff; // hsl hue: 210
+$hsl-azure: #007fff; // hsl hue: 210
 $hsl-blue: #00f; // hsl hue: 240
 $hsl-violet: #7f00ff; // hsl hue: 270
 $hsl-magenta: #f0f; // hsl hue: 400
@@ -19,20 +22,103 @@ $hsl-pink: #ff0080; // hsl hue: 340
 
 // uniform contrast base colors
 // see: https://www.hsluv.org/
-$red: hsluv.hsluv(10deg, 100%, 49%);
-$orange: hsluv.hsluv(40deg, 100%, 49%);
-$yellow: hsluv.hsluv(70deg, 100%, 50%);
-$grass: hsluv.hsluv(100deg, 100%, 49%);
-$green: hsluv.hsluv(140deg, 100%, 49%);
-$aqua: hsluv.hsluv(160deg, 100%, 49%);
-$cyan: hsluv.hsluv(190deg, 100%, 49%);
-$sky: hsluv.hsluv(220deg, 100%, 49%);
-$blue: hsluv.hsluv(250deg, 100%, 49%);
-$violet: hsluv.hsluv(280deg, 100%, 49%);
-$magenta: hsluv.hsluv(310deg, 100%, 49%);
-$pink: hsluv.hsluv(340deg, 100%, 49%);
 
-$silver: #C0C0C0;
+// $gray: #777777;
+
+$hsluv-shades: (
+	5: 45%,
+	10: 40%,
+	20: 30%,
+	30: 20%,
+	40: 10%,
+	50: 0%,
+	60: -10%,
+	70: -20%,
+	80: -30%,
+	90: -40%,
+);
+
+$hsluv-colors: (
+	'gray': (
+		h: 0,
+		s: 0%,
+		l: 49%
+	),
+	'red': (
+		h: 10deg,
+		s: 100%,
+		l: 49%
+	),
+	'orange': (
+		h: 40deg,
+		s: 100%,
+		l: 49%
+	),
+	'yellow': (
+		h: 70deg,
+		s: 100%,
+		l: 49%
+	),
+	'lime': (
+		h: 100deg,
+		s: 100%,
+		l: 49%
+	),
+	'green': (
+		h: 130deg,
+		s: 100%,
+		l: 49%
+	),
+	'spring': (
+		h: 160deg,
+		s: 100%,
+		l: 49%
+	),
+	'cyan': (
+		h: 190deg,
+		s: 100%,
+		l: 49%
+	),
+	'azure': (
+		h: 220deg,
+		s: 100%,
+		l: 49%
+	),
+	'blue': (
+		h: 250deg,
+		s: 100%,
+		l: 49%
+	),
+	'violet': (
+		h: 280deg,
+		s: 100%,
+		l: 49%
+	),
+	'magenta': (
+		h: 310deg,
+		s: 100%,
+		l: 49%
+	),
+	'pink': (
+		h: 340deg,
+		s: 100%,
+		l: 49%
+	),
+);
+
+$grays: hsluv-shades('gray', $hsluv-colors, $hsluv-shades);
+$reds: hsluv-shades('red', $hsluv-colors, $hsluv-shades);
+$oranges: hsluv-shades('orange', $hsluv-colors, $hsluv-shades);
+$yellows: hsluv-shades('yellow', $hsluv-colors, $hsluv-shades);
+$limes: hsluv-shades('lime', $hsluv-colors, $hsluv-shades);
+$greens: hsluv-shades('green', $hsluv-colors, $hsluv-shades);
+$springs: hsluv-shades('spring', $hsluv-colors, $hsluv-shades);
+$cyans: hsluv-shades('cyan', $hsluv-colors, $hsluv-shades);
+$azures: hsluv-shades('azure', $hsluv-colors, $hsluv-shades);
+$blues: hsluv-shades('blue', $hsluv-colors, $hsluv-shades);
+$violets: hsluv-shades('violet', $hsluv-colors, $hsluv-shades);
+$magentas: hsluv-shades('magenta', $hsluv-colors, $hsluv-shades);
+$pinks: hsluv-shades('pink', $hsluv-colors, $hsluv-shades);
 
 // Social Networks
 $airbnb: #FF5A5F;
@@ -60,7 +146,7 @@ $pinterest: #BD081C;
 $pocket: #EF3F56;
 $reddit: #FF4500;
 $rss: #FFA500;
-$skype: #00AFF0;
+$azurepe: #00AFF0;
 $snapchat: #FFFC00;
 $soundcloud: #FF3400;
 $spotify: #1ED760;
@@ -100,7 +186,7 @@ $social-colors: (
 	'pocket': $pocket,
 	'reddit': $reddit,
 	'rss': $rss,
-	'skype': $skype,
+	'azurepe': $azurepe,
 	'snapchat': $snapchat,
 	'soundcloud': $soundcloud,
 	'spotify': $spotify,
@@ -127,50 +213,58 @@ $share-colors: (
 );
 
 // Theme
-$color: shade($gray, 80%);
-$color--alt: shade($gray, 20%);
+$color: map.get($grays, '80');
+$color--alt: map.get($grays, '60');
 $background-color: $white;
-$background-color--alt: tint($gray, 80%);
-$color-border: tint($gray, 60%);
+$background-color--alt: map.get($grays, '20');
+$border-color: map.get($grays, '40');
+$color-headings: map.get($grays, '80');
+$color-meta: map.get($grays, '50');
 
-$color-primary: check-contrast($blue, $background-color, 4.5);
-$color-secondary: check-contrast($magenta, $background-color, 4.5);
-$color-info: check-contrast($cyan, $background-color, 4.5);
-$color-success: check-contrast($green, $background-color, 4.5);
-$color-warning: check-contrast($orange, $background-color, 4.5);
-$color-danger: check-contrast($red, $background-color, 4.5);
-$color-highlight: check-contrast(tint($yellow, 70%), $color, 4.5);
+$color-link: map.get($blues, '50');
+$color-primary: map.get($blues, '50');
+$color-secondary: map.get($magentas, '50');
+$color-info: map.get($cyans, '50');
+$color-success: map.get($greens, '50');
+$color-warning: map.get($oranges, '50');
+$color-danger: map.get($reds, '50');
+$color-highlight: map.get($yellows, '20');
 
-$color-primary--hover: shade($color-primary, 40%);
-$color-secondary--hover: shade($color-secondary, 40%);
-$color-info--hover: shade($color-info, 40%);
-$color-success--hover: shade($color-success, 40%);
-$color-warning--hover: shade($color-warning, 40%);
-$color-danger--hover: shade($color-danger, 40%);
+$color-link--hover: map.get($blues, '60');
+$color-primary--hover: map.get($blues, '60');
+$color-secondary--hover: map.get($magentas, '60');
+$color-info--hover: map.get($cyans, '60');
+$color-success--hover: map.get($greens, '60');
+$color-warning--hover: map.get($oranges, '60');
+$color-danger--hover: map.get($reds, '60');
 
 $url-color: url-friendly-color($color);
 $select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$url-color}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
 
 // Alt scheme theme
 $alt-scheme__color: $white;
-$alt-scheme__color--alt: tint($gray, 20%);
-$alt-scheme__background-color: shade($gray, 80%);
+$alt-scheme__color--alt: map.get($grays, '30');
+$alt-scheme__background-color: map.get($grays, '90');
 $alt-scheme__background-color--alt: $black;
-$alt-scheme__color-border: shade($gray, 40%);
+$alt-scheme__border-color: map.get($grays, '40');
+$alt-scheme__color-headings: $white;
+$alt-scheme__color-meta: map.get($grays, '50');
 
-$alt-scheme__color-primary: check-contrast(tint($blue, 20%), $alt-scheme__background-color, 4.5);
-$alt-scheme__color-secondary: check-contrast(tint($magenta, 20%), $alt-scheme__background-color, 4.5);
-$alt-scheme__color-info: check-contrast(tint($cyan, 20%), $alt-scheme__background-color, 4.5);
-$alt-scheme__color-success: check-contrast(tint($green, 20%), $alt-scheme__background-color, 4.5);
-$alt-scheme__color-warning: check-contrast(tint($orange, 20%), $alt-scheme__background-color, 4.5);
-$alt-scheme__color-danger: check-contrast(tint($red, 20%), $alt-scheme__background-color, 4.5);
+$alt-scheme__color-link: map.get($blues, '40');
+$alt-scheme__color-primary: map.get($blues, '40');
+$alt-scheme__color-secondary: map.get($magentas, '40');
+$alt-scheme__color-info: map.get($cyans, '40');
+$alt-scheme__color-success: map.get($greens, '40');
+$alt-scheme__color-warning: map.get($oranges, '40');
+$alt-scheme__color-danger: map.get($reds, '40');
 
-$alt-scheme__color-primary--hover: tint($alt-scheme__color-primary, 40%);
-$alt-scheme__color-secondary--hover: tint($alt-scheme__color-secondary, 40%);
-$alt-scheme__color-info--hover: tint($alt-scheme__color-info, 40%);
-$alt-scheme__color-success--hover: tint($alt-scheme__color-success, 40%);
-$alt-scheme__color-warning--hover: tint($alt-scheme__color-warning, 40%);
-$alt-scheme__color-danger--hover: tint($alt-scheme__color-danger, 40%);
+$alt-scheme__color-link--hover: map.get($blues, '30');
+$alt-scheme__color-primary--hover: map.get($blues, '30');
+$alt-scheme__color-secondary--hover: map.get($magentas, '30');
+$alt-scheme__color-info--hover: map.get($cyans, '30');
+$alt-scheme__color-success--hover: map.get($greens, '30');
+$alt-scheme__color-warning--hover: map.get($oranges, '30');
+$alt-scheme__color-danger--hover: map.get($reds, '30');
 
 $alt-scheme__url-color: url-friendly-color($alt-scheme__color);
 $alt-scheme__select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{$alt-scheme__url-color}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
@@ -184,7 +278,10 @@ $root-colors: (
 	'color--alt': $color--alt,
 	'background-color': $background-color,
 	'background-color--alt': $background-color--alt,
-	'border-color': $color-border,
+	'border-color': $border-color,
+	'color-headings': $color-headings,
+	'color-meta': $color-meta,
+	'color-link': $color-link,
 	'color-primary': $color-primary,
 	'color-secondary': $color-secondary,
 	'color-info': $color-info,
@@ -206,13 +303,17 @@ $root-colors--alt: (
 	'color--alt': $alt-scheme__color--alt,
 	'background-color': $alt-scheme__background-color,
 	'background-color--alt': $alt-scheme__background-color--alt,
-	'color-border': $alt-scheme__color-border,
+	'border-color': $alt-scheme__border-color,
+	'color-headings': $alt-scheme__color-headings,
+	'color-meta': $alt-scheme__color-meta,
+	'color-link': $alt-scheme__color-link,
 	'color-primary': $alt-scheme__color-primary,
 	'color-secondary': $alt-scheme__color-secondary,
 	'color-info': $alt-scheme__color-info,
 	'color-success': $alt-scheme__color-success,
 	'color-warning': $alt-scheme__color-warning,
 	'color-danger': $alt-scheme__color-danger,
+	'color-link--hover': $alt-scheme__color-link--hover,
 	'color-primary--hover': $alt-scheme__color-primary--hover,
 	'color-secondary--hover': $alt-scheme__color-secondary--hover,
 	'color-info--hover': $alt-scheme__color-info--hover,
@@ -249,19 +350,22 @@ $font-weight--bold: 700;
 $font-weight--black: 800;
 $font-weight--extra-black: 900;
 
-$font-size--0: remcalc(10);
-$font-size--1: remcalc(12);
-$font-size--2: remcalc(14);
-$font-size--3: remcalc(16);
-$font-size--4: remcalc(18);
-$font-size--5: remcalc(21);
-$font-size--6: remcalc(24);
-$font-size--7: remcalc(28);
-$font-size--8: remcalc(32);
-$font-size--9: remcalc(36);
-$font-size--10: remcalc(48);
-$font-size--11: remcalc(60);
-$font-size--12: remcalc(72);
+// used for unitcalc mixins
+$base__unit: 'px';
+
+$font-size--0: unitcalc(10);
+$font-size--1: unitcalc(12);
+$font-size--2: unitcalc(14);
+$font-size--3: unitcalc(16);
+$font-size--4: unitcalc(18);
+$font-size--5: unitcalc(21);
+$font-size--6: unitcalc(24);
+$font-size--7: unitcalc(28);
+$font-size--8: unitcalc(32);
+$font-size--9: unitcalc(36);
+$font-size--10: unitcalc(48);
+$font-size--11: unitcalc(60);
+$font-size--12: unitcalc(72);
 
 $font-size--2xs: $font-size--1;
 $font-size--xs: $font-size--2;
@@ -321,6 +425,3 @@ $root-spacings: (
 	'xl': $spacing--xl,
 	'2xl': $spacing--2xl,
 );
-
-// used for unitcalc mixins
-$base__unit: 'rem';

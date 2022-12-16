@@ -1,4 +1,4 @@
-import emitEvent from './events.js';
+import emitEvent from './helpers/events.js';
 
 function Expander (toggleEl, options = {}) {
 	let targetId = toggleEl.getAttribute('data-expand');
