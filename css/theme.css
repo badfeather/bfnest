@@ -215,6 +215,101 @@
   --select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='%23fff' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e");
 }
 
+.icon--youtube, .icon--vimeo, .icon--twitter, .icon--pinterest, .icon--menu, .icon--mail, .icon--linkedin, .icon--launch, .icon--instagram, .icon--file_download, .icon--facebook, .icon--expand_more, .icon--expand_less, .icon--close, .icon--chevron_right, .icon--chevron_left, .icon--arrow_forward_ios, .icon--arrow_drop_up, .icon--arrow_drop_down, .icon--arrow_back_ios, .icon--add {
+  display: inline-block;
+  vertical-align: middle;
+  mask-image: url(../img/icon-sprite.svg);
+  mask-size: 100% auto;
+  width: 1em;
+  height: 1em;
+  mask-repeat: no-repeat;
+  background-color: currentColor;
+}
+
+.icon--add {
+  mask-position: 0 0;
+}
+
+.icon--arrow_back_ios {
+  mask-position: 0 -1em;
+}
+
+.icon--arrow_drop_down {
+  mask-position: 0 -2em;
+}
+
+.icon--arrow_drop_up {
+  mask-position: 0 -3em;
+}
+
+.icon--arrow_forward_ios {
+  mask-position: 0 -4em;
+}
+
+.icon--chevron_left {
+  mask-position: 0 -5em;
+}
+
+.icon--chevron_right {
+  mask-position: 0 -6em;
+}
+
+.icon--close {
+  mask-position: 0 -7em;
+}
+
+.icon--expand_less {
+  mask-position: 0 -8em;
+}
+
+.icon--expand_more {
+  mask-position: 0 -9em;
+}
+
+.icon--facebook {
+  mask-position: 0 -10em;
+}
+
+.icon--file_download {
+  mask-position: 0 -11em;
+}
+
+.icon--instagram {
+  mask-position: 0 -12em;
+}
+
+.icon--launch {
+  mask-position: 0 -13em;
+}
+
+.icon--linkedin {
+  mask-position: 0 -14em;
+}
+
+.icon--mail {
+  mask-position: 0 -15em;
+}
+
+.icon--menu {
+  mask-position: 0 -16em;
+}
+
+.icon--pinterest {
+  mask-position: 0 -17em;
+}
+
+.icon--twitter {
+  mask-position: 0 -18em;
+}
+
+.icon--vimeo {
+  mask-position: 0 -19em;
+}
+
+.icon--youtube {
+  mask-position: 0 -20em;
+}
+
 .clearfix:before, body:before, .clearfix:after, body:after {
   content: " ";
   display: table;

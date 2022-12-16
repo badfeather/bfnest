@@ -1,10 +1,94 @@
-// not ready for prime time
-// ---------------------
-// @each $key, $value in $icons {
-// 	%icon-#{$key} {
-// 		mask-image: #{$value};
-// 		mask-position: center;
-// 		mask-size: contain;
-// 		mask-repeat: no-repeat;
-// 	}
-// }
+%icon {
+	display: inline-block;
+	vertical-align: middle;
+	mask-image: url(../img/icon-sprite.svg);
+	mask-size: 100% auto;
+	width: 1em;
+	height: 1em;
+	mask-repeat: no-repeat;
+	background-color: currentColor;
+}
+.icon--add {
+	@extend %icon;
+	mask-position: 0 0;
+}
+.icon--arrow_back_ios {
+	@extend %icon;
+	mask-position: 0 -1em;
+}
+.icon--arrow_drop_down {
+	@extend %icon;
+	mask-position: 0 -2em;
+}
+.icon--arrow_drop_up {
+	@extend %icon;
+	mask-position: 0 -3em;
+}
+.icon--arrow_forward_ios {
+	@extend %icon;
+	mask-position: 0 -4em;
+}
+.icon--chevron_left {
+	@extend %icon;
+	mask-position: 0 -5em;
+}
+.icon--chevron_right {
+	@extend %icon;
+	mask-position: 0 -6em;
+}
+.icon--close {
+	@extend %icon;
+	mask-position: 0 -7em;
+}
+.icon--expand_less {
+	@extend %icon;
+	mask-position: 0 -8em;
+}
+.icon--expand_more {
+	@extend %icon;
+	mask-position: 0 -9em;
+}
+.icon--facebook {
+	@extend %icon;
+	mask-position: 0 -10em;
+}
+.icon--file_download {
+	@extend %icon;
+	mask-position: 0 -11em;
+}
+.icon--instagram {
+	@extend %icon;
+	mask-position: 0 -12em;
+}
+.icon--launch {
+	@extend %icon;
+	mask-position: 0 -13em;
+}
+.icon--linkedin {
+	@extend %icon;
+	mask-position: 0 -14em;
+}
+.icon--mail {
+	@extend %icon;
+	mask-position: 0 -15em;
+}
+.icon--menu {
+	@extend %icon;
+	mask-position: 0 -16em;
+}
+.icon--pinterest {
+	@extend %icon;
+	mask-position: 0 -17em;
+}
+.icon--twitter {
+	@extend %icon;
+	mask-position: 0 -18em;
+}
+.icon--vimeo {
+	@extend %icon;
+	mask-position: 0 -19em;
+}
+.icon--youtube {
+	@extend %icon;
+	mask-position: 0 -20em;
+}

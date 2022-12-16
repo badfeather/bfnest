@@ -1,6 +1,6 @@
 {
 	"name": "bfnest",
-	"version": "7.1.15",
+	"version": "7.1.17",
 	"homepage": "https://github.com/badfeather/bfnest",
 	"author": "Brad Thomason <brad@badfeather.com>",
 	"repository": {
@@ -26,15 +26,19 @@
 		"postcss": "postcss css '!css/**/*.min.css' '!css/**/*.css.map' -u autoprefixer postcss-combine-media-query postcss-sort-media-queries cssnano -d css --ext .min.css --no-map",
 		"prejs": "eslint 'src/js/**/*.js'",
 		"js": "rollup -c rollup.config.mjs",
+		"presprite": "node svg-sprite-config.js",
+		"sprite": "svg-sprite --dest img --css true --css-bust false --css-layout vertical --css-dest '' --css-sprite icon-sprite.svg img/svg-icons/*.svg",
 		"watch:css": "chokidar 'src/sass/**/*.scss' -c 'npm run css'",
 		"watch:js": "chokidar 'src/js/**/*.js' -c 'npm run js'",
+		"watch:sprite": "chokidar 'svg-sprite-config.js' -c 'npm run sprite'",
 		"watch": "run-p watch:*",
-		"build": "run-p css js",
+		"build": "run-p js sprite css",
 		"postbuild": "npm run bump:patch",
 		"postinstall": "npm run build"
 	},
 	"devDependencies": {
 		"@jsdevtools/version-bump-prompt": "^6.1.0",
+		"@material-design-icons/svg": "^0.14.2",
 		"@rollup/plugin-node-resolve": "^15.0.1",
 		"@rollup/plugin-terser": "^0.1.0",
 		"autoprefixer": "^10.3.1",
@@ -42,6 +46,7 @@
 		"concat": "^1.0.3",
 		"cssnano": "^5.0.7",
 		"eslint": "^8.2.0",
+		"fs-extra": "^11.1.0",
 		"hsluv-sass": "^2.0.1",
 		"npm-run-all": "^4.1.5",
 		"postcss": "^8.3.6",
@@ -50,6 +55,8 @@
 		"postcss-sort-media-queries": "^4.1.0",
 		"rollup": "^3.7.4",
 		"sass": "^1.49.7",
+		"simple-icons": "^8.1.0",
+		"svg-sprite": "^2.0.2",
 		"terser": "^5.10.0"
 	}
 }
