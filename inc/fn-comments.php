@@ -52,8 +52,8 @@ function bfnest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 			</div>
 		</article>
 <?php
-	} // endif
-} // bfnest_comment
+	}
+}
 
 /**
  * Customize output of comment form
@@ -79,7 +79,7 @@ function bfnest_comment_form( $args ) {
 
 	$args['comment_field'] = '<p class="comment-form-comment form-group"><label for="comment">' . _x( 'Comment', 'noun', 'bfnest' ) . '</label> <textarea id="comment" class="input" name="comment" rows="8" maxlength="65525" required="required"></textarea></p>';
 
-	$args['class_submit'] = 'submit button';
+	$args['class_submit'] = 'submit btn';
 
     return $args;
 }

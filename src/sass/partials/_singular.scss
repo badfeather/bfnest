@@ -1,8 +1,13 @@
 .singular {
 	.entry-header,
-	.entry-footer {
+	.entry-footer,
+	.entry-comments {
 		max-width: $block__max-width;
 		margin-left: auto;
 		margin-right: auto;
 	}
+}
+
+.entry-comments {
+	margin-top: var(--#{$prefix}spacing--l);
 }
