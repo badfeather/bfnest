@@ -33,13 +33,13 @@ template {
 }
 
 body {
-	font-size: var(--font-size);
-	line-height: var(--line-height);
-	font-family: var(--font-family);
+	font-size: var(--#{$prefix}font-size);
+	line-height: var(--#{$prefix}line-height);
+	font-family: var(--#{$prefix}font-family);
 	font-weight: normal;
 	text-align: left;
-	color: var(--color);
-	background-color: var(--background-color);
+	color: var(--#{$prefix}color);
+	background-color: var(--#{$prefix}background-color);
 	width: 100%;
 	@extend .clearfix;
 	margin: 0;
@@ -58,7 +58,7 @@ form,
 article,
 blockquote,
 dl {
-	margin: 0 0 var(--spacing);
+	margin: 0 0 var(--#{$prefix}spacing);
 }
 
 dfn,
@@ -70,15 +70,15 @@ i {
 
 abbr,
 acronym {
-	text-decoration: underline dotted var(--color);
+	text-decoration: underline dotted var(--#{$prefix}color);
 	cursor: help;
 }
 
 mark,
 ins {
-	background: var(--color-highlight);
+	background: var(--#{$prefix}color-highlight);
 	text-decoration: none;
-	color: var(--color);
+	color: var(--#{$prefix}color);
 }
 
 ul {
@@ -99,28 +99,28 @@ ol {
 
 ul,
 ol {
-	padding: 0 0 0 var(--spacing);
+	padding: 0 0 0 var(--#{$prefix}spacing);
 
 	ul,
 	ol {
-		padding-top: var(--spacing--xs);
+		padding-top: var(--#{$prefix}spacing--xs);
 		margin-bottom: 0;
 	}
 }
 
 li {
-	margin-bottom: var(--spacing--xs);
+	margin-bottom: var(--#{$prefix}spacing--xs);
 }
 
 a {
 	background-color: transparent; // reset
-	color: var(--color-primary);
+	color: $link__color;
 	text-decoration: none;
 	outline: 0;
 
 	&:hover,
 	&:focus {
-		color: var(--color-primary--hover);
+		color: $link--hover__color;
 		text-decoration: underline;
 	}
 
@@ -137,7 +137,7 @@ strong {
 
 dt,
 dd {
-	line-height: var(--line-height);
+	line-height: var(--#{$prefix}line-height);
 }
 
 dt {
@@ -146,14 +146,14 @@ dt {
 
 dd {
 	margin-left: 0; // reset
-	margin-bottom: var(--spacing--xs);
+	margin-bottom: var(--#{$prefix}spacing--xs);
 }
 
 hr {
 	height: 0; // reset
 	overflow: visible; // reset
 	border: 0;
-	border-bottom: 1px solid var(--border-color);
+	border-bottom: 1px solid var(--#{$prefix}border-color);
 }
 
 abbr[title],
@@ -190,13 +190,13 @@ table {
 }
 
 tr:nth-child(odd) {
-	background-color: var(--background-color--alt);
+	background-color: var(--#{$prefix}background-color--alt);
 }
 
 th,
 td {
 	padding: 0.5em;
-	border: 1px solid var(--border-color);
+	border: 1px solid var(--#{$prefix}border-color);
 }
 
 th {
@@ -207,9 +207,9 @@ code,
 kbd,
 pre,
 samp {
-	font-family: var(--font-family--monospace);
-	font-size: var(--font-size--xs);
-	color: var(--color);
+	font-family: var(--#{$prefix}font-family--monospace);
+	font-size: var(--#{$prefix}font-size--s);
+	color: var(--#{$prefix}color);
 }
 
 code,
@@ -219,14 +219,14 @@ kbd {
 }
 
 code {
-	background: var(--background-color--alt);
+	background: var(--#{$prefix}background-color--alt);
 	display: inline-block;
 	word-wrap: break-word;
 }
 
 kbd {
-	color: var(--background-color);
-	background-color: var(--color);
+	color: var(--#{$prefix}background-color);
+	background-color: var(--#{$prefix}color);
 
 	kbd {
 		padding: 0;
@@ -236,7 +236,7 @@ kbd {
 }
 
 pre {
-	background: var(--background-color--alt);
+	background: var(--#{$prefix}background-color--alt);
 	padding: 1em;
 	display: block;
 	max-width: 100%;
@@ -288,49 +288,57 @@ summary {
 // HEADINGS
 // -------------------------
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
+.h5,
 h6,
+.h6,
 .entry-subtitle {
-	font-family: var(--font-family);
+	font-family: var(--#{$prefix}font-family);
 	font-weight: 700;
-	margin: 0 0 var(--spacing--xs);
+	margin: 0 0 var(--#{$prefix}spacing--xs);
+	color: var(--#{$prefix}color);
 
 	a {
-		color: var(--color);
+		color:var(--#{$prefix}color);
+		text-decoration: none;
 
 		&:hover,
 		&:focus {
-			color: var(--color-primary--hover);
+			color: $link--hover__color;
 			text-decoration: none;
 		}
 	}
 }
 
 h1 {
-	font-size: var(--font-size--4xl);
+	font-size: var(--#{$prefix}font-size--4xl);
 }
 
 h2 {
-	font-size: var(--font-size--3xl);
+	font-size: var(--#{$prefix}font-size--3xl);
 }
 
 h3 {
-	font-size: var(--font-size--2xl);
+	font-size: var(--#{$prefix}font-size--2xl);
 }
 
 h4 {
-	font-size: var(--font-size--xl);
+	font-size: var(--#{$prefix}font-size--xl);
 }
 
 h5 {
-	font-size: var(--font-size--l);
+	font-size: var(--#{$prefix}font-size--l);
 }
 
 h6 {
-	font-size: var(--font-size);
+	font-size: var(--#{$prefix}font-size);
 }
 
 // THEME ELEMENTS
@@ -369,8 +377,8 @@ blockquote {
 
 cite {
 	font-style: normal;
-	font-size: var(--font-size);
-	font-weight: var(--font-weight);
+	font-size: var(--#{$prefix}font-size);
+	font-weight: var(--#{$prefix}font-weight);
 
 	&:before {
 		content: '\2014';
@@ -381,13 +389,14 @@ cite {
 // META
 // -------------------------
 .entry-meta {
-	font-size: var(--font-size--s);
-	color: var(--color--alt);
+	font-size: var(--#{$prefix}font-size--s);
+	color: var(--#{$prefix}color--alt);
 }
 
 figcaption,
 .figcaption {
-	font-size: var(--font-size--s);
-	color: var(--color--alt);
+	margin-top: var(--#{$prefix}spacing--xs);
+	font-size: var(--#{$prefix}font-size--s);
+	color: var(--#{$prefix}color--alt);
 	word-break: break-word;
 }

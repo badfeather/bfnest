@@ -4,22 +4,22 @@
 
 	.children {
 		@include list-unstyled;
-		margin-left: var(--spacing);
+		margin-left: var(--#{$prefix}spacing);
 	}
 
 	.comment {
 		margin-bottom: 1em;
-		border-bottom: 1px solid var(--border-color);
+		border-bottom: 1px solid var(--#{$prefix}border-color);
 	}
 
 	.comment .comment {
 		padding-top: 1em;
-		border-top: 1px solid var(--border-color);
+		border-top: 1px solid var(--#{$prefix}border-color);
 		border-bottom: 0;
 	}
 
 	p {
-		margin-bottom: var(--spacing--s);
+		margin-bottom: var(--#{$prefix}spacing--s);
 	}
 }
 
@@ -29,7 +29,7 @@
 }
 
 .comment-header {
-	margin-bottom: var(--spacing--s);
+	margin-bottom: var(--#{$prefix}spacing--s);
 }
 
 // comment-form

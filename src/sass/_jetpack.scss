@@ -1,6 +1,6 @@
 // infinite scroll
 #infinite-handle {
-	margin-bottom: $spacing--base;
+	margin-bottom: $spacing;
 	text-align: center;
 
 	span {
@@ -36,7 +36,7 @@
 	display: block;
 	height: 28px;
 	text-indent: -9999px;
-	margin-bottom: $spacing--base;
+	margin-bottom: $spacing;
 }
 
 .spinner {

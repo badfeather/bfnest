@@ -989,7 +989,7 @@ let material = [
 	// 'insert_chart.svg',
 	// 'insert_chart_outlined.svg',
 	// 'insert_comment.svg',
-	// 'insert_drive_file.svg',
+	'insert_drive_file.svg',
 	// 'insert_emoticon.svg',
 	// 'insert_invitation.svg',
 	// 'insert_link.svg',

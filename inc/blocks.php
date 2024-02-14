@@ -106,6 +106,10 @@ remove_action( 'in_admin_header', 'wp_global_styles_render_svg_filters' );
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 
+// To test which global styles are being set on a page/post, use the following on a single template
+// bfnest_pretty_print( wp_get_global_settings() );
+// bfnest_pretty_print( wp_get_global_styles() );
+
 /**
  * Add block categories
  */

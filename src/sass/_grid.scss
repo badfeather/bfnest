@@ -80,9 +80,9 @@
 
 .grid-test {
 	.box {
-		background-color: var(--background-color--alt);
+		background-color: var(--#{$prefix}background-color--alt);
 		padding: 1em;
-		margin-bottom: $grid__gutter-width;
+		margin-bottom: $grid-gutter-width;
 	}
 }
 

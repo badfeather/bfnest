@@ -1,4 +1,4 @@
-<div class="doc-content entries cards row">
+<div id="doc-content" class="doc-content entries cards row">
 	<?php
 	while ( have_posts() ) {
 		the_post();

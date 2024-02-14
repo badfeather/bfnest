@@ -1,5 +1,5 @@
 .site-nav__toggle {
-	margin-bottom: var(--spacing--s);
+	margin-bottom: var(--#{$prefix}spacing--s);
 
 	.no-js & {
 		display: none;
@@ -33,10 +33,10 @@
 
 .site-title {
 	font-size: 1em;
-	margin-bottom: var(--spacing--s);
+	margin-bottom: var(--#{$prefix}spacing--s);
 }
 
 .site-description {
-	margin-bottom:var(--spacing--s);
+	margin-bottom:var(--#{$prefix}spacing--s);
 }
 

@@ -8,7 +8,7 @@ ul.products {
 	.product {
 		// @include col;
 		position: relative;
-		margin-bottom: var(--spacing);
+		margin-bottom: var(--#{$prefix}spacing);
 
 		.woocommerce-loop-product__title {
 			font-size: 1rem;

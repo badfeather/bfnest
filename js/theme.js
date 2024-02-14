@@ -448,8 +448,9 @@
 	/**
 	 * Opens share links in new popup window
 	 */
-	function sharePopups() {
-		const links = document.querySelectorAll('.share-link:not(.share-link-email)');
+	function sharePopups(sel = '') {
+		if (!sel) return;
+		const links = document.querySelectorAll(sel);
 		if (!links.length) return;
 
 		function popup(event) {

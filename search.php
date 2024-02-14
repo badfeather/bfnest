@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
 <?php if ( have_posts() ) { ?>
-	<div class="site-content doc doc--archive doc--search">
-		<main id="content" class="doc-main">
-			<header class="doc-header">
+	<div id="site-content" class="site-content doc doc--archive doc--search">
+		<main id="doc-main" class="doc-main">
+			<header id="doc-header"  class="doc-header">
 				<h1 class="doc-title"><?php printf( __( 'Search Results for %s', 'bfnest' ), get_search_query() ); ?></h1>
 			</header>
 

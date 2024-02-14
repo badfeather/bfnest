@@ -36,7 +36,7 @@ select {
 }
 
 option {
-	color: var(--color);
+	color: var(--#{$prefix}color);
 }
 
 button,
@@ -99,8 +99,8 @@ textarea {
 // THEME
 label {
 	display: block;
-	font-size: $font-size--s;
-	margin: 0 0 $spacing--xs;
+	font-size: var(--#{$prefix}font-size--s);
+	margin: 0 0 var(--#{$prefix}spacing--xs);
 
 	input:required ~ &,
 	input.required ~ & {
@@ -109,7 +109,7 @@ label {
 
 	input:invalid ~ &,
 	input.invalid ~ & {
-		color: var(--color-danger);
+		color: var(--#{$prefix}color-danger);
 	}
 }
 
@@ -131,18 +131,18 @@ legend {
 	color: inherit;
 	white-space: normal;
 	display: block;
-	font-size: $font-size--s;
-	color: var(--color--alt);
-	margin: 0 0 var(--spacing--xs);
+	font-size: var(--#{$prefix}font-size--s);
+	color: var(--#{$prefix}color--alt);
+	margin: 0 0 var(--#{$prefix}spacing--xs);
 }
 
 .helper-text {
-	font-size: $font-size--s;
-	color: var(--color--alt);
-	margin: var(--spacing--xs) 0 0 0;
+	font-size: var(--#{$prefix}font-size--s);
+	color: var(--#{$prefix}color--alt);
+	margin: var(--#{$prefix}spacing--xs) 0 0 0;
 
 	input.invalid ~ & {
-		color: var(--color-danger);
+		color: var(--#{$prefix}color-danger);
 	}
 }
 
@@ -154,7 +154,7 @@ textarea {
 // FORM GROUPS
 // -------------------------
 .form-group {
-	margin: 0 0 var(--spacing);
+	margin: 0 0 var(--#{$prefix}spacing);
 }
 
 .form-check {
@@ -184,7 +184,7 @@ textarea {
 		transition: opacity .15s ease-in-out;
 	}
 
-	.form-control {
+	.input {
 		&.invalid {
 			~ .helper-text {
 				display: block;
@@ -205,32 +205,41 @@ textarea {
 .form-row--inline {
 	& > * {
 		@include col--auto;
-		//margin: 0 0 var(--spacing);
+		//margin: 0 0 var(--#{$prefix}spacing);
 	}
 }
 
 // BUTTONS
 // ---------------------------
-.btn,
-button,
-input[type="submit"],
-input[type="button"],
-input[type="reset"],
-a[role="button"] {
-	font-family: var(--font-family--sans-serif);
+.btn {
+	@include cssvars(
+		(
+			btn__font-size: var(--#{$prefix}font-size),
+			btn__color: #{$white},
+			btn__background-color: var(--#{$prefix}color-primary),
+			btn__border-color: var(--#{$prefix}color-primary),
+			btn--hover__color: #{$white},
+			btn--hover__background-color: var(--#{$prefix}color-primary--hover),
+			btn--hover__border-color: var(--#{$prefix}color-primary--hover),
+			btn--focus__box-shadow-color: var(--#{$prefix}color-primary--subtle)
+		)
+	);
+	font-family: var(--#{$prefix}font-family--sans-serif);
+	font-size: var(--#{$prefix}btn__font-size);
+	line-height: var(--#{$prefix}line-height);
 	padding: .5em 1.125em;
-	color: var(--background-color);
+	color: var(--#{$prefix}btn__color);
 	text-align: center;
 	text-decoration: none;
 	vertical-align: middle;
 	display: inline-block;
 	margin-bottom: 0;
-	background-color: var(--color-primary);
-	border: 1px solid var(--color-primary);
-	border-radius: .25em;
+	background-color: var(--#{$prefix}btn__background-color);
+	border: 1px solid var(--#{$prefix}btn__border-color);
+	border-radius: .25rem;
 	white-space: nowrap;
 	outline: none;
-	transition: all 0.15s ease-out;
+	transition: var(--#{$prefix}transition);
 	box-shadow: none;
 
 	&:not(:disabled) {
@@ -239,14 +248,14 @@ a[role="button"] {
 
 	&:hover,
 	&:focus {
-		color: var(--background-color);
+		color: var(--#{$prefix}btn--hover__color);
 		text-decoration: none;
-		background-color: var(--color-primary--hover);
-		border-color: var(--color-primary--hover);
+		background-color: var(--#{$prefix}btn--hover__background-color);
+		border-color: var(--#{$prefix}btn--hover__border-color);
 	}
 
-	&:focus {
-		box-shadow: 0 0 0 4px #cbd6ee; // safari-style focus
+	&:focus-visible {
+		box-shadow: 0 0 0 .25rem var(--#{$prefix}btn--focus__box-shadow-color); // safari-style focus
 	}
 
 	&.disabled,
@@ -257,106 +266,144 @@ a[role="button"] {
 	}
 }
 
+// button,
+// input[type="submit"],
+// input[type="button"],
+// input[type="reset"],
+// a[role="button"] {
+// 	@extend .btn;
+// }
+
 .btn--l {
-	font-size: var(--font-size--l);
+	@include cssvars(
+		(
+			btn__font-size: var(--#{$prefix}font-size--l)
+		)
+	);
 }
 
 .btn--s {
-	font-size: var(--font-size--s);
+	@include cssvars(
+		(
+			btn__font-size: var(--#{$prefix}font-size--s)
+		)
+	);
 }
 
 .btn--xs {
-	font-size: var(--font-size--xs);
+	@include cssvars(
+		(
+			btn__font-size: var(--#{$prefix}font-size--xs)
+		)
+	);
 }
 
 //	Alternate button states
 .btn--secondary {
-	background-color: var(--color-secondary);
-	border-color: var(--color-secondary);
-
-	&:hover,
-	&:focus {
-		background-color: var(--color-secondary--hover);
-		border-color: var(--color-secondary--hover);
-	}
+	@include cssvars(
+		(
+			// btn__color: #{$white},
+			btn__background-color: var(--#{$prefix}color-secondary),
+			btn__border-color: var(--#{$prefix}color-secondary),
+			// btn--hover__color: #{$white},
+			btn--hover__background-color: var(--#{$prefix}color-secondary--hover),
+			btn--hover__border-color: var(--#{$prefix}color-secondary--hover),
+			btn--focus__box-shadow-color: var(--#{$prefix}color-secondary--subtle)
+		)
+	);
 }
 
 .btn--success {
-	background-color: var(--color-success);
-	border-color: var(--color-success);
-
-	&:hover,
-	&:focus {
-		background-color: var(--color-success--hover);
-		border-color: var(--color-success--hover);
-	}
+	@include cssvars(
+		(
+			// btn__color: #{$white},
+			btn__background-color: var(--#{$prefix}color-success),
+			btn__border-color: var(--#{$prefix}color-success),
+			// btn--hover__color: #{$white},
+			btn--hover__background-color: var(--#{$prefix}color-success--hover),
+			btn--hover__border-color: var(--#{$prefix}color-success--hover),
+			btn--focus__box-shadow-color: var(--#{$prefix}color-success--subtle)
+		)
+	);
 }
 
 .btn--warning {
-	background-color: var(--color-warning);
-	border-color: var(--color-warning);
-
-	&:hover,
-	&:focus {
-		background-color: var(--color-warning--hover);
-		border-color: var(--color-warning--hover);
-	}
+	@include cssvars(
+		(
+			// btn__color: #{$white},
+			btn__background-color: var(--#{$prefix}color-warning),
+			btn__border-color: var(--#{$prefix}color-warning),
+			// btn--hover__color: #{$white},
+			btn--hover__background-color: var(--#{$prefix}color-warning--hover),
+			btn--hover__border-color: var(--#{$prefix}color-warning--hover),
+			btn--focus__box-shadow-color: var(--#{$prefix}color-warning--subtle)
+		)
+	);
 }
 
 .btn--info {
-	background-color: var(--color-info);
-	border-color: var(--color-info);
-
-	&:hover,
-	&:focus {
-		background-color: var(--color-info--hover);
-		border-color: var(--color-info--hover);
-	}
+	@include cssvars(
+		(
+			// btn__color: #{$white},
+			btn__background-color: var(--#{$prefix}color-info),
+			btn__border-color: var(--#{$prefix}color-info),
+			// btn--hover__color: #{$white},
+			btn--hover__background-color: var(--#{$prefix}color-info--hover),
+			btn--hover__border-color: var(--#{$prefix}color-info--hover),
+			btn--focus__box-shadow-color: var(--#{$prefix}color-info--subtle)
+		)
+	);
 }
 
 .btn--danger {
-	background-color: var(--color-danger);
-	border-color: var(--color-danger);
-
-	&:hover,
-	&:focus {
-		background-color: var(--color-danger--hover);
-		border-color: var(--color-danger--hover);
-	}
+	@include cssvars(
+		(
+			// btn__color: #{$white},
+			btn__background-color: var(--#{$prefix}color-danger),
+			btn__border-color: var(--#{$prefix}color-danger),
+			// btn--hover__color: #{$white},
+			btn--hover__background-color: var(--#{$prefix}color-danger--hover),
+			btn--hover__border-color: var(--#{$prefix}color-danger--hover),
+			btn--focus__box-shadow-color: var(--#{$prefix}color-danger--subtle)
+		)
+	);
 }
 
 .btn--outline {
-	background-color: transparent;
-	color: var(--color-primary);
-
-	&:hover,
-	&:focus {
-		color: var(--background-color);
-		background-color: var(--color-primary--hover);
-		border-color: var(--color-primary--hover);
-	}
+	@include cssvars(
+		(
+			btn__color: var(--#{$prefix}color-primary),
+			btn__background-color: transparent,
+			btn__border-color: var(--#{$prefix}color-primary),
+			btn--hover__color: #{$white},
+			btn--hover__background-color: var(--#{$prefix}color-primary--hover),
+			btn--hover__border-color: var(--#{$prefix}color-primary--hover)
+		)
+	);
 }
 
 .btn--trans {
-	color: var(--color-primary);
-	background-color: transparent;
-	border-color: transparent;
-
-	&:hover,
-	&:focus {
-		color: var(--color-primary--hover);
-		background-color: transparent;
-		border-color: transparent;
-	}
+	@include cssvars(
+		(
+			btn__color: var(--#{$prefix}color-primary),
+			btn__background-color: transparent,
+			btn__border-color: transparent,
+			btn--hover__color: var(--#{$prefix}color-primary--hover),
+			btn--hover__background-color: transparent,
+			btn--hover__border-color: transparent
+		)
+	);
 }
 
 .btn--link {
 	@include btn--unstyled();
-	color: var(--color-primary);
+	color: $link__color;
+	text-decoration: $link__text-decoration;
 
 	&:hover,
 	&:focus {
-		text-decoration: underline;
+		color: $link--hover__color;
+		text-decoration: $link--hover__text-decoration;
 	}
 }
 
@@ -375,40 +422,29 @@ a[role="button"] {
 
 // FORM CONTROLS
 // ---------------------------
-.form-control,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="time"],
-input[type="week"],
-input[type="month"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-select,
-optgroup {
-	font-family: var(--font-family--sans-serif);
+.input {
+	@include cssvars(
+		(
+			input__font-size: var(--#{$prefix}font-size)
+		)
+	);
+	font-family: var(--#{$prefix}font-family--sans-serif);
+	font-size: var(--#{$prefix}input__font-size);
 	display: block;
 	width: 100%;
 	padding: 0.5em 0.75em;
 	margin: 0;
-	color: var(--color);
-	border: 1px solid var(--border-color);
-	border-radius: 0.25em;
+	color: var(--#{$prefix}color);
+	border: 1px solid var(--#{$prefix}border-color);
+	border-radius: .25rem;
 	outline: none;
-	background-color: var(--background-color);
+	background-color: var(--#{$prefix}background-color);
 	box-shadow: none;
 
 	&:focus {
-		background-color: var(--background-color);
-		border-color: var(--border-color);
-		box-shadow: 0 0 0 4px #cbd6ee;
+		background-color: var(--#{$prefix}background-color);
+		border-color: var(--#{$prefix}border-color);
+		box-shadow: 0 0 0 .25rem var(--#{$prefix}color--subtle);
 	}
 
 	&::-ms-expand {
@@ -418,18 +454,43 @@ optgroup {
 
 	&::placeholder {
 		opacity: 1;
-		color: var(--color--alt);
+		color: var(--#{$prefix}color--alt2);
 	}
 
 	&.invalid,
 	&:invalid {
-		border-color: var(--color-danger);
+		border-color: var(--#{$prefix}color-danger);
+	}
+
+	&.disabled,
+	&:disabled {
+		opacity: 0.5;
 	}
 }
 
+// textarea,
+// input[type="text"],
+// input[type="password"],
+// input[type="datetime"],
+// input[type="datetime-local"],
+// input[type="date"],
+// input[type="time"],
+// input[type="week"],
+// input[type="month"],
+// input[type="number"],
+// input[type="email"],
+// input[type="url"],
+// input[type="search"],
+// input[type="tel"],
+// input[type="color"],
+// select,
+// optgroup {
+// 	@extend .input;
+// }
+
 select {
 	padding-right: 1.5em;
-	background-image: var(--select-icon);
+	background-image: var(--#{$prefix}select-icon);
 	background-repeat: no-repeat;
 	background-position: right .375em top 50%;
 	background-size: 1em auto;
@@ -439,14 +500,14 @@ input[type="search"] {
 	box-sizing: border-box;
 }
 
-.form-control--l {
-	font-size: var(--font-size--l);
+.input--l {
+	font-size: var(--#{$prefix}font-size--l);
 }
 
-.form-control--s {
-	font-size: var(--font-size--s);
+.input--s {
+	font-size: var(--#{$prefix}font-size--s);
 }
 
-.form-control--xs {
-	font-size: var(--font-size--xs);
+.input--xs {
+	font-size: var(--#{$prefix}font-size--xs);
 }

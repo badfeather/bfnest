@@ -1,5 +1,5 @@
 .wp-block-file {
-	margin-bottom: $spacing--base;
+	margin-bottom: $spacing;
 
 	&.aligncenter {
 		text-align: center;
@@ -16,7 +16,7 @@
 }
 
 .wp-block-file * + .wp-block-file__button {
-	margin-left: $form-grid__gutter-width;
+	margin-left: $form-grid-gutter-width;
 }
 
 // .wp-block-file {

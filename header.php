@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="<?php echo esc_url( 'http://gmpg.org/xfn/11' ); ?>">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<?php wp_head(); ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?> data-color-scheme="light">
 	<?php wp_body_open(); ?>
 
 	<div id="page" class="hfeed site container">
-		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bfnest' ); ?></a>
+		<a class="skip-link screen-reader-text" href="#doc-main"><?php esc_html_e( 'Skip to content', 'bfnest' ); ?></a>
 
 		<header id="site-header" class="site-header">
 			<?php

@@ -165,8 +165,8 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
  */
 function bfnest_woocommerce_wrapper_before() {
 ?>
-<div class="site-content doc doc--singular doc--singular-woocommerce">
-	<main id="content" class="doc-main">
+<div id="site-content" class="site-content doc doc--singular doc--singular-woocommerce">
+	<main id="doc-main" class="doc-main">
 <?php
 }
 add_action( 'woocommerce_before_main_content', 'bfnest_woocommerce_wrapper_before' );

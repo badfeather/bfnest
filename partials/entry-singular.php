@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( [ 'entry', 'singular', 'singular--' . get_post_type() ] ); ?>>
-	<header class="entry-header doc-header">
+	<header id="doc-header" class="entry-header doc-header">
 		<?php bfnest_content_flag( 'category' ); ?>
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
 		<?php
@@ -9,17 +9,16 @@
 			bfnest_get_meta_edit_link(),
 		] );
 		?>
-		<?php echo '<h2>Is block theme: ' . wp_is_block_theme() . '</h2>'; ?>
 	</header>
 
-	<div class="doc-content entry-content-wrap">
+	<div id="doc-content" class="doc-content entry-content-wrap">
 		<div class="entry-content blocks is-root-container">
 			<?php the_content(); ?>
 			<?php
-			wp_link_pages( array(
+			wp_link_pages( [
 				'before' => '<div class="page-links">' . __( 'Pages:', 'bfnest' ),
 				'after'	=> '</div>',
-			) );
+			] );
 			?>
 		</div>
 

@@ -340,7 +340,6 @@ function bfnest_get_share_data( $args = [] ) {
  * If you set the twitter handle to your twitter username, it will append the twitter share link with a via tag
  * Uses bfnest_get_share_data()
  */
-
 function bfnest_get_meta_share(
 		$args = [
 			'facebook' => 1,
@@ -380,15 +379,22 @@ function bfnest_get_meta_share(
 		$network_slug = $network['slug'];
 		$network_name = $network['name'];
 		$before_link = $after_link = '';
+		// if ( $add_icons ) {
+		// 	$svg = bfnest_get_social_svg( $network['slug'] );
+		// 	if ( $svg ) {
+		// 		$network_before .= '<span class="share-link-icon" aria-hidden="true">' . $svg . '</span>';
+		// 		if ( $text_replace ) {
+		// 			$network_before .= '<span class="sr-only">';
+		// 			$network_after .= '</span>';
+		// 		}
+		// 	}
+		// }
 		if ( $add_icons ) {
-			$svg = bfnest_get_social_svg( $network['slug'] );
-			if ( $svg ) {
-				$network_before .= '<span class="share-link-icon" aria-hidden="true">' . $svg . '</span>';
-				if ( $text_replace ) {
-					$network_before .= '<span class="sr-only">';
-					$network_after .= '</span>';
-				}
+			if ( $text_replace ) {
+				$network_before .= '<span class="sr-only">';
+				$network_after .= '</span>';
 			}
+			$network_after .= '<span class="icon--' . esc_attr( $network['slug'] ) . '"></span>';
 		}
 
 		$share_array[] = '<a class="share-link share-link--' . $network['slug'] . '" href="' . esc_url( $network['url'] ) . '" title="Share on ' . $network['name'] . '"' . $target . ' rel="noopener noreferrer nofollow">' . $network_before . $network['name'] . $network_after . '</a>';

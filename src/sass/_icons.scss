@@ -56,39 +56,43 @@
 	@extend %icon;
 	mask-position: 0 -11em;
 }
-.icon--instagram {
+.icon--insert_drive_file {
 	@extend %icon;
 	mask-position: 0 -12em;
 }
-.icon--launch {
+.icon--instagram {
 	@extend %icon;
 	mask-position: 0 -13em;
 }
-.icon--linkedin {
+.icon--launch {
 	@extend %icon;
 	mask-position: 0 -14em;
 }
-.icon--mail {
+.icon--linkedin {
 	@extend %icon;
 	mask-position: 0 -15em;
 }
-.icon--menu {
+.icon--mail {
 	@extend %icon;
 	mask-position: 0 -16em;
 }
-.icon--pinterest {
+.icon--menu {
 	@extend %icon;
 	mask-position: 0 -17em;
 }
-.icon--twitter {
+.icon--pinterest {
 	@extend %icon;
 	mask-position: 0 -18em;
 }
-.icon--vimeo {
+.icon--twitter {
 	@extend %icon;
 	mask-position: 0 -19em;
 }
-.icon--youtube {
+.icon--vimeo {
 	@extend %icon;
 	mask-position: 0 -20em;
+}
+.icon--youtube {
+	@extend %icon;
+	mask-position: 0 -21em;
 }

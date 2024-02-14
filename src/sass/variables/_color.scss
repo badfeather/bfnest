@@ -1,0 +1,117 @@
+$black: #000;
+$white: #fff;
+$gray: #808080;
+
+// uniform contrast base colors
+// see: https://www.hsluv.org/
+
+// #747474
+$hsluv-gray: (
+	h: 0,
+	s: 0%,
+	l: 49%
+);
+
+// #ea002b
+$hsluv-red: (
+	h: 10deg,
+	s: 100%,
+	l: 49%
+);
+
+// #a96400
+$hsluv-orange: (
+	h: 40deg,
+	s: 100%,
+	l: 49%
+);
+
+// #887300
+$hsluv-yellow: (
+	h: 70deg,
+	s: 100%,
+	l: 49%
+);
+
+// #687d00
+// yellow-green
+// lime
+$hsluv-charteuse: (
+	h: 100deg,
+	s: 100%,
+	l: 49%
+);
+
+// #008821
+$hsluv-green: (
+	h: 130deg,
+	s: 100%,
+	l: 49%
+);
+
+// #008468
+// green-cyan
+$hsluv-spring: (
+	h: 160deg,
+	s: 100%,
+	l: 49%
+);
+
+// #008280
+$hsluv-cyan: (
+	h: 190deg,
+	s: 100%,
+	l: 49%
+);
+
+// #007f99
+// blue-cyan
+$hsluv-azure: (
+	h: 220deg,
+	s: 100%,
+	l: 49%
+);
+
+// #0077cd
+$hsluv-blue: (
+	h: 250deg,
+	s: 100%,
+	l: 49%
+);
+
+// #a138ff
+// blue-magenta
+$hsluv-violet: (
+	h: 280deg,
+	s: 100%,
+	l: 49%
+);
+
+// #d000ca
+$hsluv-magenta: (
+	h: 310deg,
+	s: 100%,
+	l: 49%
+);
+
+// #dd0094
+// red-magenta
+$hsluv-rose: (
+	h: 340deg,
+	s: 100%,
+	l: 49%
+);
+
+$grays: hsluv-shades($hsluv-gray);
+$reds: hsluv-shades($hsluv-red);
+$oranges: hsluv-shades($hsluv-orange);
+$yellows: hsluv-shades($hsluv-yellow);
+$charteuses: hsluv-shades($hsluv-charteuse);
+$greens: hsluv-shades($hsluv-green);
+$springs: hsluv-shades($hsluv-spring);
+$cyans: hsluv-shades($hsluv-cyan);
+$azures: hsluv-shades($hsluv-azure);
+$blues: hsluv-shades($hsluv-blue);
+$violets: hsluv-shades($hsluv-violet);
+$magentas: hsluv-shades($hsluv-magenta);
+$roses: hsluv-shades($hsluv-rose);

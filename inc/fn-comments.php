@@ -70,14 +70,14 @@ function bfnest_comment_form( $args ) {
 
 	$args['fields'] = [
 		'author' => '<p class="comment-form-author form-group">' . '<label for="author">' . __( 'Name', 'bfnest' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-		'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" maxlength="245"' . $html_req . ' /></p>',
+		'<input id="author" class="input" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" maxlength="245"' . $html_req . ' /></p>',
 		'email' => '<p class="comment-form-email form-group"><label for="email">' . __( 'Email', 'bfnest' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-		'<input id="email" class="form-control" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" maxlength="100" aria-describedby="email-notes"' . $html_req . ' /></p>',
+		'<input id="email" class="input" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" maxlength="100" aria-describedby="email-notes"' . $html_req . ' /></p>',
 		'url' => '<p class="comment-form-url form-group"><label for="url">' . __( 'Website', 'bfnest' ) . '</label> ' .
-		'<input id="url" class="form-control" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" maxlength="200" /></p>',
+		'<input id="url" class="input" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" maxlength="200" /></p>',
 	];
 
-	$args['comment_field'] = '<p class="comment-form-comment form-group"><label for="comment">' . _x( 'Comment', 'noun', 'bfnest' ) . '</label> <textarea id="comment" class="form-control" name="comment" rows="8" maxlength="65525" required="required"></textarea></p>';
+	$args['comment_field'] = '<p class="comment-form-comment form-group"><label for="comment">' . _x( 'Comment', 'noun', 'bfnest' ) . '</label> <textarea id="comment" class="input" name="comment" rows="8" maxlength="65525" required="required"></textarea></p>';
 
 	$args['class_submit'] = 'submit button';
 

@@ -148,3 +148,11 @@
 	column-count: $column-count;
 	column-gap: $column-gap;
 }
+
+// output css variables from map with prefix
+// see https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88
+@mixin cssvars($vars, $prefix: $prefix) {
+	@each $key, $value in $vars {
+		--#{$prefix}#{$key}: #{$value};
+	}
+}

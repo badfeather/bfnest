@@ -54,12 +54,12 @@ img,
 
 	&.alignleft {
 		margin-left: 0;
-		margin-right: $spacing--base;
+		margin-right: $spacing;
 		clear: left;
 	}
 
 	&.alignright {
-		margin-left: $spacing--base;
+		margin-left: $spacing;
 		margin-right: 0;
 		clear: right;
 	}

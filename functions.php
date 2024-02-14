@@ -20,9 +20,14 @@ function bfnest_get_theme_requires() {
 		'/inc/svg-icons.php',
 		'/inc/fn-custom.php',
 	];
-
-	if ( class_exists( 'woocommerce' ) ) {
+	if ( class_exists( 'WooCommerce' ) ) {
 		$requires[] = '/inc/woocommerce.php';
+	}
+	if ( defined( 'JETPACK__VERSION' ) ) {
+		$requires[] = '/inc/jetpack.php';
+	}
+	if ( class_exists( 'WPSEO_Options' ) ) {
+		$requires[] = '/inc/yoast.php';
 	}
 	return $requires;
 }

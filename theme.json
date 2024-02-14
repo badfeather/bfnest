@@ -40,6 +40,9 @@
 			"textTransform": false,
 			"fontFamilies": []
 		},
+		"layout": {
+			"allowEditing": false
+		},
 		"blocks": {
 			"core/button": {
 				"border": {

@@ -12,7 +12,7 @@
 
 	.wp-block-button {
 		width: auto;
-		margin-bottom: var(--spacing--s);
+		margin-bottom: var(--#{$prefix}spacing--s);
 	}
 
 	.has-custom-width {

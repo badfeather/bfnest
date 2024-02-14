@@ -55,10 +55,10 @@
 	}
 
 	&.in-stock {
-		color: var(--color-success);
+		color: var(--#{$prefix}color-success);
 	}
 
 	&.out-of-stock {
-		color: var(--color-danger);
+		color: var(--#{$prefix}color-danger);
 	}
 }

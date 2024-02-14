@@ -17,6 +17,7 @@ function bfnest_get_theme_version() {
 /**
  * Enqueue scripts and styles
  */
+add_action( 'wp_enqueue_scripts', 'bfnest_scripts' );
 function bfnest_scripts() {
 	$template_directory = get_template_directory_uri();
 
@@ -24,41 +25,47 @@ function bfnest_scripts() {
 	$version = bfnest_get_theme_version();
 	$suffix = bfnest_is_debug() ? '' : '.min';
 
-	// move jQuery to footer
-	wp_script_add_data( 'jquery-core', 'group', 1 );
-    wp_script_add_data( 'jquery-migrate', 'group', 1 );
-	wp_script_add_data( 'jquery', 'group', 1 );
-
 	// Enqueue styles.
 	wp_enqueue_style( 'bfnest-style', $template_directory . '/css/theme' . $suffix . '.css', [], $version );
 
 	// Enqueue scripts.
-	// if using jQuery, add 'jquery' to dependencies array
 	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/js/theme' . $suffix . '.js', [], $version, true );
 
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+	// }
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-
+	// move jQuery to footer
+	wp_script_add_data( 'jquery-core', 'group', 1 );
+    wp_script_add_data( 'jquery-migrate', 'group', 1 );
+	wp_script_add_data( 'jquery', 'group', 1 );
 }
-add_action( 'wp_enqueue_scripts', 'bfnest_scripts' );
 
 /**
- * Head scripts - script and link tags to add to head
+ * Remove jQuery migrate
  */
-function bfnest_head_scripts() {
-	$template_directory = get_template_directory_uri();
+add_action( 'wp_default_scripts', 'bfnest_remove_jquery_migrate' );
+function bfnest_remove_jquery_migrate( $scripts ) {
+    if ( !is_admin() && isset( $scripts->registered['jquery'] ) ) {
+        $script = $scripts->registered['jquery'];
 
+        if ( $script->deps ) {
+            $script->deps = array_diff( $script->deps, [ 'jquery-migrate' ] );
+        }
+    }
+}
+
+/**
+ * Add preload links for webfonts
+ */
+add_action( 'wp_head', 'bfnest_add_preload_links_for_fonts' );
+function bfnest_add_preload_links_for_fonts() {
+	// use font filename, minus directory path and filetype extension, e.g. 'comic-sans'
 	$fonts = [];
 	foreach ( $fonts as $font ) {
 		echo '<link rel="preload" as="font" href="' . esc_url( $template_directory . '/fonts/' . $font . '.woff2' ) . '" type="font/woff2" crossorigin="anonymous">' . "\n";
 	}
-	// paste <script> tags within function
-?>
-<?php
 }
-add_action( 'wp_head', 'bfnest_head_scripts' );
 
 /**
  * Admin head scripts
@@ -82,7 +89,6 @@ function bfnest_footer_scripts() {
 	$template_directory = get_template_directory_uri();
 	// paste <script> tags within function
 ?>
-
 <?php
 }
 add_action( 'wp_footer', 'bfnest_footer_scripts' );
@@ -90,26 +96,61 @@ add_action( 'wp_footer', 'bfnest_footer_scripts' );
 /**
  * Scripts to include immediately after opening body tag
  */
-function bfnest_body_open_scripts() {
+add_action( 'wp_head', 'bfnest_nojs_script' );
+function bfnest_nojs_script() {
 ?>
 <script>document.body.classList.remove('no-js');</script>
 <?php
 }
-add_action( 'wp_body_open', 'bfnest_body_open_scripts' );
 
 /**
- * Remove jQuery migrate and move jQuery to footer
+ * Add defer attributes to scripts
  */
-function bfnest_remove_jquery_migrate( $scripts ) {
-    if ( !is_admin() && isset( $scripts->registered['jquery'] ) ) {
-        $script = $scripts->registered['jquery'];
-
-        if ( $script->deps ) {
-            $script->deps = array_diff( $script->deps, [ 'jquery-migrate' ] );
-        }
-    }
+add_filter( 'script_loader_tag', 'bfnest_add_defer_atts_to_scripts', 10, 2 );
+function bfnest_add_defer_atts_to_scripts( $tag, $handle ) {
+	if ( is_user_logged_in() ) return $tag;
+	$defers = [
+		'bfnest-scripts',
+		'jquery-core',
+	];
+	if ( ! in_array( $handle, $defers ) || strpos( $tag, 'defer' ) ) return $tag;
+	return str_replace( ' src', ' defer src', $tag );
 }
-add_action( 'wp_default_scripts', 'bfnest_remove_jquery_migrate' );
+
+/**
+ * Add async attributes to scripts
+ */
+add_filter( 'script_loader_tag', 'bfnest_add_async_atts_to_scripts', 10, 2 );
+function bfnest_add_async_atts_to_scripts( $tag, $handle ) {
+	if ( is_user_logged_in() ) return $tag;
+	$asyncs = [];
+	if ( ! in_array( $handle, $asyncs ) || strpos( $tag, 'async' ) ) return $tag;
+	return str_replace( ' src', ' async src', $tag );
+}
+
+/**
+ * Add preload attributes to stylesheets
+ */
+add_filter( 'style_loader_tag', 'bfnest_add_preload_link_to_styles', 10, 3 );
+function bfnest_add_preload_link_to_styles( $html, $handle, $href ) {
+    if ( is_user_logged_in() ) return $html;
+	$handles = [
+		'bfnest-style'
+	];
+	if ( ! in_array( $handle, $handles ) ) return $html;
+	return '<link rel="preload" href="' . $href . '" as="style" />' . "\n"  . $html;
+}
+
+/**
+ * Add preconnect links for typekit
+ */
+// add_filter( 'style_loader_tag', 'bfnest_add_preconnect_links_for_typekit', 10, 2 );
+function bfnest_add_preconnect_links_for_typekit( $html, $handle ) {
+	if ( 'bfnest-typekit' !== $handle ) return $html;
+	$pre = '<link rel="preconnect" href="https://use.typekit.net" crossorigin />' . "\n";
+	$pre .= '<link rel="preconnect" href="https://p.typekit.net" crossorigin />' . "\n";
+	return $pre . $html;
+}
 
 /**
  * remove Emoji css and js calls from head

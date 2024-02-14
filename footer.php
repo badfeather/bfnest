@@ -17,19 +17,19 @@ $social_nav = wp_nav_menu( [
 	'link_after' => '</span>'
 ] );
 ?>
-		<footer class="site-footer" role="contentinfo">
+		<footer id="site-footer" class="site-footer" role="contentinfo">
 			<?php if ( $secondary_nav ) { ?>
 				<nav id="secondary-navigation" class="nav nav-secondary" role="navigation" aria-label="<?php _e( 'Secondary', 'bfnest' ); ?>">
 					<?php echo $secondary_nav; ?>
 				</nav>
-			<?php } // endif ?>
+			<?php } ?>
 
 			<?php if ( $social_nav ) { ?>
 				<nav id="social-navigation" class="nav nav-social" role="navigation" aria-label="<?php _e( 'Social', 'bfnest' ); ?>">
 					<h2 class="nav-title">Follow <?php echo get_bloginfo( 'name' ); ?></h2>
 					<?php echo $social_nav; ?>
 				</nav>
-			<?php } //endif ?>
+			<?php } ?>
 
 			<div class="search-area">
 				<?php get_search_form(); ?>

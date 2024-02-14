@@ -87,24 +87,11 @@ function bfnest_rewrite_flush() {
 add_action( 'after_switch_theme', 'bfnest_rewrite_flush' );
 
 /**
- * Set default terms for custom post types on save
+ * Modify main queries
  */
-function bfnest_set_default_object_terms( $post_id, $post ) {
-	if ( 'publish' === $post->post_status ) {
-		// change `tax` to custom taxonomy key and term slug to whatever you want it to be
-		// add additional taxonomies to array as you see fit
-		$defaults = [
-			'tax' => [ 'uncategorized' ],
-			//'another-tax' => [ 'term-1', 'term-2' ],
-		];
-		$taxonomies = get_object_taxonomies( $post->post_type );
-		foreach ( (array) $taxonomies as $taxonomy ) {
-			$terms = wp_get_post_terms( $post_id, $taxonomy );
-			if ( empty( $terms ) && array_key_exists( $taxonomy, $defaults ) ) {
-				wp_set_object_terms( $post_id, $defaults[$taxonomy], $taxonomy );
-			}
-		}
+function bfnest_pre_get_posts( $query ) {
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return;
 	}
 }
-// add_action( 'save_post', 'bfnest_set_default_object_terms', 100, 2 );
-
+// add_action( 'pre_get_posts', 'bfnest_pre_get_posts', 1 );

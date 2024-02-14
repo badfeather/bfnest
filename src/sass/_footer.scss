@@ -1,5 +1,5 @@
 .site-copyright,
 .site-credits {
-	font-size: var(--font-size--s);
-	color: var(--color--alt);
+	font-size: var(--#{$prefix}font-size--s);
+	color: var(--#{$prefix}color--alt);
 }

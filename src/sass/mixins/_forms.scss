@@ -39,21 +39,21 @@
 
 // FORM CONTROLS
 // -------------------------
-@mixin form-control-variant(
-	$color: $form-control__color,
-	$background-color: $form-control__background-color,
-	$border-color: $form-control__border-color,
-	$background-color--focus: $form-control__background-color--focus,
-	$border-color--focus: $form-control__border-color--focus,
-	$box-shadow--focus: $form-control__box-shadow--focus,
-	$color--placeholder: $form-control__color--placeholder,
-	$default-color: $form-control__color,
-	$default-background-color: $form-control__background-color,
-	$default-border-color: $form-control__border-color,
-	$default-background-color--focus: $form-control__background-color--focus,
-	$default-border-color--focus: $form-control__border-color--focus,
-	$default-box-shadow--focus: $form-control__box-shadow--focus,
-	$default-color--placeholder: $form-control__color--placeholder
+@mixin input-variant(
+	$color: $input__color,
+	$background-color: $input__background-color,
+	$border-color: $input__border-color,
+	$background-color--focus: $input__background-color--focus,
+	$border-color--focus: $input__border-color--focus,
+	$box-shadow--focus: $input__box-shadow--focus,
+	$color--placeholder: $input__color--placeholder,
+	$default-color: $input__color,
+	$default-background-color: $input__background-color,
+	$default-border-color: $input__border-color,
+	$default-background-color--focus: $input__background-color--focus,
+	$default-border-color--focus: $input__border-color--focus,
+	$default-box-shadow--focus: $input__box-shadow--focus,
+	$default-color--placeholder: $input__color--placeholder
 ) {
 	@include color-change($color, $default-color);
 	@include background-color-change($background-color, $default-background-color);
@@ -74,17 +74,17 @@
 	}
 }
 
-@mixin form-control--l {
-	@include font-size-change($form-control__font-size--l, $form-control__font-size);
-	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--l, $value-right: $form-control__padding-x--l);
+@mixin input--l {
+	@include font-size-change($input__font-size--l, $input__font-size);
+	@include padding-change($default-top: $input__padding-y, $default-right: $input__padding-x, $value-top: $input__padding-y--l, $value-right: $input__padding-x--l);
 }
 
-@mixin form-control--s {
-	@include font-size-change($form-control__font-size--s, $form-control__font-size);
-	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--s, $value-right: $form-control__padding-x--s);
+@mixin input--s {
+	@include font-size-change($input__font-size--s, $input__font-size);
+	@include padding-change($default-top: $input__padding-y, $default-right: $input__padding-x, $value-top: $input__padding-y--s, $value-right: $input__padding-x--s);
 }
 
-@mixin form-control--xs {
-	@include font-size-change($form-control__font-size--xs, $form-control__font-size);
-	@include padding-change($default-top: $form-control__padding-y, $default-right: $form-control__padding-x, $value-top: $form-control__padding-y--xs, $value-right: $form-control__padding-x--xs);
+@mixin input--xs {
+	@include font-size-change($input__font-size--xs, $input__font-size);
+	@include padding-change($default-top: $input__padding-y, $default-right: $input__padding-x, $value-top: $input__padding-y--xs, $value-right: $input__padding-x--xs);
 }

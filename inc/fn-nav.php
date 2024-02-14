@@ -67,47 +67,100 @@ function bfnest_postnav_archive( $newer_title = null, $older_title = null ) {
 }
 
 /**
- * WP_nav_menu separate submenu output.
- *
- * Optional $args contents:
- *
- * string theme_location - The menu that is desired.  Accepts (matching in order) id, slug, name. Defaults to blank.
- * string xpath - Optional. xPath syntax.
- * string before - Optional. Text before the menu tree.
- * string after - Optional. Text after the menu tree.
- * bool echo - Optional, default is TRUE. Whether to echo the menu or return it.
- *
- * @param array $args Arguments
- * @return String If $echo value is set to FALSE.
- * https://www.isitwp.com/wp_nav_menu-separate-submenu-output/
+ * Add button to toggle color scheme
  */
-function bfnest_the_submenu( $args = [] ) {
-	$defaults = [
-		'theme_location' => '',
-		'xpath' => "./li[contains(@class,'current-menu-item') or contains(@class,'current-menu-ancestor')]/ul",
-		'before' => '',
-		'after' => '',
-		'echo' => true
-	];
-	$args = wp_parse_args( $args, $defaults );
-	$args = (object) $args;
-	$output = [];
-	$menu_tree = wp_nav_menu( [ 'theme_location' => $args->theme_location, 'container' => '', 'echo' => false ] );
-	$menu_tree_XML = new SimpleXMLElement( $menu_tree );
-	$path = $menu_tree_XML->xpath( $args->xpath );
-	$output[] = $args->before;
-	if ( ! empty( $path ) ) {
-		$output[] = $path[0]->asXML();
-	}
-	$output[] = $args->after;
-	$html = join( '', $output );
-	if ( $args->echo ) {
-		echo $html;
-		return;
-	}
-	return $html;
+function bfnest_color_scheme_button() {
+	echo '<button class="btn btn--color-scheme" data-toggle-color-scheme>Toggle color scheme</button>';
 }
 
-function bfnest_color_scheme_button() {
-	echo '<button class="button button--color-scheme" data-toggle-color-scheme>Toggle color scheme</button>';
+/**
+ * Sets $menu_item->current_item_ancestor to true for post type archive menu item if viewing single post of that type
+ * Also adds 'current-menu-ancestor' class to $menu_item->classes
+ */
+function bfnest_wp_nav_menu_objects_current_post_type_archive_for_single( $sorted_menu_items, $args ) {
+	if ( ! is_single() ) return $sorted_menu_items;
+	$post_type = get_post_type();
+	// find a post type archive menu item matching the post's post type
+	foreach ( $sorted_menu_items as $menu_item ) {
+		if ( ! isset( $menu_item->type ) || $menu_item->type !== 'post_type_archive' ) continue;
+		if ( isset( $menu_item->object ) && $menu_item->object === $post_type ) {
+			$menu_item->current_item_ancestor = 1;
+			$root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
+			// add 'current-menu-ancestor' class to menu item
+			if ( ! in_array( 'current-menu-ancestor', $menu_item->classes ) ) $menu_item->classes[] = 'current-menu-ancestor';
+			break;
+		}
+	}
+	return $sorted_menu_items;
 }
+add_filter( 'wp_nav_menu_objects', 'bfnest_wp_nav_menu_objects_current_post_type_archive_for_single', 10, 2 );
+
+/**
+ * Add Sub Menu hook to wp_nav_menu to display sub menus on sub pages
+ * @see https://gist.github.com/levymetal/5547605#file-functions-php
+ * In addition to standard wp_nav_menu $args (@see https://developer.wordpress.org/reference/functions/wp_nav_menu/),
+ * the following args are added:
+ * 	@type bool $sub_menu Whether to display a sub_menu
+ *	@type bool $show_parent Whether to display the parent list item when outputting submenus
+ *
+ * Example usage:
+ *	wp_nav_menu( [
+ *		'theme_location' => 'primary',
+ *		'sub_menu' => true,
+ *		'show_parent' => true,
+ *		'fallback_cb' => false,
+ *	] );
+ */
+// filter_hook function to react on sub_menu flag
+function bfnest_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
+	if ( empty( $args->sub_menu ) ) return $sorted_menu_items;
+	$root_id = 0;
+
+	// bfnest_pretty_print( $sorted_menu_items );
+	// find the current menu item
+	foreach ( $sorted_menu_items as $menu_item ) {
+		// if ( ! empty( $menu_item->current ) ) {
+		// checking also for menu_item->current_item_ancestor
+		// needed for outputting sub menus on single posts
+		// requires 'bfnest_wp_nav_menu_objects_current_post_type_archive_for_single' hook
+		if ( ! empty( $menu_item->current ) || ! empty( $menu_item->current_item_ancestor ) ) {
+			// set the root id based on whether the current menu item has a parent or not
+			$root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
+			break;
+		}
+	}
+
+	// find the top level parent
+	if ( ! isset( $args->direct_parent ) ) {
+		$prev_root_id = $root_id;
+		while ( $prev_root_id != 0 ) {
+			foreach ( $sorted_menu_items as $menu_item ) {
+				if ( $menu_item->ID == $prev_root_id ) {
+					$prev_root_id = $menu_item->menu_item_parent;
+					// don't set the root_id to 0 if we've reached the top of the menu
+					if ( $prev_root_id != 0 ) $root_id = $menu_item->menu_item_parent;
+					break;
+				}
+			}
+		}
+	}
+
+	$menu_item_parents = [];
+	foreach ( $sorted_menu_items as $key => $item ) {
+		// init menu_item_parents
+		if ( $item->ID == $root_id ) $menu_item_parents[] = $item->ID;
+
+		if ( in_array( $item->menu_item_parent, $menu_item_parents ) ) {
+			// part of sub-tree: keep!
+			$menu_item_parents[] = $item->ID;
+		} else if ( ! ( isset( $args->show_parent ) && in_array( $item->ID, $menu_item_parents ) ) ) {
+			// not part of sub-tree: away with it!
+			unset( $sorted_menu_items[$key] );
+		}
+	}
+
+	return $sorted_menu_items;
+}
+add_filter( 'wp_nav_menu_objects', 'bfnest_wp_nav_menu_objects_sub_menu', 10, 2 );
+
+

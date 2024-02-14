@@ -32,7 +32,7 @@
 			'core/columns',
 			// 'core/cover',
 			'core/embed',
-			// 'core/file',
+			'core/file',
 			'core/group',
 			'core/html',
 			// 'core/latest-comments',

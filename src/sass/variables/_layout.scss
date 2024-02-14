@@ -1,9 +1,11 @@
+$spacing: $font-size * $line-height;
+
 // component margins
-$doc__margin-bottom: var(--spacing);
-$entry__margin-bottom: var(--spacing--l);
-$widget__margin-bottom: var(--spacing--l);
-$block__margin-bottom: var(--spacing--l);
-$figure__margin-bottom: var(--spacing--l);
+$doc__margin-bottom: var(--#{$prefix}spacing);
+$entry__margin-bottom: var(--#{$prefix}spacing--l);
+$widget__margin-bottom: var(--#{$prefix}spacing--l);
+$block__margin-bottom: var(--#{$prefix}spacing--l);
+$figure__margin-bottom: var(--#{$prefix}spacing--l);
 
 $doc__margin: 0 0 $doc__margin-bottom;
 $entry__margin: 0 0 $entry__margin-bottom;
@@ -11,7 +13,7 @@ $widget__margin: 0 0 $widget__margin-bottom;
 $block__margin: 0 0 $block__margin-bottom;
 $figure__margin: 0 0 $figure__margin-bottom;
 
-$margin--base: 0 0 var(--spacing);
+$margin--base: 0 0 var(--#{$prefix}spacing);
 
 // breakpoints
 $bp-xs: 480px;
@@ -40,6 +42,6 @@ $alignwide__max-width: math.div($alignwide__cols, 12) * 100%;
 $alignfull__max-width: math.div($alignfull__cols, 12) * 100%;
 
 $alignleft__margin-left: 0;
-$alignleft__margin-right: $spacing--base;
-$alignright__margin-left: $spacing--base;
+$alignleft__margin-right:  var(--#{$prefix}spacing);
+$alignright__margin-left:  var(--#{$prefix}spacing);
 $alignright__margin-right: 0;

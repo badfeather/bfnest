@@ -1,12 +1,19 @@
 // GRID SYSTEM
 // ----------------------------
-@mixin guttered($gutter: $grid__gutter-width) {
+@mixin guttered($gutter: $grid-gutter-width) {
 	padding-left: $gutter * .5;
 	padding-right: $gutter * .5;
 }
 
 // Centered container element
-@mixin container($gutter: $grid__gutter-width, $width: $grid__width) {
+// @mixin container($gutter: $grid-gutter-width, $width: $grid-width) {
+// 	@include guttered($gutter);
+// 	max-width: $width;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// }
+
+@mixin container($gutter: $container-gutter-width, $width: $container-width) {
 	@include guttered($gutter);
 	max-width: $width;
 	margin-left: auto;
@@ -21,19 +28,19 @@
 	margin-right: 0;
 }
 
-@mixin row-gutters($gutter: $grid__gutter-width) {
+@mixin row-gutters($gutter: $grid-gutter-width) {
 	margin-left: $gutter * -.5;
 	margin-right: $gutter * -.5;
 }
 
-@mixin col($gutter: $grid__gutter-width) {
+@mixin col($gutter: $grid-gutter-width) {
 	position: relative;
 	width: 100%;
 	max-width: 100%;
 	@include guttered($gutter);
 }
 
-@mixin row($gutter: $grid__gutter-width) {
+@mixin row($gutter: $grid-gutter-width) {
 	display: flex;
 	flex-wrap: wrap;
 	@include row-gutters($gutter);
@@ -44,11 +51,11 @@
 }
 
 @mixin form-row {
-	@include row($form-grid__gutter-width);
+	@include row($form-grid-gutter-width);
 }
 
 @mixin gallery-row {
-	@include row($gallery-grid__gutter-width);
+	@include row($gallery-grid-gutter-width);
 }
 
 @mixin row--centered {
@@ -56,17 +63,21 @@
 	justify-content: center;
 }
 
-@mixin cols($n, $columns: $grid__columns) {
+@mixin cols-width($n, $columns: $grid-columns) {
+	width: math.div($n, $columns) * 100%;
+}
+
+@mixin cols($n, $columns: $grid-columns) {
 	$calc: math.div($n, $columns) * 100%;
 	max-width: $calc;
 	flex: 0 0 $calc;
 }
 
-@mixin push($offset: 1, $columns: $grid__columns) {
+@mixin push($offset: 1, $columns: $grid-columns) {
 	margin-left: math.div($offset, $columns) * 100%;
 }
 
-@mixin pull($offset: 1, $columns: $grid__columns) {
+@mixin pull($offset: 1, $columns: $grid-columns) {
 	margin-right: math.div($offset, $columns) * 100%;
 }
 
@@ -99,23 +110,23 @@
 	margin-right: 0;
 }
 
-@mixin valcols($n, $column-total-width: $grid__column-total-width) {
+@mixin valcols($n, $column-total-width: $grid-column-total-width) {
 	max-width: $n * $column-total-width;
 }
 
-@mixin valpush($n, $column-total-width: $grid__column-total-width) {
+@mixin valpush($n, $column-total-width: $grid-column-total-width) {
 	margin-left: $n * $column-total-width;
 }
 
-@mixin valpull($n, $column-total-width: $grid__column-total-width) {
+@mixin valpull($n, $column-total-width: $grid-column-total-width) {
 	margin-right: $n * $column-total-width;
 }
 
 // make element in column break wider
 // align can be 'left', 'center', or 'right'
-@mixin break-columns($n, $parent-n, $gutter: $grid__gutter-width, $align: 'center') {
-	$width: ($grid__column-total-width * $n) - $gutter;
-	$parent-width: ($grid__column-total-width * $parent-n) - $gutter;
+@mixin break-columns($n, $parent-n, $gutter: $grid-gutter-width, $align: 'center') {
+	$width: ($grid-column-total-width * $n) - $gutter;
+	$parent-width: ($grid-column-total-width * $parent-n) - $gutter;
 	$difference: $width - $parent-width;
 
 	width: math.div($width, $parent-width) * 100%;
@@ -128,7 +139,7 @@
 	}
 }
 
-@mixin generate-cols-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'cols', $prefix: '') {
+@mixin generate-cols-classes($columns: $grid-columns, $selector-type: '%', $selector-name: 'cols', $prefix: '') {
 	$i: 1;
 	@while $i <= $columns {
 
@@ -139,7 +150,7 @@
 	}
 }
 
-@mixin generate-push-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'push', $prefix: '') {
+@mixin generate-push-classes($columns: $grid-columns, $selector-type: '%', $selector-name: 'push', $prefix: '') {
 	$i: 1;
 	@while $i <= $columns {
 		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
@@ -149,7 +160,7 @@
 	}
 }
 
-@mixin generate-pull-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'pull', $prefix: '') {
+@mixin generate-pull-classes($columns: $grid-columns, $selector-type: '%', $selector-name: 'pull', $prefix: '') {
 	$i: 1;
 	@while $i <= $columns {
 		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
@@ -160,7 +171,7 @@
 }
 
 // BLOCK GRID
-@mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.col', $gutter: $grid__gutter-width) {
+@mixin generate-block-grid-classes($n, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.col', $gutter: $grid-gutter-width) {
 	$i: 1;
 	#{$parent-selector} {
 		@include row($gutter);
@@ -193,9 +204,9 @@
 //	#{$selector-type}#{$prefix}col { @include col; }
 //	#{$selector-type}#{$prefix}form-col { @include form-col; }
 //	#{$selector-type}#{$prefix}col--auto { @include col--auto; }
-	@include generate-cols-classes($grid__columns, $selector-type, 'cols', $prefix);
-	@include generate-push-classes($grid__columns, $selector-type, 'push', $prefix);
-	@include generate-pull-classes($grid__columns, $selector-type, 'pull', $prefix);
+	@include generate-cols-classes($grid-columns, $selector-type, 'cols', $prefix);
+	@include generate-push-classes($grid-columns, $selector-type, 'push', $prefix);
+	@include generate-pull-classes($grid-columns, $selector-type, 'pull', $prefix);
 	#{$selector-type}#{$prefix}col--grow { @include col--grow; }
 	#{$selector-type}#{$prefix}col--auto { @include col--auto; }
 	#{$selector-type}#{$prefix}col--centered { @include col--centered; }

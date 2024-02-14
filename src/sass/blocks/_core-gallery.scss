@@ -2,13 +2,13 @@
 .wp-block-gallery {
 	// @include gallery-row;
 	margin-bottom: $figure__margin-bottom;
-	padding-top: $spacing--s;
+	padding-top: var(--#{$prefix}spacing--s);
 }
 
 // .blocks-gallery-item,
 .wp-block-gallery .wp-block-image {
 	// @include gallery-col;
-	margin-bottom: $gallery-grid__gutter-width;
+	margin-bottom: $gallery-grid-gutter-width;
 
 	figure {
 		margin: 0;
@@ -23,9 +23,9 @@
 	@include cols(4);
 }
 
-// @include generate-block-grid-classes(6, '.blocks-gallery-grid', '.columns', '.blocks-gallery-item', $gallery-grid__gutter-width);
+// @include generate-block-grid-classes(6, '.blocks-gallery-grid', '.columns', '.blocks-gallery-item', $gallery-grid-gutter-width);
 
-@include generate-block-grid-classes(6, '.wp-block-gallery', '.columns', '.wp-block-image', $gallery-grid__gutter-width);
+@include generate-block-grid-classes(6, '.wp-block-gallery', '.columns', '.wp-block-image', $gallery-grid-gutter-width);
 
 .is-cropped {
 	.wp-block-image {
@@ -46,8 +46,8 @@
 			opacity: 0;
 			position: absolute;
 			bottom: 0;
-			left: $gallery-grid__gutter-width * .5;
-			width: calc(100% - $gallery-grid__gutter-width);
+			left: $gallery-grid-gutter-width * .5;
+			width: calc(100% - $gallery-grid-gutter-width);
 			background-color: rgba(0,0,0,.5);
 			color: $white;
 			padding: .5em;

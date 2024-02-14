@@ -187,4 +187,4 @@ function bfnest_social_nav_menu_icons( $item_output, $item, $depth, $args, $text
 
 	return $item_output;
 }
-add_filter( 'walker_nav_menu_start_el', 'bfnest_social_nav_menu_icons', 10, 5 );
+// add_filter( 'walker_nav_menu_start_el', 'bfnest_social_nav_menu_icons', 10, 5 );

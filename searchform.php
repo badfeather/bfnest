@@ -9,10 +9,10 @@ if ( $svg ) {
 $form = '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '">' . "\n";
 $form .= '<div class="form-row row--inline">' . "\n";
 $form .= '<div class="col--auto">' . "\n";
-$form .= '<input type="search" class="search-field form-control" placeholder="' . esc_attr_x( 'Search for: ', 'placeholder', 'bfnest' ) . '" value="' . get_search_query() . '" name="s" aria-label="' . esc_attr_x( 'Search for: ', 'aria-label', 'bfnest' ) . '" />' . "\n";
+$form .= '<input type="search" class="search-field input" placeholder="' . esc_attr_x( 'Search for: ', 'placeholder', 'bfnest' ) . '" value="' . get_search_query() . '" name="s" aria-label="' . esc_attr_x( 'Search for: ', 'aria-label', 'bfnest' ) . '" />' . "\n";
 $form .= '</div>' . "\n";
 $form .= '<div class="col--auto">' . "\n";
-$form .= '<button type="submit" class="search-submit button' . $button_add_class . '">' . $button_before . esc_html( __( 'Search', 'bfnest' ) ) . $button_after . '</button>' . "\n";
+$form .= '<button type="submit" class="search-submit btn' . $button_add_class . '">' . $button_before . esc_html( __( 'Search', 'bfnest' ) ) . $button_after . '</button>' . "\n";
 $form .= '</div>' . "\n";
 $form .= '</div>' . "\n";
 $form .= '</form>' . "\n";

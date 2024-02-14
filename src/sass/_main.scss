@@ -9,27 +9,27 @@
 }
 
 .doc-main {
-	padding-top: var(--spacing--l);
-	margin: 0 0 var(--spacing);
+	padding-top: var(--#{$prefix}spacing--l);
+	margin: 0 0 var(--#{$prefix}spacing);
 }
 
 .entry {
-	margin: 0 0 var(--spacing--l);
+	margin: 0 0 var(--#{$prefix}spacing--l);
 }
 
 .widget {
-	margin: 0 0 var(--spacing);
+	margin: 0 0 var(--#{$prefix}spacing);
 }
 
 .entry-figure {
-	margin: 0 0 var(--spacing--l);
+	margin: 0 0 var(--#{$prefix}spacing--l);
 }
 
 //.sticky {
 //}
 
 .entry-header {
-	margin-bottom: var(--spacing);
+	margin-bottom: var(--#{$prefix}spacing);
 }
 
 // SINGLE POSTS

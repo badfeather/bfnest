@@ -4,7 +4,7 @@
 	@include list-unstyled;
 
 	a {
-		color: var(--color-primary);
+		color: $link__color;
 
 		&:hover,
 		&:focus {
@@ -31,7 +31,7 @@
 	.current-category-ancestor,
 	.current-post-ancestor {
 		& > a {
-			color: var(--color-primary--hover);
+			color: $link--hover__color;
 		}
 	}
 }

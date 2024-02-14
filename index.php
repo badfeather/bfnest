@@ -4,8 +4,8 @@
 if ( have_posts() ) {
 	$post_type = bfnest_get_archive_post_type();
 ?>
-	<div class="site-content doc doc--archive doc--archive-index">
-		<main id="content" class="doc-main">
+	<div id="site-content" class="site-content doc doc--archive doc--archive-index">
+		<main id="doc-main" class="doc-main">
 			<?php get_template_part(  'partials/loop-archive', $post_type ); ?>
 		</main>
 

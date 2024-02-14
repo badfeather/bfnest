@@ -4,6 +4,7 @@
 @use "sass:map";
 @use "sass:string";
 @use "../../node_modules/hsluv-sass/src/_hsluv.scss" as hsluv;
+@import "variables/settings";
 @import "functions";
 @import "variables";
 @import "mixins";
