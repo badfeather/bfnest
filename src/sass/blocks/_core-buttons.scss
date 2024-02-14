@@ -1,6 +1,6 @@
 .wp-block-buttons {
 	@extend .form-row;
-	margin-bottom: $block__margin-bottom;
+	margin-bottom: var(--#{$prefix}spacing--l);
 
 	&.is-vertical {
 		flex-direction: column;

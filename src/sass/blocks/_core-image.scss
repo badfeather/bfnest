@@ -1,6 +1,6 @@
 .wp-block-image {
 	margin-top: 0;
-	margin-bottom: $figure__margin-bottom;
+	margin-bottom: var(--#{$prefix}spacing--l);
 	max-width: none;
 	width: 100%;
 

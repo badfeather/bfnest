@@ -1,5 +1,5 @@
 .wp-block-audio {
-	margin-bottom: $figure__margin-bottom;
+	margin-bottom: var(--#{$prefix}spacing--l);
 
 	audio {
 		width: 100%;

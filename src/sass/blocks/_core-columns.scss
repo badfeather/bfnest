@@ -1,7 +1,7 @@
 .wp-block-columns {
 	display: flex;
 	flex-wrap: wrap;
-	margin-bottom: $block__margin-bottom;
+	margin-bottom: var(--#{$prefix}spacing--l);
 	@include row-gutters();
 
 	&.are-vertically-aligned-top {

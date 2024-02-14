@@ -1,7 +1,7 @@
 // .blocks-gallery-grid,
 .wp-block-gallery {
 	// @include gallery-row;
-	margin-bottom: $figure__margin-bottom;
+	margin-bottom: var(--#{$prefix}spacing--l);
 	padding-top: var(--#{$prefix}spacing--s);
 }
 

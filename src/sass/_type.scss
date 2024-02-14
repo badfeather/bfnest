@@ -45,6 +45,11 @@ body {
 	margin: 0;
 }
 
+.bg-section {
+	color: var(--#{$prefix}color);
+	background-color: var(--#{$prefix}background-color);
+}
+
 p,
 ul,
 ol,
@@ -288,17 +293,11 @@ summary {
 // HEADINGS
 // -------------------------
 h1,
-.h1,
 h2,
-.h2,
 h3,
-.h3,
 h4,
-.h4,
 h5,
-.h5,
 h6,
-.h6,
 .entry-subtitle {
 	font-family: var(--#{$prefix}font-family);
 	font-weight: 700;
@@ -319,22 +318,27 @@ h6,
 
 h1 {
 	font-size: var(--#{$prefix}font-size--4xl);
+	line-height: var(--#{$prefix}line-height--2xs);
 }
 
 h2 {
 	font-size: var(--#{$prefix}font-size--3xl);
+	line-height: var(--#{$prefix}line-height--2xs);
 }
 
 h3 {
 	font-size: var(--#{$prefix}font-size--2xl);
+	line-height: var(--#{$prefix}line-height--xs);
 }
 
 h4 {
 	font-size: var(--#{$prefix}font-size--xl);
+	line-height: var(--#{$prefix}line-height--xs);
 }
 
 h5 {
 	font-size: var(--#{$prefix}font-size--l);
+	line-height: var(--#{$prefix}line-height--xs);
 }
 
 h6 {

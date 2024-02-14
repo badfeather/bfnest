@@ -1,20 +1,5 @@
 $spacing: $font-size * $line-height;
 
-// component margins
-$doc__margin-bottom: var(--#{$prefix}spacing);
-$entry__margin-bottom: var(--#{$prefix}spacing--l);
-$widget__margin-bottom: var(--#{$prefix}spacing--l);
-$block__margin-bottom: var(--#{$prefix}spacing--l);
-$figure__margin-bottom: var(--#{$prefix}spacing--l);
-
-$doc__margin: 0 0 $doc__margin-bottom;
-$entry__margin: 0 0 $entry__margin-bottom;
-$widget__margin: 0 0 $widget__margin-bottom;
-$block__margin: 0 0 $block__margin-bottom;
-$figure__margin: 0 0 $figure__margin-bottom;
-
-$margin--base: 0 0 var(--#{$prefix}spacing);
-
 // breakpoints
 $bp-xs: 480px;
 $bp-s: 600px;
