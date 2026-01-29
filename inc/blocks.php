@@ -19,8 +19,10 @@ function bfnest_blocks_setup() {
 	add_theme_support( 'custom-units', [] );
 
 	remove_theme_support( 'core-block-patterns' );
+
+	add_theme_support( 'disable-layout-styles' );
 }
-add_action( 'after_setup_theme', 'bfnest_blocks_setup' );
+// add_action( 'after_setup_theme', 'bfnest_blocks_setup' );
 
 /**
  * Dequeue default block styles
@@ -32,7 +34,7 @@ function bfnest_block_assets() {
 	// wp_deregister_style( 'wp-edit-blocks' );
 	// wp_register_style( 'wp-edit-blocks', '' );
 }
-add_action( 'enqueue_block_assets', 'bfnest_block_assets' );
+// add_action( 'enqueue_block_assets', 'bfnest_block_assets' );
 
 // remove them on the front-end
 function bfnest_block_scripts() {
@@ -40,7 +42,7 @@ function bfnest_block_scripts() {
 	wp_dequeue_style( 'wp-block-library-theme' );
 	wp_dequeue_style( 'global-styles' );
 }
-add_action( 'wp_enqueue_scripts', 'bfnest_block_scripts', 100 );
+// add_action( 'wp_enqueue_scripts', 'bfnest_block_scripts', 100 );
 
 /**
  * Enqueue editor assets
@@ -88,23 +90,23 @@ function bfnest_block_editor_settings( $editor_settings, $editor_context ) {
 // add_filter( 'block_editor_settings_all', 'bfnest_block_editor_settings', 10, 2 );
 
 // disable duotone support
-remove_filter( 'render_block', 'wp_render_duotone_support', 10, 2 );
+// remove_filter( 'render_block', 'wp_render_duotone_support', 10, 2 );
 
 // remove inline .wp-container-xyz styles
-remove_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );
-remove_filter( 'render_block', 'gutenberg_render_layout_support_flag', 10, 2 );
+// remove_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );
+// remove_filter( 'render_block', 'gutenberg_render_layout_support_flag', 10, 2 );
 
 // remove link styles
-remove_filter( 'render_block', 'wp_render_elements_support', 10, 2 );
-remove_filter( 'render_block', 'gutenberg_render_elements_support', 10, 2 );
+// remove_filter( 'render_block', 'wp_render_elements_support', 10, 2 );
+// remove_filter( 'render_block', 'gutenberg_render_elements_support', 10, 2 );
 
 // remove global svg filters
-remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
-remove_action( 'in_admin_header', 'wp_global_styles_render_svg_filters' );
+// remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+// remove_action( 'in_admin_header', 'wp_global_styles_render_svg_filters' );
 
 // remove global styles
-remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
-remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
+// remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+// remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
 
 // To test which global styles are being set on a page/post, use the following on a single template
 // bfnest_pretty_print( wp_get_global_settings() );
@@ -115,13 +117,13 @@ remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
  */
 function bfnest_block_categories( $categories, $post ) {
 	return array_merge(
-		$categories,
 		[
 			[
-				'slug' => 'bfnest-blocks',
-				'title' => __( 'Bad Feather Nest Blocks', 'bfnest' ),
+				'slug' => 'bfnest',
+				'title' => __( 'BF Nest Blocks', 'bfnest' ),
 			],
-		]
+		],
+		$categories
 	);
 }
 add_filter( 'block_categories_all', 'bfnest_block_categories', 10, 2 );
@@ -129,9 +131,9 @@ add_filter( 'block_categories_all', 'bfnest_block_categories', 10, 2 );
 /**
  * Register Blocks
  */
-function bfnest_register_acf_blocks() {
+function bfnest_register_blocks() {
 	foreach ( glob( get_stylesheet_directory() . "/blocks/*/block.json" ) as $file ) {
-    	register_block_type( $file );
+		register_block_type( $file );
 	}
 }
-add_action( 'init', 'bfnest_register_acf_blocks' );
+add_action( 'init', 'bfnest_register_blocks' );

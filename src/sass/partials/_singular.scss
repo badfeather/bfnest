@@ -1,13 +1,5 @@
-.singular {
-	.entry-header,
-	.entry-footer,
-	.entry-comments {
-		max-width: $block__max-width;
-		margin-left: auto;
-		margin-right: auto;
-	}
-}
+@use '../layout' as *;
 
 .entry-comments {
-	margin-top: var(--#{$prefix}spacing--l);
+	margin-block-start: cssvar('spacing--lg');
 }

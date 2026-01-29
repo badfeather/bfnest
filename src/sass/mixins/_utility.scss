@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use '../functions' as *;
+@use '../variables' as *;
+
 @mixin style($property, $value: 0) {
 	#{$property}: $value;
 }
@@ -57,7 +61,6 @@
 }
 
 @mixin style-shorthand-unitcalc($property, $value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $body__font-size, $unit: $base__unit) {
-
 	@if $value-left != $value-right {
 		#{$property}: unitcalc($value-top, $font-size, $unit) unitcalc($value-right, $font-size, $unit) unitcalc($value-bottom, $font-size, $unit) unitcalc($value-left, $font-size, $unit);
 
@@ -95,7 +98,7 @@
 
 // Clearfix
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
-@mixin clearfix() {
+@mixin clearfix {
 	&:before,
 	&:after {
 		content: " ";
@@ -108,7 +111,7 @@
 }
 
 // Hide text completely
-@mixin text-hide() {
+@mixin text-hide {
 	font: "0/0" a;
 	color: transparent;
 	text-shadow: none;
@@ -116,26 +119,26 @@
 	border: 0;
 }
 
-@mixin sr-only() {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	clip: rect(0 0 0 0);
-	border: 0;
+@mixin visually-hidden {
+	&:not(:focus):not(:active) {
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
 }
 
 // or, if we have problems with that
-@mixin ir() {
+@mixin ir {
 	text-indent: 100%;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
 // Webkit-style focus
-@mixin tab-focus() {
+@mixin tab-focus {
 	// Default
 	outline: thin dotted #333;
 	// Webkit
@@ -144,15 +147,33 @@
 }
 
 // CSS3 Content Columns
-@mixin content-columns($column-count, $column-gap: $grid__gutter-width) {
+@mixin content-columns($column-count, $grid__column-gap: $grid__column-gap) {
 	column-count: $column-count;
-	column-gap: $column-gap;
+	column-gap: $grid__column-gap;
 }
 
 // output css variables from map with prefix
 // see https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88
-@mixin cssvars($vars, $prefix: $prefix) {
+@mixin set-cssvars($vars, $prefix: $prefix) {
 	@each $key, $value in $vars {
 		--#{$prefix}#{$key}: #{$value};
 	}
+}
+
+@mixin set-cssvar($key, $value, $prefix: $prefix) {
+	--#{$prefix}#{$key}: #{$value};
+}
+
+// set margin-block-[] properties for element and assign them - allows these properties to be modified per element
+@mixin block-margins {
+	@include set-cssvars(
+		(
+			margin-block-start: 0,
+			margin-inline-start: 0,
+			margin-block-end: cssvar('spacing'),
+			margin-inline-end: 0,
+		)
+	);
+	margin-block: cssvar('margin-block-start') cssvar('margin-block-end');
+	margin-inline: cssvar('margin-inline-start') cssvar('margin-inline-end');
 }

@@ -1,0 +1,24 @@
+.wp-block-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wp-block-search .wp-block-search__label {
+  width: 100%;
+}
+
+.wp-block-search .wp-block-search__input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.wp-block-search .wp-block-search__button {
+  -webkit-margin-start: 0.75rem;
+          margin-inline-start: 0.75rem;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zYXNzL2Jsb2Nrcy9jb3JlL3NlYXJjaC5zY3NzIiwic2VhcmNoLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNDLG9CQUFBO0VBQUEsb0JBQUE7RUFBQSxhQUFBO0VBQ0EsbUJBQUE7TUFBQSxlQUFBO0FDREQ7O0FESUE7RUFDQyxXQUFBO0FDREQ7O0FESUE7RUFDQyxtQkFBQTtNQUFBLG9CQUFBO1VBQUEsWUFBQTtBQ0REOztBRElBO0VBQ0MsNkJBQUE7VUFBQSw0QkFBQTtBQ0REIiwiZmlsZSI6InNlYXJjaC5jc3MifQ== */

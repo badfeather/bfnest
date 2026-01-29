@@ -228,109 +228,23 @@ function bfnest_get_meta_edit_link( $label = null, $inline = 1 ) {
 	return '<' . $element . ' class="meta meta--edit"><a href="' . $edit_post_link . '">' . $label . '</a></' . $element . '>';
 }
 
-/**
- * Helper function for bfnest_get_meta_share
- */
-function bfnest_get_share_data( $args = [] ) {
-	if ( empty( $args ) || is_wp_error( $args ) ) {
-		return false;
-	}
-
-	$defaults = [
-		'facebook' => 0,
-		'twitter' => 0,
-		'linkedin' => 0,
-		'pinterest' => 0,
-		'pocket' => 0,
-		'digg' => 0,
-		'reddit' => 0,
-		'email' => 0,
+function bfnest_get_share_stubs() {
+	$url = get_permalink();
+	$text = rawurlencode( html_entity_decode( get_the_title() ) );
+	$image = bfnest_get_featured_or_first_image_url( $size = 'large' );
+	// many taken from here: https://github.com/drmonkeyninja/social-share-url/blob/master/src/data/stubs.php
+	return [
+		"bluesky" => ["https://bsky.app/intent/compose?text={$text}%20{$url}", "Bluesky"],
+		"digg" => ["https://digg.com/submit?url={$url}&title={$text}", "Digg"],
+		"email" => ["mailto:?subject={$text}&body={$url}", "Email"],
+		"facebook" => ["https://www.facebook.com/sharer/sharer.php?u={$url}", "Facebook"],
+		"linkedin" => ["http://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$text}", "LinkedIn"],
+		"pinterest" => ["http://www.pinterest.com/pin/create/button/?url={$url}&media={$image}&description={$text}", "Pinterest"],
+		"reddit" => ["http://www.reddit.com/submit?url={$url}&title={$text}", "Reddit"],
+		"threads" => ["https://threads.net/intent/post?url={$url}&text={$text}", "Threads"],
+		"tumblr" => ["http://www.tumblr.com/share?v=3&u={$url}&t={$text}", "Tumblr"],
+		"x" => ["https://x.com/intent/tweet?text={$text}&url={$url}", "X"],
 	];
-	$args = wp_parse_args( $args, $defaults );
-	extract( $args, EXTR_SKIP );
-
-	$post_url = get_permalink();
-	$post_title = get_the_title();
-	//$encoded_title = urlencode( get_the_title() );
-	$encoded_title = rawurlencode( html_entity_decode( $post_title ) );
-
-	$networks = [];
-
-	if ( $facebook ) {
-		$networks[] = [
-			'name' => __( 'Facebook', 'bfnest' ),
-			'slug' => 'facebook',
-			'url' => 'https://www.facebook.com/sharer.php?u=' . $post_url . '&t=' . $encoded_title,
-		];
-	}
-
-	if ( $twitter ) {
-		$decoded_title = html_entity_decode( $post_title );
-		//$short_title = strlen( $decoded_title ) > 117 ? substr( $decoded_title, 0, 117 ) . "..." : $decoded_title;
-		$short_title = strlen( $decoded_title ) > 117 ? substr( $decoded_title, 0, strrpos( substr( $decoded_title, 0, 117 ), ' ' ) ) . html_entity_decode( '&hellip;' ) : $decoded_title;
-		$encoded_short_title = rawurlencode( html_entity_decode( $short_title ) );
-
-		$networks[] = [
-			'name' => __( 'Twitter', 'bfnest' ),
-			'slug' => 'twitter',
-			'url' => 'https://twitter.com/intent/tweet?url=' . $post_url . '&text=' . $encoded_short_title,
-		];
-	}
-
-	if ( $linkedin ) {
-		$networks[] = [
-			'name' => __( 'LinkedIn', 'bfnest' ),
-			'slug' => 'linkedin',
-			'url' => 'https://www.linkedin.com/cws/share?url=' . $post_url,
-		];
-	}
-
-	if ( $pinterest ) {
-		$image = bfnest_get_featured_or_first_image_url( $size = 'large' );
-		if ( $image ) {
-			$networks[] = [
-				'name' => __( 'Pinterest', 'bfnest' ),
-				'slug' => 'pinterest',
-				'url' => 'https://pinterest.com/pin/create/bookmarklet/?media=?url=' . $post_url . '&media=' . $image . '&description='. $encoded_title,
-			];
-		}
-	}
-
-	if ( $pocket ) {
-		$networks[] = [
-			'name' => __( 'Pocket', 'bfnest' ),
-			'slug' => 'pocket',
-			'url' => 'https://getpocket.com/save?url=' . $post_url,
-		];
-	}
-
-	if ( $digg ) {
-		$networks[] = [
-			'name' => __( 'Digg', 'bfnest' ),
-			'slug' => 'digg',
-			'url' => 'http://digg.com/submit?url=' . $post_url . '&title=' . $encoded_title,
-		];
-	}
-
-	if ( $reddit ) {
-		$networks[] = [
-			'name' => __( 'Reddit', 'bfnest' ),
-			'slug' => 'reddit',
-			'url' => 'https://www.reddit.com/submit?url=' . $post_url . '&title=' . $encoded_title,
-		];
-	}
-
-	if ( $email ) {
-		$networks[] = [
-			'name' => __( 'Email', 'bfnest'),
-			'slug' => 'mail',
-			'url' => 'mailto:?subject=' . $encoded_title . '&body=' . $post_url,
-		];
-	}
-
-	$networks = array_values( array_filter( $networks ) );
-
-	return apply_filters( 'bfnest_add_share_networks', $networks );
 }
 
 /**
@@ -341,15 +255,18 @@ function bfnest_get_share_data( $args = [] ) {
  * Uses bfnest_get_share_data()
  */
 function bfnest_get_meta_share(
-		$args = [
-			'facebook' => 1,
-			'twitter' => 1,
-			'linkedin' => 0,
-			'pinterest' => 0,
-			'pocket' => 0,
-			'digg' => 0,
-			'reddit' => 0,
-			'email' => 1,
+		// comment out the ones you don't want
+		$networks = [
+			'bluesky',
+			'digg',
+			'email',
+			'facebook',
+			'linkedin',
+			'pinterest',
+			'reddit',
+			'threads',
+			'tumblr',
+			'x',
 		],
 		$before = null,
 		$inline = 1,
@@ -358,11 +275,7 @@ function bfnest_get_meta_share(
 		$add_icons = true,
 		$text_replace = true
 	) {
-	$networks = bfnest_get_share_data( $args );
-	if ( empty( $networks ) || is_wp_error( $networks ) ) {
-		return false;
-	}
-
+	$stubs = bfnest_get_share_stubs();
 	$title = '';
 	if ( null === $before ) {
 		$title = '<span class="meta-title">' . __( 'Share: ', 'bfnest' ) . '</span>';
@@ -370,34 +283,23 @@ function bfnest_get_meta_share(
 	} elseif ( ! empty( $before ) ) {
 		$title = '<span class="meta-title">' . $before . '</span>';
 	}
-
 	$target = $new_window ? ' target="_blank" rel="noopener noreferrer"' : '';
 
 	$share_array = [];
 	foreach ( $networks as $network ) {
+		$stub = $stubs[$network];
 		$network_before = $network_after = '';
-		$network_slug = $network['slug'];
-		$network_name = $network['name'];
 		$before_link = $after_link = '';
-		// if ( $add_icons ) {
-		// 	$svg = bfnest_get_social_svg( $network['slug'] );
-		// 	if ( $svg ) {
-		// 		$network_before .= '<span class="share-link-icon" aria-hidden="true">' . $svg . '</span>';
-		// 		if ( $text_replace ) {
-		// 			$network_before .= '<span class="sr-only">';
-		// 			$network_after .= '</span>';
-		// 		}
-		// 	}
-		// }
 		if ( $add_icons ) {
 			if ( $text_replace ) {
-				$network_before .= '<span class="sr-only">';
+				$network_before .= '<span class="visually-hidden">';
 				$network_after .= '</span>';
+				$icon = 'email' === $network ? 'mail' : $network;
 			}
-			$network_after .= '<span class="icon--' . esc_attr( $network['slug'] ) . '"></span>';
+			$network_after .= '<span class="icon--' . esc_attr( $icon ) . '"></span>';
 		}
 
-		$share_array[] = '<a class="share-link share-link--' . $network['slug'] . '" href="' . esc_url( $network['url'] ) . '" title="Share on ' . $network['name'] . '"' . $target . ' rel="noopener noreferrer nofollow">' . $network_before . $network['name'] . $network_after . '</a>';
+		$share_array[] = '<a class="share-link share-link--' . esc_attr( $network ) . '" href="' . esc_url( $stub[0] ) . '" title="Share on ' . esc_attr( $stub[1] ) . '"' . $target . '>' . $network_before . $stub[1] . $network_after . '</a>';
 	}
 
 	if ( ! empty( $share_array ) ) {

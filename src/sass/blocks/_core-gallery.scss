@@ -1,14 +1,16 @@
+@use '../abstracts' as *;
+
 // .blocks-gallery-grid,
 .wp-block-gallery {
-	// @include gallery-row;
-	margin-bottom: var(--#{$prefix}spacing--l);
-	padding-top: var(--#{$prefix}spacing--s);
+	--wp--style--gallery-gap-default: 0;
+	margin-block-end: cssvar('spacing--lg');
+	padding-block-start: cssvar('spacing--sm');
 }
 
 // .blocks-gallery-item,
 .wp-block-gallery .wp-block-image {
 	// @include gallery-col;
-	margin-bottom: $gallery-grid-gutter-width;
+	margin-block-end: $gallery-grid__column-gap;
 
 	figure {
 		margin: 0;
@@ -23,9 +25,9 @@
 	@include cols(4);
 }
 
-// @include generate-block-grid-classes(6, '.blocks-gallery-grid', '.columns', '.blocks-gallery-item', $gallery-grid-gutter-width);
+// @include generate-block-grid-classes(6, '.blocks-gallery-grid', '.columns', '.blocks-gallery-item', $gallery-grid__column-gap);
 
-@include generate-block-grid-classes(6, '.wp-block-gallery', '.columns', '.wp-block-image', $gallery-grid-gutter-width);
+@include generate-block-grid-classes(6, '.wp-block-gallery', '.columns', '.wp-block-image');
 
 .is-cropped {
 	.wp-block-image {
@@ -46,8 +48,8 @@
 			opacity: 0;
 			position: absolute;
 			bottom: 0;
-			left: $gallery-grid-gutter-width * .5;
-			width: calc(100% - $gallery-grid-gutter-width);
+			left: $gallery-grid__column-gap * .5;
+			width: calc(100% - $gallery-grid__column-gap);
 			background-color: rgba(0,0,0,.5);
 			color: $white;
 			padding: .5em;
@@ -109,14 +111,14 @@
 //		width: calc((100% - #{ $grid-unit-20 }) / 2);
 //
 //		&:nth-of-type(even) {
-//			margin-right: 0;
+//			margin-inline-end: 0;
 //		}
 //	}
 //
 //	&.columns-1 .blocks-gallery-image,
 //	&.columns-1 .blocks-gallery-item {
 //		width: 100%;
-//		margin-right: 0;
+//		margin-inline-end: 0;
 //	}
 //
 //	// Beyond mobile viewports, we allow up to 8 columns.
@@ -125,7 +127,7 @@
 //			&.columns-#{ $i } .blocks-gallery-image,
 //			&.columns-#{ $i } .blocks-gallery-item {
 //				width: calc((100% - #{ $grid-unit-20 } * #{ $i - 1 }) / #{ $i });
-//				margin-right: 16px;
+//				margin-inline-end: 16px;
 //
 //				// Rules inside this query are only run by Microsoft Edge.
 //				// Edge miscalculates `calc`, so we have to add some buffer.
@@ -140,7 +142,7 @@
 //		@for $column-count from 1 through 8 {
 //			&.columns-#{ $column-count } .blocks-gallery-image:nth-of-type(#{ $column-count }n),
 //			&.columns-#{ $column-count } .blocks-gallery-item:nth-of-type(#{ $column-count }n) {
-//				margin-right: 0;
+//				margin-inline-end: 0;
 //			}
 //		}
 //	}
@@ -148,7 +150,7 @@
 //	// Last item always needs margins reset.
 //	.blocks-gallery-image:last-child,
 //	.blocks-gallery-item:last-child {
-//		margin-right: 0;
+//		margin-inline-end: 0;
 //	}
 //
 //	// Apply max-width to floated items that have no intrinsic width.

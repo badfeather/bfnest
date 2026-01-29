@@ -1,7 +1,12 @@
 {
-	"version": 2,
+	"version": 3,
 	"settings": {
 		"appearanceTools": false,
+		"aspect-ratio": false,
+		"background": {
+			"backgroundImage": false,
+			"backgroundSize": false
+		},
 		"border": {
 			"color": false,
 			"radius": false,
@@ -9,44 +14,71 @@
 			"width": false
 		},
 		"color": {
+			"text": false,
 			"background": false,
+			"link": false,
+			"heading": false,
+			"button": false,
+			"caption": false,
 			"custom": false,
 			"customDuotone": false,
 			"customGradient": false,
+			"defaultDuotone": false,
 			"defaultGradients": false,
-			"defaultPalette": false,
-			"duotone": [],
-			"gradients": [],
-			"link": false,
-			"palette": [],
-			"text": false
+			"defaultPalette": false
+		},
+		"dimensions": {
+			"defaultAspectRatios": false,
+			"aspectRatios": [],
+			"minHeight": false
+		},
+		"layout": {
+			"contentSize": null,
+			"wideSize": null,
+			"allowEditing": false,
+			"allowCustomContentAndWideSize":false
+		},
+		"position": {
+			"sticky": false
 		},
 		"spacing": {
 			"blockGap": null,
 			"margin": false,
 			"padding": false,
 			"units": [],
-			"customSpacingSize": false
+			"defaultSpacingSizes": false,
+			"customSpacingSize": false,
+			"spacingScale": []
+		},
+		"shadow": {
+			"defaultPresets": false,
+			"presets": []
 		},
 		"typography": {
 			"customFontSize": false,
 			"dropCap": false,
-			"fontSizes": [],
 			"fontStyle": false,
 			"fontWeight": false,
+			"fluid": false,
 			"letterSpacing": false,
 			"lineHeight": false,
 			"textDecoration": false,
 			"textTransform": false,
+			"writingMode": false,
+			"fontSizes": [],
 			"fontFamilies": []
 		},
-		"layout": {
-			"allowEditing": false
-		},
+		"useRootPaddingAwareAlignments": false,
 		"blocks": {
 			"core/button": {
 				"border": {
 					"radius": false
+				}
+			},
+			"core/image": {
+				"lightbox": {
+					"allowEditing": false,
+					"enabled": false
 				}
 			},
 			"core/pullquote": {
@@ -58,13 +90,5 @@
 				}
 			}
 		}
-	},
-	"styles": {
-		"border": null,
-		"color": null,
-		"spacing": null,
-		"typography": null,
-		"filter": null
 	}
 }
-

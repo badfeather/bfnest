@@ -1,16 +1,21 @@
+@use 'abstracts' as *;
+
 // GENERAL NAV STYLES
 // -------------------------
 .menu {
-	@include list-unstyled;
-
-	a {
-		color: $link__color;
-
-		&:hover,
-		&:focus {
-			text-decoration: none;
-		}
+	a,
+	.btn--link {
+		@include set-cssvars(
+			(
+				link__color: cssvar('color'),
+				link__text-decoration: none,
+				link--focus__color: cssvar('color-primary'),
+				link--focus__text-decoration: cssvar('link__text-decoration'),
+			)
+		);
 	}
+
+	@include list-unstyled;
 
 	ul {
 		@include list-unstyled;
@@ -30,8 +35,9 @@
 	.current-cat-parent,
 	.current-category-ancestor,
 	.current-post-ancestor {
-		& > a {
-			color: $link--hover__color;
+		& > a,
+		& >  {
+			color: cssvar('link--focus__color');
 		}
 	}
 }
@@ -62,7 +68,7 @@
 
 	.social-link-icon {
 		display: inline-block;
-		margin-right: .5em;
+		margin-inline-end: .5em;
 		vertical-align: middle;
 	}
 }

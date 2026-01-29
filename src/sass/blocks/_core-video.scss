@@ -1,6 +1,8 @@
+@use '../abstracts' as *;
+
 .wp-block-video {
-	margin-left: 0;
-	margin-right: 0;
+	@include set-cssvar('margin-block-start', 0);
+	@include set-cssvar('margin-block-end', 0);
 }
 
 .wp-block-video video {
@@ -19,7 +21,7 @@
 
 //.wp-block-video figcaption {
 //	margin-top: 0.5em;
-//	margin-bottom: 1em;
+//	margin-block-end: 1em;
 //	margin-top: $figcaption__margin-top;
-//	margin-bottom: $figcaption__margin-bottom;
+//	margin-block-end: $figcaption__margin-bottom;
 //}

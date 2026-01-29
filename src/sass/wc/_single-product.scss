@@ -1,0 +1,66 @@
+@use '../abstracts' as *;
+
+// Single Product
+// ---------------------------
+.single-product {
+	div.product {
+		//@include clearfix;
+		position: relative;
+	}
+}
+
+.woocommerce-product-gallery {
+	position: relative;
+
+	.woocommerce-product-gallery__trigger {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		display: block;
+		z-index: 99;
+	}
+
+	.flex-viewport {
+		margin-block-end: 1em;
+	}
+}
+
+.flex-control-thumbs {
+	@include list-unstyled;
+	@include row;
+
+	li {
+		// @include col;
+		cursor: pointer;
+
+		&:hover {
+			img {
+				opacity: 1;
+			}
+		}
+	}
+
+	img {
+		opacity: .5;
+
+		&.flex-active {
+			opacity: 1;
+		}
+	}
+}
+
+@include generate-block-grid-classes( 6, '.flex-control-thumbs', '.woocommerce-product-gallery--columns-', 'li' );
+
+.stock {
+	&:empty:before {
+		display: none;
+	}
+
+	&.in-stock {
+		color: cssvar('color-success');
+	}
+
+	&.out-of-stock {
+		color: cssvar('color-danger');
+	}
+}

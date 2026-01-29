@@ -1,42 +1,124 @@
-.site-nav__toggle {
-	margin-bottom: var(--#{$prefix}spacing--s);
+@use 'abstracts' as *;
+@use 'icons' as *;
+
+.site-header {
+	padding-block: 1rem;
+	position: relative;
+}
+
+.site-title {
+	font-size: 1em;
+	margin-block-end: cssvar('spacing--sm');
+}
+
+.site-description {
+	margin-block-end:cssvar('spacing--sm');
+}
+
+.site-nav-toggle {
+	position: absolute;
+	top: 1rem;
+	right: cssvar('container__padding-inline');
+
+	//margin-block-end: cssvar('spacing--sm');
+	&:before {
+		content: '';
+		@extend .icon;
+		@extend .icon--menu;
+		font-size: 1.5em;
+	}
 
 	.no-js & {
 		display: none;
 	}
 
 	&[aria-expanded="true"] {
-
+		&:before {
+			@extend .icon--close;
+		}
 	}
 
-	// @include bp-m__mq-up {
-	// 	display: none;
-	// }
-
+	@include bp-lg__mq-up {
+		display: none;
+	}
 }
 
-.menu--primary[aria-hidden] {
+.site-nav[aria-hidden="true"] {
 	display: none;
 
 	.no-js & {
 		display: block;
 	}
 
-	// [aria-expanded="true"] & {
-	// 	display: block;
-	// }
-
-	// @include bp-m__mq-up {
-	// 	display: block;
-	// }
+	@include bp-lg__mq-up {
+		display: block;
+	}
 }
 
-.site-title {
-	font-size: 1em;
-	margin-bottom: var(--#{$prefix}spacing--s);
-}
+.site-menu {
+	a,
+	.expander-toggle {
+		display: block;
+		width: 100%;
+		padding: .25em 0;
+	}
 
-.site-description {
-	margin-bottom:var(--#{$prefix}spacing--s);
+	ul {
+		padding-block-start: 0;
+	}
+
+	.expander-toggle {
+		display: flex;
+		// column-gap: .25em;
+		align-items: center;
+		justify-content: space-between;
+
+		&:after {
+			content: '';
+			// margin-left: .5em;
+			@extend .icon;
+			@extend .icon--arrow_drop_down;
+			font-size: 1.5em;
+		}
+
+		&[aria-expanded="true"]:after {
+			@extend .icon--arrow_drop_up;
+		}
+	}
+
+	@include set-cssvars(
+		(
+			link__color: cssvar('color'),
+			link__text-decoration: none,
+			link--hover__text-devoration: none,
+		)
+	);
+
+	[aria-hidden="true"] {
+		display: none;
+	}
+
+	@include bp-lg__mq-up {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: .5em;
+
+		.menu-item-has-children {
+			position: relative;
+		}
+
+		.sub-menu {
+			position: absolute;
+			top: 100%;
+			width: 12em;
+			// padding: .5rem;
+			background-color: cssvar('background-color');
+
+			.sub-menu {
+				top: 0;
+				left: 100%;
+			}
+		}
+	}
 }
 

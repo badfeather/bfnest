@@ -1,32 +1,44 @@
-$spacing: $font-size * $line-height;
+@use '../functions' as *;
+@use 'type' as *;
+
+// GRID SYSTEM(S)
+$grid__column-width: unitcalc(78);
+$grid__column-gap: unitcalc(24);
+$grid__row-gap: unitcalc(24);
+$grid__column-total-width: $grid__column-gap + $grid__column-width;
+$grid__columns: 12;
+$grid__max-columns: 1;
+$grid-item__min-width: unitcalc(280);
+$grid-item__max-width: 100%;
+
+$container__padding-inline: $grid__column-gap;
+$container__max-width: get-container-max-width-from-columns($grid__columns, $grid__column-width, $grid__column-gap, $container__padding-inline);
+
+$form-grid__column-gap: $grid__column-gap * .5;
+$gallery-grid__column-gap: $grid__column-gap;
 
 // breakpoints
 $bp-xs: 480px;
-$bp-s: 600px;
-$bp-m: 768px;
-$bp-l: 992px;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
 $bp-xl: 1200px;
+$bp-2xl: 1440px;
 
 $breakpoints: (
-	'none': 0,
+	// 'none': 0,
 	'xs': $bp-xs,
-	's': $bp-s,
-	'm': $bp-m,
-	'l': $bp-l,
+	'sm': $bp-sm,
+	'md': $bp-md,
+	'lg': $bp-lg,
 	'xl': $bp-xl,
+	'2xl': $bp-2xl,
 );
 
-$type__breakpoint: $bp-l;
-$nav__breakpoint: $bp-l;
-
-$block__cols: 7;
-$alignwide__cols: 9;
-$alignfull__cols: 12;
-$block__max-width: math.div($block__cols, 12) * 100%;
-$alignwide__max-width: math.div($alignwide__cols, 12) * 100%;
-$alignfull__max-width: math.div($alignfull__cols, 12) * 100%;
+$type__breakpoint: $bp-lg;
+$nav__breakpoint: $bp-lg;
 
 $alignleft__margin-left: 0;
-$alignleft__margin-right:  var(--#{$prefix}spacing);
-$alignright__margin-left:  var(--#{$prefix}spacing);
-$alignright__margin-right: 0;
+$alignleft__margin-inline-end:  cssvar('spacing');
+$alignright__margin-left:  cssvar('spacing');
+$alignright__margin-inline-end: 0;

@@ -9,8 +9,8 @@
 		?>
 	</header>
 
-	<div id="doc-content" class="doc-content entry-content-wrap">
-		<div class="entry-content blocks">
+	<div id="doc-content" class="doc-content">
+		<div class="entry-content blocks is-layout-flow">
 			<?php the_content(); ?>
 
 			<?php
@@ -21,7 +21,7 @@
 			?>
 		</div>
 
-		<footer class="entry-footer">
+		<footer class="entry-footer doc-footer">
 			<?php
 			bfnest_meta( [
 				bfnest_get_meta_share()

@@ -1,10 +1,50 @@
+@use 'abstracts' as *;
+
+* {
+	box-sizing: border-box;
+
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+// sticky footer
 .site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 }
 
-.site-content {
-  flex: 1;
+@include layout-classes('.');
+@include bp-layout-classes($selector-type: '%');
+// @include bp-layout-classes($selector-type: '.');
+
+[class*="grid--cols-"] {
+	@extend .grid--cols;
 }
 
+[class*="row--cols-"] {
+	@extend .row--cols;
+}
+
+.section {
+	padding-block: cssvar('section__padding-block-start', 1.5rem) cssvar('section__padding-block-end', 1.5rem);
+}
+
+.grid-test {
+	margin-block: cssvar('margin-block-start') cssvar('margin-block-end');
+
+	& > * {
+		border: 1px solid cssvar('border-color');
+		background-color: cssvar('background-color--alt');
+		padding-block: calc(cssvar('grid__column-gap') * .5);
+		text-align: center;
+	}
+}

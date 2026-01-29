@@ -1,163 +1,462 @@
-// HEIGHT AND WIDTH
-@mixin height-unitcalc($value: auto, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('height', $value, $font-size, $unit);
+@use 'sass:math';
+@use '../functions' as *;
+@use '../variables' as *;
+@use 'utility' as *;
+@use 'breakpoints' as *;
+
+// GRID SYSTEM(S)
+// ----------------------------
+@mixin container-fluid($padding-inline: $container__padding-inline) {
+	@include set-cssvars(
+		(
+			container__padding-inline: $padding-inline,
+		)
+	);
+	width: 100%;
+	padding-inline: cssvar('container__padding-inline');
+	margin-inline: auto;
+	position: relative;
 }
 
-@mixin width-unitcalc($value: auto, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('width', $value, $font-size, $unit);
+@mixin container($columns: $grid__columns, $column-width: $grid__column-width, $column-gap: $grid__column-gap, $padding-inline: $container__padding-inline) {
+	@include set-cssvars(
+		(
+			container__columns: $columns,
+			container__column-width: $column-width,
+			container_column-gap: $column-gap,
+			container__padding-inline: $padding-inline,
+			container__max-width:  calc(cssvar('container__columns') * (cssvar('container__column-width') + cssvar('container__column-gap')) - cssvar('container__column-gap') + cssvar('container__padding-inline')),
+		)
+	);
+	width: 100%;
+	padding-inline: cssvar('container__padding-inline');
+	max-width: cssvar('container__max-width');
+	margin-inline: auto;
+	position: relative;
 }
 
-// MARGINS
-@mixin margin($value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right) {
-	@include style-shorthand('margin', $value-top, $value-right, $value-bottom, $value-left);
+@mixin container--cols($n) {
+	@include set-cssvar('container__columns', $n);
 }
 
-@mixin margin-change($default-top: 0, $default-right: $default-top, $default-bottom: $default-top, $default-left: $default-right, $value-top: $default-top, $value-right: $default-right, $value-bottom: $value-top, $value-left: $value-right) {
-	@include style-change-shorthand('margin', $default-top, $default-right, $default-bottom, $default-left, $value-top, $value-right, $value-bottom, $value-left);
+@mixin generate-container-cols-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'container--cols', $prefix: '') {
+	@for $i from 1 through $columns {
+
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include container--cols($i);
+		}
+	}
 }
 
-@mixin margin-unitcalc($value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-shorthand-unitcalc('margin', $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit);
+@mixin container--left {
+	margin-inline-start: 0;
 }
 
-@mixin margin-change-unitcalc($default-top: 0, $default-right: $default-top, $default-bottom: $default-top, $default-left: $default-right, $value-top: $default-top, $value-right: $default-right, $value-bottom: $value-top, $value-left: $value-right, $font-size: $body__font-size, $unit: $base__unit) {
-
-	@include style-change-shorthand-unitcalc('margin', $default-top, $default-right, $default-bottom, $default-left, $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit);
+@mixin container--right {
+	margin-inline-end: 0;
 }
 
-@mixin margin-top-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('margin-top', $value, $font-size, $unit);
+@mixin grid($columns: $grid__columns, $column-gap: $grid__column-gap, $row-gap: $grid__row-gap, $item__min-width: $grid-item__min-width, $item__max-width: $grid-item__max-width, $max-columns: $grid__max-columns) {
+	@include set-cssvars(
+		(
+			grid__columns: $columns,
+			grid__column-gap: $column-gap,
+			grid__row-gap: $row-gap,
+			grid-item__min-width: $item__min-width,
+			grid-item__max-width: $item__max-width,
+			grid__max-columns: $max-columns,
+		)
+	);
+	display: grid;
+	grid-template-columns: repeat(cssvar('grid__columns'), 1fr);
+	column-gap: cssvar('grid__column-gap');
+	row-gap: cssvar('grid__row-gap');
 }
 
-@mixin margin-right-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('margin-right', $value, $font-size, $unit);
+@mixin colspan($n) {
+	grid-column: auto / span $n;
 }
 
-@mixin margin-bottom-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('margin-bottom', $value, $font-size, $unit);
+@mixin colstart($n, $val-prefix: '') {
+	grid-column-start: #{$val-prefix}$n;
 }
 
-@mixin margin-left-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('margin-left', $value, $font-size, $unit);
+@mixin generate-colspan-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'colspan', $prefix: '') {
+	@for $i from 1 through $columns {
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include colspan($i);
+		}
+	}
 }
 
-// PADDING
-@mixin padding($value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right) {
-	@include style-shorthand('padding', $value-top, $value-right, $value-bottom, $value-left);
+@mixin colspan-full {
+	grid-column: 1 / -1;
 }
 
-@mixin padding-change($default-top: 0, $default-right: $default-top, $default-bottom: $default-top, $default-left: $default-right, $value-top: $default-top, $value-right: $default-right, $value-bottom: $value-top, $value-left: $value-right) {
-	@include style-change-shorthand('padding', $default-top, $default-right, $default-bottom, $default-left, $value-top, $value-right, $value-bottom, $value-left);
+// @mixin content-grid__alignfull {
+	// grid-column: 1 / -1;
+// }
+
+@mixin generate-colstart-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'colstart', $prefix: '', $val_prefix: '') {
+	@for $i from 1 through ($columns - 1) {
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include colstart($i, $val_prefix);
+		}
+	}
 }
 
-@mixin padding-unitcalc($value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-shorthand-unitcalc('padding', $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit);
+@mixin grid--auto {
+	grid-template-columns: repeat(auto-fit, minmax(min(cssvar('grid-item__min-width'), cssvar('grid-item__max-width')), 1fr));
 }
 
-@mixin padding-change-unitcalc($default-top: 0, $default-right: $default-top, $default-bottom: $default-top, $default-left: $default-right, $value-top: $default-top, $value-right: $default-right, $value-bottom: $value-top, $value-left: $value-right, $font-size: $body__font-size, $unit: $base__unit) {
-
-	@include style-change-shorthand-unitcalc('padding', $default-top, $default-right, $default-bottom, $default-left, $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit);
+@mixin grid--cols {
+	@include set-cssvar('grid-item__max-width', calc((100% - ((cssvar('grid__max-columns') - 1) * cssvar('grid__column-gap'))) / cssvar('grid__max-columns')));
+	grid-template-columns: repeat(auto-fit, minmax(max(cssvar('grid-item__min-width', initial), cssvar('grid-item__max-width')), 1fr));
 }
 
-@mixin padding-top-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('padding-top', $value, $font-size, $unit);
+@mixin max-cols($n) {
+	// @include set-cssvar('grid-item__max-width', calc(($n - 1) - ($gaps * cssvar('grid__column-gap'))) / $n);
+	@include set-cssvar('grid__max-columns', $n);
 }
 
-@mixin padding-right-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('padding-right', $value, $font-size, $unit);
+@mixin generate-max-cols-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'grid--cols', $prefix: '') {
+	@for $i from 1 through $columns {
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include max-cols($i);
+		}
+	}
 }
 
-@mixin padding-bottom-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('padding-bottom', $value, $font-size, $unit);
+@mixin content-grid($columns: $grid__columns, $column-width: $grid__column-width, $column-gap: $grid__column-gap, $row-gap: $grid__row-gap, $padding-inline: $container__padding-inline) {
+	@include set-cssvars(
+		(
+			content-grid__columns: $columns,
+			content-grid__column-width: $column-width,
+			content-grid__column-gap: $column-gap,
+			content-grid__row-gap: $row-gap,
+
+		)
+	);
+
+	@if $padding-inline > $column-gap {
+		@include set-cssvar('content-grid__padding-inline', $padding-inline - $column-gap);
+
+	} @else if $padding-inline == $column-gap {
+		@include set-cssvar('content-grid__padding-inline', 0);
+
+	} @else if $padding-inline > 0 and $column-gap > 0 {
+		@include set-cssvar('content-grid__padding-inline', $column-gap - $padding-inline);
+		// margin-inline: $column-gap * -1;
+		margin-inline: calc(cssvar('conent-grid__column-gap') * -1);
+
+	} @else {
+		@include set-cssvar('content-grid__padding-inline', 0);
+		// margin-inline: $column-gap * -1;
+		margin-inline: calc(cssvar('conent-grid__column-gap') * -1);
+	}
+
+	display: grid;
+	grid-template-columns: 1fr repeat(cssvar('content-grid__columns'), [col-start] minmax(0, cssvar('content-grid__column-width'))) 1fr;
+	padding-inline: cssvar('content-grid__padding-inline');
+	column-gap: cssvar('cotnent-grid__column-gap', 1.5rem);
+	row-gap: cssvar('content-grid__row-gap', 0);
+
+	& > * {
+		grid-column-start: column-start 1;
+		// grid-column: auto / span $grid__columns;
+		grid-column: auot / span cssvar('content-grid__columns');
+	}
 }
 
-@mixin padding-left-unitcalc($value: 0, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-unitcalc('padding-left', $value, $font-size, $unit);
+// can use positive or negative
+// $n - number of columns to shift - can be positive or negative
+// $parent-n - number of columns of parent item
+@mixin shift-x($n, $parent-n, $padding-inline: $container__padding-inline) {
+	@if $n > 0 {
+		transform: translateX(calc((math.div($n, $parent-n) * 100%) - $padding-inline / 2 ) );
+	} @else {
+		transform: translateX(calc((math.div($n, $parent-n) * 100%) + $padding-inline / 2 ) );
+	}
 }
 
-// BORDER
-@mixin border($border-width: 1, $border-style: solid, $border-color: $border__color, $font-size: $body__font-size, $unit: $base__unit) {
-	border: unitcalc($border-width, $font-size, $unit) $border-style $border-color;
+
+
+// BLOCK GRID
+// Uaed for galleries, etc. that output elements for parents/children and a class to designate the number of columns
+@mixin generate-block-grid-classes($columns: $grid__columns, $parent-selector: '.block-grid', $parent-modifier-selector: '.block-grid', $child_selector: '.col') {
+	$i: 1;
+	#{$parent-selector} {
+		@include row;
+	}
+
+	@for $i from 1 through $columns {
+		#{$parent-modifier-selector}-#{$i} {
+			//& > #{$child-selector} {
+			#{$child-selector} {
+				width: math.div(1, $i) * 100%;
+			}
+		}
+	}
 }
 
-@mixin border-width-unitcalc($value-top: 0, $value-right: $value-top, $value-bottom: $value-top, $value-left: $value-right, $font-size: $body__font-size, $unit: $base__unit) {
-	@include style-shorthand-unitcalc('border-width', $value-top, $value-right, $value-bottom, $value-left, $font-size, $unit);
+// FLEXBOX GRID
+@mixin guttered($column-gap: $grid__column-gap) {
+	padding-inline: calc(cssvar('grid__column-gap') * .5);
 }
 
-@mixin border-radius-unitcalc($value: 0, $font-size: $body__font-size) {
-	@include style-unitcalc('border-radius', $value, $font-size);
+@mixin row-gutters($column-gap: $grid__column-gap) {
+	margin-inline: calc(cssvar('grid__column-gap') * -.5);
 }
 
-@mixin border-color-change($value: $border__color, $default: $border__color) {
-	@include style-change('border-color', $value, $default);
+@mixin row($columns: $grid__columns, $column-gap: $grid__column-gap, $row-gap: $grid__row-gap, $item__max-width: $grid-item__max-width, $max-columns: $grid__max-columns) {
+	@include set-cssvars(
+		(
+			grid__columns: $columns,
+			grid__column-gap: $column-gap,
+			grid__max-columns: $max-columns,
+			grid__row-gap: $row-gap,
+			grid-item__max-width: $item__max-width,
+		)
+	);
+	display: flex;
+	flex-wrap: wrap;
+	// width: 100%;
+	row-gap: cssvar('grid__row-gap');
+	margin-inline: calc(cssvar('grid__column-gap') * -.5);
+
+	& > * {
+		position: relative;
+		// width: 100%;
+		// flex: 0 0 auto;
+		max-width: 100%;
+		flex: 0 0 cssvar('grid-item__max-width');
+		padding-inline: calc(cssvar('grid__column-gap') * .5);
+	}
 }
 
-// BACKGROUND
-@mixin background-color-change($value: transparent, $default: transparent) {
-	@include style-change('background-color', $value, $default);
+@mixin row--cols {
+	& > * {
+		flex-basis: calc(1 / cssvar('grid__max-columns') * 100%);
+	}
 }
 
-// BOX SHADOW
-@mixin box-shadow-change($value: none, $default: none) {
-	@include style-change('box-shadow', $value, $default);
+// @mixin row--cols($n) {
+	// & > * {
+	// 	flex-basis: math.div(1, $n) * 100%;
+	// }
+// }
+
+// how many columns should element span
+@mixin cols($n) {
+	@include set-cssvar('grid-item__max-width', calc($n / cssvar('grid__columns') * 100%));
 }
 
-// OPACITY
-@mixin opacity-change($value: 1, $default: 1) {
-	@include style-change('opacity', $value, $default);
+// add left margin where $n is a number of columns margin should span
+@mixin push($n) {
+	margin-inline-start: calc($n / cssvar('grid__columns') * 100%);
 }
 
-// LEGACY EM MIXINS
-// To be phased out?
-// -----------------------------------
-
-// HEIGHT AND WIDTH
-@mixin height-emcalc($height, $font-size: $body__font-size) {
-	@include style-emcalc('height', $height, $font-size);
+// add right margin where $n is a number of columns margin should span
+@mixin pull($n) {
+	margin-inline-end: calc($n / cssvar('grid__columns') * 100%);
 }
 
-@mixin width-emcalc($width, $font-size: $body__font-size) {
-	@include style-emcalc('width', $width, $font-size);
+@mixin col--grow {
+	flex: 1 0 0;
 }
 
-// MARGINS
-@mixin margin-emcalc($value-top: 0, $value-right: 0, $value-bottom: 0, $value-left: 0, $font-size: $body__font-size) {
-	@include style-shorthand-emcalc('margin', $value-top, $value-right, $value-bottom, $value-left, $font-size);
+@mixin col--auto {
+	flex-basis: auto;
 }
 
-@mixin margin-top-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('margin-top', $value, $font-size);
+@mixin col--centered {
+	margin-inline: auto;
 }
 
-@mixin margin-right-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('margin-right', $value, $font-size);
+@mixin row--inline {
+	& > * {
+		@include col--auto;
+	}
 }
 
-@mixin margin-bottom-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('margin-bottom', $value, $font-size);
+@mixin row--form {
+	@include set-cssvar('grid__column-gap', $form-grid__column-gap);
+	align-items: center;
 }
 
-@mixin margin-left-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('margin-left', $value, $font-size);
+@mixin row--gallery {
+	@include set-cssvar('grid__column-gap', $gallery-grid__column-gap);
 }
 
-// PADDING
-@mixin padding-emcalc($value-top: 0, $value-right: 0, $value-bottom: $value-top, $value-left: $value-right, $font-size: $body__font-size) {
-	@include style-shorthand-emcalc('padding', $value-top, $value-right, $value-bottom, $value-left, $font-size);
+@mixin uncol {
+	width: auto;
+	padding-inline: initial;
 }
 
-@mixin padding-top-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('padding-top', $value, $font-size);
+@mixin unpush {
+	margin-inline-start: 0;
 }
 
-@mixin padding-right-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('padding-right', $value, $font-size);
+@mixin unpull {
+	margin-inline-end: 0;
 }
 
-@mixin padding-bottom-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('padding-bottom', $value, $font-size);
+@mixin valcols($n, $column-total-width: $grid__column-total-width) {
+	max-width: $n * $column-total-width;
 }
 
-@mixin padding-left-emcalc($value: 0, $font-size: $body__font-size) {
-	@include style-emcalc('padding-left', $value, $font-size);
+@mixin valpush($n, $column-total-width: $grid__column-total-width) {
+	margin-inline-start: $n * $column-total-width;
+}
+
+@mixin valpull($n, $column-total-width: $grid__column-total-width) {
+	margin-inline-end: $n * $column-total-width;
+}
+
+@mixin generate-cols-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'cols', $prefix: '') {
+	@for $i from 1 through $columns {
+
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include cols($i);
+		}
+	}
+}
+
+@mixin generate-push-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'push', $prefix: '') {
+	@for $i from 1 through $columns {
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include push($i);
+		}
+	}
+}
+
+@mixin generate-pull-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'pull', $prefix: '') {
+	@for $i from 1 through $columns {
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include pull($i);
+		}
+	}
+}
+
+@mixin generate-row--cols-classes($columns: $grid__columns, $selector-type: '%', $selector-name: 'row--cols', $prefix: '') {
+	@for $i from 1 through $columns {
+		#{$selector-type}#{$prefix}#{$selector-name}-#{$i} {
+			@include row--cols($i);
+		}
+	}
+}
+
+// BREAK COLUMNS
+
+// Make element in column break wider than parent element by number of columns
+// align can be 'left', 'center', or 'right'
+// @mixin break-columns($n, $parent-n, $gutter: $grid__column-gap, $align: 'center') {
+// 	$width: ($grid__column-total-width * $n) - $gutter;
+// 	$parent-width: ($grid__column-total-width * $parent-n) - $gutter;
+// 	$difference: $width - $parent-width;
+//
+// 	width: math.div($width, $parent-width) * 100%;
+//
+// 	@if ($align == 'right') {
+// 		margin-inline-start: math.div($difference, $parent-width * -1) * 100%;
+//
+// 	} @else if ($align == 'center') {
+// 		margin-inline-start: math.div($difference * -.5, $parent-width) * 100%;
+// 	}
+// }
+@mixin break-columns($n, $parent-n, $gutter: $grid__column-gap, $column-width: $grid__column-width, $align: 'center') {
+	$grid__column-total-width: $gutter + $column-width;
+	@if $gutter != $grid__column-gap {
+		@include set-cssvar('grid__column-gap', $gutter);
+	}
+	$width: ($grid__column-total-width * $n) - $gutter;
+	$parent-width: ($grid__column-total-width * $parent-n) - $gutter;
+	$difference: $width - $parent-width;
+
+	width: math.div($width, $parent-width) * 100%;
+
+	@if ($align == 'right') {
+		margin-inline-start: math.div($difference, $parent-width * -1) * 100%;
+
+	} @else if ($align == 'center') {
+		margin-inline-start: math.div($difference * -.5, $parent-width) * 100%;
+	}
+}
+
+@mixin banded {
+	position: relative;
+	left: 50%;
+	margin-inline-start: -50vw;
+	width: 100vw;
+	min-width: 100%;
+	padding-inline: calc(50vw - 50%);
+	padding-block-start: cssvar('block--banded__padding-block-start');
+	padding-block-end: cssvar('block--banded__padding-block-end');
+}
+
+@mixin break-full {
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-inline: -50vw;
+	padding-inline: cssvar('container__padding-inline');
+}
+
+@mixin break-full--bleed {
+	padding-inline: 0;
+}
+
+// LAYOUT CLASSES/PLACEHOLDERS
+// $selector-type expects '.' (outputs classes) or '%' (outputs placeholders)
+@mixin layout-classes($selector-type: '%', $prefix: null) {
+	#{$selector-type}#{$prefix}container-fluid { @include container-fluid; }
+	#{$selector-type}#{$prefix}container { @include container; }
+	@include generate-container-cols-classes($grid__columns, $selector-type, 'container--cols', $prefix);
+	#{$selector-type}#{$prefix}container--left { @include container--left; }
+	#{$selector-type}#{$prefix}container--right { @include container--right; }
+	#{$selector-type}#{$prefix}grid { @include grid; }
+	#{$selector-type}#{$prefix}grid--auto { @include grid--auto; }
+	@include generate-colspan-classes($grid__columns, $selector-type, 'colspan', $prefix);
+	@include generate-colstart-classes($grid__columns, $selector-type, 'colstart', $prefix);
+	#{$selector-type}#{$prefix}colspan-full { @include colspan-full; }
+	// #{$selector-type}#{$prefix}content-grid__alignfull { @include content-grid__alignfull; }
+	#{$selector-type}#{$prefix}grid--cols { @include grid--cols; }
+	@include generate-max-cols-classes($grid__columns, $selector-type, 'grid--cols', $prefix);
+	#{$selector-type}#{$prefix}content-grid { @include content-grid; }
+	@include generate-colstart-classes($grid__columns, $selector-type, 'content-colstart', $prefix, 'col-start');
+	#{$selector-type}#{$prefix}row-gutters { @include row-gutters; }
+	#{$selector-type}#{$prefix}guttered { @include guttered; }
+	#{$selector-type}#{$prefix}row { @include row; }
+	#{$selector-type}#{$prefix}row--cols { @include row--cols; }
+	@include generate-max-cols-classes($grid__columns, $selector-type, 'row--cols', $prefix);
+	#{$selector-type}#{$prefix}row--inline { @include row--inline; }
+	#{$selector-type}#{$prefix}row--form { @include row--form; }
+	#{$selector-type}#{$prefix}row--gallery { @include row--gallery; }
+	#{$selector-type}#{$prefix}col--grow { @include col--grow; }
+	#{$selector-type}#{$prefix}col--auto { @include col--auto; }
+	#{$selector-type}#{$prefix}col--centered { @include col--centered; }
+	@include generate-cols-classes($grid__columns, $selector-type, 'cols', $prefix);
+	@include generate-push-classes($grid__columns, $selector-type, 'push', $prefix);
+	@include generate-pull-classes($grid__columns, $selector-type, 'pull', $prefix);
+	#{$selector-type}#{$prefix}uncol { @include uncol; }
+	#{$selector-type}#{$prefix}unpush { @include unpush; }
+	#{$selector-type}#{$prefix}unpull { @include unpull; }
+	#{$selector-type}#{$prefix}banded { @include banded; }
+	#{$selector-type}#{$prefix}break-full { @include break-full; }
+	#{$selector-type}#{$prefix}break-full--bleed { @include break-full--bleed; }
+}
+
+@mixin bp-layout-classes($selector-type: '%') {
+	@each $name, $value in $breakpoints {
+		@if $value == 0 {
+			@include layout-classes($selector-type);
+
+		} @else {
+			$prefix: bp-#{$name}__;
+			@include breakpoint-up($value) {
+				@include layout-classes($selector-type, $prefix);
+			}
+		}
+	}
 }

@@ -1,16 +1,15 @@
+@use 'abstracts' as *;
+@use 'layout' as *;
+
 img,
 picture,
 video,
-canvas,
-svg {
-	max-width: 100%;
-	height: auto;
-}
-
 audio,
 canvas,
-video {
-	display: inline-block;
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
 }
 
 img {
@@ -22,56 +21,21 @@ svg:not([fill]) {
 	fill: currentColor;
 }
 
-figure,
-.figure,
+video,
+picture,
+canvas,
 .wp-video {
-	margin: 0 0 var(--#{$prefix}spacing--l);
-}
-
-// wordpress-specific - old styles
-.alignleft {
-	float: left;
-}
-
-.alignright {
-	float: right;
+	margin-block: cssvar('margin-block-start') cssvar('margin-block-end');
 }
 
 .aligncenter {
-	clear: both;
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-img,
-.wp-caption {
-	&.alignleft,
-	&.alignright,
-	&.aligncenter {
-		margin: 0 0 var(--#{$prefix}spacing--l);
-	}
-
-	&.alignleft {
-		margin-left: 0;
-		margin-right: $spacing;
-		clear: left;
-	}
-
-	&.alignright {
-		margin-left: $spacing;
-		margin-right: 0;
-		clear: right;
-	}
+	margin-inline: auto;
 }
 
 .wp-caption {
 	display: table;
 	max-width: 100%;
-
-	img {
-		display: block;
-	}
 
 	figcaption {
 		display: table-caption;
@@ -82,11 +46,11 @@ img,
 // NON-BLOCK THEMES
 // .gallery  {
 // 	@extend .gallery-row;
-// 	margin: 0 0 $figure__margin;
+// 	margin-block: cssvar('margin-block-start') cssvar('margin-block-end');
 // }
 //
 // .gallery-item {
-// 	margin: 0 0 $figure__margin-bottom;
+// 	@extend %default-margins;
 //
 // 	figure {
 // 		margin: 0;

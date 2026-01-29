@@ -1,0 +1,18 @@
+.wp-block-file {
+  -webkit-margin-after: var(--spacing);
+          margin-block-end: var(--spacing);
+}
+.wp-block-file.aligncenter {
+  text-align: center;
+}
+.wp-block-file.alignright {
+  /*rtl:ignore*/
+  text-align: right;
+}
+
+.wp-block-file * + .wp-block-file__button {
+  -webkit-margin-start: 0.75rem;
+          margin-inline-start: 0.75rem;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zYXNzL2Jsb2Nrcy9jb3JlL2ZpbGUuc2NzcyIsImZpbGUuY3NzIiwiLi4vLi4vLi4vc3JjL3Nhc3MvdmFyaWFibGVzL19sYXlvdXQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNDLG9DQUFBO1VBQUEsZ0NBQUE7QUNGRDtBRElDO0VBQ0Msa0JBQUE7QUNGRjtBREtDO0VBQ0MsYUFBQTtFQUNBLGlCQUFBO0FDSEY7O0FEV0E7RUFDQyw2QkVMdUI7VUZLdkIsNEJFTHVCO0FESHhCIiwiZmlsZSI6ImZpbGUuY3NzIn0= */

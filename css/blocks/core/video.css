@@ -1,0 +1,22 @@
+.wp-block-video {
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+}
+
+.wp-block-video video {
+  max-width: 100%;
+}
+
+@supports (position: sticky) {
+  .wp-block-video [poster] {
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+.wp-block-video.aligncenter {
+  text-align: center;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zYXNzL2Jsb2Nrcy9jb3JlL3ZpZGVvLnNjc3MiLCJ2aWRlby5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQyx1QkFBQTtVQUFBLHNCQUFBO0VBQ0EscUJBQUE7VUFBQSxvQkFBQTtBQ0NEOztBREVBO0VBQ0MsZUFBQTtBQ0NEOztBREVBO0VBQ0M7SUFDQyxvQkFBQTtPQUFBLGlCQUFBO0VDQ0E7QUFDRjtBREVBO0VBQ0Msa0JBQUE7QUNBRCIsImZpbGUiOiJ2aWRlby5jc3MifQ== */

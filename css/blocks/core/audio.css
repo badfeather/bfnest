@@ -1,0 +1,6 @@
+.wp-block-audio audio {
+  width: 100%;
+  min-width: unitcalc(280);
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zYXNzL2Jsb2Nrcy9jb3JlL2F1ZGlvLnNjc3MiLCJhdWRpby5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUM7RUFDQyxXQUFBO0VBQ0Esd0JBQUE7QUNERiIsImZpbGUiOiJhdWRpby5jc3MifQ== */

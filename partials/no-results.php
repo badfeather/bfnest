@@ -1,5 +1,5 @@
 <div class="doc doc--page doc--page-404">
-	<main id="doc-main" class="doc-main">
+	<main id="doc-main container" class="doc-main">
 		<header id="doc-header" class="doc-header">
 			<h1 class="doc-title entry-title"><?php _e( 'Nothing Found', 'bfnest' ); ?></h1>
 		</header>

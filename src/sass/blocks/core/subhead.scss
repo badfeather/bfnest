@@ -1,0 +1,10 @@
+@use '../../abstracts' as *;
+// @use '../../type' as *;
+
+p.wp-block-subhead {
+//	font-size: 1.1em;
+//	font-style: italic;
+//	opacity: 0.75;
+	// @extend .entry-subtitle;
+	opacity: 1;
+}

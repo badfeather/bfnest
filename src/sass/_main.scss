@@ -1,41 +1,16 @@
-.site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+@use 'abstracts' as *;
+@use 'layout' as *;
 
-.site-content {
-  flex: 1;
-}
-
-.doc-main {
-	padding-top: var(--#{$prefix}spacing--l);
-	margin: 0 0 var(--#{$prefix}spacing);
-}
-
-.entry {
-	margin: 0 0 var(--#{$prefix}spacing--l);
-}
-
+.doc-main,
+.entry,
 .widget {
-	margin: 0 0 var(--#{$prefix}spacing);
-}
-
-.entry-figure {
-	margin: 0 0 var(--#{$prefix}spacing--l);
-}
-
-//.sticky {
-//}
-
-.entry-header {
-	margin-bottom: var(--#{$prefix}spacing);
+	margin-block: cssvar('margin-block-start') cssvar('margin-block-end');
 }
 
 // SINGLE POSTS
 .share-link {
 	display: inline-block;
-	margin-right: 1em;
+	margin-inline: .375em;
 }
 
 // Uncomment below to output social network colors
@@ -50,11 +25,6 @@
 //	}
 //}
 
-.share-link-icon {
-	display: inline-block;
-	margin-left: .5em;
-	vertical-align: middle;
-}
 
 
 // ARCHIVES

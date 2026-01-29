@@ -1,7 +1,9 @@
+@use '../abstracts' as *;
+
 .wp-block-columns {
 	display: flex;
 	flex-wrap: wrap;
-	margin-bottom: var(--#{$prefix}spacing--l);
+	margin-block-end: cssvar('spacing--lg');
 	@include row-gutters();
 
 	&.are-vertically-aligned-top {
@@ -15,11 +17,22 @@
 	&.are-vertically-aligned-bottom {
 		align-items: flex-end;
 	}
-}
 
-@media (min-width: 782px) {
-	.wp-block-columns {
-		flex-wrap: nowrap;
+	&.is-not-stacked-on-mobile {
+		flex-wrap: no-wrap;
+
+		& > .wp-block-column {
+			flex-basis: 0;
+			flex-grow: 1;
+
+			&[style*="flex-basis"] {
+				flex-grow: 0;
+			}
+		}
+	}
+
+	@include bp-md__mq-up {
+		flex-wrap: no-wrap;
 	}
 }
 
@@ -31,6 +44,15 @@
 	width: 100%;
 	flex-basis: 100%;
 	@include guttered();
+
+	@include bp-md__mq-up {
+		flex-basis: 0;
+		flex-grow: 1;
+
+		&[style*="flex-basis"] {
+			flex-grow: 0;
+		}
+	}
 
 	&.is-vertically-aligned-top {
 		align-self: flex-start;
@@ -44,18 +66,27 @@
 	&.is-vertically-aligned-bottom {
 		align-self: flex-end;
 	}
-}
 
-@include bp-s__mq-up {
-	.wp-block-column {
-		flex-grow: 0;
-		flex-basis: 50%;
+	&.is-vertically-aligned-top {
+		align-self: flex-start;
+	}
+
+	&.is-vertically-aligned-center {
+		align-self: center;
+	}
+
+	&.is-vertically-aligned-bottom {
+		align-self: flex-end;
+	}
+
+	&.is-vertically-aligned-stretch {
+		align-self: stretch;
 	}
 }
 
 // .wp-block-columns {
 // 	display: flex;
-// 	margin-bottom: 1.75em;
+// 	margin-block-end: 1.75em;
 // 	box-sizing: border-box;
 //
 // 	// Responsiveness: Allow wrapping on mobile.

@@ -1,5 +1,7 @@
+@use '../abstracts' as *;
+
 .wp-block-button__link {
-	@extend .btn;
+	@include btn;
 }
 
 // // This variable is repeated across Button, Buttons, and Buttons editor styles.

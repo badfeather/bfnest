@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.wp-block-separator.is-style-wide {
+  border-bottom-width: 1px;
+}
+
+.wp-block-separator.is-style-dots {
+  background: none !important;
+  border: none;
+  text-align: center;
+  max-width: none;
+  line-height: 1;
+  height: auto;
+}
+
+.wp-block-separator.is-style-dots::before {
+  content: "···";
+  color: currentColor;
+  font-size: unitcalc(20);
+  letter-spacing: 2em;
+  -webkit-padding-start: 2em;
+          padding-inline-start: 2em;
+  font-family: serif;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcGFyYXRvci5jc3MiLCIuLi8uLi8uLi9zcmMvc2Fzcy9ibG9ja3MvY29yZS9zZXBhcmF0b3Iuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEI7RUFDQyx3QkFBQTtBREVEOztBQ0NBO0VBQ0MsMkJBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtFQUNBLFlBQUE7QURFRDs7QUNDQTtFQUNDLGNBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7RUFDQSwwQkFBQTtVQUFBLHlCQUFBO0VBQ0Esa0JBQUE7QURFRCIsImZpbGUiOiJzZXBhcmF0b3IuY3NzIn0= */

@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+// Products
+// ---------------------------
+ul.products {
+	@include list-unstyled;
+	margin: 0;
+	@include row;
+
+	.product {
+		// @include col;
+		position: relative;
+		margin-block-end: cssvar('spacing');
+
+		.woocommerce-loop-product__title {
+			font-size: 1rem;
+		}
+
+		img {
+			display: block;
+		}
+
+		.button {
+			display: block;
+		}
+	}
+}
+
+@include bp-md__mq-up {
+	ul.products .product {
+		min-width: 25%;
+		flex: 0 0 25%;
+	}
+	@include generate-block-grid-classes( 6, 'ul.products', '.columns', '.product' );
+}

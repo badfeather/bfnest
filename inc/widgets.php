@@ -6,7 +6,7 @@ function bfnest_widgets_init() {
 	register_sidebar( [
 		'name' => __( 'Global', 'bfnest' ),
 		'id' => 'global',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
@@ -15,7 +15,7 @@ function bfnest_widgets_init() {
 	register_sidebar( [
 		'name' => __( 'Page', 'bfnest' ),
 		'id' => 'page',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
@@ -24,7 +24,7 @@ function bfnest_widgets_init() {
 	register_sidebar( [
 		'name' => __( 'Single', 'bfnest' ),
 		'id' => 'single',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",
@@ -33,7 +33,7 @@ function bfnest_widgets_init() {
 	register_sidebar( [
 		'name' => __( 'Archive', 'bfnest' ),
 		'id' => 'archive',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">' . "\n\t",
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">' . "\n\t",
 		'after_widget' => '</aside>' . "\n",
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>' . "\n",

@@ -1,5 +1,17 @@
 <?php
 /**
+ * Clean up array to get/echo as CSS Classes
+ */
+function bfnest_get_array_to_classes( $classes_array = [] ) {
+	if ( ! is_array( $classes_array ) || empty( $classes_array ) ) return false;
+	return esc_attr( join( ' ', array_values( array_filter( $classes_array ) ) ) );
+}
+
+function bfnest_array_to_classes( $classes_array = [] ) {
+	echo bfnest_get_array_to_classes( $classes_array );
+}
+
+/**
  * Used in post type and taxonomy archives
  * Add any custom post type/taxonomy conditionals here
  */
@@ -26,7 +38,7 @@ function bfnest_get_archive_post_type() {
  * Post is in descendant category
  * See http://codex.wordpress.org/Function_Reference/in_category
  */
-function bfnest_post_is_in_descendant_term( $terms, $post = null, $taxonomy = 'category' ) {
+function bfnest_has_descendant_term( $terms, $taxonomy = 'category', $post = null ) {
 	foreach ( (array) $terms as $term ) {
 		// get_term_children() accepts integer ID only
 		$descendants = get_term_children( (int) $term, $taxonomy );
@@ -38,29 +50,26 @@ function bfnest_post_is_in_descendant_term( $terms, $post = null, $taxonomy = 'c
 }
 
 /**
- * Legacy bfnest_post_is_in_descentant_category()
- * Uses bfnest_post_is_in_descendant_term()
+ * Legacy bfnest_has_descentant_category()
+ * Uses bfnest_has_descendant_term()
  */
-function bfnest_post_is_in_descendant_category( $terms, $post = null ) {
-	return bfnest_post_is_in_descendant_term( $terms, $post );
+function bfnest_has_descendant_category( $terms, $post = null ) {
+	return bfnest_has_descendant_term( $terms, 'category', $post );
 }
 
 /**
  * Check if post is in a term or a descendant term
  */
-function bfnest_post_is_in_term_or_term_descendant( $term_id, $post = null, $taxonomy = 'category' ) {
-	if ( has_term( $term_id, $taxonomy, $post ) || bfnest_post_is_in_descendant_term( $term_id, $post, $taxonomy ) ) {
-		return true;
-	}
-	return false;
+function bfnest_has_term_or_term_descendant( $term_id, $taxonomy = 'category', $post = null ) {
+	return has_term( $term_id, $taxonomy, $post ) || bfnest_has_descendant_term( $term_id, $taxonomy, $post );
 }
 
 /**
- * Legacy bfnest_post_is_in_category_or_descentant_category()
- * Uses bfnest_post_is_in_term_or_descendant_term()
+ * Legacy bfnest_has_category_or_descendant_category()
+ * Uses bfnest_has_term_or_descendant_term()
  */
-function bfnest_post_is_in_category_or_category_descendant( $term_id, $post = null ) {
-	return bfnest_post_is_in_term_or_term_descendant( $term_id, $post, 'category' );
+function bfnest_has_category_or_category_descendant( $term_id, $post = null ) {
+	return bfnest_has_term_or_term_descendant( $term_id, 'category', $post );
 }
 
 /**
@@ -70,58 +79,27 @@ function bfnest_is_term_or_term_descendant( $term_id = null, $taxonomy = 'catego
 	if ( ! is_tax( $taxonomy ) || ! term_exists( $term_id ) ) {
 		return false;
 	}
-
 	$current_term_id = get_queried_object_id();
-
-	if ( $term_id == $current_term_id || in_array( $current_term_id, get_term_children( $term_id, $taxonomy ) ) ) {
-		return true;
-	}
-
-	return false;
+	return $term_id == $current_term_id || in_array( $current_term_id, get_term_children( $term_id, $taxonomy ) );
 }
 
 /**
  * Get the top parent term of current post or taxonomy archive
- * Works only on single posts and hierarchical
  */
-function bfnest_get_top_parent_term_id( $term_id = null, $taxonomy = 'category' ) {
-	if ( ! $term_id ) {
-		if ( is_single() ) {
-			$terms = get_the_terms( get_the_ID(), $taxonomy );
-			$term_ids = [];
-			foreach ( $terms as $term ) {
-				$term_ids[] = $term->term_id;
-			}
-
-			$term_id = $term_ids[0];
-
-		} elseif ( is_tax( $taxonomy ) || ( 'category' == $taxonomy && is_category() ) ) {
-			$term_id = get_queried_object_id();
-		}
-	}
-
-	if ( ! term_exists( $term_id, $taxonomy ) ) {
-		return false;
-	}
-
-	$ancestors = get_ancestors( $term_id, $taxonomy, 'taxonomy' );
-	array_unshift( $ancestors, $term_id );
-	return end( $ancestors );
+function bfnest_get_top_parent_term( $taxonomy = 'category' , $post_id = null ) {
+	$post_id = null === $post_id ? get_the_ID() : $post_id;
+	$terms = get_the_terms( $post_id, $taxonomy );
+	if ( empty( $terms ) || is_wp_error( $terms ) ) return false;
+	return array_pop( $terms );
 }
 
 /**
- * Get top parent term
- * Should be used only on single post templates or taxonomy archives
- * $taxonomy detaults to 'category' but can be any hierarchical taxonomy
-*/
-function bfnest_get_top_parent_term( $term_id = null, $taxonomy = 'category' ) {
-	$top_term_id = bfnest_get_top_parent_term_id( $term_id, $taxonomy );
-
-	if ( ! $top_term_id ) {
-		return false;
-	}
-
-	return get_term_by( 'id', $top_term_id, $taxonomy );
+ * Get the top parent term ID current post or taxonomy archive
+ */
+function bfnest_get_top_parent_term_id( $taxonomy = 'category', $post_id = null ) {
+	$term = bfnest_get_top_parent_term( $taxonomy, $post_id );
+	if ( ! $term ) return false;
+	return $term->term_id;
 }
 
 /**

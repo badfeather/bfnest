@@ -8,7 +8,7 @@ wp.domReady(() => {
 	// view all registered core blocks
 	// console.log(blockTypes.join("\r\n")); // prints list of all core blocks
 
-	// core blocks from gutenberg 14.0.2
+	// core blocks from gutenberg 20.5.0
 	let allowedTypes = [
 		'core/paragraph',
 		'core/image',
@@ -23,28 +23,29 @@ wp.domReady(() => {
 		'core/buttons',
 		// 'core/calendar',
 		// 'core/categories',
-		// 'core/freeform',
 		'core/code',
 		'core/column',
 		'core/columns',
-		// 'core/cover',
+		'core/cover',
+		'core/details',
 		'core/embed',
 		'core/file',
 		'core/group',
 		'core/html',
 		// 'core/latest-comments',
 		// 'core/latest-posts',
-		// 'core/media-text',
+		'core/media-text',
 		// 'core/missing',
 		// 'core/more',
 		// 'core/nextpage',
 		// 'core/page-list',
+		// 'core/page-list-item',
 		// 'core/pattern',
 		'core/preformatted',
 		'core/pullquote',
 		'core/block',
 		// 'core/rss',
-		// 'core/search',
+		'core/search',
 		'core/separator',
 		'core/shortcode',
 		// 'core/social-link',
@@ -53,8 +54,9 @@ wp.domReady(() => {
 		'core/table',
 		// 'core/tag-cloud',
 		'core/text-columns',
-		// 'core/verse',
+		'core/verse',
 		'core/video',
+		'core/footnotes',
 		// 'core/navigation',
 		// 'core/navigation-link',
 		// 'core/navigation-submenu',
@@ -69,6 +71,7 @@ wp.domReady(() => {
 		// 'core/post-featured-image',
 		// 'core/post-content',
 		// 'core/post-author',
+		// 'core/post-author-name',
 		// 'core/post-date',
 		// 'core/post-terms',
 		// 'core/post-navigation-link',
@@ -97,8 +100,9 @@ wp.domReady(() => {
 		// 'core/term-description',
 		// 'core/query-title',
 		// 'core/post-author-biography',
-		// 'core/post-author-name',
-		'core/table-of-contents'
+		// 'core/freeform',
+		// 'core/legacy-widget',
+		// 'core/widget-group
 	];
 
 	// unregister all blocks not in allowedTypes
@@ -109,13 +113,13 @@ wp.domReady(() => {
 	});
 
 	// unregister block styles on all blocks
-	coreBlocks.forEach(function (block) {
-		let styles = block.styles;
-		if (!styles.length) return;
-		// console.log(JSON.stringify(styles));
-
-		for (let style of styles) {
-			wp.blocks.unregisterBlockStyle(block.name, style.name);
-		}
-	});
+	// coreBlocks.forEach(function (block) {
+	// 	let styles = block.styles;
+	// 	if (!styles.length) return;
+	// 	// console.log(JSON.stringify(styles));
+	//
+	// 	for (let style of styles) {
+	// 		wp.blocks.unregisterBlockStyle(block.name, style.name);
+	// 	}
+	// });
 });

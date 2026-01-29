@@ -17,15 +17,15 @@ $social_nav = wp_nav_menu( [
 	'link_after' => '</span>'
 ] );
 ?>
-		<footer id="site-footer" class="site-footer" role="contentinfo">
+		<footer id="site-footer" class="site-footer">
 			<?php if ( $secondary_nav ) { ?>
-				<nav id="secondary-navigation" class="nav nav-secondary" role="navigation" aria-label="<?php _e( 'Secondary', 'bfnest' ); ?>">
+				<nav id="secondary-navigation" class="nav nav-secondary"aria-label="<?php _e( 'Secondary navigation', 'bfnest' ); ?>">
 					<?php echo $secondary_nav; ?>
 				</nav>
 			<?php } ?>
 
 			<?php if ( $social_nav ) { ?>
-				<nav id="social-navigation" class="nav nav-social" role="navigation" aria-label="<?php _e( 'Social', 'bfnest' ); ?>">
+				<nav id="social-navigation" class="nav nav-social"aria-label="<?php _e( 'Social navigation', 'bfnest' ); ?>">
 					<h2 class="nav-title">Follow <?php echo get_bloginfo( 'name' ); ?></h2>
 					<?php echo $social_nav; ?>
 				</nav>

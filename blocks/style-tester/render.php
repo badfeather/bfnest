@@ -1,14 +1,13 @@
 <?php
 // Create id attribute allowing for custom "anchor" value.
 $id = $block['id'];
-$block_slug = str_replace( 'psmeats/', '', $block['name'] );
-$align = $block['align'];
-$classes = array( 'block', 'block--' . $block_slug );
-if ( $align ) {
-	$classes[] = 'align' . $align;
-}
+$block_slug = str_replace( ['acf/', 'bfnest/'], '', $block['name'] );
+$classname = $block['className'] ?? '';
+$align = $block['align'] ?: 'none';
+$classes = array( 'block', 'block--' . $block_slug, 'align' . $align );
+if ( $classname ) $classes[] = $classname;
 ?>
-<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo join( ' ', $classes ); ?>">
+<div id="<?php echo esc_attr( $id ); ?>" class="<?php bfnest_array_to_classes( $classes ); ?>">
 	<div class="style-tester">
 		<h4>Headings:</h4>
 
@@ -120,6 +119,17 @@ The frumious Bandersnatch!&rdquo;</pre>
 				</select>
 			</div>
 
+			<div class="form-group">
+				<label for="select">Select (multiple)</label>
+				<select id="select" class="input" multiple>
+					<option selected>- select an option -</option>
+					<option value="1">One</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+					<option value="4">Four</option>
+				</select>
+			</div>
+
 			<fieldset class="form-group">
 				<legend>Radio</legend>
 
@@ -159,7 +169,7 @@ The frumious Bandersnatch!&rdquo;</pre>
 
 			</fieldset>
 
-			<fieldset class="form-group form-row form-row--inline">
+			<fieldset class="form-group row row--form row--inline">
 				<legend>Radio</legend>
 
 				<div class="form-check">
@@ -178,7 +188,7 @@ The frumious Bandersnatch!&rdquo;</pre>
 				</div>
 			</fieldset>
 
-			<fieldset class="form-group form-row form-row--inline">
+			<fieldset class="form-group row row--form row--inline">
 				<legend>Choose some monster features</legend>
 
 				<div class="form-check">
@@ -203,16 +213,20 @@ The frumious Bandersnatch!&rdquo;</pre>
 
 		<h4>Inline form</h4>
 		<form>
-			<div class="form-row--inline">
-				<label for="text-inline">Text</label>
-				<input id="text-inline" name="text" type="text" class="input" placeholder="text" />
+			<div class="row row--form row--inline">
+				<div>
+					<label for="text-inline" class="visually-hidden">Text</label>
+					<input id="text-inline" name="text" type="text" class="input" placeholder="text" />
+				</div>
 
 				<div class="form-check">
 					<label for="checkbox-inline">Checkbox 1</label>
 					<input type="checkbox" id="checkbox-inline" name="checkbox-inline" value="checkbox-inline" checked />
 				</div>
 
-				<input name="submit" type="submit" value="Submit" class="btn" />
+				<div>
+					<input name="submit" type="submit" value="Submit" class="btn" />
+				</div>
 			</div>
 		</form>
 
@@ -246,7 +260,7 @@ The frumious Bandersnatch!&rdquo;</pre>
 
 		<p><button class="btn btn--block">btn--block</button></p>
 
-		<p><a class="btn">Link button</a> next to a <button class="btn">&lt;button&gt;</button> next to a <input name="submit" class="btn" type="submit" value="&lt;Submit&gt;"></p>
+		<p><a class="btn btn--link">Link button</a> next to a <button class="btn">&lt;button&gt;</button> next to a <input name="submit" class="btn" type="submit" value="&lt;Submit&gt;"></p>
 
 		<hr />
 
@@ -311,8 +325,104 @@ The frumious Bandersnatch!&rdquo;</pre>
 		<h4>Lede:</h4>
 
 		<div class="lede">
-		<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-		<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+
+		<hr />
+
+		<h4>CSS grid layout system. Uses <code>.grid</code> class</h4>
+
+		<div class="grid grid-test">
+			<div class="colspan-1">.colspan-1</div><div class="colspan-11">.colspan-11</div>
+			<div class="colspan-2">.colspan-2</div><div class="colspan-10">.colspan-10</div>
+			<div class="colspan-3">.colspan-3</div><div class="colspan-9">.colspan-9</div>
+			<div class="colspan-4">.colspan-4</div><div class="colspan-8">.colspan-8</div>
+			<div class="colspan-5">.colspan-5</div><div class="colspan-7">.colspan-7</div>
+			<div class="colspan-6">.colspan-6</div><div class="colspan-6">.colspan-6</div>
+			<div class="colspan-4">.colspan-4</div><div class="colspan-4">.colspan-4</div><div class="colspan-4">.colspan-4</div>
+			<div class="colstart-2 colspan-2">.colstart-2.colspan-2</div><div class="colstart-7 colspan-6">.colstart-7.colspan-6</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+		</div>
+
+		<h4>Auto grid. Uses <code>.grid</code> and <code>.grid--auto</code> classes</h4>
+		<p>Uses <code>--grid-item__min-width</code> property to set the minimum width for children.</p>
+		<div class="grid grid--auto grid-test">
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+		</div>
+
+		<h4>Columns grid. Uses <code>.grid</code> and <code>.grid--cols</code> classes</h4>
+		<p>Uses <code>--grid__max-cols</code> property or <code>.max-cols-[n]</code> utility classes to set the maximum columns. Uses <code>grid-item__min-width</code> property to set the minimum width for children.</p>
+		<div class="grid grid--cols-3 grid-test">
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+		</div>
+
+		<hr />
+
+		<h4>Flexbox row layout system. Uses <code>.row</code> class</h4>
+		<p>Uses padding instead of column-gap to apply gutters, as calculating percentages for push and pull classes accounting for gap is next to impossible for first and last position.</p>
+
+		<div class="grid-test row">
+			<div class="cols-12">.cols-12</div>
+			<div class="cols-1">.cols-1</div><div class="cols-11">.cols-11</div>
+			<div class="cols-2">.cols-2</div><div class="cols-10">.cols-10</div>
+			<div class="cols-3">.cols-3</div><div class="cols-9">.cols-9</div>
+			<div class="cols-4">.cols-4</div><div class="cols-8">.cols-8</div>
+			<div class="cols-5">.cols-5</div><div class="cols-7">.cols-7</div>
+			<div class="cols-6">.cols-6</div><div class="cols-6">.cols-6</div>
+			<div class="cols-4">.cols-4</div><div class="cols-4">.cols-4</div><div class="cols-4">.cols-4</div>
+			<div class="cols-2 push-1">.cols-2.push-1</div><div class="cols-3">.cols-3</div><div class="cols-2 pull-1">.cols-2.pull-1</div><div class="cols-3">.cols-3</div>
+		</div>
+
+		<h4>Columns row. Uses <code>.row</code> and <code>.row--cols</code> classes</h4>
+		<p>Uses <code>--grid__max-cols</code> property or <code>.max-cols-[n]</code> utility classes to set the maximum columns. Uses <code>grid-item__min-width</code> property to set the minimum width for children.</p>
+
+		<div class="grid-test row row--cols-4">
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
 		</div>
 	</div>
 </div>

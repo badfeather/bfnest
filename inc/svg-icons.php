@@ -56,7 +56,7 @@ function bfnest_ir_svg( $text = '', $path = '', $id = '' ) {
 	$svg = bfnest_get_svg( $path, $id );
 	$html = esc_html( $text );
 	if ( $svg ) {
-		$html = '<span class="icon icon-' . esc_attr( $id ) . '" aria-hidden="true">' . $svg . '</span><span class="sr-only">' . esc_html( $text ) . '</span>';
+		$html = '<span class="icon icon-' . esc_attr( $id ) . '" aria-hidden="true">' . $svg . '</span><span class="visually-hidden">' . esc_html( $text ) . '</span>';
 	}
 	echo $html;
 }
@@ -178,7 +178,7 @@ function bfnest_social_nav_menu_icons( $item_output, $item, $depth, $args, $text
 				$before = $after = '';
 				if ( $svg ) {
 					$before = '<span class="social-link-icon social-link-icon--' . $value . '" aria-hidden="true">' . $svg . '</span>';
-					$before .= $text_replace ? '<span class="social-link-text sr-only">' : '<span class="social-link-text">';
+					$before .= $text_replace ? '<span class="social-link-text visually-hidden">' : '<span class="social-link-text">';
 					$item_output = str_replace( $args->link_before, $before, $item_output );
 				}
 			}

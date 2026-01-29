@@ -1,9 +1,9 @@
-.wp-block-audio {
-	margin-bottom: var(--#{$prefix}spacing--l);
+@use '../abstracts' as *;
 
+.wp-block-audio {
 	audio {
 		width: 100%;
-		min-width: 300px;
+		min-width: unitcalc(280);
 	}
 }
 

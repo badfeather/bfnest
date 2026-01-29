@@ -29,7 +29,7 @@ function bfnest_scripts() {
 	wp_enqueue_style( 'bfnest-style', $template_directory . '/css/theme' . $suffix . '.css', [], $version );
 
 	// Enqueue scripts.
-	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/js/theme' . $suffix . '.js', [], $version, true );
+	wp_enqueue_script( 'bfnest-scripts', $template_directory . '/js/theme' . $suffix . '.js', [], $version, [ 'strategy' => 'defer', 'in_footer' => true ] );
 
 	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 	// 	wp_enqueue_script( 'comment-reply' );
@@ -96,7 +96,7 @@ add_action( 'wp_footer', 'bfnest_footer_scripts' );
 /**
  * Scripts to include immediately after opening body tag
  */
-add_action( 'wp_head', 'bfnest_nojs_script' );
+add_action( 'wp_body_open', 'bfnest_nojs_script' );
 function bfnest_nojs_script() {
 ?>
 <script>document.body.classList.remove('no-js');</script>

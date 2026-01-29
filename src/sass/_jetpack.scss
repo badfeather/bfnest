@@ -1,10 +1,12 @@
+@use 'abstracts' as *;
+
 // infinite scroll
 #infinite-handle {
-	margin-bottom: $spacing;
+	margin-block-end: cssvar('spacing');
 	text-align: center;
 
 	span {
-		@extend .button;
+		@extend .btn;
 	}
 
 	button,
@@ -34,13 +36,13 @@
 .infinite-loader {
 	color: #000;
 	display: block;
-	height: 28px;
+	height: unitcalc(28);
 	text-indent: -9999px;
-	margin-bottom: $spacing;
+	margin-block-end: cssvar('spacing');
 }
 
 .spinner {
-	margin: 0 auto;
+	margin-inline: auto;
 }
 
 .infinite-scroll {

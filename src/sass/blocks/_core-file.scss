@@ -1,5 +1,8 @@
+@use '../abstracts' as *;
+@use '../forms' as *;
+
 .wp-block-file {
-	margin-bottom: $spacing;
+	margin-block-end: cssvar('spacing');
 
 	&.aligncenter {
 		text-align: center;
@@ -12,15 +15,15 @@
 }
 
 .wp-block-file__button {
-	@extend .btn;
+	// @extend .btn;
 }
 
 .wp-block-file * + .wp-block-file__button {
-	margin-left: $form-grid-gutter-width;
+	margin-inline-start: $form-grid__column-gap;
 }
 
 // .wp-block-file {
-// 	margin-bottom: 1.5em;
+// 	margin-block-end: 1.5em;
 //
 // 	&.aligncenter {
 // 		text-align: center;
@@ -32,7 +35,7 @@
 // 	}
 //
 // 	.wp-block-file__embed {
-// 		margin-bottom: 1em;
+// 		margin-block-end: 1em;
 // 	}
 //
 // 	.wp-block-file__button {
@@ -58,6 +61,6 @@
 // 	}
 //
 // 	* + .wp-block-file__button {
-// 		margin-left: 0.75em;
+// 		margin-inline-start: 0.75em;
 // 	}
 // }

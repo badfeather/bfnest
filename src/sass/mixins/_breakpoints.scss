@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 @mixin breakpoint-up($min: 0) {
 	@if ($min > 0) {
 		@media (min-width: $min) {
@@ -46,67 +48,79 @@
 }
 
 // Shorthands for commonly used breakpoints
-@mixin bp-xs__mq-up() {
+@mixin bp-xs__mq-up {
 	@include breakpoint-up($bp-xs) {
 		@content;
 	}
 }
 
-@mixin bp-s__mq-up() {
-	@include breakpoint-up($bp-s) {
+@mixin bp-sm__mq-up {
+	@include breakpoint-up($bp-sm) {
 		@content;
 	}
 }
 
-@mixin bp-m__mq-up() {
-	@include breakpoint-up($bp-m) {
+@mixin bp-md__mq-up {
+	@include breakpoint-up($bp-md) {
 		@content;
 	}
 }
 
-@mixin bp-l__mq-up() {
-	@include breakpoint-up($bp-l) {
+@mixin bp-lg__mq-up {
+	@include breakpoint-up($bp-lg) {
 		@content;
 	}
 }
 
-@mixin bp-xl__mq-up() {
+@mixin bp-xl__mq-up {
 	@include breakpoint-up($bp-xl) {
 		@content;
 	}
 }
 
-@mixin bp-xs__mq-down() {
+@mixin bp-2xl__mq-up {
+	@include breakpoint-up($bp-2xl) {
+		@content;
+	}
+}
+
+@mixin bp-xs__mq-down {
 	@include breakpoint-down($bp-xs) {
 		@content;
 	}
 }
 
-@mixin bp-s__mq-down() {
-	@include breakpoint-down($bp-s) {
+@mixin bp-sm__mq-down {
+	@include breakpoint-down($bp-sm) {
 		@content;
 	}
 }
 
-@mixin bp-m__mq-down() {
-	@include breakpoint-down($bp-m) {
+@mixin bp-md__mq-down {
+	@include breakpoint-down($bp-md) {
 		@content;
 	}
 }
 
-@mixin bp-l__mq-down() {
-	@include breakpoint-down($bp-l) {
+@mixin bp-lg__mq-down {
+	@include breakpoint-down($bp-lg) {
 		@content;
 	}
 }
 
-@mixin bp-xl__mq-down() {
+@mixin bp-xl__mq-down {
 	@include breakpoint-down($bp-xl) {
 		@content;
 	}
 }
 
-@mixin bp-type__mq-up() {
+@mixin bp-2xl__mq-down {
+	@include breakpoint-down($bp-2xl) {
+		@content;
+	}
+}
+
+@mixin bp-type__mq-up {
 	@include breakpoint-up($bp-type) {
 		@content;
 	}

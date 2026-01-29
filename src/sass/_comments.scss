@@ -1,25 +1,30 @@
+@use 'abstracts' as *;
+@use 'utility' as *;
+@use 'layout' as *;
+
 // comment list
 .comments-list {
 	@include list-unstyled;
 
 	.children {
 		@include list-unstyled;
-		margin-left: var(--#{$prefix}spacing);
+		// margin-inline-start: cssvar('spacing');
+		margin-inline-start: cssvar('spacing');
 	}
 
 	.comment {
-		margin-bottom: 1em;
-		border-bottom: 1px solid var(--#{$prefix}border-color);
+		margin-block-end: 1em;
+		border-bottom: 1px solid cssvar('border-color');
 	}
 
 	.comment .comment {
-		padding-top: 1em;
-		border-top: 1px solid var(--#{$prefix}border-color);
+		padding-block-start: 1em;
+		border-top: 1px solid cssvar('border-color');
 		border-bottom: 0;
 	}
 
 	p {
-		margin-bottom: var(--#{$prefix}spacing--s);
+		margin-block-end: cssvar('spacing--sm');
 	}
 }
 
@@ -29,7 +34,7 @@
 }
 
 .comment-header {
-	margin-bottom: var(--#{$prefix}spacing--s);
+	margin-block-end: cssvar('spacing--sm');
 }
 
 // comment-form
@@ -40,7 +45,7 @@
 .form-allowed-tags {
 	clear: both;
 	width: 95%;
-	@extend .sr-only;
+	@extend %visually-hidden;
 }
 
 .form-allowed-tags code {
@@ -51,6 +56,6 @@
 	//font-weight: bold;
 }
 
-.submit {
-	@extend .button;
-}
+// .submit {
+// 	@extend .button;
+// }

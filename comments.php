@@ -21,7 +21,7 @@
 		</ol>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { ?>
-			<nav class="postnav postnav--comments" role="navigation">
+			<nav class="postnav postnav--comments">
 				<h1 class="screen-reader-text"><?php _e( 'Comment Navigation', 'bfnest' ); ?></h1>
 				<div class="postnav__link postnav__link--prev"><?php previous_comments_link( __( '&larr; Older Comments', 'bfnest' ) ); ?></div>
 				<div class="postnav__link postnav__link--next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'bfnest' ) ); ?></div>

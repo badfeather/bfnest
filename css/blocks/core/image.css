@@ -1,0 +1,16 @@
+.wp-block-image {
+  --block__margin-block-end: var(--spacing--lg);
+}
+.wp-block-image > a,
+.wp-block-image > figure > a {
+  display: inline-block;
+}
+.wp-block-image img {
+  width: 100%;
+}
+
+.wp-block-image figure {
+  margin: 0;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zYXNzL2Jsb2Nrcy9jb3JlL2ltYWdlLnNjc3MiLCIuLi8uLi8uLi9zcmMvc2Fzcy9taXhpbnMvX3V0aWxpdHkuc2NzcyIsImltYWdlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQ2lLQyw2Q0FBQTtBQ2pLRDtBRkdDOztFQUVDLHFCQUFBO0FFREY7QUZJQztFQUNDLFdBQUE7QUVGRjs7QUZvSUE7RUFDQyxTQUFBO0FFaklEIiwiZmlsZSI6ImltYWdlLmNzcyJ9 */

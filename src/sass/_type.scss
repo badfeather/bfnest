@@ -1,22 +1,13 @@
-* {
-	box-sizing: border-box;
-
-	&:before,
-	&:after {
-		box-sizing: border-box;
-	}
-}
-
-html,
-body {
-	height: 100%;
-}
+@use 'abstracts' as *;
+@use 'properties' as *;
+@use 'layout' as *;
 
 html {
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-color-highlight: rgba(0,0,0,0);
-	// font-size: 62.5%;
 	font-size: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 main {
@@ -33,21 +24,21 @@ template {
 }
 
 body {
-	font-size: var(--#{$prefix}font-size);
-	line-height: var(--#{$prefix}line-height);
-	font-family: var(--#{$prefix}font-family);
-	font-weight: normal;
+	font-size: cssvar('font-size');
+	line-height: cssvar('line-height');
+	letter-spacing: cssvar('letter-spacing');
+	font-family: cssvar('font-family');
+	font-weight: cssvar('font-weight');
 	text-align: left;
-	color: var(--#{$prefix}color);
-	background-color: var(--#{$prefix}background-color);
 	width: 100%;
-	@extend .clearfix;
+	overflow-x: hidden;
 	margin: 0;
 }
 
-.bg-section {
-	color: var(--#{$prefix}color);
-	background-color: var(--#{$prefix}background-color);
+body,
+[class*="theme-"] {
+	color: cssvar('color');
+	background-color: cssvar('background-color');
 }
 
 p,
@@ -62,8 +53,23 @@ figure,
 form,
 article,
 blockquote,
-dl {
-	margin: 0 0 var(--#{$prefix}spacing);
+dl,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.block,
+.wp-block,
+.section {
+	@include block-margins;
+}
+
+p {
+	text-wrap: pretty;
+	overflow-wrap: break-word;
 }
 
 dfn,
@@ -75,15 +81,15 @@ i {
 
 abbr,
 acronym {
-	text-decoration: underline dotted var(--#{$prefix}color);
+	text-decoration: underline dotted cssvar('color');
 	cursor: help;
 }
 
 mark,
 ins {
-	background: var(--#{$prefix}color-highlight);
+	background: cssvar('color-highlight');
 	text-decoration: none;
-	color: var(--#{$prefix}color);
+	color: cssvar('color');
 }
 
 ul {
@@ -104,29 +110,39 @@ ol {
 
 ul,
 ol {
-	padding: 0 0 0 var(--#{$prefix}spacing);
+	padding-block: 0;
+	padding-inline: cssvar('spacing') 0;
 
 	ul,
 	ol {
-		padding-top: var(--#{$prefix}spacing--xs);
-		margin-bottom: 0;
+		padding-block-start: cssvar('spacing--xs');
+		@include set-cssvar('margin-block-end', 0);
 	}
 }
 
 li {
-	margin-bottom: var(--#{$prefix}spacing--xs);
+	@include set-cssvar('margin-block-end', cssar('spacing--xs'));
 }
 
-a {
+a,
+.btn--link {
+	@include set-cssvars(
+		(
+			link__color: cssvar('color-primary'),
+			link__text-decoration: underline,
+			link--focus__color: cssvar('color-primary--focus'),
+			link--focus__text-decoration: cssvar('link__text-decoration'),
+		)
+	);
 	background-color: transparent; // reset
-	color: $link__color;
-	text-decoration: none;
+	color: cssvar('link__color');
+	text-decoration: cssvar('link__text-decoration');
 	outline: 0;
 
 	&:hover,
 	&:focus {
-		color: $link--hover__color;
-		text-decoration: underline;
+		color: cssvar('link--focus__color');
+		text-decoration: cssvar('link--focus__text-decoration');
 	}
 
 	&:focus {
@@ -137,28 +153,29 @@ a {
 
 b,
 strong {
-	font-weight: 700;
+	font-weight: cssvar('font-weight--bold');
+	color: cssvar('color--emphasis');
 }
 
 dt,
 dd {
-	line-height: var(--#{$prefix}line-height);
+	line-height: cssvar('line-height');
 }
 
 dt {
-	font-weight: 700;
+	font-weight: cssvar('font-weight--bold');
 }
 
 dd {
-	margin-left: 0; // reset
-	margin-bottom: var(--#{$prefix}spacing--xs);
+	margin-inline-start: 0; // reset
+	margin-block-end: cssvar('spacing--xs');
 }
 
 hr {
 	height: 0; // reset
 	overflow: visible; // reset
 	border: 0;
-	border-bottom: 1px solid var(--#{$prefix}border-color);
+	border-bottom: 1px solid cssvar('border-color');
 }
 
 abbr[title],
@@ -195,43 +212,45 @@ table {
 }
 
 tr:nth-child(odd) {
-	background-color: var(--#{$prefix}background-color--alt);
+	background-color: cssvar('background-color--alt');
 }
 
 th,
 td {
 	padding: 0.5em;
-	border: 1px solid var(--#{$prefix}border-color);
+	border: 1px solid cssvar('border-color');
 }
 
 th {
-	font-weight: 700;
+	font-weight: cssvar('font-weight--bold');
 }
 
 code,
 kbd,
 pre,
 samp {
-	font-family: var(--#{$prefix}font-family--monospace);
-	font-size: var(--#{$prefix}font-size--s);
-	color: var(--#{$prefix}color);
+	font-family: cssvar('font-family--monospace');
+	font-size: cssvar('font-size--sm');
+	color: cssvar('color');
 }
 
 code,
 kbd {
-	padding: .2em .4em;
+	// padding: .2em .4em;
+	padding-block: .2em;
+	padding-inline: .4em;
 	border-radius: .25em;
 }
 
 code {
-	background: var(--#{$prefix}background-color--alt);
+	background: cssvar('background-color--alt');
 	display: inline-block;
 	word-wrap: break-word;
 }
 
 kbd {
-	color: var(--#{$prefix}background-color);
-	background-color: var(--#{$prefix}color);
+	color: cssvar('background-color');
+	background-color: cssvar('color');
 
 	kbd {
 		padding: 0;
@@ -241,7 +260,7 @@ kbd {
 }
 
 pre {
-	background: var(--#{$prefix}background-color--alt);
+	background: cssvar('background-color--alt');
 	padding: 1em;
 	display: block;
 	max-width: 100%;
@@ -292,57 +311,128 @@ summary {
 
 // HEADINGS
 // -------------------------
+%heading {
+	font-family: cssvar('heading__font-family');
+	font-weight: cssvar('heading__font-weight');
+	font-size: cssvar('heading__font-size');
+	line-height: cssvar('heading__line-height');
+	letter-spacing: cssvar('heading__letter-spacing');
+	text-transform: cssvar('heading__text-transform');
+	color: cssvar('heading__color');
+	text-wrap: balance;
+	overflow-wrap: break-word;
+
+	a {
+		color: cssvar('heading-link__color');
+		text-decoration: cssvar('heading-link__text-decoration');
+
+		&:hover,
+		&:focus {
+			color: cssvar('heading-link--focus__color');
+			text-decoration: cssvar('heading-link--focus__text-decoration');
+		}
+	}
+}
+
+// .entry-subtitle,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-.entry-subtitle {
-	font-family: var(--#{$prefix}font-family);
-	font-weight: 700;
-	margin: 0 0 var(--#{$prefix}spacing--xs);
-	color: var(--#{$prefix}color);
+h6 {
+	@include set-cssvars(
+		(
+			heading__font-family: cssvar('font-family'),
+			heading__font-size: cssvar('font-size'),
+			heading__font-weight: cssvar('font-weight--bold'),
+			heading__line-height: cssvar('line-height'),
+			heading__letter-spacing: normal,
+			heading-link__color: cssvar('color-primary'),
+			heading-link__text-decoration: none,
+			heading-link--focus__color: cssvar('color-primary--focus'),
+			heading-link--focus__text-decoration: underline,
+		)
+	);
+	font-family: cssvar('heading__font-family');
+	font-size: cssvar('heading__font-size');
+	font-weight: cssvar('heading__font-weight');
+	line-height: cssvar('heading__line-height');
+	letter-spacing: cssvar('heading__letter-spacing');
+	text-transform: cssvar('heading__text-transform');
+	color: cssvar('heading__color');
+	text-wrap: balance;
+	overflow-wrap: break-word;
 
 	a {
-		color:var(--#{$prefix}color);
-		text-decoration: none;
+		color: cssvar('heading-link__color');
+		text-decoration: cssvar('heading-link__text-decoration');
 
 		&:hover,
 		&:focus {
-			color: $link--hover__color;
-			text-decoration: none;
+			color: cssvar('heading-link--focus__color');
+			text-decoration: cssvar('heading-link--focus__text-decoration');
 		}
 	}
 }
 
 h1 {
-	font-size: var(--#{$prefix}font-size--4xl);
-	line-height: var(--#{$prefix}line-height--2xs);
+	@include set-cssvars(
+		(
+			heading__font-size: cssvar('font-size--4xl'),
+			heading__line-height: cssvar('line-height--2xs'),
+		)
+	);
 }
 
 h2 {
-	font-size: var(--#{$prefix}font-size--3xl);
-	line-height: var(--#{$prefix}line-height--2xs);
+	@include set-cssvars(
+		(
+			heading__font-size: cssvar('font-size--3xl'),
+			heading__line-height: cssvar('line-height--2xs'),
+			margin-block-end: cssvar('spacing--sm'),
+		)
+	);
 }
 
 h3 {
-	font-size: var(--#{$prefix}font-size--2xl);
-	line-height: var(--#{$prefix}line-height--xs);
+	@include set-cssvars(
+		(
+			heading__font-size: cssvar('font-size--2xl'),
+			heading__line-height: cssvar('line-height--xs'),
+			margin-block-end: cssvar('spacing--sm'),
+		)
+	);
 }
 
 h4 {
-	font-size: var(--#{$prefix}font-size--xl);
-	line-height: var(--#{$prefix}line-height--xs);
+	@include set-cssvars(
+		(
+			heading__font-size: cssvar('font-size--xl'),
+			heading__line-height: cssvar('line-height--xs'),
+			margin-block-end: cssvar('spacing--sm'),
+		)
+	);
 }
 
 h5 {
-	font-size: var(--#{$prefix}font-size--l);
-	line-height: var(--#{$prefix}line-height--xs);
+	@include set-cssvars(
+		(
+			heading__font-size: cssvar('font-size--lg'),
+			heading__line-height: cssvar('line-height--sm'),
+			margin-block-end: cssvar('spacing--sm'),
+		)
+	);
 }
 
 h6 {
-	font-size: var(--#{$prefix}font-size);
+	@include set-cssvars(
+		(
+			heading__font-size: cssvar('font-size'),
+			heading__line-height: cssvar('line-height'),
+			margin-block-end: cssvar('spacing--sm'),
+		)
+	);
 }
 
 // THEME ELEMENTS
@@ -362,7 +452,8 @@ h6 {
 .nav-title {
 }
 
-.entry-subtitle {
+.entry-subtitle,
+.wp-block-subhead {
 }
 
 .entry-lede {
@@ -376,13 +467,14 @@ blockquote {
 	padding: 0;
 }
 
-.pullquote {
+.pullquote,
+.wp-block-pullquote blockquote {
 }
 
 cite {
 	font-style: normal;
-	font-size: var(--#{$prefix}font-size);
-	font-weight: var(--#{$prefix}font-weight);
+	font-size: cssvar('font-size');
+	font-weight: cssvar('font-weight');
 
 	&:before {
 		content: '\2014';
@@ -393,14 +485,14 @@ cite {
 // META
 // -------------------------
 .entry-meta {
-	font-size: var(--#{$prefix}font-size--s);
-	color: var(--#{$prefix}color--alt);
+	font-size: cssvar('font-size--sm');
+	color: cssvar('color--alt');
 }
 
 figcaption,
 .figcaption {
-	margin-top: var(--#{$prefix}spacing--xs);
-	font-size: var(--#{$prefix}font-size--s);
-	color: var(--#{$prefix}color--alt);
+	margin-block-start: cssvar('spacing--xs');
+	font-size: cssvar('font-size--sm');
+	color: cssvar('color--alt');
 	word-break: break-word;
 }

@@ -1,20 +1,27 @@
+@use '../abstracts' as *;
+// @use '../forms' as *;
+// @use '../layout' as *;
+
 .wp-block-buttons {
-	@extend .form-row;
-	margin-bottom: var(--#{$prefix}spacing--l);
+	@include row;
+	@include row--form;
+	// @extend .row;
+	// @extend .row--form;
+	@include set-cssvar('margin-block-end', cssvar('spacing--lg'));
 
 	&.is-vertical {
 		flex-direction: column;
 
 		& > .wp-block-button:last-child {
-			margin-bottom: 0;
+			@include set-cssvar('margin-block-end', cssvar('spacing--lg'));
 		}
 	}
 
 	.wp-block-button {
 		width: auto;
-		margin-bottom: var(--#{$prefix}spacing--s);
+		@include set-cssvar('margin-block-end', cssvar('spacing--sm'));
 	}
-
+s
 	.has-custom-width {
 		.wp-block-button__link {
 			width: 100%;
@@ -22,19 +29,19 @@
 	}
 
 	.wp-block-button__width-25 {
-		@extend %cols-3;
+		@include cols(3);
 	}
 
 	.wp-block-button__width-50 {
-		@extend %cols-6;
+		@include cols(6);
 	}
 
 	.wp-block-button__width-75 {
-		@extend %cols-9;
+		@include cols(9);
 	}
 
 	.wp-block-button__width-100 {
-		@extend %cols-12;
+		@include cols(12);
 	}
 
 	&.is-content-justification-left {
@@ -74,8 +81,8 @@
 	.is-content-justification-left,
 	.is-content-justification-center) .wp-block-button.aligncenter {
 		/* stylelint-enable indentation */
-		margin-left: auto;
-		margin-right: auto;
+		@include set-cssvar('margin-inline-start', auto);
+		@include set-cssvar('margin-inline-end', auto);
 		width: 100%;
 	}
 }
@@ -93,7 +100,7 @@
 // 		flex-direction: column;
 // 		> .wp-block-button {
 // 			&:last-child {
-// 				margin-bottom: 0;
+// 				margin-block-end: 0;
 // 			}
 // 		}
 // 	}
@@ -151,8 +158,8 @@
 // 		.is-content-justification-center
 // 	) .wp-block-button.aligncenter {
 // 	/* stylelint-enable indentation */
-// 		margin-left: auto;
-// 		margin-right: auto;
+// 		margin-inline-start: auto;
+// 		margin-inline-end: auto;
 // 		width: 100%;
 // 	}
 // }

@@ -1,0 +1,140 @@
+@use 'sass:meta';
+@use 'abstracts' as *;
+
+:root {
+	@include set-cssvars(
+		(
+			font-family: meta.inspect($font-family--system-ui),
+			font-family--monospace: meta.inspect($font-family--monospace),
+			font-family--headings: meta.inspect($font-family--system-ui),
+
+			font-size--2xs: unitcalc(10), // .625rem
+			font-size--xs: unitcalc(12), // .75rem
+			font-size--sm: unitcalc(14), // .875rem
+			font-size: unitcalc(16), // 1rem
+			font-size--lg: unitcalc(18), // 1.125rem
+			font-size--xl: unitcalc(22), // 1.375rem
+			font-size--2xl: unitcalc(24), // 1.5rem
+			font-size--3xl: unitcalc(32), // 2rem
+			font-size--4xl: unitcalc(40), // 2.5rem
+			font-size--5xl: unitcalc(48), // 3rem
+			font-size--6xl: unitcalc(56), // 3.5rem
+			font-size--7xl: unitcalc(64), // 4rem
+
+			font-weight: 400,
+			font-weight--bold: 700,
+
+			line-height--3xs: 1,
+			line-height--2xs: 1.125,
+			line-height--xs: 1.25,
+			line-height--sm: 1.375,
+			line-height: 1.5,
+			line-height--lg: 1.625,
+			line-height--xl: 1.75,
+			line-height--2xl: 1.875,
+			line-height--3xl: 2,
+
+			spacing--2xs: unitcalc(4),
+			spacing--xs: unitcalc(6),
+			spacing--sm: unitcalc(12),
+			spacing: unitcalc(24),
+			spacing--lg: unitcalc(36),
+			spacing--xl: unitcalc(48),
+			spacing--2xl: unitcalc(60),
+			spacing--3xl: unitcalc(72),
+
+			letter-spacing--2xs: -.05em,
+			letter-spacing--xs: -.03125em,
+			letter-spacing--sm: -.025em,
+			letter-spacing: normal,
+			letter-spacing--lg: .025em,
+			letter-spacing--xl: .03125em,
+			letter-spacing--2xl: .050em,
+			letter-spacing--3xl: .075em,
+			letter-spacing--4xl: .125em,
+			letter-spacing--5xl: .5em,
+
+			transition: all 0.15s ease-out,
+		)
+	);
+	// color-scheme: light dark;
+}
+
+:root,
+.theme-light {
+	@include set-cssvars(
+		(
+			color: hsluv-shade($hsluv-gray, 85),
+			color--alt: hsluv-shade($hsluv-gray, 60),
+			color--subtle: hsluv-shade($hsluv-gray, 30),
+			color--emphasis: hsluv-shade($hsluv-gray, 95),
+			background-color: $white,
+			background-color--alt: hsluv-shade($hsluv-gray, 10),
+			border-color: hsluv-shade($hsluv-gray, 40),
+
+			color-primary: hsluv-shade($hsluv-blue, 50),
+			color-primary--focus: hsluv-shade($hsluv-blue, 60),
+			color-primary--subtle: hsluv-shade($hsluv-blue, 30),
+			color-secondary: hsluv-shade($hsluv-magenta, 50),
+			color-secondary--focus: hsluv-shade($hsluv-magenta, 60),
+			color-secondary--subtle: hsluv-shade($hsluv-magenta, 30),
+			color-info: hsluv-shade($hsluv-cyan, 50),
+			color-info--focus: hsluv-shade($hsluv-cyan, 60),
+			color-info--subtle: hsluv-shade($hsluv-cyan, 30),
+			color-success: hsluv-shade($hsluv-green, 50),
+			color-success--focus: hsluv-shade($hsluv-green, 60),
+			color-success--subtle: hsluv-shade($hsluv-green, 30),
+			color-warning: hsluv-shade($hsluv-orange, 50),
+			color-warning--focus: hsluv-shade($hsluv-orange, 60),
+			color-warning--subtle: hsluv-shade($hsluv-orange, 30),
+			color-danger: hsluv-shade($hsluv-red, 50),
+			color-danger--focus: hsluv-shade($hsluv-red, 60),
+			color-danger--subtle: hsluv-shade($hsluv-red, 30),
+			color-highlight: hsluv-shade($hsluv-yellow, 20),
+
+			select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{url-friendly-color(hsluv-shade($hsluv-gray, 85))}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e"),
+		)
+	);
+	color-scheme: light;
+}
+
+// @media (prefers-color-scheme: dark),
+.theme-dark {
+	@include set-cssvars(
+		(
+			color: hsluv-shade($hsluv-gray, 15),
+			color--alt: hsluv-shade($hsluv-gray, 40),
+			color--subtle: hsluv-shade($hsluv-gray, 70),
+			color--emphasis: hsluv-shade($hsluv-gray, 5),
+			background-color: hsluv-shade($hsluv-gray, 85),
+			background-color--alt: hsluv-shade($hsluv-gray, 90),
+			border-color: hsluv-shade($hsluv-gray, 60),
+
+			color-primary: hsluv-shade($hsluv-blue, 50),
+			color-primary--focus: hsluv-shade($hsluv-blue, 40),
+			color-primary--subtle: hsluv-shade($hsluv-blue, 70),
+			color-secondary: hsluv-shade($hsluv-magenta, 50),
+			color-secondary--focus: hsluv-shade($hsluv-magenta, 40),
+			color-secondary--subtle: hsluv-shade($hsluv-magenta, 70),
+			color-info: hsluv-shade($hsluv-cyan, 50),
+			color-info--focus: hsluv-shade($hsluv-cyan, 40),
+			color-info--subtle: hsluv-shade($hsluv-cyan, 70),
+			color-success: hsluv-shade($hsluv-green, 50),
+			color-success--focus: hsluv-shade($hsluv-green, 40),
+			color-success--subtle: hsluv-shade($hsluv-green, 70),
+			color-warning: hsluv-shade($hsluv-orange, 50),
+			color-warning--focus: hsluv-shade($hsluv-orange, 40),
+			color-warning--subtle: hsluv-shade($hsluv-orange, 70),
+			color-danger: hsluv-shade($hsluv-red, 50),
+			color-danger--focus: hsluv-shade($hsluv-red, 40),
+			color-danger--subtle: hsluv-shade($hsluv-red, 70),
+			color-highlight: hsluv-shade($hsluv-yellow, 20),
+
+			select-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath fill='#{url-friendly-color(hsluv-shade($hsluv-gray, 15))}' d='M16.594 8.578L18 9.984l-6 6-6-6 1.406-1.406L12 13.172z'/%3e%3c/svg%3e"),
+		)
+	);
+	color-scheme: dark;
+}
+
+
+

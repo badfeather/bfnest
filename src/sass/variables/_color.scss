@@ -1,9 +1,186 @@
+@use '../functions' as *;
+
 $black: #000;
 $white: #fff;
 $gray: #808080;
 
+// $red:  hsl(0 100% 50%);
+// $vermillion: hsl(15 100% 50%);
+// $orange: hsl(30 100% 50%); // yellow-red
+// $amber: hsl(45 100% 50%);
+// $yellow: hsl(60 100% 50%);
+// $lime:  hsl(75 100% 50%);
+// $chartreuse: hsl(90 100% 50%); // yellow-green
+// $harlequin:  hsl(105 100% 50%);
+// $green: hsl(120 100% 50%);
+// $erin: hsl(135 100% 50%);
+// $spring: hsl(150 100% 50%); // green-cyan
+// $aquamarine: hsl(165 100% 50%);
+// $cyan: hsl(180 100% 50%);
+// $capri:  hsl(195 100% 50%);
+// $azure: hsl(210 100% 50%); // blue-cyan
+// $cerulean: hsl(225 100% 50%);
+// $blue: hsl(240 100% 50%);
+// $indigo: hsl(255 100% 50%);
+// $violet: hsl(270 100% 50%); // blue-magenta
+// $purple: hsl(285 100% 50%);
+// $magenta: hsl(300 100% 50%);
+// $cerise: hsl(315 100% 50%);
+// $rose: hsl(330 100% 50%); // red-magenta
+// $crimson: hsl(345 100% 50%);
+
+$red: #f00;
+$vermillion: #ff4000;
+$orange: #ff8000; // yellow-red
+$amber: #ffbf00;
+$yellow: #ff0;
+$lime: #bfff00;
+$chartreuse: #80FF00; // yellow-green
+$harlequin: #40ff00;
+$green: #0f0;
+$erin: #00ff40;
+$spring: #00ff80; // green-cyan
+$aquamarine: #00ffbf;
+$cyan: #0ff;
+$capri: #00bfff;
+$azure: #007fff; // blue-cyan
+$cerulean: #0040ff;
+$blue: #00f;
+$indigo: #4000ff;
+$violet: #7f00ff; // blue-magenta
+$purple: #bf00ff;
+$magenta: #f0f;
+$cerise: #ff00bf;
+$rose: #ff0080; // red-magenta
+$crimson: #ff0040;
+
+$oklch-h: (
+	'red': 29,
+	// 'vermillion': 35,
+	'orange': 53,
+	// 'amber': 84,
+	'yellow': 110,
+	// 'lime': 126,
+	'chartreuse': 136,
+	// 'harlequin': 141,
+	'green': 142,
+	// 'erin': 144,
+	'spring': 151,
+	// 'aquamarine': 167,
+	'cyan': 195,
+	// 'capri': 232,
+	'azure': 256,
+	// 'cerulean': 264,
+	'blue': 264,
+	// 'indigo': 274,
+	'violet': 294,
+	// 'purple': 313,
+	'magenta': 328,
+	// 'cerise': 344,
+	'rose': 2,
+	// 'crimson': 21,
+);
+
+// inspired by https://codepen.io/argyleink/pen/ZEMmNdO
+$oklch-l: (
+	'max': .65,
+	'0': .99,
+	'1': .95,
+	'2': .88,
+	'3': .8,
+	'4': .74,
+	'5': .68,
+	'6': .63,
+	'7': .58,
+	'8': .53,
+	'9': .49,
+	'10': .42,
+	'11': .35,
+	'12': .27,
+	'13': .2,
+	'14': .14,
+	'15': .11,
+);
+
+$oklch-c: (
+	'max': .3,
+	'0': .03,
+	'1': .06,
+	'2': .12,
+	'3': .14,
+	'4': .16,
+	'5': .19,
+	'6': .2,
+	'7': .21,
+	'8': .2,
+	'9': .19,
+	'10': .17,
+	'11': .15,
+	'12': .12,
+	'13': .09,
+	'14': .07,
+	'15': .05,
+);
+
+// inspired by https://github.com/cferdinandi/kelp/blob/main/css/kelp.css
+//$oklch-l: (
+//	'05': .185,
+//	'10': .24,
+//	'20': .325,
+//	'30': .4,
+//	'40': .47,
+//	'50': .57,
+//	'60': .67,
+//	'70': .75,
+//	'80': .835,
+//	'90': .92,
+//	'95': .96,
+//);
+//
+//$oklch-c: (
+//	'05': .08,
+//	'10': .1,
+//	'20': .135,
+//	'30': .16,
+//	'40': .185,
+//	'50': .2,
+//	'60': .175,
+//	'70': .13,
+//	'80': .085,
+//	'90': .04,
+//	'95': .02,
+//);
+
 // uniform contrast base colors
 // see: https://www.hsluv.org/
+
+$hsluv-h: (
+	'gray': 0deg,
+	'red': 12.2deg,
+	'vermillion': 16.1deg,
+	'orange': 30.1deg,
+	'amber': 57.2deg,
+	'yellow': 85.9deg,
+	'lime': 106.6deg,
+	'chartreuse': 119.5deg,
+	'harlequin': 125.8deg,
+	'green': 127.7deg,
+	'erin': 129.6deg,
+	'spring': 136.8deg,
+	'aquamarine': 154.9deg,
+	'cyan': 192.2deg,
+	'capri': 233.7deg,
+	'azure': 255.6deg,
+	'cerulean': 263.7deg,
+	'blue': 265.9deg,
+	'indigo': 268.0deg,
+	'violet': 274.8deg,
+	'purple': 288.4deg,
+	'magenta': 307.7deg,
+	'cerise': 332.0deg,
+	'rose': 355.2deg,
+	'crimson': 8.3deg,
+);
 
 // #747474
 $hsluv-gray: (
@@ -35,8 +212,8 @@ $hsluv-yellow: (
 
 // #687d00
 // yellow-green
-// lime
-$hsluv-charteuse: (
+// chartreuse
+$hsluv-chartreuse: (
 	h: 100deg,
 	s: 100%,
 	l: 49%
@@ -51,6 +228,7 @@ $hsluv-green: (
 
 // #008468
 // green-cyan
+// spring, bosphorus
 $hsluv-spring: (
 	h: 160deg,
 	s: 100%,
@@ -106,7 +284,7 @@ $grays: hsluv-shades($hsluv-gray);
 $reds: hsluv-shades($hsluv-red);
 $oranges: hsluv-shades($hsluv-orange);
 $yellows: hsluv-shades($hsluv-yellow);
-$charteuses: hsluv-shades($hsluv-charteuse);
+$chartreuses: hsluv-shades($hsluv-chartreuse);
 $greens: hsluv-shades($hsluv-green);
 $springs: hsluv-shades($hsluv-spring);
 $cyans: hsluv-shades($hsluv-cyan);
@@ -115,3 +293,5 @@ $blues: hsluv-shades($hsluv-blue);
 $violets: hsluv-shades($hsluv-violet);
 $magentas: hsluv-shades($hsluv-magenta);
 $roses: hsluv-shades($hsluv-rose);
+
+

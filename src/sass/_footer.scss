@@ -1,5 +1,11 @@
+@use 'abstracts' as *;
+
+.site-footer {
+	padding-block: 1rem;
+}
+
 .site-copyright,
 .site-credits {
-	font-size: var(--#{$prefix}font-size--s);
-	color: var(--#{$prefix}color--alt);
+	font-size: cssvar('font-size--sm');
+	color: cssvar('color--alt');
 }
