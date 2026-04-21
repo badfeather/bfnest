@@ -17,7 +17,7 @@ $social_nav = wp_nav_menu( [
 	'link_after' => '</span>'
 ] );
 ?>
-		<footer id="site-footer" class="site-footer">
+		<footer id="site-footer" class="site-footer container--fluid">
 			<?php if ( $secondary_nav ) { ?>
 				<nav id="secondary-navigation" class="nav nav-secondary"aria-label="<?php _e( 'Secondary navigation', 'bfnest' ); ?>">
 					<?php echo $secondary_nav; ?>

@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( [ 'entry', 'card', 'card--' . get_post_type() ] ); ?>>
-	<?php bfnest_figure('medium'); ?>
+	<?php bfnest_figure('medium' ); ?>
 
 	<header class="entry-header">
 		<?php bfnest_content_flag( 'category' ); ?>

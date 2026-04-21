@@ -162,8 +162,77 @@ textarea {
 
 // BUTTONS
 // ---------------------------
+// .btn {
+	// @include btn;
+// }
 .btn {
-	@include btn;
+	@include set-cssvars(
+			(
+				btn__font-size: cssvar('font-size'),
+				btn__line-height: cssvar('line-height'),
+				btn__font-weight: cssvar('font-weight'),
+				btn__text-transform: none,
+				btn__padding-inline: 1.125em,
+				btn__padding-block: .5em,
+				btn__text-decoration: none,
+				btn__letter-spacing: normal,
+				btn__color: cssvar('background-color'),
+				btn__background-color: cssvar('color-primary'),
+				btn__border-color: cssvar('color-primary'),
+				btn__border-width: 1px,
+				btn__border-radius: .25rem,
+				btn--focus__text-decoration: none,
+				btn--focus__color: cssvar('background-color'),
+				btn--focus__background-color: cssvar('color-primary--focus'),
+				btn--focus__border-color: cssvar('color-primary--focus'),
+				btn--focus__outline-color: cssvar('color-primary--subtle'),
+				//btn--focus__box-shadow: 0 0 0 .25rem cssvar('btn--focus__box-shadow-color'),
+			)
+	);
+	font-family: cssvar('btn__font-family');
+	font-size: cssvar('btn__font-size');
+	font-weight: cssvar('btn__font-weight');
+	text-transform: cssvar('btn__text-transform');
+	letter-spacing: cssvar('btn__letter-spacing');
+	line-height: cssvar('btn__line-height');
+	padding-inline: cssvar('btn__padding-inline');
+	padding-block: cssvar('btn__padding-block');
+	text-decoration: cssvar('btn__text-decoration');
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	margin-block-end: 0;
+	color: cssvar('btn__color');
+	background-color: cssvar('btn__background-color');
+	border: cssvar('btn__border-width') solid cssvar('btn__border-color');
+	border-radius: cssvar('btn__border-radius');
+	white-space: nowrap;
+	transition: cssvar('transition');
+	box-shadow: none;
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+
+	&:hover,
+	&:focus {
+		color: cssvar('btn--focus__color');
+		text-decoration: ('btn--focus__text-decoration');
+		background-color: cssvar('btn--focus__background-color');
+		border-color: cssvar('btn--focus__border-color');
+	}
+
+	&:focus-visible {
+		outline: 2px solid cssvar('btn--focus__outline-color');
+		outline-offset: 2px;
+	}
+
+	&.disabled,
+	&:disabled {
+		cursor: not-allowed;
+		pointer-events: none;
+		opacity: 0.5;
+	}
 }
 
 
@@ -198,7 +267,7 @@ textarea {
 			btn__border-color: cssvar('color-secondary'),
 			btn--focus__background-color: cssvar('color-secondary--focus'),
 			btn--focus__border-color: cssvar('color-secondary--focus'),
-			btn--focus__box-shadow-color: cssvar('color-secondary--subtle'),
+			btn--focus__outline-color: cssvar('color-secondary--subtle'),
 		)
 	);
 }
@@ -210,7 +279,7 @@ textarea {
 			btn__border-color: cssvar('color-success'),
 			btn--focus__background-color: cssvar('color-success--focus'),
 			btn--focus__border-color: cssvar('color-success--focus'),
-			btn--focus__box-shadow-color: cssvar('color-success--subtle'),
+			btn--focus__outline-color: cssvar('color-success--subtle'),
 		)
 	);
 }
@@ -222,7 +291,7 @@ textarea {
 			btn__border-color: cssvar('color-warning'),
 			btn--focus__background-color: cssvar('color-warning--focus'),
 			btn--focus__border-color: cssvar('color-warning--focus'),
-			btn--focus__box-shadow-color: cssvar('color-warning--subtle'),
+			btn--focus__outline-color: cssvar('color-warning--subtle'),
 		)
 	);
 }
@@ -234,7 +303,7 @@ textarea {
 			btn__border-color: cssvar('color-info'),
 			btn--focus__background-color: cssvar('color-info--focus'),
 			btn--focus__border-color: cssvar('color-info--focus'),
-			btn--focus__box-shadow-color: cssvar('color-info--subtle'),
+			btn--focus__outline-color: cssvar('color-info--subtle'),
 		)
 	);
 }
@@ -246,7 +315,7 @@ textarea {
 			btn__border-color: cssvar('color-danger'),
 			btn--focus__background-color: cssvar('color-danger--focus'),
 			btn--focus__border-color: cssvar('color-danger--focus'),
-			btn--focus__box-shadow-color: cssvar('color-danger--subtle'),
+			btn--focus__outline-color: cssvar('color-danger--subtle'),
 		)
 	);
 }
@@ -299,8 +368,75 @@ textarea {
 
 // FORM CONTROLS
 // ---------------------------
+// .input {
+	// @include input;
+// }
 .input {
-	@include input;
+	@include set-cssvars(
+		(
+			input__font-size: cssvar('font-size'),
+			input__padding-inline: .75em,
+			input__padding-block: .5em,
+			input__color: cssvar('color'),
+			input--placeholder__color: cssvar('color--subtle'),
+			input__background-color: cssvar('background-color'),
+			input__border-color: cssvar('border-color'),
+			input__border-width: 1px,
+			input__border-radius: .25rem,
+			input__box-shadow: none,
+			input--focus__background-color: cssvar('background-color'),
+			input--focus__border-color: cssvar('border-color'),
+			input--focus__outline-color: cssvar('border-color--subtle'),
+			//input--focus__box-shadow: 0 0 0 .25rem cssvar('color--subtle'),
+			input--invalid__border-color: cssvar('color-danger'),
+			input--constrained__max-width: unitcalc(280),
+		)
+	);
+	font-family: cssvar('input__font-family');
+	font-size: cssvar('input__font-size');
+	line-height: cssvar('input__line-height');
+	display: block;
+	width: 100%;
+	padding-inline: cssvar('input__padding-inline');
+	padding-block: cssvar('input__padding-block');
+	margin: 0;
+	color: cssvar('input__color');
+	border: cssvar('input__border-width') solid cssvar('input__border-color');
+	border-radius: cssvar('input__border-radius');
+	background-color: cssvar('input__background-color');
+	box-shadow: cssvar('input__box-shadow');
+	transition: cssvar('transition');
+
+	&:focus {
+		background-color: cssvar('input--focus__background-color');
+		border-color: cssvar('input--focus__border-color');
+	}
+
+	&:focus-visible {
+		outline: 2px solid cssvar('input--focus__outline-color');
+		outline-offset: 2px;
+	}
+
+	&::-ms-expand {
+		background-color: transparent;
+		border: 0;
+	}
+
+	&::placeholder {
+		opacity: 1;
+		color: cssvar('input--placeholder__color');
+	}
+
+	&.invalid,
+	&:invalid {
+		border-color: cssvar('input--invalid__border-color');
+	}
+
+	&.disabled,
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
 }
 
 .form-control,

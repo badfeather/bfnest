@@ -236,9 +236,9 @@ The frumious Bandersnatch!&rdquo;</pre>
 
 		<p><button class="btn">button</button></p>
 
-		<p><button class="btn btn--l">btn--l</button></p>
+		<p><button class="btn btn--lg">btn--lg</button></p>
 
-		<p><button class="btn btn--s">btn--s</button></p>
+		<p><button class="btn btn--sm">btn--sm</button></p>
 
 		<p><button class="btn btn--xs">btn--xs</button></p>
 

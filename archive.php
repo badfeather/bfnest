@@ -5,7 +5,7 @@ if ( have_posts() ) {
 	//$post_type = ( is_post_type_archive() ? get_query_var( 'post_type' ) : '' );
 	$post_type = bfnest_get_archive_post_type();
 ?>
-	<div id="site-content" class="site-content doc doc--archive">
+	<div id="site-content" class="site-content doc doc--archive container">
 		<main id="doc-main" class="doc-main">
 			<header id="doc-header" class="doc-header">
 				<h1 class="doc-title"><?php the_archive_title(); ?></h1>

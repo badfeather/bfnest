@@ -4,9 +4,9 @@
 :root {
 	@include set-cssvars(
 		(
-			font-family: meta.inspect($font-family--system-ui),
-			font-family--monospace: meta.inspect($font-family--monospace),
-			font-family--headings: meta.inspect($font-family--system-ui),
+			font-family--monospace: meta.inspect($font-family--sans-serif),
+			font-family--display: meta.inspect($font-family--system-ui),
+			font-family: meta.inspect($font-family--sans-serif),
 
 			font-size--2xs: unitcalc(10), // .625rem
 			font-size--xs: unitcalc(12), // .75rem
@@ -71,6 +71,7 @@
 			background-color: $white,
 			background-color--alt: hsluv-shade($hsluv-gray, 10),
 			border-color: hsluv-shade($hsluv-gray, 40),
+			border-color--subtle: hsluv-shade($hsluv-gray, 30),
 
 			color-primary: hsluv-shade($hsluv-blue, 50),
 			color-primary--focus: hsluv-shade($hsluv-blue, 60),
@@ -109,6 +110,7 @@
 			background-color: hsluv-shade($hsluv-gray, 85),
 			background-color--alt: hsluv-shade($hsluv-gray, 90),
 			border-color: hsluv-shade($hsluv-gray, 60),
+			border-color--subtle: hsluv-shade($hsluv-gray, 70),
 
 			color-primary: hsluv-shade($hsluv-blue, 50),
 			color-primary--focus: hsluv-shade($hsluv-blue, 40),

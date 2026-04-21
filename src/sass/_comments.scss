@@ -2,7 +2,9 @@
 @use 'utility' as *;
 @use 'layout' as *;
 
-// comment list
+.entry-comments {
+	margin-top: cssvar('spacing');
+}
 .comments-list {
 	@include list-unstyled;
 
@@ -30,7 +32,7 @@
 
 // comment
 .comment-meta {
-	@extend .entry-meta;
+
 }
 
 .comment-header {
@@ -45,7 +47,7 @@
 .form-allowed-tags {
 	clear: both;
 	width: 95%;
-	@extend %visually-hidden;
+	@include visually-hidden;
 }
 
 .form-allowed-tags code {

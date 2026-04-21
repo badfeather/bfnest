@@ -2,17 +2,17 @@
 @use 'type' as *;
 
 // GRID SYSTEM(S)
-$grid__column-width: unitcalc(78);
-$grid__column-gap: unitcalc(24);
-$grid__row-gap: unitcalc(24);
+$grid__column-width: unitcalc(90);
+$grid__column-gap: unitcalc(30);
+$grid__row-gap: 0;
 $grid__column-total-width: $grid__column-gap + $grid__column-width;
 $grid__columns: 12;
 $grid__max-columns: 1;
 $grid-item__min-width: unitcalc(280);
 $grid-item__max-width: 100%;
 
-$container__padding-inline: $grid__column-gap;
-$container__max-width: get-container-max-width-from-columns($grid__columns, $grid__column-width, $grid__column-gap, $container__padding-inline);
+$container__padding-inline: $grid__column-gap * .5;
+//$container__max-width: get-container-max-width-from-columns($grid__columns, $grid__column-width, $grid__column-gap, $container__padding-inline);
 
 $form-grid__column-gap: $grid__column-gap * .5;
 $gallery-grid__column-gap: $grid__column-gap;

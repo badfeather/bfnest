@@ -21,6 +21,9 @@
 			"button": false,
 			"caption": false,
 			"custom": false,
+			"duotone": [],
+			"gradients": [],
+			"palette": [],
 			"customDuotone": false,
 			"customGradient": false,
 			"defaultDuotone": false,
@@ -33,8 +36,8 @@
 			"minHeight": false
 		},
 		"layout": {
-			"contentSize": null,
-			"wideSize": null,
+			"contentSize": "930px",
+			"wideSize": "1410px",
 			"allowEditing": false,
 			"allowCustomContentAndWideSize":false
 		},

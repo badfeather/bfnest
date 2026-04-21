@@ -13,7 +13,7 @@
 	<div id="page" class="hfeed site">
 		<a class="skip-link screen-reader-text" href="#doc-main"><?php esc_html_e( 'Skip to content', 'bfnest' ); ?></a>
 
-		<header id="site-header" class="site-header container" data-expander>
+		<header id="site-header" class="site-header container--fluid" data-expander>
 			<?php
 			$title_tag = is_front_page() && is_home() ? 'h1' : 'div';
 			echo '<' . $title_tag . ' class="site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="site-logo site-header__site-logo">' . get_bloginfo( 'name' ) . '</a></' . $title_tag . '>' . "\n";

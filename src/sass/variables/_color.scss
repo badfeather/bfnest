@@ -1,84 +1,85 @@
 @use '../functions' as *;
+@use 'sass:color';
 
 $black: #000;
 $white: #fff;
 $gray: #808080;
 
 // $red:  hsl(0 100% 50%);
-// $vermillion: hsl(15 100% 50%);
-// $orange: hsl(30 100% 50%); // yellow-red
-// $amber: hsl(45 100% 50%);
+// $warm-red: hsl(15 100% 50%);
+// $orange: hsl(30 100% 50%);
+// $warm-yellow: hsl(45 100% 50%);
 // $yellow: hsl(60 100% 50%);
-// $lime:  hsl(75 100% 50%);
-// $chartreuse: hsl(90 100% 50%); // yellow-green
-// $harlequin:  hsl(105 100% 50%);
+// $cool-yellow:  hsl(75 100% 50%);
+// $yellow-green: hsl(90 100% 50%);
+// $warm-green:  hsl(105 100% 50%);
 // $green: hsl(120 100% 50%);
-// $erin: hsl(135 100% 50%);
-// $spring: hsl(150 100% 50%); // green-cyan
-// $aquamarine: hsl(165 100% 50%);
+// $cool-green: hsl(135 100% 50%);
+// $green-cyan: hsl(150 100% 50%);
+// $warm-cyan: hsl(165 100% 50%);
 // $cyan: hsl(180 100% 50%);
-// $capri:  hsl(195 100% 50%);
-// $azure: hsl(210 100% 50%); // blue-cyan
-// $cerulean: hsl(225 100% 50%);
+// $cool-cyan:  hsl(195 100% 50%);
+// $blue-cyan: hsl(210 100% 50%);
+// $cool-blue: hsl(225 100% 50%);
 // $blue: hsl(240 100% 50%);
-// $indigo: hsl(255 100% 50%);
-// $violet: hsl(270 100% 50%); // blue-magenta
-// $purple: hsl(285 100% 50%);
+// $warm-blue: hsl(255 100% 50%);
+// $violet: hsl(270 100% 50%);
+// $cool-magenta: hsl(285 100% 50%);
 // $magenta: hsl(300 100% 50%);
-// $cerise: hsl(315 100% 50%);
-// $rose: hsl(330 100% 50%); // red-magenta
-// $crimson: hsl(345 100% 50%);
+// $warm-magenta: hsl(315 100% 50%);
+// $red-magenta: hsl(330 100% 50%);
+// $cool-red: hsl(345 100% 50%);
 
 $red: #f00;
-$vermillion: #ff4000;
+$warm-red: #ff4000;
 $orange: #ff8000; // yellow-red
-$amber: #ffbf00;
+$warm-yellow: #ffbf00;
 $yellow: #ff0;
-$lime: #bfff00;
-$chartreuse: #80FF00; // yellow-green
-$harlequin: #40ff00;
+$cool-yellow: #bfff00;
+$yellow-green: #80FF00;
+$warm-green: #40ff00;
 $green: #0f0;
-$erin: #00ff40;
-$spring: #00ff80; // green-cyan
-$aquamarine: #00ffbf;
+$cool-green: #00ff40;
+$green-cyan: #00ff80;
+$warm-cyan: #00ffbf;
 $cyan: #0ff;
-$capri: #00bfff;
-$azure: #007fff; // blue-cyan
-$cerulean: #0040ff;
+$cool-cyan: #00bfff;
+$blue-cyan: #007fff;
+$cool-blue: #0040ff;
 $blue: #00f;
-$indigo: #4000ff;
+$warm-blue: #4000ff;
 $violet: #7f00ff; // blue-magenta
-$purple: #bf00ff;
+$cool-magenta: #bf00ff; // purple
 $magenta: #f0f;
-$cerise: #ff00bf;
-$rose: #ff0080; // red-magenta
-$crimson: #ff0040;
+$warm-magenta: #ff00bf;
+$red-magenta: #ff0080;
+$cool-red: #ff0040;
 
 $oklch-h: (
 	'red': 29,
-	// 'vermillion': 35,
+	// 'warm-red': 35,
 	'orange': 53,
-	// 'amber': 84,
+	// 'warm-yellow': 84,
 	'yellow': 110,
-	// 'lime': 126,
-	'chartreuse': 136,
-	// 'harlequin': 141,
+	// 'cool-yellow': 126,
+	'yellow-green': 136,
+	// 'warm-green': 141,
 	'green': 142,
-	// 'erin': 144,
-	'spring': 151,
-	// 'aquamarine': 167,
+	// 'cool-green': 144,
+	'green-cyan': 151,
+	// 'warm-cyan': 167,
 	'cyan': 195,
-	// 'capri': 232,
-	'azure': 256,
-	// 'cerulean': 264,
+	// 'cool-cyan': 232,
+	'blue-cyan': 256,
+	// 'cool-blue': 264,
 	'blue': 264,
-	// 'indigo': 274,
+	// 'warm-blue': 274,
 	'violet': 294,
-	// 'purple': 313,
+	// 'cool-magenta': 313,
 	'magenta': 328,
-	// 'cerise': 344,
-	'rose': 2,
-	// 'crimson': 21,
+	// 'warm-magenta': 344,
+	'red-magenta': 2,
+	// 'cool-red': 21,
 );
 
 // inspired by https://codepen.io/argyleink/pen/ZEMmNdO
@@ -157,29 +158,29 @@ $oklch-c: (
 $hsluv-h: (
 	'gray': 0deg,
 	'red': 12.2deg,
-	'vermillion': 16.1deg,
+	'warm-red': 16.1deg,
 	'orange': 30.1deg,
-	'amber': 57.2deg,
+	'warm-yellow': 57.2deg,
 	'yellow': 85.9deg,
-	'lime': 106.6deg,
-	'chartreuse': 119.5deg,
-	'harlequin': 125.8deg,
+	'cool-yellow': 106.6deg,
+	'yellow-green': 119.5deg,
+	'warm-green': 125.8deg,
 	'green': 127.7deg,
-	'erin': 129.6deg,
-	'spring': 136.8deg,
-	'aquamarine': 154.9deg,
+	'cool-green': 129.6deg,
+	'green-cyan': 136.8deg,
+	'warm-cyan': 154.9deg,
 	'cyan': 192.2deg,
-	'capri': 233.7deg,
-	'azure': 255.6deg,
-	'cerulean': 263.7deg,
+	'cool-cyan': 233.7deg,
+	'blue-cyan': 255.6deg,
+	'cool-blue': 263.7deg,
 	'blue': 265.9deg,
-	'indigo': 268.0deg,
+	'warm-blue': 268.0deg,
 	'violet': 274.8deg,
-	'purple': 288.4deg,
+	'cool-magenta': 288.4deg,
 	'magenta': 307.7deg,
-	'cerise': 332.0deg,
-	'rose': 355.2deg,
-	'crimson': 8.3deg,
+	'warm-magenta': 332.0deg,
+	'red-magenta': 355.2deg,
+	'cool-red': 8.3deg,
 );
 
 // #747474
@@ -212,8 +213,8 @@ $hsluv-yellow: (
 
 // #687d00
 // yellow-green
-// chartreuse
-$hsluv-chartreuse: (
+// yellow-green
+$hsluv-yellow-green: (
 	h: 100deg,
 	s: 100%,
 	l: 49%
@@ -228,8 +229,8 @@ $hsluv-green: (
 
 // #008468
 // green-cyan
-// spring, bosphorus
-$hsluv-spring: (
+// green-cyan, bosphorus
+$hsluv-green-cyan: (
 	h: 160deg,
 	s: 100%,
 	l: 49%
@@ -244,7 +245,7 @@ $hsluv-cyan: (
 
 // #007f99
 // blue-cyan
-$hsluv-azure: (
+$hsluv-blue-cyan: (
 	h: 220deg,
 	s: 100%,
 	l: 49%
@@ -274,7 +275,7 @@ $hsluv-magenta: (
 
 // #dd0094
 // red-magenta
-$hsluv-rose: (
+$hsluv-red-magenta: (
 	h: 340deg,
 	s: 100%,
 	l: 49%
@@ -284,14 +285,49 @@ $grays: hsluv-shades($hsluv-gray);
 $reds: hsluv-shades($hsluv-red);
 $oranges: hsluv-shades($hsluv-orange);
 $yellows: hsluv-shades($hsluv-yellow);
-$chartreuses: hsluv-shades($hsluv-chartreuse);
+$yellow-greens: hsluv-shades($hsluv-yellow-green);
 $greens: hsluv-shades($hsluv-green);
-$springs: hsluv-shades($hsluv-spring);
+$green-cyans: hsluv-shades($hsluv-green-cyan);
 $cyans: hsluv-shades($hsluv-cyan);
-$azures: hsluv-shades($hsluv-azure);
+$blue-cyans: hsluv-shades($hsluv-blue-cyan);
 $blues: hsluv-shades($hsluv-blue);
 $violets: hsluv-shades($hsluv-violet);
 $magentas: hsluv-shades($hsluv-magenta);
-$roses: hsluv-shades($hsluv-rose);
+$red-magentas: hsluv-shades($hsluv-red-magenta);
 
-
+// colors from here: https://www.s-ings.com/scratchpad/oklch-smooth/
+//$A: ("10" color.to-space(#fce9ec, oklch), "20" color.to-space(#ffd2da, oklch), "30" color.to-space(#ffb7c5, oklch), "40" color.to-space(#ff93ab, oklch), "50" color.to-space(#fc6e91, oklch), "60" color.to-space(#e74b77, oklch), "70" color.to-space(#be2f5c, oklch), "80" color.to-space(#911541, oklch), "90" color.to-space(#5a0023, oklch));
+//$B: ("10" color.to-space(#fde9e7, oklch), "20" color.to-space(#fed4d0, oklch), "30" color.to-space(#ffb9b4, oklch), "40" color.to-space(#ff9793, oklch), "50" color.to-space(#ff6c6f, oklch), "60" color.to-space(#ed4752, oklch), "70" color.to-space(#c7263a, oklch), "80" color.to-space(#970823, oklch), "90" color.to-space(#5c0010, oklch));
+//$C: ("10" color.to-space(#feeae3, oklch), "20" color.to-space(#ffd4c4, oklch), "30" color.to-space(#ffbba1, oklch), "40" color.to-space(#ff9b76, oklch), "50" color.to-space(#fc784a, oklch), "60" color.to-space(#e45729, oklch), "70" color.to-space(#be3c0f, oklch), "80" color.to-space(#8e2500, oklch), "90" color.to-space(#551400, oklch));
+//$D: ("10" color.to-space(#ffecdb, oklch), "20" color.to-space(#ffdcb9, oklch), "30" color.to-space(#ffc587, oklch), "40" color.to-space(#ffaa4a, oklch), "50" color.to-space(#fa9016, oklch), "60" color.to-space(#e17900, oklch), "70" color.to-space(#b66000, oklch), "80" color.to-space(#7d4200, oklch), "90" color.to-space(#472500, oklch));
+//$E: ("10" color.to-space(#feedc6, oklch), "20" color.to-space(#ffe197, oklch), "30" color.to-space(#ffd158, oklch), "40" color.to-space(#fdc215, oklch), "50" color.to-space(#edaf00, oklch), "60" color.to-space(#cb9300, oklch), "70" color.to-space(#9e7100, oklch), "80" color.to-space(#6d4d00, oklch), "90" color.to-space(#3d2a00, oklch));
+//$F: ("10" color.to-space(#eef2d4, oklch), "20" color.to-space(#e3ed9f, oklch), "30" color.to-space(#d4e360, oklch), "40" color.to-space(#c1d126, oklch), "50" color.to-space(#aab900, oklch), "60" color.to-space(#8e9b00, oklch), "70" color.to-space(#6f7900, oklch), "80" color.to-space(#4f5600, oklch), "90" color.to-space(#2d3100, oklch));
+//$G: ("10" color.to-space(#e1f5d8, oklch), "20" color.to-space(#caf1b9, oklch), "30" color.to-space(#a7e788, oklch), "40" color.to-space(#87d65d, oklch), "50" color.to-space(#6dbe3d, oklch), "60" color.to-space(#57a126, oklch), "70" color.to-space(#418014, oklch), "80" color.to-space(#2d5c0a, oklch), "90" color.to-space(#163700, oklch));
+//$H: ("10" color.to-space(#e0f5e5, oklch), "20" color.to-space(#c5eecf, oklch), "30" color.to-space(#96e4ad, oklch), "40" color.to-space(#5ed78a, oklch), "50" color.to-space(#2ec06d, oklch), "60" color.to-space(#1ca25a, oklch), "70" color.to-space(#148046, oklch), "80" color.to-space(#105d32, oklch), "90" color.to-space(#07371c, oklch));
+//$I: ("10" color.to-space(#d9f6ed, oklch), "20" color.to-space(#b7eede, oklch), "30" color.to-space(#78e5c9, oklch), "40" color.to-space(#33d6b3, oklch), "50" color.to-space(#00bc9a, oklch), "60" color.to-space(#169e81, oklch), "70" color.to-space(#0b7e66, oklch), "80" color.to-space(#065b49, oklch), "90" color.to-space(#00372b, oklch));
+//$J: ("10" color.to-space(#d7f5f6, oklch), "20" color.to-space(#b0eef0, oklch), "30" color.to-space(#70e3e8, oklch), "40" color.to-space(#33d1d8, oklch), "50" color.to-space(#1db8bf, oklch), "60" color.to-space(#0f9aa1, oklch), "70" color.to-space(#0a7a80, oklch), "80" color.to-space(#05595e, oklch), "90" color.to-space(#003538, oklch));
+//$K: ("10" color.to-space(#daf4ff, oklch), "20" color.to-space(#b9eafe, oklch), "30" color.to-space(#84dcfe, oklch), "40" color.to-space(#4dcbf6, oklch), "50" color.to-space(#09b5e3, oklch), "60" color.to-space(#069ac2, oklch), "70" color.to-space(#077a9b, oklch), "80" color.to-space(#065871, oklch), "90" color.to-space(#003344, oklch));
+//$L: ("10" color.to-space(#e3f1fe, oklch), "20" color.to-space(#c3e3ff, oklch), "30" color.to-space(#9fd4ff, oklch), "40" color.to-space(#6fc1ff, oklch), "50" color.to-space(#3aadfc, oklch), "60" color.to-space(#0391e6, oklch), "70" color.to-space(#0073c1, oklch), "80" color.to-space(#005391, oklch), "90" color.to-space(#002f56, oklch));
+//$M: ("10" color.to-space(#e8eeff, oklch), "20" color.to-space(#d7e1fe, oklch), "30" color.to-space(#bdcefe, oklch), "40" color.to-space(#a0b8ff, oklch), "50" color.to-space(#7f9dff, oklch), "60" color.to-space(#6381f8, oklch), "70" color.to-space(#4a62d4, oklch), "80" color.to-space(#32449c, oklch), "90" color.to-space(#1e2959, oklch));
+//$N: ("10" color.to-space(#f1ebff, oklch), "20" color.to-space(#e6dbff, oklch), "30" color.to-space(#d7c5fe, oklch), "40" color.to-space(#c6a9ff, oklch), "50" color.to-space(#b48aff, oklch), "60" color.to-space(#9c6bed, oklch), "70" color.to-space(#7f50ca, oklch), "80" color.to-space(#5d3996, oklch), "90" color.to-space(#361c5c, oklch));
+//$O: ("10" color.to-space(#fce7fc, oklch), "20" color.to-space(#fbd1fb, oklch), "30" color.to-space(#f9b1fb, oklch), "40" color.to-space(#f190f5, oklch), "50" color.to-space(#e171e7, oklch), "60" color.to-space(#c458cb, oklch), "70" color.to-space(#a13da7, oklch), "80" color.to-space(#79237f, oklch), "90" color.to-space(#4c0452, oklch));
+//$P: ("10" color.to-space(#fee8f2, oklch), "20" color.to-space(#fcd3e6, oklch), "30" color.to-space(#ffb4d9, oklch), "40" color.to-space(#ff8ac8, oklch), "50" color.to-space(#f668b6, oklch), "60" color.to-space(#dc4d9e, oklch), "70" color.to-space(#b82f7f, oklch), "80" color.to-space(#8c145d, oklch), "90" color.to-space(#580037, oklch));
+//$Z: ("10" color.to-space(#eaf0f5, oklch), "20" color.to-space(#d8e1e9, oklch), "30" color.to-space(#c1cdd8, oklch), "40" color.to-space(#a9b8c6, oklch), "50" color.to-space(#8fa1b2, oklch), "60" color.to-space(#74889b, oklch), "70" color.to-space(#5b6c7c, oklch), "80" color.to-space(#414e5a, oklch), "90" color.to-space(#262f37, oklch));
+//
+//$A: ("10": oklch(95.00094819626325% 0.0210318363098153 6.612814102418213deg), "20": oklch(90.44800572541217% 0.051509031557556643 6.160768160634291deg), "30": oklch(85.02260696937401% 0.08512857525569947 6.187568241827876deg), "40": oklch(78.34762625824106% 0.13189548965527595 6.299006469276776deg), "50": oklch(71.96657666367406% 0.1754454081437721 7.243205817431431deg), "60": oklch(64.07308760295277% 0.19345499118086068 7.45095135150649deg), "70": oklch(53.95334362838069% 0.18046956733567227 7.157190252815326deg), "80": oklch(43.14815607890797% 0.15831936310759184 7.031728160893522deg), "90": oklch(29.986127802788687% 0.12016895091034295 7.21729018632783deg));
+//$B: ("10": oklch(94.94608596975881% 0.022054186416885665 24.439508692171557deg), "20": oklch(90.45710716059759% 0.04768347525367111 24.45896843271038deg), "30": oklch(84.92995727668146% 0.08201393142823626 23.542351914355947deg), "40": oklch(78.38430251116503% 0.12563191713326669 22.677873169463965deg), "50": oklch(71.36385319199012% 0.17971391921900245 21.583592124895688deg), "60": oklch(63.848788338303144% 0.20184701017448584 21.48896448447391deg), "70": oklch(54.13170737046534% 0.19442775387531694 20.918498779929394deg), "80": oklch(43.07270417825266% 0.16872961073578405 21.16882881273466deg), "90": oklch(30.002322915464998% 0.12071479389064341 21.27054612986319deg));
+//$C: ("10": oklch(95.11323494266945% 0.02385031171305271 40.34306126842364deg), "20": oklch(90.24696031026954% 0.05322500351990902 41.44032581989404deg), "30": oklch(84.85130235992044% 0.08686148251431393 41.82822471619045deg), "40": oklch(78.46988227685732% 0.13041082892389827 40.939217080047deg), "50": oklch(72.00545807552679% 0.17269882701243108 39.33950846705653deg), "60": oklch(63.68284329577407% 0.18488865174547253 37.55774005909694deg), "70": oklch(54.10486418188689% 0.17370068144440973 36.84254800213694deg), "80": oklch(42.989865759647536% 0.1460275606292337 36.35669755938852deg), "90": oklch(30.076459167164366% 0.10001600023861357 37.28947688332988deg));
+//$D: ("10": oklch(95.37462715872064% 0.03063107229278667 64.30321045518463deg), "20": oklch(91.50669297051626% 0.06025612234172533 66.95283422874894deg), "30": oklch(86.19770602795147% 0.1027894378151752 67.62717273846863deg), "40": oklch(80.48874543706017% 0.14762766196287794 65.88900109841848deg), "50": oklch(75.10091796162887% 0.1705704369661773 60.461264593107046deg), "60": oklch(67.98302801705803% 0.16388797682985223 57.33948582780749deg), "70": oklch(57.88944504083419% 0.14023656126419348 56.8972988562013deg), "80": oklch(44.339015169864524% 0.10538828719755217 58.66803121107711deg), "90": oklch(30.34677555607484% 0.06996183404840112 61.804296457031285deg));
+//$E: ("10": oklch(94.99117674186398% 0.05388875793933519 87.25053930380727deg), "20": oklch(91.82132530703302% 0.09815268123656908 88.32577422288466deg), "30": oklch(87.8887562769878% 0.14551015554254892 88.02046184725941deg), "40": oklch(84.42236074862095% 0.16980176258549892 85.86206452827253deg), "50": oklch(79.06361968885662% 0.16262224516681495 82.8451916679532deg), "60": oklch(69.9046688212605% 0.14426955151516233 81.3354663624907deg), "70": oklch(57.921138171155064% 0.11968667006973198 80.84664715840495deg), "80": oklch(44.33509124560411% 0.09156453448862045 81.05032847920404deg), "90": oklch(29.97239460876735% 0.061761209034154094 81.9913014549578deg));
+//$F: ("10": oklch(95.02676829746676% 0.03963184422406787 113.32023742380272deg), "20": oklch(92.05948892599493% 0.09998890568464007 114.33889764519239deg), "30": oklch(87.92002296370353% 0.15528754088350594 115.13335456066625deg), "40": oklch(82.11008965086593% 0.17766874524121984 115.3346904271761deg), "50": oklch(74.82392948312604% 0.1702366984665696 115.47773189410299deg), "60": oklch(65.63472598898753% 0.14947274798658786 115.58950447287884deg), "70": oklch(54.87387747102627% 0.12474623951851262 115.38295358286985deg), "80": oklch(43.20122356528416% 0.09796453845446067 115.08622761979194deg), "90": oklch(29.896553875212785% 0.06752620217568406 114.60891517599134deg));
+//$G: ("10": oklch(94.76955148963798% 0.0437982421207932 135.84669583550038deg), "20": oklch(91.62207348075981% 0.08476102584799183 136.27995773922453deg), "30": oklch(86.27861853003972% 0.14094444772463238 136.0411077831452deg), "40": oklch(79.90397338378331% 0.174362399378794 136.0715502741972deg), "50": oklch(72.35823841944968% 0.1811429044209288 136.0309267885824deg), "60": oklch(63.687260346066196% 0.17042158810353966 135.89838542615087deg), "70": oklch(53.69001887523359% 0.14997285823099135 135.96103316140182deg), "80": oklch(42.48836594268806% 0.1193115044647779 135.82458378298713deg), "90": oklch(29.975820568471285% 0.08927732204591086 136.0774943885736deg));
+//$H: ("10": oklch(95.03245244061995% 0.03064612967597304 152.87762856610425deg), "20": oklch(91.16687798316066% 0.05975113638945484 152.4888709693555deg), "30": oklch(85.36261809877347% 0.10890919099477084 152.93454648511977deg), "40": oklch(79.07104079266517% 0.1551251311972063 153.06097811614927deg), "50": oklch(71.39602175000559% 0.16962671192905307 152.8905599968732deg), "60": oklch(62.77366643013161% 0.1529183189066938 153.20824017471705deg), "70": oklch(52.873636986861214% 0.128675371922371 153.23490386827473deg), "80": oklch(42.2575762676642% 0.10068446306273893 153.1017230596524deg), "90": oklch(29.799920558239002% 0.06959610808953208 153.42517042211068deg));
+//$I: ("10": oklch(94.96830840023661% 0.03251344719541712 174.97518697050327deg), "20": oklch(90.689093812358% 0.06017848359953148 175.13581689484226deg), "30": oklch(84.9072480106063% 0.10928049780771673 174.75116929672936deg), "40": oklch(78.69321588551547% 0.13881127403672988 174.13930527921946deg), "50": oklch(70.91793505466492% 0.13548966720465694 173.53516744329988deg), "60": oklch(62.538103579302195% 0.11594247561776917 172.98402536468734deg), "70": oklch(52.98397432229772% 0.09947169855899003 172.8401781825553deg), "80": oklch(42.10050431469048% 0.0788989835414483 172.8103068431659deg), "90": oklch(30.02233137527161% 0.057684613745994505 172.9327362388583deg));
+//$J: ("10": oklch(94.88599400018276% 0.03125893074929144 199.09368143424956deg), "20": oklch(90.80938740116532% 0.06234975647002867 198.61091081804125deg), "30": oklch(85.08836854050696% 0.10463760879934715 199.18052946262083deg), "40": oklch(78.64599987444498% 0.12398922693785268 199.5382669811779deg), "50": oklch(71.32341577256206% 0.11685716841332797 199.86889009930746deg), "60": oklch(62.50179891876938% 0.10403932412363466 200.65030465925997deg), "70": oklch(52.800682040649974% 0.08779963429057465 201.00126407511084deg), "80": oklch(42.29394009658283% 0.07039237431745517 201.6142143095542deg), "90": oklch(29.921084857561308% 0.0508780940997636 200.9227719186881deg));
+//$K: ("10": oklch(95.15680069781808% 0.031044568607185317 225.09064375819491deg), "20": oklch(90.9429621470337% 0.057246871052835206 224.7691622481468deg), "30": oklch(85.12683344866906% 0.09704793883550904 224.91934728597903deg), "40": oklch(78.981693721779% 0.12461455328272707 224.5812486129721deg), "50": oklch(71.91714787029098% 0.13475378000663937 224.67075164700043deg), "60": oklch(63.850477602387734% 0.11991624633050853 224.88768561568872deg), "70": oklch(53.98264932964035% 0.1012376783291682 225.53416792617998deg), "80": oklch(42.93587227797217% 0.08004416799135187 226.0510810360895deg), "90": oklch(29.94563971635293% 0.05783282006211786 227.029114852117deg));
+//$L: ("10": oklch(95.15669606778305% 0.02303476509586211 246.03806802679082deg), "20": oklch(90.16398056498986% 0.051299078821508866 244.80684390045735deg), "30": oklch(84.82991703369494% 0.08161170728178198 243.38988409292642deg), "40": oklch(78.3282414134988% 0.11989963480568969 242.96567021622877deg), "50": oklch(71.96400710497355% 0.15274529660964217 243.5480508096614deg), "60": oklch(63.612094844605046% 0.16220824591090596 245.80996537935096deg), "70": oklch(54.37016686071193% 0.14843036089237394 248.57927344108612deg), "80": oklch(43.51496256912553% 0.12254318515119081 249.80486777721808deg), "90": oklch(30.029131120297027% 0.0845708898539075 249.8073005095647deg));
+//$M: ("10": oklch(94.96068738979625% 0.023788244413010216 270.3425559502034deg), "20": oklch(91.11763993586611% 0.04110764202166036 270.46197097587424deg), "30": oklch(85.4764557864703% 0.06963245363433343 269.6452925633603deg), "40": oklch(79.12113219540805% 0.10492549435001182 269.56324153805394deg), "50": oklch(71.59983893280591% 0.1470540797456883 269.56511681394295deg), "60": oklch(64.0141260439026% 0.17992923775715353 270.03286585824117deg), "70": oklch(54.10379892742617% 0.17681802832526441 270.46556099527197deg), "80": oklch(42.499176924343715% 0.14439713599328557 270.36579269033916deg), "90": oklch(30.0254231233198% 0.08719393236292707 270.6392548331313deg));
+//$N: ("10": oklch(95.06138896500994% 0.027387988386785758 299.55275660153006deg), "20": oklch(91.12910269293712% 0.04991137274602361 299.36229310315593deg), "30": oklch(85.71422929645804% 0.08026720341035223 299.16343098983714deg), "40": oklch(79.16271515412127% 0.12296195449914693 299.0802330516425deg), "50": oklch(72.15690667205119% 0.16849355968096796 298.666887750643deg), "60": oklch(63.827467459856265% 0.18915628684996066 298.2590598996612deg), "70": oklch(54.49572677553568% 0.18175183018776922 297.8256426196266deg), "80": oklch(43.657056773545705% 0.14635341080495046 297.88303176863394deg), "90": oklch(30.009752248909084% 0.1091714558235744 298.1984131373174deg));
+//$O: ("10": oklch(95.08763730570394% 0.03570023610202687 325.85395266724277deg), "20": oklch(90.9087437931844% 0.0720562967484946 326.1504050530016deg), "30": oklch(85.15977840432329% 0.12633713334958419 325.71178646614703deg), "40": oklch(78.86253574458763% 0.17152967512970985 325.629654908111deg), "50": oklch(72.00093325019584% 0.19898639690869105 325.4572700596243deg), "60": oklch(63.77027643489244% 0.19568866930284054 325.16203784429194deg), "70": oklch(53.92188585872727% 0.1839134830858662 325.43250954900896deg), "80": oklch(42.93960020828753% 0.16263716938001135 325.1311723947342deg), "90": oklch(29.978717742752025% 0.13502822097115633 324.4976370656502deg));
+//$P: ("10": oklch(95.14600736283624% 0.027195371930074805 348.32799806023786deg), "20": oklch(90.70363798719973% 0.05185060464157533 348.56896628698587deg), "30": oklch(85.09610643436524% 0.0982537374484768 348.33122583842623deg), "40": oklch(77.88228208331941% 0.15753632032769893 348.35544700739763deg), "50": oklch(71.53123041602704% 0.19182701096478455 348.95064364749715deg), "60": oklch(63.8363016156043% 0.19525904115071582 349.0605156566512deg), "70": oklch(54.11449355790663% 0.18817650424968335 349.51602399222486deg), "80": oklch(43.15186202873721% 0.16558517727971603 349.79515646001084deg), "90": oklch(30.334361033559553% 0.1264329904448606 350.29070161564937deg));
+//$Q: ("10": oklch(95.20339419176433% 0.009309668256714951 242.83952894140782deg), "20": oklch(90.52555073477545% 0.01463427367885034 244.73023931499506deg), "30": oklch(84.2462221626939% 0.02020254542606611 245.67871602671323deg), "40": oklch(77.54193676502985% 0.026031169053938024 246.28518555384608deg), "50": oklch(70.05691547685065% 0.032221247526403214 246.7477974986773deg), "60": oklch(61.757527679662% 0.037005235911801916 247.0633020495991deg), "70": oklch(52.316893137951105% 0.03258476360658578 246.84131920379787deg), "80": oklch(41.72833622260309% 0.02605439042468317 246.32327603469435deg), "90": oklch(30.010489802560254% 0.019142725917866983 245.32508134483828deg));

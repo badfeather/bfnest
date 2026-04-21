@@ -2,68 +2,68 @@
 @use '../variables' as *;
 @use 'utility' as *;
 
-@mixin btn {
-	@include set-cssvars(
-		(
-			btn__font-size: cssvar('font-size'),
-			btn__line-height: cssvar('line-height'),
-			btn__padding-inline: 1.125em,
-			btn__padding-block: .5em,
-			btn__text-decoration: none,
-			btn__color: cssvar('background-color'),
-			btn__background-color: cssvar('color-primary'),
-			btn__border-color: cssvar('color-primary'),
-			btn__border-width: 1px,
-			btn__border-radius: .25rem,
-			btn--focus__text-decoration: none,
-			btn--focus__color: cssvar('background-color'),
-			btn--focus__background-color: cssvar('color-primary--focus'),
-			btn--focus__border-color: cssvar('color-primary--focus'),
-			btn--focus__box-shadow: 0 0 0 .25rem cssvar('color-primary--subtle'),
-		)
-	);
-	font-family: cssvar('btn__font-family');
-	font-size: cssvar('btn__font-size');
-	line-height: cssvar('btn__line-height');
-	padding-inline: cssvar('btn__padding-inline');
-	padding-block: cssvar('btn__padding-block');
-	text-decoration: cssvar('btn__text-decoration');
-	text-align: center;
-	vertical-align: middle;
-	display: inline-block;
-	margin-block-end: 0;
-	color: cssvar('btn__color');
-	background-color: cssvar('btn__background-color');
-	border: cssvar('btn__border-width') solid cssvar('btn__border-color');
-	border-radius: cssvar('btn__border-radius');
-	white-space: nowrap;
-	outline: none;
-	transition: cssvar('transition');
-	box-shadow: none;
-
-	&:not(:disabled) {
-		cursor: pointer;
-	}
-
-	&:hover,
-	&:focus {
-		color: cssvar('btn--focus__color');
-		text-decoration: ('btn--focus__text-decoration');
-		background-color: cssvar('btn--focus__background-color');
-		border-color: cssvar('btn--focus__border-color');
-	}
-
-	&:focus-visible {
-		box-shadow: cssvar('btn--focus__box-shadow'); // safari-style focus
-	}
-
-	&.disabled,
-	&:disabled {
-		cursor: not-allowed;
-		pointer-events: none;
-		opacity: 0.5;
-	}
-}
+// @mixin btn {
+	// @include set-cssvars(
+	// 	(
+	// 		btn__font-size: cssvar('font-size'),
+	// 		btn__line-height: cssvar('line-height'),
+	// 		btn__padding-inline: 1.125em,
+	// 		btn__padding-block: .5em,
+	// 		btn__text-decoration: none,
+	// 		btn__color: cssvar('background-color'),
+	// 		btn__background-color: cssvar('color-primary'),
+	// 		btn__border-color: cssvar('color-primary'),
+	// 		btn__border-width: 1px,
+	// 		btn__border-radius: .25rem,
+	// 		btn--focus__text-decoration: none,
+	// 		btn--focus__color: cssvar('background-color'),
+	// 		btn--focus__background-color: cssvar('color-primary--focus'),
+	// 		btn--focus__border-color: cssvar('color-primary--focus'),
+	// 		btn--focus__box-shadow: 0 0 0 .25rem cssvar('color-primary--subtle'),
+	// 	)
+	// );
+	// font-family: cssvar('btn__font-family');
+	// font-size: cssvar('btn__font-size');
+	// line-height: cssvar('btn__line-height');
+	// padding-inline: cssvar('btn__padding-inline');
+	// padding-block: cssvar('btn__padding-block');
+	// text-decoration: cssvar('btn__text-decoration');
+	// text-align: center;
+	// vertical-align: middle;
+	// display: inline-block;
+	// margin-block-end: 0;
+	// color: cssvar('btn__color');
+	// background-color: cssvar('btn__background-color');
+	// border: cssvar('btn__border-width') solid cssvar('btn__border-color');
+	// border-radius: cssvar('btn__border-radius');
+	// white-space: nowrap;
+	// outline: none;
+	// transition: cssvar('transition');
+	// box-shadow: none;
+//
+	// &:not(:disabled) {
+	// 	cursor: pointer;
+	// }
+//
+	// &:hover,
+	// &:focus {
+	// 	color: cssvar('btn--focus__color');
+	// 	text-decoration: ('btn--focus__text-decoration');
+	// 	background-color: cssvar('btn--focus__background-color');
+	// 	border-color: cssvar('btn--focus__border-color');
+	// }
+//
+	// &:focus-visible {
+	// 	box-shadow: cssvar('btn--focus__box-shadow'); // safari-style focus
+	// }
+//
+	// &.disabled,
+	// &:disabled {
+	// 	cursor: not-allowed;
+	// 	pointer-events: none;
+	// 	opacity: 0.5;
+	// }
+// }
 
 @mixin btn--unstyled {
 	font-size: inherit;
@@ -75,6 +75,8 @@
 	margin: 0;
 	cursor: pointer;
 	display: inline;
+	text-transform: inherit;
+	vertical-align: baseline;
 	//display: inline-block;
 
 	&:hover,
@@ -89,9 +91,9 @@
 }
 
 @mixin btn--link {
-	@include btn--unstyled();
-	font-size: cssvar('font-size');
-	line-height: cssvar('line-height');
+	@include btn--unstyled;
+	//font-size: cssvar('font-size');
+	//line-height: cssvar('line-height');
 	color: cssvar('link__color');
 	text-decoration: cssvar('link__text-decoration');
 
@@ -108,69 +110,69 @@
 	text-align: center;
 }
 
-@mixin input {
-	@include set-cssvars(
-		(
-			input__font-size: cssvar('font-size'),
-			input__padding-inline: .75em,
-			input__padding-block: .5em,
-			input__color: cssvar('color'),
-			input--placeholder__color: cssvar('color--subtle'),
-			input__background-color: cssvar('background-color'),
-			input__border-color: cssvar('border-color'),
-			input__border-width: 1px,
-			input__border-radius: .25rem,
-			input__box-shadow: none,
-			input--focus__background-color: cssvar('background-color'),
-			input--focus__border-color: cssvar('border-color'),
-			input--focus__box-shadow: 0 0 0 .25rem cssvar('color--subtle'),
-			input--invalid__border-color: cssvar('color-danger'),
-			input--constrained__max-width: unitcalc(280),
-		)
-	);
-	font-family: cssvar('input__font-family');
-	font-size: cssvar('input__font-size');
-	line-height: cssvar('input__line-height');
-	display: block;
-	width: 100%;
-	padding-inline: cssvar('input__padding-inline');
-	padding-block: cssvar('input__padding-block');
-	margin: 0;
-	color: cssvar('input__color');
-	border: cssvar('input__border-width') solid cssvar('input__border-color');
-	border-radius: cssvar('input__border-radius');
-	outline: none;
-	background-color: cssvar('input__background-color');
-	box-shadow: cssvar('input__box-shadow');
-	transition: cssvar('transition');
-
-	&:focus {
-		background-color: cssvar('input--focus__background-color');
-		border-color: cssvar('input--focus__border-color');
-		box-shadow: cssvar('input--focus__box-shadow');
-	}
-
-	&::-ms-expand {
-		background-color: transparent;
-		border: 0;
-	}
-
-	&::placeholder {
-		opacity: 1;
-		color: cssvar('input--placeholder__color');
-	}
-
-	&.invalid,
-	&:invalid {
-		border-color: cssvar('input--invalid__border-color');
-	}
-
-	&.disabled,
-	&:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-}
+// @mixin input {
+	// @include set-cssvars(
+	// 	(
+	// 		input__font-size: cssvar('font-size'),
+	// 		input__padding-inline: .75em,
+	// 		input__padding-block: .5em,
+	// 		input__color: cssvar('color'),
+	// 		input--placeholder__color: cssvar('color--subtle'),
+	// 		input__background-color: cssvar('background-color'),
+	// 		input__border-color: cssvar('border-color'),
+	// 		input__border-width: 1px,
+	// 		input__border-radius: .25rem,
+	// 		input__box-shadow: none,
+	// 		input--focus__background-color: cssvar('background-color'),
+	// 		input--focus__border-color: cssvar('border-color'),
+	// 		input--focus__box-shadow: 0 0 0 .25rem cssvar('color--subtle'),
+	// 		input--invalid__border-color: cssvar('color-danger'),
+	// 		input--constrained__max-width: unitcalc(280),
+	// 	)
+	// );
+	// font-family: cssvar('input__font-family');
+	// font-size: cssvar('input__font-size');
+	// line-height: cssvar('input__line-height');
+	// display: block;
+	// width: 100%;
+	// padding-inline: cssvar('input__padding-inline');
+	// padding-block: cssvar('input__padding-block');
+	// margin: 0;
+	// color: cssvar('input__color');
+	// border: cssvar('input__border-width') solid cssvar('input__border-color');
+	// border-radius: cssvar('input__border-radius');
+	// outline: none;
+	// background-color: cssvar('input__background-color');
+	// box-shadow: cssvar('input__box-shadow');
+	// transition: cssvar('transition');
+//
+	// &:focus {
+	// 	background-color: cssvar('input--focus__background-color');
+	// 	border-color: cssvar('input--focus__border-color');
+	// 	box-shadow: cssvar('input--focus__box-shadow');
+	// }
+//
+	// &::-ms-expand {
+	// 	background-color: transparent;
+	// 	border: 0;
+	// }
+//
+	// &::placeholder {
+	// 	opacity: 1;
+	// 	color: cssvar('input--placeholder__color');
+	// }
+//
+	// &.invalid,
+	// &:invalid {
+	// 	border-color: cssvar('input--invalid__border-color');
+	// }
+//
+	// &.disabled,
+	// &:disabled {
+	// 	opacity: 0.5;
+	// 	cursor: not-allowed;
+	// }
+// }
 
 @mixin select-input {
 	&::-ms-expand {

@@ -77,12 +77,12 @@
 			content: '';
 			// margin-left: .5em;
 			@extend .icon;
-			@extend .icon--arrow_drop_down;
+			@extend .icon--expand_more;
 			font-size: 1.5em;
 		}
 
 		&[aria-expanded="true"]:after {
-			@extend .icon--arrow_drop_up;
+			@extend .icon--expand_less;
 		}
 	}
 

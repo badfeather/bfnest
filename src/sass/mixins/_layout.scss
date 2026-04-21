@@ -6,7 +6,7 @@
 
 // GRID SYSTEM(S)
 // ----------------------------
-@mixin container-fluid($padding-inline: $container__padding-inline) {
+@mixin container--fluid($padding-inline: $container__padding-inline) {
 	@include set-cssvars(
 		(
 			container__padding-inline: $padding-inline,
@@ -23,9 +23,9 @@
 		(
 			container__columns: $columns,
 			container__column-width: $column-width,
-			container_column-gap: $column-gap,
+			container__column-gap: $column-gap,
 			container__padding-inline: $padding-inline,
-			container__max-width:  calc(cssvar('container__columns') * (cssvar('container__column-width') + cssvar('container__column-gap')) - cssvar('container__column-gap') + cssvar('container__padding-inline')),
+			container__max-width:  calc(cssvar('container__columns') * (cssvar('container__column-width') + cssvar('container__column-gap')) - cssvar('container__column-gap') + (cssvar('container__padding-inline') * 2)),
 		)
 	);
 	width: 100%;
@@ -147,18 +147,19 @@
 	} @else if $padding-inline > 0 and $column-gap > 0 {
 		@include set-cssvar('content-grid__padding-inline', $column-gap - $padding-inline);
 		// margin-inline: $column-gap * -1;
-		margin-inline: calc(cssvar('conent-grid__column-gap') * -1);
+		margin-inline: calc(cssvar('content-grid__column-gap') * -1);
 
 	} @else {
 		@include set-cssvar('content-grid__padding-inline', 0);
 		// margin-inline: $column-gap * -1;
-		margin-inline: calc(cssvar('conent-grid__column-gap') * -1);
+		margin-inline: calc(cssvar('content-grid__column-gap') * -1);
 	}
 
+	width: auto; // override 100% width set in container or container--fluid
 	display: grid;
 	grid-template-columns: 1fr repeat(cssvar('content-grid__columns'), [col-start] minmax(0, cssvar('content-grid__column-width'))) 1fr;
 	padding-inline: cssvar('content-grid__padding-inline');
-	column-gap: cssvar('cotnent-grid__column-gap', 1.5rem);
+	column-gap: cssvar('content-grid__column-gap', 1.5rem);
 	row-gap: cssvar('content-grid__row-gap', 0);
 
 	& > * {
@@ -166,6 +167,14 @@
 		// grid-column: auto / span $grid__columns;
 		grid-column: auot / span cssvar('content-grid__columns');
 	}
+}
+
+@mixin content-colstart($n) {
+	@include colstart($n, 'col-start');
+}
+
+@mixin content-colspan($n) {
+	grid-column-end: span $n;
 }
 
 // can use positive or negative
@@ -410,7 +419,7 @@
 // LAYOUT CLASSES/PLACEHOLDERS
 // $selector-type expects '.' (outputs classes) or '%' (outputs placeholders)
 @mixin layout-classes($selector-type: '%', $prefix: null) {
-	#{$selector-type}#{$prefix}container-fluid { @include container-fluid; }
+	#{$selector-type}#{$prefix}container--fluid { @include container--fluid; }
 	#{$selector-type}#{$prefix}container { @include container; }
 	@include generate-container-cols-classes($grid__columns, $selector-type, 'container--cols', $prefix);
 	#{$selector-type}#{$prefix}container--left { @include container--left; }
@@ -423,7 +432,7 @@
 	// #{$selector-type}#{$prefix}content-grid__alignfull { @include content-grid__alignfull; }
 	#{$selector-type}#{$prefix}grid--cols { @include grid--cols; }
 	@include generate-max-cols-classes($grid__columns, $selector-type, 'grid--cols', $prefix);
-	#{$selector-type}#{$prefix}content-grid { @include content-grid; }
+	//#{$selector-type}#{$prefix}content-grid { @include content-grid; }
 	@include generate-colstart-classes($grid__columns, $selector-type, 'content-colstart', $prefix, 'col-start');
 	#{$selector-type}#{$prefix}row-gutters { @include row-gutters; }
 	#{$selector-type}#{$prefix}guttered { @include guttered; }

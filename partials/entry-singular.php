@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( [ 'entry', 'singular', 'singular--' . get_post_type() ] ); ?>>
-	<header id="doc-header" class="entry-header doc-header">
+	<header id="doc-header" class="entry-header doc-header container">
 		<?php bfnest_content_flag( 'category' ); ?>
 		<h1 class="entry-title doc-title"><?php the_title(); ?></h1>
 		<?php
@@ -22,7 +22,7 @@
 			?>
 		</div>
 
-		<footer class="entry-footer doc-footer">
+		<footer class="entry-footer doc-footer container">
 			<?php
 			bfnest_meta( [
 				bfnest_get_meta_categories(),
@@ -33,15 +33,15 @@
 				bfnest_get_meta_share()
 			] );
 			?>
+
+			<?php
+			//if ( comments_open() || '0' != get_comments_number() ) {
+			//	comments_template();
+			//}
+
+			bfnest_postnav_single();
+			?>
 		</footer>
-
-		<?php
-		if ( comments_open() || '0' != get_comments_number() ) {
-			comments_template();
-		}
-
-		bfnest_postnav_single();
-		?>
 	</div>
 </article>
 

@@ -61,8 +61,6 @@ h3,
 h4,
 h5,
 h6,
-.block,
-.wp-block,
 .section {
 	@include block-margins;
 }
@@ -121,7 +119,7 @@ ol {
 }
 
 li {
-	@include set-cssvar('margin-block-end', cssar('spacing--xs'));
+	@include set-cssvar('margin-block-end', cssvar('spacing--xs'));
 }
 
 a,
@@ -311,30 +309,8 @@ summary {
 
 // HEADINGS
 // -------------------------
-%heading {
-	font-family: cssvar('heading__font-family');
-	font-weight: cssvar('heading__font-weight');
-	font-size: cssvar('heading__font-size');
-	line-height: cssvar('heading__line-height');
-	letter-spacing: cssvar('heading__letter-spacing');
-	text-transform: cssvar('heading__text-transform');
-	color: cssvar('heading__color');
-	text-wrap: balance;
-	overflow-wrap: break-word;
-
-	a {
-		color: cssvar('heading-link__color');
-		text-decoration: cssvar('heading-link__text-decoration');
-
-		&:hover,
-		&:focus {
-			color: cssvar('heading-link--focus__color');
-			text-decoration: cssvar('heading-link--focus__text-decoration');
-		}
-	}
-}
-
 // .entry-subtitle,
+// .wp-block-subhead,
 h1,
 h2,
 h3,
@@ -343,35 +319,38 @@ h5,
 h6 {
 	@include set-cssvars(
 		(
-			heading__font-family: cssvar('font-family'),
-			heading__font-size: cssvar('font-size'),
-			heading__font-weight: cssvar('font-weight--bold'),
-			heading__line-height: cssvar('line-height'),
-			heading__letter-spacing: normal,
-			heading-link__color: cssvar('color-primary'),
-			heading-link__text-decoration: none,
-			heading-link--focus__color: cssvar('color-primary--focus'),
-			heading-link--focus__text-decoration: underline,
+			h__font-family: cssvar('font-family'),
+			h__font-size: cssvar('font-size'),
+			h__font-weight: cssvar('font-weight--bold'),
+			h__line-height: cssvar('line-height'),
+			h__letter-spacing: normal,
+			h__text-transform: none,
+			h__color: cssvar('color'),
+			h-link__color: cssvar('color-primary'),
+			h-link__text-decoration: none,
+			h-link--focus__color: cssvar('color-primary--focus'),
+			h-link--focus__text-decoration: underline,
+			margin-block-end: cssvar('spacing--sm'),
 		)
 	);
-	font-family: cssvar('heading__font-family');
-	font-size: cssvar('heading__font-size');
-	font-weight: cssvar('heading__font-weight');
-	line-height: cssvar('heading__line-height');
-	letter-spacing: cssvar('heading__letter-spacing');
-	text-transform: cssvar('heading__text-transform');
-	color: cssvar('heading__color');
+	font-family: cssvar('h__font-family');
+	font-size: cssvar('h__font-size');
+	font-weight: cssvar('h__font-weight');
+	line-height: cssvar('h__line-height');
+	letter-spacing: cssvar('h__letter-spacing');
+	text-transform: cssvar('h__text-transform');
+	color: cssvar('h__color');
 	text-wrap: balance;
 	overflow-wrap: break-word;
 
 	a {
-		color: cssvar('heading-link__color');
-		text-decoration: cssvar('heading-link__text-decoration');
+		color: cssvar('h-link__color');
+		text-decoration: cssvar('h-link__text-decoration');
 
 		&:hover,
 		&:focus {
-			color: cssvar('heading-link--focus__color');
-			text-decoration: cssvar('heading-link--focus__text-decoration');
+			color: cssvar('h-link--focus__color');
+			text-decoration: cssvar('h-link--focus__text-decoration');
 		}
 	}
 }
@@ -379,8 +358,8 @@ h6 {
 h1 {
 	@include set-cssvars(
 		(
-			heading__font-size: cssvar('font-size--4xl'),
-			heading__line-height: cssvar('line-height--2xs'),
+			h__font-size: cssvar('font-size--4xl'),
+			h__line-height: cssvar('line-height--2xs'),
 		)
 	);
 }
@@ -388,9 +367,8 @@ h1 {
 h2 {
 	@include set-cssvars(
 		(
-			heading__font-size: cssvar('font-size--3xl'),
-			heading__line-height: cssvar('line-height--2xs'),
-			margin-block-end: cssvar('spacing--sm'),
+			h__font-size: cssvar('font-size--3xl'),
+			h__line-height: cssvar('line-height--2xs'),
 		)
 	);
 }
@@ -398,9 +376,8 @@ h2 {
 h3 {
 	@include set-cssvars(
 		(
-			heading__font-size: cssvar('font-size--2xl'),
-			heading__line-height: cssvar('line-height--xs'),
-			margin-block-end: cssvar('spacing--sm'),
+			h__font-size: cssvar('font-size--2xl'),
+			h__line-height: cssvar('line-height--xs'),
 		)
 	);
 }
@@ -408,9 +385,8 @@ h3 {
 h4 {
 	@include set-cssvars(
 		(
-			heading__font-size: cssvar('font-size--xl'),
-			heading__line-height: cssvar('line-height--xs'),
-			margin-block-end: cssvar('spacing--sm'),
+			h__font-size: cssvar('font-size--xl'),
+			h__line-height: cssvar('line-height--xs'),
 		)
 	);
 }
@@ -418,9 +394,8 @@ h4 {
 h5 {
 	@include set-cssvars(
 		(
-			heading__font-size: cssvar('font-size--lg'),
-			heading__line-height: cssvar('line-height--sm'),
-			margin-block-end: cssvar('spacing--sm'),
+			h__font-size: cssvar('font-size--lg'),
+			h__line-height: cssvar('line-height--sm'),
 		)
 	);
 }
@@ -428,9 +403,8 @@ h5 {
 h6 {
 	@include set-cssvars(
 		(
-			heading__font-size: cssvar('font-size'),
-			heading__line-height: cssvar('line-height'),
-			margin-block-end: cssvar('spacing--sm'),
+			h__font-size: cssvar('font-size'),
+			h__line-height: cssvar('line-height'),
 		)
 	);
 }
@@ -487,6 +461,7 @@ cite {
 .entry-meta {
 	font-size: cssvar('font-size--sm');
 	color: cssvar('color--alt');
+	margin-bottom: cssvar('spacing--xs');
 }
 
 figcaption,

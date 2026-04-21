@@ -1,82 +1,98 @@
+/**
+ * Breakpoints & Media Queries
+ */
 .wp-block-media-text {
-  /*!rtl:begin:ignore*/
+  --margin-block-end: var(--spacing--lg);
+  /*rtl:begin:ignore*/
   direction: ltr;
-  /*!rtl:end:ignore*/
+  /*rtl:end:ignore*/
   display: grid;
   grid-template-columns: 50% 1fr;
   grid-template-rows: auto;
-  -webkit-column-gap: var(--grid__column-gap);
-     -moz-column-gap: var(--grid__column-gap);
-          column-gap: var(--grid__column-gap);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .wp-block-media-text.has-media-on-the-right {
   grid-template-columns: 1fr 50%;
 }
 
-.wp-block-media-text.is-vertically-aligned-top .wp-block-media-text__content,
-.wp-block-media-text.is-vertically-aligned-top .wp-block-media-text__media {
+.wp-block-media-text.is-vertically-aligned-top > .wp-block-media-text__content,
+.wp-block-media-text.is-vertically-aligned-top > .wp-block-media-text__media {
   -ms-flex-item-align: start;
       align-self: start;
 }
 
-.wp-block-media-text .wp-block-media-text__content,
-.wp-block-media-text .wp-block-media-text__media,
-.wp-block-media-text.is-vertically-aligned-center .wp-block-media-text__content,
-.wp-block-media-text.is-vertically-aligned-center .wp-block-media-text__media {
+.wp-block-media-text > .wp-block-media-text__content,
+.wp-block-media-text > .wp-block-media-text__media,
+.wp-block-media-text.is-vertically-aligned-center > .wp-block-media-text__content,
+.wp-block-media-text.is-vertically-aligned-center > .wp-block-media-text__media {
   -ms-flex-item-align: center;
       align-self: center;
 }
 
-.wp-block-media-text.is-vertically-aligned-bottom .wp-block-media-text__content,
-.wp-block-media-text.is-vertically-aligned-bottom .wp-block-media-text__media {
+.wp-block-media-text.is-vertically-aligned-bottom > .wp-block-media-text__content,
+.wp-block-media-text.is-vertically-aligned-bottom > .wp-block-media-text__media {
   -ms-flex-item-align: end;
       align-self: end;
 }
 
-.wp-block-media-text .wp-block-media-text__media {
-  /*!rtl:begin:ignore*/
+.wp-block-media-text > .wp-block-media-text__media {
+  /*rtl:begin:ignore*/
   grid-column: 1;
   grid-row: 1;
-  /*!rtl:end:ignore*/
+  /*rtl:end:ignore*/
   margin: 0;
 }
 
-.wp-block-media-text .wp-block-media-text__content {
+.wp-block-media-text > .wp-block-media-text__content {
   direction: ltr;
-  /*!rtl:begin:ignore*/
+  /*rtl:begin:ignore*/
   grid-column: 2;
   grid-row: 1;
-  /*!rtl:end:ignore*/
+  /*rtl:end:ignore*/
+  padding: 0 8% 0 8%;
+  word-break: break-word;
 }
 
-.wp-block-media-text.has-media-on-the-right .wp-block-media-text__media {
-  /*!rtl:begin:ignore*/
+.wp-block-media-text.has-media-on-the-right > .wp-block-media-text__media {
+  /*rtl:begin:ignore*/
   grid-column: 2;
   grid-row: 1;
-  /*!rtl:end:ignore*/
+  /*rtl:end:ignore*/
 }
 
-.wp-block-media-text.has-media-on-the-right .wp-block-media-text__content {
-  /*!rtl:begin:ignore*/
+.wp-block-media-text.has-media-on-the-right > .wp-block-media-text__content {
+  /*rtl:begin:ignore*/
   grid-column: 1;
   grid-row: 1;
-  /*!rtl:end:ignore*/
+  /*rtl:end:ignore*/
 }
 
-.wp-block-media-text > figure > img,
-.wp-block-media-text > figure > video {
+.wp-block-media-text__media a {
+  display: block;
+}
+
+.wp-block-media-text__media img,
+.wp-block-media-text__media video {
+  height: auto;
   max-width: unset;
   width: 100%;
   vertical-align: middle;
 }
 
-.wp-block-media-text.is-image-fill figure.wp-block-media-text__media-container {
+/* `is-image-fill` is deprecated and the styles are kept for backwards compatibility. */
+.wp-block-media-text.is-image-fill > .wp-block-media-text__media {
   height: 100%;
   min-height: 250px;
   background-size: cover;
 }
 
-.wp-block-media-text.is-image-fill figure.wp-block-media-text__media-container > img {
+.wp-block-media-text.is-image-fill > .wp-block-media-text__media > a {
+  display: block;
+  height: 100%;
+}
+
+.wp-block-media-text.is-image-fill > .wp-block-media-text__media img {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -87,26 +103,46 @@
   border: 0;
 }
 
-@media (max-width: 479.98px) {
+/* Image fill for versions 8 and onwards */
+.wp-block-media-text.is-image-fill-element > .wp-block-media-text__media {
+  position: relative;
+  height: 100%;
+  min-height: 250px;
+}
+
+.wp-block-media-text.is-image-fill-element > .wp-block-media-text__media > a {
+  display: block;
+  height: 100%;
+}
+
+.wp-block-media-text.is-image-fill-element > .wp-block-media-text__media img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*
+* Here we here not able to use a mobile first CSS approach.
+* Custom widths are set using inline styles, and on mobile,
+* we need 100% width, so we use important to overwrite the inline style.
+* If the style were set on mobile first, on desktop styles,
+* we would have no way of setting the style again to the inline style.
+*/
+
+@media (max-width: 600px) {
   .wp-block-media-text.is-stacked-on-mobile {
     grid-template-columns: 100% !important;
   }
-  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
+  .wp-block-media-text.is-stacked-on-mobile > .wp-block-media-text__media {
     grid-column: 1;
     grid-row: 1;
   }
-  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
+  .wp-block-media-text.is-stacked-on-mobile > .wp-block-media-text__content {
     grid-column: 1;
     grid-row: 2;
-  }
-  .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__media {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content {
-    grid-column: 1;
-    grid-row: 1;
   }
 }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9zYXNzL2Jsb2Nrcy9jb3JlL21lZGlhLXRleHQuc2NzcyIsIm1lZGlhLXRleHQuY3NzIiwiLi4vLi4vLi4vc3JjL3Nhc3MvbWl4aW5zL19icmVha3BvaW50cy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBRUMsb0JBQUE7RUFDQSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EsOEJBQUE7RUFDQSx3QkFBQTtFQUNBLDJDQUFBO0tBQUEsd0NBQUE7VUFBQSxtQ0FBQTtBQ0ZEO0FESUM7RUFDQyw4QkFBQTtBQ0ZGOztBRE9DOztFQUVDLDBCQUFBO01BQUEsaUJBQUE7QUNKRjs7QURTQzs7OztFQUVDLDJCQUFBO01BQUEsa0JBQUE7QUNKRjs7QURTQzs7RUFFQyx3QkFBQTtNQUFBLGVBQUE7QUNORjs7QURVQTtFQUNDLG9CQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7QUNQRDs7QURVQTtFQUNDLGNBQUE7RUFDQSxvQkFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7QUNQRDs7QURZQTtFQUNDLG9CQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtBQ1REOztBRFlBO0VBQ0Msb0JBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDVEQ7O0FEWUE7O0VBRUMsZ0JBQUE7RUFDQSxXQUFBO0VBQ0Esc0JBQUE7QUNURDs7QURZQTtFQUNDLFlBQUE7RUFDQSxpQkFBQTtFQUNBLHNCQUFBO0FDVEQ7O0FEWUE7RUFFQyxrQkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsVUFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLHNCQUFBO0VBQ0EsU0FBQTtBQ1ZEOztBQ3BFRTtFRnlGRDtJQUNDLHNDQUFBO0VDakJBO0VEbUJBO0lBQ0MsY0FBQTtJQUNBLFdBQUE7RUNqQkQ7RURvQkE7SUFDQyxjQUFBO0lBQ0EsV0FBQTtFQ2xCRDtFRHVCQTtJQUNDLGNBQUE7SUFDQSxXQUFBO0VDckJEO0VEdUJBO0lBQ0MsY0FBQTtJQUNBLFdBQUE7RUNyQkQ7QUFDRiIsImZpbGUiOiJtZWRpYS10ZXh0LmNzcyJ9 */
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL25vZGVfbW9kdWxlcy9Ad29yZHByZXNzL2Jhc2Utc3R5bGVzL19icmVha3BvaW50cy5zY3NzIiwiLi4vLi4vLi4vc3JjL3Nhc3MvYmxvY2tzL2NvcmUvbWVkaWEtdGV4dC5zY3NzIiwiLi4vLi4vLi4vc3JjL3Nhc3MvbWl4aW5zL191dGlsaXR5LnNjc3MiLCJtZWRpYS10ZXh0LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7RUFBQTtBQ0dBO0VDZ0tDLHNDQUFBO0VEN0pBLG1CQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0VBQ0Esd0JBQUE7RUFFQSw4QkFBQTtVQUFBLHNCQUFBO0FFREQ7QUZHQztFQUNDLDhCQUFBO0FFREY7O0FGTUM7O0VBRUMsMEJBQUE7TUFBQSxpQkFBQTtBRUhGOztBRlNDOzs7O0VBRUMsMkJBQUE7TUFBQSxrQkFBQTtBRUpGOztBRlNDOztFQUVDLHdCQUFBO01BQUEsZUFBQTtBRU5GOztBRlVBO0VBQ0MsbUJBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0VBQ0EsU0FBQTtBRVBEOztBRlVBO0VBQ0MsY0FBQTtFQUNBLG1CQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0Esc0JBQUE7QUVQRDs7QUZVQTtFQUNDLG1CQUFBO0VBQ0EsY0FBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtBRVBEOztBRlVBO0VBQ0MsbUJBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0FFUEQ7O0FGVUE7RUFDQyxjQUFBO0FFUEQ7O0FGVUE7O0VBRUMsWUFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtFQUNBLHNCQUFBO0FFUEQ7O0FGVUEsdUZBQUE7QUFDQTtFQUNDLFlBQUE7RUFDQSxpQkFBQTtFQUNBLHNCQUFBO0FFUEQ7O0FGVUE7RUFDQyxjQUFBO0VBQ0EsWUFBQTtBRVBEOztBRlVBO0VBRUMsa0JBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFVBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxzQkFBQTtFQUNBLFNBQUE7QUVSRDs7QUZXQSwwQ0FBQTtBQUNBO0VBQ0Msa0JBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7QUVSRDs7QUZXQTtFQUNDLGNBQUE7RUFDQSxZQUFBO0FFUkQ7O0FGV0E7RUFDQyxrQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esb0JBQUE7S0FBQSxpQkFBQTtBRVJEOztBRldBOzs7Ozs7Q0FBQTs7QUFPQTtFQUNDO0lBQ0Msc0NBQUE7RUVSQTtFRlNBO0lBQ0MsY0FBQTtJQUNBLFdBQUE7RUVQRDtFRlNBO0lBQ0MsY0FBQTtJQUNBLFdBQUE7RUVQRDtBQUNGIiwiZmlsZSI6Im1lZGlhLXRleHQuY3NzIn0= */

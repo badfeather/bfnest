@@ -33,6 +33,10 @@ function bfnest_get_theme_requires() {
 		$requires[] = 'yoast.php';
 	}
 
+	if ( is_plugin_active( 'safe-redirect-manager/safe-redirect-manager.php' ) ) {
+		$requires[] = 'safe-redirect-manager.php';
+	}
+
 	return $requires;
 }
 

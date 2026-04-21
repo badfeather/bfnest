@@ -18,7 +18,7 @@ function bfnest_comment( $comment, $args, $depth, $meta_sep = ' | ' ) {
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment__body">
-			<header class="comment-meta comment-header">
+			<header class="comment-meta entry-meta comment-header">
 				<span class="comment__author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 					<?php printf( __( '%s', 'bfnest' ), sprintf( '<cite class="fn meta meta-author">%s</cite>', get_comment_author_link() ) ); ?>

@@ -33,13 +33,22 @@ canvas,
 	margin-inline: auto;
 }
 
+//.wp-caption {
+//	display: table;
+//	max-width: 100%;
+//
+//	figcaption {
+//		display: table-caption;
+//		caption-side: bottom;
+//	}
+//}
 .wp-caption {
-	display: table;
+	inline-size: fit-content;
+	margin-inline: auto;
 	max-width: 100%;
 
 	figcaption {
-		display: table-caption;
-		caption-side: bottom;
+		contain: inline-size;
 	}
 }
 

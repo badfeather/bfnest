@@ -1,7 +1,2 @@
 @use '../layout' as *;
 
-.card {
-	@extend %bp-sm__cols-6;
-	@extend %bp-md__cols-4;
-	@extend %bp-lg__cols-3;
-}

@@ -1,6 +1,6 @@
 {
 	"name": "bfnest",
-	"version": "8.0.0",
+	"version": "8.1.0",
 	"homepage": "https://github.com/badfeather/bfnest",
 	"author": "Brad Thomason <brad@badfeather.com>",
 	"repository": {
@@ -21,7 +21,7 @@
 		"bump:patch": "bump patch package.json package-lock.json README.md style.css",
 		"bump:minor": "bump minor package.json package-lock.json README.md style.css",
 		"bump:major": "bump major package.json package-lock.json README.md style.css",
-		"precss": "sass src/sass:css",
+		"precss": "sass src/sass:css --load-path=node_modules",
 		"css": "postcss css '!css/**/*.min.css' '!css/**/*.map' -u autoprefixer postcss-sort-media-queries --base css -d css",
 		"postcss": "postcss css '!css/**/*.min.css' '!css/**/*.map' -u cssnano --ext .min.css --no-map --base css -d css",
 		"prejs": "eslint 'src/js/**/*.js' '**/*.mjs' '**/*.json' --fix",
@@ -44,6 +44,7 @@
 		"@rollup/plugin-commonjs": "^29.0.0",
 		"@rollup/plugin-node-resolve": "^16.0.0",
 		"@rollup/plugin-terser": "^0.4.3",
+		"@wordpress/base-styles": "^6.19.0",
 		"autoprefixer": "^10.3.1",
 		"baseline-browser-mapping": "^2.9.11",
 		"chokidar-cli": "^3.0.0",

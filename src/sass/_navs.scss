@@ -36,7 +36,7 @@
 	.current-category-ancestor,
 	.current-post-ancestor {
 		& > a,
-		& >  {
+		& > .btn--link {
 			color: cssvar('link--focus__color');
 		}
 	}
@@ -44,16 +44,18 @@
 
 // POST NAVIGATION STYLES
 // ---------------------------
-.postnav {
-	clear: both;
-	@include row;
+@include bp-sm__mq-up {
+	.postnav {
+		@include grid;
+		margin-top: cssvar('spacing');
+	}
 
 	.postnav__link {
-		@include cols(6);
+		@include colspan(6);
 	}
 
 	.postnav__link--older {
-		order: 2;
+		@include colstart(7);
 		text-align: right;
 	}
 }

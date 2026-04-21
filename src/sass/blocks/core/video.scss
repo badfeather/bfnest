@@ -1,6 +1,7 @@
+@use '../../abstracts' as *;
+
 .wp-block-video {
-	margin-inline-start: 0;
-	margin-inline-end: 0;
+	margin-inline: 0;
 }
 
 .wp-block-video video {
@@ -17,9 +18,31 @@
 	text-align: center;
 }
 
-//.wp-block-video figcaption {
-//	margin-top: 0.5em;
-//	margin-block-end: 1em;
-//	margin-top: $figcaption__margin-top;
-//	margin-block-end: $figcaption__margin-bottom;
+//@use "@wordpress/base-styles/mixins" as *;
+//
+//.wp-block-video {
+//	// This block has customizable padding, border-box makes that more predictable.
+//	box-sizing: border-box;
+//	video {
+//		width: 100%;
+//		height: auto;
+//		vertical-align: middle;
+//	}
+//
+//	@supports (position: sticky) {
+//		[poster] {
+//			object-fit: cover;
+//		}
+//	}
+//
+//	&.aligncenter {
+//		text-align: center;
+//	}
+//
+//	// Supply caption styles to videos, even if the theme hasn't opted in.
+//	// Reason being: the new markup, <figcaptions>, are not likely to be styled in the majority of existing themes,
+//	// so we supply the styles so as to not appear broken or unstyled in those themes.
+//	:where(figcaption) {
+//		@include caption-style();
+//	}
 //}

@@ -1,16 +1,12 @@
 @use '../abstracts' as *;
 @use '../layout' as *;
 
-.has-text-align-center {
-	text-align: center;
-}
-
-.has-text-align-left {
-	text-align: left;
-}
-
-.has-text-align-right {
-	text-align: right;
+:where(
+.block,
+.wp-block,
+.is-layout-flow > *
+) {
+	@include block-margins;
 }
 
 // .wp-block {
@@ -23,42 +19,108 @@
 // .block-editor-block-list__layout,
 // .wp-block-post-content
 .is-layout-flow:not(.wp-block, .block) {
-	@extend .content-grid;
+	@include container--fluid;
 
-	& > :not(.alignwide, [data-align="wide"], .alignfull, [data-align="full"], .alignleft, [data-align="left"], .alignright, [data-align="right"]) {
-		@extend %bp-lg__content-colstart-2;
-		@extend %bp-lg__colspan-8;
+	@include bp-lg__mq-up {
+		@include content-grid;
+
+		& > :not(
+		.alignwide,
+		[data-align="wide"],
+		.alignfull,
+		[data-align="full"],
+		.alignleft,
+		[data-align="left"],
+		.alignright,
+		[data-align="right"]
+	) {
+			@include content-colstart(3);
+			@include content-colspan(8);
+			//@extend %bp-lg__content-colstart-3;
+			//@extend %bp-lg__colspan-8;
+		}
+
+		& > .alignwide,
+			// & > [data-align="wide"],
+		& > .acf-block-preview:has(> .alignwide) {
+			@include content-colstart(1);
+			@include content-colspan(12);
+			//@extend %bp-lg__content-colstart-1;
+			//@extend %bp-lg__colspan-12;
+		}
+
+		& > .alignfull,
+			// & > [data-align="full"],
+		& > .acf-block-preview:has(> .alignfull) {
+			//@extend %bp-lg__colspan-full;
+			@include colspan-full;
+		}
+
+		& > .alignleft,
+		& > [data-align="left"],
+		& > .alignright,
+		& > [data-align="right"] {
+			//@extend %bp-lg__colspan-6;
+			@include content-colspan(6);
+		}
+
+		& > .alignleft,
+		& > [data-align="left"] {
+			//@extend %bp-lg__content-colstart-1;
+			@include content-colstart(2);
+		}
+
+		& > .alignright,
+		& > [data-align="right"] {
+			//@extend %bp-lg__content-colstart-7;
+			@include content-colstart(6);
+		}
 	}
 
-	& > .alignwide,
-	// & > [data-align="wide"],
-	& > .acf-block-preview:has(> .alignwide) {
-		@extend %bp-lg__content-colstart-1;
-		@extend %bp-lg__colspan-12;
-	}
 
-	& > .alignfull,
-	// & > [data-align="full"],
-	& > .acf-block-preview:has(> .alignfull) {
-		@extend %bp-lg__colspan-full;
-	}
-
-	& > .alignleft,
-	& > [data-align="left"],
-	& > .alignright,
-	& > [data-align="right"] {
-		@extend %bp-lg__colspan-6;
-	}
-
-	& > .alignleft,
-	& > [data-align="left"] {
-		@extend %bp-lg__content-colstart-1;
-	}
-
-	& > .alignright,
-	& > [data-align="right"] {
-		@extend %bp-lg__content-colstart-7;
-	}
+	//& > :not(
+	//	.alignwide,
+	//	[data-align="wide"],
+	//	.alignfull,
+	//	[data-align="full"],
+	//	.alignleft,
+	//	[data-align="left"],
+	//	.alignright,
+	//	[data-align="right"]
+	//) {
+	//	@extend %bp-lg__content-colstart-3;
+	//	@extend %bp-lg__colspan-8;
+	//}
+	//
+	//& > .alignwide,
+	//// & > [data-align="wide"],
+	//& > .acf-block-preview:has(> .alignwide) {
+	//	@extend %bp-lg__content-colstart-1;
+	//	@extend %bp-lg__colspan-12;
+	//}
+	//
+	//& > .alignfull,
+	//// & > [data-align="full"],
+	//& > .acf-block-preview:has(> .alignfull) {
+	//	@extend %bp-lg__colspan-full;
+	//}
+	//
+	//& > .alignleft,
+	//& > [data-align="left"],
+	//& > .alignright,
+	//& > [data-align="right"] {
+	//	@extend %bp-lg__colspan-6;
+	//}
+	//
+	//& > .alignleft,
+	//& > [data-align="left"] {
+	//	@extend %bp-lg__content-colstart-1;
+	//}
+	//
+	//& > .alignright,
+	//& > [data-align="right"] {
+	//	@extend %bp-lg__content-colstart-7;
+	//}
 }
 
 // .is-layout-flow {

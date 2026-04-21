@@ -1,3 +1,5 @@
+@use 'abstracts' as *;
+
 @charset 'utf-8';
 @use 'properties';
 @use 'fonts';
@@ -7,16 +9,16 @@
 @use 'layout';
 @use 'forms';
 @use 'media';
-//@use 'navs';
-//@use 'header';
 @use 'main';
 @use 'partials';
-//@use 'comments';
-//@use 'side';
-//@use 'footer';
-// @use 'blocks/editor-resets';
 @use 'blocks';
-//@use 'print';
-//@use 'jetpack';
+
+.editor-post-title {
+	@include container;
+}
+
+.wp-block-list-item {
+	@include set-cssvar('margin-block-end', cssvar('spacing--xs'));
+}
 
 
