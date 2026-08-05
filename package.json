@@ -1,6 +1,6 @@
 {
 	"name": "bfnest",
-	"version": "8.1.8",
+	"version": "8.1.9",
 	"homepage": "https://github.com/badfeather/bfnest",
 	"author": "Brad Thomason <brad@badfeather.com>",
 	"repository": {
@@ -18,9 +18,9 @@
 		"last 2 versions"
 	],
 	"scripts": {
-		"bump:patch": "bumpp patch package.json package-lock.json README.md style.css --no-push",
-		"bump:minor": "bumpp minor package.json package-lock.json README.md style.css npm--no-push",
-		"bump:major": "bumpp major package.json package-lock.json README.md style.css --no-push",
+		"bump:patch": "bumpp patch package.json package-lock.json README.md style.css",
+		"bump:minor": "bumpp minor package.json package-lock.json README.md style.css",
+		"bump:major": "bumpp major package.json package-lock.json README.md style.css",
 		"precss": "sass src/sass:css --load-path=node_modules",
 		"css": "postcss css '!css/**/*.min.css' '!css/**/*.map' -u autoprefixer postcss-sort-media-queries --base css -d css",
 		"postcss": "postcss css '!css/**/*.min.css' '!css/**/*.map' -u cssnano --ext .min.css --no-map --base css -d css",
